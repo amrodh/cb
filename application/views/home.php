@@ -9,7 +9,7 @@
 	    <div class="visible-sm visible-xs hidden-lg hidden-md">
 	        <?php include('search.php'); ?>
 	    </div>
-	    
+
     <?php include('property_alert.php'); ?>
             
 </div>
