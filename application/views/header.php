@@ -14,13 +14,15 @@
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.min.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.structure.min.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.theme.min.css">
+<link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
+<link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
     
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>application/static/css/sb-admin.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
+    
 
     <!-- Morris Charts CSS -->
     <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet">
@@ -30,7 +32,7 @@
         <link type="text/css" href="<?= base_url();?>/application/static/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="<?= base_url();?>/application/static/css/style.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
-        <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
+        
         <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css">
         <title>
             <?=$page_title?>
