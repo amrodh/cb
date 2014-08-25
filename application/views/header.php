@@ -56,7 +56,7 @@
                 <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>/application/static/index.php/controller_user/register/en">Register</a>
             </div>
         </div>
-        <form class="form-inline" role="form" action="<?= base_url();?>/application/static/index.php/controller_user">
+        <form class="form-inline" role="form" method="post" action="<?= base_url();?>authenticate">
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">

@@ -6,6 +6,8 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 
 $route['admin'] = 'admin';
+$route['authenticate'] = 'home/authenticate';
+
 
 
 /* End of file routes.php */
