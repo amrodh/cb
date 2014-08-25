@@ -63,5 +63,39 @@ class Home extends CI_Controller {
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
 	}
+
+	public function register ()
+	{
+
+		$this->load->model('user');
+		$data = array();
+
+		if(isset($_POST['submit'])){
+		
+			$firstname = $_POST['firstname'];
+			$lastname = $_POST['lastname'];
+			$username = $_POST['username'];
+			$email = $_POST['email'];
+			$location	 = $_POST['location'];
+			$phone	 = $_POST['phone'];
+			$password = $_POST['password'];
+			$data['params'] = $_POST;
+
+			$user = $this->user->getUserByUsername($username);
+			if ($user)
+			{
+				$data['registrationError'] = 'Username already exists';
+			}else{
+				echo 'username available';
+			}
+		}
+
+
+		$this->load->view('register',$data);
+
+
+		
+
+	}
 }
 

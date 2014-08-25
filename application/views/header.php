@@ -54,7 +54,7 @@
                     <span><b><?= $user->username; ?></b></span>
                     <a href="home/logout">Log Out</a>
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>/application/static/index.php/controller_user/register/en">Register</a>
+                    <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>register">Register</a>
                 <?php endif ?>
                 
             </div>

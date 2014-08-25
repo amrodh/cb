@@ -26,6 +26,13 @@ body{
     padding-top: 10px
 }
 
+#passwordAlert{
+    display: none;
+    width: 65%;
+font-size: 15px;
+margin-top: 5%
+}
+
 #middle_div{
     height: 53px;
     background-color: #23395b;

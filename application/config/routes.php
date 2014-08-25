@@ -9,6 +9,9 @@ $route['admin'] = 'admin';
 $route['authenticate'] = 'home/authenticate';
 $route['home/logout'] = 'home/logout';
 
+$route['register'] = 'home/register';
+
+
 
 
 /* End of file routes.php */

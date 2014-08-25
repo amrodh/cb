@@ -30,6 +30,33 @@ function search_validation ()
         return true;
 }
 
+function formValidation()
+{
+    var b=document.forms["registerForm"]["password"].value;
+    if (b===null || b==="")
+      {
+      alert("Password must be filled out");
+      return false;
+      }
+
+    var c=document.forms["registerForm"]["confirmpassword"].value;
+    if (c===null || c==="")
+      {
+      alert("Please re-enter password");
+      return false;
+      }
+
+
+    if (c !== b){
+        $("#confirmpassword").css('border','1px solid red');
+        $("#passwordAlert").show();
+        return false;
+    }else{
+        $("#confirmpassword").css('border','1px solid black');
+        $("#passwordAlert").hide();
+    }
+}
+
 function toggleVisibility()
 {
     if ($('.search_bottom_row').css('display') == 'none')
