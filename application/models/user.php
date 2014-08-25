@@ -13,7 +13,7 @@ class User extends CI_Model {
 
     function logIn($username,$password)
     { 
-      $user = $this->getSuperByUsername($username);
+      $user = $this->getUserByUsername($username);
       $password = passwordEncryption($password,$user->password_salt);
 
       if($password == $user->password){

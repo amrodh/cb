@@ -2,32 +2,66 @@
 
 class Home extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index()
 	{
-		
-		$this->load->view('home');
+		$data['session'] = $this->session;
+		$tmp = $this->session->flashdata('loginError');
+
+		if($tmp){
+			$data['loginError'] = $this->session->flashdata('loginError');
+			$data['login_username'] = $this->session->flashdata('login_username');
+			$data['loginErrorType'] = $this->session->flashdata('loginErrorType');
+		}
+
+		if(isset($this->session->userdata['id'])){
+			$data['loggedIn'] = true;
+			$this->load->model('user');
+			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+		}
+
+		$this->load->view('home',$data);
 	}
 
 	public function authenticate()
 	{
-		
+		$this->load->model('user');
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+
+		$user = $this->user->getUserByUsername($username);
+		if($user){
+			$login = $this->user->login($user->username,$password);
+			if($login){
+				$this->startSession($user);
+				redirect('home');
+				exit();
+			}else{
+				$this->session->set_flashdata('loginError', 'Password is not correct');
+				$this->session->set_flashdata('loginErrorType', '1');
+			}
+		}else{
+			$this->session->set_flashdata('loginError', 'Username does not exsist');
+			$this->session->set_flashdata('loginErrorType', '2');
+
+		}
+
+		$this->session->set_flashdata('login_username', $username);
+		redirect('home');
+	}
+
+
+
+	public function startSession($user)
+	{
+		$this->session->set_userdata($user);
+	}
+
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		$this->session->unset_userdata();
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

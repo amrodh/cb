@@ -16,7 +16,7 @@ class Hooks {
          if(count($url) <= 3)
             return;
          if(!$this->CI->session->userdata['id']){ 
-             redirect('admin');
+             redirect($url[2]);
         }
     }
 

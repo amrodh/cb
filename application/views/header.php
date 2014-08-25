@@ -48,15 +48,21 @@
                 <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
             </div>
             <div id="login_div">
-                <!--                <a href='<?= base_url();?>/application/static/index.php/controller_langswitch/switchLanguage/english'>English</a>-->
                 <a href='<?= base_url();?>/application/static/'>English</a>
                 <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>Arabic</a>
-                <!--<a href='<?= base_url();?>/application/static/index.php/controller_langswitch/switchLanguage/arabic'>Arabic</a>-->
-                <?php // anchor($this->lang->switch_uri('ar'),'Arabic'); ?>
-                <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>/application/static/index.php/controller_user/register/en">Register</a>
+                <?php if (isset($loggedIn)): ?>
+                    <span><b><?= $user->username; ?></b></span>
+                    <a href="home/logout">Log Out</a>
+                <?php else: ?>
+                    <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>/application/static/index.php/controller_user/register/en">Register</a>
+                <?php endif ?>
+                
             </div>
         </div>
-        <form class="form-inline" role="form" method="post" action="<?= base_url();?>authenticate">
+        <?php if (isset($loginError)): ?>
+            <input type="hidden" id="loginError" value="<?= $loginError; ?>">
+        <?php endif ?>
+        <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate">
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -67,25 +73,30 @@
                           Enter your username and password to login
                       </div>
                     </div>
-                    <div class="modal-body" style="width: 37%;margin: auto;">
+                    <div class="modal-body" style="width:65%;margin-left:33%;">
                         <div class="row">
-                            <!--<div class="col-xs-12 col-lg-12 col-md-4 col-sm-4" style="margin: auto;">-->
                                  <div class="form-group login_form">
-                                    <label for="username" class="shareproperty_titles">Username:</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Please enter username">
+                                    <label style="width:100%" for="username" class="shareproperty_titles">Username:</label>
+                                    <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="Please enter username" required>
                                  </div>
-                            <!--</div>-->
                         </div>
                         <div class="row">
                             <div class="form-group login_form">
-                                <label for="password" class="shareproperty_titles">Password:</label>
-                                <input type="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="Please enter password">
+                                <label style="width:100%" for="password" class="shareproperty_titles">Password:</label>
+                                <input style="float:left" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="Please enter password" required>
                             </div>
+                        </div>
+                        <div class="row">
+                            <?php if (isset($loginErrorType)): ?>
+                                <div class="alert alert-danger" role="alert">
+                                        <?= $loginError;?>
+                                </div>
+                            <?php endif ?>
                         </div>
                     </div>
                     <div class="modal-footer" style="margin: auto;width: 185px;">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="">Go</button>
+                            <input type="submit" class="btn btn-default search_btn_submit2" value="Go" name="submit">
                        </div>
                     </div>
                   </div><!-- /.modal-content -->

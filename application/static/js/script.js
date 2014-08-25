@@ -1,3 +1,30 @@
+$(document).ready(function ()
+        {
+            //alert(document.title);
+           if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
+               {
+                   $('#footer_div').css('margin-top' , '190px');
+               }
+            if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
+            {
+                //alert ('hi');
+                 $('#footer_div').css('margin-top' , '30px');
+            }
+//            else
+//                $('#footer_div').css('margin-top' , '30px');
+               
+           $('.selectpicker').selectpicker();
+
+
+           if($("#loginError").length > 0){
+                $('#tallModal').modal('show');
+           }
+
+        });
+
+
+
+
 function search_validation ()
 {
         return true;
@@ -148,23 +175,7 @@ $('#footer_dropdown3').click(function (){
         });
         
         
-$(document).ready(function ()
-        {
-            //alert(document.title);
-           if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
-               {
-                   $('#footer_div').css('margin-top' , '190px');
-               }
-            if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
-            {
-                //alert ('hi');
-                 $('#footer_div').css('margin-top' , '30px');
-            }
-//            else
-//                $('#footer_div').css('margin-top' , '30px');
-               
-           $('.selectpicker').selectpicker();
-        });
+
         
 $(".modal-wide").on("show.bs.modal", function() {
   var height = $(window).height() - 200;
@@ -222,3 +233,30 @@ $( window ).resize(function() {
 //    else
 //        $('.navbar-toggle').css('margin-left',  '-800%');
 });
+
+
+function loginFormValidation()
+{
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    if(username.length == 0){
+        $("#usernameAlert").show();
+
+        if(password.length == 0)
+        $("#passwordAlert").show();
+        
+        return false;
+    }else{
+        $("#usernameAlert").hide();
+    }
+
+    if(password.length == 0){
+        $("#passwordAlert").show();
+        return false;
+    }else{
+        $("#passwordAlert").hide();
+    }
+
+    return false;
+}

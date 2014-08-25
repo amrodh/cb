@@ -24,14 +24,14 @@ class Admin extends CI_Controller {
 		if(!isset($_POST['username']))
 			redirect('admin');
 
-		$this->load->model('super');
+		$this->load->model('user');
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$user = $this->super->getSuperByUsername($username);
+		$user = $this->user->getUserByUsername($username);
 
 		if($user){
 
-			$login = $this->super->logIn($username,$password);
+			$login = $this->user->logIn($username,$password);
 			if($login){
 				$this->startSession($user);
 				redirect('admin/dashboard');

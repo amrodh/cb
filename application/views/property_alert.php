@@ -107,7 +107,6 @@
         </div>
     </form>
     </div>
-   <!-- <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/script.js"></script>-->
     <script>
 //        $(function () {
 //          $('#search_tabs a:first').tab('show');

@@ -314,7 +314,6 @@
         </div>
     </form>
     </div>
-    <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/script.js"></script>
     <script src="<?php echo base_url(); ?>application/static/js/bootstrap-select.min.js"></script>
     <script>
         $(function () {

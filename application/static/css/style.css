@@ -57,6 +57,21 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 
+.alert{
+    padding: 1%;
+    margin-left: 1%;
+    font-size: 12px;
+    float: left;
+    height:30px;
+    margin:0 auto;
+    width:50%;
+    margin-top: 1%;
+    text-align: center;
+}
+.hide{
+    display: none;
+}
+
 #middle_div > nav > div.collapse.navbar-collapse.bs-navbar-collapse > ul > li:hover{
 /*    border-bottom: 3px solid white;
     -o-transition:border-bottom .5s ease-out;
