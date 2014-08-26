@@ -71,8 +71,17 @@ class Admin extends CI_Controller {
 		$username = $username[1];
 		$this->load->model('user');
 		$this->load->model('property');
+		$this->load->model('favorites');
 		$data['user'] = $this->user->getUserByUsername($username);
 		$data['properties'] = $this->property->getUserProperties($data['user']->id);
+		$data['favorites'] = $this->favorites->getUserFavorites($data['user']->id);
+		if(is_array($data['favorites'])){
+			foreach ($data['favorites'] as $favorite ) {
+				$favorite->property = $this->property->getPropertyByID($favorite->property_id)[0];
+			}
+		}
+		
+		// printme($data['favorites']);exit();
 		$this->load->view('admin/userprofile', $data);
 
 	}
@@ -98,6 +107,46 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/properties',$data);
 	}
 
+	function createUser()
+	{	
+		$data = array();
+
+		if(isset($_POST['submit'])){
+			$this->load->model('user');
+			$user = $this->user->getUserByUsername($_POST['username']);
+			if($user){
+				$data['error'] = 'Username not available';
+				$data['params'] = $_POST;
+			}else{
+				$user = $this->user->getUserByEmail($_POST['email']);
+				if($user){
+					$data['error'] = 'Email not available';
+					$data['params'] = $_POST;
+				}else{
+					if($_POST['password'] != $_POST['confirm']){
+						$data['error'] = 'Password not confirmed correctly';
+						$data['params'] = $_POST;
+					}else{
+						unset($_POST['confirm']);
+						unset($_POST['submit']);
+						$insert = $this->user->insertUser($_POST);
+						if($insert){
+							redirect('admin/users/'.$_POST['username']);
+						}else{
+							$data['error'] = 'Process Failed, Try again';
+							$data['params'] = $_POST;
+						}
+
+					}
+				}	
+			}
+			
+			
+		}
+
+		$this->load->view('admin/newuser',$data);
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
@@ -111,8 +160,9 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{
-		$this->load->model('property');
-		$this->property->test();
+		// $this->load->model('favorites');
+		// $this->favorites->test();
+		tokenGenerator();
 	}
 
 }

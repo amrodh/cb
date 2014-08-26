@@ -83,7 +83,13 @@
                         <a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-fw fa-dashboard"></i> Users</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-dashboard"></i> Properties</a>
+                        <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-dashboard"></i> Shared Properties</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Newsletter</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Property Alert</a>
                     </li>
                 </ul>
             </div>
