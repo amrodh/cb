@@ -28,6 +28,7 @@
           <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
             <li><a href="#properties" role="tab" data-toggle="tab">Properties</a></li>
+            <li><a href="#favorites" role="tab" data-toggle="tab">Favorites</a></li>
             <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
           </ul>
 
