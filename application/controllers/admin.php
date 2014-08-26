@@ -160,8 +160,9 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{
-		$this->load->model('favorites');
-		$this->favorites->test();
+		// $this->load->model('favorites');
+		// $this->favorites->test();
+		tokenGenerator();
 	}
 
 }

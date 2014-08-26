@@ -10,6 +10,12 @@
 		return random_string();
 	}
 
+	function tokenGenerator()
+	{
+		$time = time();
+		$token = sha1($time.random_string());
+	}
+
 	function passwordEncryption($string,$random)
 	{
 		$string = md5(md5($string).$random);
