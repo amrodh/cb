@@ -17,6 +17,8 @@ $route['admin/users/new'] = 'admin/createUser';
 $route['admin/checkpasswordchange.php'] = 'admin/checkpasswordchange';
 $route['admin/users/(:any)'] = "admin/userProfile";
 
+$route['validate/(:any)'] = "home/validateToken";
+
 
 $route['register'] = 'home/register';
 $route['profile'] = 'home/profile';

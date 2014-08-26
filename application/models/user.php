@@ -160,10 +160,23 @@ class User extends CI_Model {
           if($this->db->affected_rows() != 1){
               return false;
             }
-
             return true;
      }
 
+      function checkToken($token)
+      {
+          $q = $this
+              ->db
+              ->where('token',$token)
+              ->limit(1)
+              ->get('user_validation');
+
+           if($q->num_rows >0){
+              return $q->row();
+           } 
+
+           return false; 
+      }
 
       function getUserByID($ID)
      {

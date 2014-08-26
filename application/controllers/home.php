@@ -210,6 +210,31 @@ class Home extends CI_Controller {
 			}
 		}
 		$this->load->view('profile', $data);
+	}
+
+	public function validateToken()
+	{
+		$this->load->model('user');
+		$token = $this->uri->uri_string;
+		$token = explode('validate/', $token)[1];
+		$tokenInfo = $this->user->checkToken($token);
+		if ($tokenInfo->is_valid == 1)
+		{
+			$date = explode(' ', $tokenInfo->date_joined);
+			$date = explode('-', $date[0]);
+			$today = date('j');
+
+			$diff = $today - $date[2];
+			if ($diff < 1)
+			{
+				$params = array('email' => $tokenInfo->email);
+				$emailUpdate = $this->user->updateUser($tokenInfo->user_id, $params);
+				redirect('home');
+			}
+			else
+			{
+				echo "Confirmation email expired";
+			}
+		}
 	}	
 }
-
