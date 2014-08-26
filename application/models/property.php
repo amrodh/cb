@@ -72,6 +72,23 @@ class Property extends CI_Model {
 
     }
 
+
+    function getPropertyByID($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->get('property');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
      
      
 

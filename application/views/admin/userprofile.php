@@ -70,6 +70,11 @@
                         <td><?php echo $user->phone; ?>
                         </td>
                       </tr>
+                      <tr>
+                        <td>Location</td>
+                        <td><?php echo $user->location; ?>
+                        </td>
+                      </tr>
                       
                      
                     </tbody>
@@ -127,6 +132,45 @@
                                 <td><?php echo $property->district; ?></td>
                                 <td><?php echo $property->address; ?></td>
                                 <td><?php echo $property->date_joined; ?></td>
+                            </tr>          
+                            <?php endforeach ?>                       
+                        </table>
+                    </div>
+            <?php else: ?>
+              <div id="successAlert" class="alert alert-warning " role="alert">
+                        No properties found..
+              </div>
+            <?php endif ?>
+          </div>
+
+
+          <div class="tab-pane" id="favorites">
+            <?php if (is_array($favorites)): ?>
+                 <div class="col-lg-10">
+                        <div class="panel-body">
+                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Properties" />
+                         </div>
+                        <table class="table" id="dev-table">
+                            <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Area</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>District</th>
+                                <th>Address</th>
+                                <th>Date Joined</th>
+                            </tr>
+                            </thead>
+                            <?php foreach($favorites as $favorite): ?>
+                            <tr class="list-group-item-success">
+                                <td><?php echo $favorite->property->city; ?></td>
+                                <td><?php echo $favorite->property->area; ?></td>
+                                <td><?php echo $favorite->property->type; ?></td>
+                                <td><?php echo $favorite->property->price; ?></td>
+                                <td><?php echo $favorite->property->district; ?></td>
+                                <td><?php echo $favorite->property->address; ?></td>
+                                <td><?php echo $favorite->property->date_joined; ?></td>
                             </tr>          
                             <?php endforeach ?>                       
                         </table>

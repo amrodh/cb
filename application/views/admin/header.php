@@ -85,6 +85,12 @@
                     <li>
                         <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-dashboard"></i> Shared Properties</a>
                     </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Newsletter</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Property Alert</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
