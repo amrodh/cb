@@ -6,6 +6,9 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 
 $route['admin'] = 'admin';
+$route['admin/script'] = 'admin/script';
+$route['admin/users'] = 'admin/users';
+$route['admin/properties'] = 'admin/properties';
 $route['authenticate'] = 'home/authenticate';
 $route['home/logout'] = 'home/logout';
 

@@ -51,6 +51,25 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/dashboard');
 	}
 
+	public function users()
+	{
+		$this->load->model('user');
+		$data['users'] = $this->user->getAllUsers();
+		$this->load->view('admin/users',$data);
+	}
+
+
+	public function properties()
+	{
+		$this->load->model('property');
+		$this->load->model('user');
+		$data['properties'] = $this->property->getAllProperties();
+		foreach ($data['properties'] as $property) {
+			$property->user = $this->user->getUserByID($property->user_id);
+		}
+		$this->load->view('admin/properties',$data);
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
@@ -60,6 +79,12 @@ class Admin extends CI_Controller {
 	public function startSession($user)
 	{
 		$this->session->set_userdata($user);
+	}
+
+	public function script()
+	{
+		$this->load->model('property');
+		$this->property->test();
 	}
 
 }
