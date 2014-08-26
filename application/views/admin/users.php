@@ -42,17 +42,11 @@
                             <?php else: ?>
                                 <tr class="list-group-item-warning">
                             <?php endif ?>
-                                <td><?php echo $user->username; ?></td>
+                                <td><a href="users/<?php echo $user->username; ?>"><?php echo $user->username; ?></a></td>
                                 <td><?php echo $user->email; ?></td>
                                 <td><?php echo $user->first_name; ?></td>
                                 <td><?php echo $user->last_name; ?></td>
                                 <td><?php echo $user->date_joined; ?></td>
-                                <td>
-                                    <a href="<?php echo base_url(); ?>admin/users/<?php echo $user->username; ?>" class="btn btn-default" data-toggle="tooltip"  title="Go to Profile" href="">
-                                        <span class="glyphicon glyphicon-user"></span>
-                                    </a>
-                                </td>
-
                             </tr>          
                             <?php endforeach ?>                       
                         </table>

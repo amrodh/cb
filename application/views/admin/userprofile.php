@@ -1,0 +1,184 @@
+<?php include('header.php'); ?>
+
+    <div id="wrapper">
+
+        
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> User / <?php echo $user->username; ?> 
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-12" >
+          
+
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li><a href="#properties" role="tab" data-toggle="tab">Properties</a></li>
+            <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="profile">
+              <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo $user->first_name.' '.$user->last_name; ?></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Username:</td>
+                        <td><?php echo $user->username; ?></td>
+                      </tr>
+                      <tr>
+                        <td width="20%">First Name:</td>
+                        <td width="80%"><?php echo $user->first_name; ?></td>
+                      </tr>
+                      <tr>
+                        <td width="20%">Last Name:</td>
+                        <td width="80%"><?php echo $user->last_name; ?></td>
+                      </tr>
+                      <tr>
+                        <td width="20%">Email:</td>
+                        <td width="80%"><?php echo $user->email; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Date joined:</td>
+                        <td><?php echo $user->date_joined; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                        <td><?php echo $user->phone; ?>
+                        </td>
+                      </tr>
+                      
+                     
+                    </tbody>
+                  </table>
+                  
+                 <!--  <a href="#" class="btn btn-primary">Email</a>
+                  <a href="#" class="btn btn-primary">Message</a> -->
+                </div>
+              </div>
+            </div>
+             <div class="panel-footer">
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        <form action="<?php echo $user->username; ?>/action" method="post">
+                          <input type="hidden" name="username" value="<?php echo $user->username; ?>">
+                          <input type="submit" name="edit"   class="button btn btn-sm btn-warning" value="Edit">
+                          <input type="submit" name="delete" class="button btn btn-sm btn-danger" value="Delete">
+                        </form>
+                    </span>
+                </div>
+            
+          </div>
+            </div>
+
+            
+
+          <div class="tab-pane" id="properties">
+          None
+          </div>
+           
+
+
+
+            
+
+
+
+            <div class="tab-pane" id="settings">
+              <div class="row">
+                <div class="col-lg-12 changePasswordDiv">
+                  <div class="row changePasswordContainer">
+                    <div class="col-lg-12">
+                      <div id="successAlert" class="alert alert-success hide" role="alert">
+                        Password changed successfully
+                      </div>
+                      <form action="" id="passwordChangeForm" onsubmit="completeChangePassword();return false;">
+                      <input type="hidden" id="userID" value="<?= $user->id; ?>">
+                      <input type="hidden" id="url" value="<?= base_url(); ?>">
+                        <table>
+                          <tr><td>
+                           <div class="input-group">
+                            <span class="input-group-addon">*</span>
+                            <input type="text" id="changePassword_current" class="form-control" placeholder="Current Password" required>
+                          </div>
+                          </td></tr>
+                          <tr><td>
+                           <div class="input-group">
+                            <span class="input-group-addon">*</span>
+                            <input type="text" id="changePassword_new_1" class="form-control" placeholder="New Password" required>
+                          </div>
+                          </td></tr>
+                          <tr><td>
+                           <div class="input-group">
+                            <span class="input-group-addon">*</span>
+                            <input type="text" id="changePassword_new_2" class="form-control" placeholder="Confirm Password" required>
+                          </div>
+                          </td></tr>
+                          <tr><td>
+                           <div class="input-group">
+                            <div class="col-lg-4">
+                              <input type="submit" name="confirm"   class="button btn btn-sm btn-warning" value="Confirm">
+                            </div>
+                            <div class="col-lg-4 col-lg-offset-2">
+                              <button class="changePasswordCancel button btn btn-sm btn-danger">
+                                Cancel 
+                              </button>
+                            </div>
+                          </div>
+                          </td></tr>
+                        </table>
+                      </form>
+                    </div>
+                  </div>
+                  <a href="javascript:void(0);"  class="changePasswordAnchor" data-toggle="tooltip" >
+                      <span class="glyphicon glyphicon-password">Change Password</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+   
+          
+          
+
+          
+
+
+        </div>
+      </div>
+                    </div>
+                </div>
+       
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+<?php include('footer.php') ?>

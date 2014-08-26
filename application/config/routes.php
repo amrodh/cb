@@ -12,6 +12,10 @@ $route['admin/properties'] = 'admin/properties';
 $route['authenticate'] = 'home/authenticate';
 $route['home/logout'] = 'home/logout';
 
+$route['admin/checkpasswordchange.php'] = 'admin/checkpasswordchange';
+$route['admin/users/(:any)'] = "admin/userProfile";
+
+
 $route['register'] = 'home/register';
 
 
