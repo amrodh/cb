@@ -96,7 +96,45 @@
             
 
           <div class="tab-pane" id="properties">
-          None
+            <?php if (is_array($properties)): ?>
+                 <div class="col-lg-10">
+                        <div class="panel-body">
+                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Properties" />
+                         </div>
+                        <table class="table" id="dev-table">
+                            <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Area</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>District</th>
+                                <th>Address</th>
+                                <th>Date Joined</th>
+                            </tr>
+                            </thead>
+                            <?php foreach($properties as $property): ?>
+                            <?php if ($property->is_valid == 1): ?>
+                                <tr class="list-group-item-success">
+                            <?php else: ?>
+                                <tr class="list-group-item-warning">
+                            <?php endif ?>
+                                <td><?php echo $property->city; ?></td>
+                                <td><?php echo $property->area; ?></td>
+                                <td><?php echo $property->type; ?></td>
+                                <td><?php echo $property->price; ?></td>
+                                <td><?php echo $property->district; ?></td>
+                                <td><?php echo $property->address; ?></td>
+                                <td><?php echo $property->date_joined; ?></td>
+                            </tr>          
+                            <?php endforeach ?>                       
+                        </table>
+                    </div>
+            <?php else: ?>
+              <div id="successAlert" class="alert alert-warning " role="alert">
+                        No properties found..
+              </div>
+            <?php endif ?>
           </div>
            
 

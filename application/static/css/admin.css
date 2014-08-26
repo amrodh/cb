@@ -89,3 +89,19 @@
 .changePasswordContainer{
 	display: none;
 }
+
+
+.tab-pane{
+	height:450px;
+}
+
+.propertyTable{
+	font-size: 14px;
+	border-radius: 20px;
+	background-color: #fcf8e3;
+}
+
+.propertyTable td{
+	padding-left: 5%;
+	margin-bottom: 20%;
+}

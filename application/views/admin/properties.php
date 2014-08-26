@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <div class="panel-body">
-                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Circles" />
+                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Properties" />
                          </div>
                         <table class="table" id="dev-table">
                             <thead>

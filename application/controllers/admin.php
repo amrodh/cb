@@ -70,7 +70,9 @@ class Admin extends CI_Controller {
 		$username = explode('users/', $username);
 		$username = $username[1];
 		$this->load->model('user');
+		$this->load->model('property');
 		$data['user'] = $this->user->getUserByUsername($username);
+		$data['properties'] = $this->property->getUserProperties($data['user']->id);
 		$this->load->view('admin/userprofile', $data);
 
 	}
