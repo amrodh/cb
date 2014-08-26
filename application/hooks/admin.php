@@ -12,9 +12,15 @@ class Hooks {
         $url = explode("/", $_SERVER['REQUEST_URI']);
          if(count($url) <= 3)
             return;
-        if($this->CI->session)
-         if(!$this->CI->session->userdata['id']){ 
-             redirect($url[2]);
+
+        $userdata = $this->CI->session->userdata;
+        if(count($userdata) == 0){
+            redirect($url[2]);
         }
+        // printme($userdata);exit();
+        // if($this->CI->session)
+        //  if(!$this->CI->session->userdata['id']){ 
+        //      redirect($url[2]);
+        // }
     }
-}?> 
+}?>

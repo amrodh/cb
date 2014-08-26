@@ -145,7 +145,8 @@ class User extends CI_Model {
       $salt = saltGenerator();
       $params['password_salt'] = $salt;
       $params['password'] = passwordEncryption($params['password'],$salt);
-
+      // printme($params);
+      // exit();
       $query = $this->db->insert_string('user', $params);
       $query = $this->db->query($query);
 

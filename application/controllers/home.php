@@ -72,8 +72,8 @@ class Home extends CI_Controller {
 
 		if(isset($_POST['submit'])){
 		
-			$firstname = $_POST['firstname'];
-			$lastname = $_POST['lastname'];
+			$firstname = $_POST['first_name'];
+			$lastname = $_POST['last_name'];
 			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$location	 = $_POST['location'];
@@ -81,21 +81,47 @@ class Home extends CI_Controller {
 			$password = $_POST['password'];
 			$data['params'] = $_POST;
 
-			$user = $this->user->getUserByUsername($username);
-			if ($user)
+			if (empty($_POST['first_name'])){
+				$data['firstNameError'] = 'Insert First Name';
+			}
+			elseif (empty($_POST['last_name'])) {
+				$data['lastNameError'] = 'Insert Last Name';
+			}elseif (empty($_POST['username'])) {
+				$data['usernameError'] = 'Insert Username';
+			}elseif (empty($_POST['email'])) {
+				$data['emailError'] = 'Insert email';
+			}elseif (empty($_POST['location'])){
+				$data['locationError'] = 'Insert location';
+			}elseif (empty($_POST['phone'])){
+				$data['phoneError'] = 'Insert phone number';
+			}elseif (empty($_POST['location'])){
+				$data['passwordError'] = 'Insert password';
+			}else
 			{
-				$data['registrationError'] = 'Username already exists';
-			}else{
-				echo 'username available';
+				$user = $this->user->getUserByUsername($username);
+				if ($user)
+				{
+					$data['registrationError'] = 'Username already exists';
+				}else{
+					// echo 'username available';
+					$userData = array('username' => $_POST['username'],
+						'email' => $_POST['email'],
+						'first_name' => $_POST['first_name'],
+						'last_name' => $_POST['last_name'],
+						'location' => $_POST['location'],
+						'phone' => $_POST['phone'],
+						'password' => $_POST['password']
+						);
+					if ($this->user->insertUser($userData))
+					{
+						$user = $this->user->getUserByUsername($userData['username']);
+						$this->startSession($user);
+						redirect('home');
+					}
+				}
 			}
 		}
-
-
 		$this->load->view('register',$data);
-
-
-		
-
 	}
 }
 
