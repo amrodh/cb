@@ -13,7 +13,12 @@ class Admin extends CI_Controller {
 				$data['error'] = 1;
 		}
 		if(isset($this->session->userdata['id'])){
-			redirect('admin/dashboard');
+				
+			if($this->session->userdata['id'] != 1){
+				$data['error'] = 0;
+			}else{
+				redirect('admin/dashboard');
+			}
 		}
 
 		$this->load->view('admin/home',$data);
@@ -27,7 +32,7 @@ class Admin extends CI_Controller {
 		$this->load->model('user');
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$user = $this->user->getUserByUsername($username);
+		$user = $this->user->getRootByUsername($username);
 
 		if($user){
 
