@@ -77,13 +77,14 @@ class User extends CI_Model {
     {
 
       if(!$argument)
-       $default = 'id,username,email,date_joined,is_active,is_valid,first_name,last_name,gender';
+       $default = 'id,username,email,date_joined,is_active,is_valid,first_name,last_name';
       else
         $default = $argument;
       $q = $this
               ->db
               ->select($default)
               ->order_by('date_joined','desc')
+              ->where('id !=',1)
               ->get('user');
 
            if($q->num_rows >0){
@@ -176,6 +177,343 @@ class User extends CI_Model {
         echo 'false';
       }
       exit();
+   }
+
+
+
+
+
+   function populateDB()
+   {
+    $males =" Foster  
+              Alfonzo  
+              Ross  
+              Rodolfo  
+              Nelson  
+              Grady  
+              Genaro  
+              Kip  
+              Bradley  
+              Cedric  
+              Marco  
+              Warren  
+              Freddie  
+              Hank  
+              Timmy  
+              Erin  
+              Alfredo  
+              Travis  
+              Neal  
+              Guadalupe  
+              Danilo  
+              Matthew  
+              Alonso  
+              Walter  
+              Hubert  
+              Tory  
+              Jayson  
+              Collin  
+              Erich  
+              Andreas  
+              Jan  
+              Victor  
+              Brady  
+              Marcelino  
+              Willie  
+              Wilson  
+              Virgil  
+              Damion  
+              Mike  
+              Terrence  
+              Mario  
+              Dwight  
+              Chadwick  
+              Raul  
+              Rey  
+              Edward  
+              Kirk  
+              Raymon  
+              Merle  
+              Teodoro  
+              Hugh  
+              Jacques  
+              Tomas  
+              Hong  
+              Margarito  
+              Mel  
+              Luis  
+              Wally  
+              Deangelo  
+              Kenny  
+              Lane  
+              Benito  
+              John  
+              Rufus  
+              Frankie  
+              Rudolf  
+              Lucas  
+              Darius  
+              Jesus  
+              Royal  
+              Refugio  
+              Samual  
+              Jim  
+              Orlando  
+              Dan  
+              Elijah  
+              Shirley  
+              Ward  
+              Manuel  
+              Jon  
+              Edmond  
+              Edgar  
+              Leonard  
+              Jae  
+              Odis  
+              Gregorio  
+              Rich  
+              Kristopher  
+              Ali  
+              Lou  
+              Steven  
+              Amado  
+              Jamey  
+              Houston  
+              Cortez  
+              Miguel  
+              Dorsey  
+              Erasmo  
+              Randall  
+              Russ  
+              Lance  
+              Rayford  
+              Porfirio  
+              Mitch  
+              Ivory  
+              Lewis  
+              Jamey  
+              Alfonso  
+              Kenneth  
+              Efrain  
+              Bradley  
+              Burt  
+              Colton  
+              Hank  
+              Lowell  
+              Dwight  
+              Garrett  
+              Rudolf  
+              Ramiro  
+              Isaias  
+              Nolan  
+              Spencer  
+              Merrill  
+              Charley  
+              Ismael  
+              Giovanni  
+              Wm  
+              Williams  
+              Luciano  
+              Buddy  
+              Dudley  
+              Alfredo  
+              Stanford  
+              Lloyd  
+              Art  
+              Kelley  
+              Jordan  
+              Carson  
+              Elisha  
+              Elroy  
+              Mark  
+              Kendrick  
+              Milo  
+              Claude  
+              Blake  
+              Lindsey  
+              Scottie  
+              Armando  
+              Ervin  
+              Harrison  
+            ";
+    $females = "Leora  
+                Odette  
+                Edith  
+                Britteny  
+                Silvana  
+                Beverly  
+                Yee  
+                Jolie  
+                Debrah  
+                Karima  
+                Cleopatra  
+                Lida  
+                Marybelle  
+                Louella  
+                Lizzie  
+                Maricela  
+                Louvenia  
+                Vashti  
+                Tanya  
+                Kia  
+                Madelaine  
+                Katharyn  
+                Kenyetta  
+                Evie  
+                Rachell  
+                Fransisca  
+                Rashida  
+                Theresia  
+                Marsha  
+                Caitlyn  
+                Rochelle  
+                Carline  
+                Terese  
+                Neva  
+                Elise  
+                Rosena  
+                Shenna  
+                Annabell  
+                Doloris  
+                Alysha  
+                Dina  
+                Rhonda  
+                Kristi  
+                Kyla  
+                Trisha  
+                Margot  
+                Lakeshia  
+                Priscila  
+                Delila  
+                Elin  
+                Reena  
+                Jung  
+                Adrianne  
+                Floretta  
+                Katherine  
+                Lakiesha  
+                Ling  
+                Cecila  
+                Jesica  
+                Deedee  
+                Marquita  
+                Antonietta  
+                Dung  
+                Joselyn  
+                Alda  
+                Blythe  
+                Gladis  
+                Gudrun  
+                Shauna  
+                Ivana  
+                Tempie  
+                Mikki  
+                Renda  
+                Fawn  
+                Paola  
+                Sheridan  
+                Asia  
+                Aline  
+                Sharie  
+                Annette  
+                Maia  
+                Allie  
+                Marylouise  
+                Malorie  
+                Mona  
+                Yahaira  
+                Mathilde  
+                Ladawn  
+                Phung  
+                Shaquita  
+                Lavonda  
+                Angla  
+                Margart  
+                Lezlie  
+                Nathalie  
+                Keira  
+                Ebonie  
+                Raquel  
+                Kara  
+                Lashell  
+                Cora  
+                Marhta  
+                Nakita  
+                Eneida  
+                Ranee  
+                Cheryle  
+                Helaine  
+                Terrie  
+                Mitzi  
+                Luba  
+                Arie  
+                Chassidy  
+                Patty  
+                Argentina  
+                Ema  
+                Mariela  
+                Lelia  
+                Lydia  
+                Ena  
+                Exie  
+                Lakia  
+                Lashon  
+                Malka  
+                Mercy  
+                Rolande  
+                Shavonne  
+                Danica  
+                Arletta  
+                Toya  
+                Bertha  
+                Sherrill  
+                Mathilda  
+                Shira  
+                Miranda  
+                Valencia  
+                Berta  
+                Terese  
+                Sondra  
+                Rosann  
+                Gita  
+                Blossom  
+                Tresa  
+                Wanita  
+                Samara  
+                Sheba  
+                Margot  
+                Viola  
+                Nikki  
+                Alina  
+                Britteny  
+" ; 
+    $males = array_filter(explode('  ', trim($males)));
+    $females = array_filter(explode('  ', trim($females)));
+    $jobs = array("Software Developer","Computer Systems Analyst","Dentist","Nurse Practitioner","Pharmacist","Registered Nurse","Physical Therapist","Physician","Web Developer","Dental Hygienist","Database Administrator","Physician Assistant","Occupational Therapist","Market Research Analyst","Phlebotomist","Civil Engineer","Mechanical Engineer","High School Teacher","Teacher","Unemployed");
+
+      $inputs = array();
+      $inputs['gender'] = rand(0,1);
+      if($inputs['gender'] == 1){
+        $inputs['first_name'] = trim($males[array_rand($males, 1)]);
+        $inputs['last_name'] = trim($males[array_rand($males, 1)]);
+      }else{
+        $inputs['first_name'] = trim($females[array_rand($females, 1)]);
+        $inputs['last_name'] = trim($females[array_rand($females, 1)]);
+      }
+      
+      $inputs['first_name'] = preg_replace("/[^A-Za-z0-9]/", '', $inputs['first_name']);
+       $inputs['last_name'] = preg_replace("/[^A-Za-z0-9]/", '', $inputs['last_name']);
+      $inputs['username'] = $inputs['first_name'].'.'.$inputs['last_name'].'_'.rand(100,10000);
+      $inputs['email'] = $inputs['username'].'@test.com';
+      $inputs['password_salt'] = saltGenerator();
+      $inputs['password'] = passwordEncryption('testtest',$inputs['password_salt']);
+      $inputs['is_active'] = rand(0,1);
+      $inputs['is_valid'] = rand(0,1);
+      $inputs['location'] = "Egypt";
+      $inputs['phone'] = rand(1000000,999999999);
+      unset($inputs['gender']);
+      $query = $this->db->insert_string('user', $inputs);
+      $query = $this->db->query($query);
    }
 
   
