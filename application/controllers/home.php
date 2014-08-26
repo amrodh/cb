@@ -127,11 +127,51 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('user');
 		$username = $this->session->userdata('username');
-		// printme ($username);
-		$userData = $this->user->getUserByUsername($username);
-		// printme($userData);
-		// exit();
-		$this->load->view('profile', $userData);
+		if(isset($username)){
+			$data['loggedIn'] = 1;
+		}
+
+		$data['user'] = $this->user->getUserByUsername($username);
+
+		if(isset($_POST['submit'])){
+			$username = $_POST['username'];
+			$email = $_POST['email'];
+			$location = $_POST['location'];
+			$phone = $_POST['phone'];
+
+
+
+			if (empty($username)) {
+				$data['usernameError'] = 'Insert Username';
+			}elseif (empty($email)) {
+				$data['emailError'] = 'Insert email';
+			}elseif (empty($location)) {
+				$data['locationError'] = 'Insert location';			
+			}elseif(empty($phone)){
+				$data['phoneError'] = 'Insert phone';
+			}
+			else{
+				$user = $this->user->getUserByUsername($username);
+				if ($user){
+					$data['updateError'] = 'Username already exists';
+				}
+				else{
+					$params = array('username' => $username,
+					'email' => $email,
+					'location' => $location,
+					'phone' => $phone);
+					$update = $this->user->updateUser($data['user']->id, $params);
+					$data['user'] = $this->user->getUserByUsername($username);
+					$this->startSession($data['user']);
+					if($update){
+						$data['update'] = true;
+					}else{
+						$data['update'] = false;
+					}
+				}
+			}
+		}
+		$this->load->view('profile', $data);
 	}	
 }
 

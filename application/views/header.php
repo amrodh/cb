@@ -51,7 +51,7 @@
                 <a href='<?= base_url();?>/application/static/'>English</a>
                 <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>Arabic</a>
                 <?php if (isset($loggedIn)): ?>
-                    <span><b><a href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
+                    <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a>
                 <?php else: ?>
                     <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>register">Register</a>
