@@ -203,7 +203,7 @@ class Home extends CI_Controller {
 
 				if ($_POST['email'] != $this->session->userdata('email'))
 				{
-					$this->user->insertTempEmail(this->session->userdata('id'),$_POST['email']);
+					$this->user->insertTempEmail($this->session->userdata('id'),$_POST['email']);
 					$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';
 				}
 

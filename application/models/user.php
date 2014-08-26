@@ -143,11 +143,18 @@ class User extends CI_Model {
 
      function insertTempEmail($id,$email)
      {
+          $q = $this
+              ->db
+              ->where('user_id',$id)
+              ->delete('user_validation');
+
           $params = array();
           $params['user_id'] = $id;
           $params['email']   = $email;
-          $parans['is_valid'] = 1;
-          $query = $this->db->insert_string('user', $params);
+          $params['token']   = tokenGenerator();
+          $params['is_valid'] = 1;
+
+          $query = $this->db->insert_string('user_validation', $params);
           $query = $this->db->query($query);
 
           if($this->db->affected_rows() != 1){

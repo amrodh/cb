@@ -14,6 +14,7 @@
 	{
 		$time = time();
 		$token = sha1($time.random_string());
+		return $token;
 	}
 
 	function passwordEncryption($string,$random)
