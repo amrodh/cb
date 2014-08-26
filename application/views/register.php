@@ -13,15 +13,15 @@
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
                                 <label for="firstname" class="shareproperty_titles">First Name</label>
-                                <input type="text" class="form-control register_textbx" name="firstname" title="First name must be more than 2 characters" id="firstname" pattern=".{3,}" placeholder="Please enter first name"
-                                value="<?php if(isset($params)) echo $params['firstname']; ?>" autofocus required>
+                                <input type="text" class="form-control register_textbx" name="first_name" title="First name must be more than 2 characters" id="firstname" pattern=".{3,}" placeholder="Please enter first name"
+                                value="<?php if(isset($params)) echo $params['first_name']; ?>" autofocus required>
                              </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
                                 <label for="lastname" class="shareproperty_titles">Last Name</label>
-                                <input type="text" class="form-control register_textbx" name="lastname" title="First name must be more than 2 characters" id="lastname" pattern="[.{3,}" placeholder="Please enter lastname"
-                                value="<?php if(isset($params)) echo $params['lastname']; ?>" required>
+                                <input type="text" class="form-control register_textbx" name="last_name" title="First name must be more than 2 characters" id="lastname" pattern="[.{3,}" placeholder="Please enter lastname"
+                                value="<?php if(isset($params)) echo $params['last_name']; ?>" required>
                             </div>
                         </div>
                     </div>
@@ -80,6 +80,55 @@
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
                             Username already exists 
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($firstNameError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert first name
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($lastNameError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert last name
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($usernameError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert username
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($emailError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert email
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($locationError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert location
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($phoneError)) :?>
+                    <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert phone number
+                        </div>
+                    </div>
+                    <?php endif ?>
+                    <?php if (isset($passwordError)) :?>
+                    <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                        <div class="alert alert-danger" role="alert">
+                            Please insert password
                         </div>
                     </div>
                     <?php endif ?>

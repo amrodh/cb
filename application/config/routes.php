@@ -17,7 +17,8 @@ $route['admin/users/(:any)'] = "admin/userProfile";
 
 
 $route['register'] = 'home/register';
-
+$route['profile'] = 'home/profile';
+$route['updateUser'] = 'home/updateUser';
 
 
 

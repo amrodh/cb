@@ -287,3 +287,14 @@ function loginFormValidation()
 
     return false;
 }
+
+//===============================================================================================================================
+
+$('.profile_btn_submit').click(function(event) {
+    $('#profileUsername').removeClass('hide');
+    $('#profileEmail').removeClass('hide');
+    $('#profilePhone').removeClass('hide');
+    $('#profileLocation').removeClass('hide');
+    $('.profileData').addClass('hide');
+    $(this).replaceWith('<input type="submit" name="submit" value="Submit" class="btn btn-defaut profile_btn_submit">');
+});
