@@ -83,6 +83,20 @@
                             </div>
                         </div>
                         <?php endif ?>
+                        <?php if (isset($updateEmailError)) :?>
+                        <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
+                            <div class="alert alert-danger" role="alert">
+                                Email already exists.
+                            </div>
+                        </div>
+                        <?php endif ?>
+                        <?php if (isset($emailUpdateMessage)) :?>
+                        <div class="row" style="width: 65%;margin: auto;margin-left:33%;">
+                            <div class="alert alert-info" role="alert">
+                                Please login to your email to confirm email update.
+                            </div>
+                        </div>
+                        <?php endif ?>
                         <?php if (isset($update)) :?>
                             <?php if ($update == true){?>
                             <div class="row" style="width: 33%;margin: auto;margin-left:36%;">

@@ -141,6 +141,22 @@ class User extends CI_Model {
            return false;  
      }
 
+     function insertTempEmail($id,$email)
+     {
+          $params = array();
+          $params['user_id'] = $id;
+          $params['email']   = $email;
+          $parans['is_valid'] = 1;
+          $query = $this->db->insert_string('user', $params);
+          $query = $this->db->query($query);
+
+          if($this->db->affected_rows() != 1){
+              return false;
+            }
+
+            return true;
+     }
+
 
       function getUserByID($ID)
      {

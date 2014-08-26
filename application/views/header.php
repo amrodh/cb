@@ -162,9 +162,9 @@
                                 <li>
                                     <a href="<?= base_url();?>/application/static/index.php/controller_property/share_property/en">SHARE YOUR PROPERTY</a>
                                 </li>
-                                <li>
+                               <!--  <li>
                                     <a href="#">FRANCHISE</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li><a href="">ABOUT US</a></li>

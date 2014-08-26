@@ -153,11 +153,42 @@ class Home extends CI_Controller {
 			else{
 				$user = $this->user->getUserByUsername($username);
 				if ($user){
-					$data['updateError'] = 'Username already exists';
-				}
+					if($user ->username == $this->session->userdata('username'))
+					{
+						$params = array('username' => $username,
+						'location' => $location,
+						'phone' => $phone);
+
+						$emailtmp = $this->user->getUserByEmail($email);
+						if ($emailtmp){
+							if($emailtmp ->email == $this->session->userdata('email'))
+							{
+								$update = $this->user->updateUser($data['user']->id, $params);
+								$data['user'] = $this->user->getUserByUsername($username);
+								$this->startSession($data['user']);
+								if($update){
+									$data['update'] = true;
+								}
+							}
+							else{
+								$data['updateEmailError'] = 'Email already exists';
+							}
+						}
+						else{
+							$update = $this->user->updateUser($data['user']->id, $params);
+							$data['user'] = $this->user->getUserByUsername($username);
+							$this->startSession($data['user']);
+							if($update){
+								$data['update'] = true;
+							}
+						}
+					}
+					else{
+						$data['updateError'] = 'Username already exists';
+					}
+				}	
 				else{
 					$params = array('username' => $username,
-					'email' => $email,
 					'location' => $location,
 					'phone' => $phone);
 					$update = $this->user->updateUser($data['user']->id, $params);
@@ -169,6 +200,13 @@ class Home extends CI_Controller {
 						$data['update'] = false;
 					}
 				}
+
+				if ($_POST['email'] != $this->session->userdata('email'))
+				{
+					$this->user->insertTempEmail(this->session->userdata('id'),$_POST['email']);
+					$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';
+				}
+
 			}
 		}
 		$this->load->view('profile', $data);
