@@ -64,6 +64,29 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function userProfile()
+	{
+		$username = $this->uri->uri_string;
+		$username = explode('users/', $username);
+		$username = $username[1];
+		$this->load->model('user');
+		$this->load->model('property');
+		$data['user'] = $this->user->getUserByUsername($username);
+		$data['properties'] = $this->property->getUserProperties($data['user']->id);
+		$this->load->view('admin/userprofile', $data);
+
+	}
+
+
+	public function checkpasswordchange()
+	{
+		$this->load->model('user');
+		$userID = $_POST['id'];
+		$changePassword = $this->user->changePassword($userID,$_POST['current'],$_POST['new_1']);
+		printme($user);
+	}
+
+
 	public function properties()
 	{
 		$this->load->model('property');

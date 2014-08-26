@@ -2,3 +2,106 @@
 	width:36%;
 	margin-top: 1%;
 }
+.input-group{
+	margin-top:10px;
+}
+
+
+.tr_showmore{
+	text-align: center;
+	cursor: pointer;
+	background-color: #f1f1f1;
+}
+
+.hide{
+	display: none;
+}
+
+.table{
+	font-size:13px;
+}
+
+.circleDiv{
+	padding:1%;
+	border-radius: 5px;
+	margin: 1%;
+	border:1px solid #E5E4E2;
+}
+
+.circleDiv p{
+	font-size: 110%;
+}
+
+.tab-pane{
+	padding-top: 2%;
+}
+
+.friendDiv{
+	padding: 1%;
+	margin-bottom: 2%;
+	border-radius: 5px;
+}
+
+.friendDiv:hover{
+	background-color: #E5E4E2;
+}
+
+.friendNameDiv{
+	margin-top: 5%;
+	margin-left: 15%;
+	padding: 0px;
+}
+
+.friendNameDiv p{
+	float: left;
+}
+
+    	
+.messageDiv{
+	border-bottom: 1px solid black;
+	padding: 1%;
+	cursor: pointer;
+}
+
+.messageText{
+	display: none;
+	padding: 2.5%;
+}
+
+.messageFooter{
+	padding: 1%;
+}
+
+
+
+.messageDiv_Name{
+	font-weight: bold;
+}
+
+.messageDiv_Subject{
+	color:grey;
+}
+
+.changePasswordDiv{
+	padding: 2%;
+}
+
+.changePasswordContainer{
+	display: none;
+}
+
+
+.tab-pane{
+	height:450px;
+}
+
+.propertyTable{
+	font-size: 14px;
+	border-radius: 20px;
+	background-color: #fcf8e3;
+}
+
+.propertyTable td{
+	padding-left: 5%;
+	margin-bottom: 20%;
+}
