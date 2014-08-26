@@ -103,7 +103,6 @@ class Home extends CI_Controller {
 				{
 					$data['registrationError'] = 'Username already exists';
 				}else{
-					// echo 'username available';
 					$userData = array('username' => $_POST['username'],
 						'email' => $_POST['email'],
 						'first_name' => $_POST['first_name'],
@@ -123,5 +122,16 @@ class Home extends CI_Controller {
 		}
 		$this->load->view('register',$data);
 	}
+
+	public function profile()
+	{
+		$this->load->model('user');
+		$username = $this->session->userdata('username');
+		// printme ($username);
+		$userData = $this->user->getUserByUsername($username);
+		// printme($userData);
+		// exit();
+		$this->load->view('profile', $userData);
+	}	
 }
 

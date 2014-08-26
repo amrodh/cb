@@ -51,7 +51,7 @@
                 <a href='<?= base_url();?>/application/static/'>English</a>
                 <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>Arabic</a>
                 <?php if (isset($loggedIn)): ?>
-                    <span><b><?= $user->username; ?></b></span>
+                    <span><b><a href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a>
                 <?php else: ?>
                     <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>register">Register</a>
@@ -107,7 +107,7 @@
             <nav class="navbar" role="navigation">
                 <div class="navbar-header">
                     <div class="navbar-brand">
-                        <a href="<?= base_url();?>/application/static/">
+                        <a href="<?= base_url();?>">
                             <img class="logo" src="<?= base_url();?>/application/static/images/logo.png">
                         </a>
                     </div>

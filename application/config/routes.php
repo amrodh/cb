@@ -13,7 +13,7 @@ $route['authenticate'] = 'home/authenticate';
 $route['home/logout'] = 'home/logout';
 
 $route['register'] = 'home/register';
-
+$route['profile'] = 'home/profile';
 
 
 
