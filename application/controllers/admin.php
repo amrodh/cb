@@ -89,7 +89,9 @@ class Admin extends CI_Controller {
 
 	public function checkpasswordchange()
 	{
-		$this->load->model('user');
+		//$this->load->model('user');
+
+		printme($_GET);exit();
 		$userID = $_POST['id'];
 		$changePassword = $this->user->changePassword($userID,$_POST['current'],$_POST['new_1']);
 		printme($user);

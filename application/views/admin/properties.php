@@ -55,7 +55,7 @@
                             <?php endforeach ?>                       
                         </table>
                     </div>
-                    <div class="col-lg-2">
+                   <!--  <div class="col-lg-2">
                         <div class="panel panel-primary">
                              <a href="<?php echo base_url(); ?>admin/properties/new">
                                 <div class="panel-footer">
@@ -65,7 +65,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
          </div>
 

@@ -37,7 +37,7 @@ function completeChangePassword()
 	url = url+"admin/checkpasswordchange.php";
 
 		$.ajax({
-		  type: "POST",
+		  type: "GET",
 		  url: url,
 		  data: { current: currentPassword , new_1 : newPassword_1 , id : userID  }
 		})
