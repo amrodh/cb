@@ -249,30 +249,33 @@ class Home extends CI_Controller {
 
 		$data['user'] = $this->user->getUserByUsername($username);
 		// printme($data['user']->id);
-
+		
 		if (isset($_POST['submit'])){
+			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['areaError'] = 'Please select area';
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
 				$data['typeError'] = 'Please select type';
 			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
 				$data['priceError'] = 'Please select price';
-			}elseif (empty($_POST['city']) || $_POST['type'] == 'Select City') {
+			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
 				$data['cityError'] = 'Please select city';
-			}elseif (empty($_POST['district']) || $_POST['type'] == 'Select District') {
+			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
 				$data['districtError'] = 'Please select district';
 			}elseif (empty($_POST['address'])) {
 				$data['addressError'] = 'Please enter property address';
 			}elseif (empty($_POST['features'])) {
 				$data['featuresError'] = 'Please enter property features';
 			}else{
+				
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
 					'type' => $_POST['type'],
 					'price' => $_POST['price'],
 					'district' => $_POST['district'],
 					'features' => $_POST['features'],
-					'address' => $_POST['address']);
+					'address' => $_POST['address'],
+					'city' => $_POST['city']);
 				// printme ($params);
 				$this->property->insertProperty($params);
 			}
