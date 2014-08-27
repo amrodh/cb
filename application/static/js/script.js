@@ -250,18 +250,6 @@ function calculatePayment(form)
     $('#totalPayment').val(months);
 }
 
-$( window ).resize(function() {
-//    if ($(window).width() < '840px' &&  $(window).width() > '1040px')
-//        {
-//            alert ('hi');
-//            $('.navbar-toggle').css('margin-left'
-//        ,  '-850%');
-//        }
-//    else
-//        $('.navbar-toggle').css('margin-left',  '-800%');
-});
-
-
 function loginFormValidation()
 {
     var username = $("#username").val();
@@ -288,7 +276,7 @@ function loginFormValidation()
     return false;
 }
 
-//===============================================================================================================================
+//===========================================================================================
 
 $('.profile_btn_submit').click(function(event) {
     $('#profileUsername').removeClass('hide');
@@ -298,3 +286,16 @@ $('.profile_btn_submit').click(function(event) {
     $('.profileData').addClass('hide');
     $(this).replaceWith('<input type="submit" name="submit" value="Submit" class="btn btn-defaut profile_btn_submit">');
 });
+
+//===========================================================================================
+
+$('.share_btn_submit').click(function(event) {
+    // alert($('#area').val());
+    // if ($('#area').val() == '0')
+    // {
+    //     alert ('false');
+    //     return false;
+    // }
+});
+
+

@@ -22,7 +22,7 @@ $route['validate/(:any)'] = "home/validateToken";
 
 $route['register'] = 'home/register';
 $route['profile'] = 'home/profile';
-$route['updateUser'] = 'home/updateUser';
+$route['shareProperty'] = 'home/shareProperty';
 
 
 

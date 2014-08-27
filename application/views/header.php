@@ -160,7 +160,7 @@
                                     <a href="<?= base_url();?>/application/static/index.php/controller_services/market_index/en">MARKET INDEX</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_property/share_property/en">SHARE YOUR PROPERTY</a>
+                                    <a href="<?= base_url();?>shareProperty">SHARE YOUR PROPERTY</a>
                                 </li>
                                <!--  <li>
                                     <a href="#">FRANCHISE</a>

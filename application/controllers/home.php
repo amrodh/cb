@@ -237,4 +237,46 @@ class Home extends CI_Controller {
 			}
 		}
 	}	
+
+	public function shareProperty()
+	{
+		$this->load->model('user');
+		$this->load->model('property');
+		$username = $this->session->userdata('username');
+		if(isset($username)){
+			$data['loggedIn'] = 1;
+		}
+
+		$data['user'] = $this->user->getUserByUsername($username);
+		// printme($data['user']->id);
+
+		if (isset($_POST['submit'])){
+			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
+				$data['areaError'] = 'Please select area';
+			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
+				$data['typeError'] = 'Please select type';
+			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
+				$data['priceError'] = 'Please select price';
+			}elseif (empty($_POST['city']) || $_POST['type'] == 'Select City') {
+				$data['cityError'] = 'Please select city';
+			}elseif (empty($_POST['district']) || $_POST['type'] == 'Select District') {
+				$data['districtError'] = 'Please select district';
+			}elseif (empty($_POST['address'])) {
+				$data['addressError'] = 'Please enter property address';
+			}elseif (empty($_POST['features'])) {
+				$data['featuresError'] = 'Please enter property features';
+			}else{
+				$params = array ('user_id' => $data['user']->id,
+					'area' => $_POST['area'],
+					'type' => $_POST['type'],
+					'price' => $_POST['price'],
+					'district' => $_POST['district'],
+					'features' => $_POST['features'],
+					'address' => $_POST['address']);
+				// printme ($params);
+				$this->property->insertProperty($params);
+			}
+		}
+		$this->load->view('share_property', $data);
+	}
 }

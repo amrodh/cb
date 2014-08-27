@@ -496,7 +496,7 @@ li.active>a{
     border-bottom: 4px solid #000000; 
 }
 
-.search_btn_submit, .property_alert_btn_submit, .search_btn_submit2, .property_alert_btn_submit2, .profile_btn_submit, .register_btn_submit, .calculator_btn_submit, .search_btn_submit3{
+.search_btn_submit, .share_btn_submit, .property_alert_btn_submit, .search_btn_submit2, .property_alert_btn_submit2, .profile_btn_submit, .register_btn_submit, .calculator_btn_submit, .search_btn_submit3{
     width: 130px;
     font-size: 17px;
     margin-top: 17px;
