@@ -162,7 +162,7 @@ class Admin extends CI_Controller {
 	{
 		// $this->load->model('favorites');
 		// $this->favorites->test();
-		tokenGenerator();
+		//tokenGenerator();
 	}
 
 }
