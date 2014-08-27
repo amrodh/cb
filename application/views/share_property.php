@@ -154,6 +154,13 @@
                             </div>
                         </div>
                         <?php endif ?>
+                        <?php if (isset($insertPropertyError)) :?>
+                        <div class="row" style="width: 45%;margin: auto;margin-left:37%;">
+                            <div class="alert alert-danger" role="alert">
+                                Error Inserting Property Data
+                            </div>
+                        </div>
+                        <?php endif ?>
                         <div class="row" style="width: 13%; margin: auto; margin-top: 20px;">
                             <!-- <button type="submit" class="btn btn-default search_btn_submit">Submit</button> -->
                             <input type="submit" class="btn btn-default share_btn_submit" value="Submit" name="submit">

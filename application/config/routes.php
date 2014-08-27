@@ -23,6 +23,8 @@ $route['validate/(:any)'] = "home/validateToken";
 $route['register'] = 'home/register';
 $route['profile'] = 'home/profile';
 $route['shareProperty'] = 'home/shareProperty';
+$route['viewAllProperties'] = 'home/viewAllProperties';
+$route['propertyDetails'] = 'home/propertyDetails';
 
 
 

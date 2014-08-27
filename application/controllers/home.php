@@ -277,9 +277,27 @@ class Home extends CI_Controller {
 					'address' => $_POST['address'],
 					'city' => $_POST['city']);
 				// printme ($params);
-				$this->property->insertProperty($params);
+				if ($this->property->insertProperty($params))
+				{
+					redirect('home');
+				}else{
+					$data['insertPropertyError'] = "Error Inserting Property Data";
+				}
+				
 			}
 		}
 		$this->load->view('share_property', $data);
+	}
+
+	public function viewAllProperties ()
+	{
+		$this->load->model('property');
+		$this->load->view('view_all_properties');
+	}
+
+	public function propertyDetails ()
+	{
+		$this->load->model('property');
+		$this->load->view('property_details');
 	}
 }

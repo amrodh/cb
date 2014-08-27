@@ -126,7 +126,7 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -60px;">
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_property">RESIDENTIAL COMPOUND</a>
+                                    <a href="<?= base_url();?>viewAllProperties">RESIDENTIAL COMPOUND</a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>/application/static/index.php/controller_property">PRE-OWNED PROPERTY</a>

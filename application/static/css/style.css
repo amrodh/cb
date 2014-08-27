@@ -854,11 +854,14 @@ height: 35px;
     /*width: 30%;*/
     border: 1px solid #a2a2a2;
     border-radius: 10px;
-    background: url(../img/sample_map.png);
+    background: url(../images/sample_map.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-bottom: 20px;
     /*margin-left: 50px;*/
+}
+.tab-pane{
+    height: auto;
 }
 
 .properties_common_bottom_div{
