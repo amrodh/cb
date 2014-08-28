@@ -243,14 +243,20 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('property');
 		$username = $this->session->userdata('username');
-		if(isset($username)){
+		$data = array();
+		if($username){
 			$data['loggedIn'] = 1;
+			$data['user'] = $this->user->getUserByUsername($username);
 		}
 
-		$data['user'] = $this->user->getUserByUsername($username);
+		
 		// printme($data['user']->id);
 		
 		if (isset($_POST['submit'])){
+
+			printme($_FILES);
+			exit();
+
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['areaError'] = 'Please select area';

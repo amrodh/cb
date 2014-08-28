@@ -6,12 +6,13 @@
             <div class="shareproperty_top_div">
                 Share Your Property
             </div>
+            <?php if (isset($loggedIn)): ?>
             <div id="properties_bottom_div">
                 <div class="container" id="shareproperty_bottom_inner_div">
                     <div class="shareproperty_title">
                         Property Information
                     </div>
-                    <form role="form" name="shareForm"  method="post" action="">
+                    <form role="form" name="shareForm"  method="post" action="" enctype="multipart/form-data">
                     <div class="shareproperty_content">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
@@ -101,7 +102,8 @@
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                 <div class="form-group">
                                     <label for="uploadimage" class="shareproperty_titles">Upload Image</label>
-                                    <input type="file" name="uploadimage" id="uploadimage">
+                                    <input type="file" name="img" mutliple>
+                                    <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p>
                                 </div>
                             </div>
                         </div>
@@ -169,6 +171,14 @@
                     </form>
                 </div>
             </div>
+            <?php else: ?>
+                <div class="row" style="margin:4%;clear:both;">
+                    <div class="col-lg-12 alert alert-warning" style="width:100%;height:40px;font-size:14px;" role="alert">
+                       You need to login to share properties.
+                    </div>
+                </div>
+            <?php endif ?>
+            
         </div>
         <!-- // <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script> -->
         <?php include('footer.php'); ?>
