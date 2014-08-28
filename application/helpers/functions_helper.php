@@ -1,5 +1,6 @@
 <?php 
-	
+
+
 	function printme($field)
 	{
 		echo '<pre>'.print_r($field,true).'</pre>';
@@ -23,7 +24,8 @@
 		return $string;
 	}
 
-	function uploadMe($object){
+	function uploadMe($object)
+	{
 	$object->upload->initialize($object->config->config);
 	if (!$object->upload->do_upload())
 		{
@@ -36,5 +38,12 @@
 			return $data;
 			
 		}
+	}
+
+
+
+	function validateImage($image)
+	{
+
 	}
  ?>

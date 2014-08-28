@@ -102,7 +102,7 @@
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                 <div class="form-group">
                                     <label for="uploadimage" class="shareproperty_titles">Upload Image</label>
-                                    <input type="file" name="img" mutliple>
+                                    <input type="file" name="img[]"  multiple="multiple">
                                     <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p>
                                 </div>
                             </div>

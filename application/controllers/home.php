@@ -254,8 +254,31 @@ class Home extends CI_Controller {
 		
 		if (isset($_POST['submit'])){
 
-			printme($_FILES);
-			exit();
+			if(isset($_FILES)){
+				$images = array();
+				$i = 0;
+				foreach ($_FILES['img']['name'] as $name) {
+				 	$images['image_'.$i]['name'] = $name;
+				 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
+				 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
+				 	$i++;
+				}
+
+				
+				
+				foreach ($images as $image) {
+					$this->config->set_item('upload_path',base_url().'application/static/upload');
+					$path = $this->config->config['upload_path'];
+					printme($path);
+					var_dump(is_dir($path));
+					exit();
+					$_FILES['userfile']['name'] = $image['name'];
+					var_dump(uploadme($this));
+					exit();
+				}
+				exit();
+			}
+			
 
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
