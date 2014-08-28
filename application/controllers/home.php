@@ -15,9 +15,7 @@ class Home extends CI_Controller {
 		}
 
 		if(isset($this->session->userdata['id'])){
-			$data['loggedIn'] = true;
-			$this->load->model('user');
-			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			$data = $this->init();
 		}
 
 		$this->load->view('home',$data);
@@ -127,11 +125,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('user');
 		$username = $this->session->userdata('username');
-		if(isset($username)){
-			$data['loggedIn'] = 1;
-		}
-
-		$data['user'] = $this->user->getUserByUsername($username);
+		$data = $this->init();
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];
@@ -243,11 +237,7 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('property');
 		$username = $this->session->userdata('username');
-		$data = array();
-		if($username){
-			$data['loggedIn'] = 1;
-			$data['user'] = $this->user->getUserByUsername($username);
-		}
+		$data = $this->init();
 
 		
 		// printme($data['user']->id);
@@ -329,33 +319,50 @@ class Home extends CI_Controller {
 
 	public function viewAllProperties ()
 	{
+		$data = $this->init();
 		$this->load->model('property');
-		$this->load->view('view_all_properties');
+		$this->load->view('view_all_properties',$data);
 	}
 
 	public function propertyDetails ()
 	{
+		$data = $this->init();
 		$this->load->model('property');
-		$this->load->view('property_details');
+		$this->load->view('property_details',$data);
 	}
 
 	public function careers ()
 	{
-		$this->load->view('careers');
+		$data = $this->init();
+		$this->load->view('careers',$data);
 	}
 
 	public function uploadCV ()
 	{
-		$this->load->view('upload_cv');
+		$data = $this->init();
+		$this->load->view('upload_cv',$data);
 	}
 
 	public function joinUs ()
 	{
-		$this->load->view('join_us');
+		$data = $this->init();
+		$this->load->view('join_us',$data);
 	}
 
 	public function marketIndex ()
 	{
-		$this->load->view('market_index');
+		$data = $this->init();
+		$this->load->view('market_index',$data);
+	}
+
+	public function init()
+	{
+		if(isset($this->session->userdata['id'])){
+			$this->load->model('user');
+			$data['loggedIn'] = true;
+			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			return $data;
+		}
+		
 	}
 }

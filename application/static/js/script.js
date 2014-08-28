@@ -311,3 +311,58 @@ $('.share_btn_submit').click(function(event) {
 });
 
 
+$(".propertyAlertButton").click(function(){
+        
+        var city = $("#propertyAlert_city").val();
+        var district = $("#propertyAlert_district").val();
+        var type = $("#propertyAlert_type").val();
+        var price = $("#propertyAlert_price").val();
+        var area = $("#propertyAlert_area").val();
+        var email = $("#alert_email").val();
+
+        if($("#alert_email").length != 0){
+
+            if(validateEmail(email)){
+                var user_id = email;
+                $("#propertyAlertError").addClass('hide');
+
+            }else{
+                $("#propertyAlertError").removeClass('hide');
+                $("#propertyAlertError").html('Email not valid, Try again');
+                return false;
+            }
+
+        }else{
+             var user_id = $("#tmp__nm").val();
+        }   
+        
+
+
+         if( city==0 || district==0 || type==0){
+             $("#propertyAlertError").removeClass('hide');
+             $("#propertyAlertError").html('City, District and Contract Type are required');
+             $("#propertyAlertSuccess").addClass('hide');
+            return false;
+        }else{
+
+             $("#propertyAlertSuccess").removeClass('hide');
+             $("#propertyAlertError").addClass('hide');
+        }
+
+
+
+        
+
+        
+        $("#propertyAlertError").addClass('hide');
+        
+
+        
+
+});
+
+
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 

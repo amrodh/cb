@@ -18,6 +18,8 @@
 		return $token;
 	}
 
+	
+
 	function passwordEncryption($string,$random)
 	{
 		$string = md5(md5($string).$random);
@@ -42,8 +44,5 @@
 
 
 
-	function validateImage($image)
-	{
-
-	}
+	
  ?>
