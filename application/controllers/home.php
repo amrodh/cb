@@ -280,6 +280,9 @@ class Home extends CI_Controller {
 			}
 			
 
+
+			
+
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['areaError'] = 'Please select area';

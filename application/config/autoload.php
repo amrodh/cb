@@ -80,7 +80,7 @@ $autoload['helper'] = array('functions','url','form','language','string','date',
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('upload');
 
 
 /*

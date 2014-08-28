@@ -20,6 +20,18 @@ $(document).ready(function ()
                 $('#tallModal').modal('show');
            }
 
+
+            if($('[name="city"]').length > 0){
+                $('[name="city"]').change(function(){
+                    value = $('[name="city"]').val();
+                    if(value != 0){
+                        $("[name='district']").prop('disabled',false);
+                        $(".bootstrap-select > .dropdown-toggle").removeClass('disabled');
+                        $('.dropdown-menu > .inner > li').removeClass('disabled')
+                    }
+                });
+           }
+
         });
 
 
