@@ -300,4 +300,24 @@ class Home extends CI_Controller {
 		$this->load->model('property');
 		$this->load->view('property_details');
 	}
+
+	public function careers ()
+	{
+		$this->load->view('careers');
+	}
+
+	public function uploadCV ()
+	{
+		$this->load->view('upload_cv');
+	}
+
+	public function joinUs ()
+	{
+		$this->load->view('join_us');
+	}
+
+	public function marketIndex ()
+	{
+		$this->load->view('market_index');
+	}
 }

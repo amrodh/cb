@@ -50,8 +50,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="left carousel-control" href="#property_carousel" data-slide="prev"><img src=".<?= base_url();?>/application/static/images/left_arrow.png">  </a>
-                                        <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>/application/static/images/right_arrow.png"> </a>
+                                        <a class="left carousel-control" href="#property_carousel" data-slide="prev"><img src="<?= base_url();?>application/static/images/left_arrow.png">  </a>
+                                        <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>application/static/images/right_arrow.png"> </a>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +351,7 @@
         <div id="property_notifier">
             <?php include 'property_alert.php'; ?>
         </div>
-        <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script>
+        <!-- // <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script> -->
         <script>
         $(function () {
           $('#property_tabs a:first').tab('show');

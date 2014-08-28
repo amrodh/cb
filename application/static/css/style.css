@@ -614,7 +614,7 @@ height: 35px;
     /*margin-bottom: 50px;*/
     position: relative;
     /*padding: 10px;*/
-    background: url('../img/bkgnd_careers.png');
+    background: url('../images/bkgnd_careers.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 682px;
@@ -655,7 +655,7 @@ height: 35px;
 }
 
 .careers_overlay_div_btn{
-    width: 150px;
+    width: 180px;
     height: 40px;
     line-height: 40px;
     font-size: 17px;

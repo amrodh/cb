@@ -129,10 +129,10 @@
                                     <a href="<?= base_url();?>viewAllProperties">RESIDENTIAL COMPOUND</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_property">PRE-OWNED PROPERTY</a>
+                                    <a href="<?= base_url();?>viewAllProperties">PRE-OWNED PROPERTY</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_property">RENTAL</a>
+                                    <a href="<?= base_url();?>viewAllProperties">RENTAL</a>
                                 </li>
                             </ul>
                         </li>
@@ -157,7 +157,7 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="margin-right: -76px;">
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_services/market_index/en">MARKET INDEX</a>
+                                    <a href="<?= base_url();?>marketIndex">MARKET INDEX</a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>shareProperty">SHARE YOUR PROPERTY</a>
@@ -177,7 +177,7 @@
                                     <a href="#">OFFICES</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>/application/static/index.php/controller_careers">CAREERS</a>
+                                    <a href="<?= base_url();?>careers">CAREERS</a>
                                 </li>
                             </ul>
                         </li>

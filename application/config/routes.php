@@ -25,7 +25,10 @@ $route['profile'] = 'home/profile';
 $route['shareProperty'] = 'home/shareProperty';
 $route['viewAllProperties'] = 'home/viewAllProperties';
 $route['propertyDetails'] = 'home/propertyDetails';
-
+$route['careers'] = 'home/careers';
+$route['uploadCV'] = 'home/uploadCV';
+$route['joinUs'] = 'home/joinUs';
+$route['marketIndex'] = 'home/marketIndex';
 
 
 /* End of file routes.php */
