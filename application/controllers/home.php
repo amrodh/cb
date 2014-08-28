@@ -254,48 +254,27 @@ class Home extends CI_Controller {
 		
 		if (isset($_POST['submit'])){
 
-			if(isset($_FILES)){
-				$images = array();
-				$i = 0;
-				foreach ($_FILES['img']['name'] as $name) {
-				 	$images['image_'.$i]['name'] = $name;
-				 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
-				 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
-				 	$i++;
-				}
-
-				
-				
-				foreach ($images as $image) {
-					$this->config->set_item('upload_path',base_url().'application/static/upload');
-					$path = $this->config->config['upload_path'];
-					printme($path);
-					var_dump(is_dir($path));
-					exit();
-					$_FILES['userfile']['name'] = $image['name'];
-					var_dump(uploadme($this));
-					exit();
-				}
-				exit();
-			}
+			
 			
 
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
-				$data['areaError'] = 'Please select area';
+				$data['insertError'] = 'Please select area';
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
-				$data['typeError'] = 'Please select type';
+				$data['insertError'] = 'Please select type';
 			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
-				$data['priceError'] = 'Please select price';
+				$data['insertError'] = 'Please select price';
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
-				$data['cityError'] = 'Please select city';
+				$data['insertError'] = 'Please select city';
 			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-				$data['districtError'] = 'Please select district';
+				$data['insertError'] = 'Please select district';
 			}elseif (empty($_POST['address'])) {
-				$data['addressError'] = 'Please enter property address';
+				$data['insertError'] = 'Please enter property address';
 			}elseif (empty($_POST['features'])) {
-				$data['featuresError'] = 'Please enter property features';
-			}else{
+				$data['insertError'] = 'Please enter property features';
+			}elseif(isset($_FILES) && $_FILES['img']['name']['0'] == "" )
+				$data['insertError'] = 'A minimum of one image is required';
+			else{
 				
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
@@ -308,13 +287,43 @@ class Home extends CI_Controller {
 				// printme ($params);
 				if ($this->property->insertProperty($params))
 				{
-					redirect('home');
+						if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
+							$images = array();
+							$params = array();
+							$params['property_id'] = $this->db->insert_id();
+							$i = 0;
+							foreach ($_FILES['img']['name'] as $name) {
+							 	$images['image_'.$i]['name'] = $name;
+							 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
+							 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
+							 	$images['image_'.$i]['tmp_name'] = $_FILES['img']['tmp_name'][$i];
+							 	$i++;
+							}
+							
+							foreach ($images as $image) {
+								$fileExtension = explode('.',$image['name']);
+								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+								$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
+								$_FILES['userfile']['size'] = $image['size'];
+								$params['image_url'] = $_FILES['userfile']['name'];
+								if(uploadme($this)){
+									$this->load->model('property');
+									$this->property->insertImage($params);
+									$data['insertProcess'] = true;
+								}else{
+									$this->property->deleteProperty($params['property_id']);
+									$data['insertProcess'] = false;
+								}
+							}
+						}
+						$data['insertProcess'] = true;
 				}else{
 					$data['insertPropertyError'] = "Error Inserting Property Data";
 				}
 				
 			}
 		}
+
 		$this->load->view('share_property', $data);
 	}
 

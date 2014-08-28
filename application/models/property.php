@@ -106,6 +106,18 @@ class Property extends CI_Model {
 
    }
 
+   function insertImage($params)
+   {
+        $query = $this->db->insert_string('property_image', $params);
+        $query = $this->db->query($query);
+
+          if($this->db->affected_rows() != 1){
+              return false;
+            }
+
+            return true;
+   }
+
 
    
 function test()

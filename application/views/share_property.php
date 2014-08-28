@@ -6,6 +6,23 @@
             <div class="shareproperty_top_div">
                 Share Your Property
             </div>
+            <?php if(isset($insertProcess) && $insertProcess) : ?>
+                <div class="row"  style="width: 70%;margin-left:32%;margin-top:2%;">
+                    <div class="alert alert-success" role="alert">
+                        Property inserted successfully.
+                    </div>
+                </div>
+            <?php endif ?>
+
+            <?php if(isset($insertProcess) && !$insertProcess) : ?>
+                <div class="row"  style="width: 70%;margin-left:32%;margin-top:2%;">
+                    <div class="alert alert-danger" role="alert">
+                        Property insertion failed, Please try again.
+                    </div>
+                </div>
+            <?php endif ?>
+
+
             <?php if (isset($loggedIn)): ?>
             <div id="properties_bottom_div">
                 <div class="container" id="shareproperty_bottom_inner_div">
@@ -65,7 +82,7 @@
                                     City
                                 </div>
                                 <select class="selectpicker" data-style="btn" data-title="Select City" name="city">
-                                     <option>Select City</option>
+                                     <option value="0">Select City</option>
                                      <option <?php if (isset($params)){ if($params['city'] == 'Cairo'){ ?>selected="true" <?php }} ?> value="Cairo">Cairo</option>
                                      <option <?php if (isset($params)){ if($params['city'] == 'Giza'){ ?>selected="true" <?php }} ?> value="Giza">Giza</option>
                                      <option <?php if (isset($params)){ if($params['city'] == 'Alexandria'){ ?>selected="true" <?php }} ?> value="Alexandria">Alexandria</option>
@@ -79,12 +96,12 @@
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
                                     District
                                 </div>
-                                <select class="selectpicker" data-style="btn" data-title="Select District" name="district">
+                                <select class="selectpicker" data-style="btn" id="district" data-title="Select District" name="district" disabled>
                                      <option>Select District</option>
-                                     <option <?php if (isset($params)){ if($params['price'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
-                                     <option <?php if (isset($params)){ if($params['price'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>
-                                     <option <?php if (isset($params)){ if($params['price'] == 'Nasr City'){ ?>selected="true" <?php }} ?> value="Nasr City">Nasr City</option>
-                                     <option <?php if (isset($params)){ if($params['price'] == 'Heliopolis'){ ?>selected="true" <?php }} ?> value="Helipolis">Heliopolis</option>
+                                     <option <?php if (isset($params)){ if($params['district'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
+                                     <option <?php if (isset($params)){ if($params['district'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>
+                                     <option <?php if (isset($params)){ if($params['district'] == 'Nasr City'){ ?>selected="true" <?php }} ?> value="Nasr City">Nasr City</option>
+                                     <option <?php if (isset($params)){ if($params['district'] == 'Heliopolis'){ ?>selected="true" <?php }} ?> value="Helipolis">Heliopolis</option>
                                 </select>
                             </div>
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
@@ -107,59 +124,10 @@
                                 </div>
                             </div>
                         </div>
-                        <?php if (isset($areaError)) :?>
-                        <div class="row" style="width: 29%;margin: auto;margin-left:42%;">
+                        <?php if (isset($insertError)) :?>
+                        <div class="row" style="width: 70%;margin-left:32%;margin-top:2%;">
                             <div class="alert alert-danger" role="alert">
-                                Please Select Area
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($typeError)) :?>
-                        <div class="row" style="width: 29%;margin: auto;margin-left:42%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please Select Type
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($priceError)) :?>
-                        <div class="row" style="width: 29%;margin: auto;margin-left:42%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please Select Price
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($cityError)) :?>
-                        <div class="row" style="width: 29%;margin: auto;margin-left:42%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please Select City
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($districtError)) :?>
-                        <div class="row" style="width: 29%;margin: auto;margin-left:42%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please Select District
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($addressError)) :?>
-                        <div class="row" style="width: 45%;margin: auto;margin-left:37%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please insert property address
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($featuresError)) :?>
-                        <div class="row" style="width: 45%;margin: auto;margin-left:37%;">
-                            <div class="alert alert-danger" role="alert">
-                                Please insert property features
-                            </div>
-                        </div>
-                        <?php endif ?>
-                        <?php if (isset($insertPropertyError)) :?>
-                        <div class="row" style="width: 45%;margin: auto;margin-left:37%;">
-                            <div class="alert alert-danger" role="alert">
-                                Error Inserting Property Data
+                               <?= $insertError; ?>
                             </div>
                         </div>
                         <?php endif ?>
