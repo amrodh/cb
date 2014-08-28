@@ -79,7 +79,7 @@
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
                                     District
                                 </div>
-                                <select class="selectpicker" data-style="btn" data-title="Select District" name="district">
+                                <select class="selectpicker" data-style="btn" data-title="Select District" name="district" disabled="disabled">
                                      <option>Select District</option>
                                      <option <?php if (isset($params)){ if($params['price'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
                                      <option <?php if (isset($params)){ if($params['price'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>

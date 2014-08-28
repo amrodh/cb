@@ -267,7 +267,7 @@ class Home extends CI_Controller {
 				
 				
 				foreach ($images as $image) {
-					$this->config->set_item('upload_path',base_url().'application/static/upload');
+					$this->config->set_item('upload_path',base_url().'application/static/upload/');
 					$path = $this->config->config['upload_path'];
 					printme($path);
 					var_dump(is_dir($path));

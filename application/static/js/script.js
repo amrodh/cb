@@ -298,4 +298,12 @@ $('.share_btn_submit').click(function(event) {
     // }
 });
 
+$('[name="city"').change(function(event) {
+    // alert ('ji');
+    $('[name="district"').prop('disabled', false);
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
+
 
