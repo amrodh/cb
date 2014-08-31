@@ -34,16 +34,18 @@
                             </tr>
                             </thead>
                             <?php foreach($users as $user): ?>
-                            <?php if ($user->is_active == 1): ?>
-                                <tr class="list-group-item-success">
-                            <?php else: ?>
-                                <tr class="list-group-item-warning">
-                            <?php endif ?>
-                                <td><a href="users/<?php echo $user->username; ?>"><?php echo $user->username; ?></a></td>
-                                <td><?php echo $user->email; ?></td>
-                                <td><?php echo $user->first_name; ?></td>
-                                <td><?php echo $user->last_name; ?></td>
+                           		<tr>
+                                <td>
+                                	<?php if (is_object($user->user_identifier)): ?>
+                                		<a href="users/<?= $user->user_identifier->username; ?>">
+                                				<?= $user->user_identifier->username;  ?>
+                                		</a>
+                                	<?php else: ?>
+                                		<?= $user->user_identifier;  ?>
+                                	<?php endif ?>
+                                </td>
                                 <td><?php echo $user->date_joined; ?></td>
+                                
                             </tr>          
                             <?php endforeach ?>                       
                         </table>
