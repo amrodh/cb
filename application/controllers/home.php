@@ -349,6 +349,12 @@ class Home extends CI_Controller {
 		$this->load->view('market_index',$data);
 	}
 
+	public function auction ()
+	{
+		$data = $this->init();
+		$this->load->view('auction',$data);
+	}
+
 	public function init()
 	{
 		if(isset($this->session->userdata['id'])){

@@ -149,7 +149,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>/application/static/index.php/controller_property/auction/en">AUCTIONS</a></li>
+                        <li><a href="<?= base_url();?>auction">AUCTIONS</a></li>
                         <li><a href="">TRAINING CENTER</a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">SERVICES 

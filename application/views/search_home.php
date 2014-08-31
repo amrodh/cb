@@ -9,7 +9,7 @@
                     </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" name="type" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
