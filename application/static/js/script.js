@@ -344,6 +344,12 @@ $('[name="alert_city"').change(function(event) {
     $('.dropdown-menu > .inner > li').removeClass('disabled');
 });
 
+$('[name="searchHome_city"').change(function(event) {
+    $('[name="searchHome_district"').prop('disabled', false);
+    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('[data-id="searchHome_district"').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
 
 
 $(".propertyAlertButton").click(function(){

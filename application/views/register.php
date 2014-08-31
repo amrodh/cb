@@ -71,6 +71,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="padding-left: 1.5%;">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="newsletter"> Subscribe for Newsletter
+                            </label>
+                        </div>
+                    </div>
                     <div class="row" style="width: 32%;margin: auto;">
                         <div class="alert alert-danger" id="passwordAlert" role="alert">
                             Passwords do not match.
@@ -132,7 +139,7 @@
                         </div>
                     </div>
                     <?php endif ?>
-                    <div class="row" style="width: 13%; float: right; margin-right: 12%;margin-top: 20px;">
+                    <div class="row" style="width: 13%; float: right; margin-right: 12%;">
                         <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="Submit">
                     </div>
                 </div>

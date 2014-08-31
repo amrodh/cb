@@ -77,7 +77,12 @@ class Home extends CI_Controller {
 			$location	 = $_POST['location'];
 			$phone	 = $_POST['phone'];
 			$password = $_POST['password'];
+			if (isset($_POST['newsletter']))
+			{
+				$newsletter = $_POST['newsletter'];
+			}
 			$data['params'] = $_POST;
+
 
 			if (empty($_POST['first_name'])){
 				$data['firstNameError'] = 'Insert First Name';
@@ -113,6 +118,13 @@ class Home extends CI_Controller {
 					{
 						$user = $this->user->getUserByUsername($userData['username']);
 						$this->startSession($user);
+
+						if (isset($_POST['newsletter']))
+						{
+							$this->user->insertNewsletterData($this->db->insert_id());
+						}
+						
+
 						redirect('home');
 					}
 				}

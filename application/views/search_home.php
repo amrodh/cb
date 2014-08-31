@@ -9,16 +9,7 @@
                     </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                       <select class="form-control searchHome_select" name="type">
-                          <option>Select Type</option> 
-                          <option>Apartment</option>
-                          <option>Building</option>
-                          <option>Furnished Apartment</option>
-                          <option>Office</option>
-                          <option>Shop</option>
-                          <option>Villa</option>
-                       </select>
-                           <!-- <select class="selectpicker" name="type" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -26,12 +17,12 @@
                                 <option>Office</option>
                                 <option>Shop</option>
                                 <option>Villa</option>
-                           </select> -->
+                           </select>
                        </div>
                     </div>
                     <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                            <select class="form-control searchHome_select" name="city">
+                            <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City">
                                 <option>Select City</option>
                                 <option>Cairo</option>
                                 <option>Giza</option>
@@ -40,38 +31,22 @@
                                 <option>Mahala</option>
                                 <option>Qena</option>
                             </select>
-                            <!-- <select class="selectpicker" data-style="btn" data-title="Select City">
-                                <option>Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
-                            </select> -->
                        </div>
                     </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                            <select class="form-control searchHome_select" name="district">
+                           <select class="selectpicker" name="district" id="searchHome_district" data-style="btn" data-title="Select District" disabled>
                                 <option>Select District</option>
                                 <option>Mohandeseen</option>
                                 <option>Maadi</option>
                                 <option>Nasr City</option>
                                 <option>Heliopolis</option>
-                            </select>
-                           <!-- <select class="selectpicker" data-style="btn" data-title="Select District">
-                                <option>Select District</option>
-                                <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option>
-                           </select> -->
+                           </select>
                        </div>
                    </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                            <select class="form-control searchHome_select" name="contractType">
+                           <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type">
                                 <option>Select Contract Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -79,16 +54,7 @@
                                 <option>Office</option>
                                 <option>Shop</option>
                                 <option>Villa</option>
-                            </select>
-                           <!-- <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>Select Contract Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
-                           </select> -->
+                           </select>
                        </div>
                     </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
@@ -100,7 +66,7 @@
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                            <select class="form-control searchHome_select" name="price">
+                           <select class="selectpicker" name="price" id="searchHome_price" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
@@ -108,21 +74,12 @@
                                 <option>750,000 - 1,000,000</option>
                                 <option>1,000,000 - 2,000,000</option>
                                 <option>2,000,000 - 5,000,000</option>
-                            </select>
-                           <!-- <select class="selectpicker" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
-                                <option>100,000 - 250,000</option>
-                                <option>250,000 - 500,000</option>
-                                <option>500,000 - 750,000</option>
-                                <option>750,000 - 1,000,000</option>
-                                <option>1,000,000 - 2,000,000</option>
-                                <option>2,000,000 - 5,000,000</option>
-                           </select> -->
+                           </select>
                        </div>
                     </div>
                     <div class="row search_bottom_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
-                           <select class="form-control searchHome_select" name="area">
+                           <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price">
                                 <option>Select Area</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
@@ -133,17 +90,6 @@
                                 <option>300 - 350 m<sup>2</sup></option>
                                 <option>350 - 400 m<sup>2</sup></option>
                            </select>
-                           <!-- <select class="selectpicker" data-style="btn" data-title="Select Price">
-                                <option>Select Area</option>
-                                <option>50 - 100 m<sup>2</sup></option>
-                                <option>100 - 130 m<sup>2</sup></option>
-                                <option>130 - 150 m<sup>2</sup></option>
-                                <option>150 - 170 m<sup>2</sup></option>
-                                <option>170 - 200 m<sup>2</sup></option>
-                                <option>200 - 300 m<sup>2</sup></option>
-                                <option>300 - 350 m<sup>2</sup></option>
-                                <option>350 - 400 m<sup>2</sup></option>
-                           </select> -->
                        </div>
                    </div>
                    <div class="row" style="width: 150px;margin: auto;">

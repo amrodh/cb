@@ -229,8 +229,28 @@ class User extends CI_Model {
       exit();
    }
 
+   function insertNewsletterData($userID)
+   {
+
+      $params = array();
+      $params['user_identifier'] = $userID;
+      $query = $this->db->insert_string('user_newsletter', $params);
+      $query = $this->db->query($query);
+
+      if($this->db->affected_rows() != 1){
+          return false;
+        }
+        return true;
+   }
 
 
+   function is_subscribed($userID)
+   {
+      // $q = $this
+      //         ->db
+      //         ->select('*')
+      //         ->where('user_identifier',$userID)
+   }
 
 
    function populateDB()
