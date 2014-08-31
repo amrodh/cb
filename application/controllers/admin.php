@@ -111,6 +111,22 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function newsletter()
+	{	
+		$data = array();
+		$users = $this->user->getSubscribedUsers();
+		
+		if(is_array($users)){
+			foreach ($users as $user) {
+			
+			}
+		}
+		
+		printme($users);exit();
+		$this->load->view('admin/newsletter', $data);
+	}
+
+
 	public function checkpasswordchange()
 	{
 		//$this->load->model('user');

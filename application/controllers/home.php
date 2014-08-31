@@ -330,7 +330,7 @@ class Home extends CI_Controller {
 		if($_POST['id'] == 'user'){
 			$params['user_identifier'] = $this->session->userdata['id'];
 		}else{
-			$params['user_identifier'];
+			$params['user_identifier'] = $_POST['id'];
 		}
 		$process = $this->user->insertNewsletterData($params);
 		if($process)

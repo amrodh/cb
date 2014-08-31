@@ -44,16 +44,18 @@
 <body>
 
 <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image:url('<?php echo base_url(); ?>application/static/images/logo.png');background-size:16.5% 100%;background-repeat:no-repeat;" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Admin Dashboard</a>
+                <a class="navbar-brand" href="">
+                   
+                </a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -86,7 +88,7 @@
                         <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-dashboard"></i> Shared Properties</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Newsletter</a>
+                        <a href="<?php echo base_url(); ?>admin/newsletter"><i class="fa fa-fw fa-dashboard"></i> Newsletter</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/propertyalert"><i class="fa fa-fw fa-dashboard"></i> Property Alert</a>

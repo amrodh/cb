@@ -13,7 +13,7 @@
                         
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Users
+                                <i class="fa fa-dashboard"></i> Property Alert Users
                             </li>
                         </ol>
                     </div>
@@ -30,7 +30,7 @@
                             <thead>
                             <tr>
                                 <th>Username</th>
-                                <th>City</th>
+                                <th>Date Joined</th>
                                 <th>District</th>
                                 <th>Type</th>
                                 <th>Area</th>
