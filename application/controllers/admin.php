@@ -118,11 +118,12 @@ class Admin extends CI_Controller {
 		
 		if(is_array($users)){
 			foreach ($users as $user) {
-			
+				if(!checkmail($user->user_identifier))
+					$user->user_identifier = $this->user->getUserByID($user->user_identifier);
 			}
 		}
 		
-		printme($users);exit();
+		$data['users'] = $users;
 		$this->load->view('admin/newsletter', $data);
 	}
 
