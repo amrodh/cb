@@ -7,7 +7,8 @@ class Hooks {
         if(!isset($this->CI->session))  
         $this->CI->load->library('session'); 
     }
-    function checkSession() {
+    function checkSession()
+    {
         
         $url = explode("/", $_SERVER['REQUEST_URI']);
          if(count($url) <= 3)
@@ -17,10 +18,7 @@ class Hooks {
         if(count($userdata) == 0){
             redirect($url[2]);
         }
-        // printme($userdata);exit();
-        // if($this->CI->session)
-        //  if(!$this->CI->session->userdata['id']){ 
-        //      redirect($url[2]);
-        // }
     }
+
+
 }?>
