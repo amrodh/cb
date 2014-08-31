@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
+
         <?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
@@ -96,11 +94,7 @@
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
                                     District
                                 </div>
-<<<<<<< HEAD
-                                <select class="selectpicker" data-style="btn" data-title="Select District" name="district" disabled="disabled">
-=======
                                 <select class="selectpicker" data-style="btn" id="district" data-title="Select District" name="district" disabled>
->>>>>>> ad9fd89dc13ba9853c52f161636bdc95b6cb2230
                                      <option>Select District</option>
                                      <option <?php if (isset($params)){ if($params['district'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
                                      <option <?php if (isset($params)){ if($params['district'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>
@@ -154,5 +148,3 @@
         </div>
         <!-- // <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script> -->
         <?php include('footer.php'); ?>
-    </body>
-</html>

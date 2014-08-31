@@ -311,8 +311,14 @@ $('.share_btn_submit').click(function(event) {
 });
 
 $('[name="city"').change(function(event) {
-    // alert ('ji');
     $('[name="district"').prop('disabled', false);
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
+
+$('[name="city_1"').change(function(event) {
+    $('[name="district_1"').prop('disabled', false);
     $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
     $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
     $('.dropdown-menu > .inner > li').removeClass('disabled');
@@ -343,8 +349,6 @@ $(".propertyAlertButton").click(function(){
         }else{
              var user_id = $("#tmp__nm").val();
         }   
-        
-
 
          if( city==0 || district==0 || type==0){
              $("#propertyAlertError").removeClass('hide');
@@ -356,16 +360,7 @@ $(".propertyAlertButton").click(function(){
              $("#propertyAlertSuccess").removeClass('hide');
              $("#propertyAlertError").addClass('hide');
         }
-
-
-
-        
-
-        
         $("#propertyAlertError").addClass('hide');
-        
-
-        
 
 });
 

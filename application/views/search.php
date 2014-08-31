@@ -18,8 +18,8 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" data-style="btn" data-title="Select City">
-                                <option>Select City</option>
+                            <select class="selectpicker" id="search_city" name="city_1" data-style="btn" data-title="Select City">
+                                <option value="0">Select City</option>
                                 <option>Cairo</option>
                                 <option>Giza</option>
                                 <option>Alexandria</option>
@@ -32,7 +32,7 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                District
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                           <select class="selectpicker" id="search_district" name="district_1" data-style="btn" data-title="Select District" disabled>
                                 <option>Select District</option>
                                 <option>Mohandeseen</option>
                                 <option>Maadi</option>
@@ -44,7 +44,7 @@
                            <div class="search_box_col_title title_margin">
                                Contract Type
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="search_type" name="type_1" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -58,7 +58,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                         Advanced Search <span class="caret"></span>
                     </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>
                     <!--<button type="submit" class="visible-sm visible-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>-->
                 </div>
                 <div class="container search_components">
@@ -67,7 +67,7 @@
                            <div class="search_box_col_title title_margin">
                                Price Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_price" name="price_1" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
@@ -81,7 +81,7 @@
                            <div class="search_box_col_title title_margin">
                                Area Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_area" name="area_1" data-style="btn" data-title="Select Area">
                                 <option>Select Area</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
@@ -96,7 +96,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
                        </div>
                    </div>
                 </div>
@@ -108,7 +108,7 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" id="search_city" name="city_2" data-style="btn" data-title="Select City">
                                 <option>Select City</option>
                                 <option>Cairo</option>
                                 <option>Giza</option>
@@ -122,7 +122,7 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                District
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                           <select class="selectpicker" id="search_district" name="district_2" data-style="btn" data-title="Select District">
                                 <option>Select District</option>
                                 <option>Mohandeseen</option>
                                 <option>Maadi</option>
@@ -134,7 +134,7 @@
                            <div class="search_box_col_title title_margin">
                                Contract Type
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="search_type" name="type_2" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -148,7 +148,7 @@
                            <div class="search_box_col_title title_margin">
                                Property Type
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="search_propertyType" name="propertyType_2" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -163,7 +163,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                         Advanced Search <span class="caret"></span>
                     </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
                     <!--<button type="submit" class="visible-sm visible-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>-->
                 </div>
                 <div class="container search_components">
@@ -172,7 +172,7 @@
                            <div class="search_box_col_title title_margin">
                                Price Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_price" name="price_2" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
@@ -186,7 +186,7 @@
                            <div class="search_box_col_title title_margin">
                                Area Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_area" name="area_2" data-style="btn" data-title="Select Price">
                                 <option>Select Area</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
@@ -201,7 +201,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" onclick="redirect();">Search</button>
                        </div>
                    </div>
                 </div>
@@ -213,7 +213,7 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" id="search_city" name="city_3" data-style="btn" data-title="Select City">
                                 <option>Select City</option>
                                 <option>Cairo</option>
                                 <option>Giza</option>
@@ -227,7 +227,7 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                District
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                           <select class="selectpicker" id="search_district" name="district_3" data-style="btn" data-title="Select District">
                                 <option>Select District</option>
                                 <option>Mohandeseen</option>
                                 <option>Maadi</option>
@@ -239,7 +239,7 @@
                            <div class="search_box_col_title title_margin">
                                Contract Type
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="search_type" name="type_3" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -253,7 +253,7 @@
                            <div class="search_box_col_title title_margin">
                                Property Type
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="search_propertyType" name="propertyType_3" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -268,7 +268,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 132px;">
                         Advanced Search <span class="caret"></span>
                     </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
                     <!--<button type="submit" class="visible-sm visible-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>-->
                 </div>
                 <div class="container search_components">
@@ -277,7 +277,7 @@
                            <div class="search_box_col_title title_margin">
                                Price Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_price" name="price_3" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
@@ -291,7 +291,7 @@
                            <div class="search_box_col_title title_margin">
                                Area Range
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="search_area" name="area_3" data-style="btn" data-title="Select Price">
                                 <option>Select Area</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
@@ -306,7 +306,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
                        </div>
                    </div>
                 </div>
