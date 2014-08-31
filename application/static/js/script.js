@@ -319,6 +319,9 @@ $(".propertyAlertButton").click(function(){
         var price = $("#propertyAlert_price").val();
         var area = $("#propertyAlert_area").val();
         var email = $("#alert_email").val();
+        var url   = $("#url").val();
+
+
 
         if($("#alert_email").length != 0){
 
@@ -345,8 +348,23 @@ $(".propertyAlertButton").click(function(){
             return false;
         }else{
 
-             $("#propertyAlertSuccess").removeClass('hide');
-             $("#propertyAlertError").addClass('hide');
+                data = "city='"+city+"',district='"+district+"',type='"+type+"'";
+                if(price != 0 )
+                    data += ",price='"+price+"'";
+                 if(area != 0 )
+                    data += ",area='"+area+"'";
+
+                url = url+"insertPropertyAlert";
+                $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { name: user_id , data : data }
+                })
+                  .success(function( msg ) {
+                            $("#propertyAlertSuccess").removeClass('hide');
+                            $("#propertyAlertError").addClass('hide');
+                  });
+             
         }
 
 
@@ -366,3 +384,21 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 } 
+
+
+
+
+
+function test(id,url)
+{       
+        var url = $("#url").val();
+        url = url+"admin/";
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: { id: id }
+        })
+          .success(function( msg ) {
+                
+          });
+}

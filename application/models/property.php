@@ -90,7 +90,19 @@ class Property extends CI_Model {
     }
 
      
-     
+   function insertPropertyAlert($params)
+   {  
+
+      $query = $this->db->insert_string('user_property_alert', $params);
+      $query = $this->db->query($query);
+
+      if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+
+   }
 
    function insertProperty($params)
    {  

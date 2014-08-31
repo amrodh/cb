@@ -101,6 +101,7 @@
                     <input type="hidden" id="tmp__nm" value="<?php if(isset($loggedIn)) echo $user->username; ?>">
                     <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                         <div class="col-lg-12">
+                              <input type="hidden" id="url" value="<?= base_url(); ?>">
                              <button type="button"  class="btn btn-default property_alert_btn_submit2 propertyAlertButton">Notify Me</button>
                         </div>
                     </div>

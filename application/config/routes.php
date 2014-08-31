@@ -19,7 +19,7 @@ $route['admin/users/(:any)'] = "admin/userProfile";
 
 $route['validate/(:any)'] = "home/validateToken";
 
-
+$route['insertPropertyAlert'] = "home/insertPropertyAlert";
 $route['register'] = 'home/register';
 $route['profile'] = 'home/profile';
 $route['shareProperty'] = 'home/shareProperty';
