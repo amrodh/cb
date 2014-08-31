@@ -20,7 +20,7 @@ $route['admin/checkpasswordchange.php'] = 'admin/checkpasswordchange';
 $route['admin/users/(:any)'] = "admin/userProfile";
 
 $route['validate/(:any)'] = "home/validateToken";
-
+$route['subscribeuser'] = 'home/subscribeuser';
 $route['insertPropertyAlert'] = "home/insertPropertyAlert";
 $route['register'] = 'home/register';
 $route['profile'] = 'home/profile';

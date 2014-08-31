@@ -77,14 +77,14 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4" id="footer_bottom_div">
+                <input type="hidden" id="url" value="<?= base_url(); ?>">
                 <?php if (isset($loggedIn)): ?>
                     <?php if (!$is_subscribed): ?>
                         <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
                             SUBSCRIBE TO OUR NEWSLETTER
                         </div>
                         <div id="footer_subscribtion">
-                            <input type="text" name="footer_subscribe_email" id="footer_subscribe_email" placeholder="Your E-mail"/>
-                            <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
+                            <input style="margin-left:0;" type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
                         </div>
                     <?php endif ?>
                 <?php else: ?>

@@ -16,6 +16,35 @@ $(document).ready(function ()
            $('.selectpicker').selectpicker();
 
 
+           $("#btn_subscribe").click(function(){
+
+           		var email;
+           		if( $("#footer_subscribe_email").length == 0){
+           			email = 'user';
+           		}else{
+           			email = $("#footer_subscribe_email").val();
+           			if(!validateEmail(email)){
+           				return false;
+           			}
+           		}
+
+           		var url = $("#url").val();
+		        url = url+"subscribeuser";
+		        $.ajax({
+		          type: "POST",
+		          url: url,
+		          data: { id: email }
+		        })
+		          .success(function( msg ) {
+		                $(".footer_col_title").hide();
+		                $("#btn_subscribe").hide();
+		          });
+
+
+           		
+           });
+
+
            if($("#loginError").length > 0){
                 $('#tallModal').modal('show');
            }

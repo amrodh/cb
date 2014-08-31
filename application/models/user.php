@@ -229,11 +229,9 @@ class User extends CI_Model {
       exit();
    }
 
-   function insertNewsletterData($userID)
+   function insertNewsletterData($params)
    {
-
-      $params = array();
-      $params['user_identifier'] = $userID;
+   	
       $query = $this->db->insert_string('user_newsletter', $params);
       $query = $this->db->query($query);
 

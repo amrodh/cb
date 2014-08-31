@@ -122,6 +122,9 @@ class Admin extends CI_Controller {
 	}
 
 
+	
+
+
 	public function properties()
 	{
 		$this->load->model('property');

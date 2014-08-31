@@ -120,8 +120,9 @@ class Home extends CI_Controller {
 						$this->startSession($user);
 
 						if (isset($_POST['newsletter']))
-						{
-							$this->user->insertNewsletterData($this->db->insert_id());
+						{	
+							$params['user_identifier'] = $this->db->insert_id();
+							$this->user->insertNewsletterData($params);
 						}
 						
 
@@ -321,6 +322,21 @@ class Home extends CI_Controller {
 			}
 		}
 		$this->load->view('share_property', $data);
+	}
+
+
+	public function subscribeuser()
+	{
+		if($_POST['id'] == 'user'){
+			$params['user_identifier'] = $this->session->userdata['id'];
+		}else{
+			$params['user_identifier'];
+		}
+		$process = $this->user->insertNewsletterData($params);
+		if($process)
+			return true;
+		else
+			return false;
 	}
 
 	public function viewAllProperties ()
