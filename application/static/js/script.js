@@ -38,7 +38,17 @@ $(document).ready(function ()
 		          .success(function( msg ) {
 		                $(".footer_col_title").hide();
 		                $("#btn_subscribe").hide();
-		          });
+                        $("#footer_subscribe_email").hide();
+                        $("#successMessage").addClass('alert-success');
+                        $("#successMessage").show();
+                        $("#successMessage").html('Subscription was successfully');
+		          }),
+                  error(function() {
+                        $("#successMessage").addClass('alert-danger');
+                        $("#successMessage").show();
+                        $("#successMessage").html('Subscription failed. Please try again later');
+                  });
+
 
 
            		
