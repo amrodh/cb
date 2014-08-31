@@ -89,6 +89,21 @@ class Property extends CI_Model {
 
     }
 
+     function getPropertiesAlert()
+    {
+
+      $q = $this
+              ->db
+              ->get('user_property_alert');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
      
    function insertPropertyAlert($params)
    {  

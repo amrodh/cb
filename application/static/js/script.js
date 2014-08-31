@@ -159,7 +159,6 @@ if ($('.property_alert_bottom_row').css('display') == 'none')
     }
 };
 
-//========================================================================================================
 
 $('#footer_dropdown1').click(function (){
             if ($('#footer_dropdown1_data').css('display') == 'none'){
@@ -318,14 +317,13 @@ $('[name="city"').change(function(event) {
 
 $('[name="city_1"').change(function(event) {
     $('[name="district_1"').prop('disabled', false);
-    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
     $('[data-id="search_district_1"').removeClass('disabled');
     $('.dropdown-menu > .inner > li').removeClass('disabled');
 });
 
 $('[name="city_2"').change(function(event) {
     $('[name="district_2"').prop('disabled', false);
-    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
     $('[data-id="search_district_2"').removeClass('disabled');
     $('.dropdown-menu > .inner > li').removeClass('disabled');
 });
@@ -358,6 +356,7 @@ $(".propertyAlertButton").click(function(){
         var district = $("#propertyAlert_district").val();
         var type = $("#propertyAlert_type").val();
         var price = $("#propertyAlert_price").val();
+        var price = replaceAll(',','', price);
         var area = $("#propertyAlert_area").val();
         var email = $("#alert_email").val();
         var url   = $("#url").val();
@@ -415,6 +414,10 @@ function validateEmail(email) {
     return re.test(email);
 } 
 
+
+function replaceAll(find, replace, str) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
 
 
 
