@@ -231,7 +231,7 @@ class User extends CI_Model {
 
    function insertNewsletterData($params)
    {
-   	
+
       $query = $this->db->insert_string('user_newsletter', $params);
       $query = $this->db->query($query);
 
@@ -255,6 +255,21 @@ class User extends CI_Model {
            } 
 
            return false; 
+   }
+
+
+   function getSubscribedUsers()
+   {
+   	 $q = $this
+              ->db
+              ->order_by('date_joined','desc')
+              ->get('user_newsletter');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false;
    }
 
 

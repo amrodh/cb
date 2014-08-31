@@ -10,6 +10,7 @@ $route['admin/script'] = 'admin/script';
 $route['admin/users'] = 'admin/users';
 $route['admin/properties'] = 'admin/properties';
 $route['admin/propertyalert'] = 'admin/propertyalert';
+$route['admin/newsletter'] = 'admin/newsletter';
 
 $route['authenticate'] = 'home/authenticate';
 $route['home/logout'] = 'home/logout';
