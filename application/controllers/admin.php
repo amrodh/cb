@@ -87,6 +87,30 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function propertyalert()
+	{
+		$alerts = $this->property->getPropertiesAlert();
+		if(is_array($alerts)){
+			foreach ($alerts as $alert) {
+				if(!checkmail($alert->user_identifier)){
+					$alert->user_identifier = $this->user->getUserByID($alert->user_identifier);
+				}
+
+				$data = explode(',',$alert->property_data );
+				$data_output = array();
+				foreach ($data as $i) {
+					$i = explode('=', $i);
+					$data_output[$i[0]] = str_replace("'", "", $i[1]);
+				}
+				$alert->property_data = $data_output;
+			}
+
+		}
+		$data['alerts'] = $alerts;
+		$this->load->view('admin/propertyalert',$data);
+	}
+
+
 	public function checkpasswordchange()
 	{
 		//$this->load->model('user');
