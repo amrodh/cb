@@ -96,6 +96,21 @@
                         <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
                     </div>
                 <?php endif ?>
+                <?php if (isset($subscribeMessage)): ?>
+                    <?php if ($subscribeMessage): ?>
+                        <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                            <div class="alert alert-success" role="alert">
+                                Subscription was successful!
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
+                            <div class="alert alert-danger" role="alert">
+                                Subscription failed! Please try again later.
+                            </div>
+                        </div>
+                    <?php endif ?>
+                <?php endif ?>
                 </div>
             </div>
                 <div id="footer_dropdown1_data"style="">

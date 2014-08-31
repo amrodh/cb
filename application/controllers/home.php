@@ -334,9 +334,15 @@ class Home extends CI_Controller {
 		}
 		$process = $this->user->insertNewsletterData($params);
 		if($process)
+		{
+			$data['subscribeMessage'] = true;
 			return true;
+		}
 		else
+		{
+			$data['subscribeMessage'] = false;
 			return false;
+		}
 	}
 
 	public function viewAllProperties ()
