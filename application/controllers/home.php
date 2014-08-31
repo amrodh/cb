@@ -359,4 +359,27 @@ class Home extends CI_Controller {
 		}
 		
 	}
+
+	public function insertPropertyAlert()
+	{
+		printme($_POST);
+		$name = $_POST['name'];
+		if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
+	        $params['user_identifier'] = $name;
+	    }
+	    else {
+	       $user = $this->user->getUserByUsername($name);
+	        $params['user_identifier'] = $user->id;
+	    }
+
+
+	    $params['property_data'] = $_POST['data'];
+	    $insertProcess = $this->property->insertPropertyAlert($params);
+	    if($insertProcess)
+	    	echo 'true';
+	    else
+	    	echo 'false';
+	    
+			exit();
+	}
 }
