@@ -36,6 +36,7 @@
     this.show = Selectpicker.prototype.show;
     this.hide = Selectpicker.prototype.hide;
 
+
     this.init();
   };
 
