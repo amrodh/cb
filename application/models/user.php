@@ -246,10 +246,17 @@ class User extends CI_Model {
 
    function is_subscribed($userID)
    {
-      // $q = $this
-      //         ->db
-      //         ->select('*')
-      //         ->where('user_identifier',$userID)
+      $q = $this
+            ->db
+            ->select('*')
+            ->where('user_identifier',$userID)
+            ->get('user_newsletter');
+
+      if($q->num_rows >0){
+              return true;
+           } 
+
+           return false; 
    }
 
 

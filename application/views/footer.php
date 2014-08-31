@@ -77,6 +77,17 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4" id="footer_bottom_div">
+                <?php if (isset($loggedIn)): ?>
+                    <?php if (!$is_subscribed): ?>
+                        <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
+                            SUBSCRIBE TO OUR NEWSLETTER
+                        </div>
+                        <div id="footer_subscribtion">
+                            <input type="text" name="footer_subscribe_email" id="footer_subscribe_email" placeholder="Your E-mail"/>
+                            <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
+                        </div>
+                    <?php endif ?>
+                <?php else: ?>
                     <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
                         SUBSCRIBE TO OUR NEWSLETTER
                     </div>
@@ -84,31 +95,9 @@
                         <input type="text" name="footer_subscribe_email" id="footer_subscribe_email" placeholder="Your E-mail"/>
                         <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
                     </div>
+                <?php endif ?>
                 </div>
             </div>
-<!--            <div class="row">
-                <div id=" footer_last_div">
-                    <div class="dropdown footer_dropdown_div">
-                        <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown1">
-                            Villas
-                            <span class="caret"></span>
-                        </button>
-                    </div>
-                    <div class="dropdown footer_dropdown_div">
-                        <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown2">
-                            Apartment
-                            <span class="caret"></span>
-                        </button>
-                    </div>
-                    <div class="dropdown footer_dropdown_div">
-                        <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown3">
-                            Building
-                            <span class="caret"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>-->
-            <!--<div class="row">-->
                 <div id="footer_dropdown1_data"style="">
                     <b>By District</b><br>
                     <p style="margin-top: 20px;">

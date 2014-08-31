@@ -373,6 +373,13 @@ class Home extends CI_Controller {
 			$this->load->model('user');
 			$data['loggedIn'] = true;
 			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			if ($this->user->is_subscribed($data['user']->id))
+			{
+				$data['is_subscribed'] = true;
+			}
+			else{
+				$data['is_subscribed'] = false;
+			}
 			return $data;
 		}
 		
