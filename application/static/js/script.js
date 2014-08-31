@@ -41,7 +41,7 @@ $(document).ready(function ()
                         $("#footer_subscribe_email").hide();
                         $("#successMessage").addClass('alert-success');
                         $("#successMessage").show();
-                        $("#successMessage").html('Subscription was successfully');
+                        $("#successMessage").html('Subscription was successfull.');
 		          }),
                   error(function() {
                         $("#successMessage").addClass('alert-danger');

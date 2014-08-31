@@ -98,7 +98,7 @@
                 <?php endif ?>
                         <div class="row"  style="width: 100%;">
                             <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
-                                Subscription was successful!
+                                
                             </div>
                         </div>
                 </div>
