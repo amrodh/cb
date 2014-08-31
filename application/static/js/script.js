@@ -317,6 +317,13 @@ $('[name="city"').change(function(event) {
     $('.dropdown-menu > .inner > li').removeClass('disabled');
 });
 
+$('[name="city_1"').change(function(event) {
+    $('[name="district_1"').prop('disabled', false);
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
+
 
 
 
@@ -382,8 +389,7 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 } 
-<<<<<<< HEAD
-=======
+
 
 
 
@@ -402,4 +408,3 @@ function test(id,url)
                 
           });
 }
->>>>>>> 16d37d2f3f4c8b89ff8c2f164e944236efc56c09
