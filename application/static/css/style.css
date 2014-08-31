@@ -1668,6 +1668,11 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     margin-left: -10px;
 }
 
+.searchHome_select{
+    margin-bottom: 4%;
+    color: black;
+}
+
 @media only screen and (min-width: 1200px){
     #footer_last_col{
         /*width: 30%;*/

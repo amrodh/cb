@@ -13,7 +13,7 @@
                             <div class="property_alert_col_title title_margin" id="property_alert_title_district">
                                 City
                             </div>
-                            <select class="selectpicker" id="propertyAlert_city" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City">
                                 <option value="0">Select City</option>
                                 <option>Cairo</option>
                                 <option>Giza</option>
@@ -27,7 +27,7 @@
                            <div class="property_alert_col_title title_margin" id="property_alert_title_district">
                                District
                            </div>
-                           <select class="selectpicker" id="propertyAlert_district" data-style="btn" data-title="Select District">
+                           <select class="selectpicker" id="propertyAlert_district" name="alert_district" data-style="btn" data-title="Select District" disabled>
                                 <option value="0">Select District</option>
                                 <option>Mohandeseen</option>
                                 <option>Maadi</option>
@@ -39,7 +39,7 @@
                            <div class="property_alert_col_title title_margin">
                                Contract Type
                            </div>
-                           <select class="selectpicker" id="propertyAlert_type" data-style="btn" data-title="Select Type">
+                           <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type">
                                 <option value="0">Select Type</option> 
                                 <option>Apartment</option>
                                 <option>Building</option>
@@ -71,7 +71,7 @@
                             <div class="property_alert_col_title title_margin">
                                 Price Range
                             </div>
-                            <select class="selectpicker" id="propertyAlert_price" data-style="btn" data-title="Select Price">
+                            <select class="selectpicker" id="propertyAlert_price" name="alert_price" data-style="btn" data-title="Select Price">
                                 <option value="0">Select Price</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
@@ -85,7 +85,7 @@
                            <div class="property_alert_col_title title_margin">
                                Area Range
                            </div>
-                           <select class="selectpicker" id="propertyAlert_area" data-style="btn" data-title="Select Price">
+                           <select class="selectpicker" id="propertyAlert_area" name="alert_area" data-style="btn" data-title="Select Price">
                                 <option value="0">Select Area</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>

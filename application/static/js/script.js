@@ -34,7 +34,7 @@ $(document).ready(function ()
 
         });
 
-
+   
 
 
 function search_validation ()
@@ -159,7 +159,6 @@ if ($('.property_alert_bottom_row').css('display') == 'none')
     }
 };
 
-//========================================================================================================
 
 $('#footer_dropdown1').click(function (){
             if ($('#footer_dropdown1_data').css('display') == 'none'){
@@ -319,9 +318,29 @@ $('[name="city"').change(function(event) {
 $('[name="city_1"').change(function(event) {
     $('[name="district_1"').prop('disabled', false);
     $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('[data-id="search_district_1"').removeClass('disabled');
     $('.dropdown-menu > .inner > li').removeClass('disabled');
 });
 
+$('[name="city_2"').change(function(event) {
+    $('[name="district_2"').prop('disabled', false);
+    $('[data-id="search_district_2"').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
+
+$('[name="city_3"').change(function(event) {
+    $('[name="district_3"').prop('disabled', false);
+    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('[data-id="search_district_3"').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
+
+$('[name="alert_city"').change(function(event) {
+    $('[name="alert_district"').prop('disabled', false);
+    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+    $('[data-id="propertyAlert_district"').removeClass('disabled');
+    $('.dropdown-menu > .inner > li').removeClass('disabled');
+});
 
 
 
