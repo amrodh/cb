@@ -84,7 +84,7 @@ $(document).ready(function ()
                 })
                   .success(function( html ) {
 
-                    $("#searchHome_district").html();
+                    $("[data-id='searchHome_district']").html(html);
                   });
            });
 
