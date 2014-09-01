@@ -47,102 +47,34 @@
                                     </div>
                                 </div>
                                 <div class="auction_body_bottom_div">
-                                    <div class="row auction_content">
+                                <?php foreach ($recentAuctions as $auction): ?>
+                                	<div class="row auction_content">
                                         <div class="col-lg-3">
                                             <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
+                                                <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
                                             </div>
-                                            <div class="auction_rating">
+                                           <!--  <div class="auction_rating">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="col-lg-9">
                                             <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
+                                                <?= $auction->title; ?>
                                             </div>
                                             <div class="auction_content_body">
                                                 <div class="row auction_date">
-                                                    05-19-2010
+                                                    <?= $auction->date_held; ?>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
+                                                	<?= $auction->text; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
-                                            </div>
-                                            <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    05-19-2010
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
-                                            </div>
-                                            <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    05-19-2010
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php endforeach ?>
                                 </div>
                             </div>
                             
@@ -169,71 +101,37 @@
                                         <a href="#">next</a>
                                     </div>
                                 </div>
+
                                 <div class="auction_body_bottom_div">
-                                    <div class="row auction_content">
+                                    <?php foreach ($upcomingAuctions as $auction): ?>
+                                	<div class="row auction_content">
                                         <div class="col-lg-3">
                                             <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
+                                                <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
                                             </div>
-                                            <div class="auction_rating">
+                                           <!--  <div class="auction_rating">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
                                                 <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="col-lg-9">
                                             <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
+                                                <?= $auction->title; ?>
                                             </div>
                                             <div class="auction_content_body">
                                                 <div class="row auction_date">
-                                                    05-19-2010
+                                                    <?= $auction->date_held; ?>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
+                                                	<?= $auction->text; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
-                                            </div>
-                                            <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    05-19-2010
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php endforeach ?>
+                                    
                                 </div>
                             </div>
                         </div>

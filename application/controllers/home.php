@@ -384,6 +384,9 @@ class Home extends CI_Controller {
 	public function auction ()
 	{
 		$data = $this->init();
+		$data['auctions'] = $this->property->getAuctions();
+		$data['recentAuctions'] = $this->property->getRecentAuctions();
+		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
 		$this->load->view('auction',$data);
 	}
 

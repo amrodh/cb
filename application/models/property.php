@@ -119,6 +119,46 @@ class Property extends CI_Model {
 
     }
 
+    function getRecentAuctions()
+    {
+      date_default_timezone_set('Europe/London');
+      $date = new DateTime(now());
+      $date =  $date->format('2014-m-d');
+
+      $q = $this
+              ->db
+              ->where('date_held <', $date)
+              ->order_by('date_held','desc')
+              ->get('auction');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
+     function getUpcomingAuctions()
+    {
+      date_default_timezone_set('Europe/London');
+      $date = new DateTime(now());
+      $date =  $date->format('2014-m-d');
+
+      $q = $this
+              ->db
+              ->where('date_held >', $date)
+              ->order_by('date_held','asc')
+              ->get('auction');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
      
    function insertPropertyAlert($params)
    {  
@@ -138,14 +178,19 @@ class Property extends CI_Model {
    function testauctions()
    {
 
+    // date_default_timezone_set('Europe/London');
+    //   for ($i=1; $i < 11; $i++) { 
+    //         $params['title'] = 'Tips for Marketing Your Home to Potential Buyers';
+    //         $params['text'] = 'Lorem ipsum dolor sit amet, ex sed partem prompta, ne usu altera maluisset consetetur. Ex vel corpora mnesarchum, te fastidii epicurei qui, ad vidit omnis convenire vel. Qui suas error choro id, nonumy lucilius iudicabit eum et. An per quis vituperatoribus. Utroque veritus mea cu, cum quod mazim ei.';
+    //         $params['image'] = 'test.png';
 
-      for ($i=0; $i < 10; $i++) { 
-            $params['title'] = 'Tips for Marketing Your Home to Potential Buyers';
-            $params['text'] = '';
-            $params['image'] = base_url().'application/static/upload/auctions/test.png';
-            $params['date_held'] = date("l");
-            printme($params['date_held']);
-      }
+    //         $date = new DateTime(now());
+    //         $date->modify('+'.$i.' day');
+    //         $params['date_held'] =  $date->format('2014-m-d');
+    //         $this->insertAuction($params);
+    //         // printme($params);
+            
+    //   }
    }
 
    function insertAuction($params)
