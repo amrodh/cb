@@ -438,6 +438,9 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('service');
 		$data['districts'] = $this->service->getDistricts($_POST['id']);
-		$this->load->view('districtselect', $data);
+		if ($data['districts'] != 0)
+		{
+			$this->load->view('districtselect', $data);
+		}
 	}
 }

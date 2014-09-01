@@ -31,9 +31,12 @@ class service extends CI_Model {
             foreach ($result->GetDistrictListResult->DistrictItem as $district) {
                $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
             }
+            return $data;
         }
+        else 
+            return 0;
 
-         return $data;
+         
     }
     
 

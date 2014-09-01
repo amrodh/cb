@@ -83,8 +83,17 @@ $(document).ready(function ()
                   data: { id: city_id }
                 })
                   .success(function( html ) {
+                    if (html != 0)
+                    {
 
-                    $("[data-id='searchHome_district']").html(html);
+                        $("[data-id='searchHome_district'] + .dropdown-menu > .inner").html(html);
+                        $("[data-id='searchHome_district']").show();
+                    }
+                    else
+                    {
+                        $("#searchHome_district").hide();
+                        $("[data-id='searchHome_district']").hide();
+                    }
                   });
            });
 
