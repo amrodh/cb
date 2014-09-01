@@ -24,15 +24,28 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <div class="panel-body">
-                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Alerts" />
+                            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Auctions" />
                          </div>
                         <table class="table" id="dev-table">
                             <thead>
                             <tr>
-                              
+                                <th>Title</th>
+                                <th>Date Held</th>
                             </tr>
                             </thead>
-                                                  
+                            <?php foreach($auctions as $auction): ?>
+                                <tr>
+                                <td>
+                                    <?= $auction->title; ?>
+                                </td>
+                                <td><?php echo $auction->date_held; ?></td>
+                                <td>
+                                    <a href="auctions/<?= $auction->id; ?>">
+                                        <span class="glyphicon glyphicon-arrow-right"></span>
+                                    </a>
+                                </td>
+                            </tr>          
+                            <?php endforeach ?>                       
                         </table>
                     </div>
                    

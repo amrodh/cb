@@ -139,11 +139,21 @@ class Admin extends CI_Controller {
 
 	public function auction()
 	{	
-		$this->property->testauctions();
-		exit();
 		$data = array();
+		$data['auctions'] = $this->property->getAuctions();
 		$this->load->view('admin/auction', $data);
 
+	}
+
+
+	public function showAuction()
+	{
+		$id = $this->uri->uri_string;
+		$id = explode('auctions/', $id);
+		$id = $id[1];
+
+		$data['auction'] = $this->property->getAuctionById($id);
+		$this->load->view('admin/auctionprofile', $data);
 	}
 
 	
@@ -213,8 +223,8 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{	
-		$this->load->model('service');
-		$this->service->getProperty(199876);
+		// $this->load->model('service');
+		// $this->service->getProperty(199876);
 
 	}
 

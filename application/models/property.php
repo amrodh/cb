@@ -119,6 +119,23 @@ class Property extends CI_Model {
 
     }
 
+     function getAuctionById($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->limit(1)
+              ->get('auction');
+
+           if($q->num_rows >0){
+              return $q->row();
+           } 
+
+           return false; 
+
+    }
+
     function getRecentAuctions()
     {
       date_default_timezone_set('Europe/London');
