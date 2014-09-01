@@ -217,9 +217,26 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     border: none!important;
 }
 
-.bxslider > li >img{
+.bxslider > li>a >img{
     height: 455px;
     width: 100%;
+}
+
+.slider_imgs{
+    position: absolute;
+}
+
+.slider_components{
+    position: relative;
+    font-size: 35px;
+    color: white;
+    margin-top: 15%;
+    margin-left: 6%;
+}
+
+.slider_logo{
+    position: relative;
+    margin-left: 7%;
 }
 
 #footer_div{
