@@ -90,8 +90,8 @@
                     <span class="pull-right">
                         <form action="<?php echo $user->username; ?>/action" method="post">
                           <input type="hidden" name="username" value="<?php echo $user->username; ?>">
-                          <input type="submit" name="edit"   class="button btn btn-sm btn-warning" value="Edit">
-                          <input type="submit" name="delete" class="button btn btn-sm btn-danger" value="Delete">
+                          <!-- <input type="submit" name="edit"   class="button btn btn-sm btn-warning" value="Edit"> -->
+                          <!-- <input type="submit" name="delete" class="button btn btn-sm btn-danger" value="Delete"> -->
                         </form>
                     </span>
                 </div>
