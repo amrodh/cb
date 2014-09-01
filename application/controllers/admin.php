@@ -212,10 +212,10 @@ class Admin extends CI_Controller {
 	}
 
 	public function script()
-	{
-		// $this->load->model('favorites');
-		// $this->favorites->test();
-		//tokenGenerator();
+	{	
+		$this->load->model('service');
+		$this->service->getProperty(199876);
+
 	}
 
 }
