@@ -82,16 +82,19 @@
                         <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-fw fa-dashboard"></i> Users</a>
+                        <a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-fw fa-user"></i> Users</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-dashboard"></i> Shared Properties</a>
+                        <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-circle"></i> Shared Properties</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/newsletter"><i class="fa fa-fw fa-dashboard"></i> Newsletter</a>
+                        <a href="<?php echo base_url(); ?>admin/newsletter"><i class="fa fa-fw fa-envelope"></i> Newsletter</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/propertyalert"><i class="fa fa-fw fa-dashboard"></i> Property Alert</a>
+                        <a href="<?php echo base_url(); ?>admin/propertyalert"><i class="glyphicon glyphicon-phone-alt"></i> Property Alert</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/auctions"><i class="glyphicon glyphicon-tower"></i> Auctions</a>
                     </li>
                 </ul>
             </div>

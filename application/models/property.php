@@ -104,6 +104,21 @@ class Property extends CI_Model {
 
     }
 
+     function getAuctions()
+    {
+
+      $q = $this
+              ->db
+              ->get('auction');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
      
    function insertPropertyAlert($params)
    {  
@@ -118,6 +133,34 @@ class Property extends CI_Model {
         return true;
 
    }
+
+
+   function testauctions()
+   {
+
+
+      for ($i=0; $i < 10; $i++) { 
+            $params['title'] = 'Tips for Marketing Your Home to Potential Buyers';
+            $params['text'] = '';
+            $params['image'] = base_url().'application/static/upload/auctions/test.png';
+            $params['date_held'] = date("l");
+            printme($params['date_held']);
+      }
+   }
+
+   function insertAuction($params)
+   {
+      $query = $this->db->insert_string('auction', $params);
+      $query = $this->db->query($query);
+
+      if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+   }
+
+
 
    function insertProperty($params)
    {  

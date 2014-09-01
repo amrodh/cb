@@ -19,7 +19,6 @@
                         <div id="search_header" style="margin-top: -30px;">
                             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
                                <li class="active"><a href="#recent" id="auction_anchor1" data-toggle="tab">Recent</a></li>
-                               <li><a href="#current" id="auction_anchor2" data-toggle="tab">Current</a></li>
                                <li><a href="#upcoming" id="auction_anchor3" data-toggle="tab">Upcoming</a></li>
                             </ul>
                         </div>
@@ -146,64 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="current">
-                                <div class="auction_body_top_div">
-                                    <div id="auction_div1"> Results <b>1 - 10</b> of <b>68</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View </div>
-                                    <div id="auction_div2">
-                                        <select class="selectpicker" id="auction_dropdown" data-style="btn" data-title="10">
-                                            <option>20</option> 
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select> 
-                                    </div> 
-                                    <div id="auction_div3">
-                                        results per page. 
-                                    </div>
-                                    <div id="auction_div4">
-                                        <a href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">next</a>
-                                    </div>
-                                </div>
-                                <div class="auction_body_bottom_div">
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive">
-                                            </div>
-                                            <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                Tips for Marketing Your Home to Potential Buyers
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    05-19-2010
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-1 auction_tags_title">
-                                                        Tags:
-                                                    </div>
-                                                    <div class="col-lg-11 auction_tags">
-                                                        <a href="#">marketing</a>, <a href="#">home</a>, <a href="#">buy a home</a>, <a href="#">covenants</a>, <a href="#">floor plan</a>, <a href="#">home</a>, <a href="#">insurance</a>,
-                                                        <a href="#">sell</a>, <a href="#">sell a home</a>, <a href="#">services providers</a>, <a href="#">termite</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="tab-pane" id="upcoming">
                                 <div class="auction_body_top_div">
                                     <div id="auction_div1"> Results <b>1 - 10</b> of <b>68</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View </div>

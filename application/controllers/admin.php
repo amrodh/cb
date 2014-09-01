@@ -130,14 +130,21 @@ class Admin extends CI_Controller {
 
 	public function checkpasswordchange()
 	{
-		//$this->load->model('user');
-
-		printme($_GET);exit();
+		//printme($_GET);exit();
 		$userID = $_POST['id'];
 		$changePassword = $this->user->changePassword($userID,$_POST['current'],$_POST['new_1']);
-		printme($user);
+		//printme($user);
 	}
 
+
+	public function auction()
+	{	
+		$this->property->testauctions();
+		exit();
+		$data = array();
+		$this->load->view('admin/auction', $data);
+
+	}
 
 	
 
