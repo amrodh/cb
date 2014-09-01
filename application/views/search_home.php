@@ -7,6 +7,7 @@
                     <div class="row" id="search2_title">
                         FIND A HOME
                     </div>
+                    <input type="hidden" id="url" value="<?= base_url();?>">
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                            <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type">
@@ -22,14 +23,11 @@
                     </div>
                     <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                            <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City" data-size="5">
                                 <option>Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                <?php endforeach ?>
                             </select>
                        </div>
                     </div>
@@ -37,10 +35,10 @@
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                            <select class="selectpicker" name="district" id="searchHome_district" data-style="btn" data-title="Select District" disabled>
                                 <option>Select District</option>
-                                <option>Mohandeseen</option>
+                                <!-- <option>Mohandeseen</option>
                                 <option>Maadi</option>
                                 <option>Nasr City</option>
-                                <option>Heliopolis</option>
+                                <option>Heliopolis</option> -->
                            </select>
                        </div>
                    </div>

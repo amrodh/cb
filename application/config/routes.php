@@ -34,6 +34,7 @@ $route['uploadCV'] = 'home/uploadCV';
 $route['joinUs'] = 'home/joinUs';
 $route['marketIndex'] = 'home/marketIndex';
 $route['auction'] = 'home/auction';
+$route['getDistricts'] = 'home/getDistricts';
 
 
 /* End of file routes.php */

@@ -18,6 +18,9 @@ class Home extends CI_Controller {
 			$data = $this->init();
 		}
 
+		$this->load->model('service');
+		$data['cities'] = $this->service->getCities();
+
 		$this->load->view('home',$data);
 	}
 
@@ -429,5 +432,12 @@ class Home extends CI_Controller {
 	    	echo 'false';
 	    
 			exit();
+	}
+
+	public function getDistricts()
+	{
+		$this->load->model('service');
+		$data['districts'] = $this->service->getDistricts($_POST['id']);
+		$this->load->view('districtselect', $data);
 	}
 }

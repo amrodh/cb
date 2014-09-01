@@ -11,8 +11,6 @@ class service extends CI_Model {
         
     }
 
-    
-
     function getCities()
     {
         $inputs = array('CountryFK' => 73);
@@ -28,10 +26,11 @@ class service extends CI_Model {
     {
         $inputs = array('cityId' => $cityID);
         $result = $this->client->GetDistrictList($inputs);
-
         $data = array();
-        foreach ($result->GetDistrictListResult->DistrictItem as $district) {
-           $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
+        if(is_array($result->GetDistrictListResult->DistrictItem)){
+            foreach ($result->GetDistrictListResult->DistrictItem as $district) {
+               $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
+            }
         }
 
          return $data;

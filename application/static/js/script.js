@@ -71,9 +71,25 @@ $(document).ready(function ()
                 });
            }
 
+           $('#searchHome_city').change(function() {
+               // alert($(this).val());
+               var url = $("#url").val();
+               var city_id = $(this).val();
+
+               url = url+"getDistricts";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: city_id }
+                })
+                  .success(function( html ) {
+
+                    $("#searchHome_district").html();
+                  });
+           });
+
         });
 
-   
 
 
 function search_validation ()
@@ -431,7 +447,8 @@ $(".propertyAlertButton").click(function(){
                  if(area != 0 )
                     data += ",area='"+area+"'";
 
-                url = url+"insertPropertyAlert";
+                
+
                 $.ajax({
                   type: "POST",
                   url: url,
