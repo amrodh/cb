@@ -1,7 +1,7 @@
 <html>
     <body>
         <?php include('header.php'); ?>
-        <form role="form" name="applyForm"  method="post" action="<?= base_url();?>uploadCV">
+        <form role="form" name="applyForm"  method="post" action="<?= base_url();?>uploadCV" enctype="multipart/form-data">
             <div class="container uploadcv_app_div">
                 <div class="uploadcv_app_top_div">
                     APPLY HERE
@@ -34,7 +34,7 @@
                             <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4 uploadcv_app_cols">
                                 <div class="form-group">
                                     <label for="uploadcv_app_uploadcv">Upload Your CV</label>
-                                    <input type="file" name="uploadcv_app_uploadcv" id="uploadcv_app_uploadcv">
+                                    <input type="file" name="userfile" id="uploadcv_app_uploadcv">
                                 </div>
                             </div>
                         </div>

@@ -28,7 +28,7 @@
 
 	function uploadMe($object)
 	{
-	$object->upload->initialize($object->config->config);
+		$object->upload->initialize($object->config->config);
 	if (!$object->upload->do_upload())
 		{
 			$error = array('error' => $object->upload->display_errors());

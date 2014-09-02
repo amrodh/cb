@@ -255,7 +255,6 @@ class Home extends CI_Controller {
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 
-		
 		// printme($data['user']->id);
 		
 		if (isset($_POST['submit'])){
@@ -282,10 +281,6 @@ class Home extends CI_Controller {
 				}
 				exit();
 			}
-			
-
-
-			
 
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
@@ -380,14 +375,13 @@ class Home extends CI_Controller {
 		}else{
 			$vacancy_id = explode('upload/', $vacancy_id)[1];
 		}
-			
 
-		
 
 
 		if(isset($_POST['submit']))
 		{
 			$data['params'] = $_POST;
+			
 			if (!isset($data['loggedIn']))
 			{
 				if (empty($_POST['uploadcv_app_firstname'])){
@@ -396,15 +390,32 @@ class Home extends CI_Controller {
 					$data['uploadError'] = 'Please insert last name';
 				}elseif (empty($_POST['uploadcv_app_email'])) {
 					$data['uploadError'] = 'Please insert email';
-				}elseif (empty($_FILES)){
+				}elseif (!isset($_FILES)){
 					$data['uploadError'] = 'Please choose file to be uploaded';
 				}else{
-
+					// printme($_FILES);
+					
+					$filename = explode('.', $_FILES['userfile']['name'])[0];
+					$ext = explode('.', $_FILES['userfile']['name'])[1];
+					
+					$_FILES['userfile']['name'] = $filename.'_'.time().$ext;
+					// printme($_FILES);exit();
+					$this->config->set_item('upload_path',base_url().'application/static/upload/careers');
+					$this->config->set_item('allowed_types','pdf|doc|docx');
+					printme(uploadme($this));
 				}
 			}else{
 				$firstname = $data['user']->first_name;
 				$lastname = $data['user']->last_name;
 				$email = $data['user']->email;
+				if (!isset($_FILES)){
+					$data['uploadError'] = 'Please choose file to be uploaded';
+				}else{
+					$this->config->set_item('upload_path',base_url().'application/static/upload/careers');
+					$this->config->set_item('allowed_types','pdf|doc|docx');
+					
+				}
+				
 			}
 			
 		}
