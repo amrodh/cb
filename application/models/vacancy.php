@@ -19,10 +19,29 @@ class Vacancy extends CI_Model {
 
       $q = $this
               ->db
+              ->where('id !=',11)
               ->get('vacancy');
 
            if($q->num_rows >0){
               return $q->result();
+           } 
+
+           return false; 
+
+    }
+
+
+    function getVacancyByName($name)
+    {
+
+      $q = $this
+              ->db
+              ->where('name',$name)
+              ->limit(1)
+              ->get('vacancy');
+
+           if($q->num_rows >0){
+              return $q->row();
            } 
 
            return false; 

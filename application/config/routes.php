@@ -35,6 +35,7 @@ $route['viewAllProperties'] = 'home/viewAllProperties';
 $route['propertyDetails'] = 'home/propertyDetails';
 $route['careers'] = 'home/careers';
 $route['uploadCV'] = 'home/uploadCV';
+$route['upload/(:any)'] = 'home/uploadCV';
 $route['joinUs'] = 'home/joinUs';
 $route['marketIndex'] = 'home/marketIndex';
 $route['auction'] = 'home/auction';

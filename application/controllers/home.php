@@ -373,6 +373,18 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 
 
+		$vacancy_id = $this->uri->uri_string;
+		if($vacancy_id == 'uploadCV'){
+			$vacancy_id = 11;
+
+		}else{
+			$vacancy_id = explode('upload/', $vacancy_id)[1];
+		}
+			
+
+		
+
+
 		if(isset($_POST['submit']))
 		{
 			$data['params'] = $_POST;
@@ -403,6 +415,8 @@ class Home extends CI_Controller {
 	public function joinUs ()
 	{
 		$data = $this->init();
+		$this->load->model('vacancy');
+		$data['vacancies'] = $this->vacancy->getVacancies();
 		$this->load->view('join_us',$data);
 	}
 
