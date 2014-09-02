@@ -139,7 +139,7 @@ class Property extends CI_Model {
     function getRecentAuctions()
     {
       date_default_timezone_set('Europe/London');
-      $date = new DateTime(now());
+      $date = new DateTime('now');
       $date =  $date->format('2014-m-d');
 
       $q = $this
@@ -159,7 +159,7 @@ class Property extends CI_Model {
      function getUpcomingAuctions()
     {
       date_default_timezone_set('Europe/London');
-      $date = new DateTime(now());
+      $date = new DateTime('now');
       $date =  $date->format('2014-m-d');
 
       $q = $this
