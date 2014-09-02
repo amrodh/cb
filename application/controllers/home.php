@@ -260,28 +260,28 @@ class Home extends CI_Controller {
 		
 		if (isset($_POST['submit'])){
 
-			if(isset($_FILES)){
-				$images = array();
-				$i = 0;
-				foreach ($_FILES['img']['name'] as $name) {
-				 	$images['image_'.$i]['name'] = $name;
-				 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
-				 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
-				 	$i++;
-				}
+			// if(isset($_FILES)){
+			// 	$images = array();
+			// 	$i = 0;
+			// 	foreach ($_FILES['img']['name'] as $name) {
+			// 	 	$images['image_'.$i]['name'] = $name;
+			// 	 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
+			// 	 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
+			// 	 	$i++;
+			// 	}
 				
-				foreach ($images as $image) {
-					$this->config->set_item('upload_path',base_url().'application/static/upload/');
-					$path = $this->config->config['upload_path'];
-					printme($path);
-					var_dump(is_dir($path));
-					exit();
-					$_FILES['userfile']['name'] = $image['name'];
-					var_dump(uploadme($this));
-					exit();
-				}
-				exit();
-			}
+			// 	foreach ($images as $image) {
+			// 		$this->config->set_item('upload_path',base_url().'application/static/upload/');
+			// 		$path = $this->config->config['upload_path'];
+			// 		printme($path);
+			// 		var_dump(is_dir($path));
+			// 		exit();
+			// 		$_FILES['userfile']['name'] = $image['name'];
+			// 		var_dump(uploadme($this));
+			// 		exit();
+			// 	}
+			// 	exit();
+			// }
 			
 
 
@@ -315,7 +315,36 @@ class Home extends CI_Controller {
 				// printme ($params);
 				if ($this->property->insertProperty($params))
 				{
-					redirect('home');
+					if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
+							$images = array();
+							$params = array();
+							$params['property_id'] = $this->db->insert_id();
+							$i = 0;
+							foreach ($_FILES['img']['name'] as $name) {
+							 	$images['image_'.$i]['name'] = $name;
+							 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
+							 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
+							 	$images['image_'.$i]['tmp_name'] = $_FILES['img']['tmp_name'][$i];
+							 	$i++;
+							}
+							
+							foreach ($images as $image) {
+								$fileExtension = explode('.',$image['name']);
+								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+								$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
+								$_FILES['userfile']['size'] = $image['size'];
+								$params['image_url'] = $_FILES['userfile']['name'];
+								if(uploadme($this)){
+									$this->load->model('property');
+									$this->property->insertImage($params);
+									$data['insertProcess'] = true;
+								}else{
+									$this->property->deleteProperty($params['property_id']);
+									$data['insertProcess'] = false;
+								}
+							}
+						}
+						$data['insertProcess'] = true;
 				}else{
 					$data['insertPropertyError'] = "Error Inserting Property Data";
 				}
