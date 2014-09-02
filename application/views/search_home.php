@@ -32,14 +32,7 @@
                        </div>
                     </div>
                     <div class="row search_top_row">
-                       <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="district" id="searchHome_district" data-style="btn" data-title="Select District" data-size="5" disabled>
-                                <option>Select District</option>
-                                <!-- <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option> -->
-                           </select>
+                       <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="districtContainer">
                        </div>
                    </div>
                     <div class="row search_top_row">

@@ -85,9 +85,8 @@ $(document).ready(function ()
                   .success(function( html ) {
                     if (html != 0)
                     {
-
-                        $("[data-id='searchHome_district'] + .dropdown-menu > .inner").html(html);
-                        $("[data-id='searchHome_district']").show();
+                    	$("#districtContainer").html(html);
+                    	$('#searchHome_district').selectpicker();
                     }
                     else
                     {

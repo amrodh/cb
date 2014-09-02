@@ -1,10 +1,9 @@
-	<?php $count = 0; ?>
+<select class="selectpicker" name="district" id="searchHome_district" data-style="btn" data-title="Select District" data-size="5">
+      <option>Select District</option>
+     <?php $count = 0; ?>
 	<?php foreach ($districts as $item): ?>
-	<li rel="<?=$count ?>">
-		<a tabindex="<?=$count ?>">	
-			<span class="text"><?= $item['name'] ?></span>
-			<!-- <i class="glyphicon glyphicon-ok icon-ok check-mark"></i> -->
-		</a>
-	</li>
+		<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 	<?php $count++ ?>
 	<?php endforeach ?>
+      
+</select>
