@@ -137,6 +137,43 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function vacancies()
+	{
+		$data = array();
+		$data['vacancies'] = $this->vacancy->getVacancies();
+		$this->load->view('admin/vacancies', $data);
+	}
+
+	public function showVacancy()
+	{
+		$id = $this->uri->uri_string;
+		$id = explode('vacancies/', $id);
+		$id = $id[1];
+
+		$data['vacancy'] = $this->vacancy->getVacancyById($id);
+		$data['users'] = $this->vacancy->getUsersEnrolled($id);
+		if(is_array($data['users'])){
+			foreach ($data['users'] as $user) {
+				if(!checkmail($user->user_identifier)){
+					$user->user_identifier = $this->user->getUserByID($user->user_identifier);
+				}
+			}
+		}
+		$this->load->view('admin/vacancyprofile', $data);
+	}
+
+	public function downloadcv()
+	{
+		$name = $this->uri->uri_string;
+		$name = explode('download/', $name);
+		$name = $name[1];
+		$path = base_url().'application/static/upload/careers/'.$name;
+		header("Content-disposition: attachment; filename=".$name);
+		header("Content-type: application/pdf");
+		readfile($path);
+
+	}
+
 	public function auction()
 	{	
 		$data = array();
@@ -157,7 +194,7 @@ class Admin extends CI_Controller {
 	}
 
 
-	
+
 
 	
 
@@ -226,7 +263,8 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{	
-		// $this->load->model('service');
+		 // $this->load->model('vacancy');
+		 // $this->vacancy->populateDB();
 		// $this->service->getProperty(199876);
 
 	}

@@ -96,6 +96,9 @@
                     <li>
                         <a href="<?php echo base_url(); ?>admin/auctions"><i class="glyphicon glyphicon-tower"></i> Auctions</a>
                     </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/vacancies"><i class="glyphicon glyphicon-briefcase"></i> Vacancies</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
