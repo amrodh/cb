@@ -35,7 +35,6 @@ class service extends CI_Model {
         }
         else 
             return 0;
-
          
     }
     

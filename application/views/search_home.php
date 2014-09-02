@@ -24,7 +24,7 @@
                     <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                             <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City" data-size="5">
-                                <option>Select City</option>
+                                <option value="0">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                 <?php endforeach ?>

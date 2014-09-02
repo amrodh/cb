@@ -269,8 +269,6 @@ class Home extends CI_Controller {
 				 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
 				 	$i++;
 				}
-
-				
 				
 				foreach ($images as $image) {
 					$this->config->set_item('upload_path',base_url().'application/static/upload/');
@@ -350,6 +348,9 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$this->load->model('property');
+		$this->load->model('service');
+		$data['cities'] = $this->service->getCities();
+		// printme($data);exit()
 		$this->load->view('view_all_properties',$data);
 	}
 
@@ -369,6 +370,33 @@ class Home extends CI_Controller {
 	public function uploadCV ()
 	{
 		$data = $this->init();
+		$this->load->model('user');
+
+
+		if(isset($_POST['submit']))
+		{
+			$data['params'] = $_POST;
+			if (!isset($data['loggedIn']))
+			{
+				if (empty($_POST['uploadcv_app_firstname'])){
+					$data['uploadError'] = 'Please insert first name';
+				}elseif (empty($_POST['uploadcv_app_lastname'])) {
+					$data['uploadError'] = 'Please insert last name';
+				}elseif (empty($_POST['uploadcv_app_email'])) {
+					$data['uploadError'] = 'Please insert email';
+				}elseif (empty($_FILES)){
+					$data['uploadError'] = 'Please choose file to be uploaded';
+				}else{
+
+				}
+			}else{
+				$firstname = $data['user']->first_name;
+				$lastname = $data['user']->last_name;
+				$email = $data['user']->email;
+			}
+			
+		}
+
 		$this->load->view('upload_cv',$data);
 	}
 
@@ -438,9 +466,13 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('service');
 		$data['districts'] = $this->service->getDistricts($_POST['id']);
+		$data['key'] = $_POST['key'];
 		if ($data['districts'] != 0)
 		{
 			$this->load->view('districtselect', $data);
 		}
 	}
+
+
+
 }

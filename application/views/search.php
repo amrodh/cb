@@ -18,28 +18,19 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                <?php endforeach ?>
                             </select>
                        </div>
-                       <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               District
-                           </div>
-                           <select class="selectpicker" id="search_district_1" name="district_1" data-style="btn" data-title="Select District" disabled>
-                                <option>Select District</option>
-                                <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option>
-                           </select>
+                       <div id="districtContainer_1">
+                         
                        </div>
+                       <!-- <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
+                           
+                       </div> -->
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
                                Contract Type
@@ -108,28 +99,19 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City">
-                                <option>Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
+                            <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
+                                <option value="0">Select City</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                <?php endforeach ?>
                             </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               District
-                           </div>
-                           <select class="selectpicker" id="search_district_2" name="district_2" data-style="btn" data-title="Select District" disabled>
-                                <option>Select District</option>
-                                <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option>
-                           </select>
+                       <div id="districtContainer_2">
+                         
                        </div>
+                       <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                           
+                       </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                Contract Type
@@ -213,28 +195,19 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City">
-                                <option>Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
+                            <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
+                                <option value="0">Select City</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                <?php endforeach ?>
                             </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               District
-                           </div>
-                           <select class="selectpicker" id="search_district_3" name="district_3" data-style="btn" data-title="Select District" disabled>
-                                <option>Select District</option>
-                                <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option>
-                           </select>
+                       <div id="districtContainer_3">
+                         
                        </div>
+                       <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                          
+                       </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                Contract Type

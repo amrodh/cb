@@ -13,28 +13,18 @@
                             <div class="property_alert_col_title title_margin" id="property_alert_title_district">
                                 City
                             </div>
-                            <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City">
+                            <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
-                                <option>Cairo</option>
-                                <option>Giza</option>
-                                <option>Alexandria</option>
-                                <option>Tanta</option>
-                                <option>Mahala</option>
-                                <option>Qena</option>
+                                <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                <?php endforeach ?>
                             </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
-                           <div class="property_alert_col_title title_margin" id="property_alert_title_district">
-                               District
-                           </div>
-                           <select class="selectpicker" id="propertyAlert_district" name="alert_district" data-style="btn" data-title="Select District" disabled>
-                                <option value="0">Select District</option>
-                                <option>Mohandeseen</option>
-                                <option>Maadi</option>
-                                <option>Nasr City</option>
-                                <option>Heliopolis</option>
-                           </select>
+                       <div id="districtContainer_4">
                        </div>
+                       <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
+                           
+                       </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="property_alert_col_title title_margin">
                                Contract Type

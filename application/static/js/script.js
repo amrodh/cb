@@ -72,29 +72,136 @@ $(document).ready(function ()
            }
 
            $('#searchHome_city').change(function() {
-               // alert($(this).val());
+               if ($(this).val() !=0){
+                   var url = $("#url").val();
+                   var city_id = $(this).val();
+                   var key = 1;
+                   url = url+"getDistricts";
+                   $.ajax({
+                      type: "POST",
+                      url: url,
+                      data: { id: city_id, key: key }
+                    })
+                      .success(function( html ) {
+                        if (html != 0)
+                        {
+                        	$("#districtContainer").html(html);
+                        	$('#searchHome_district').selectpicker();
+                        }
+                        else
+                        {
+                            $("#searchHome_district").hide();
+                            $("[data-id='searchHome_district']").hide();
+                        }
+                      });
+              }
+           });
+
+           $('#search_city_1').change(function() {
+            if ($(this).val() !=0){
                var url = $("#url").val();
                var city_id = $(this).val();
-
+               var key = 2;
                url = url+"getDistricts";
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id }
+                  data: { id: city_id, key: key }
                 })
                   .success(function( html ) {
                     if (html != 0)
                     {
-                    	$("#districtContainer").html(html);
-                    	$('#searchHome_district').selectpicker();
+                        $("#districtContainer_1").html(html);
+                        $('#search_district_1').selectpicker();
                     }
                     else
                     {
-                        $("#searchHome_district").hide();
-                        $("[data-id='searchHome_district']").hide();
+                        $("#districtContainer").hide();
+                        $("[data-id='search_district_1']").hide();
                     }
                   });
+              }
            });
+
+           $('#search_city_2').change(function() {
+            if ($(this).val() !=0){
+               var url = $("#url").val();
+               var city_id = $(this).val();
+               var key = 3;
+               url = url+"getDistricts";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: city_id, key: key }
+                })
+                  .success(function( html ) {
+                    if (html != 0)
+                    {
+                        $("#districtContainer_2").html(html);
+                        $('#search_district_2').selectpicker();
+                    }
+                    else
+                    {
+                        $("#districtContainer_2").hide();
+                        $("[data-id='search_district_2']").hide();
+                    }
+                  });
+              }
+           });
+
+           $('#search_city_3').change(function() {
+            if ($(this).val() !=0){
+               var url = $("#url").val();
+               var city_id = $(this).val();
+               var key = 4;
+               url = url+"getDistricts";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: city_id, key: key }
+                })
+                  .success(function( html ) {
+                    if (html != 0)
+                    {
+                        $("#districtContainer_3").html(html);
+                        $('#search_district_3').selectpicker();
+                    }
+                    else
+                    {
+                        $("#districtContainer_3").hide();
+                        $("[data-id='search_district_3']").hide();
+                    }
+                  });
+              }
+           });
+
+           $('#propertyAlert_city').change(function() {
+            if ($(this).val() !=0){
+               var url = $("#url").val();
+               var city_id = $(this).val();
+               var key = 5;
+               url = url+"getDistricts";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: city_id, key: key }
+                })
+                  .success(function( html ) {
+                    if (html != 0)
+                    {
+                        $("#districtContainer_4").html(html);
+                        $('#propertyAlert_district').selectpicker();
+                    }
+                    else
+                    {
+                        $("#districtContainer_4").hide();
+                        $("[data-id='propertyAlert_district']").hide();
+                    }
+                  });
+            }
+               
+           });
+           
 
         });
 
@@ -102,7 +209,7 @@ $(document).ready(function ()
 
 function search_validation ()
 {
-        return true;
+        // return true;
 }
 
 function formValidation()
@@ -131,6 +238,7 @@ function formValidation()
         $("#passwordAlert").hide();
     }
 }
+
 
 function toggleVisibility()
 {

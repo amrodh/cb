@@ -77,7 +77,7 @@
                         <div class="row">
                                  <div class="form-group login_form">
                                     <label style="width:100%" for="username" class="shareproperty_titles">Username:</label>
-                                    <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="Please enter username" required>
+                                    <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="Please enter username" autofocus required>
                                  </div>
                         </div>
                         <div class="row">
