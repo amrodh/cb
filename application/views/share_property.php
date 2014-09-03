@@ -92,18 +92,6 @@
                             <div id="shareProperty_districtContainer">
                              
                             </div>
-                            <!-- <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
-                                <div class="shareproperty_titles title_margin" id="search_title_district">
-                                    District
-                                </div>
-                                <select class="selectpicker" data-style="btn" id="shareProperty_district" data-title="Select District" name="district" disabled>
-                                     <option>Select District</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Nasr City'){ ?>selected="true" <?php }} ?> value="Nasr City">Nasr City</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Heliopolis'){ ?>selected="true" <?php }} ?> value="Helipolis">Heliopolis</option>
-                                </select>
-                            </div> -->
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
                                     Address

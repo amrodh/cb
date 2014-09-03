@@ -252,41 +252,42 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('user');
 		$this->load->model('property');
+		$this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 
-
-		// printme($data['user']->id);
 		
 		if (isset($_POST['submit'])){
-
-
 			$data['params'] = $_POST;
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
-				$data['areaError'] = 'Please select area';
+				$data['insertError'] = 'Please select area';
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
-				$data['typeError'] = 'Please select type';
+				$data['insertError'] = 'Please select type';
 			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
-				$data['priceError'] = 'Please select price';
+				$data['insertError'] = 'Please select price';
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
-				$data['cityError'] = 'Please select city';
+				$data['insertError'] = 'Please select city';
 			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-				$data['districtError'] = 'Please select district';
+				$data['insertError'] = 'Please select district';
 			}elseif (empty($_POST['address'])) {
-				$data['addressError'] = 'Please enter property address';
+				$data['insertError'] = 'Please enter property address';
 			}elseif (empty($_POST['features'])) {
-				$data['featuresError'] = 'Please enter property features';
+				$data['insertError'] = 'Please enter property features';
 			}else{
 				
+				$city = $this->service->getCityByID($_POST['city']);
+				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+
+				// printme($district);exit();
+
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
 					'type' => $_POST['type'],
 					'price' => $_POST['price'],
-					'district' => $_POST['district'],
+					'district' => $district,
 					'features' => $_POST['features'],
 					'address' => $_POST['address'],
-					'city' => $_POST['city']);
-				// printme ($params);
+					'city' => $city);
 				if ($this->property->insertProperty($params))
 				{
 					if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
@@ -320,7 +321,7 @@ class Home extends CI_Controller {
 						}
 						$data['insertProcess'] = true;
 				}else{
-					$data['insertPropertyError'] = "Error Inserting Property Data";
+					$data['insertError'] = "Error Inserting Property Data";
 				}
 				
 			}
