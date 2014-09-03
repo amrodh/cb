@@ -140,7 +140,7 @@ class Admin extends CI_Controller {
 	public function vacancies()
 	{
 		$data = array();
-		$data['vacancies'] = $this->vacancy->getVacancies();
+		$data['vacancies'] = $this->vacancy->getAllVacancies();
 		$this->load->view('admin/vacancies', $data);
 	}
 

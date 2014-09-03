@@ -31,6 +31,22 @@ class Vacancy extends CI_Model {
     }
 
 
+    function getAllVacancies()
+    {
+
+      $q = $this
+              ->db
+              ->get('vacancy');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+
+    }
+
+
     function getVacancyByName($name)
     {
 
