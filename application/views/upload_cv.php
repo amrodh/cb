@@ -39,12 +39,19 @@
                             </div>
                         </div>
                         <?php if (isset($uploadError)) :?>
-                    <div class="row" style="width: 55%;margin: auto;margin-left:36%;">
-                        <div class="alert alert-danger" role="alert">
-                            <?=$uploadError; ?> 
+                        <div class="row" style="width: 55%;margin: auto;margin-left:36%;">
+                            <div class="alert alert-danger" role="alert">
+                                <?=$uploadError; ?> 
+                            </div>
                         </div>
-                    </div>
-                    <?php endif ?>
+                        <?php endif ?>
+                        <?php if (isset($uploadSuccess)) :?>
+                        <div class="row" style="width: 55%;margin: auto;margin-left:36%;">
+                            <div class="alert alert-success" role="alert">
+                                <?=$uploadSuccess; ?> 
+                            </div>
+                        </div>
+                        <?php endif ?>
                         <div class="">
                             <input type="submit" class="btn btn-default search_btn_submit" name="submit" value="Submit">
                         </div>

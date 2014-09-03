@@ -385,12 +385,17 @@ class Home extends CI_Controller {
 
 
 
+
 		if(isset($_POST['submit']))
 		{
-			$data['params'] = $_POST;
-			
-			if (!isset($data['loggedIn']))
-			{
+
+			if (isset($data['loggedIn'])){
+				$firstname = $data['user']->first_name;
+				$lastname = $data['user']->last_name;
+				$email = $data['user']->email;
+				$id = $data['user']->id;
+			}
+			else{
 				if (empty($_POST['uploadcv_app_firstname'])){
 					$data['uploadError'] = 'Please insert first name';
 				}elseif (empty($_POST['uploadcv_app_lastname'])) {
@@ -400,26 +405,35 @@ class Home extends CI_Controller {
 				}elseif (!isset($_FILES)){
 					$data['uploadError'] = 'Please choose file to be uploaded';
 				}else{
-
-					$filename = explode('.', $_FILES['userfile']['name'])[0];
-					$ext = explode('.', $_FILES['userfile']['name'])[1];
-					$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
-					$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
-					$this->config->set_item('allowed_types','pdf|doc|docx');
+					$firstname = $_POST['uploadcv_app_firstname'];
+					$lastname = $_POST['uploadcv_app_lastname'];
+					$id = $_POST['uploadcv_app_email'];
+					$data['params'] = $_POST;
+				}
+			}
+			
+			$filename = explode('.', $_FILES['userfile']['name'])[0];
+			$ext = explode('.', $_FILES['userfile']['name'])[1];
+			$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
+			$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
+			$this->config->set_item('allowed_types','pdf|doc|docx');
+			
+			if(isset(uploadme($this)['upload_data'])){
+				$params = array('user_identifier' => $id,
+				'first_name' => $firstname,
+				'last_name' => $lastname,
+				'vacancy_id' => $vacancy_id,
+				'cv' => $_FILES['userfile']['name']
+				);
+				if ($this->vacancy->insertEnrollment($params))
+				{
+					$data['uploadSuccess'] = 'CV uploaded successfully';
 				}
 			}else{
-				$firstname = $data['user']->first_name;
-				$lastname = $data['user']->last_name;
-				$email = $data['user']->email;
-				if (!isset($_FILES)){
-					$data['uploadError'] = 'Please choose file to be uploaded';
-				}else{
-					$this->config->set_item('upload_path',base_url().'application/static/upload/careers');
-					$this->config->set_item('allowed_types','pdf|doc|docx');
-					
-				}
-				
+				$data['uploadError'] = uploadme($this)['error'];
 			}
+
+			
 			
 		}
 
