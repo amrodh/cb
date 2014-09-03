@@ -400,16 +400,12 @@ class Home extends CI_Controller {
 				}elseif (!isset($_FILES)){
 					$data['uploadError'] = 'Please choose file to be uploaded';
 				}else{
-					// printme($_FILES);
-					
+
 					$filename = explode('.', $_FILES['userfile']['name'])[0];
 					$ext = explode('.', $_FILES['userfile']['name'])[1];
-					
-					$_FILES['userfile']['name'] = $filename.'_'.time().$ext;
-					// printme($_FILES);exit();
-					$this->config->set_item('upload_path',base_url().'application/static/upload/careers');
+					$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
+					$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
 					$this->config->set_item('allowed_types','pdf|doc|docx');
-					printme(uploadme($this));
 				}
 			}else{
 				$firstname = $data['user']->first_name;
