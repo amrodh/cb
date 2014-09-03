@@ -22,6 +22,19 @@ class service extends CI_Model {
          return $data;
     }
 
+
+    function getCityByID($cityID)
+    {
+        $inputs = array('CountryFK' => 73);
+        $result = $this->client->GetCities($inputs);
+        $data = array();
+        foreach ($result->GetCitiesResult->City as $city) {
+            if($cityID == $city->CityPk)
+                return $city->CityName;
+        }
+         return false;
+    }
+
     function getDistricts($cityID)
     {
         $inputs = array('cityId' => $cityID);
@@ -34,8 +47,21 @@ class service extends CI_Model {
             return $data;
         }
         else 
-            return 0;
-         
+            return 0; 
+    }
+
+    function getDistrictByID($cityID,$districtID)
+    {
+        $inputs = array('cityId' => $cityID);
+        $result = $this->client->GetDistrictList($inputs);
+        $data = array();
+        if(is_array($result->GetDistrictListResult->DistrictItem)){
+            foreach ($result->GetDistrictListResult->DistrictItem as $district) {
+                if($districtID == $district->DistrictId )
+                    return $district->DistrictName;
+            }
+        }
+            return false;
     }
     
 
