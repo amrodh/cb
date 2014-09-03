@@ -18,12 +18,12 @@
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                City
                            </div>
-                            <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
+                           <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                 <?php endforeach ?>
-                            </select>
+                           </select>
                        </div>
                        <div id="districtContainer_1">
                          

@@ -255,6 +255,7 @@ class Home extends CI_Controller {
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 
+
 		// printme($data['user']->id);
 		
 		if (isset($_POST['submit'])){
@@ -469,6 +470,8 @@ class Home extends CI_Controller {
 			$this->load->model('user');
 			$data['loggedIn'] = true;
 			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			$this->load->model('service');
+			$data['cities'] = $this->service->getCities();
 			if ($this->user->is_subscribed($data['user']->id))
 			{
 				$data['is_subscribed'] = true;
