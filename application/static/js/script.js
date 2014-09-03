@@ -201,6 +201,33 @@ $(document).ready(function ()
             }
                
            });
+
+           $('#shareProperty_city').change(function() {
+            if ($(this).val() !=0){
+               var url = $("#url").val();
+               var city_id = $(this).val();
+               var key = 6;
+               url = url+"getDistricts";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { id: city_id, key: key }
+                })
+                  .success(function( html ) {
+                    if (html != 0)
+                    {
+                        $("#shareProperty_districtContainer").html(html);
+                        $('#shareProperty_district').selectpicker();
+                    }
+                    else
+                    {
+                        $("#shareProperty_districtContainer").hide();
+                        $("[data-id='shareProperty_district']").hide();
+                    }
+                  });
+            }
+               
+           });
            
 
         });

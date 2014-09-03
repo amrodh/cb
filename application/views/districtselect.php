@@ -45,17 +45,31 @@
 		           </select>
        			</div>
        		<?php else: ?>
-       			<div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
-                   <div class="property_alert_col_title title_margin" id="property_alert_title_district">
-                       District
-                   </div>
-                   <select class="selectpicker" id="propertyAlert_district" name="alert_district" data-style="btn" data-title="Select District" data-size="5">
-		                <option>Select District</option>
-		                <?php foreach ($districts as $item): ?>
-						<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
-						<?php endforeach ?>
-		           </select>
-                </div>
+       			<?php if ($key == 5): ?>
+       				<div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
+	                   <div class="property_alert_col_title title_margin" id="property_alert_title_district">
+	                       District
+	                   </div>
+	                   <select class="selectpicker" id="propertyAlert_district" name="alert_district" data-style="btn" data-title="Select District" data-size="5">
+			                <option>Select District</option>
+			                <?php foreach ($districts as $item): ?>
+							<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
+							<?php endforeach ?>
+			           </select>
+	                </div>
+            <?php else: ?>
+            		<div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
+                        <div class="shareproperty_titles title_margin" id="search_title_district">
+                            District
+                        </div>
+                        <select class="selectpicker" data-style="btn" id="shareProperty_district" data-title="Select District" name="district" data-size="5">
+                             <option>Select District</option>
+                             <?php foreach ($districts as $item): ?>
+							<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
+							<?php endforeach ?>
+                        </select>
+                    </div>
+       			<?php endif ?>
        		<?php endif ?>
        	<?php endif ?>	
 	<?php endif ?>

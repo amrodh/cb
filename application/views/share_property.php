@@ -79,28 +79,18 @@
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
                                     City
                                 </div>
-                                <select class="selectpicker" data-style="btn" data-title="Select City" name="city">
+                                <select class="selectpicker" data-style="btn" data-title="Select City" id="shareProperty_city" name="city" data-size="5">
                                      <option value="0">Select City</option>
-                                     <option <?php if (isset($params)){ if($params['city'] == 'Cairo'){ ?>selected="true" <?php }} ?> value="Cairo">Cairo</option>
-                                     <option <?php if (isset($params)){ if($params['city'] == 'Giza'){ ?>selected="true" <?php }} ?> value="Giza">Giza</option>
-                                     <option <?php if (isset($params)){ if($params['city'] == 'Alexandria'){ ?>selected="true" <?php }} ?> value="Alexandria">Alexandria</option>
-                                     <option <?php if (isset($params)){ if($params['city'] == 'Tanta'){ ?>selected="true" <?php }} ?> value="Tanta">Tanta</option>
+                                    <?php foreach ($cities as $city): ?>
+                                        <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php endforeach ?>
                                 </select>
 
                             </div>
                         </div>
                         <div class="row" style="margin-top: 20px;">
-                            <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
-                                <div class="shareproperty_titles title_margin" id="search_title_district">
-                                    District
-                                </div>
-                                <select class="selectpicker" data-style="btn" id="district" data-title="Select District" name="district" disabled>
-                                     <option>Select District</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Mohandeseen'){ ?>selected="true" <?php }} ?> value="Mohandeseen">Mohandeseen</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Maadi'){ ?>selected="true" <?php }} ?> value="Maadi">Maadi</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Nasr City'){ ?>selected="true" <?php }} ?> value="Nasr City">Nasr City</option>
-                                     <option <?php if (isset($params)){ if($params['district'] == 'Heliopolis'){ ?>selected="true" <?php }} ?> value="Helipolis">Heliopolis</option>
-                                </select>
+                            <div id="shareProperty_districtContainer">
+                             
                             </div>
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
