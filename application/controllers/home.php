@@ -261,6 +261,7 @@ class Home extends CI_Controller {
 
 
 			$data['params'] = $_POST;
+			
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['areaError'] = 'Please select area';
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
@@ -276,7 +277,6 @@ class Home extends CI_Controller {
 			}elseif (empty($_POST['features'])) {
 				$data['featuresError'] = 'Please enter property features';
 			}else{
-				
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
 					'type' => $_POST['type'],
