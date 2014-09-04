@@ -54,7 +54,7 @@
                     <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a>
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal">Login</a> / <a href="<?= base_url();?>register">Register</a>
+                    <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a> / <a href="<?= base_url();?>register">Register</a>
                 <?php endif ?>
                 
             </div>

@@ -1,8 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
+$appended_lang = "(?:[a-zA-Z]{2}/?)?"; 
+$prepended_lang = "(?:[a-zA-Z]{2}/)?"; 
 
 $route['default_controller'] = "home";
+$route["$appended_lang"] = "home";
 $route['404_override'] = '';
 
 $route['admin'] = 'admin';

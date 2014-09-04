@@ -144,6 +144,8 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/vacancies', $data);
 	}
 
+	
+
 	public function showVacancy()
 	{
 		$id = $this->uri->uri_string;
