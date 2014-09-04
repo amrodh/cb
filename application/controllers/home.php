@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
 
-		$this->load->view('home',$data);
+		$this->load->view('arabic/home',$data);
 	}
 
 	public function authenticate()

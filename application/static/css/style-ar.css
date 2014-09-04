@@ -345,7 +345,10 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     padding-top: 7px;
     margin-right: 850px;
 }
+.tab-content>.active{
+    height:auto;
 
+}
 #search2_title{
     color: #f26522;
     text-align: center;
