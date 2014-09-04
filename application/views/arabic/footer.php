@@ -2,7 +2,7 @@
         <div class="container" id="footer_div">
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
-                    <a href="http://newhomes.com.eg/"><img style="width:112px;" src="http://localhost/ColdwellBanker/img/logo_newhomes.jpg"/></a>
+                    <a href="http://newhomes.com.eg/"><img style="width:112px;" src="<?= base_url();?>/application/static/images/logo_newhomes.jpg"/></a>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <div class="footer_col_title">
