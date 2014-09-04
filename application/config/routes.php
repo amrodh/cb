@@ -19,15 +19,15 @@ $route['admin/vacancies'] = 'admin/vacancies';
 $route['admin/auctions/(:any)'] = 'admin/showAuction';
 $route['admin/vacancies/download/(:any)'] = 'admin/downloadcv';
 $route['admin/vacancies/(:any)'] = 'admin/showVacancy';
-
-$route['authenticate'] = 'home/authenticate';
-$route['home/logout'] = 'home/logout';
-
 $route['admin/users/new'] = 'admin/createUser';
-
 $route['admin/checkpasswordchange.php'] = 'admin/checkpasswordchange';
 $route['admin/users/(:any)'] = "admin/userProfile";
 
+
+
+
+$route['authenticate'] = 'home/authenticate';
+$route['home/logout'] = 'home/logout';
 $route['validate/(:any)'] = "home/validateToken";
 $route['subscribeuser'] = 'home/subscribeuser';
 $route['insertPropertyAlert'] = "home/insertPropertyAlert";

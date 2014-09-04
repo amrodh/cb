@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
 
-		$this->load->view('arabic/home',$data);
+		$this->load->view($data['languagePath'].'home',$data);
 	}
 
 	public function authenticate()
@@ -486,7 +486,13 @@ class Home extends CI_Controller {
 		}
 
 		$data['language'] = $this->uri->segment(1);
+		if($data['language'] == 'ar')
+			$data['languagePath'] = 'arabic/';
+		else
+			$data['languagePath'] = '';
+
 		$this->loadLanguage($data['language']);
+
 		return $data;
 
 		
@@ -496,10 +502,10 @@ class Home extends CI_Controller {
 	public function loadLanguage($lang)
 	{	
 
-		if($lang == 'en')
-			$lang = 'english';
-		else
+		if($lang == 'ar')
 			$lang = 'arabic';
+		else
+			$lang = 'english';
 
 		$this->lang->load('home', $lang);
 	}
