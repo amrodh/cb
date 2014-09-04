@@ -14,9 +14,7 @@ class Home extends CI_Controller {
 			$data['loginErrorType'] = $this->session->flashdata('loginErrorType');
 		}
 
-		//if(isset($this->session->userdata['id'])){
 			$data = $this->init();
-		//}
 
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
