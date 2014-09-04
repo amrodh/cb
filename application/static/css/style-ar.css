@@ -206,9 +206,28 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     border: none!important;
 }
 
-.bxslider > li >img{
+.bxslider > li>a >img{
     height: 455px;
     width: 100%;
+}
+
+.slider_imgs{
+    position: absolute;
+}
+
+.slider_components{
+    position: relative;
+    font-size: 35px;
+    color: white;
+    margin-top: 15%;
+    margin-left: 6%;
+    text-align: right;
+    padding-right: 7%;
+}
+
+.slider_logo{
+    position: relative;
+    margin-right: 7%;
 }
 
 #footer_div{
@@ -337,14 +356,13 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 
 .search_body2{
     /* border: 1px solid red; */
-height: 447px;
+height: 455px;
 width: 326px;
 /* float: left; */
 background-color: rgba(30, 66, 112, 0.8);
 padding: 30px 20px;
 padding-top: 7px;
 margin-right: 850px;
-margin-top: 23%;
 }
 .tab-content>.active{
     height:auto;

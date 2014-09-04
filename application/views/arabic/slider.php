@@ -7,8 +7,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li>
           <li dir="rtl">
@@ -17,8 +17,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li>
           <li dir="rtl">
@@ -27,8 +27,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li>
           <li dir="rtl">
@@ -37,8 +37,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li dir="rtl">
           <li dir="rtl">
@@ -47,8 +47,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li>
           <li dir="rtl">
@@ -57,8 +57,8 @@
                   <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p>منزل أحلامك الأن بنصف السعر</p>
+                  <p>إحجز الأن</p>
               </div>
           </li>
       </ul>

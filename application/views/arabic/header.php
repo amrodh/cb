@@ -21,10 +21,6 @@
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
 
-        <!-- Custom CSS -->
-        <link href="<?php echo base_url(); ?>application/static/css/sb-admin.css" rel="stylesheet">
-    
-
         <!-- Morris Charts CSS -->
         <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet">
 
@@ -191,34 +187,32 @@
         </div>
         <!--<script src="<?= base_url();?>/application/static/js/jquery-1.11.0.min.js"></script>
         <script src="<?= base_url();?>/application/static/js/bootstrap-ar.min.js"></script>
-        <script src="<?= base_url();?>/application/static/js/bootstrap-select.min.js"></script>
-        <script type="text/javascript" src="<?= base_url();?>/application/static/js/jquery.bxslider.min.js"></script>-->
+        <script src="<?= base_url();?>/application/static/js/bootstrap-select.min.js"></script>-->
+        <script type="text/javascript" src="<?= base_url();?>/application/static/js/jquery.bxslider.min.js"></script>
         
-<!--         <script>
-//             $(document).ready(function() {
-//                 $('.bxslider').bxSlider({
-//                     auto:true
-//                 });
-//             });
+         <script>
+            $(document).ready(function() {
+                $('.bxslider').bxSlider({
+                    auto:true
+                });
+            });
             
-//             var navHeight = $('.navbar-collapse').height();
-//             $('.navbar-collapse').on('show.bs.collapse', function(){
-//                 if($(this).height() != 0)
-//                 {
-//                     navHeight = $(this).height();
-//                 }
-//                 $('#middle_div').animate({
-//                     'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
-//                    }, 300);
-//             });
+            var navHeight = $('.navbar-collapse').height();
+            $('.navbar-collapse').on('show.bs.collapse', function(){
+                if($(this).height() != 0)
+                {
+                    navHeight = $(this).height();
+                }
+                $('#middle_div').animate({
+                    'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
+                   }, 300);
+            });
             
-//             $('.navbar-collapse').on('hide.bs.collapse', function(){
-//                 navHeight = $(this).height();
-//                 $('#middle_div').animate({
-//                   'margin-bottom': '23px'
-//                  }, 300);
-//               });
+            $('.navbar-collapse').on('hide.bs.collapse', function(){
+                navHeight = $(this).height();
+                $('#middle_div').animate({
+                  'margin-bottom': '23px'
+                 }, 300);
+              });
             
-//         </script>
-//     </body>
-// </html>-->
+         </script>
