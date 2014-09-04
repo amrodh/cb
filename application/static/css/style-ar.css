@@ -336,16 +336,20 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 .search_body2{
-    /*border: 1px solid red;*/
-    height: 455px;
-    width: 326px;
-    /*float: left;*/
-    background-color: rgba(30, 66, 112, 0.8);
-    padding: 30px 20px;
-    padding-top: 7px;
-    margin-right: 850px;
+    /* border: 1px solid red; */
+height: 447px;
+width: 326px;
+/* float: left; */
+background-color: rgba(30, 66, 112, 0.8);
+padding: 30px 20px;
+padding-top: 7px;
+margin-right: 850px;
+margin-top: 23%;
 }
+.tab-content>.active{
+    height:auto;
 
+}
 #search2_title{
     color: #f26522;
     text-align: center;

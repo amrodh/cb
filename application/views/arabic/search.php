@@ -2,9 +2,9 @@
     <form id="search_form">
         <div id="search_header">
             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-               <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
-               <li><a href="#residentials" data-toggle="tab">RESIDENTIALS</a></li>
-               <li><a href="#commercials" data-toggle="tab">COMMERCIALS</a></li>
+               <li class="active"><a href="#home" data-toggle="tab">الرئيسية</a></li>
+               <li><a href="#residentials" data-toggle="tab">سكني</a></li>
+               <li><a href="#commercials" data-toggle="tab">تجارية</a></li>
             </ul>
         </div>
         <div class="tab-content search_body">
@@ -13,9 +13,9 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               المدينة
                            </div>
-                           <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
+                            <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
@@ -26,36 +26,45 @@
                          
                        </div>
                        <!-- <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
-                           
+                           <div class="search_box_col_title title_margin" id="search_title_district">
+                               المنطقة
+                           </div>
+                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                                <option>إختار المنطقة</option>
+                                <option>المهندسين</option>
+                                <option>المعادي</option>
+                                <option>مدينة نصر</option>
+                                <option>مصر الجديدة</option>
+                           </select>
                        </div> -->
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                               نوع العقد
                            </div>
-                           <select class="selectpicker" id="search_type_1" name="type_1" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                    </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                        بحث مفصل <span class="caret"></span>
                     </div>
-                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               السعر
                            </div>
-                           <select class="selectpicker" id="search_price_1" name="price_1" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار السعر</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
@@ -66,10 +75,10 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               المساحة
                            </div>
-                           <select class="selectpicker" id="search_area_1" name="area_1" data-style="btn" data-title="Select Area">
-                                <option>Select Area</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار المساحة</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
                                 <option>130 - 150 m<sup>2</sup></option>
@@ -81,9 +90,9 @@
                            </select>
                        </div>
                    </div>
-                   <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
+                   <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
                        </div>
                    </div>
                 </div>
@@ -93,9 +102,23 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               المدينة
                            </div>
-                            <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
+                            <select class="selectpicker" data-style="btn" data-title="Select City">
+                                <option>إختار المدينة</option>
+                                <option>القاهرة</option>
+                                <option>الجيزة</option>
+                                <option>الاسكندرية</option>
+                                <option>طنطا</option>
+                                <option>المحلة</option>
+                                <option>قنا</option>
+                            </select>
+                       </div>
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                           <div class="search_box_col_title title_margin" id="search_title_district">
+                               المنطقة
+                           </div>
+                           <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
@@ -106,51 +129,48 @@
                          
                        </div>
                        <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           
+                           <div class="search_box_col_title title_margin">
+                               نوع العقد
+                           </div>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
+                           </select>
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                              نوع الملكية
                            </div>
-                           <select class="selectpicker" id="search_type_2" name="type_2" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
-                           </select>
-                       </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           <div class="search_box_col_title title_margin">
-                               Property Type
-                           </div>
-                           <select class="selectpicker" id="search_propertyType_2" name="propertyType_2" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                    </div>
                     
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                        بحث مفصل  <span class="caret"></span>
                     </div>
-                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               السعر
                            </div>
-                           <select class="selectpicker" id="search_price_2" name="price_2" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار السعر</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
@@ -161,10 +181,10 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               المساحة
                            </div>
-                           <select class="selectpicker" id="search_area_2" name="area_2" data-style="btn" data-title="Select Price">
-                                <option>Select Area</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار المساحة</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
                                 <option>130 - 150 m<sup>2</sup></option>
@@ -176,9 +196,9 @@
                            </select>
                        </div>
                    </div>
-                   <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
+                   <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" onclick="redirect();">Search</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
                        </div>
                    </div>
                 </div>
@@ -188,7 +208,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               المدينة
                            </div>
                             <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -201,51 +221,60 @@
                          
                        </div>
                        <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                          
+                           <div class="search_box_col_title title_margin" id="search_title_district">
+                               المنطقة
+                           </div>
+                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                                <option>إختار المنطقة</option>
+                                <option>المهندسين</option>
+                                <option>المعادي</option>
+                                <option>مدينة نصر</option>
+                                <option>مصر الجديدة</option>
+                           </select>
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                               نوع العقد
                            </div>
-                           <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Property Type
+                              نوع الملكية
                            </div>
-                           <select class="selectpicker" id="search_propertyType_3" name="propertyType_3" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                    </div>
                     
-                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
+                        بحث مفصل  <span class="caret"></span>
                     </div>
-                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               السعر
                            </div>
-                           <select class="selectpicker" id="search_price_3" name="price_3" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار السعر</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
@@ -256,10 +285,10 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               المساحة
                            </div>
-                           <select class="selectpicker" id="search_area_3" name="area_3" data-style="btn" data-title="Select Price">
-                                <option>Select Area</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار المساحة</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
                                 <option>130 - 150 m<sup>2</sup></option>
@@ -271,9 +300,9 @@
                            </select>
                        </div>
                    </div>
-                   <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
+                   <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
                        </div>
                    </div>
                 </div>

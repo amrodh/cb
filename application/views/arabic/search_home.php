@@ -1,23 +1,21 @@
- <!--<div id="emptydiv" style="float: left;"> </div>-->
-    <div class="container visible-md visible-lg hidden-sm hidden-xs" id="search_home_container" style="">
+  <div class="container hidden-sm hidden-xs" id="search_home_container" style="">
     <form id="search_form">
         <div class="search_body2">
             <div id="home">
                 <div class="container search_components2" style="margin-top: 54px;">
                     <div class="row" id="search2_title">
-                        FIND A HOME
+                        العثور على منزل
                     </div>
-                    <input type="hidden" id="url" value="<?= base_url();?>">
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار النوع</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                     </div>
@@ -35,28 +33,39 @@
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="districtContainer">
                        </div>
                    </div>
+                    <!-- <div class="row search_top_row">
+                       <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                           <select class="selectpicker" data-style="btn" data-title="Select District">
+                                <option>إختار المنطقة</option>
+                                <option>المهندسين</option>
+                                <option>المعادي</option>
+                                <option>مدينة نصر</option>
+                                <option>مصر الجديدة</option>
+                           </select>
+                       </div>
+                   </div> -->
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type">
-                                <option>Select Contract Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option>إختار نوع العقد</option> 
+                                <option>شقة</option>
+                                <option>بناء</option>
+                                <option>شقة مفروشة</option>
+                                <option>مكتب</option>
+                                <option>محل</option>
+                                <option>فيلا</option>
                            </select>
                        </div>
                     </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
-                        Advanced Search <span class="caret"></span>
+                        بحث بالتفصيل <span class="caret"></span>
                     </div>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="price" id="searchHome_price" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار السعر</option>
                                 <option>100,000 - 250,000</option>
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
@@ -68,8 +77,8 @@
                     </div>
                     <div class="row search_bottom_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
-                           <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price">
-                                <option>Select Area</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                <option>إختار المساحة</option>
                                 <option>50 - 100 m<sup>2</sup></option>
                                 <option>100 - 130 m<sup>2</sup></option>
                                 <option>130 - 150 m<sup>2</sup></option>
@@ -83,7 +92,7 @@
                    </div>
                    <div class="row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">Search</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
                        </div>
                    </div>
                 </div>
