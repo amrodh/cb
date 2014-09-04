@@ -1,5 +1,4 @@
-<html>
-    <body>
+
         <?php include('header.php'); ?>
         <form role="form" name="applyForm"  method="post" action="<?= base_url();?>uploadCV" enctype="multipart/form-data">
             <div class="container uploadcv_app_div">
@@ -60,5 +59,3 @@
             </div>
         </form>
         <?php include('footer.php'); ?>
-    </body>
-</html>

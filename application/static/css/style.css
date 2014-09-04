@@ -1001,6 +1001,16 @@ li.active>a{
     /*border: 1px solid #f26522;*/
 }
 
+.properties_header_cols > .btn-group{
+    width: 60px!important;
+    margin-top: 10px;
+}
+
+.properties_header_cols2 > .btn-group{
+    width: 160px!important;
+    margin-top: 10px;
+}
+
 .btn > a{
     text-decoration: none;
     color: black;

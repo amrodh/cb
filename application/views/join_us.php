@@ -1,13 +1,11 @@
-<html>
-    <body>
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <div class="container uploadcv_app_div">
             <div class="uploadcv_app_top_div">
                 CURRENT VACANCIES
             </div>
             <div id="joinus_app_bottom_div">
                 <div class="container" id="joinus_app_bottom_inner_div">
-                   <?php $i = 1; ?>
+                    <?php $i = 1; ?>
                     <?php foreach ($vacancies as $vacancy): ?>
                     <div class="joinus_app_common_div">
                             <div class="joinus_app_common_top_div">
@@ -40,5 +38,3 @@
             </div>
         </div>
         <?php include('footer.php'); ?>
-    </body>
-</html>

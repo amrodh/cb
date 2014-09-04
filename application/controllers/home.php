@@ -327,7 +327,7 @@ class Home extends CI_Controller {
 				
 			}
 		}
-		$this->load->view('share_property', $data);
+		$this->load->view($data['languagePath'].'share_property', $data);
 	}
 
 
@@ -355,8 +355,8 @@ class Home extends CI_Controller {
 		$this->load->model('property');
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
-		// printme($data);exit()
-		$this->load->view('view_all_properties',$data);
+		// printme($data['languagePath']);exit();
+		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
 
 	public function propertyDetails ()
@@ -369,7 +369,7 @@ class Home extends CI_Controller {
 	public function careers ()
 	{
 		$data = $this->init();
-		$this->load->view('careers',$data);
+		$this->load->view($data['languagePath'].'careers',$data);
 	}
 
 	public function uploadCV ()
@@ -440,7 +440,7 @@ class Home extends CI_Controller {
 			
 		}
 
-		$this->load->view('upload_cv',$data);
+		$this->load->view($data['languagePath'].'upload_cv',$data);
 	}
 
 	public function joinUs ()
@@ -448,13 +448,13 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('vacancy');
 		$data['vacancies'] = $this->vacancy->getVacancies();
-		$this->load->view('join_us',$data);
+		$this->load->view($data['languagePath'].'join_us',$data);
 	}
 
 	public function marketIndex ()
 	{
 		$data = $this->init();
-		$this->load->view('market_index',$data);
+		$this->load->view($data['languagePath'].'market_index',$data);
 	}
 
 	public function auction ()
@@ -463,7 +463,7 @@ class Home extends CI_Controller {
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();
 		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
-		$this->load->view('auction',$data);
+		$this->load->view($data['languagePath'].'auction',$data);
 	}
 
 	public function init()

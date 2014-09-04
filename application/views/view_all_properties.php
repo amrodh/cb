@@ -1,5 +1,4 @@
-
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <div id="search_div">
             <?php include('search.php'); ?>
         </div>
@@ -13,41 +12,25 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols">
                                         View 
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default" id="properties_limit_dropdown">10</button>
-                                            <button type="button" class="btn btn-default dropdown-toggle" 
-                                               data-toggle="dropdown" style="height: 34px;">
-                                               <span class="caret"></span>
-                                               <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <ul class="dropdown-menu properties_limit_drpdwn" role="menu">
-                                               <li>10</li>
-                                               <li>20</li>
-                                               <li>30</li>
-                                               <li>40</li>
-                                               <li>50</li>
-                                            </ul>
-                                        </div>
+                                        <select class="selectpicker" style="width: 10px;" data-style="btn" data-title="Select Type">
+                                        <option>10</option> 
+                                        <option>20</option>
+                                        <option>30</option>
+                                        <option>40</option>
+                                        <option>50</option>
+                                    </select>
                                         results per page
                                     </div>
-                                    <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols">
+                                    <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols2">
                                         Sort Results By
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default" id="properties_sorting_dropdown">Price High - Low</button>
-                                            <button type="button" class="btn btn-default dropdown-toggle properties_sort_btn"
-                                               data-toggle="dropdown" style="height: 34px;">
-                                               <span class="caret"></span>
-                                               <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <ul class="dropdown-menu properties_sort_drpdwn" role="menu">
-                                               <li>Price High - Low</li>
-                                               <li>Price Low - High</li>
-                                               <li>City A - Z</li>
-                                               <li>City Z - A</li>
-                                               <li>Area High - Low</li>
-                                               <li>Area Low - Low</li>
-                                            </ul>
-                                        </div>
+                                        <select class="selectpicker" style="width: 10px;" data-style="btn" data-title="Select Type">
+                                        <option>Price High - Low</option> 
+                                        <option>Price Low - High</option>
+                                        <option>City A - Z</option>
+                                        <option>City Z - A</option>
+                                        <option>Area High - Low</option>
+                                        <option>Area Low - High</option>
+                                    </select>
                                     </div>
                                 </div>
                             </div>

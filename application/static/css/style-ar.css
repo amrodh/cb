@@ -644,7 +644,7 @@ li.active>a{
     /*margin-bottom: 50px;*/
     position: relative;
     /*padding: 10px;*/
-    background: url('../img/bkgnd_careers.png');
+    background: url('../images/bkgnd_careers.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100%;
@@ -829,7 +829,7 @@ li.active>a{
 .joinus_btn{
     width: 130px;
     text-align: center;
-    margin-top: -75px;
+    /*margin-top: -75px;*/
     margin-bottom: 25px;
     margin-right: 870px;
 }
@@ -895,7 +895,7 @@ li.active>a{
     /*width: 30%;*/
     border: 1px solid #a2a2a2;
     border-radius: 10px;
-    background: url(../img/sample_map.png);
+    background: url(../images/sample_map.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-bottom: 20px;
@@ -1385,7 +1385,7 @@ label{
 #share_img_div{
     /*position: relative;*/
     /*padding: 10px;*/
-    background: url('../img/bkgnd_shareproperty.png');
+    background: url('../images/bkgnd_shareproperty.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100%;

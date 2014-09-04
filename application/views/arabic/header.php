@@ -126,13 +126,13 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="">
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">مجمع سكني</a>
+                                    <a href="<?= base_url().'ar/';?>viewAllProperties">مجمع سكني</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">عقارات مملوكة من قبل</a>
+                                    <a href="<?= base_url().'ar/';?>viewAllProperties">عقارات مملوكة من قبل</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">عقارات للتأجير</a>
+                                    <a href="<?= base_url().'ar/';?>viewAllProperties">عقارات للتأجير</a>
                                 </li>
                             </ul>
                         </li>
@@ -149,7 +149,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a class="header_items_rtl" href="<?= base_url();?>auction">المزادات التجارية</a></li>
+                        <li><a class="header_items_rtl" href="<?= base_url().'ar/';?>auction">المزادات التجارية</a></li>
                         <li><a href="" class="header_items_rtl">مركز التدريب</a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown">الخدمات 
@@ -157,10 +157,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="">
                                 <li>
-                                    <a href="<?= base_url();?>marketIndex">مؤشر السوق</a>
+                                    <a href="<?= base_url().'ar/';?>marketIndex">مؤشر السوق</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>shareProperty">إعلن عن الممتلكات الخاصة بك</a>
+                                    <a href="<?= base_url().'ar/';?>shareProperty">إعلن عن الممتلكات الخاصة بك</a>
                                 </li>
                                 <!-- <li>
                                     <a href="#">FRANCHISE</a>
@@ -177,7 +177,7 @@
                                     <a href="#">المكاتب</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>careers">الوظائف</a>
+                                    <a href="<?= base_url().'ar/';?>careers">الوظائف</a>
                                 </li>
                             </ul>
                         </li>

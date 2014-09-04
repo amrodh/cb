@@ -45,5 +45,17 @@ $route['auction'] = 'home/auction';
 $route['getDistricts'] = 'home/getDistricts';
 
 
+$route["$appended_lang/viewAllProperties"] = "home/viewAllProperties";
+$route["$appended_lang/auction"] = "home/auction";
+$route["$appended_lang/marketIndex"] = "home/marketIndex";
+$route["$appended_lang/shareProperty"] = "home/shareProperty";
+$route["$appended_lang/careers"] = "home/careers";
+$route["$appended_lang/uploadCV"] = "home/uploadCV";
+$route["$appended_lang/upload/(:any)"] = "home/uploadCV";
+$route["$appended_lang/joinUs"] = "home/joinUs";
+
+
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
