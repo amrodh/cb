@@ -14,9 +14,9 @@ class Home extends CI_Controller {
 			$data['loginErrorType'] = $this->session->flashdata('loginErrorType');
 		}
 
-		if(isset($this->session->userdata['id'])){
+		//if(isset($this->session->userdata['id'])){
 			$data = $this->init();
-		}
+		//}
 
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
@@ -467,7 +467,8 @@ class Home extends CI_Controller {
 	}
 
 	public function init()
-	{
+	{	
+		$data = array();
 		if(isset($this->session->userdata['id'])){
 			$this->load->model('user');
 			$data['loggedIn'] = true;
@@ -483,7 +484,24 @@ class Home extends CI_Controller {
 			}
 			return $data;
 		}
+
+		$data['language'] = $this->uri->segment(1);
+		$this->loadLanguage($data['language']);
+		return $data;
+
 		
+	}
+
+
+	public function loadLanguage($lang)
+	{	
+
+		if($lang == 'en')
+			$lang = 'english';
+		else
+			$lang = 'arabic';
+
+		$this->lang->load('home', $lang);
 	}
 
 	public function insertPropertyAlert()
