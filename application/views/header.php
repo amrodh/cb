@@ -48,8 +48,8 @@
                 <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
             </div>
             <div id="login_div">
-                <a href='<?= base_url(); ?>en'>English</a>
-                <a href='<?= base_url(); ?>ar'>Arabic</a>
+                <a href='<?= base_url();?>/application/static/'>English</a>
+                <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>Arabic</a>
                 <?php if (isset($loggedIn)): ?>
                     <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a>
