@@ -7,6 +7,7 @@ class Hooks {
         if(!isset($this->CI->session))  
         $this->CI->load->library('session'); 
     }
+    
     function checkSession()
     {
         
