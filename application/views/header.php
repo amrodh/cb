@@ -47,9 +47,9 @@
             <div id="login_div">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                     <a href='<?= base_url().'en/'.str_replace('en', '', $uri)?>'>English</a>
+                     <a href='<?= base_url().'en/'.str_replace('en/', '', $uri)?>'>English</a>
                     <span>/</span>
-                    <a href='<?= base_url().'ar/'.str_replace('en', '', $uri)?>'>Arabic</a>
+                    <a href='<?= base_url().'ar/'.str_replace('en/', '', $uri)?>'>Arabic</a>
                 </label>
                
                 <?php if (isset($loggedIn)): ?>
