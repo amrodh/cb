@@ -45,9 +45,9 @@
             <div id="login_div">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                     <a href='<?= base_url().'en/'.$this->uri->uri_string?>'>English</a>
+                     <a href='<?= base_url().'en/'.str_replace('ar', '', $uri)?>'>English</a>
                     <span>/</span>
-                    <a href='<?= base_url().'ar/'.$this->uri->uri_string?>'>عربي</a>
+                    <a href='<?= base_url().'ar/'.str_replace('ar', '', $uri)?>'>عربي</a>
                 </label>
                 <?php if (isset($loggedIn)): ?>
                     <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
@@ -65,7 +65,6 @@
                     <!-- <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a> -->
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal"></a> / <a href="<?= base_url();?>register">تسجيل</a>
                     <label for="" style="margin-right:3%;">
                         <span class="glyphicon glyphicon-log-in"></span>
                         <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a>
@@ -128,7 +127,7 @@
             <nav class="navbar" role="navigation">
                 <div class="navbar-header">
                     <div class="navbar-brand">
-                        <a href="<?=base_url(); ?>">
+                        <a href="<?=base_url(); ?>ar">
                             <img class="logo" src="<?= base_url();?>/application/static/images/logo.png">
                         </a>
                     </div>
