@@ -357,11 +357,19 @@ class Home extends CI_Controller {
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
 
+	public function compareProperties ()
+	{
+		$data = $this->init();
+		$this->load->model('property');
+		$this->load->model('service');
+		$this->load->view($data['languagePath'].'compare_properties',$data);
+	}
+
 	public function propertyDetails ()
 	{
 		$data = $this->init();
 		$this->load->model('property');
-		$this->load->view('property_details',$data);
+		$this->load->view($data['languagePath'].'property_details',$data);
 	}
 
 	public function careers ()
