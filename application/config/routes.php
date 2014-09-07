@@ -42,7 +42,7 @@ $route["$appended_lang/register"] = "home/register";
 
 
 $route['profile'] = 'home/profile';
-$route['$appended_lang/profile'] = 'home/profile';
+$route["$appended_lang/profile"] = "home/profile";
 
 
 $route['shareProperty'] = 'home/shareProperty';

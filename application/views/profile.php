@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
                 PERSONAL PROFILE
@@ -120,5 +117,3 @@
             </div>
         </div>
         <?php include('footer.php'); ?>
-    </body>
-</html>
