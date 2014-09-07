@@ -74,73 +74,73 @@
                     <div class="row" style="padding-left: 1.5%;">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="newsletter"> Subscribe for Newsletter
+                                <input type="checkbox" name="newsletter"> إشترك في النشرة الإخبارية
                             </label>
                         </div>
                     </div>
                     <div class="row" style="width: 32%;margin: auto;">
                         <div class="alert alert-danger" id="passwordAlert" role="alert">
-                            Passwords do not match.
+                            كلمات السر ليست مطابقة
                         </div>
                     </div>
                     <?php if (isset($registrationError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Username already exists 
+                            إسم المستخدم موجود بالفعل 
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($firstNameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert first name
+                            رجاءً أدخل الاسم الاول
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($lastNameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert last name
+                            رجاءً أدخل إسم العائلة
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($usernameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert username
+                            رجاءً أدخل إسم المستخدم
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($emailError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert email
+                            رجاءً أدخل البريد الالكتروني
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($locationError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert location
+                            رجاءً أدخل العنوان
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($phoneError)) :?>
                     <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert phone number
+                            رجاءً أدخل رقم الهاتف
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($passwordError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            Please insert password
+                            رجاءً أدخل كلمة السر
                         </div>
                     </div>
                     <?php endif ?>
                     <div class="row" style="width: 13%; float: right; margin-right: 12%;">
-                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="Submit">
+                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="قدم">
                     </div>
                 </div>
             </div>

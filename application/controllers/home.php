@@ -73,7 +73,9 @@ class Home extends CI_Controller {
 	{
 
 		$this->load->model('user');
-		$data = array();
+		$data = $this->init();
+		//printme($data);exit();
+		
 
 		if(isset($_POST['submit'])){
 		
@@ -138,7 +140,7 @@ class Home extends CI_Controller {
 				}
 			}
 		}
-		$this->load->view('register',$data);
+		$this->load->view($data['languagePath'].'register',$data);
 	}
 
 	public function profile()
