@@ -73,7 +73,7 @@
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="<?= base_url().$uri;?>/register">Register</a>
+                         <a href="<?= base_url().$uri;?>register">Register</a>
                      </label>
                       
                 <?php endif ?>
