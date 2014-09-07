@@ -24,7 +24,7 @@
                                 </div>
                                 
                                  <div class="careers_overlay_div_btn joinus_btn">
-                                        <a href="upload/<?= $vacancy->id; ?>">
+                                        <a href="uploadCV/<?= $vacancy->id; ?>">
                                             Apply Now
                                         </a>
                                 </div>

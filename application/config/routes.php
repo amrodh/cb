@@ -31,14 +31,18 @@ $route['home/logout'] = 'home/logout';
 $route['validate/(:any)'] = "home/validateToken";
 $route['subscribeuser'] = 'home/subscribeuser';
 $route['insertPropertyAlert'] = "home/insertPropertyAlert";
+
 $route['register'] = 'home/register';
+$route["$appended_lang/register"] = "home/auction";
+
+
 $route['profile'] = 'home/profile';
 $route['shareProperty'] = 'home/shareProperty';
 $route['viewAllProperties'] = 'home/viewAllProperties';
 $route['propertyDetails'] = 'home/propertyDetails';
 $route['careers'] = 'home/careers';
 $route['uploadCV'] = 'home/uploadCV';
-$route['upload/(:any)'] = 'home/uploadCV';
+$route['uploadCV/(:any)'] = 'home/uploadCV';
 $route['joinUs'] = 'home/joinUs';
 $route['marketIndex'] = 'home/marketIndex';
 $route['auction'] = 'home/auction';
@@ -51,7 +55,7 @@ $route["$appended_lang/marketIndex"] = "home/marketIndex";
 $route["$appended_lang/shareProperty"] = "home/shareProperty";
 $route["$appended_lang/careers"] = "home/careers";
 $route["$appended_lang/uploadCV"] = "home/uploadCV";
-$route["$appended_lang/upload/(:any)"] = "home/uploadCV";
+$route["$appended_lang/uploadCV/(:any)"] = "home/uploadCV";
 $route["$appended_lang/joinUs"] = "home/joinUs";
 
 
