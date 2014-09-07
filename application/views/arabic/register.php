@@ -6,7 +6,7 @@
                     أدخل معلوماتك الشخصية للتسجيل
                 </div>
             </div>
-            <form role="form" name="registerForm"  method="post" action="<?= base_url();?>register" onsubmit="return formValidation(); return false;">
+            <form role="form" name="registerForm"  method="post" action="<?= base_url();?>ar/register" onsubmit="return formValidation(); return false;">
             <div id="properties_bottom_div">
                 <div class="container" id="shareproperty_bottom_inner_div" style="">
                     <div class="row">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="padding-left: 1.5%;">
+                    <div class="row" style="padding-right: 1.5%;">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="newsletter"> إشترك في النشرة الإخبارية
@@ -140,7 +140,7 @@
                     </div>
                     <?php endif ?>
                     <div class="row" style="width: 13%; float: right; margin-right: 12%;">
-                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="قدم">
+                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="سجل">
                     </div>
                 </div>
             </div>
