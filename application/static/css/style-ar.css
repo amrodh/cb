@@ -6,6 +6,14 @@
         Purpose of the stylesheet follows.
 */
 
+.logoutSubmit{
+    background-color: #2f5081;
+    border:none;
+    margin: 0px;
+    padding: 0px;
+}
+
+
 *{
     font-family: 'droidarabickufi_regular';
 }
@@ -96,6 +104,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-right: 15px;
     margin-left: 15px;
     font-size: 11px;
+    width: 25%;
 }
 
 #icons_div{
@@ -104,6 +113,11 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 #login_div>a{
+    color: white;
+    text-decoration: none;
+}
+
+#login_div label a{
     color: white;
     text-decoration: none;
 }
@@ -1420,6 +1434,13 @@ label{
 
 .register_groups{
     margin-top: 20px;
+}
+
+#passwordAlert{
+    display: none;
+    width: 65%;
+font-size: 15px;
+margin-top: 5%
 }
 
 .modal.modal-wide .modal-dialog {

@@ -1,69 +1,89 @@
 <html>
     <head>
-        
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme-ar.css">
+        <title>
+            Coldwell Banker
+        </title>
+        <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme-ar.css"> -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-ar.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
+       <!--  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-ar.min.js"></script>
 
-        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.structure.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.theme.min.css">
+        
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
-        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
 
-        <!-- Morris Charts CSS -->
-        <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet">
-
         <!-- Custom Fonts -->
-        <link href="<?php echo base_url(); ?>application/static/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link type="text/css" href="<?= base_url();?>/application/static/css/style-ar.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
         <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css">
 
-        <title>
-            Coldwell Banker
-        </title>
+       
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     </head>
 
     <body> 
         <div id="top_div">
             <div id="icons_div">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                </a>
             </div>
             <div id="login_div">
-                <a href='<?= base_url();?>'>English</a>
-                <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>عربي</a>
+                <label for="">
+                    <span class="glyphicon glyphicon-globe"></span>
+                     <a href='<?= base_url().'en/'.$this->uri->uri_string?>'>English</a>
+                    <span>/</span>
+                    <a href='<?= base_url().'ar/'.$this->uri->uri_string?>'>عربي</a>
+                </label>
                 <?php if (isset($loggedIn)): ?>
-                    <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
-                    <a href="home/logout">Log Out</a>
+                    <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
+                        <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
+                    </span>
+                    <label style="">
+                        <span class="glyphicon glyphicon-log-out">
+                        </span>
+                        <form action="<?= base_url();?>logout" method="post" style="display:inline;">
+                        <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string; ?>">
+                        <input type="submit" value="خروج" name="logoutSubmit" class="logoutSubmit">
+                        </form>
+                    </label>
+
+                    <!-- <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
+                    <a href="home/logout">Log Out</a> -->
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal">دخول</a> / <a href="<?= base_url();?>register">تسجيل</a>
+                    <label for="" style="margin-right:3%;">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a>
+                    </label>
+                     /
+                     <label for="" style="margin-left:3%;">
+                         <span class="glyphicon glyphicon-plus-sign"></span>
+                         <a href="<?= base_url();?>ar/register">تسجيل</a>
+                     </label>
+                    <!-- <a href="#tallModal" data-toggle="modal">دخول</a> / <a href="<?= base_url();?>register">تسجيل</a> -->
                 <?php endif ?>
-<!--                <a href='http://localhost/ColdwellBanker/index.php/controller_langswitch/switchLanguage/english'>English</a>-->
-                <!-- <a href='http://localhost/ColdwellBanker/'>English</a> -->
-                <!--<a href='http://localhost/ColdwellBanker/index.php/controller_langswitch/switchLanguage/arabic'>Arabic</a>-->
-                <?php // anchor($this->lang->switch_uri('ar'),'Arabic'); ?>
             </div>
         </div>
         <?php if (isset($loginError)): ?>
             <input type="hidden" id="loginError" value="<?= $loginError; ?>">
         <?php endif ?>
-        <form class="form-inline" role="form" action="<?= base_url();?>authenticate">
-            <div id="tallModal" class="modal modal-wide fade">
+        <form class="form-inline" role="form" action="<?= base_url();?>authenticate" method="post">
+            <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string ?>">
+        <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">

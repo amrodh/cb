@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 
 		$this->load->model('user');
 		$data = $this->init();
-		//printme($data);exit();
+		printme($data);exit();
 		
 
 		if(isset($_POST['submit'])){
@@ -134,7 +134,6 @@ class Home extends CI_Controller {
 							$this->user->insertNewsletterData($params);
 						}
 						
-
 						redirect('home');
 					}
 				}
