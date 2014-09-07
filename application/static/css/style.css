@@ -6,6 +6,14 @@
         Purpose of the stylesheet follows.
 */
 
+
+.logoutSubmit{
+    background-color: #2f5081;
+    border:none;
+    margin: 0px;
+    padding: 0px;
+}
+
 *{
     font-family: 'Ubuntu';
 }
@@ -108,6 +116,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-top: 4px;
     margin-right: 15px;
     font-size: 11px;
+    width:20%;
 }
 
 #icons_div{
@@ -118,6 +127,14 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 #login_div>a{
     color: white;
     text-decoration: none;
+}
+
+#login_div label a{
+    color: white;
+    text-decoration: none;
+}
+
+#login_div label a:hover{
 }
 
 .header_navbar > li > a{

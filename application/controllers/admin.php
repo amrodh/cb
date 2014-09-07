@@ -256,6 +256,7 @@ class Admin extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
+		redirect(base_url());
 	}
 
 	public function startSession($user)
