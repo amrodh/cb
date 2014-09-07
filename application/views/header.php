@@ -47,9 +47,9 @@
             <div id="login_div">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                     <a href='<?= base_url().'en/'.$this->uri->uri_string?>'>English</a>
+                     <a href='<?= base_url().'en/'.$uri?>'>English</a>
                     <span>/</span>
-                    <a href='<?= base_url().'ar/'.$this->uri->uri_string?>'>Arabic</a>
+                    <a href='<?= base_url().'ar/'.$uri?>'>Arabic</a>
                 </label>
                
                 <?php if (isset($loggedIn)): ?>
@@ -73,7 +73,7 @@
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="<?= base_url();?>register">Register</a>
+                         <a href="<?= base_url().$uri;?>/register">Register</a>
                      </label>
                       
                 <?php endif ?>
@@ -129,7 +129,7 @@
             <nav class="navbar" role="navigation">
                 <div class="navbar-header">
                     <div class="navbar-brand">
-                        <a href="<?= base_url();?>">
+                        <a href="<?= base_url();?>en">
                             <img class="logo" src="<?= base_url();?>/application/static/images/logo.png">
                         </a>
                     </div>
@@ -171,7 +171,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>auction">AUCTIONS</a></li>
+                        <li><a href="<?= base_url();?>en/auction">AUCTIONS</a></li>
                         <li><a href="">TRAINING CENTER</a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">SERVICES 
