@@ -1,35 +1,24 @@
 <html>
     <head>
         <title>ColdWell Banker</title>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
 
-        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.structure.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.theme.min.css">
+        
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
     
-        <!-- Custom CSS -->
-        <link href="<?php echo base_url(); ?>application/static/css/sb-admin.css" rel="stylesheet">
+       
     
 
-        <!-- Morris Charts CSS -->
-        <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet">
+       
 
-        <!-- Custom Fonts -->
-        <link href="<?php echo base_url(); ?>application/static/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link type="text/css" href="<?= base_url();?>/application/static/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="<?= base_url();?>/application/static/css/style.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
         

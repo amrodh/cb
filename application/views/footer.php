@@ -200,9 +200,7 @@
         </body>
 
 
-      <!--  <script src="<?= base_url();?>application/static/js/jquery-1.11.0.min.js"></script>
-        <script src="<?= base_url();?>application/static/js/bootstrap.min.js"></script>
-        <script src="<?= base_url();?>application/static/js/bootstrap-select.min.js"></script>-->
+      
         <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
         
         <script>

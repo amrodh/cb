@@ -26,7 +26,12 @@ $route['admin/users/(:any)'] = "admin/userProfile";
 
 
 
+
+
+
+
 $route['authenticate'] = 'home/authenticate';
+
 $route['home/logout'] = 'home/logout';
 $route['validate/(:any)'] = "home/validateToken";
 $route['subscribeuser'] = 'home/subscribeuser';
@@ -37,29 +42,47 @@ $route["$appended_lang/register"] = "home/register";
 
 
 $route['profile'] = 'home/profile';
+$route['$appended_lang/profile'] = 'home/profile';
+
+
 $route['shareProperty'] = 'home/shareProperty';
-$route['viewAllProperties'] = 'home/viewAllProperties';
-$route['propertyDetails'] = 'home/propertyDetails';
-$route['careers'] = 'home/careers';
-$route['uploadCV'] = 'home/uploadCV';
-$route['uploadCV/(:any)'] = 'home/uploadCV';
-$route['joinUs'] = 'home/joinUs';
-$route['marketIndex'] = 'home/marketIndex';
-$route['auction'] = 'home/auction';
-$route['getDistricts'] = 'home/getDistricts';
-$route['compareProperties'] = 'home/compareProperties';
-
-
-$route["$appended_lang/viewAllProperties"] = "home/viewAllProperties";
-$route["$appended_lang/auction"] = "home/auction";
-$route["$appended_lang/marketIndex"] = "home/marketIndex";
 $route["$appended_lang/shareProperty"] = "home/shareProperty";
-$route["$appended_lang/careers"] = "home/careers";
-$route["$appended_lang/uploadCV"] = "home/uploadCV";
-$route["$appended_lang/uploadCV/(:any)"] = "home/uploadCV";
-$route["$appended_lang/joinUs"] = "home/joinUs";
+
+
+$route['viewAllProperties'] = 'home/viewAllProperties';
+$route["$appended_lang/viewAllProperties"] = "home/viewAllProperties";
+
+$route['propertyDetails'] = 'home/propertyDetails';
 $route["$appended_lang/propertyDetails"] = "home/propertyDetails";
+
+$route['careers'] = 'home/careers';
+$route["$appended_lang/careers"] = "home/careers";
+
+$route['uploadCV'] = 'home/uploadCV';
+$route["$appended_lang/uploadCV"] = "home/uploadCV";
+
+$route['uploadCV/(:any)'] = 'home/uploadCV';
+$route["$appended_lang/uploadCV/(:any)"] = "home/uploadCV";
+
+$route['joinUs'] = 'home/joinUs';
+$route["$appended_lang/joinUs"] = "home/joinUs";
+
+
+$route['marketIndex'] = 'home/marketIndex';
+$route["$appended_lang/marketIndex"] = "home/marketIndex";
+
+$route['auction'] = 'home/auction';
+$route["$appended_lang/auction"] = "home/auction";
+
+
+$route['compareProperties'] = 'home/compareProperties';
 $route["$appended_lang/compareProperties"] = "home/compareProperties";
+
+$route['getDistricts'] = 'home/getDistricts';
+
+
+
+
 
 
 
