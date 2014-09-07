@@ -522,7 +522,7 @@ class Home extends CI_Controller {
 			if(isset($data['uri'][1]))
 				$data['uri'] = $data['uri'][1];
 			else
-				$data['uri'] = '';
+				$data['uri'] = $data['uri'][0];
 
 		}else{
 			$data['uri'] = $this->uri->uri_string;
