@@ -240,10 +240,10 @@
                     </div>
                 </div>
                 <div id="properties_compare_div">
-                    <button type="submit" class="btn btn-default properties_contact_btn" onclick="redirect('en');">Compare</button>
-<!--                    <a href="http://localhost/ColdwellBanker/index.php/controller_property/compare_properties" class="properties_contact_btn">
+                    <!-- <button type="submit" class="btn btn-default properties_contact_btn" onclick="redirect('en');">Compare</button> -->
+                    <a href="<?=base_url(); ?>compareProperties" class="properties_contact_btn">
                         Compare
-                    </a>-->
+                    </a>
                 </div>
             </form>
         </div>
