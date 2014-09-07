@@ -31,19 +31,51 @@
     <body> 
         <div id="top_div">
             <div id="icons_div">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
-                <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+                </a>
+                <a href="">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                </a>
             </div>
             <div id="login_div">
-                <a href='<?= base_url();?>/application/static/'>English</a>
-                <a href='<?= base_url();?>/application/static/index.php/controller_home/viewhome'>Arabic</a>
+                <label for="">
+                    <span class="glyphicon glyphicon-globe"></span>
+                     <a href='<?= base_url().'en/'.$this->uri->uri_string?>'>English</a>
+                    <span>/</span>
+                    <a href='<?= base_url().'ar/'.$this->uri->uri_string?>'>Arabic</a>
+                </label>
+               
                 <?php if (isset($loggedIn)): ?>
-                    <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
-                    <a href="home/logout">Log Out</a>
+                    <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
+                        <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
+                    </span>
+                    <label style="margin-left:4%;">
+                        <span class="glyphicon glyphicon-log-out">
+                        </span>
+                        <form action="<?= base_url();?>logout" method="post" style="display:inline;">
+                        <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string; ?>">
+                        <input type="submit" value="Log Out" name="logoutSubmit" class="logoutSubmit">
+                        </form>
+                    </label>
+                    
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a> / <a href="<?= base_url();?>register">Register</a>
+                    <label for="" style="margin-left:3%;">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a>
+                    </label>
+                     /
+                     <label for="" style="margin-left:3%;">
+                         <span class="glyphicon glyphicon-plus-sign"></span>
+                         <a href="<?= base_url();?>register">Register</a>
+                     </label>
+                      
                 <?php endif ?>
                 
             </div>
@@ -52,6 +84,7 @@
             <input type="hidden" id="loginError" value="<?= $loginError; ?>">
         <?php endif ?>
         <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate">
+        <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string ?>">
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">

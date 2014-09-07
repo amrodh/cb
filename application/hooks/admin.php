@@ -11,14 +11,16 @@ class Hooks {
     function checkSession()
     {
         
-        $url = explode("/", $_SERVER['REQUEST_URI']);
-         if(count($url) <= 3)
-            return;
+        // $url = explode("/", $_SERVER['REQUEST_URI']);
+        // //printme($url);exit();
+        //  if(count($url) <= 2)
+        //     return;
 
-        $userdata = $this->CI->session->userdata;
-        if(count($userdata) == 0){
-            redirect($url[2]);
-        }
+        // $userdata = $this->CI->session->userdata;
+        // if(count($userdata) == 0){
+        //     //printme($url);exit();
+        //     redirect($url[1]);
+        // }
     }
 
 

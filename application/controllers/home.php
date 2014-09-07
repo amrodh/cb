@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
-
+		// printme($data);exit();
 		$this->load->view($data['languagePath'].'home',$data);
 	}
 
@@ -27,26 +27,31 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
+		$currentUrl = $_POST['currentUrl'];
 		$user = $this->user->getUserByUsername($username);
 		if($user){
 			$login = $this->user->login($user->username,$password);
 			if($login){
 				$this->startSession($user);
-				redirect('home');
+				redirect($currentUrl);
 				exit();
 			}else{
-				$this->session->set_flashdata('loginError', 'Password is not correct');
-				$this->session->set_flashdata('loginErrorType', '1');
+				// $data['loginError'] = 'Password is not correct';
+				// $data['loginErrorType'] = '1';
+				 $this->session->set_flashdata('loginError', 'Password is not correct');
+				 $this->session->set_flashdata('loginErrorType', '1');
 			}
 		}else{
-			$this->session->set_flashdata('loginError', 'Username does not exsist');
-			$this->session->set_flashdata('loginErrorType', '2');
+			// $data['loginError'] = 'Username does not exsist';
+			// $data['loginErrorType'] = '2';
+			 $this->session->set_flashdata('loginError', 'Username does not exsist');
+			 $this->session->set_flashdata('loginErrorType', '2');
 
 		}
-
+		//printme($currentUrl);exit();
 		$this->session->set_flashdata('login_username', $username);
-		redirect('home');
+		redirect($currentUrl);
+
 	}
 
 
@@ -58,9 +63,10 @@ class Home extends CI_Controller {
 
 
 	public function logout()
-	{
+	{	
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
+		redirect($_POST['currentUrl']);
 	}
 
 	public function register ()
@@ -492,7 +498,15 @@ class Home extends CI_Controller {
 			else{
 				$data['is_subscribed'] = false;
 			}
-			return $data;
+		}
+
+
+		$tmp = $this->session->flashdata('loginError');
+
+		if($tmp){
+			$data['loginError'] = $this->session->flashdata('loginError');
+			$data['login_username'] = $this->session->flashdata('login_username');
+			$data['loginErrorType'] = $this->session->flashdata('loginErrorType');
 		}
 
 		
@@ -511,10 +525,9 @@ class Home extends CI_Controller {
 		$data['uri'] = $this->uri->uri_string;
 
 		$data['language'] = $this->uri->segment(1);
+		$data['languagePath'] = '';
 		if($data['language'] == 'ar')
 			$data['languagePath'] = 'arabic/';
-		else
-			$data['languagePath'] = '';
 
 		$this->loadLanguage($data['language']);
 

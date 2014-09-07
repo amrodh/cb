@@ -32,7 +32,11 @@ $route['admin/users/(:any)'] = "admin/userProfile";
 
 $route['authenticate'] = 'home/authenticate';
 
-$route['home/logout'] = 'home/logout';
+$route['logout'] = 'home/logout';
+$route["$appended_lang/logout"] = "home/logout";
+
+
+
 $route['validate/(:any)'] = "home/validateToken";
 $route['subscribeuser'] = 'home/subscribeuser';
 $route['insertPropertyAlert'] = "home/insertPropertyAlert";
