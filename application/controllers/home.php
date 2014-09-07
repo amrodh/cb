@@ -376,12 +376,14 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 
 
-		$vacancy_id = $this->uri->uri_string;
+		$vacancy_id = $data['uri'];
+
 		if($vacancy_id == 'uploadCV'){
 			$vacancy_id = 11;
 
 		}else{
-			$vacancy_id = explode('upload/', $vacancy_id)[1];
+			$vacancy_id = explode('uploadCV/', $vacancy_id)[1];
+
 		}
 
 
@@ -467,6 +469,7 @@ class Home extends CI_Controller {
 	public function init()
 	{	
 		$data = array();
+
 		if(isset($this->session->userdata['id'])){
 			$this->load->model('user');
 			$data['loggedIn'] = true;
@@ -482,6 +485,21 @@ class Home extends CI_Controller {
 			}
 			return $data;
 		}
+
+		
+		$uri = $this->uri->uri_string;
+		if(strpos($uri, 'ar') !== false || strpos($uri, 'en') !== false ){
+			
+			if(strpos($uri, 'ar')!== false)
+				$data['uri'] = explode('ar/', $uri);
+			else
+				$data['uri'] = explode('en/', $uri);
+
+			if(isset($data['uri'][1]))
+				$data['uri'] = $data['uri'][1];
+
+		}else
+		$data['uri'] = $this->uri->uri_string;
 
 		$data['language'] = $this->uri->segment(1);
 		if($data['language'] == 'ar')
