@@ -50,7 +50,7 @@
                     <a href='<?= base_url().'ar/'.str_replace('ar', '', $uri)?>'>عربي</a>
                 </label>
                 <?php if (isset($loggedIn)): ?>
-                    <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
+                    <span style="margin-right:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
                         <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
                     </span>
                     <label style="">

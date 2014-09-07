@@ -122,7 +122,7 @@
             <?php else: ?>
                 <div class="row" style="margin:4%;clear:both;">
                     <div class="col-lg-12 alert alert-warning" style="width:100%;height:40px;padding-top:1%;font-size:14px;" role="alert">
-                       يجب الدخول للاعلان عن الممتلكات
+                       يجب تسجيل الدخول للاعلان عن الممتلكات
                     </div>
                 </div>
             <?php endif ?>
