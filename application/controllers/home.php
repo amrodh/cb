@@ -514,7 +514,7 @@ class Home extends CI_Controller {
 		
 		$uri = $this->uri->uri_string;
 		if(strpos($uri, 'ar') !== false || strpos($uri, 'en') !== false ){
-			
+				
 			if(strpos($uri, 'ar')!== false)
 				$data['uri'] = explode('ar/', $uri);
 			else
@@ -522,9 +522,15 @@ class Home extends CI_Controller {
 
 			if(isset($data['uri'][1]))
 				$data['uri'] = $data['uri'][1];
+			else
+				$data['uri'] = '';
 
-		}else
-		$data['uri'] = $this->uri->uri_string;
+		}else{
+			$data['uri'] = $this->uri->uri_string;
+		}
+		
+
+		//printme($data['uri']);exit();
 
 		$data['language'] = $this->uri->segment(1);
 		$data['languagePath'] = '';
