@@ -51,7 +51,7 @@
                     <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
                     <a href="home/logout">Log Out</a>
                 <?php else: ?>
-                    <a href="#tallModal" data-toggle="modal">دخول</a> / <a href="<?= base_url();?>register">تسجيل</a>
+                    <a href="#tallModal" data-toggle="modal"></a> / <a href="<?= base_url();?>register">تسجيل</a>
                 <?php endif ?>
 <!--                <a href='http://localhost/ColdwellBanker/index.php/controller_langswitch/switchLanguage/english'>English</a>-->
                 <!-- <a href='http://localhost/ColdwellBanker/'>English</a> -->
