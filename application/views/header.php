@@ -47,9 +47,9 @@
             <div id="login_div">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                     <a href='<?= base_url().'en/'.str_replace('en/', '', $uri)?>'>English</a>
+                     <a href='<?= base_url().'en/'.str_replace('en', '', $uri)?>'>English</a>
                     <span>/</span>
-                    <a href='<?= base_url().'ar/'.str_replace('en/', '', $uri)?>'>Arabic</a>
+                    <a href='<?= base_url().'ar/'.str_replace('en', '', $uri)?>'>Arabic</a>
                 </label>
                
                 <?php if (isset($loggedIn)): ?>
@@ -73,7 +73,7 @@
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="<?= base_url().$uri;?>register">Register</a>
+                         <a href="register">Register</a>
                      </label>
                       
                 <?php endif ?>
@@ -182,7 +182,7 @@
                                     <a href="<?= base_url();?>marketIndex">MARKET INDEX</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>shareProperty">SHARE YOUR PROPERTY</a>
+                                    <a href="<?= base_url();?>en/shareProperty">SHARE YOUR PROPERTY</a>
                                 </li>
                                <!--  <li>
                                     <a href="#">FRANCHISE</a>
