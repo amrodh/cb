@@ -121,10 +121,14 @@ class Home extends CI_Controller {
 						'last_name' => $_POST['last_name'],
 						'location' => $_POST['location'],
 						'phone' => $_POST['phone'],
-						'password' => $_POST['password']
+						'password' => $_POST['password'],
+						'is_valid' => 0
 						);
 					if ($this->user->insertUser($userData))
-					{
+					{	
+						
+						$insertToken = $this->user->insertTempEmail($this->db->insert_id(),$_POST['email']);
+						$this->registrationValidation($this->db->insert_id());
 						$user = $this->user->getUserByUsername($userData['username']);
 						$this->startSession($user);
 
@@ -140,6 +144,17 @@ class Home extends CI_Controller {
 			}
 		}
 		$this->load->view($data['languagePath'].'register',$data);
+	}
+
+	public function registrationValidation($id)
+	{	
+		$token = $this->user->getToken($id);
+		$body = '
+		Please Validate your account by clicking on the following link 
+		</br>
+		 <a href="'.base_url().'validate/'.$token->token.'"> Validate My Account</a>
+		';
+		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email);
 	}
 
 	public function profile()
@@ -242,10 +257,19 @@ class Home extends CI_Controller {
 
 			$diff = $today - $date[2];
 			if ($diff < 1)
-			{
-				$params = array('email' => $tokenInfo->email);
-				$emailUpdate = $this->user->updateUser($tokenInfo->user_id, $params);
-				redirect('home');
+			{	
+				$user = $this->user->getUserByID($tokenInfo->user_id);
+				$is_valid = $user->is_valid;
+				if($is_valid == 0){
+					$params = array('is_valid' => 1);
+					$this->user->updateUser($tokenInfo->user_id, $params);
+					$this->startSession($user);
+					redirect('home');
+				}else{
+					$params = array('email' => $tokenInfo->email);
+					$emailUpdate = $this->user->updateUser($tokenInfo->user_id, $params);
+					redirect('home');
+				}
 			}
 			else
 			{
@@ -600,83 +624,15 @@ class Home extends CI_Controller {
 	}
 
 
+function smtpmailer($subject,$body,$to) { 
 
-
-
-		
-
-		function sendMail() {
-
-
-			date_default_timezone_set('America/Los_Angeles');
-
-// $subject               =             'Test Email';
-
-// $name                  =             'Engr Mudasir';
-
-// $email                   =             'amrsamo75@gmail.com';
-
-// $body                   =             "This si body text for test email to combine CodeIgniter and PHPmailer";
-
-// $this->phpmailer->AddAddress($email);
-
-// $this->phpmailer->IsMail();
-
-// $this->phpmailer->From     = 'info@computersneaker.com';
-
-// $this->phpmailer->FromName = 'Computer Sneaker';
-
-// $this->phpmailer->IsHTML(true);
-
-// $this->phpmailer->Subject  =  $subject;
-
-// $this->phpmailer->Body     =  $body;
-
-// $this->phpmailer->Send();
-
-	$this->smtpmailer();
-}
-
-
-function smtpmailer() { 
-// 	$mail = new PHPMailer();
-// $mail->IsSMTP();                                      // Set mailer to use SMTP
-// $mail->Host = 'smtpout.secureserver.net';  // Specify main and backup server
-// $mail->Port = '465';
-// $mail->SMTPAuth = true;                               // Enable SMTP authentication
-// $mail->Username = 'a.ahmed@englightworld.com';                            // SMTP username
-// $mail->Password = 'Bakrbakr1';                           // SMTP password
-// $mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
-
-
-// $mail->From = 'test@test.com';
-// $mail->FromName = 'test';
-// $mail->AddAddress('amrsamo75@gmail.com', '');  // Add a recipient
-// $mail->AddReplyTo('', 'reply');
-// $mail->AddBCC('');
-
-// $mail->WordWrap = 50;      
-// $mail->IsHTML(true);                                  // Set email format to HTML
-
-// $mail->Subject = '';
-// $mail->Body    =  "<!DOCTYPE html>
-//         <html lang='en-us'>
-//             <head>
-//                 <meta charset='utf-8'>
-//                 <title></title>
-
-//             </head>
-//             <body>
-//     <html>";
-
-//     var_dump($mail->Send());
-
+		 date_default_timezone_set('America/Los_Angeles');
 		 $config = Array(
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'ssl://smtp.googlemail.com',
 		  'smtp_port' => 465,
-		  'smtp_user' => 'a.ahmed@englightworld.com', // change it to yours
-		  'smtp_pass' => 'Bakrbakr1', // change it to yours
+		  'smtp_user' => 's.nahal@enlightworld.com', // change it to yours
+		  'smtp_pass' => '01069393641', // change it to yours
 		  'mailtype' => 'html',
 		  'charset' => 'iso-8859-1',
 		  'wordwrap' => TRUE
@@ -684,19 +640,18 @@ function smtpmailer() {
 
 		  $this->load->library('email', $config);
 		  $this->email->set_newline("\r\n");
-		  $this->email->from('your_email@domain.com'); // change it to yours
-		  $this->email->to('your_email@domain.com'); // change it to yours
-		  $this->email->subject('Email using Gmail.');
-		  $this->email->message('Working fine ! !');
+		  $this->email->from('test@ColdWell.com'); // change it to yours
+		  $this->email->to($to); // change it to yours
+		  $this->email->subject($subject);
+		  $this->email->message($body);
+
 
 		  if($this->email->send())
-		 {
-		  echo 'Email sent.';
-		 }
+			return true;
 		 else
-		{
-		 show_error($this->email->print_debugger());
-		}
+			{
+			 show_error($this->email->print_debugger());
+			}
 }
 
 

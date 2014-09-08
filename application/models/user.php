@@ -178,6 +178,21 @@ class User extends CI_Model {
            return false; 
       }
 
+      function getToken($token)
+      {
+          $q = $this
+              ->db
+              ->where('id',$token)
+              ->limit(1)
+              ->get('user_validation');
+
+           if($q->num_rows >0){
+              return $q->row();
+           } 
+
+           return false; 
+      }
+
       function getUserByID($ID)
      {
           $q = $this
