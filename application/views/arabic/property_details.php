@@ -104,8 +104,7 @@
                                 im veniam, quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet, co
                                 ectetuer adipiscing elit, sed diam nonummy nibh.. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy ni 
                                 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
-                                im veniam, quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet, co
-                                ectetuer adipiscing elit, sed diam nonummy nibh. <br>
+                                im veniam, quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet.  <br>
                                 Price: <b>EGP 2,000,000</b>.
                             </div>
                         </div>
@@ -139,12 +138,12 @@
                                                 <input type="text" class="form-control" style="margin-right: 35px;" id="property_first_name" placeholder="يرجى إدخال الإسم الأول">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_email">البريد الالكتروني</label>
-                                                <input type="text" class="form-control" style="margin-right: 4px;" id="property_email" placeholder="يرجى إدخال البريد الإلكتروني">
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="property_last_name">إسم العائلة</label>
                                                 <input type="text" class="form-control" style="margin-right: 34px;" id="property_last_name" placeholder="يرجى إدخال إسم العائلة">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="property_email">البريد الالكتروني</label>
+                                                <input type="email" class="form-control" style="margin-right: 4px;" id="property_email" placeholder="يرجى إدخال البريد الإلكتروني">
                                             </div>
                                             <div class="form-group">
                                                 <label for="property_phone">رقم الهاتف</label>
@@ -176,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div id="similar_properties" class="property_borders">
                             <div class="property_titles">
                                 عقارات مشابهة
@@ -242,7 +241,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tab-pane" id="map">
 
