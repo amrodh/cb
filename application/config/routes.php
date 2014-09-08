@@ -28,6 +28,7 @@ $route['admin/users/(:any)'] = "admin/userProfile";
 
 
 
+// $route['mail'] = 'home/sendMail';
 
 
 
