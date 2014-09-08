@@ -482,15 +482,6 @@ class Home extends CI_Controller {
 		$this->load->view($data['languagePath'].'auction',$data);
 	}
 
-	public function trainingCenter ()
-	{
-		$data = $this->init();
-		// $data['auctions'] = $this->property->getAuctions();
-		// $data['recentAuctions'] = $this->property->getRecentAuctions();
-		// $data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
-		$this->load->view($data['languagePath'].'training_center',$data);
-	}
-
 	public function init()
 	{	
 		$data = array();
@@ -614,11 +605,99 @@ class Home extends CI_Controller {
 
 		
 
-		
+		function sendMail() {
 
 
+			date_default_timezone_set('America/Los_Angeles');
+
+// $subject               =             'Test Email';
+
+// $name                  =             'Engr Mudasir';
+
+// $email                   =             'amrsamo75@gmail.com';
+
+// $body                   =             "This si body text for test email to combine CodeIgniter and PHPmailer";
+
+// $this->phpmailer->AddAddress($email);
+
+// $this->phpmailer->IsMail();
+
+// $this->phpmailer->From     = 'info@computersneaker.com';
+
+// $this->phpmailer->FromName = 'Computer Sneaker';
+
+// $this->phpmailer->IsHTML(true);
+
+// $this->phpmailer->Subject  =  $subject;
+
+// $this->phpmailer->Body     =  $body;
+
+// $this->phpmailer->Send();
+
+	$this->smtpmailer();
+}
 
 
+function smtpmailer() { 
+// 	$mail = new PHPMailer();
+// $mail->IsSMTP();                                      // Set mailer to use SMTP
+// $mail->Host = 'smtpout.secureserver.net';  // Specify main and backup server
+// $mail->Port = '465';
+// $mail->SMTPAuth = true;                               // Enable SMTP authentication
+// $mail->Username = 'a.ahmed@englightworld.com';                            // SMTP username
+// $mail->Password = 'Bakrbakr1';                           // SMTP password
+// $mail->SMTPSecure = 'ssl';                            // Enable encryption, 'ssl' also accepted
+
+
+// $mail->From = 'test@test.com';
+// $mail->FromName = 'test';
+// $mail->AddAddress('amrsamo75@gmail.com', '');  // Add a recipient
+// $mail->AddReplyTo('', 'reply');
+// $mail->AddBCC('');
+
+// $mail->WordWrap = 50;      
+// $mail->IsHTML(true);                                  // Set email format to HTML
+
+// $mail->Subject = '';
+// $mail->Body    =  "<!DOCTYPE html>
+//         <html lang='en-us'>
+//             <head>
+//                 <meta charset='utf-8'>
+//                 <title></title>
+
+//             </head>
+//             <body>
+//     <html>";
+
+//     var_dump($mail->Send());
+
+		 $config = Array(
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'ssl://smtp.googlemail.com',
+		  'smtp_port' => 465,
+		  'smtp_user' => 'a.ahmed@englightworld.com', // change it to yours
+		  'smtp_pass' => 'Bakrbakr1', // change it to yours
+		  'mailtype' => 'html',
+		  'charset' => 'iso-8859-1',
+		  'wordwrap' => TRUE
+			);
+
+		  $this->load->library('email', $config);
+		  $this->email->set_newline("\r\n");
+		  $this->email->from('your_email@domain.com'); // change it to yours
+		  $this->email->to('your_email@domain.com'); // change it to yours
+		  $this->email->subject('Email using Gmail.');
+		  $this->email->message('Working fine ! !');
+
+		  if($this->email->send())
+		 {
+		  echo 'Email sent.';
+		 }
+		 else
+		{
+		 show_error($this->email->print_debugger());
+		}
+}
 
 
 
