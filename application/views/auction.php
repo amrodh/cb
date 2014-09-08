@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <?php include('search.php'); ?>
         <div class="container auctions_main_div">
             <div class="auctions_top_div">
@@ -257,8 +254,5 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            </form>
-        <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script>
+            </form>=
         <?php include('footer.php'); ?>
-    </body>
-</html>

@@ -359,7 +359,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-top: 30px;
 }
 
-.search_body, .auction_body{
+.search_body, .auction_body, .training_body{
     /*border: 1px solid red;*/
     /*height: 200px;*/
     width: 100%;
@@ -848,7 +848,7 @@ li.active>a{
     margin-right: 870px;
 }
 
-.properties_main_div, .compare_main_div, .shareproperty_main_div, .auctions_main_div{
+.properties_main_div, .compare_main_div, .shareproperty_main_div, .auctions_main_div, .training_main_div{
     padding: 0;
     width: 90%;
     /*height: 90%;*/
@@ -858,7 +858,7 @@ li.active>a{
     margin: 0px auto;
 }
 
-.properties_top_div, #compare_top_divstyle, .shareproperty_top_div, .auctions_top_div{
+.properties_top_div, #compare_top_divstyle, .shareproperty_top_div, .auctions_top_div, .training_top_div{
     width: 100%;
     height: 90px;
     background-color: #f0f0f0;
@@ -895,7 +895,7 @@ li.active>a{
     padding: 5px 10px;
 }
 
-#properties_bottom_div, #compare_bottom_div, #auctions_bottom_div{
+#properties_bottom_div, #compare_bottom_div, #auctions_bottom_div, #training_bottom_div{
     padding: 30px;
 }
 
@@ -1566,11 +1566,11 @@ margin-top: 5%
     font-weight: lighter;
 }
 
-.auctions_main_div{
+.auctions_main_div, .training_main_div{
     margin-top: 30px;
 }
 
-.auctions_top_div{
+.auctions_top_div, .training_top_div{
     padding-top: 10px;
     padding-right: 30px;
     font-size: 30px;
@@ -1583,7 +1583,7 @@ margin-top: 5%
     /*padding-top: 0px;*/
 }
 
-#auctions_breadcrumb{
+#auctions_breadcrumb, #training_breadcrumb{
     font-size: 11px;
 }
 
@@ -1592,7 +1592,7 @@ margin-top: 5%
     background-color: transparent;
 }
 
-#auction_anchor1,#auction_anchor2,#auction_anchor3 {
+#auction_anchor1,#auction_anchor2,#auction_anchor3, #training_anchor1, #training_anchor2, #training_anchor3 {
     color: #23395b!important;
     margin-right: 0!important;
     background-color: white!important;
@@ -1601,24 +1601,42 @@ margin-top: 5%
     box-shadow: -4px -5px 10px -2px #a5a5a5;
 }
 
-li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_anchor3
-{
+li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_anchor3, li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_anchor3{
     box-shadow: none;
     background-color: #b7b7b7!important;
 }
 
-.auction_body{
+.auction_body, .training_body{
     background-color: white;
     padding: 0;
 }
 
-.auction_body_top_div{
+.auction_body_top_div, .training_body_top_div{
     background-color: #4c6c9e;
     height: 40px;
     color: white;
     padding-top: 10px;
     padding-right: 10px;
     font-weight: lighter;
+}
+
+#course1, #course2, #course3{
+    padding-top: 0;
+}
+
+.training_title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.training_content1, .training_content2{
+    font-weight: lighter;
+    margin-top: 2%;
+}
+
+.training_body_bottom_div{
+    padding: 2% 2%;
 }
 
 #auction_div1{

@@ -4,7 +4,8 @@
                 مقارنة الممتلكات
                 <div class="">
                     <ol class="breadcrumb compare_breadcrumb">
-                        <li><a href="#">العثور على منزل</a></li>
+                        <li><a href="<?=base_url();?>ar">كولدويل بانكر الرئيسية</a></li>
+                        <li><a href="<?=base_url();?>ar/viewAllProperties">العثور على منزل</a></li>
                         <li class="active">مقارنة الممتلكات</li>
                     </ol>
                 </div>

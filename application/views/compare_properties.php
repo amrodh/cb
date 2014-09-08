@@ -4,7 +4,8 @@
                 COMPARE PROPERTIES
                 <div class="">
                     <ol class="breadcrumb compare_breadcrumb">
-                        <li><a href="#">Find A Home</a></li>
+                        <li><a href="<?=base_url();?>">Coldwell Banker Home</a></li>
+                        <li><a href="<?=base_url();?>en/viewAllProperties">Find A Home</a></li>
                         <li class="active">Compare Properties</li>
                     </ol>
                 </div>

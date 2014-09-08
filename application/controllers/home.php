@@ -482,6 +482,15 @@ class Home extends CI_Controller {
 		$this->load->view($data['languagePath'].'auction',$data);
 	}
 
+	public function trainingCenter ()
+	{
+		$data = $this->init();
+		// $data['auctions'] = $this->property->getAuctions();
+		// $data['recentAuctions'] = $this->property->getRecentAuctions();
+		// $data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
+		$this->load->view($data['languagePath'].'training_center',$data);
+	}
+
 	public function init()
 	{	
 		$data = array();

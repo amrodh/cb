@@ -102,13 +102,12 @@
                                 Description
                             </div>
                             <div id="property_description_content">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, <br>sed diam nonummy ni 
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
                                 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
-                                im veniam,<br> quis nostrud exerci tation ullamcorper<br>.. Lorem ipsum dolor sit amet, co
-                                ectetuer adipiscing elit, sed diam nonummy nibh.  <br>. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,<br> sed diam nonummy ni 
-                                euismod<br> tincidunt ut laoreet dolore magna aliquam<br> erat volutpat. Ut wisi enim ad 
-                                im veniam, quis nostrud exerci <br>tation ullamcorper.. Lorem ipsum dolor sit amet, co
-                                ectetuer <br>adipiscing elit, sed diam nonummy nibh. <br>
+                                im veniam,quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet, co
+                                ectetuer adipiscing elit, sed diam nonummy nibh.. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
+                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
+                                im veniam, quis nostrud exerci tation ullamcorper..im veniam, <br>
                                 Price: <b>EGP 2,000,000</b>.
                             </div>
                         </div>
@@ -142,12 +141,12 @@
                                                 <input type="text" class="form-control" id="property_first_name" placeholder="Enter First Name">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_email">E-mail</label>
-                                                <input type="text" class="form-control" id="property_email" placeholder="Enter E-mail">
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="property_last_name">Last Name</label>
                                                 <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="property_email">E-mail</label>
+                                                <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
                                             </div>
                                             <div class="form-group">
                                                 <label for="property_phone">Phone</label>
@@ -166,7 +165,7 @@
                                                 </label>
                                            </p>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="width: 97%;">
                                             <p>Please use the text box below to submit any comments or questions</p>
                                             <textarea class="form-control" id="property_form_textarea" rows="3"></textarea>
                                         </div>
@@ -179,7 +178,7 @@
                         </div>
                     </div>
                 </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div id="similar_properties" class="property_borders">
                             <div class="property_titles">
                                 Similar Properties
@@ -245,7 +244,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tab-pane" id="map">
 

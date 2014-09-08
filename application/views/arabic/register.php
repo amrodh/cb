@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
-                                <label for="username" class="shareproperty_titles">الاسم</label>
+                                <label for="username" class="shareproperty_titles">إسم المستخدم</label>
                                 <input type="text" class="form-control register_textbx" name="username" id="username" pattern=".{3,}" title="3 characters minimum" placeholder="رجاءً أدخل إسم المستخدم" 
                                 value="<?php if(isset($params)) echo $params['username']; ?>" required>
                              </div>

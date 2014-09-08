@@ -172,7 +172,7 @@
                             </ul>
                         </li>
                         <li><a href="<?= base_url();?>en/auction">AUCTIONS</a></li>
-                        <li><a href="">TRAINING CENTER</a></li>
+                        <li><a href="<?= base_url();?>en/trainingCenter">TRAINING CENTER</a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">SERVICES 
                                 <b class="caret"></b>
