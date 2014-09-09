@@ -85,12 +85,7 @@
                             <ul class="bxslider" style="height: 155px!important;width:500px">
                              <?php foreach ($images as $image): ?>
                                  <li style="">
-                                <!--  <div class="imageContainer"> -->
-                                    <!--  <img  src="<?php echo base_url(); ?>application/static/upload/<?= $image->image_url; ?>"> -->
-                                    <a href="<?php echo base_url(); ?>viewAllProperties">
                                     <img class="slider_imgs" style="width:50%;height:50%" src="<?php echo base_url(); ?>application/static/upload/<?= $image->image_url; ?>"></a>
-                                 <!-- </div> -->
-                                 
                                 </li>
                              <?php endforeach ?>
                             </ul>
