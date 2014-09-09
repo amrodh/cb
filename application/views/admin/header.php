@@ -100,6 +100,9 @@
                     <li>
                         <a href="<?php echo base_url(); ?>admin/vacancies"><i class="glyphicon glyphicon-briefcase"></i> Vacancies</a>
                     </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-list-alt"></i> Courses</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

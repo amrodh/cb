@@ -17,6 +17,10 @@ $route['admin/properties'] = 'admin/properties';
 $route['admin/propertyalert'] = 'admin/propertyalert';
 $route['admin/newsletter'] = 'admin/newsletter';
 $route['admin/auctions'] = 'admin/auction';
+$route['admin/courses'] = 'admin/courses';
+$route['admin/courses/new'] = 'admin/newCourse';
+$route['admin/courses/(:any)'] = 'admin/showCourse';
+
 $route['admin/auctions/new'] = 'admin/NewAuction';
 $route['admin/vacancies/new'] = 'admin/NewVacancy';
 $route['admin/vacancies'] = 'admin/vacancies';

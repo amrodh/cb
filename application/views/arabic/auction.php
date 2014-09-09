@@ -45,6 +45,7 @@
                             </div>
                         </div>
                         <div class="auction_body_bottom_div">
+                        <?php if (is_array($recentAuctions)): ?>
                             <?php foreach ($recentAuctions as $auction): ?>
                             <div class="row auction_content">
                                 <div class="col-lg-3">
@@ -73,6 +74,12 @@
                                 </div>
                             </div>
                             <?php endforeach ?>
+                            <?php else: ?>
+                                <div class="alert alert-warning">
+                                    لا يوجد
+                                </div>
+                        <?php endif ?>
+                            
                         </div>
                     </div>
                     <div class="tab-pane" id="upcoming">
@@ -99,7 +106,8 @@
                             </div>
                         </div>
                         <div class="auction_body_bottom_div">
-                            <?php foreach ($upcomingAuctions as $auction): ?>
+                            <?php if (is_array($upcomingAuctions)): ?>
+                                <?php foreach ($upcomingAuctions as $auction): ?>
                                     <div class="row auction_content">
                                         <div class="col-lg-3">
                                             <div class="auction_img">
@@ -114,19 +122,25 @@
                                         </div>
                                         <div class="col-lg-9">
                                             <div class="auction_content_title">
-                                                <?= $auction->title; ?>
+                                                <?= $auction->title_ar; ?>
                                             </div>
                                             <div class="auction_content_body">
                                                 <div class="row auction_date">
                                                     <?= $auction->date_held; ?>
                                                 </div>
                                                 <div class="row">
-                                                    <?= $auction->text; ?>
+                                                    <?= $auction->text_ar; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach ?>
+                            <?php else: ?>
+                                <div class="alert alert-warning">
+                                    لا يوجد
+                                </div>
+                            <?php endif ?>
+                            
                         </div>
                     </div>
                 </div>

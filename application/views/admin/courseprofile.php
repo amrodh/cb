@@ -13,7 +13,7 @@
                         
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Auction / <?= $auction->title; ?>
+                                <i class="fa fa-dashboard"></i> Course / <?= $course->title; ?>
                             </li>
                         </ol>
                     </div>
@@ -21,25 +21,25 @@
                 <div class="">
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="<?= base_url();?>application/static/upload/auctions/<?= $auction->image; ?>" alt="">
+                            <img src="<?= base_url();?>application/static/upload/courses/<?= $course->image; ?>" alt="">
                         </div>
                     </div>
 
                     <div class="row">
                     <div class="col-lg-12">
-                         <h3><?= $auction->title ?></h3>
-                            <p><?= $auction->date_held;  ?></p>
-                            <p ><?= $auction->text;  ?></p>
+                         <h3><?= $course->title ?></h3>
+                            <p><?= $course->feature;  ?></p>
+                            <p><?= $course->text;  ?></p>
                     </div>
                     </div>
 
                       <div style="height:5px;width:100%;background-color:black"></div>
 
-                     <div class="row" style="float:right;">
+                     <div class="row" style="float:right">
                     <div class="col-lg-12">
-                         <h3><?= $auction->title_ar ?></h3>
-                            <p><?= $auction->date_held;  ?></p>
-                            <p ><?= $auction->text_ar;  ?></p>
+                         <h3 style="float:right"><?= $course->title_ar ?></h3>
+                            <p style="clear:both;" ><?= $course->feature_ar;  ?></p>
+                            <p ><?= $course->text_ar;  ?></p>
                     </div>
                     </div>
                         
