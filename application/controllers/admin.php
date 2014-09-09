@@ -92,7 +92,7 @@ class Admin extends CI_Controller {
 		$alerts = $this->property->getPropertiesAlert();
 		if(is_array($alerts)){
 			foreach ($alerts as $alert) {
-				if(!checkmail($alert->user_identifier)){
+				if(!$this->checkmail($alert->user_identifier)){
 					$alert->user_identifier = $this->user->getUserByID($alert->user_identifier);
 				}
 
@@ -118,7 +118,7 @@ class Admin extends CI_Controller {
 		
 		if(is_array($users)){
 			foreach ($users as $user) {
-				if(!checkmail($user->user_identifier))
+				if(!$this->checkmail($user->user_identifier))
 					$user->user_identifier = $this->user->getUserByID($user->user_identifier);
 			}
 		}
@@ -156,7 +156,7 @@ class Admin extends CI_Controller {
 		$data['users'] = $this->vacancy->getUsersEnrolled($id);
 		if(is_array($data['users'])){
 			foreach ($data['users'] as $user) {
-				if(!checkmail($user->user_identifier)){
+				if(!$this->checkmail($user->user_identifier)){
 					$user->user_identifier = $this->user->getUserByID($user->user_identifier);
 				}
 			}
@@ -193,6 +193,39 @@ class Admin extends CI_Controller {
 
 		$data['auction'] = $this->property->getAuctionById($id);
 		$this->load->view('admin/auctionprofile', $data);
+	}
+
+
+	public function NewAuction()
+	{	
+		$data = array();
+
+		if(isset($_POST['submit']))
+		{
+
+			$fileExtension = explode('.',$_FILES['userfile']['name']);
+			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+			$path = $this->config->config['upload_path'];
+			$this->config->set_item('upload_path',$path.'/auctions');
+
+			unset($_POST['submit']);
+			$_POST['image'] = $_FILES['userfile']['name'];
+			// printme($_POST);exit();
+			$insert = $this->property->insertAuction($_POST);
+			if($insert){
+
+				$upload = uploadme($this);
+				if($upload){
+					redirect('admin/auctions/'.$this->db->insert_id());
+				}else{
+					$data['error'] = true;
+					$data['errorMsg'] = 'Upload Failed, Try again';
+				}
+
+			}
+		}
+
+		$this->load->view('admin/newauction', $data);
 	}
 
 
@@ -270,6 +303,16 @@ class Admin extends CI_Controller {
 		 // $this->vacancy->populateDB();
 		// $this->service->getProperty(199876);
 
+	}
+
+
+		function checkmail($email)
+	{
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
+	       return true;
+	   else
+	   	return false;
+	    
 	}
 
 }

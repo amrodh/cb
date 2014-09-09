@@ -104,6 +104,9 @@ class Property extends CI_Model {
 
     }
 
+
+  
+
      function getAuctions()
     {
 
