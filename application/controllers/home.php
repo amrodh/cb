@@ -730,6 +730,12 @@ function smtpmailer($subject,$body,$to) {
 			}
 }
 
+function trainingCenter()
+{
+	$data = $this->init();
+	$this->load->view($data['languagePath'].'training_center', $data);
+}
+
 function forgotPassword()
 {
 	$this->load->model('user');

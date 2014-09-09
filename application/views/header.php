@@ -46,10 +46,27 @@
             </div>
             <div id="login_div">
                 <label for="">
+
                     <span class="glyphicon glyphicon-globe"></span>
+                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
+                    <span>/</span> -->
+                    <?php if ($uri == 'trainingCenter'): ?>
+                        <a href='<?= base_url().'en/'.$uri?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
+                    <?php else: ?>
+                        <a href='<?= base_url().'en/'.str_replace('en', '',$uri)?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
+                    <?php endif ?>
+
+
+
+
+                    <!-- <span class="glyphicon glyphicon-globe"></span>
                      <a href='<?= base_url().'en/'.str_replace('en', '', $uri)?>'>English</a>
                     <span>/</span>
-                    <a href='<?= base_url().'ar/'.str_replace('en', '', $uri)?>'>Arabic</a>
+                    <a href='<?= base_url().'ar/'.str_replace('en', '', $uri)?>'>Arabic</a> -->
                 </label>
                
                 <?php if (isset($loggedIn)): ?>
