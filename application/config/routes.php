@@ -17,6 +17,7 @@ $route['admin/properties'] = 'admin/properties';
 $route['admin/propertyalert'] = 'admin/propertyalert';
 $route['admin/newsletter'] = 'admin/newsletter';
 $route['admin/auctions'] = 'admin/auction';
+$route['admin/auctions/new'] = 'admin/NewAuction';
 $route['admin/vacancies'] = 'admin/vacancies';
 $route['admin/auctions/(:any)'] = 'admin/showAuction';
 $route['admin/vacancies/download/(:any)'] = 'admin/downloadcv';
