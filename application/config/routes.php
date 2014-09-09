@@ -97,9 +97,10 @@ $route['forgotPassword'] = 'home/forgotPassword';
 $route["$appended_lang/forgotPassword"] = "home/forgotPassword";
 
 $route['resetpassword/(:any)'] = 'home/resetpassword';
-$route["$appended_lang/resetpassword"] = "home/resetpassword";
 $route["$appended_lang/resetpassword/(:any)"] = "home/resetpassword";
 
+
+$route["$appended_lang/home"] = "home";
 
 
 

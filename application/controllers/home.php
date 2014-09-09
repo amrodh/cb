@@ -59,11 +59,19 @@ class Home extends CI_Controller {
 	public function startSession($user)
 	{
 		$this->session->set_userdata($user);
+		// printme($user->id);exit();
+		$this->load->model('user');
+		$params = array('is_active' => 1);
+		$this->user->updateUser($user->id, $params);
 	}
 
 
 	public function logout()
 	{	
+		$userid = $this->session->userdata['id'];
+		$this->load->model('user');
+		$params = array('is_active' => 0);
+		$this->user->updateUser($userid, $params);
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
 		redirect($_POST['currentUrl']);
