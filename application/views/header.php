@@ -59,14 +59,6 @@
                         <span>/</span>
                         <a href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
                     <?php endif ?>
-
-
-
-
-                    <!-- <span class="glyphicon glyphicon-globe"></span>
-                     <a href='<?= base_url().'en/'.str_replace('en', '', $uri)?>'>English</a>
-                    <span>/</span>
-                    <a href='<?= base_url().'ar/'.str_replace('en', '', $uri)?>'>Arabic</a> -->
                 </label>
                
                 <?php if (isset($loggedIn)): ?>
