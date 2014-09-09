@@ -25,9 +25,10 @@
                             <img src="<?= base_url();?>application/static/images/vacancy.png" alt="">
                         </div>
                         <div class="col-lg-9">
-                            <h3><?= $vacancy->name ?></h3>
+                            <h3><?= $vacancy->name ?> , <?= $vacancy->name_ar; ?></h3>
                             <p>End Date : <?= $vacancy->end_date;  ?></p>
                             <p><?= $vacancy->description;  ?></p>
+                            <p><?= $vacancy->description_ar;  ?></p>
                         </div>
                     </div>
                  </div>
@@ -48,7 +49,8 @@
                                 <th>Résumé</th>
                             </tr>
                             </thead>
-                            <?php foreach($users as $user): ?>
+                            <?php if (is_array($users)): ?>
+                                 <?php foreach($users as $user): ?>
                                 <tr>
                                 <td>
                                     <?php if (is_object($user->user_identifier)): ?>
@@ -67,8 +69,10 @@
                                     <span class="glyphicon glyphicon-arrow-down"></span>
                                 </a></td>
                                
-                            </tr>          
-                            <?php endforeach ?>                       
+                                </tr>          
+                                <?php endforeach ?>   
+                            <?php endif ?>
+                                               
                         </table>
                     </div>
                    

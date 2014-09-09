@@ -15,6 +15,8 @@
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
+<link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
+
  
  <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
  <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
@@ -24,7 +26,6 @@
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.min.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.structure.min.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/js/jquery-ui.theme.min.css">
-<script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
     

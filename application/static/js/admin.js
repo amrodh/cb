@@ -13,6 +13,12 @@ jQuery(document).ready(function($) {
 
 
 
+$('.bxslider').bxSlider({
+    auto:true
+});
+
+
+
 
 function completeChangePassword()
 {

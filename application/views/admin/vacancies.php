@@ -50,6 +50,17 @@
                             <?php endforeach ?>                       
                         </table>
                     </div>
+                     <div class="col-lg-2">
+                        <div class="panel panel-primary">
+                             <a href="<?php echo base_url(); ?>admin/vacancies/new">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Add New</span>
+                                    <span class="pull-right"><i class="fa fa-building"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                    
                 </div>
          </div>

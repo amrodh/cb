@@ -196,6 +196,19 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function showProperty()
+	{
+		$id = $this->uri->uri_string;
+		$id = explode('properties/', $id);
+		$id = $id[1];
+
+		$data = array();
+		$data['property'] = $this->property->getPropertyById($id);
+		$data['images']   = $this->property->getPropertyImages($id);
+		$this->load->view('admin/propertyprofile', $data);
+	}
+
+
 	public function NewAuction()
 	{	
 		$data = array();
@@ -229,6 +242,29 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function NewVacancy()
+	{	
+		$data = array();
+
+		if(isset($_POST['submit']))
+		{
+
+			
+
+			unset($_POST['submit']);
+			//printme($_POST);exit();
+			$insert = $this->vacancy->insertVacancy($_POST);
+			if($insert){
+
+					redirect('admin/vacancies/'.$this->db->insert_id());
+
+			}
+		}
+
+		$this->load->view('admin/newvacancy', $data);
+	}
+
+
 
 
 	
@@ -238,10 +274,14 @@ class Admin extends CI_Controller {
 	{
 		$this->load->model('property');
 		$this->load->model('user');
+		$data = array();
 		$data['properties'] = $this->property->getAllProperties();
-		foreach ($data['properties'] as $property) {
+		if(is_array($data['properties'])){
+			foreach ($data['properties'] as $property){
 			$property->user = $this->user->getUserByID($property->user_id);
+			}
 		}
+		
 		$this->load->view('admin/properties',$data);
 	}
 

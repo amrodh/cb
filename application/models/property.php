@@ -56,6 +56,21 @@ class Property extends CI_Model {
 
     }
 
+
+    function getPropertyImages($id)
+    {
+      $q = $this
+              ->db
+              ->where('property_id',$id)
+              ->get('property_image');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+    }
+
     function getUserProperties($userID)
     {
 
@@ -79,10 +94,11 @@ class Property extends CI_Model {
       $q = $this
               ->db
               ->where('id',$id)
+              ->limit(1)
               ->get('property');
 
            if($q->num_rows >0){
-              return $q->result();
+              return $q->row();
            } 
 
            return false; 
@@ -147,7 +163,7 @@ class Property extends CI_Model {
 
       $q = $this
               ->db
-              ->where('date_held <', $date)
+               ->where('date_held <', $date)
               ->order_by('date_held','desc')
               ->get('auction');
 

@@ -38,7 +38,8 @@
                                 <th>Date Joined</th>
                             </tr>
                             </thead>
-                            <?php foreach($properties as $property): ?>
+                            <?php if (is_array($properties)): ?>
+                                <?php foreach($properties as $property): ?>
                             <?php if ($property->is_valid == 1): ?>
                                 <tr class="list-group-item-success">
                             <?php else: ?>
@@ -51,8 +52,13 @@
                                 <td><?php echo $property->district; ?></td>
                                 <td><?php echo $property->city; ?></td>
                                 <td><?php echo $property->date_joined; ?></td>
+                                 <td><a href="properties/<?= $property->id; ?>" target="_blank">
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                </a></td>
                             </tr>          
-                            <?php endforeach ?>                       
+                            <?php endforeach ?>  
+                            <?php endif ?>
+                                                 
                         </table>
                     </div>
                    <!--  <div class="col-lg-2">
