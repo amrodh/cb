@@ -228,6 +228,20 @@ class User extends CI_Model {
 
    }
 
+   function updatePassword($userId, $password){
+      $user = $this->getUserByID($userId);
+      $salt = $user->password_salt;
+      $params['password'] = passwordEncryption($password,$salt);
+      $update = $this->updateUser($userId,$params);
+      if ($update){
+          $validation = array('is_valid' => 1);
+          $this->updateUser($userId, $validation);
+          return true;
+      }
+      else
+        return false;
+   }
+
 
    function changePassword($userID,$current,$new)
    {

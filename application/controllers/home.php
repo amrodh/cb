@@ -168,6 +168,18 @@ class Home extends CI_Controller {
 		$this->smtpmailer('Email Update Verification',$body,$token->email);
 	}
 
+	public function forgotPasswordValidation($id)
+	{
+		$token = $this->user->getToken($id);
+		// printme($token);exit();
+		$body = '
+		Please click on the following link to reset your password.
+		</br>
+		 <a href="'.base_url().'resetpassword/'.$token->token.'"> Reset Password</a>
+		';
+		$this->smtpmailer('Reset Password',$body,$token->email);
+	}
+
 	public function profile()
 	{
 		$this->load->model('user');
@@ -330,6 +342,9 @@ class Home extends CI_Controller {
 					redirect('home');
 				}else{
 					// token == 3 change password
+					// $this->session->set_flashdata('email', $tokenInfo->email);
+					// $this->session->set_flashdata('token', $token);
+					// redirect('resetpassword');
 				}
 			}
 			else
@@ -715,9 +730,62 @@ function smtpmailer($subject,$body,$to) {
 			}
 }
 
+function forgotPassword()
+{
+	$this->load->model('user');
 
+	if(isset($_POST['submit'])){
+		$email =$this->user->getUserByEmail($_POST['email']);
+		if ($email){
 
-	
+			if ($this->user->insertTempEmail($email->id,$_POST['email'],3))
+			{
+				$this->forgotPasswordValidation($this->db->insert_id());
+				$data['resetPasswordMessage'] = 'Please login to your email to reset password.';	
+				// printme($email);exit();
+			}
+			
+		}
+	}
+	$this->load->view('forgot_password');
+}
 
+function resetpassword()
+{
+	$this->load->model('user');
+	$token = $this->uri->uri_string;
+	$token = explode('resetpassword/', $token)[1];
+	$tokenInfo = $this->user->checkToken($token);
+	$data['token'] = $tokenInfo->token;
+	$data['user_email'] = $tokenInfo->email;
+	if ($tokenInfo->is_valid == 1)
+	{
+		$date = explode(' ', $tokenInfo->date_joined);
+		$date = explode('-', $date[0]);
+		$today = date('j');
+
+		$diff = $today - $date[2];
+		if ($diff < 1)
+		{
+			if (isset($_POST['submit'])){
+				if (empty($_POST['password'])){
+					$data['resetError'] = 'Please enter new password';
+				}elseif(empty($_POST['confrimpassword'])){
+					$data['resetError'] = 'Please confirm password';
+				}
+				else{
+					$data['user'] = $this->user->getUserByEmail($data['user_email']);
+					$update = $this->user->updatePassword($data['user']->id,$_POST['password']);
+					if ($update)
+					{
+						$this->startSession($data['user']);
+						redirect('home');
+					}
+				}
+			}
+		}
+	}
+	$this->load->view('reset_password', $data);
+}
 
 }

@@ -116,10 +116,13 @@
                             <?php endif ?>
                         </div>
                     </div>
-                    <div class="modal-footer" style="margin: auto;width: 185px;">
-                        <div class="col-lg-12">
-                            <input type="submit" class="btn btn-default search_btn_submit2" value="Go" name="submit">
-                       </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-9">
+                            <input type="submit" style="float: right;margin-right: 20%;" class="btn btn-default search_btn_submit2" value="Go" name="submit">
+                        </div>
+                        <div class="col-lg-3" style="padding-top: 4%;">
+                            <a href="<?= base_url();?>forgotPassword">Forgot Password?</a>
+                        </div>
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

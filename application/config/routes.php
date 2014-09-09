@@ -90,6 +90,9 @@ $route["$appended_lang/trainingCenter"] = "home/trainingCenter";
 
 $route['getDistricts'] = 'home/getDistricts';
 
+$route['forgotPassword'] = 'home/forgotPassword';
+$route['resetpassword/(:any)'] = 'home/resetpassword';
+
 
 
 
