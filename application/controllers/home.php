@@ -173,7 +173,8 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
-		// printme($data['languagePath']);exit();
+		if(!isset($data['user']))
+			redirect('home');
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];
