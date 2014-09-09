@@ -168,14 +168,14 @@ class Home extends CI_Controller {
 		$this->smtpmailer('Email Update Verification',$body,$token->email);
 	}
 
-	public function forgotPasswordValidation($id)
+	public function forgotPasswordValidation($id, $language)
 	{
 		$token = $this->user->getToken($id);
 		// printme($token);exit();
 		$body = '
 		Please click on the following link to reset your password.
 		</br>
-		 <a href="'.base_url().'resetpassword/'.$token->token.'"> Reset Password</a>
+		 <a href="'.base_url().$language.'/resetpassword/'.$token->token.'"> Reset Password</a>
 		';
 		$this->smtpmailer('Reset Password',$body,$token->email);
 	}
@@ -733,26 +733,31 @@ function smtpmailer($subject,$body,$to) {
 function forgotPassword()
 {
 	$this->load->model('user');
-
+	$data = $this->init();
+	if ($data['language'] !== 'en' && $data['language'] !== 'ar'){
+		$language = 'en';
+	}
+	else{
+		$language = $data['language'];
+	}
 	if(isset($_POST['submit'])){
 		$email =$this->user->getUserByEmail($_POST['email']);
 		if ($email){
-
 			if ($this->user->insertTempEmail($email->id,$_POST['email'],3))
 			{
-				$this->forgotPasswordValidation($this->db->insert_id());
+				$this->forgotPasswordValidation($this->db->insert_id(), $language);
 				$data['resetPasswordMessage'] = 'Please login to your email to reset password.';	
-				// printme($email);exit();
 			}
 			
 		}
 	}
-	$this->load->view('forgot_password');
+	$this->load->view($data['languagePath'].'forgot_password', $data);
 }
 
 function resetpassword()
 {
 	$this->load->model('user');
+	$data = $this->init();
 	$token = $this->uri->uri_string;
 	$token = explode('resetpassword/', $token)[1];
 	$tokenInfo = $this->user->checkToken($token);
@@ -785,7 +790,7 @@ function resetpassword()
 			}
 		}
 	}
-	$this->load->view('reset_password', $data);
+	$this->load->view($data['languagePath'].'reset_password', $data);
 }
 
 }

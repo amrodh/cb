@@ -101,17 +101,17 @@
                           أدخل الاسم وكلمة السر للدخول
                       </div>
                     </div>
-                    <div class="modal-body" style="width: 43%;margin: auto;">
+                    <div class="modal-body" style="width: 30%;margin: auto;">
                         <div class="row">
                              <div class="form-group login_form">
                                 <label style="width:100%" for="username" class="shareproperty_titles">الإسم:</label>
-                                <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="رجاءً أدخل الإسم" autofocus required>
+                                <input style="" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="رجاءً أدخل الإسم" autofocus required>
                              </div>
                         </div>
                         <div class="row">
                             <div class="form-group login_form">
                                 <label style="width:100%" for="password" class="shareproperty_titles">كلمة السر:</label>
-                                <input style="float:left" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="رجاءً أدخل كلمة السر" required>
+                                <input style="" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="رجاءً أدخل كلمة السر" required>
                             </div>
                         </div>
                         <div class="row">
@@ -122,11 +122,19 @@
                             <?php endif ?>
                         </div>
                     </div>
-                    <div class="modal-footer" style="margin: auto;width: 185px;">
+                    <div class="modal-footer">
+                        <div class="col-lg-9">
+                            <input type="submit" style="float: left;margin-left: 20%;" class="btn btn-default search_btn_submit2" value="إدخل" name="submit">
+                        </div>
+                        <div class="col-lg-3" style="padding-top: 4%;">
+                            <a href="<?= base_url();?>ar/forgotPassword">نسيت كلمة المرور</a>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer" style="margin: auto;width: 185px;">
                         <div class="col-lg-12">
                             <input type="submit" class="btn btn-default search_btn_submit2" value="إدخل<" name="submit">
                        </div>
-                    </div>
+                    </div> -->
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
