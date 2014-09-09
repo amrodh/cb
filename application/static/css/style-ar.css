@@ -1039,6 +1039,24 @@ li.active>a{
     /*border: 1px solid #f26522;*/
 }
 
+.properties_share_div{
+    display: none; 
+    background-color: white;
+    width: 25.6%;
+    padding: 3% 3%;
+    float: left;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 1px solid;
+    border-color: #ccc;
+    border-top: none;
+    margin-right: 50.9%;
+    margin-top: -2%;
+    position: absolute;
+    z-index: 999;
+}
+
 .btn > a{
     text-decoration: none;
     color: black;
@@ -1073,7 +1091,7 @@ li.active>a{
 }
 
 #property_tabs > li.active >a{
-    background: #f0f0f0;
+    background: #f0f0f0!important;
     color: #5a7baa;
 }
 
@@ -1138,7 +1156,7 @@ li.active>a{
     width: 130px;
     height: 100px;
     float: left;
-    margin-left: 3px; 
+    margin-left: 5%;  
 }
 
 .property_well{

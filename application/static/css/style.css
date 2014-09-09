@@ -72,7 +72,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 
-.alert{
+/*.alert{
     padding: 1%;
     margin-left: 1%;
     font-size: 12px;
@@ -82,7 +82,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     width:50%;
     margin-top: 1%;
     text-align: center;
-}
+}*/
 .hide{
     display: none;
 }
@@ -1080,7 +1080,7 @@ li.active>a{
 }
 
 #property_tabs > li.active >a{
-    background: #f0f0f0;
+    background: #f0f0f0!important;
     color: #5a7baa;
 }
 
@@ -1137,7 +1137,7 @@ li.active>a{
 }
 
 #property_carousel{
-    width: 80%;
+    width: 92%;
     margin: 0 auto;
 }
 

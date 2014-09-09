@@ -75,7 +75,7 @@
                             </div>
                             <?php endforeach ?>
                             <?php else: ?>
-                                <div class="alert alert-warning">
+                                <div class="alert alert-warning" style="text-align: center;width: 90%;margin: auto;">
                                     لا يوجد
                                 </div>
                         <?php endif ?>
