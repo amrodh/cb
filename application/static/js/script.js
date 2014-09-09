@@ -7,12 +7,8 @@ $(document).ready(function ()
                }
             if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
             {
-                //alert ('hi');
                  $('#footer_div').css('margin-top' , '30px');
             }
-//            else
-//                $('#footer_div').css('margin-top' , '30px');
-               
            $('.selectpicker').selectpicker();
 
 
@@ -324,6 +320,16 @@ function redirect_profile(language)
             }
     
 }
+
+$('#properties_share_btn').click(function(event) {
+    // alert('hi');
+    if ($('.properties_share_div').css('display') == 'none'){
+      $(".properties_share_div").slideDown("slow");
+    }
+    else{
+      $(".properties_share_div").slideUp("slow");
+    }
+});
 
 function toggleVisibility2 (){
     var margintop = $('#footer_div').css('margin-top');

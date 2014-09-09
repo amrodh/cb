@@ -160,13 +160,13 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -60px;">
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">RESIDENTIAL COMPOUND</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties">RESIDENTIAL COMPOUND</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">PRE-OWNED PROPERTY</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties">PRE-OWNED PROPERTY</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>viewAllProperties">RENTAL</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties">RENTAL</a>
                                 </li>
                             </ul>
                         </li>
@@ -191,7 +191,7 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="margin-right: -76px;">
                                 <li>
-                                    <a href="<?= base_url();?>marketIndex">MARKET INDEX</a>
+                                    <a href="<?= base_url();?>en/marketIndex">MARKET INDEX</a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>en/shareProperty">SHARE YOUR PROPERTY</a>
@@ -211,7 +211,7 @@
                                     <a href="#">OFFICES</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>careers">CAREERS</a>
+                                    <a href="<?= base_url();?>en/careers">CAREERS</a>
                                 </li>
                             </ul>
                         </li>

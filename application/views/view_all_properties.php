@@ -72,14 +72,22 @@
                                                     Details
                                                 </a>
                                             </button>
-                                            <button type="button" class="btn btn-default properties_btns"> 
+                                            <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
                                                 <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                 0 Images
                                             </button>
-                                            <button type="button" class="btn btn-default properties_btns">
+                                            <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
                                                 <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                 Share
                                             </button>
+                                        </div>
+                                        <div class="properties_share_div">
+                                            <div class="row" style="margin: auto;">
+                                                <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                            </div>
+                                            <div class="row" style="margin: auto;margin-top: 8%;">
+                                                <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                            </div>
                                         </div>
                                         <div class="properties_contact">
                                             <a href="#" class="properties_contact_btn">
@@ -247,9 +255,63 @@
                 </div>
             </form>
         </div>
+
+        <div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Property Images</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img id="property_mainimage" src="<?= base_url();?>/application/static/images/sample_property_image.png">
+                        <div class="well property_well" style="margin-top:3%;">
+                            <div class="carousel slide" id="property_carousel" style="">
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="row">
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/tw-share.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/tw-share.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#property_carousel" data-slide="prev"><img src="<?= base_url();?>application/static/images/left_arrow.png">  </a>
+                                <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>application/static/images/right_arrow.png"> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div id="property_notifier">
             <?php include 'property_alert.php'; ?>
         </div>
         
         <!-- // <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script> -->
         <?php include('footer.php'); ?>
+
+        <script>
+        $(document).ready(function (){
+           $('.property_thumbnail > img').click(function (){
+               $('#property_mainimage').attr("src", $(this).attr("src"));
+           }) ;
+        });
+        </script>
