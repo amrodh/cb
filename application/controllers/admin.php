@@ -185,6 +185,15 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function courses()
+	{	
+		$data = array();
+		$data['courses'] = $this->course->getCourses();
+		$this->load->view('admin/courses', $data);
+
+	}
+
+
 	public function showAuction()
 	{
 		$id = $this->uri->uri_string;
@@ -193,6 +202,19 @@ class Admin extends CI_Controller {
 
 		$data['auction'] = $this->property->getAuctionById($id);
 		$this->load->view('admin/auctionprofile', $data);
+	}
+
+
+	public function showCourse()
+	{
+		$id = $this->uri->uri_string;
+		$id = explode('courses/', $id);
+		$id = $id[1];
+
+
+		$data['course'] = $this->course->getCourseByID($id);
+
+		$this->load->view('admin/courseprofile', $data);
 	}
 
 
@@ -206,6 +228,38 @@ class Admin extends CI_Controller {
 		$data['property'] = $this->property->getPropertyById($id);
 		$data['images']   = $this->property->getPropertyImages($id);
 		$this->load->view('admin/propertyprofile', $data);
+	}
+
+
+	public function newCourse()
+	{
+		$data = array();
+
+			if(isset($_POST['submit']))
+		{
+
+			$fileExtension = explode('.',$_FILES['userfile']['name']);
+			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+			$path = $this->config->config['upload_path'];
+			$this->config->set_item('upload_path',$path.'/courses');
+
+			unset($_POST['submit']);
+			$_POST['image'] = $_FILES['userfile']['name'];
+			$insert = $this->course->insertCourse($_POST);
+			if($insert){
+
+				$upload = uploadme($this);
+				if($upload){
+					redirect('admin/courses/'.$this->db->insert_id());
+				}else{
+					$data['error'] = true;
+					$data['errorMsg'] = 'Upload Failed, Try again';
+				}
+
+			}
+		}
+
+		$this->load->view('admin/newcourse', $data);
 	}
 
 
