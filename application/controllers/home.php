@@ -126,8 +126,7 @@ class Home extends CI_Controller {
 						);
 					if ($this->user->insertUser($userData))
 					{	
-						
-						$insertToken = $this->user->insertTempEmail($this->db->insert_id(),$_POST['email']);
+						$insertToken = $this->user->insertTempEmail($this->db->insert_id(),$_POST['email'],1);
 						$this->registrationValidation($this->db->insert_id());
 						$user = $this->user->getUserByUsername($userData['username']);
 						$this->startSession($user);
@@ -157,6 +156,18 @@ class Home extends CI_Controller {
 		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email);
 	}
 
+	public function emailUpdateValidation($id)
+	{	
+		$token = $this->user->getToken($id);
+		//printme($token);exit();
+		$body = '
+		Please Validate updating your email by clicking on the following link 
+		</br>
+		 <a href="'.base_url().'validate/'.$token->token.'"> Verify Email Update</a>
+		';
+		$this->smtpmailer('Email Update Verification',$body,$token->email);
+	}
+
 	public function profile()
 	{
 		$this->load->model('user');
@@ -184,6 +195,7 @@ class Home extends CI_Controller {
 			else{
 				$user = $this->user->getUserByUsername($username);
 				if ($user){
+
 					if($user ->username == $this->session->userdata('username'))
 					{
 						$params = array('username' => $username,
@@ -206,7 +218,19 @@ class Home extends CI_Controller {
 							}
 						}
 						else{
-							$update = $this->user->updateUser($data['user']->id, $params);
+							 $update = $this->user->updateUser($data['user']->id, $params);
+							if ($_POST['email'] != $this->session->userdata('email')){
+								if ($this->user->insertTempEmail($this->session->userdata('id'),$_POST['email'],2))
+								{
+							// printme($data['user']->id);exit();
+
+									$this->emailUpdateValidation($this->db->insert_id());
+
+									$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';	
+								}
+								
+							}
+
 							$data['user'] = $this->user->getUserByUsername($username);
 							$this->startSession($data['user']);
 							if($update){
@@ -222,20 +246,54 @@ class Home extends CI_Controller {
 					$params = array('username' => $username,
 					'location' => $location,
 					'phone' => $phone);
-					$update = $this->user->updateUser($data['user']->id, $params);
-					$data['user'] = $this->user->getUserByUsername($username);
-					$this->startSession($data['user']);
-					if($update){
-						$data['update'] = true;
-					}else{
-						$data['update'] = false;
-					}
-				}
 
-				if ($_POST['email'] != $this->session->userdata('email'))
-				{
-					$this->user->insertTempEmail($this->session->userdata('id'),$_POST['email']);
-					$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';
+					$emailtmp = $this->user->getUserByEmail($email);
+					if ($emailtmp){
+						if($emailtmp ->email == $this->session->userdata('email'))
+						{
+							$update = $this->user->updateUser($data['user']->id, $params);
+							$data['user'] = $this->user->getUserByUsername($username);
+							$this->startSession($data['user']);
+							if($update){
+								$data['update'] = true;
+							}else{
+								$data['update'] = false;
+							}
+						}
+						else{
+							$data['updateEmailError'] = 'Email already exists';
+						}
+					}
+					else{
+						$update = $this->user->updateUser($data['user']->id, $params);
+						
+						if ($_POST['email'] != $this->session->userdata('email')){
+							if ($this->user->insertTempEmail($this->session->userdata('id'),$_POST['email'],2))
+							{
+								$this->emailUpdateValidation($this->db->insert_id());
+								$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';	
+							}
+							
+						}
+
+						$data['user'] = $this->user->getUserByUsername($username);
+						$this->startSession($data['user']);
+						if($update){
+							$data['update'] = true;
+						}else{
+							$data['update'] = false;
+						}
+					}
+
+
+					// $update = $this->user->updateUser($data['user']->id, $params);
+					// $data['user'] = $this->user->getUserByUsername($username);
+					// $this->startSession($data['user']);
+					// if($update){
+					// 	$data['update'] = true;
+					// }else{
+					// 	$data['update'] = false;
+					// }
 				}
 
 			}
@@ -260,15 +318,17 @@ class Home extends CI_Controller {
 			{	
 				$user = $this->user->getUserByID($tokenInfo->user_id);
 				$is_valid = $user->is_valid;
-				if($is_valid == 0){
+				if($tokenInfo->type == 1){
 					$params = array('is_valid' => 1);
 					$this->user->updateUser($tokenInfo->user_id, $params);
 					$this->startSession($user);
 					redirect('home');
-				}else{
-					$params = array('email' => $tokenInfo->email);
+				}elseif($tokenInfo->type == 2){
+					$params = array('email' => $tokenInfo->email,'is_valid' => 1);
 					$emailUpdate = $this->user->updateUser($tokenInfo->user_id, $params);
 					redirect('home');
+				}else{
+					// token == 3 change password
 				}
 			}
 			else

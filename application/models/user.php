@@ -141,18 +141,22 @@ class User extends CI_Model {
            return false;  
      }
 
-     function insertTempEmail($id,$email)
+     function insertTempEmail($id,$email,$type)
      {
           $q = $this
               ->db
               ->where('user_id',$id)
               ->delete('user_validation');
 
+           
+          $this->updateUser($id,array("is_valid"=>0));
+              
           $params = array();
           $params['user_id'] = $id;
           $params['email']   = $email;
           $params['token']   = tokenGenerator();
           $params['is_valid'] = 1;
+          $params['type'] = $type;
 
           $query = $this->db->insert_string('user_validation', $params);
           $query = $this->db->query($query);
@@ -185,8 +189,8 @@ class User extends CI_Model {
               ->where('id',$token)
               ->limit(1)
               ->get('user_validation');
-
            if($q->num_rows >0){
+
               return $q->row();
            } 
 

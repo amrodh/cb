@@ -110,7 +110,10 @@
                         <?php }endif ?>
                         <div class="row" style="width: 13%; margin: auto; margin-top: 20px;">
                             <!-- <button type="submit" class="btn btn-default profile_btn_submit">Edit</button> -->
-                            <input type="button"  class="btn btn-defaut profile_btn_submit" value="Edit">
+                            <?php if ($user->is_valid == 1): ?>
+                                <input type="button"  class="btn btn-defaut profile_btn_submit" value="Edit">
+                            <?php endif ?>
+                            
                         </div>
                     </div>
                 </form>
