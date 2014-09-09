@@ -53,11 +53,13 @@ class Admin extends CI_Controller {
 
 	public function dashboard()
 	{	
+		$data = $this->init();
 		$this->load->view('admin/dashboard');
 	}
 
 	public function users()
 	{
+		$data = $this->init();
 		$this->load->model('user');
 		$data['users'] = $this->user->getAllUsers();
 		$this->load->view('admin/users',$data);
@@ -66,6 +68,8 @@ class Admin extends CI_Controller {
 
 	public function userProfile()
 	{
+		$data = $this->init();
+
 		$username = $this->uri->uri_string;
 		$username = explode('users/', $username);
 		$username = $username[1];
@@ -89,6 +93,8 @@ class Admin extends CI_Controller {
 
 	public function propertyalert()
 	{
+		$data = $this->init();
+
 		$alerts = $this->property->getPropertiesAlert();
 		if(is_array($alerts)){
 			foreach ($alerts as $alert) {
@@ -113,7 +119,7 @@ class Admin extends CI_Controller {
 
 	public function newsletter()
 	{	
-		$data = array();
+		$data = $this->init();
 		$users = $this->user->getSubscribedUsers();
 		
 		if(is_array($users)){
@@ -130,7 +136,8 @@ class Admin extends CI_Controller {
 
 	public function checkpasswordchange()
 	{
-		//printme($_GET);exit();
+		$data = $this->init();
+		
 		$userID = $_POST['id'];
 		$changePassword = $this->user->changePassword($userID,$_POST['current'],$_POST['new_1']);
 		//printme($user);
@@ -139,7 +146,8 @@ class Admin extends CI_Controller {
 
 	public function vacancies()
 	{
-		$data = array();
+		$data = $this->init();
+		
 		$data['vacancies'] = $this->vacancy->getAllVacancies();
 		$this->load->view('admin/vacancies', $data);
 	}
@@ -148,6 +156,8 @@ class Admin extends CI_Controller {
 
 	public function showVacancy()
 	{
+		$data = $this->init();
+
 		$id = $this->uri->uri_string;
 		$id = explode('vacancies/', $id);
 		$id = $id[1];
@@ -166,6 +176,8 @@ class Admin extends CI_Controller {
 
 	public function downloadcv()
 	{
+		$data = $this->init();
+
 		$name = $this->uri->uri_string;
 		$name = explode('download/', $name);
 		$name = $name[1];
@@ -178,7 +190,9 @@ class Admin extends CI_Controller {
 
 	public function auction()
 	{	
-		$data = array();
+		
+		$data = $this->init();
+
 		$data['auctions'] = $this->property->getAuctions();
 		$this->load->view('admin/auction', $data);
 
@@ -187,7 +201,8 @@ class Admin extends CI_Controller {
 
 	public function courses()
 	{	
-		$data = array();
+		$data = $this->init();
+		
 		$data['courses'] = $this->course->getCourses();
 		$this->load->view('admin/courses', $data);
 
@@ -196,6 +211,8 @@ class Admin extends CI_Controller {
 
 	public function showAuction()
 	{
+		$data = $this->init();
+
 		$id = $this->uri->uri_string;
 		$id = explode('auctions/', $id);
 		$id = $id[1];
@@ -207,6 +224,8 @@ class Admin extends CI_Controller {
 
 	public function showCourse()
 	{
+		$data = $this->init();
+
 		$id = $this->uri->uri_string;
 		$id = explode('courses/', $id);
 		$id = $id[1];
@@ -220,11 +239,13 @@ class Admin extends CI_Controller {
 
 	public function showProperty()
 	{
+		$data = $this->init();
+		
 		$id = $this->uri->uri_string;
 		$id = explode('properties/', $id);
 		$id = $id[1];
 
-		$data = array();
+		
 		$data['property'] = $this->property->getPropertyById($id);
 		$data['images']   = $this->property->getPropertyImages($id);
 		$this->load->view('admin/propertyprofile', $data);
@@ -233,7 +254,8 @@ class Admin extends CI_Controller {
 
 	public function newCourse()
 	{
-		$data = array();
+		$data = $this->init();
+		
 
 			if(isset($_POST['submit']))
 		{
@@ -265,7 +287,8 @@ class Admin extends CI_Controller {
 
 	public function NewAuction()
 	{	
-		$data = array();
+		$data = $this->init();
+		
 
 		if(isset($_POST['submit']))
 		{
@@ -298,7 +321,8 @@ class Admin extends CI_Controller {
 
 	public function NewVacancy()
 	{	
-		$data = array();
+		$data = $this->init();
+		
 
 		if(isset($_POST['submit']))
 		{
@@ -326,9 +350,11 @@ class Admin extends CI_Controller {
 
 	public function properties()
 	{
-		$this->load->model('property');
-		$this->load->model('user');
-		$data = array();
+		
+		
+		$data = $this->init();
+
+
 		$data['properties'] = $this->property->getAllProperties();
 		if(is_array($data['properties'])){
 			foreach ($data['properties'] as $property){
@@ -341,7 +367,7 @@ class Admin extends CI_Controller {
 
 	function createUser()
 	{	
-		$data = array();
+		$data = $this->init();
 
 		if(isset($_POST['submit'])){
 			$this->load->model('user');
@@ -407,6 +433,25 @@ class Admin extends CI_Controller {
 	   else
 	   	return false;
 	    
+	}
+
+
+	public function init()
+	{	
+		$data = array();
+
+		if(isset($this->session->userdata['id'])){
+			$this->load->model('user');
+			$data['loggedIn'] = true;
+			$data['loggedUser'] = $this->user->getUserByUsername($this->session->userdata['username']);
+		}else{
+			redirect('admin');
+		}
+
+
+		return $data;
+
+		
 	}
 
 }
