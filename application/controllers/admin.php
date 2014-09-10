@@ -503,7 +503,7 @@ class Admin extends CI_Controller {
 				$min++;
 			}
 			$checkNewProperty = $this->property->checkNewProperty($where,$alert->date_joined);
-			printme($checkNewProperty);
+			//printme($checkNewProperty);
 			// wait for the response from the service, then check the result set and send the email
 		}
 	}
