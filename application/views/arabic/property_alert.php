@@ -14,7 +14,7 @@
                                 <?php echo $this->lang->line('propertyalert_subtitle1'); ?>
                             </div>
                             <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City" data-size="5">
-                                <option value="0">Select City</option>
+                                <option  value="0">اختيار المدينة</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                 <?php endforeach ?>
@@ -53,7 +53,7 @@
                             <div class="property_alert_col_title title_margin">
                                 <?php echo $this->lang->line('propertyalert_subtitle7'); ?>
                             </div>
-                            <input type="text" name="alert_email" id="alert_email" placeholder="Your E-mail"/>
+                            <input type="text" name="alert_email" id="alert_email" placeholder="بريدك الأكتروني"/>
                         </div>
                         <?php endif ?>
                    </div>

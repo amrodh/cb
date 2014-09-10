@@ -134,6 +134,39 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function newsletterSend()
+	{
+		$data = $this->init();
+		$users = $this->user->getSubscribedUsers();
+		if(is_array($users)){
+			foreach ($users as $user) {
+				$identifier = $user->user_identifier;
+				if(!$this->checkmail($identifier)){
+					$tmp = $this->user->getUserByID($identifier);
+					$user->user_identifier = $tmp->email;
+				}
+			}
+		}
+
+
+		$min = 0;
+		$max = count($users);
+		$mails = "";
+		foreach ($users as $user ) {
+			if($min == 0)
+				$mails .= $user->user_identifier;
+			else
+				$mails .= ','.$user->user_identifier;
+
+			$min++;
+		}
+
+
+		//$this->smtpmailer($subject,$body,$mails);
+		
+	}
+
+
 	public function checkpasswordchange()
 	{
 		$data = $this->init();
@@ -450,9 +483,61 @@ class Admin extends CI_Controller {
 
 
 		return $data;
-
 		
 	}
+
+	public function checkPropertyAlert()
+	{
+		$alerts = $this->property->getPropertiesAlert();
+		foreach ($alerts as $alert ) {
+			$propertyData = explode(',', $alert->property_data);
+			$max = count($propertyData);
+			$min = 0;
+			$where='';
+			foreach ($propertyData as $x) {
+				if($min == 0)
+					$where .= $x;
+				else
+					$where .= ' && '.$x;
+
+				$min++;
+			}
+			$checkNewProperty = $this->property->checkNewProperty($where,$alert->date_joined);
+			printme($checkNewProperty);
+			// wait for the response from the service, then check the result set and send the email
+		}
+	}
+
+
+	function smtpmailer($subject,$body,$to) { 
+
+		 date_default_timezone_set('America/Los_Angeles');
+		 $config = Array(
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'ssl://smtp.googlemail.com',
+		  'smtp_port' => 465,
+		  'smtp_user' => 's.nahal@enlightworld.com', // change it to yours
+		  'smtp_pass' => '01069393641', // change it to yours
+		  'mailtype' => 'html',
+		  'charset' => 'iso-8859-1',
+		  'wordwrap' => TRUE
+			);
+
+		  $this->load->library('email', $config);
+		  $this->email->set_newline("\r\n");
+		  $this->email->from('test@ColdWell.com'); // change it to yours
+		  $this->email->to($to); // change it to yours
+		  $this->email->subject($subject);
+		  $this->email->message($body);
+
+
+		  if($this->email->send())
+			return true;
+		 else
+			{
+			 show_error($this->email->print_debugger());
+			}
+}
 
 }
 

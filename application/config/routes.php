@@ -13,6 +13,10 @@ $route['404_override'] = '';
 $route['admin'] = 'admin';
 $route['admin/script'] = 'admin/script';
 $route['admin/users'] = 'admin/users';
+$route['admin/alert'] = 'admin/checkPropertyAlert';
+
+$route['admin/sendall'] = 'admin/newsletterSend';
+
 $route['admin/properties'] = 'admin/properties';
 $route['admin/propertyalert'] = 'admin/propertyalert';
 $route['admin/newsletter'] = 'admin/newsletter';

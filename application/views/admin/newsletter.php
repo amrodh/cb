@@ -50,6 +50,16 @@
                             <?php endforeach ?>                       
                         </table>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="panel panel-primary">
+                             <a href="<?php echo base_url(); ?>admin/sendall">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Send Newsletter To All</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                     
                 </div>
          </div>

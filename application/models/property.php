@@ -120,6 +120,11 @@ class Property extends CI_Model {
 
     }
 
+    function checkNewProperty($where,$data)
+    {
+      // Call the service and check for new properties
+    }
+
 
   
 
