@@ -13,11 +13,6 @@
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
-    
-       
-    
-
-       
 
         <link type="text/css" href="<?= base_url();?>/application/static/css/style.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
@@ -77,12 +72,12 @@
                 <?php else: ?>
                     <label for="" style="margin-left:3%;">
                         <span class="glyphicon glyphicon-log-in"></span>
-                        <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('login'); ?></a>
+                        <a href="#tallModal" data-toggle="modal"><?php echo $this->lang->line('home_login'); ?></a>
                     </label>
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="register">Register</a>
+                         <a href="register"><?php echo $this->lang->line('home_register'); ?></a>
                      </label>
                       
                 <?php endif ?>
@@ -101,20 +96,20 @@
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       <h4 class="modal-title">Login now</h4>
                       <div style="font-size: 12px;">
-                          Enter your username and password to login
+                          <?php echo $this->lang->line('home_login_text'); ?>
                       </div>
                     </div>
                     <div class="modal-body" style="width:65%;margin-left:33%;">
                         <div class="row">
                              <div class="form-group login_form">
-                                <label style="width:100%" for="username" class="shareproperty_titles">Username:</label>
-                                <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="Please enter username" autofocus required>
+                                <label style="width:100%" for="username" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input1'); ?></label>
+                                <input style="float:left;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="<?php echo $this->lang->line('home_login_placeholder1'); ?>" autofocus required>
                              </div>
                         </div>
                         <div class="row">
                             <div class="form-group login_form">
-                                <label style="width:100%" for="password" class="shareproperty_titles">Password:</label>
-                                <input style="float:left" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="Please enter password" required>
+                                <label style="width:100%" for="password" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input2'); ?></label>
+                                <input style="float:left" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
                             </div>
                         </div>
                         <div class="row">
@@ -130,7 +125,7 @@
                             <input type="submit" style="float: right;margin-right: 20%;" class="btn btn-default search_btn_submit2" value="Go" name="submit">
                         </div>
                         <div class="col-lg-3" style="padding-top: 4%;">
-                            <a href="<?= base_url();?>forgotPassword">Forgot Password?</a>
+                            <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
                         </div>
                     </div>
                   </div><!-- /.modal-content -->
@@ -155,63 +150,63 @@
                 <div class="collapse navbar-collapse bs-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right header_navbar">
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">FIND A HOME
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -60px;">
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties">RESIDENTIAL COMPOUND</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties">PRE-OWNED PROPERTY</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties">RENTAL</a>
+                                    <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu3'); ?></a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">COMMERCIAL
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu2'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -25px;">
                                 <li>
-                                    <a href="">BUY</a>
+                                    <a href=""><?php echo $this->lang->line('home_submenu4'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="">RENT</a>
+                                    <a href=""><?php echo $this->lang->line('home_submenu5'); ?></a>
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>en/auction">AUCTIONS</a></li>
-                        <li><a href="<?= base_url();?>en/trainingCenter">TRAINING CENTER</a></li>
+                        <li><a href="<?= base_url();?>en/auction"><?php echo $this->lang->line('home_menu3'); ?></a></li>
+                        <li><a href="<?= base_url();?>en/trainingCenter"><?php echo $this->lang->line('home_menu4'); ?></a></li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">SERVICES 
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?> 
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="margin-right: -76px;">
                                 <li>
-                                    <a href="<?= base_url();?>en/marketIndex">MARKET INDEX</a>
+                                    <a href="<?= base_url();?>en/marketIndex"><?php echo $this->lang->line('home_submenu6'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/shareProperty">SHARE YOUR PROPERTY</a>
+                                    <a href="<?= base_url();?>en/shareProperty"><?php echo $this->lang->line('home_submenu7'); ?></a>
                                 </li>
                                <!--  <li>
                                     <a href="#">FRANCHISE</a>
                                 </li> -->
                             </ul>
                         </li>
-                        <li><a href="">ABOUT US</a></li>
+                        <li><a href=""><?php echo $this->lang->line('home_menu6'); ?></a></li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">CONTACT US
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -30px;">
                                 <li>
-                                    <a href="#">OFFICES</a>
+                                    <a href="#"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/careers">CAREERS</a>
+                                    <a href="<?= base_url();?>en/careers"><?php echo $this->lang->line('home_submenu9'); ?></a>
                                 </li>
                             </ul>
                         </li>

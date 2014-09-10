@@ -675,6 +675,10 @@ class Home extends CI_Controller {
 		$this->lang->load('trainingcenter', $lang);
 		$this->lang->load('uploadcv', $lang);
 		$this->lang->load('viewallproperties', $lang);
+		$this->lang->load('forgetpassword', $lang);
+		$this->lang->load('resetpassword', $lang);
+		// $this->lang->load('viewallproperties', $lang);
+		// $this->lang->load('viewallproperties', $lang);
 	}
 
 	public function insertPropertyAlert()
