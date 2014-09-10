@@ -17,6 +17,10 @@
 	display: none;
 }
 
+.btn{
+    background-color: #428bca;
+}
+
 .table{
 	font-size:13px;
 }

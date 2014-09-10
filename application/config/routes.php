@@ -14,6 +14,8 @@ $route['admin'] = 'admin';
 $route['admin/script'] = 'admin/script';
 $route['admin/users'] = 'admin/users';
 $route['admin/alert'] = 'admin/checkPropertyAlert';
+$route['admin/content'] = 'admin/content';
+$route['admin/content/new'] = 'admin/addContent';
 
 $route['admin/sendall'] = 'admin/newsletterSend';
 

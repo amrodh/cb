@@ -438,6 +438,18 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/newuser',$data);
 	}
 
+	function content()
+	{	
+		$data = $this->init();
+		$this->load->view('admin/content',$data);
+	}
+
+	public function addContent()
+	{
+		$data = $this->init();
+		$this->load->view('admin/newcontent',$data);
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
@@ -467,6 +479,10 @@ class Admin extends CI_Controller {
 	   	return false;
 	    
 	}
+
+
+
+
 
 
 	public function init()

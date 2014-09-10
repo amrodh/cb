@@ -13,7 +13,9 @@
 
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
+
+ <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
 <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
 
@@ -102,6 +104,9 @@
                     </li>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-list-alt"></i> Courses</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>admin/content"><i class="glyphicon glyphicon-edit"></i> Content Management</a>
                     </li>
                 </ul>
             </div>
