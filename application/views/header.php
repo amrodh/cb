@@ -39,22 +39,9 @@
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
                 </a>
             </div>
-            <div id="login_div">
-                <label for="">
 
-                    <span class="glyphicon glyphicon-globe"></span>
-                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
-                    <span>/</span> -->
-                    <?php if ($uri == 'trainingCenter'): ?>
-                        <a href='<?= base_url().'en/'.$uri?>'>English</a>
-                        <span>/</span>
-                        <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
-                    <?php else: ?>
-                        <a href='<?= base_url().'en/'.str_replace('en', '',$uri)?>'>English</a>
-                        <span>/</span>
-                        <a href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
-                    <?php endif ?>
-                </label>
+            <div id="login_div">
+                
                
                 <?php if (isset($loggedIn)): ?>
                     <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
@@ -82,6 +69,23 @@
                       
                 <?php endif ?>
                 
+            </div>
+            <div id="language">
+                <label for="">
+                    <span class="glyphicon glyphicon-globe"></span>
+                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
+                    <span>/</span> -->
+
+                    <?php if ($uri == 'trainingCenter'): ?>
+                        <a href='<?= base_url().'en/'.$uri?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
+                    <?php else: ?>
+                        <a href='<?= base_url().'en/'.str_replace('en', '',$uri)?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
+                    <?php endif ?>
+                </label>
             </div>
         </div>
         <?php if (isset($loginError)): ?>
