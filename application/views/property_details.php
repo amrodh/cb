@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <div class="container" id="property_address_div">
             Kilo 19, City View, Sahrawy, Alex - Cairo Desert Road
         </div>
         <div class="container" id="property_details_container">
             <div id="property_tabs_header">
                 <ul class="nav nav-tabs nav-justified" id="property_tabs">
-                    <li class="active"><a href="#details" data-toggle="tab">Property Details</a></li>
-                    <li><a href="#map" data-toggle="tab">Map</a></li>
+                    <li class="active"><a href="#details" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab1'); ?></a></li>
+                    <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li>
                 </ul>
             </div>
 
@@ -58,7 +55,7 @@
                         </div>
                         <div id="property_features_div" class="property_borders">
                             <div class="property_titles">
-                                Features
+                                <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
                             <div id="property_features_details">
                                 <div class="property_features_divs">
@@ -99,7 +96,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
-                                Description
+                                <?php echo $this->lang->line('propertydetails_title1'); ?>
                             </div>
                             <div id="property_description_content">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
@@ -113,7 +110,7 @@
                         </div>
                         <div id="property_calculator" class="property_borders">
                             <div id="property_calculator_title">
-                                Financial Calculator
+                                <?php echo $this->lang->line('propertydetails_title2'); ?>
                             </div>
                             <div id="property_calculator_content">
                                 <div>
@@ -131,46 +128,45 @@
                         </div>
                         <div id="property_contact" class="property_borders">
                             <p>
-                                How would you like to be contacted?
+                                <?php echo $this->lang->line('propertydetails_title4'); ?>
                             </p>
                             <div id="property_contact_content">
                                 <div class="row">
                                     <form class="form-inline" id="property_form" role="form">
                                             <div class="form-group">
-                                                <label for="property_first_name">First Name</label>
+                                                <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
                                                 <input type="text" class="form-control" id="property_first_name" placeholder="Enter First Name">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_last_name">Last Name</label>
+                                                <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
                                                 <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="property_email">E-mail</label>
+                                            <div class="form-group"><?php echo $this->lang->line('propertydetails_email'); ?>E-mail</label>
                                                 <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_phone">Phone</label>
+                                                <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
                                                 <input type="text" class="form-control" id="property_phone" placeholder="Enter Phone">
                                             </div>
                                         <div class="form-group">
-                                           <p> I'm interested in: 
+                                           <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx1"value="buying"> Buying
+                                                   <input type="checkbox" id="inlineChkbx1"value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx2"value="selling"> Selling
+                                                   <input type="checkbox" id="inlineChkbx2"value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx3"value="renting"> Renting
+                                                   <input type="checkbox" id="inlineChkbx3"value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
                                                 </label>
                                            </p>
                                         </div>
                                         <div class="form-group" style="width: 97%;">
-                                            <p>Please use the text box below to submit any comments or questions</p>
+                                            <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                             <textarea class="form-control" id="property_form_textarea" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="cmdCalc_Click(this.form);">Send</button>
+                                            <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="cmdCalc_Click(this.form);"><?php echo $this->lang->line('propertydetails_button'); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -178,73 +174,6 @@
                         </div>
                     </div>
                 </div>
-                    <!-- <div class="row">
-                        <div id="similar_properties" class="property_borders">
-                            <div class="property_titles">
-                                Similar Properties
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">View Details  </a><img src="<?= base_url();?>/application/static/images/orange_arrow.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">View Details  </a><img src="<?= base_url();?>/application/static/images/orange_arrow.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">View Details  </a><img src="<?= base_url();?>/application/static/images/orange_arrow.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="tab-pane" id="map">
 
@@ -362,5 +291,3 @@
         });
     </script>
     <?php include('footer.php'); ?>
-    </body>
-</html>

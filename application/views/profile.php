@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
-                PERSONAL PROFILE
+                <?php echo $this->lang->line('profile_title'); ?>
                 <div style="font-size: 12px;font-weight: normal;">
                     
                 </div>
@@ -11,7 +11,7 @@
                     <div class="container" id="profile_bottom_inner_div" style="">
                         <div class="row">
                             <div class="col-lg-2 profile_titles">
-                                Username:
+                                <?php echo $this->lang->line('profile_name'); ?>
                             </div>
                             <div class="col-lg-10 profile_content">
                                 <div class="profileData"><?=$user->username;?></div>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-2 profile_titles">
-                                E-mail:
+                                <?php echo $this->lang->line('profile_email'); ?>
                             </div>
                             <div class="col-lg-10 profile_content">
                                 <div class="profileData"><?=$user->email?></div>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-2 profile_titles">
-                                Location:
+                                <?php echo $this->lang->line('profile_location'); ?>
                             </div>
                             <div class="col-lg-10 profile_content">
                                 <div class="profileData"><?=$user->location?></div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-2 profile_titles">
-                                Phone:
+                                <?php echo $this->lang->line('profile_phone'); ?>
                             </div>
                             <div class="col-lg-10 profile_content">
                                 <div class="profileData"><?=$user->phone?></div>
@@ -111,7 +111,7 @@
                         <div class="row" style="width: 13%; margin: auto; margin-top: 20px;">
                             <!-- <button type="submit" class="btn btn-default profile_btn_submit">Edit</button> -->
                             <?php if ($user->is_valid == 1): ?>
-                                <input type="button"  class="btn btn-defaut profile_btn_submit" value="Edit">
+                                <input type="button"  class="btn btn-defaut profile_btn_submit" value="<?php echo $this->lang->line('profile_button'); ?>">
                             <?php endif ?>
                             
                         </div>

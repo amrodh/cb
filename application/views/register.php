@@ -1,9 +1,9 @@
 <?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
-                REGISTRATION FORM
+                <?php echo $this->lang->line('register_title'); ?>
                 <div style="font-size: 12px;font-weight: normal;">
-                    Enter your personal information to register.
+                    <?php echo $this->lang->line('register_subtitle'); ?>
                 </div>
             </div>
             <form role="form" name="registerForm"  method="post" action="<?= base_url();?>register" onsubmit="return formValidation(); return false;">
@@ -12,14 +12,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
-                                <label for="firstname" class="shareproperty_titles">First Name</label>
+                                <label for="firstname" class="shareproperty_titles"><?php echo $this->lang->line('register_input1'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="first_name" title="First name must be more than 2 characters" id="firstname" pattern=".{3,}" placeholder="Please enter first name"
                                 value="<?php if(isset($params)) echo $params['first_name']; ?>" autofocus required>
                              </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="lastname" class="shareproperty_titles">Last Name</label>
+                                <label for="lastname" class="shareproperty_titles"><?php echo $this->lang->line('register_input2'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="last_name" title="First name must be more than 2 characters" id="lastname" pattern="[.{3,}" placeholder="Please enter lastname"
                                 value="<?php if(isset($params)) echo $params['last_name']; ?>" required>
                             </div>
@@ -28,14 +28,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
-                                <label for="username" class="shareproperty_titles">Username</label>
+                                <label for="username" class="shareproperty_titles"><?php echo $this->lang->line('register_input3'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="username" id="username" pattern=".{3,}" title="3 characters minimum" placeholder="Please enter userame" 
                                 value="<?php if(isset($params)) echo $params['username']; ?>" required>
                              </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="email" class="shareproperty_titles">E-mail</label>
+                                <label for="email" class="shareproperty_titles"><?php echo $this->lang->line('register_input4'); ?></label>
                                 <input type="email" class="form-control register_textbx" name="email" id="email" placeholder="Please enter e-mail" 
                                 value="<?php if(isset($params)) echo $params['email']; ?>" required>
                             </div>
@@ -44,14 +44,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
-                                <label for="location" class="shareproperty_titles">Location</label>
+                                <label for="location" class="shareproperty_titles"><?php echo $this->lang->line('register_input5'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="location" id="location" placeholder="Please enter location" 
                                 value="<?php if(isset($params)) echo $params['location']; ?>" required>
                              </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="phone" class="shareproperty_titles">Phone</label>
+                                <label for="phone" class="shareproperty_titles"><?php echo $this->lang->line('register_input6'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="phone" id="phone" placeholder="Please enter phone number"
                                 value="<?php if(isset($params)) echo $params['phone']; ?>" required>
                             </div>
@@ -60,13 +60,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                              <div class="form-group register_groups">
-                                <label for="password" class="shareproperty_titles">Password</label>
+                                <label for="password" class="shareproperty_titles"><?php echo $this->lang->line('register_input7'); ?></label>
                                 <input type="password" class="form-control register_textbx" name="password" id="password" placeholder="Enter password" required>
                              </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="confirmpassword" class="shareproperty_titles">Confirm Password</label>
+                                <label for="confirmpassword" class="shareproperty_titles"><?php echo $this->lang->line('register_input8'); ?></label>
                                 <input type="password" class="form-control register_textbx" name="confirmpassword" id="confirmpassword" placeholder="Enter password" required>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="row" style="padding-left: 1.5%;">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="newsletter"> Subscribe for Newsletter
+                                <input type="checkbox" name="newsletter"> <?php echo $this->lang->line('register_chkbx'); ?>
                             </label>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                     </div>
                     <?php endif ?>
                     <div class="row" style="width: 13%; float: right; margin-right: 12%;">
-                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="Submit">
+                        <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="<?php echo $this->lang->line('register_button'); ?>">
                     </div>
                 </div>
             </div>

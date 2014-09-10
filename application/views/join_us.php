@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
         <div class="container uploadcv_app_div">
             <div class="uploadcv_app_top_div">
-                CURRENT VACANCIES
+                <?php echo $this->lang->line('joinus_title'); ?>
             </div>
             <div id="joinus_app_bottom_div">
                 <div class="container" id="joinus_app_bottom_inner_div">
@@ -25,7 +25,7 @@
                                 
                                  <div class="careers_overlay_div_btn joinus_btn">
                                         <a href="uploadCV/<?= $vacancy->id; ?>">
-                                            Apply Now
+                                            <?php echo $this->lang->line('joinus_button'); ?>
                                         </a>
                                 </div>
                             </div>

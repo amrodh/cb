@@ -5,7 +5,7 @@
             <div id="home">
                 <div class="container search_components2" style="margin-top: 54px;">
                     <div class="row" id="search2_title">
-                        FIND A HOME
+                        <!-- FIND A HOME --><?php echo $this->lang->line('searchhome_title'); ?>
                     </div>
                     <input type="hidden" id="url" value="<?= base_url();?>">
                     <div class="row search_top_row">
@@ -49,7 +49,7 @@
                        </div>
                     </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
-                        Advanced Search <span class="caret"></span>
+                       <!--  Advanced Search --><?php echo $this->lang->line('searchhome_advanced'); ?> <span class="caret"></span>
                     </div>
                 </div>
                 <div class="container search_components">
@@ -83,7 +83,7 @@
                    </div>
                    <div class="row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">Search</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('searchhome_button'); ?></button>
                        </div>
                    </div>
                 </div>

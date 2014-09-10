@@ -69,16 +69,16 @@
                                             <button type="button" class="btn btn-default properties_btns">
                                                 <a href="<?= base_url();?>propertyDetails">
                                                     <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
-                                                    Details
+                                                    <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                 </a>
                                             </button>
                                             <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
                                                 <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
-                                                0 Images
+                                                0 <?php echo $this->lang->line('viewallproperties_images'); ?>
                                             </button>
                                             <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
                                                 <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
-                                                Share
+                                                <?php echo $this->lang->line('viewallproperties_share'); ?>
                                             </button>
                                         </div>
                                         <div class="properties_share_div">
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="properties_contact">
                                             <a href="#" class="properties_contact_btn">
-                                                Contact
+                                                <?php echo $this->lang->line('viewallproperties_contact'); ?>
                                             </a>
                                         </div>
                                     </div>
@@ -250,7 +250,7 @@
                 <div id="properties_compare_div">
                     <!-- <button type="submit" class="btn btn-default properties_contact_btn" onclick="redirect('en');">Compare</button> -->
                     <a href="<?=base_url(); ?>compareProperties" class="properties_contact_btn">
-                        Compare
+                        <?php echo $this->lang->line('viewallproperties_compare'); ?>
                     </a>
                 </div>
             </form>

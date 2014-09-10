@@ -4,7 +4,7 @@
             <div id="home">
                 <div class="container search_components2" style="margin-top: 54px;">
                     <div class="row" id="search2_title">
-                        العثور على منزل
+                        <!-- العثور على منزل --><?php echo $this->lang->line('searchhome_title'); ?>
                     </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
@@ -58,7 +58,7 @@
                        </div>
                     </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
-                        بحث بالتفصيل <span class="caret"></span>
+                        <!-- بحث بالتفصيل --> <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                 </div>
                 <div class="container search_components">
@@ -92,7 +92,7 @@
                    </div>
                    <div class="row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('searchhome_button'); ?></button>
                        </div>
                    </div>
                 </div>

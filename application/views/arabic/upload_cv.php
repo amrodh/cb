@@ -2,7 +2,7 @@
         <form role="form" name="applyForm"  method="post" action="<?= base_url().'ar/';?>uploadCV" enctype="multipart/form-data">
             <div class="container uploadcv_app_div">
                 <div class="uploadcv_app_top_div">
-                    قدم هنا
+                    <?php echo $this->lang->line('uploadcv_title'); ?>
                 </div>
                 <div id="uploadcv_app_bottom_div">
                     <div class="container" id="uploadcv_app_bottom_inner_div">
@@ -10,19 +10,19 @@
                         <div class="row">
                             <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 uploadcv_app_cols">
                                 <div class="form-group">
-                                    <label class="uploadcv_app_title" for="uploadcv_app_firstname">الاسم الاول</label>
+                                    <label class="uploadcv_app_title" for="uploadcv_app_firstname"><?php echo $this->lang->line('uploadcv_input1'); ?></label>
                                     <input type="text" class="form-control" name="uploadcv_app_firstname" value="<?php if(isset($params)) echo $params['uploadcv_app_firstname']; ?>" id="uploadcv_app_firstname" placeholder="رجاءً أدخل الاسم الأول" required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 uploadcv_app_cols">
                                 <div class="form-group">
-                                    <label class="uploadcv_app_title" for="uploadcv_app_lastname">إسم العائلة</label>
+                                    <label class="uploadcv_app_title" for="uploadcv_app_lastname"><?php echo $this->lang->line('uploadcv_input2'); ?></label>
                                     <input type="text" class="form-control" name="uploadcv_app_lastname" value="<?php if(isset($params)) echo $params['uploadcv_app_lastname']; ?>" id="uploadcv_app_lastname" placeholder="رجاءً أدخل إسم العائلة" required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 uploadcv_app_cols">
                                 <div class="form-group">
-                                    <label class="uploadcv_app_title" for="name">البريد الالكتروني</label>
+                                    <label class="uploadcv_app_title" for="name"><?php echo $this->lang->line('uploadcv_input3'); ?></label>
                                     <input type="text" class="form-control" name="uploadcv_app_email" value="<?php if(isset($params)) echo $params['uploadcv_app_email']; ?>" id="uploadcv_app_email" placeholder="رجاءً أدخل البريد الالكتروني" required>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4 uploadcv_app_cols">
                                 <div class="form-group">
-                                    <label for="uploadcv_app_uploadcv">حمل سيرتك الذاتية</label>
+                                    <label for="uploadcv_app_uploadcv"><?php echo $this->lang->line('uploadcv_input4'); ?></label>
                                     <input type="file" name="uploadcv_app_uploadcv" id="uploadcv_app_uploadcv">
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                         </div>
                         <?php endif ?>
                         <div class="">
-                            <input type="submit" class="btn btn-default search_btn_submit" name="submit" value="قدم">
+                            <input type="submit" class="btn btn-default search_btn_submit" name="submit" value="<?php echo $this->lang->line('uploadcv_button'); ?>">
                         </div>
                     </div>
                 </div>

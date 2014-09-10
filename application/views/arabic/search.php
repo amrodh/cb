@@ -2,9 +2,9 @@
     <form id="search_form">
         <div id="search_header">
             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-               <li class="active"><a href="#home" data-toggle="tab">الرئيسية</a></li>
-               <li><a href="#residentials" data-toggle="tab">سكني</a></li>
-               <li><a href="#commercials" data-toggle="tab">تجارية</a></li>
+               <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li>
+               <li><a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a></li>
+               <li><a href="#commercials" data-toggle="tab"><?php echo $this->lang->line('search_tab3'); ?></a></li>
             </ul>
         </div>
         <div class="tab-content search_body">
@@ -13,7 +13,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               المدينة
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
                             <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -25,21 +25,9 @@
                        <div id="districtContainer_1">
                          
                        </div>
-                       <!-- <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               المنطقة
-                           </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
-                                <option>إختار المنطقة</option>
-                                <option>المهندسين</option>
-                                <option>المعادي</option>
-                                <option>مدينة نصر</option>
-                                <option>مصر الجديدة</option>
-                           </select>
-                       </div> -->
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               نوع العقد
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار النوع</option> 
@@ -53,7 +41,7 @@
                        </div>
                    </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        بحث مفصل <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
                 </div>
@@ -61,7 +49,7 @@
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               السعر
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار السعر</option>
@@ -75,7 +63,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               المساحة
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار المساحة</option>
@@ -92,7 +80,7 @@
                    </div>
                    <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -102,35 +90,27 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               المدينة
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
-                            <select class="selectpicker" data-style="btn" data-title="Select City">
-                                <option>إختار المدينة</option>
-                                <option>القاهرة</option>
-                                <option>الجيزة</option>
-                                <option>الاسكندرية</option>
-                                <option>طنطا</option>
-                                <option>المحلة</option>
-                                <option>قنا</option>
-                            </select>
-                       </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               المنطقة
-                           </div>
-                           <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
+                            <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                 <?php endforeach ?>
                             </select>
                        </div>
+                       <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                           <div class="search_box_col_title title_margin" id="search_title_district">
+                               المنطقة
+                           </div>
+                           
+                       </div> -->
                        <div id="districtContainer_2">
                          
                        </div>
-                       <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               نوع العقد
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار النوع</option> 
@@ -141,10 +121,10 @@
                                 <option>محل</option>
                                 <option>فيلا</option>
                            </select>
-                       </div> -->
+                       </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                              نوع الملكية
+                              <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار النوع</option> 
@@ -159,15 +139,15 @@
                    </div>
                     
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        بحث مفصل  <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?>  <span class="caret"></span>
                     </div>
-                    <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
+                    <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               السعر
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار السعر</option>
@@ -181,7 +161,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               المساحة
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار المساحة</option>
@@ -198,7 +178,7 @@
                    </div>
                    <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -208,7 +188,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               المدينة
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
                             <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -220,21 +200,9 @@
                        <div id="districtContainer_3">
                          
                        </div>
-                       <!-- <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                           <div class="search_box_col_title title_margin" id="search_title_district">
-                               المنطقة
-                           </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
-                                <option>إختار المنطقة</option>
-                                <option>المهندسين</option>
-                                <option>المعادي</option>
-                                <option>مدينة نصر</option>
-                                <option>مصر الجديدة</option>
-                           </select>
-                       </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               نوع العقد
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار النوع</option> 
@@ -248,7 +216,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                              نوع الملكية
+                              <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار النوع</option> 
@@ -263,7 +231,7 @@
                    </div>
                     
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        بحث مفصل  <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">بحث</button>
                 </div>
@@ -271,7 +239,7 @@
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               السعر
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار السعر</option>
@@ -285,7 +253,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               المساحة
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار المساحة</option>
@@ -302,7 +270,7 @@
                    </div>
                    <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();">بحث</button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>

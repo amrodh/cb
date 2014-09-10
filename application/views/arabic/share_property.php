@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
-                إعلان عن الممتلكات الخاصة بك
+                <?php echo $this->lang->line('shareproperty_title'); ?>">
             </div>
             <?php if(isset($insertProcess) && $insertProcess) : ?>
                 <div class="row"  style="width: 70%;margin-left:32%;margin-top:2%;">
@@ -23,14 +23,14 @@
             <div id="properties_bottom_div">
                 <div class="container" id="shareproperty_bottom_inner_div">
                     <div class="shareproperty_title">
-                        معلومات الملكية
+                        <?php echo $this->lang->line('shareproperty_subtitle'); ?>">
                     </div>
                     <form role="form" name="shareForm"  method="post" action="" enctype="multipart/form-data">
                     <div class="shareproperty_content">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin">
-                                    المساحة
+                                    <?php echo $this->lang->line('shareproperty_input1'); ?>">
                                 </div>
                                 <select class="selectpicker" data-style="btn" data-title="Select Price">
                                      <option <?php if (isset($params)){ if($params['area'] == '50'){ ?>selected="true" <?php };} ?> value="50">50 m<sup>2</sup></option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin">
-                                    النوع
+                                    <?php echo $this->lang->line('shareproperty_input2'); ?>">
                                 </div>
                                 <select class="selectpicker" data-style="btn" data-title="Select Type">
                                     <option>إختار النوع</option> 
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin">
-                                    السعر
+                                    <?php echo $this->lang->line('shareproperty_input3'); ?>">
                                 </div>
                                 <select class="selectpicker" data-style="btn" data-title="Select Price">
                                      <option>إختار السعر</option>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                 <div class="shareproperty_titles title_margin" id="search_title_district">
-                                    المدينة
+                                    <?php echo $this->lang->line('shareproperty_input4'); ?>">
                                 </div>
                                 <select class="selectpicker" data-style="btn" data-title="Select City" id="shareProperty_city" name="city" data-size="5">
                                      <option value="0">Select City</option>
@@ -88,20 +88,22 @@
                              
                             </div>
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
-                                <label for="features" class="shareproperty_titles">العنوان</label>
+                                <div class="shareproperty_titles title_margin" id="search_title_district">
+                                    <?php echo $this->lang->line('shareproperty_input6'); ?>">
+                                </div>
                                 <textarea class="form-control" rows="2" name="address" id="address"></textarea>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
-                                <label for="features" class="shareproperty_titles">المميزات</label>
-                                <textarea class="form-control" rows="3" name="features" id="features"></textarea>
+                                <label for="features" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input7'); ?>"></label>
+                                <textarea class="form-control" rows="3" name="features" id="features" value="<?php if(isset($params)) echo $params['features']; ?>"><?php if(isset($params)) echo $params['features']; ?></textarea>
                             </div>
                             <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                 <div class="form-group">
-                                    <label for="uploadimage" class="shareproperty_titles">Upload Image</label>
+                                    <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?>"></label>
                                     <input type="file" name="img[]"  multiple="multiple">
-                                    <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p>
+                                    <p style="font-size:11px;margin-top:1%;">يمكنك إختيار صور متعددة</p>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +115,7 @@
                         </div>
                         <?php endif ?>
                         <div class="row" style="width: 13%; margin: auto; margin-top: 20px;">
-                            <input type="submit" class="btn btn-default share_btn_submit" value="قدم" name="submit">
+                            <input type="submit" class="btn btn-default share_btn_submit" value="<?php echo $this->lang->line('shareproperty_button'); ?>" name="submit">
                         </div>
                     </div>
                     </form>

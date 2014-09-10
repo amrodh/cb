@@ -1,14 +1,14 @@
 <?php include('header.php'); ?>
 	<div class="container auctions_main_div">
         <div class="auctions_top_div">
-            نسيت كلمة المرور
+            <?php echo $this->lang->line('forgotpassword_title'); ?>
         </div>
         <div id="auctions_bottom_div">
             <div class="row">
-            	رجاءً أدخل بريدك الالكتروني ليتم تغيير كلمة المرور
+            	<?php echo $this->lang->line('forgotpassword_subtitle'); ?>
             	<form role="form"  method="post" >
-					<input type="email" name="email" placeholder="رجاءً أدخل بريدك الالكتروني">
-					<input type="submit" name="submit" value="إرسال">
+					<input type="email" name="email" placeholder="<?php echo $this->lang->line('forgotpassword_placeholder'); ?>">
+					<input type="submit" name="submit" value="<?php echo $this->lang->line('forgotpassword_button'); ?>">
 				</form>
             </div>
         </div>

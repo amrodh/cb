@@ -4,27 +4,27 @@
             <div class="row" id="careers_overlay_div">
                 <div class="col-lg-6 col-sm-3 careers_cols" id="careers_overlay_left_div">
                     <div class="careers_overlay_div_title">
-                        ارسل سيرتك الذاتية!
+                        <?php echo $this->lang->line('careers_title1'); ?>
                     </div>
                     <div class="careers_overlay_div_content">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam no nummy nibh euismod tincidunt ut laoreet. 
+                        <?php echo $this->lang->line('careers_description1'); ?>
                     </div>
                     <div class="careers_overlay_div_btn">
                         <a href="<?= base_url().'ar/';?>uploadCV">
-                            حمل سيرتك الذاتية
+                            <?php echo $this->lang->line('careers_button1'); ?>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-3 careers_cols">
                     <div class="careers_overlay_div_title">
-                        إنضم إلينا الأن!
+                        <?php echo $this->lang->line('careers_title2'); ?>
                     </div>
                     <div class="careers_overlay_div_content">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam no nummy nibh euismod tincidunt ut laoreet. 
+                        <?php echo $this->lang->line('careers_description2'); ?>
                     </div>
                     <div class="careers_overlay_div_btn">
                         <a href="<?= base_url().'ar/';?>joinUs">
-                            الوظائف الشاغرة
+                            <?php echo $this->lang->line('careers_button2'); ?>
                         </a>
                     </div>
                 </div>

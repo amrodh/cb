@@ -635,7 +635,6 @@ class Home extends CI_Controller {
 		}else{
 			$data['uri'] = $this->uri->uri_string;
 		}
-		
 
 		//printme($data['uri']);exit();
 
@@ -661,6 +660,21 @@ class Home extends CI_Controller {
 			$lang = 'english';
 
 		$this->lang->load('home', $lang);
+		$this->lang->load('auction', $lang);
+		$this->lang->load('compare', $lang);
+		$this->lang->load('error', $lang);
+		$this->lang->load('joinus', $lang);
+		$this->lang->load('marketindex', $lang);
+		$this->lang->load('profile', $lang);
+		$this->lang->load('propertyalert', $lang);
+		$this->lang->load('propertydetails', $lang);
+		$this->lang->load('register', $lang);
+		$this->lang->load('search', $lang);
+		$this->lang->load('searchhome', $lang);
+		$this->lang->load('shareproperty', $lang);
+		$this->lang->load('trainingcenter', $lang);
+		$this->lang->load('uploadcv', $lang);
+		$this->lang->load('viewallproperties', $lang);
 	}
 
 	public function insertPropertyAlert()

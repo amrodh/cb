@@ -5,8 +5,8 @@
         <div class="container" id="property_details_container">
             <div id="property_tabs_header">
                 <ul class="nav nav-tabs nav-justified" id="property_tabs">
-                    <li class="active"><a href="#details" data-toggle="tab">التفاصيل</a></li>
-                    <li><a href="#map" data-toggle="tab">الخريطة</a></li>
+                    <li class="active"><a href="#details" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab1'); ?></a></li>
+                    <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li>
                 </ul>
             </div>
 
@@ -55,7 +55,7 @@
                         </div>
                         <div id="property_features_div" class="property_borders">
                             <div class="property_titles">
-                                مميزات
+                                <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
                             <div id="property_features_details">
                                 <div class="property_features_divs">
@@ -96,7 +96,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
-                                وصف
+                                <?php echo $this->lang->line('propertydetails_title1'); ?>
                             </div>
                             <div id="property_description_content">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy ni 
@@ -110,7 +110,7 @@
                         </div>
                         <div id="property_calculator" class="property_borders">
                             <div id="property_calculator_title">
-                                الحاسبة المالية
+                                <?php echo $this->lang->line('propertydetails_title2'); ?>
                             </div>
                             <div id="property_calculator_content">
                                 <div>
@@ -128,46 +128,46 @@
                         </div>
                         <div id="property_contact" class="property_borders">
                             <p>
-                                كيف تريد أن يتم الاتصال بك؟
+                                <?php echo $this->lang->line('propertydetails_title4'); ?>
                             </p>
                             <div id="property_contact_content">
                                 <div class="row">
                                     <form class="form-inline" id="property_form" role="form">
                                             <div class="form-group">
-                                                <label for="property_first_name">الاسم الأول</label>
+                                                <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
                                                 <input type="text" class="form-control" style="margin-right: 35px;" id="property_first_name" placeholder="يرجى إدخال الإسم الأول">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_last_name">إسم العائلة</label>
+                                                <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
                                                 <input type="text" class="form-control" style="margin-right: 34px;" id="property_last_name" placeholder="يرجى إدخال إسم العائلة">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_email">البريد الالكتروني</label>
+                                                <label for="property_email"><?php echo $this->lang->line('propertydetails_email'); ?></label>
                                                 <input type="email" class="form-control" style="margin-right: 4px;" id="property_email" placeholder="يرجى إدخال البريد الإلكتروني">
                                             </div>
                                             <div class="form-group">
-                                                <label for="property_phone">رقم الهاتف</label>
+                                                <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
                                                 <input type="text" class="form-control" style="margin-right: 34px;" id="property_phone" placeholder="يرجى إدخال رقم الهاتف">
                                             </div>
                                         <div class="form-group">
-                                           <p> أنا مهتم في: 
+                                           <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx1"value="buying"> شراء
+                                                   <input type="checkbox" id="inlineChkbx1"value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx2"value="selling"> بيع
+                                                   <input type="checkbox" id="inlineChkbx2"value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx3"value="renting"> إيجار
+                                                   <input type="checkbox" id="inlineChkbx3"value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
                                                 </label>
                                            </p>
                                         </div>
                                         <div class="form-group">
-                                            <p>يرجى إستخدم مربع النص أدناه لتقديم أي تعليقات أو اسئلة </p>
+                                            <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                             <textarea class="form-control" id="property_form_textarea" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="">إرسال</button>
+                                            <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick=""><?php echo $this->lang->line('propertydetails_button'); ?></button>
                                         </div>
                                     </form>
                                 </div>
@@ -175,73 +175,6 @@
                         </div>
                     </div>
                 </div>
-                    <!-- <div class="row">
-                        <div id="similar_properties" class="property_borders">
-                            <div class="property_titles">
-                                عقارات مشابهة
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">عرض التفاصيل  </a><img src="<?= base_url();?>/application/static/images/orange_arrow_ar.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">عرض التفاصيل </a><img src="<?= base_url();?>/application/static/images/orange_arrow_ar.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 property_details_cols">
-                                <div class="similiar_properties_content">
-                                    <div>
-                                        <img class="similar_properties_img" src="<?= base_url();?>/application/static/images/sample_property.png"/>
-                                    </div>
-                                    <div class="similar_properties_content">
-                                        <p>
-                                            26880 Pacific Coast Hwy
-                                            Malibu, CA 90265
-                                        </p>
-                                        <p>
-                                            $54,000,000
-                                            13 bed, 14 bath
-                                        </p>
-                                        <p>
-                                            <a href="#">عرض التفاصيل  </a><img src="<?= base_url();?>/application/static/images/orange_arrow_ar.png"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="tab-pane" id="map">
 

@@ -2,9 +2,9 @@
     <form id="search_form">
         <div id="search_header">
             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-               <li class="active"><a href="#home" data-toggle="tab">HOME</a></li>
-               <li><a href="#residentials" data-toggle="tab">RESIDENTIALS</a></li>
-               <li><a href="#commercials" data-toggle="tab">COMMERCIALS</a></li>
+               <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li>
+               <li><a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a></li>
+               <li><a href="#commercials" data-toggle="tab"><?php echo $this->lang->line('search_tab3'); ?></a></li>
             </ul>
         </div>
         <div class="tab-content search_body">
@@ -13,7 +13,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
                            <select class="selectpicker" id="search_city_1" name="city_1" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -30,7 +30,7 @@
                        </div> -->
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" id="search_type_1" name="type_1" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
@@ -44,15 +44,15 @@
                        </div>
                    </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
-                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" id="search_price_1" name="price_1" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
@@ -66,7 +66,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" id="search_area_1" name="area_1" data-style="btn" data-title="Select Area">
                                 <option>Select Area</option>
@@ -83,7 +83,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -93,7 +93,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
                             <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -110,7 +110,7 @@
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" id="search_type_2" name="type_2" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
@@ -124,7 +124,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Property Type
+                               <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
                            <select class="selectpicker" id="search_propertyType_2" name="propertyType_2" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
@@ -139,15 +139,15 @@
                    </div>
                     
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
-                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
+                    <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" id="search_price_2" name="price_2" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
@@ -161,7 +161,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" id="search_area_2" name="area_2" data-style="btn" data-title="Select Price">
                                 <option>Select Area</option>
@@ -178,7 +178,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -188,7 +188,7 @@
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
-                               City
+                               <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
                             <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -205,7 +205,7 @@
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Contract Type
+                               <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
                            <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
@@ -219,7 +219,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Property Type
+                               <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
                            <select class="selectpicker" id="search_propertyType_3" name="propertyType_3" data-style="btn" data-title="Select Type">
                                 <option>Select Type</option> 
@@ -234,7 +234,7 @@
                    </div>
                     
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 132px;">
-                        Advanced Search <span class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>
                 </div>
@@ -242,7 +242,7 @@
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
-                               Price Range
+                               <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
                            <select class="selectpicker" id="search_price_3" name="price_3" data-style="btn" data-title="Select Price">
                                 <option>Select Price</option>
@@ -256,7 +256,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
-                               Area Range
+                               <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
                            <select class="selectpicker" id="search_area_3" name="area_3" data-style="btn" data-title="Select Price">
                                 <option>Select Area</option>
@@ -273,7 +273,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();">Search</button>
+                            <button type="button" class="btn btn-default search_btn_submit2 searchButton" style="" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>

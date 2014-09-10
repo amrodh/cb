@@ -2,7 +2,7 @@
     <form id="property_alert_form">
         <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
-               <li class="active"><a href="#alert" data-toggle="tab">مخطر العقارات</a></li>
+               <li class="active"><a href="#alert" data-toggle="tab"><?php echo $this->lang->line('propertyalert_title'); ?></a></li>
             </ul>
         </div>
         <div class="tab-content property_alert_body">
@@ -11,7 +11,7 @@
                    <div class="row property_alert_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 property_alert_cols">
                             <div class="property_alert_col_title title_margin" id="property_alert_title_district">
-المدينة                             
+                                <?php echo $this->lang->line('propertyalert_subtitle1'); ?>
                             </div>
                             <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
@@ -36,7 +36,7 @@
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="property_alert_col_title title_margin">
-                               نوع العقد
+                               <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option>إختار نوع العقد</option> 
@@ -51,31 +51,22 @@
                        <?php if (!isset($loggedIn)): ?>
                          <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                             <div class="property_alert_col_title title_margin">
-                                E-mail
+                                <?php echo $this->lang->line('propertyalert_subtitle7'); ?>
                             </div>
                             <input type="text" name="alert_email" id="alert_email" placeholder="Your E-mail"/>
                         </div>
                         <?php endif ?>
-
-                       <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
-                       <!--<div style="float: left;margin-right: 126px;margin-left: 167px;">-->
-                            <!-- <div class="property_alert_col_title title_margin">
-                                البريد الالكتروني
-                            </div>
-                            <input type="text" name="alert_email" id="alert_email" placeholder="بريدك الالكتروني"/> -->
-                             <!--<input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">-->
-                        <!-- </div> -->
                    </div>
                     <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit" style="position: absolute; margin-right: 71.5%;">إرسال</button>
                     <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 132px; float: right;margin-right: 0px;">
-                        بحث مفصل <span id="property_alert_caret" class="caret"></span>
+                        <?php echo $this->lang->line('searchhome_advanced'); ?><span id="property_alert_caret" class="caret"></span>
                     </div>
                 </div>
                 <div class="container property_alert_components">
                     <div class="row property_alert_bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                             <div class="property_alert_col_title title_margin">
-                                السعر
+                                <?php echo $this->lang->line('propertyalert_subtitle5'); ?>
                             </div>
                             <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار السعر</option>
@@ -89,7 +80,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="property_alert_col_title title_margin">
-                               المساحة
+                               <?php echo $this->lang->line('propertyalert_subtitle6'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار المساحة</option>
@@ -107,7 +98,7 @@
                    <input type="hidden" id="tmp__nm" value="<?php if(isset($loggedIn)) echo $user->username; ?>">
                     <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                         <div class="col-lg-12">
-                             <button type="submit" class="btn btn-default property_alert_btn_submit2 propertyAlertButton">إرسال</button>
+                             <button type="submit" class="btn btn-default property_alert_btn_submit2 propertyAlertButton"><?php echo $this->lang->line('propertyalert_button'); ?></button>
                         </div>
                     </div>
                     <div class="row" style="width: 52%;margin: auto;clear:both;">

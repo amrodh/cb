@@ -5,7 +5,7 @@
                 <div class="row" id="market_index_top_row">
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
-                            نوع الممتلكات
+                            <?php echo $this->lang->line('marketindex_title1'); ?>
                         </div>
                         <select class="selectpicker" data-style="btn" data-title="Select Type">
                             <option>إختر النوع</option> 
@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
-                            بناء على
+                            <?php echo $this->lang->line('marketindex_title2'); ?>
                         </div>
                         <select class="selectpicker" data-style="btn" data-title="Select Type">
                             <option>إختر النوع</option> 
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
-                            الممتلكات ل
+                            <?php echo $this->lang->line('marketindex_title3'); ?>
                         </div>
                         <select class="selectpicker" data-style="btn" data-title="Select Type">
                             <option>إختر النوع</option> 
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
-                            نوع العمل
+                            <?php echo $this->lang->line('marketindex_title4'); ?>
                         </div>
                         <select class="selectpicker" data-style="btn" data-title="Select Type">
                             <option>إختر النوع</option> 
@@ -66,7 +66,7 @@
                             ٦٬٠٠٠ جنيه مصري
                         </div>
                         <div class="market_index_content">
-                            أدنى سعر للمتر المكعب
+                            <?php echo $this->lang->line('marketindex_subtitle1'); ?>
                         </div>
                     </div>
                     <div class="col-xs-12 col-lg-4 col-md-4 col-sm-6 market_index_cols right_border">
@@ -74,7 +74,7 @@
                             ١٢٬٠٠٠ جنيه مصري
                         </div>
                         <div class="market_index_content">
-                            أعلى سعر للمتر المكعب
+                            <?php echo $this->lang->line('marketindex_subtitle2'); ?>
                         </div>
                     </div>
                     <div class="col-xs-12 col-lg-4 col-md-4 col-sm-6 market_index_cols">
@@ -82,7 +82,7 @@
                             ١٠٬٠٠٠ جنيه مصري
                         </div>
                         <div class="market_index_content">
-                            متوسط السعر للمتر المربع
+                            <?php echo $this->lang->line('marketindex_subtitle3'); ?>
                         </div>
                     </div>
                 </div>

@@ -2,11 +2,11 @@
         <?php include('search.php'); ?>
         <div class="container auctions_main_div">
             <div class="auctions_top_div">
-                AUCTION
+                <?php echo $this->lang->line('auction_title'); ?>
                 <div id="auctions_breadcrumb">
                     <ol class="breadcrumb breadcrumb_styling">
-                        <li><a href="http://localhost/ColdwellBanker">Coldwell Banker Home</a></li>
-                        <li class="active">Auctions</li>
+                        <li><a href="http://localhost/ColdwellBanker"><?php echo $this->lang->line('auction_breadcrumb1'); ?></a></li>
+                        <li class="active"><?php echo $this->lang->line('auction_breadcrumb2'); ?></li>
                     </ol>
                 </div>
             </div>
@@ -15,8 +15,8 @@
                     <div class="col-lg-8">
                         <div id="search_header" style="margin-top: -30px;">
                             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-                               <li class="active"><a href="#recent" id="auction_anchor1" data-toggle="tab">Recent</a></li>
-                               <li><a href="#upcoming" id="auction_anchor3" data-toggle="tab">Upcoming</a></li>
+                               <li class="active"><a href="#recent" id="auction_anchor1" data-toggle="tab"><?php echo $this->lang->line('auction_tab1'); ?></a></li>
+                               <li><a href="#upcoming" id="auction_anchor3" data-toggle="tab"><?php echo $this->lang->line('auction_tab2'); ?></a></li>
                             </ul>
                         </div>
                         <div class="tab-content auction_body">
@@ -158,14 +158,14 @@
                         </div>
                         <div class="row auction_top_tool">
                             <div class="auction_toptool_title">
-                                Top Tool
+                                <?php echo $this->lang->line('auction_calculator_title'); ?>
                             </div>
                             <div class="row auction_toptool_content">
                                 <div class="col-lg-2">
                                     <img src="<?= base_url();?>/application/static/images/icon_calculator.png">
                                 </div>
                                 <div class="col-lg-6" id="auction_calculator">
-                                    <a href="#calculatorTallModal" data-toggle="modal">Monthly Payment Calculator</a>
+                                    <a href="#calculatorTallModal" data-toggle="modal"><?php echo $this->lang->line('auction_calculator_description'); ?></a>
                                 </div>
                             </div>
                         </div>
