@@ -31,6 +31,7 @@ $lang['shareProperty_missing_city'] = "رجاءً إختار المدينة";
 $lang['shareProperty_missing_district'] = "رجاءً إختار المنطقة";
 $lang['shareProperty_missing_address'] = "رجاءً أدخل العنوان الملكية";
 $lang['shareProperty_missing_features'] = "رجاءً أدخل مميزات الملكية";
+$lang['shareProperty_validate_account'] = "يجب التحقق من صحة الحساب عن طريق الدخول على البريد الالكتروني وتأكيد الحساب.";
 $lang['uploadCV_missing_firstname'] = "رجاءً أدخل الاسم الاول";
 $lang['uploadCV_missing_lastname'] = "رجاءً أدخل إسم العائلة";
 $lang['uploadCV_missing_email'] = "رجاءً أدخل البريد الالكتروني";

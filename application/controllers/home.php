@@ -82,9 +82,7 @@ class Home extends CI_Controller {
 
 		$this->load->model('user');
 		$data = $this->init();
-		// printme($data);exit();
-		
-
+		// printme(base_url().$data['language']);exit();
 		if(isset($_POST['submit'])){
 		
 			$firstname = $_POST['first_name'];
@@ -132,6 +130,7 @@ class Home extends CI_Controller {
 						'password' => $_POST['password'],
 						'is_valid' => 0
 						);
+
 					if ($this->user->insertUser($userData))
 					{	
 						$insertToken = $this->user->insertTempEmail($this->db->insert_id(),$_POST['email'],1);
@@ -144,8 +143,13 @@ class Home extends CI_Controller {
 							$params['user_identifier'] = $this->db->insert_id();
 							$this->user->insertNewsletterData($params);
 						}
+						if ($data['language'] !== 'ar' && $data['language'] !== 'en')
+						{
+							redirect(base_url());
+						}else{
+							redirect(base_url().$data['language']);
+						}
 						
-						redirect(base_url().$data['language']);
 					}
 				}
 			}
@@ -598,6 +602,10 @@ class Home extends CI_Controller {
 			$this->load->model('user');
 			$data['loggedIn'] = true;
 			$data['user'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			if ($data['user']->is_valid == 1)
+			{
+				$data['is_valid'] = $data['user']->is_valid;
+			}
 			$this->load->model('service');
 			$data['cities'] = $this->service->getCities();
 			if ($this->user->is_subscribed($data['user']->id))
@@ -662,6 +670,7 @@ class Home extends CI_Controller {
 		$this->lang->load('home', $lang);
 		$this->lang->load('auction', $lang);
 		$this->lang->load('compare', $lang);
+		$this->lang->load('careers', $lang);
 		$this->lang->load('error', $lang);
 		$this->lang->load('joinus', $lang);
 		$this->lang->load('marketindex', $lang);

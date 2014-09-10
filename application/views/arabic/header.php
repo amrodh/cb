@@ -42,23 +42,9 @@
                 </a>
             </div>
             <div id="login_div">
-                <label for="">
-                    <span class="glyphicon glyphicon-globe"></span>
-                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
-                    <span>/</span> -->
-                    <?php if ($uri == 'shareProperty'): ?>
-                        <a href='<?= base_url().'en/'.$uri?>'>English</a>
-                        <span>/</span>
-                        <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
-                    <?php else: ?>
-                        <a href='<?= base_url().'en/'.str_replace('ar', '',$uri)?>'>English</a>
-                        <span>/</span>
-                        <a href='<?= base_url().'ar/'.str_replace('ar', '',$uri)?>'>عربي</a>
-                    <?php endif ?>
-                    <!-- <a href='<?= base_url().'ar'.str_replace('ar', '',$uri)?>'>عربي</a> -->
-                </label>
+                
                 <?php if (isset($loggedIn)): ?>
-                    <span style="margin-right:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
+                    <span style="margin-right:5%;"><b><a style="color: white; text-decoration: none;font-family: 'Ubuntu';" href="<?= base_url();?>profile">
                         <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
                     </span>
                     <label style="">
@@ -84,6 +70,23 @@
                      </label>
                     <!-- <a href="#tallModal" data-toggle="modal">دخول</a> / <a href="<?= base_url();?>register">تسجيل</a> -->
                 <?php endif ?>
+            </div>
+            <div id="language">
+                <label for="">
+                    <span class="glyphicon glyphicon-globe"></span>
+                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
+                    <span>/</span> -->
+                    <?php if ($uri == 'shareProperty'): ?>
+                        <a style="font-family: 'Ubuntu';" href='<?= base_url().'en/'.$uri?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
+                    <?php else: ?>
+                        <a href='<?= base_url().'en/'.str_replace('ar', '',$uri)?>'>English</a>
+                        <span>/</span>
+                        <a href='<?= base_url().'ar/'.str_replace('ar', '',$uri)?>'>عربي</a>
+                    <?php endif ?>
+                    <!-- <a href='<?= base_url().'ar'.str_replace('ar', '',$uri)?>'>عربي</a> -->
+                </label>
             </div>
         </div>
         <?php if (isset($loginError)): ?>
