@@ -59,7 +59,7 @@
                           <p>Please enter the correct username and password for a staff account. Note that both fields may be case-sensitive.</p>
                         </div>
                       <?php endif ?>
-                        <input type="submit" class="btn btn-default">
+                        <input type="submit" class="btn btn-default" style="background-color:white;">
                     </form>
                 </div>
             </div>

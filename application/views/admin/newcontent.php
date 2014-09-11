@@ -18,7 +18,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Auction Creation</h3>
+              <h3 class="panel-title">Slide Creation</h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -30,29 +30,29 @@
                     <tbody>
                       <tr>
                         <td>Heading 1:</td>
-                        <td><input type="text" name="title" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['title']; ?>">
+                        <td><input type="text" name="h1_en" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['h1_en']; ?>">
                         </td>
-                        <td><input style="text-align:right;direction:RTL;" type="text" name="title_ar" value="<?php if(isset($params)) echo $params['title_ar']; ?>" required>
+                        <td><input style="text-align:right;direction:RTL;" type="text" name="h1_ar" value="<?php if(isset($params)) echo $params['h1_ar']; ?>" required>
                         </td>
                         <td>العنوان 1</td>
                       </tr>
                       <tr>
                         <td>Heading 2</td>
                         <td>
-                           <input type="text" name="title" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['title']; ?>">
+                           <input type="text" name="h2_en" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['h2_en']; ?>">
                          </td>
                         <td>
-                        <input type="text" style="text-align:right;direction:RTL;" name="title" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['title']; ?>">
+                        <input type="text" style="text-align:right;direction:RTL;" name="h2_ar" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['h2_ar']; ?>">
                         </td>
                         <td>العنوان 2</td>
                       </tr>
                       <tr>
                         <td>Link</td>
                         <td>
-                           <input type="text" name="title" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['title']; ?>">
+                           <input type="text" name="link_en" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['link_en']; ?>">
                          </td>
                         <td>
-                        <input type="text" style="text-align:right;direction:RTL;" name="title" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['title']; ?>">
+                        <input type="text" style="text-align:right;direction:RTL;" name="link_ar" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['link_ar']; ?>">
                         </td>
                         <td>الرابط</td>
                       </tr>
@@ -60,16 +60,16 @@
 
                       <tr>
                         <td>Image / الصورة</td>
-                        <td><input type="file" name="userfile" required>
+                        <td><input type="file" name="userfile['image']" required>
                         </td>
                       </tr>
                        <tr>
                         <td>Logo</td>
-                        <td><input type="file" name="userfile" required>
+                        <td><input type="file" name="userfile['logo']" required>
                         </td>
 
                         
-                        <td><input type="file" name="userfile" required>
+                        <td><input type="file" name="userfile['alt_logo']" required>
                         </td>
                         <td>لوجو</td>
                       </tr>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <?php if (isset($error)): ?>
-              <div id="successAlert" class="alert alert-danger " role="alert">
+              <div class="alert alert-danger " role="alert">
                       <?= $error; ?> 
               </div>
             <?php endif ?>

@@ -594,7 +594,7 @@ class Home extends CI_Controller {
 	public function init()
 	{	
 		$data = array();
-
+		
 		if(isset($this->session->userdata['id'])){
 			$this->load->model('user');
 			$data['loggedIn'] = true;

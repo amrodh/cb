@@ -23,66 +23,24 @@
                     <div class="row">
                         <div class="col-lg-12 hidden-sm hidden-xs ">
     <ul class="bxslider" style="height: 455px!important;">
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
+         <?php if (is_array($slides)): ?>
+            <?php foreach ($slides as $slide): ?>
+                <li>
+
+              <a href="<?php echo base_url(); ?>">
+                <img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->image; ?>"></a>
               <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
+                  <img src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->logo; ?>">
               </div>
               <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
+                  <p><?= $slide->h1_en; ?></p>
+                  <p><?= $slide->h2_en; ?></p>
               </div>
           </li>
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
-              </div>
-          </li>
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
-              </div>
-          </li>
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>SPECIAL OFFER</p>
-                  <p>PAYMENT ON 6 YEARS</p>
-              </div>
-          </li>
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
-              </div>
-          </li>
-          <li>
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>NOW HALF PRICE</p>
-                  <p>AND PAYMENT ON 6 YEARS</p>
-              </div>
-          </li>
+            <?php endforeach ?>
+
+         <?php endif ?>
+          
       </ul>
 </div>
    
@@ -101,13 +59,30 @@
                             <tr>
                                 <th>Order</th>
                                 <th>heading 1</th>
-                                <th>heading 2_ar</th>
+                                <th>heading 1_ar</th>
                                 <th>heading 2</th>
                                 <th>heading 2_ar</th>
                                 <th>Active</th>
                             </tr>
                             </thead>
-                                                 
+                            <?php if (is_array($slides)): ?>
+                                <?php foreach ($slides as $slide): ?>
+                                    
+                               
+                                <tr>
+                                    <td><?= $slide->order  ?></td>
+                                    <td><?= $slide->h1_en  ?></td>
+                                    <td><?= $slide->h1_ar  ?></td>
+                                    <td><?= $slide->h2_en  ?></td>
+                                    <td><?= $slide->h2_ar  ?></td>
+                                    <td><?= $slide->is_active ?></td>
+                                </tr>
+                                <?php endforeach ?>
+                            <?php else: ?>
+                                <div class="alert alert-warning">
+                                    No Slides Found..
+                                </div>
+                            <?php endif ?>
                         </table>
         <div class="panel panel-primary" style="width:10%">
                              <a href="<?php echo base_url(); ?>admin/content/new">

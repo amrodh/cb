@@ -441,12 +441,94 @@ class Admin extends CI_Controller {
 	function content()
 	{	
 		$data = $this->init();
+		$data['slides'] = $this->content->getSliderContent();
+		// printme($data['slides']);exit();
 		$this->load->view('admin/content',$data);
 	}
 
 	public function addContent()
 	{
 		$data = $this->init();
+
+		if(isset($_POST['submit'])){
+
+			$data['params'] = $_POST;
+			$activeSlides = $this->content->getActiveSliders();
+			if(!$activeSlides){
+				$_POST['order'] = 1;
+			}else{
+				$count = count($activeSlides);
+				$_POST['order']  = $count+1;
+			}
+
+			if(isset($_FILES)){
+				$path = $this->config->config['upload_path'];
+				$this->config->set_item('upload_path',$path.'/slider');
+				
+				$tmp = $_FILES;
+				$_FILES['userfile']['name']     = $tmp['userfile']['name']["'image'"];
+				$_FILES['userfile']['type']     = $tmp['userfile']['type']["'image'"];
+				$_FILES['userfile']['tmp_name'] = $tmp['userfile']['tmp_name']["'image'"];
+				$_FILES['userfile']['error']    = $tmp['userfile']['error']["'image'"];
+				$_FILES['userfile']['size']     = $tmp['userfile']['size']["'image'"];
+				$fileExtension = explode('.',$_FILES['userfile']['name']);
+				$_POST['image'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+				$_FILES['userfile']['name'] = $_POST['image'];
+				
+				$upload = uploadme($this);
+				if(isset($upload['error'])){
+					echo 'yes';
+					$data['error'] = 'Upload Failed, Please try again';
+					$this->load->view('admin/newcontent',$data);
+					return;
+				}
+
+				$_FILES['userfile']['name']     = $tmp['userfile']['name']["'logo'"];
+				$_FILES['userfile']['type']     = $tmp['userfile']['type']["'logo'"];
+				$_FILES['userfile']['tmp_name'] = $tmp['userfile']['tmp_name']["'logo'"];
+				$_FILES['userfile']['error']    = $tmp['userfile']['error']["'logo'"];
+				$_FILES['userfile']['size']     = $tmp['userfile']['size']["'logo'"];
+				$fileExtension = explode('.',$_FILES['userfile']['name']);
+				$_POST['logo'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+				$_FILES['userfile']['name'] = $_POST['logo'];
+
+				
+
+				$upload = uploadme($this);
+				if(isset($upload['error'])){
+					echo 'yes';
+					$data['error'] = 'Upload Failed, Please try again';
+					$this->load->view('admin/newcontent',$data);
+					return;
+				}
+
+				$_FILES['userfile']['name']     = $tmp['userfile']['name']["'alt_logo'"];
+				$_FILES['userfile']['type']     = $tmp['userfile']['type']["'alt_logo'"];
+				$_FILES['userfile']['tmp_name'] = $tmp['userfile']['tmp_name']["'alt_logo'"];
+				$_FILES['userfile']['error']    = $tmp['userfile']['error']["'alt_logo'"];
+				$_FILES['userfile']['size']     = $tmp['userfile']['size']["'alt_logo'"];
+				$fileExtension = explode('.',$_FILES['userfile']['name']);
+				$_POST['alt_logo'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+				$_FILES['userfile']['name'] = $_POST['alt_logo'];
+
+				
+
+				$upload = uploadme($this);
+				if(isset($upload['error'])){
+					echo 'yes';
+					$data['error'] = 'Upload Failed, Please try again';
+					$this->load->view('admin/newcontent',$data);
+					return;
+				}
+
+				unset($_POST['submit']);
+				$_POST['is_active'] = 1;
+				//printme($_POST);exit();
+				$this->content->insertSlide($_POST);
+			}
+
+			
+		}
 		$this->load->view('admin/newcontent',$data);
 	}
 
@@ -493,6 +575,8 @@ class Admin extends CI_Controller {
 			$this->load->model('user');
 			$data['loggedIn'] = true;
 			$data['loggedUser'] = $this->user->getUserByUsername($this->session->userdata['username']);
+			if($data['loggedUser']->id != 1)
+				redirect('admin');
 		}else{
 			redirect('admin');
 		}
