@@ -80,62 +80,62 @@
                     </div>
                     <div class="row" style="width: 32%;margin: auto;">
                         <div class="alert alert-danger" id="passwordAlert" role="alert">
-                            كلمات السر ليست مطابقة
+                            <?php echo $this->lang->line('register_password_mismatch'); ?>
                         </div>
                     </div>
                     <?php if (isset($registrationError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            إسم المستخدم موجود بالفعل 
+                            <?php echo $this->lang->line('register_username'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($firstNameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل الاسم الاول
+                            <?php echo $this->lang->line('register_missing_firstname'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($lastNameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل إسم العائلة
+                            <?php echo $this->lang->line('register_missing_lastname'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($usernameError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل إسم المستخدم
+                            <?php echo $this->lang->line('register_missing_username'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($emailError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل البريد الالكتروني
+                            <?php echo $this->lang->line('register_missing_email'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($locationError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل العنوان
+                            <?php echo $this->lang->line('register_missing_location'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($phoneError)) :?>
                     <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل رقم الهاتف
+                            <?php echo $this->lang->line('register_missing_phone'); ?>
                         </div>
                     </div>
                     <?php endif ?>
                     <?php if (isset($passwordError)) :?>
                     <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                         <div class="alert alert-danger" role="alert">
-                            رجاءً أدخل كلمة السر
+                            <?php echo $this->lang->line('register_missing_password'); ?>
                         </div>
                     </div>
                     <?php endif ?>

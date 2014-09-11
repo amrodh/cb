@@ -379,19 +379,19 @@ class Home extends CI_Controller {
 			$data['params'] = $_POST;
 			
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
-				$data['insertError'] = 'Please select area';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_area');
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
-				$data['insertError'] = 'Please select type';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_type');
 			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
-				$data['insertError'] = 'Please select price';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_price');
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
-				$data['insertError'] = 'Please select city';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_city');
 			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-				$data['insertError'] = 'Please select district';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_district');
 			}elseif (empty($_POST['address'])) {
-				$data['insertError'] = 'Please enter property address';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_address');
 			}elseif (empty($_POST['features'])) {
-				$data['insertError'] = 'Please enter property features';
+				$data['insertError'] = $this->lang->line('shareProperty_missing_features');
 			}else{
 
 				
@@ -514,9 +514,6 @@ class Home extends CI_Controller {
 
 		}
 
-
-
-
 		if(isset($_POST['submit']))
 		{
 
@@ -528,13 +525,13 @@ class Home extends CI_Controller {
 			}
 			else{
 				if (empty($_POST['uploadcv_app_firstname'])){
-					$data['uploadError'] = 'Please insert first name';
+					$data['uploadError'] = $this->lang->line('uploadCV_missing_firstname');
 				}elseif (empty($_POST['uploadcv_app_lastname'])) {
-					$data['uploadError'] = 'Please insert last name';
+					$data['uploadError'] = $this->lang->line('uploadCV_missing_lastname');
 				}elseif (empty($_POST['uploadcv_app_email'])) {
-					$data['uploadError'] = 'Please insert email';
+					$data['uploadError'] = $this->lang->line('uploadCV_missing_email');
 				}elseif (!isset($_FILES)){
-					$data['uploadError'] = 'Please choose file to be uploaded';
+					$data['uploadError'] = $this->lang->line('uploadCV_missing_file');
 				}else{
 					$firstname = $_POST['uploadcv_app_firstname'];
 					$lastname = $_POST['uploadcv_app_lastname'];
@@ -558,7 +555,7 @@ class Home extends CI_Controller {
 				);
 				if ($this->vacancy->insertEnrollment($params))
 				{
-					$data['uploadSuccess'] = 'CV uploaded successfully';
+					$data['uploadSuccess'] = $this->lang->line('uploadCV_success');
 				}
 			}else{
 				$data['uploadError'] = uploadme($this)['error'];

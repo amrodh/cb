@@ -99,12 +99,12 @@
                     </div>
                     <div class="row" style="width: 52%;margin: auto;clear:both;">
                         <div class="alert alert-danger hide" id="propertyAlertError" role="alert">
-                            City, District and Contract Type are required
+                            <?php echo $this->lang->line('propertyAlert_missing_data'); ?>
                         </div>
                     </div>
                     <div class="row" style="width: 52%;margin: auto;clear:both;">
                         <div class="alert alert-success hide" id="propertyAlertSuccess" role="alert">
-                            Subscribed successfully
+                            <?php echo $this->lang->line('propertyAlert_success'); ?>
                         </div>
                     </div>
                 </div>

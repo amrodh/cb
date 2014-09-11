@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                                 <?php if (isset($insertError)) :?>
-                                <div class="row" style="width: 70%;margin-left:32%;margin-top:2%;">
+                                <div class="row" style="width: 100%;text-align:center;margin-left:0%;margin-top:2%;">
                                     <div class="alert alert-danger" role="alert">
                                        <?= $insertError; ?>
                                     </div>
@@ -125,14 +125,14 @@
                     <?php else: ?>
                     <div class="row" style="margin:4%;clear:both;">
                         <div class="col-lg-12 alert alert-warning" style="width:100%;text-align:center;font-size:14px;" role="alert">
-                           يجب التحقق من صحة الحساب عن طريق الدخول على البريد الالكتروني وتأكيد الحساب.
+                           <?php echo $this->lang->line('shareProperty_validate_account'); ?>
                         </div>
                     </div>
                     <?php endif ?>
             <?php else: ?>
                 <div class="row" style="margin:4%;clear:both;">
                     <div class="col-lg-12 alert alert-warning" style="width:100%;height:40px;padding-top:1%;font-size:14px;" role="alert">
-                       يجب تسجيل الدخول للاعلان عن الممتلكات
+                       <?php echo $this->lang->line('shareProperty_login'); ?>
                     </div>
                 </div>
             <?php endif ?>
