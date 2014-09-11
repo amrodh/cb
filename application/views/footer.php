@@ -208,6 +208,7 @@
                 $('.bxslider').bxSlider({
                     auto:true
                 });
+                $("[data-toggle='popover']").popover();
             });
             
             var navHeight = $('.navbar-collapse').height();

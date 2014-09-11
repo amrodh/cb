@@ -44,6 +44,15 @@
             <div id="login_div">
                 
                 <?php if (isset($loggedIn)): ?>
+                    <?php if (!isset($is_valid)): ?>
+                        <button type="button" style="background-color: transparent;border: none;padding: 0;margin-top: -2%;" class="btn btn-default" title="مطلوب التحقق من الشخصية"  
+                              data-container="body" data-toggle="popover" data-placement="bottom" 
+                              data-content="يرجى الدخول على البريد الالكتروني للتحقق من الشخصية.">
+                            <span style="margin-left:5%; color:white;" id"notifier"><b>
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            </span>
+                        </button>
+                    <?php endif ?>
                     <span style="margin-right:5%;"><b><a style="color: white; text-decoration: none;font-family: 'Ubuntu';" href="<?= base_url();?>profile">
                         <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
                     </span>
@@ -224,34 +233,4 @@
                 </div> 
             </nav>
         </div>
-        <!--<script src="<?= base_url();?>/application/static/js/jquery-1.11.0.min.js"></script>
-        <script src="<?= base_url();?>/application/static/js/bootstrap-ar.min.js"></script>
-        <script src="<?= base_url();?>/application/static/js/bootstrap-select.min.js"></script>-->
-        <script type="text/javascript" src="<?= base_url();?>/application/static/js/jquery.bxslider.min.js"></script>
         
-         <script>
-            $(document).ready(function() {
-                $('.bxslider').bxSlider({
-                    auto:true
-                });
-            });
-            
-            var navHeight = $('.navbar-collapse').height();
-            $('.navbar-collapse').on('show.bs.collapse', function(){
-                if($(this).height() != 0)
-                {
-                    navHeight = $(this).height();
-                }
-                $('#middle_div').animate({
-                    'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
-                   }, 300);
-            });
-            
-            $('.navbar-collapse').on('hide.bs.collapse', function(){
-                navHeight = $(this).height();
-                $('#middle_div').animate({
-                  'margin-bottom': '23px'
-                 }, 300);
-              });
-            
-         </script>

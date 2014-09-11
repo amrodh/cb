@@ -41,9 +41,16 @@
             </div>
 
             <div id="login_div">
-                
-               
                 <?php if (isset($loggedIn)): ?>
+                    <?php if (!isset($is_valid)): ?>
+                        <button type="button" style="background-color: transparent;border: none;padding: 0;margin-top: -2%;" class="btn btn-default" title="Validation Required"  
+                              data-container="body" data-toggle="popover" data-placement="bottom" 
+                              data-content="Please login to your E-mail account to validate your account.">
+                            <span style="margin-left:5%; color:white;" id"notifier"><b>
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            </span>
+                        </button>
+                    <?php endif ?>
                     <span style="margin-left:5%;"><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile">
                         <span class="glyphicon glyphicon-user"></span> <?= $user->username; ?></a></b>
                     </span>
@@ -55,6 +62,8 @@
                         <input type="submit" value="Log Out" name="logoutSubmit" class="logoutSubmit">
                         </form>
                     </label>
+                    <?php //printme($is_valid);exit(); ?>
+                    
                     
                 <?php else: ?>
                     <label for="" style="margin-left:3%;">

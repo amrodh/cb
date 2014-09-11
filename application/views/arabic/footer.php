@@ -191,7 +191,39 @@
                 ٢٠١٤ كولدويل بانكر. جميع الحقوق محفوظة.
             </p>
         </div>
-<script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
+
+
+        <script type="text/javascript" src="<?= base_url();?>/application/static/js/jquery.bxslider.min.js"></script>
+        
+         <script>
+            $(document).ready(function() {
+                $('.bxslider').bxSlider({
+                    auto:true
+                });
+                $("[data-toggle='popover']").popover();
+            });
+            
+            var navHeight = $('.navbar-collapse').height();
+            $('.navbar-collapse').on('show.bs.collapse', function(){
+                if($(this).height() != 0)
+                {
+                    navHeight = $(this).height();
+                }
+                $('#middle_div').animate({
+                    'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
+                   }, 300);
+            });
+            
+            $('.navbar-collapse').on('hide.bs.collapse', function(){
+                navHeight = $(this).height();
+                $('#middle_div').animate({
+                  'margin-bottom': '23px'
+                 }, 300);
+              });
+            
+         </script>
+
+         <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
 
 </body>
 </html>
