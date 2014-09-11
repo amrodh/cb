@@ -48,49 +48,49 @@
                         <?php if (isset($updateError)) :?>
                         <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                             <div class="alert alert-danger" role="alert">
-                                Username already exists 
+                                <?php echo $this->lang->line('update_username'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($usernameError)) :?>
                         <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                             <div class="alert alert-danger" role="alert">
-                                Please insert username
+                                <?php echo $this->lang->line('update_missing_username'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($emailError)) :?>
                         <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                             <div class="alert alert-danger" role="alert">
-                                Please insert email
+                                <?php echo $this->lang->line('update_missing_email'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($locationError)) :?>
                         <div class="row" style="width: 29%;margin: auto;margin-left:37%;">
                             <div class="alert alert-danger" role="alert">
-                                Please insert location
+                                <?php echo $this->lang->line('update_missing_location'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($phoneError)) :?>
                         <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                             <div class="alert alert-danger" role="alert">
-                                Please insert phone number
+                                <?php echo $this->lang->line('update_missing_phone'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($updateEmailError)) :?>
                         <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                             <div class="alert alert-danger" role="alert">
-                                Email already exists.
+                                <?php echo $this->lang->line('update_email'); ?>
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($emailUpdateMessage)) :?>
                         <div class="row" style="width: 65%;margin: auto;margin-left:33%;">
                             <div class="alert alert-info" role="alert">
-                                Please login to your email to confirm email update.
+                                <?php echo $this->lang->line('update_confirm_email'); ?>
                             </div>
                         </div>
                         <?php endif ?>
@@ -98,13 +98,13 @@
                             <?php if ($update == true){?>
                             <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                                 <div class="alert alert-success" role="alert">
-                                    Pofile updated successfully.
+                                    <?php echo $this->lang->line('update_success'); ?>
                                 </div>
                             </div>
                             <?php }else{ ?>
                             <div class="row" style="width: 33%;margin: auto;margin-left:36%;">
                                 <div class="alert alert-warning" role="alert">
-                                    Profile wasn't updated successfully.
+                                    <?php echo $this->lang->line('update_failure'); ?>
                                 </div>
                             </div>
                         <?php }endif ?>

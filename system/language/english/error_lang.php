@@ -1,6 +1,6 @@
 <?php
 
-$lang['login_username'] = "Username does not exsist";
+$lang['login_username'] = "Username does not exist";
 $lang['login_password'] = "Password is not correct";
 $lang['update_username'] = "Username already exists";
 $lang['update_missing_username'] = "Please insert username";

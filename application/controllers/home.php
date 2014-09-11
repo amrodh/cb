@@ -44,7 +44,7 @@ class Home extends CI_Controller {
 		}else{
 			// $data['loginError'] = 'Username does not exsist';
 			// $data['loginErrorType'] = '2';
-			 $this->session->set_flashdata('loginError', 'Username does not exsist');
+			 $this->session->set_flashdata('loginError', 'Username does not exist');
 			 $this->session->set_flashdata('loginErrorType', '2');
 
 		}
@@ -716,8 +716,10 @@ class Home extends CI_Controller {
 	public function getDistricts()
 	{
 		$this->load->model('service');
+		$data = $this->init();
 		$data['districts'] = $this->service->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
+
 		if ($data['districts'] != 0)
 		{
 			$this->load->view('districtselect', $data);

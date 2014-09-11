@@ -81,13 +81,19 @@ $(document).ready(function ()
                       .success(function( html ) {
                         if (html != 0)
                         {
+                          $("#districtContainer").show();
                         	$("#districtContainer").html(html);
                         	$('#searchHome_district').selectpicker();
+                          $('#disabled_district').css('display', 'none');
                         }
                         else
                         {
-                            $("#searchHome_district").hide();
-                            $("[data-id='searchHome_district']").hide();
+                            $("#districtContainer").hide();
+                            $('#disabled_district').css('display', 'block');
+                            $('#searchhome_disabled_district').attr('disabled', true);
+                            $("[data-id='searchhome_disabled_district']").attr('disabled', true);
+                            // $("#searchHome_district").hide();
+                            // $("[data-id='searchHome_district']").hide();
                         }
                       });
               }
@@ -107,13 +113,28 @@ $(document).ready(function ()
                   .success(function( html ) {
                     if (html != 0)
                     {
+                        $("#districtContainer_1").show();
                         $("#districtContainer_1").html(html);
                         $('#search_district_1').selectpicker();
+                        $('#disabled_district_1').css('display', 'none');
+                        $('#search_disabled_district_2').attr('disabled', true);
+                        $("[data-id='search_disabled_district_2']").attr('disabled', true);
+                        $('#search_disabled_district_3').attr('disabled', true);
+                        $("[data-id='search_disabled_district_3']").attr('disabled', true);
+                        $("[data-id='propertyAlert_disabled_district']").attr('disabled', true);
+                        $('#propertyAlert_disabled_district').attr('disabled', true);
+                        $("[data-id='shareProperty_disabled_district']").attr('disabled', true);
+                        $('#shareProperty_disabled_district').attr('disabled', true);
+
                     }
                     else
                     {
-                        $("#districtContainer").hide();
-                        $("[data-id='search_district_1']").hide();
+                        $("#districtContainer_1").hide();
+                        $('#disabled_district_1').css('display', 'block');
+                        $('#search_disabled_district_1').attr('disabled', true);
+                        $("[data-id='search_disabled_district_1']").attr('disabled', true);
+                        // $("[data-id='search_district_1']").hide();
+
                     }
                   });
               }
@@ -133,13 +154,18 @@ $(document).ready(function ()
                   .success(function( html ) {
                     if (html != 0)
                     {
+                        $("#districtContainer_2").show();
                         $("#districtContainer_2").html(html);
                         $('#search_district_2').selectpicker();
+                        $('#disabled_district_2').css('display', 'none');
                     }
                     else
                     {
                         $("#districtContainer_2").hide();
-                        $("[data-id='search_district_2']").hide();
+                        $("[data-id='search_disabled_district_2']").attr('disabled', true);
+                        $('#disabled_district_2').css('display', 'block');
+                        $('#search_disabled_district_2').attr('disabled', true);
+                        // $("[data-id='search_district_2']").hide();
                     }
                   });
               }
@@ -159,13 +185,18 @@ $(document).ready(function ()
                   .success(function( html ) {
                     if (html != 0)
                     {
+                        $("#districtContainer_3").show();
                         $("#districtContainer_3").html(html);
                         $('#search_district_3').selectpicker();
+                        $('#disabled_district_3').css('display', 'none');
                     }
                     else
                     {
                         $("#districtContainer_3").hide();
-                        $("[data-id='search_district_3']").hide();
+                        $("[data-id='search_disabled_district_3']").attr('disabled', true);
+                        $('#disabled_district_3').css('display', 'block');
+                        $('#search_disabled_district_3').attr('disabled', true);
+                        // $("[data-id='search_district_3']").hide();
                     }
                   });
               }
@@ -185,13 +216,18 @@ $(document).ready(function ()
                   .success(function( html ) {
                     if (html != 0)
                     {
+                        $("#districtContainer_4").show();
                         $("#districtContainer_4").html(html);
                         $('#propertyAlert_district').selectpicker();
+                        $('#disabled_district_4').css('display', 'none');
                     }
                     else
                     {
+                        $('#disabled_district_4').css('display', 'block');
                         $("#districtContainer_4").hide();
-                        $("[data-id='propertyAlert_district']").hide();
+                        $("[data-id='propertyAlert_disabled_district']").attr('disabled', true);
+                        $('#propertyAlert_disabled_district').attr('disabled', true);
+                        // $("[data-id='propertyAlert_district']").hide();
                     }
                   });
             }
@@ -211,14 +247,19 @@ $(document).ready(function ()
                 })
                   .success(function( html ) {
                     if (html != 0)
-                    {
+                    { 
+                        $("#shareProperty_districtContainer").show();
                         $("#shareProperty_districtContainer").html(html);
                         $('#shareProperty_district').selectpicker();
+                        $('#disabled_district_5').css('display', 'none');
                     }
                     else
                     {
                         $("#shareProperty_districtContainer").hide();
-                        $("[data-id='shareProperty_district']").hide();
+                        $('#disabled_district_5').css('display', 'block');
+                        $("[data-id='shareProperty_disabled_district']").attr('disabled', true);
+                        $('#shareProperty_disabled_district').attr('disabled', true);
+                        // $("[data-id='shareProperty_district']").hide();
                     }
                   });
             }

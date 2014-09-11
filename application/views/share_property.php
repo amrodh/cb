@@ -93,6 +93,17 @@
                                     <div id="shareProperty_districtContainer">
                                      
                                     </div>
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" id="disabled_district_5">
+                                        <div class="shareproperty_titles title_margin" id="search_title_district">
+                                            District
+                                        </div>
+                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" name="district" data-size="5" disabled>
+                                             <option>Select District</option>
+                                             <?php foreach ($districts as $item): ?>
+                                            <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             <?php echo $this->lang->line('shareproperty_input6'); ?>

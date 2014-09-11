@@ -6,36 +6,36 @@
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <div class="footer_col_title">
-                        البحث عن منزل
+                        <?php echo $this->lang->line('home_menu1'); ?>
                     </div>
                     <div class="footer_col_content">
-                        مجمع سكني<br>
-                        عقارات مملوكة من قبل<br>
-                        عقارات للتأجير<br>
+                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
+                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a>
+                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <div class="footer_col_title">
-                        التجارية
+                        <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        شراء<br>
-                        بيع<br>
+                        <a href=""><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href=""><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <div class="footer_col_title">
-                        من نحن
+                        <?php echo $this->lang->line('home_menu6'); ?>
                     </div>
                     <div class="footer_col_content">
-                        تاريخنا<br>
-                        المهن<br>
-                        توكيل<br>
+                        <a href=""><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
+                        <a href="<?= base_url().'ar/';?>careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
+                        <!-- Franchise<br> -->
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols" id="footer_last_col">
                     <div class="footer_col_title">
-                        إتصل بنا
+                        <?php echo $this->lang->line('home_menu7'); ?>
                     </div>
                     <div id="bottom_div">
                         <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
@@ -47,7 +47,7 @@
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">
                     <img style="margin-top: -8px;" src="<?= base_url();?>/application/static/images/icon_phone_ar.png"/>
                     <div class="footer_col_title" style="margin-top: -29px;margin-right: 35px;font-size: 18px;">
-                        مركز الاتصال
+                        <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
                     </div>
                     <div style="margin-top: -15px;">
                     16223 

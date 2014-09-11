@@ -22,6 +22,14 @@
                        </div>
                        <div id="districtContainer_4">
                        </div>
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols" id="disabled_district_4">
+                           <div class="property_alert_col_title title_margin" id="disabled_district_title_4">
+                               <?php echo $this->lang->line('search_drpdwn2'); ?>
+                           </div>
+                           <select class="selectpicker" id="propertyAlert_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>
+                              <option>Select District</option> 
+                           </select>
+                       </div>
                        <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            
                        </div> -->

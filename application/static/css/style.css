@@ -360,6 +360,10 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     display: none;
 }
 
+.footer_cols > div > a{
+    color: white;
+}
+
 #btn_subscribe{
     position: absolute;
     margin-top: 4px;

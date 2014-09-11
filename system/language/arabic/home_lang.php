@@ -25,4 +25,20 @@ $lang['home_login_placeholder1'] = "رجاءً أدخل الإسم";
 $lang['home_login_placeholder2'] = "رجاءً أدخل كلمة السر";
 $lang['home_login_forgotpassword'] = "نسيت كلمة المرور";
 
+
+$lang['home_footer_submenu1'] = "مجمع سكني";
+$lang['home_footer_submenu2'] = "عقارات مملوكة من قبل";
+$lang['home_footer_submenu3'] = "عقارات للتأجير";
+$lang['home_footer_submenu4'] = "شراء";
+$lang['home_footer_submenu5'] = "تأجير";
+$lang['home_footer_submenu6'] = "مؤشر السوق";
+$lang['home_footer_submenu7'] = "إعلن عن الممتلكات الخاصة بك";
+$lang['home_footer_submenu8'] = "المكاتب";
+$lang['home_footer_submenu9'] = "الوظائف";
+$lang['home_footer_submenu10'] = "تاريخ كولدويل بانكر";
+$lang['home_footer_submenu11'] = "مركز الاتصال";
+// $lang['home_footer_drpdwn1'] = "Villas";
+// $lang['home_footer_drpdwn2'] = "Apartment";
+// $lang['home_footer_drpdwn3'] = "Building";
+
 ?>

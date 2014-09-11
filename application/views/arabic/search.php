@@ -25,6 +25,14 @@
                        <div id="districtContainer_1">
                          
                        </div>
+                       <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols" id="disabled_district_1">
+                           <div class="search_box_col_title title_margin" id="disabled_district_title_1">
+                               <?php echo $this->lang->line('search_drpdwn2'); ?>
+                           </div>
+                           <select class="selectpicker" id="search_disabled_district_1" data-style="btn" data-title="Select District" data-size="5" disabled>
+                              <option>Select District</option> 
+                           </select>
+                       </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
@@ -107,6 +115,14 @@
                        </div> -->
                        <div id="districtContainer_2">
                          
+                       </div>
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols" id="disabled_district_2">
+                           <div class="search_box_col_title title_margin" id="disabled_district_title_2">
+                               <?php echo $this->lang->line('search_drpdwn2'); ?>
+                           </div>
+                           <select class="selectpicker" id="search_disabled_district_2" data-style="btn" data-title="Select District" data-size="5" disabled>
+                              <option>Select District</option> 
+                           </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
@@ -199,6 +215,14 @@
                        </div>
                        <div id="districtContainer_3">
                          
+                       </div>
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols" id="disabled_district_3">
+                           <div class="search_box_col_title title_margin" id="disabled_district_title_3">
+                               <?php echo $this->lang->line('search_drpdwn2'); ?>
+                           </div>
+                           <select class="selectpicker" id="search_disabled_district_3" data-style="btn" data-title="Select District" data-size="5" disabled>
+                              <option>Select District</option> 
+                           </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
