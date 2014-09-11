@@ -27,6 +27,14 @@ body{
     /*height: 100%;*/
 }
 
+/*.selectpicker >span.filter-option{
+    
+}*/
+
+/*span.caret{
+    
+}*/
+
 #top_div{
     /*margin-left: -70px;*/
     /*width: 130%;*/
@@ -524,7 +532,13 @@ li.active>a{
 }
 
 .bootstrap-select.btn-group .btn .caret{
-    margin-right: -10px;
+    position: relative;
+    margin-right: -10%;
+    margin-top: 2%;
+}
+
+.bootstrap-select.btn-group .btn .filter-option{
+    text-align: right;
 }
 
 .nav-tabs>li>a{
