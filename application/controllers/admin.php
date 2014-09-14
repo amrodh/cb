@@ -79,6 +79,7 @@ class Admin extends CI_Controller {
 		$data['user'] = $this->user->getUserByUsername($username);
 		$data['properties'] = $this->property->getUserProperties($data['user']->id);
 		$data['favorites'] = $this->favorites->getUserFavorites($data['user']->id);
+
 		if(is_array($data['favorites'])){
 			foreach ($data['favorites'] as $favorite ) {
 				$favorite->property = $this->property->getPropertyByID($favorite->property_id)[0];
@@ -95,10 +96,16 @@ class Admin extends CI_Controller {
 
 			if(isset($_POST['confirmedit'])){
 				$userId = $data['user']->id;
+				unset($_POST['id']);
+				unset($_POST['confirmedit']);
+
+
+				$update = $this->user->updateUser($userId,$_POST);
+				$updatedUser = $this->user->getUserByID($userId);
+				$this->startSession($updateUser);
+				redirect('admin/users/'.$updatedUser->username);
+
 				
-				printme($userId);
-				exit();
-				printme($_POST);exit();
 			}
 			
 		}
