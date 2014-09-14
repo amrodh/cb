@@ -442,8 +442,95 @@ class Admin extends CI_Controller {
 	{	
 		$data = $this->init();
 		$data['slides'] = $this->content->getSliderContent();
-		// printme($data['slides']);exit();
 		$this->load->view('admin/content',$data);
+	}
+
+
+	public function deleteContent()
+	{
+		$data = $this->init();
+
+		$id = $this->uri->uri_string;
+		$id = explode('deletecontent/', $id);
+		$data['id'] = $id[1];
+
+		if(isset($_POST['id'])){
+			if(isset($_POST['cancel'])){
+				redirect('admin/content');
+			}
+			
+			$this->content->deleteSlide($_POST['id']);
+			redirect('admin/content');
+
+		}
+
+		$this->load->view('admin/deletecontent',$data);
+	}
+
+
+	public function editContent()
+	{
+		$data = $this->init();
+
+		$id = $this->uri->uri_string;
+		$id = explode('editcontent/', $id);
+		$data['id'] = $id[1];
+
+		if(isset($_POST['id'])){
+
+			if(isset($_POST['cancel'])){
+				redirect('admin/content');
+			}
+
+			$tmp = $_FILES;
+			$images = array("'image'","'logo'","'alt_logo'");
+
+			foreach ($images as $image) {
+
+				if( ($tmp['userfile']['error'][$image]) == 0){
+
+					$path = $this->config->config['upload_path'];
+					$this->config->set_item('upload_path',$path.'/slider');
+
+					$_FILES['userfile']['name']     = $tmp['userfile']['name'][$image];
+					$_FILES['userfile']['type']     = $tmp['userfile']['type'][$image];
+					$_FILES['userfile']['tmp_name'] = $tmp['userfile']['tmp_name'][$image];
+					$_FILES['userfile']['error']    = $tmp['userfile']['error'][$image];
+					$_FILES['userfile']['size']     = $tmp['userfile']['size'][$image];
+					$fileExtension = explode('.',$_FILES['userfile']['name']);
+
+					if($image == "'image'")
+					$_POST['image'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+					if($image == "'logo'")
+					$_POST['logo'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+					if($image == "'alt_logo'")
+					$_POST['alt_logo'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+
+					if($image == "'image'")
+					$_FILES['userfile']['name'] = $_POST['image'];
+					if($image == "'logo'")
+					$_FILES['userfile']['name'] = $_POST['logo'];
+					if($image == "'alt_logo'")
+					$_FILES['userfile']['name'] = $_POST['alt_logo'];
+					
+					$upload = uploadme($this);
+					if(isset($upload['error'])){
+						$data['error'] = 'Upload Failed, Please try again';
+						$data['params'] = $_POST;
+						$data['old_params'] = $this->content->getSliderByIDArray($data['id']);
+						$this->load->view('admin/editcontent',$data);
+						return;
+					}
+				}
+			}
+
+			unset($_POST['submit']);
+			$this->content->updateSlide($data['id'],$_POST);
+			redirect('admin/content');
+		}
+
+		$data['params'] = $this->content->getSliderByIDArray($data['id']);
+		$this->load->view('admin/editcontent',$data);
 	}
 
 	public function addContent()
@@ -546,9 +633,10 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{	
-		 // $this->load->model('vacancy');
+		 $this->load->model('service');
 		 // $this->vacancy->populateDB();
 		// $this->service->getProperty(199876);
+		$this->service->importDistrictsIntoDB();
 
 	}
 

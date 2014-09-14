@@ -27,7 +27,7 @@
             <?php foreach ($slides as $slide): ?>
                 <li>
 
-              <a href="<?php echo base_url(); ?>">
+              <a href="<?= $slide->link_en; ?>">
                 <img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->image; ?>"></a>
               <div class="slider_logo">
                   <img src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->logo; ?>">
@@ -62,7 +62,7 @@
                                 <th>heading 1_ar</th>
                                 <th>heading 2</th>
                                 <th>heading 2_ar</th>
-                                <th>Active</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <?php if (is_array($slides)): ?>
@@ -75,7 +75,12 @@
                                     <td><?= $slide->h1_ar  ?></td>
                                     <td><?= $slide->h2_en  ?></td>
                                     <td><?= $slide->h2_ar  ?></td>
-                                    <td><?= $slide->is_active ?></td>
+                                    <td><a href="editcontent/<?= $slide->id;?>">
+                                        <span title="Edit" class="glyphicon glyphicon-edit"></span>
+                                    </a></td>
+                                    <td><a href="deletecontent/<?= $slide->id;?>">
+                                        <span title="Delete" class="glyphicon glyphicon-remove"></span>
+                                    </a></td>
                                 </tr>
                                 <?php endforeach ?>
                             <?php else: ?>
