@@ -377,7 +377,7 @@ class Home extends CI_Controller {
 		
 		if (isset($_POST['submit'])){
 			$data['params'] = $_POST;
-			
+			// printme($_FILES);exit();
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['insertError'] = $this->lang->line('shareProperty_missing_area');
 			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
@@ -422,23 +422,29 @@ class Home extends CI_Controller {
 							 	$i++;
 							}
 							
+							// printme($_FILES);exit();
+
 							foreach ($images as $image) {
 								$fileExtension = explode('.',$image['name']);
 								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 								$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
 								$_FILES['userfile']['size'] = $image['size'];
 								$params['image_url'] = $_FILES['userfile']['name'];
-								if(uploadme($this)){
-									$this->load->model('property');
-									$this->property->insertImage($params);
-									$data['insertProcess'] = true;
-								}else{
-									$this->property->deleteProperty($params['property_id']);
-									$data['insertProcess'] = false;
+								if (!isset($data['imageFlag'])){
+									if(!isset(uploadme($this)['error'])){
+										$this->load->model('property');
+										$this->property->insertImage($params);
+										$data['insertProcess'] = true;
+									}else{
+										$this->property->deleteProperty($params['property_id']);
+										$data['insertProcess'] = false;
+										$data['imageFlag'] = true; 
+									}
 								}
+								
 							}
 						}
-						$data['insertProcess'] = true;
+						// $data['insertProcess'] = true;
 				}else{
 					$data['insertError'] = "Error Inserting Property Data";
 				}

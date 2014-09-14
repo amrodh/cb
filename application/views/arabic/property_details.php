@@ -118,10 +118,10 @@
                                 </div>
                                 <div id="property_calculator_details">
                                     <div class="property_titles">
-                                        الدفعة الشهرية
+                                        <?php echo $this->lang->line('propertydetails_calculator_title1'); ?>
                                     </div>
                                     <div class="property_calculator_data">
-                                        Understanding your monthly costs can help you plan ahead and make important housing decisions. <a href="#calculatorTallModal" data-toggle="modal"> فتح الألة الحاسبة</a>
+                                        <?php echo $this->lang->line('propertydetails_calculator_subtitle1'); ?> <a href="#calculatorTallModal" data-toggle="modal"> فتح الألة الحاسبة</a>
                                     </div>
                                 </div>
                             </div>
@@ -187,21 +187,21 @@
                     <div class="calculator_modal_header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       <img style="width: 6%; margin-right: 15px" src="<?= base_url();?>/application/static/images/icon_calculator.png">
-                      <h4 class="calculator_modal_title">ألة حساب الدفع الشهري </h4>
+                      <h4 class="calculator_modal_title"><?php echo $this->lang->line('propertydetails_calculator_title2'); ?> </h4>
                       <div style="font-size: 12px;margin-right: 65px;font-weight: lighter;">
-                          أدخل قرضك و معلومات الممتلكات الخاصة بك.
+                          <?php echo $this->lang->line('propertydetails_calculator_subtitle2'); ?>
                       </div>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6" style="border-left: 2px solid #5a7baa;">
                                 <div class="calculator_col_title">
-                                    معلومات الشراء
+                                    <?php echo $this->lang->line('propertydetails_calculator_title3'); ?>
                                 </div>
                                 <div class="calculator_col_content">
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            سعر الشراء:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title4'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="purchasePrice" id="purchasePrice" placeholder="0">
@@ -209,7 +209,7 @@
                                     </div>
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            الدفعة الأولى:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title5'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="downPayment" id="downPayment" placeholder="0" onChange="calculatePayment(this.form);">
@@ -217,7 +217,7 @@
                                     </div>
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            الفائدة:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title6'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="interestRate" id="interestRate" placeholder="0"><div style="margin-top: -25px;margin-right: 165px;"> %</div>
@@ -227,12 +227,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="calculator_col_title">
-                                    نتائجك
+                                    <?php echo $this->lang->line('propertydetails_calculator_title7'); ?>
                                 </div>
                                 <div class="calculator_col_content">
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            الرصيد المتبقي:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title8'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="balance" id="balance" placeholder="0">
@@ -240,7 +240,7 @@
                                     </div>
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            مجموع الدفعات:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title9'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="totalPayment" id="totalPayment" placeholder="0">
@@ -248,7 +248,7 @@
                                     </div>
                                     <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
-                                            الدفع الشهري:
+                                            <?php echo $this->lang->line('propertydetails_calculator_title10'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="monthlyPayment" id="monthlyPayment" placeholder="0">
@@ -259,7 +259,7 @@
                         </div>
                         <div class="row">
                             <div class="calculator_labels col-lg-2">
-                                مدة القرض:
+                                <?php echo $this->lang->line('propertydetails_calculator_title11'); ?>
                             </div>
                             <div class="calculator_inputs col-lg-7">
                                 <input type="text" class="form-control" name="loanTerm" id="loanTerm" placeholder="5"> 
@@ -269,7 +269,7 @@
                     </div>
                     <div class="modal-footer" style="margin: auto;width: 185px;">
                         <div class="col-lg-12">
-                            <input type="button" class="btn btn-default calculator_btn_submit" value="حساب" style="" onClick="cmdCalc_Click(this.form)">
+                            <input type="button" class="btn btn-default calculator_btn_submit" value="<?php echo $this->lang->line('propertydetails_calculator_button'); ?>" style="" onClick="cmdCalc_Click(this.form)">
                        </div>
                     </div>
                   </div><!-- /.modal-content -->

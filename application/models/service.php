@@ -14,6 +14,7 @@ class service extends CI_Model {
     function getCities()
     {
 
+
          $q = $this
               ->db
               ->get('city');
