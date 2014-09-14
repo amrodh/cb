@@ -27,7 +27,7 @@
             <?php foreach ($slides as $slide): ?>
                 <li>
 
-              <a href="<?php echo base_url(); ?>">
+              <a href="<?= $slide->link_en; ?>">
                 <img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->image; ?>"></a>
               <div class="slider_logo">
                   <img src="<?php echo base_url(); ?>application/static/upload/slider/<?= $slide->logo; ?>">

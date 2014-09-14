@@ -13,6 +13,16 @@ class service extends CI_Model {
 
     function getCities()
     {
+
+         $q = $this
+              ->db
+              ->get('city');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false;  
         // $inputs = array('CountryFK' => 73);
         // $result = $this->client->GetCities($inputs);
         // $data = array();
@@ -21,6 +31,60 @@ class service extends CI_Model {
         // }
         //  return $data;
     }
+
+    function importCitiesIntoDB()
+    {
+
+        $inputs = array('CountryFK' => 73);
+        $result = $this->client->GetCities($inputs);
+        $data = array();
+
+        $this->db->empty_table('city'); 
+
+        foreach ($result->GetCitiesResult->City as $city) {
+           $data = array('id' => $city->CityPk , 'name' => $city->CityName);
+            $query = $this->db->insert_string('city', $data);
+            $query = $this->db->query($query);
+        }
+        
+    }
+
+
+    function getCitiesFromDB()
+    {
+        $q = $this
+              ->db
+              ->get('city');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+    }
+
+
+
+    function importDistrictsIntoDB()
+    {   
+
+        $cities = $this->getCitiesFromDB();
+         $this->db->empty_table('district'); 
+        foreach ($cities as $city) {
+            $inputs = array('cityId' => $city->id);
+            $result = $this->client->GetDistrictList($inputs);
+            if(is_array($result->GetDistrictListResult->DistrictItem)){
+                foreach ($result->GetDistrictListResult->DistrictItem as $district) {
+                   $data = array('id' => $district->DistrictId , 'name' => $district->DistrictName,'city_id'=>$city->id);
+                   $query = $this->db->insert_string('district', $data);
+                   $query = $this->db->query($query);
+                }
+            }
+    
+        }
+
+    }
+
 
 
     function getCityByID($cityID)
@@ -37,17 +101,27 @@ class service extends CI_Model {
 
     function getDistricts($cityID)
     {
-        $inputs = array('cityId' => $cityID);
-        $result = $this->client->GetDistrictList($inputs);
-        $data = array();
-        if(is_array($result->GetDistrictListResult->DistrictItem)){
-            foreach ($result->GetDistrictListResult->DistrictItem as $district) {
-               $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
-            }
-            return $data;
-        }
-        else 
-            return 0; 
+        // $inputs = array('cityId' => $cityID);
+        // $result = $this->client->GetDistrictList($inputs);
+        // $data = array();
+        // if(is_array($result->GetDistrictListResult->DistrictItem)){
+        //     foreach ($result->GetDistrictListResult->DistrictItem as $district) {
+        //        $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
+        //     }
+        //     return $data;
+        // }
+        // else 
+        //     return 0; 
+         $q = $this
+              ->db
+              ->where('city_id',$cityID)
+              ->get('district');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
     }
 
     function getDistrictByID($cityID,$districtID)

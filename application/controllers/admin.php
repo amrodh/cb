@@ -633,9 +633,10 @@ class Admin extends CI_Controller {
 
 	public function script()
 	{	
-		 // $this->load->model('vacancy');
+		 $this->load->model('service');
 		 // $this->vacancy->populateDB();
 		// $this->service->getProperty(199876);
+		$this->service->importDistrictsIntoDB();
 
 	}
 

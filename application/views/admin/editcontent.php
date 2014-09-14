@@ -60,14 +60,26 @@
 
                       <tr>
                         <td>Image / الصورة
-                        <img style="width:40%;" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['image']; ?>">
+                        <?php if (isset($old_params)): ?>
+                           <img style="width:40%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['image']; ?>">
+                        <?php else: ?>
+                           <img style="width:40%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $params['image']; ?>">
+                        <?php endif ?>
                         </td>
                         <td><input type="file" name="userfile['image']">
                         </td>
                       </tr>
                        <tr>
                         <td>Logo
-                        <img style="width:40%; margin-left:25%;" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['logo']; ?>"></td>
+                        <?php if (isset($old_params)): ?>
+                           <img style="width:40%;margin-left:25%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['logo']; ?>">
+                        <?php else: ?>
+                           <img style="width:40%;margin-left:25%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $params['logo']; ?>">
+                        <?php endif ?></td>
                         <td><input type="file" name="userfile['logo']">
                         </td>
 
@@ -76,7 +88,13 @@
                         <input type="file" name="userfile['alt_logo']">
                         </td>
                         <td>
-                        <img style="width:50%" src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['alt_logo']; ?>">
+                         <?php if (isset($old_params)): ?>
+                           <img style="width:40%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $old_params['alt_logo']; ?>">
+                        <?php else: ?>
+                           <img style="width:40%;" 
+                          src="<?php echo base_url(); ?>application/static/upload/slider/<?= $params['alt_logo']; ?>">
+                        <?php endif ?></td>
                         لوجو
 
                         </td>
