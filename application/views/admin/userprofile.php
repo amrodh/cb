@@ -31,7 +31,7 @@
             <li><a href="#properties" role="tab" data-toggle="tab">Properties</a></li>
             <li><a href="#favorites" role="tab" data-toggle="tab">Favorites</a></li>
             <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-            
+
           </ul>
 
           <!-- Tab panes -->
@@ -87,13 +87,13 @@
                 </div>
               </div>
             </div>
-             <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+             <div class="panel-footer" style="height:51px;">
+                    <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
                     <span class="pull-right">
-                        <form action="<?php echo $user->username; ?>/action" method="post">
+                        <form action="" method="post">
                           <input type="hidden" name="username" value="<?php echo $user->username; ?>">
-                          <!-- <input type="submit" name="edit"   class="button btn btn-sm btn-warning" value="Edit"> -->
-                          <!-- <input type="submit" name="delete" class="button btn btn-sm btn-danger" value="Delete"> -->
+                           <input style="color:white" type="submit" name="edit"   class="button btn btn-sm " value="Edit"> 
+                           <input style="color:white" type="submit" name="delete" class="button btn btn-sm " value="Delete">
                         </form>
                     </span>
                 </div>

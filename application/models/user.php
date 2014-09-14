@@ -110,6 +110,22 @@ class User extends CI_Model {
            return false;  
      }
 
+
+      function getUserArray($username)
+     {
+          $q = $this
+              ->db
+              ->where('username',$username)
+              ->limit(1)
+              ->get('user');
+
+           if($q->num_rows >0){
+              return $q->row_array();
+           } 
+
+           return false;  
+     }
+
      function getRootByUsername($username)
      {
         $q = $this

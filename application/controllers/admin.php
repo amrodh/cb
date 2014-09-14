@@ -84,11 +84,44 @@ class Admin extends CI_Controller {
 				$favorite->property = $this->property->getPropertyByID($favorite->property_id)[0];
 			}
 		}
+
+
+		if(isset($_POST['id'])){
+			
+			if(isset($_POST['confirmdelete'])){
+				$this->user->deleteUser($username);
+				redirect('admin/users');
+			}
+
+			if(isset($_POST['confirmedit'])){
+				$userId = $data['user']->id;
+				
+				printme($userId);
+				exit();
+				printme($_POST);exit();
+			}
+			
+		}
+
+
+		if(isset($_POST['username'])){
+			if(isset($_POST['delete'])){
+				$this->load->view('admin/userdelete', $data);
+				return;
+			}
+			if(isset($_POST['edit'])){
+				$data['params'] = $this->user->getUserArray($username);
+				$this->load->view('admin/useredit', $data);
+				return;
+			}
+		}
 		
-		// printme($data['favorites']);exit();
 		$this->load->view('admin/userprofile', $data);
 
 	}
+
+
+
 
 
 	public function propertyalert()
