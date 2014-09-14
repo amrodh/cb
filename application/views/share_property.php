@@ -5,21 +5,28 @@
                 <?php echo $this->lang->line('shareproperty_title'); ?>
             </div>
             <?php if(isset($insertProcess) && $insertProcess) : ?>
-                <div class="row"  style="width: 70%;margin-left:32%;margin-top:2%;">
-                    <div class="alert alert-success" role="alert">
+                <div class="row"  style="width: 94.5%;margin-left:3%;margin-top:2%;">
+                    <div class="alert alert-success" role="alert" style="text-align: center;">
                         <?php echo $this->lang->line('shareProperty_success'); ?>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(isset($insertProcess) && !$insertProcess) : ?>
-                <div class="row"  style="width: 70%;margin-left:32%;margin-top:2%;">
-                    <div class="alert alert-danger" role="alert">
+                <div class="row"  style="width: 94.5%;margin-left:3%;margin-top:2%;">
+                    <div class="alert alert-danger" role="alert" style="text-align: center;">
                         <?php echo $this->lang->line('shareProperty_failure'); ?>
                     </div>
                 </div>
             <?php endif ?>
 
+            <?php if(isset($imageFlag)) : ?>
+                <div class="row"  style="width: 94.5%;margin-left:3%;margin-top:2%;">
+                    <div class="alert alert-danger" role="alert" style="text-align: center;">
+                        Images should be of these formats: jpg, jpeg or png.
+                    </div>
+                </div>
+            <?php endif ?>
 
             <?php if (isset($loggedIn)): ?>
                 <?php if (isset($is_valid)): ?>
@@ -97,7 +104,7 @@
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             District
                                         </div>
-                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" name="district" data-size="5" disabled>
+                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
                                              <option>Select District</option>
                                              <?php foreach ($districts as $item): ?>
                                             <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
@@ -119,7 +126,7 @@
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
-                                            <input type="file" name="img[]"  multiple="multiple">
+                                            <input type="file" name="img[]" multiple="multiple">
                                             <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p>
                                         </div>
                                     </div>
@@ -155,5 +162,17 @@
             <?php endif ?>
             
         </div>
+
+        <script type="text/javascript">
+            // $(function() {
+            //     $('#image_upload').uploadify({
+            //         'swf'      : '<?php echo base_url(); ?>application/views/uploadify.swf',
+            //         'uploader' : '<?php echo base_url(); ?>application/views/uploadify.php'
+            //         // Put your options here
+            //     });
+            // });
+        </script>
+
         <!-- // <script type="text/javascript" src="http://localhost/ColdwellBanker/js/script.js"></script> -->
         <?php include('footer.php'); ?>
+

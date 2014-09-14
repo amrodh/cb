@@ -205,7 +205,7 @@
 
       
         <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
-        
+        <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.uploadify.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('.bxslider').bxSlider({
@@ -231,6 +231,14 @@
                   'margin-bottom': '23px'
                  }, 300);
               });
+
+            $(function() {
+                $('#image_upload').uploadify({
+                    'swf'      : '<?php echo base_url(); ?>application/views/uploadify.swf',
+                    'uploader' : '<?php echo base_url(); ?>application/views/uploadify.php'
+                    // Put your options here
+                });
+            });
             
         </script>
 <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>

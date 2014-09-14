@@ -13,13 +13,13 @@ class service extends CI_Model {
 
     function getCities()
     {
-        // $inputs = array('CountryFK' => 73);
-        // $result = $this->client->GetCities($inputs);
-        // $data = array();
-        // foreach ($result->GetCitiesResult->City as $city) {
-        //    $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
-        // }
-        //  return $data;
+        $inputs = array('CountryFK' => 73);
+        $result = $this->client->GetCities($inputs);
+        $data = array();
+        foreach ($result->GetCitiesResult->City as $city) {
+           $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
+        }
+         return $data;
     }
 
 
