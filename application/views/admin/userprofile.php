@@ -238,7 +238,9 @@
                     </div>
                   </div>
                   <a href="javascript:void(0);"  class="changePasswordAnchor" data-toggle="tooltip" >
-                      <span class="glyphicon glyphicon-password">Change Password</span>
+                      <ul>
+                        <li>Change Password</li>
+                      </ul>
                   </a>
                 </div>
               </div>

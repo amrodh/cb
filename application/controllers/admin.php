@@ -102,7 +102,7 @@ class Admin extends CI_Controller {
 
 				$update = $this->user->updateUser($userId,$_POST);
 				$updatedUser = $this->user->getUserByID($userId);
-				$this->startSession($updateUser);
+				// $this->startSession($updateUser);
 				redirect('admin/users/'.$updatedUser->username);
 
 				

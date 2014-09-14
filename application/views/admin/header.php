@@ -21,6 +21,8 @@
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
 <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
 
+ <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css">
+
  
  <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
  <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
@@ -107,9 +109,10 @@
                     <li <?php if($request == 'courses') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-list-alt"></i> Courses</a>
                     </li>
-                    <li <?php if($request == 'content') echo 'class="active"'; ?>>
-                        <a href="<?php echo base_url(); ?>admin/content"><i class="glyphicon glyphicon-edit"></i> Content Management</a>
+                     <li <?php if($request == 'content') echo 'class="active"'; ?>>
+                        <a href="<?php echo base_url(); ?>admin/content"><i class="glyphicon glyphicon-list-alt"></i> Content Management</a>
                     </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
