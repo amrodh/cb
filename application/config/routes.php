@@ -16,6 +16,8 @@ $route['admin/users'] = 'admin/users';
 $route['admin/alert'] = 'admin/checkPropertyAlert';
 $route['admin/content'] = 'admin/content';
 $route['admin/content/new'] = 'admin/addContent';
+$route['admin/deletecontent/(:any)'] = 'admin/deleteContent';
+$route['admin/editcontent/(:any)'] = 'admin/editContent';
 
 $route['admin/sendall'] = 'admin/newsletterSend';
 
