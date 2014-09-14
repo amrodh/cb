@@ -223,7 +223,7 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="">
                                 <li>
-                                    <a href="#"><?php echo $this->lang->line('home_submenu8'); ?></a>
+                                    <a href="<?= base_url();?>ar/offices"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url().'ar/';?>careers"><?php echo $this->lang->line('home_submenu9'); ?></a>

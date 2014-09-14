@@ -839,4 +839,10 @@ function resetpassword()
 	$this->load->view($data['languagePath'].'reset_password', $data);
 }
 
+	function offices()
+	{
+		$data = $this->init();
+		$this->load->view($data['languagePath'].'offices', $data);
+	}
+
 }
