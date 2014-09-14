@@ -14,7 +14,9 @@
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
 
- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+<?php if ($request == 'content'): ?>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+<?php endif ?>
   <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
 <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
@@ -81,31 +83,31 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li <?php if($request == 'dashboard') echo 'class="active"'; ?> >
                         <a href="<?php echo base_url(); ?>admin/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'users') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/users"><i class="fa fa-fw fa-user"></i> Users</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'properties') echo 'class="active"'; ?> >
                         <a href="<?php echo base_url(); ?>admin/properties"><i class="fa fa-fw fa-circle"></i> Shared Properties</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'newsletter') echo 'class="active"'; ?> >
                         <a href="<?php echo base_url(); ?>admin/newsletter"><i class="fa fa-fw fa-envelope"></i> Newsletter</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'propertyalert') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/propertyalert"><i class="glyphicon glyphicon-phone-alt"></i> Property Alert</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'auctions') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/auctions"><i class="glyphicon glyphicon-tower"></i> Auctions</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'vacancies') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/vacancies"><i class="glyphicon glyphicon-briefcase"></i> Vacancies</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'courses') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-list-alt"></i> Courses</a>
                     </li>
-                    <li>
+                    <li <?php if($request == 'content') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/content"><i class="glyphicon glyphicon-edit"></i> Content Management</a>
                     </li>
                 </ul>

@@ -54,7 +54,7 @@ class Admin extends CI_Controller {
 	public function dashboard()
 	{	
 		$data = $this->init();
-		$this->load->view('admin/dashboard');
+		$this->load->view('admin/dashboard',$data);
 	}
 
 	public function users()
@@ -102,9 +102,9 @@ class Admin extends CI_Controller {
 					$alert->user_identifier = $this->user->getUserByID($alert->user_identifier);
 				}
 
-				$data = explode(',',$alert->property_data );
+				$data_tmp = explode(',',$alert->property_data );
 				$data_output = array();
-				foreach ($data as $i) {
+				foreach ($data_tmp as $i) {
 					$i = explode('=', $i);
 					$data_output[$i[0]] = str_replace("'", "", $i[1]);
 				}
@@ -636,7 +636,7 @@ class Admin extends CI_Controller {
 		 $this->load->model('service');
 		 // $this->vacancy->populateDB();
 		// $this->service->getProperty(199876);
-		$this->service->importDistrictsIntoDB();
+		//$this->service->importDistrictsIntoDB();
 
 	}
 
@@ -668,6 +668,11 @@ class Admin extends CI_Controller {
 		}else{
 			redirect('admin');
 		}
+
+		$request = $this->uri->uri_string;
+		$request = explode('admin/', $request);
+		$data['request'] = explode('/', $request[1]);
+		$data['request'] = $data['request'][0];
 
 
 		return $data;
