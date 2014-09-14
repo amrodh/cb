@@ -1,3 +1,7 @@
+*{
+    font-family: 'Ubuntu';
+}
+
 .loginDiv input{
 	width:36%;
 	margin-top: 1%;

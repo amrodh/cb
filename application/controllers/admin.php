@@ -79,16 +79,56 @@ class Admin extends CI_Controller {
 		$data['user'] = $this->user->getUserByUsername($username);
 		$data['properties'] = $this->property->getUserProperties($data['user']->id);
 		$data['favorites'] = $this->favorites->getUserFavorites($data['user']->id);
+
 		if(is_array($data['favorites'])){
 			foreach ($data['favorites'] as $favorite ) {
 				$favorite->property = $this->property->getPropertyByID($favorite->property_id)[0];
 			}
 		}
+
+
+		if(isset($_POST['id'])){
+			
+			if(isset($_POST['confirmdelete'])){
+				$this->user->deleteUser($username);
+				redirect('admin/users');
+			}
+
+			if(isset($_POST['confirmedit'])){
+				$userId = $data['user']->id;
+				unset($_POST['id']);
+				unset($_POST['confirmedit']);
+
+
+				$update = $this->user->updateUser($userId,$_POST);
+				$updatedUser = $this->user->getUserByID($userId);
+				$this->startSession($updateUser);
+				redirect('admin/users/'.$updatedUser->username);
+
+				
+			}
+			
+		}
+
+
+		if(isset($_POST['username'])){
+			if(isset($_POST['delete'])){
+				$this->load->view('admin/userdelete', $data);
+				return;
+			}
+			if(isset($_POST['edit'])){
+				$data['params'] = $this->user->getUserArray($username);
+				$this->load->view('admin/useredit', $data);
+				return;
+			}
+		}
 		
-		// printme($data['favorites']);exit();
 		$this->load->view('admin/userprofile', $data);
 
 	}
+
+
+
 
 
 	public function propertyalert()
