@@ -3,7 +3,7 @@
         <title>ColdWell Banker</title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/static/css/uploadify.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/static/css/uploadify.css" /> -->
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
@@ -11,7 +11,7 @@
         
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
-        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
+        <!--<script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>-->
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
 

@@ -422,6 +422,8 @@ class Home extends CI_Controller {
 							 	$i++;
 							}
 							
+							// printme($_FILES);exit();
+
 							foreach ($images as $image) {
 								$fileExtension = explode('.',$image['name']);
 								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];

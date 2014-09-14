@@ -126,8 +126,10 @@
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
-                                            <input type="file" name="img[]" multiple="multiple">
-                                            <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p>
+                                            <!-- <input type="file" name="img[]" multiple="multiple"> -->
+                                            <input type="file" name="img[]" id="file">
+                                            <input type="button" id="add_more" class="upload" value="Add More Files"/>
+                                            <!-- <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p> -->
                                         </div>
                                     </div>
                                 </div>

@@ -9,6 +9,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 // $targetFolder = '/uploads'; // Relative to the root
 $targetFolder = getcwd().'/application/static/upload';
 
+printme($targetFolder);exit();
 
 $verifyToken = md5('unique_salt' . $_POST['timestamp']);
 
