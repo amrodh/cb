@@ -83,6 +83,7 @@
             <div id="language">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
+                    <?php // printme($uri);?>
                      <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
                     <span>/</span> -->
                     <?php if ($uri == 'shareProperty'): ?>
@@ -90,9 +91,9 @@
                         <span>/</span>
                         <a href='<?= base_url().'ar/'.$uri?>'>عربي</a>
                     <?php else: ?>
-                        <a href='<?= base_url().'en/'.str_replace('ar', '',$uri)?>'>English</a>
+                        <a href='<?= base_url().'en/'.str_replace('ar/', '',$uri)?>'>English</a>
                         <span>/</span>
-                        <a href='<?= base_url().'ar/'.str_replace('ar', '',$uri)?>'>عربي</a>
+                        <a href='<?= base_url().'ar/'.str_replace('ar/', '',$uri)?>'>عربي</a>
                     <?php endif ?>
                     <!-- <a href='<?= base_url().'ar'.str_replace('ar', '',$uri)?>'>عربي</a> -->
                 </label>
@@ -198,7 +199,7 @@
                             </ul>
                         </li>
                         <li><a class="header_items_rtl" href="<?= base_url().'ar/';?>auction"><?php echo $this->lang->line('home_menu3'); ?></a></li>
-                        <li><a href="" class="header_items_rtl"><?php echo $this->lang->line('home_menu4'); ?></a></li>
+                        <li><a href="<?= base_url().'ar/';?>trainingCenter" class="header_items_rtl"><?php echo $this->lang->line('home_menu4'); ?></a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?>
                                 <b class="caret"></b>

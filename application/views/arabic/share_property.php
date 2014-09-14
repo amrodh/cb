@@ -19,6 +19,14 @@
                 </div>
             <?php endif ?>
 
+            <?php if(isset($imageFlag)) : ?>
+                <div class="row"  style="width: 94.5%;margin-left:3%;margin-top:2%;">
+                    <div class="alert alert-danger" role="alert" style="text-align: center;">
+                        Images should be of these formats: jpg, jpeg or png.
+                    </div>
+                </div>
+            <?php endif ?>
+
             <?php if (isset($loggedIn)): ?>
                 <?php if (isset($is_valid)): ?>
                     <div id="properties_bottom_div">
@@ -104,7 +112,8 @@
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
                                             <input type="file" name="img[]"  multiple="multiple">
-                                            <p style="font-size:11px;margin-top:1%;">يمكنك إختيار صور متعددة</p>
+                                            <input type="button" id="add_more" class="upload" value="Add More Files"/>
+                                            <!-- <p style="font-size:11px;margin-top:1%;">يمكنك إختيار صور متعددة</p> -->
                                         </div>
                                     </div>
                                 </div>

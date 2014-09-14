@@ -10,7 +10,7 @@
                         <?php echo $this->lang->line('careers_description1'); ?>
                     </div>
                     <div class="careers_overlay_div_btn">
-                        <a href="<?= base_url();?>uploadCV">
+                        <a href="<?= base_url();?>en/uploadCV">
                             <?php echo $this->lang->line('careers_button1'); ?>
                         </a>
                     </div>
@@ -23,7 +23,7 @@
                         <?php echo $this->lang->line('careers_description2'); ?>
                     </div>
                     <div class="careers_overlay_div_btn">
-                        <a href="<?= base_url();?>joinUs">
+                        <a href="<?= base_url();?>en/joinUs">
                             <?php echo $this->lang->line('careers_button2'); ?>
                         </a>
                     </div>
