@@ -60,7 +60,8 @@
                   </table>
                   </form>
                   
-                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                  <input type="submit" name="confirmedit" class="btn btn-primary" value="Submit">
+                  <input type="submit" name="cancel" class="btn btn-primary" value="Cancel">
                 </div>
                
               </div>

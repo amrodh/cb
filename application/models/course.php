@@ -30,6 +30,20 @@ class Course extends CI_Model {
     }
 
 
+    function delete($id)
+    {
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->delete('course');
+
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+
+          return true;
+    }
+
   
 
 

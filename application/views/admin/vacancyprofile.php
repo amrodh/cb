@@ -7,39 +7,62 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Vacancy / <?= $vacancy->name; ?>
-                            </li>
-                        </ol>
-                    </div>
+                 <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo $vacancy->name; ?> <span style="float:right"><?= $vacancy->name_ar ?></span></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                
+                <div class=" col-md-9 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td width="25%">End Date:</td>
+                        <td width="25%"><span style=""><?php echo $vacancy->end_date; ?></span></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td width="%">Description:</td>
+                        <td width="%"><?php echo $vacancy->description; ?></td>
+                        <td width="%" >
+                          <span style="float:right;">
+                            <?php echo $vacancy->description_ar; ?>
+                          </span>
+                          </td>
+                        <td></td>
+                      </tr>
+                      
+                      
+                      
+                     
+                    </tbody>
+                  </table>
+                  
+               
+              </div>
+            </div>
+             <div class="panel-footer" style="height:51px;">
+                    <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
+                    <span class="pull-right">
+                        <form action="" method="post">
+                           <input style="color:white" type="submit" name="edit"   class="button btn btn-sm " value="Edit"> 
+                           <input style="color:white" type="submit" name="delete" class="button btn btn-sm " value="Delete">
+                        </form>
+                    </span>
                 </div>
-                <div class="usersLandingContent">
-                    
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <img src="<?= base_url();?>application/static/images/vacancy.png" alt="">
-                        </div>
-                        <div class="col-lg-9">
-                            <h3><?= $vacancy->name ?> , <?= $vacancy->name_ar; ?></h3>
-                            <p>End Date : <?= $vacancy->end_date;  ?></p>
-                            <p><?= $vacancy->description;  ?></p>
-                            <p><?= $vacancy->description_ar;  ?></p>
-                        </div>
-                    </div>
-                 </div>
+            
+          </div>
 
 
                  <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <div class="panel-body">
                             <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Enrolled Users" />
                          </div>
-                        <table class="table" id="dev-table">
+                        
+                            <?php if (is_array($users)): ?>
+                                <table class="table" id="dev-table">
                             <thead>
                             <tr>
                                 <th>Username</th>
@@ -49,7 +72,6 @@
                                 <th>Résumé</th>
                             </tr>
                             </thead>
-                            <?php if (is_array($users)): ?>
                                  <?php foreach($users as $user): ?>
                                 <tr>
                                 <td>
@@ -70,7 +92,11 @@
                                 </a></td>
                                
                                 </tr>          
-                                <?php endforeach ?>   
+                                <?php endforeach ?> 
+                                <?php else: ?>
+                                <div class="alert alert-warning">
+                                    No Enrolled Users Yet..
+                                </div>  
                             <?php endif ?>
                                                
                         </table>

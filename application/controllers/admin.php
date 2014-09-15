@@ -244,6 +244,29 @@ class Admin extends CI_Controller {
 				}
 			}
 		}
+
+		if(isset($_POST['delete'])){
+			$this->load->view('admin/vacancydelete', $data);
+			return;
+		}
+
+		if(isset($_POST['edit'])){
+			$data['params'] = $this->vacancy->getArray($id);
+			$this->load->view('admin/vacancyedit', $data);
+			return;
+		}
+
+		if(isset($_POST['confirmdelete'])){
+			$this->vacancy->delete($id);
+			redirect('admin/vacancies');
+		}
+
+		if(isset($_POST['confirmedit'])){
+			unset($_POST['confirmedit']);
+			$this->vacancy->update($id,$_POST);
+			redirect('admin/vacancies/'.$data['vacancy']->id);
+		}
+
 		$this->load->view('admin/vacancyprofile', $data);
 	}
 
@@ -358,6 +381,49 @@ class Admin extends CI_Controller {
 
 
 		$data['course'] = $this->course->getCourseByID($id);
+
+
+
+		if(isset($_POST['delete'])){
+			$this->load->view('admin/coursedelete', $data);
+			return;
+		}
+
+		if(isset($_POST['edit'])){
+			$data['params'] = $this->property->getAuctionByIdArray($id);
+			$this->load->view('admin/auctionedit', $data);
+			return;
+		}
+
+		if(isset($_POST['confirmdelete'])){
+			$this->course->delete($id);
+			redirect('admin/courses');
+		}
+
+		if(isset($_POST['confirmedit'])){
+
+			unset($_POST['confirmedit']);
+			if($_FILES['userfile']['error'] != 0){
+				$this->property->updateAuction($id,$_POST);
+				redirect('admin/auctions/'.$data['auction']->id);
+			}else{
+				$path = $this->config->config['upload_path'];
+				$this->config->set_item('upload_path',$path.'/auctions');
+
+				$fileExtension = explode('.',$_FILES['userfile']['name']);
+				$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+
+				$upload = uploadme($this);
+				$_POST['image'] = $_FILES['userfile']['name'];
+				$this->property->updateAuction($id,$_POST);
+				redirect('admin/auctions/'.$data['auction']->id);
+				// printme($_FILES);
+				// exit();
+			}
+			
+			
+		}
+
 
 		$this->load->view('admin/courseprofile', $data);
 	}

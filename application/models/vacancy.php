@@ -31,6 +31,22 @@ class Vacancy extends CI_Model {
     }
 
 
+
+    function delete($id)
+    {
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->delete('vacancy');
+
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+
+          return true;
+    }
+
+
     function getAllVacancies()
     {
 
@@ -96,6 +112,39 @@ class Vacancy extends CI_Model {
            return false; 
 
     }
+
+
+      function getArray($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->limit(1)
+              ->get('vacancy');
+
+           if($q->num_rows >0){
+              return $q->row_array();
+           } 
+
+           return false; 
+
+    }
+
+
+     function update($id,$params)
+     {
+         $q = $this
+              ->db
+              ->where('id',$id)
+              ->update('vacancy',$params);
+
+       if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+     }
 
 
     function getUsersEnrolled($vacancy_id)
