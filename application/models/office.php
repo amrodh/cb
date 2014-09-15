@@ -30,6 +30,7 @@ class office extends CI_Model {
     }
 
 
+
     function deleteOffice($id)
     {
       $q = $this
