@@ -1789,6 +1789,8 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    padding-left: 5%;
+
 }
 
 #offices_info > div > div.col-lg-8 > pre{
@@ -1796,7 +1798,7 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     background-color: white;
     padding: 0;
     margin-bottom: 0;
-    padding-left: 5%;
+    /*padding-left: 5%;*/
 }
 
 @media only screen and (min-width: 1200px){
