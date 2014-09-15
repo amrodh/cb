@@ -633,16 +633,18 @@ class Home extends CI_Controller {
 		$uri = $this->uri->uri_string;
 		$posAr = strpos($uri, 'ar/');
 		$posEn = strpos($uri, 'en/');
-
-		if ($posEn !== false){
+		$posAr2 = strpos($uri, 'ar');
+		$posEn2 = strpos($uri, 'en');
+		if ($posEn !== false || $posEn2 !== false ){
 			$data['uri'] = explode('en/', $uri);
 			if(isset($data['uri'][1])){
 				$data['uri'] = $data['uri'][1];
 			}else{
 				$data['uri'] = '';
 			}
+
 		}
-		elseif ($posAr !== false){
+		elseif ($posAr !== false || $posAr2 !== false){
 			$data['uri'] = explode('ar/', $uri);
 			if(isset($data['uri'][1])){
 				$data['uri'] = $data['uri'][1];

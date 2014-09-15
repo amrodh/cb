@@ -83,7 +83,7 @@
             <div id="language">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                    <?php //printme($uri);?>
+                    <?php // printme($uri);?>
                      <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
                     <span>/</span> -->
                     <?php if ($uri == 'shareProperty'): ?>
