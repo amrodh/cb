@@ -913,11 +913,18 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$this->load->model('office');
-		// printme($data);exit();
 		$data['currentLang'] = $_POST['lang'];
-		// printme($data['currentLang']);
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
 		$this->load->view('displayOffice', $data);
 	}
 
+	function displayMap()
+	{
+		$data = $this->init();
+		$this->load->model('office');
+		// $data['currentLang'] = $_POST['lang'];
+		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
+		// printme(officeInfo);exit();
+		$this->load->view('displayMap', $data);
+	}
 }

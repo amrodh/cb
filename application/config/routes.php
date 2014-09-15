@@ -109,6 +109,7 @@ $route["$appended_lang/trainingCenter"] = "home/trainingCenter";
 
 $route['getDistricts'] = 'home/getDistricts';
 $route['displayOffice'] = 'home/displayOffice';
+$route['displayMap'] = 'home/displayMap';
 
 $route['forgotPassword'] = 'home/forgotPassword';
 $route["$appended_lang/forgotPassword"] = "home/forgotPassword";
