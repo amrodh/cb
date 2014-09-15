@@ -636,21 +636,77 @@ class Home extends CI_Controller {
 		$posAr2 = strpos($uri, 'ar');
 		$posEn2 = strpos($uri, 'en');
 		if ($posEn !== false || $posEn2 !== false ){
-			$data['uri'] = explode('en/', $uri);
-			if(isset($data['uri'][1])){
-				$data['uri'] = $data['uri'][1];
-			}else{
-				$data['uri'] = '';
+			if ($posAr == false || $posAr2 == false)
+			{
+				if (explode('ar/', $uri)[0] == $uri)
+				{
+					$data['uri'] = explode('en/', $uri);
+					if(isset($data['uri'][1])){
+						$data['uri'] = $data['uri'][1];
+					}else{
+						$data['uri'] = '';
+					}
+				}
+				elseif (explode('en/', $uri)[0] == $uri){
+					$data['uri'] = explode('ar/', $uri);
+					if(isset($data['uri'][1])){
+						$data['uri'] = $data['uri'][1];
+					}else{
+						$data['uri'] = '';
+					}
+				}
 			}
-
+			else{
+				$data['uri'] = explode('en/', $uri);
+				if(isset($data['uri'][1])){
+					$data['uri'] = $data['uri'][1];
+				}else{
+					$data['uri'] = '';
+				}
+			}
+			
 		}
 		elseif ($posAr !== false || $posAr2 !== false){
-			$data['uri'] = explode('ar/', $uri);
-			if(isset($data['uri'][1])){
-				$data['uri'] = $data['uri'][1];
-			}else{
-				$data['uri'] = '';
+			if ($posEn == false || $posEn2 == false){
+
+				if (explode('en/', $uri)[0] == $uri)
+				{
+					$data['uri'] = explode('ar/', $uri);
+					if(isset($data['uri'][1])){
+						$data['uri'] = $data['uri'][1];
+					}else{
+						$data['uri'] = '';
+					}
+				}
+				elseif (explode('ar/', $uri)[0] == $uri){
+					$data['uri'] = explode('en/', $uri);
+					if(isset($data['uri'][1])){
+						$data['uri'] = $data['uri'][1];
+					}else{
+						$data['uri'] = '';
+					}
+				}
+
+
+
+				// $data['uri'] = explode('ar/', $uri);
+				// if(isset($data['uri'][1])){
+				// 	$data['uri'] = $data['uri'][1];
+				// }else{
+				// 	$data['uri'] = '';
+				// }
 			}
+			else{
+				$data['uri'] = explode('en/', $uri);
+				if(isset($data['uri'][1])){
+					$data['uri'] = $data['uri'][1];
+				}else{
+					$data['uri'] = '';
+				}
+			}
+		}
+		else{
+			$data['uri'] = '';
 		}
 
 
