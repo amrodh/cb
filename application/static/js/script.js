@@ -311,7 +311,9 @@ e.preventDefault();
            
 
             $("#offices_select").change(function() {
-                // alert($("[name='language']").val());
+              // alert($(this).val());
+              if ($(this).val() != 0){
+                
                 var url = $("#url").val();
                 url = url + "displayOffice";
                 var lang = $("[name='language']").val();
@@ -322,18 +324,28 @@ e.preventDefault();
                     data: { id: id, lang: lang }
                   })
                     .success(function( html ) {
+                          $("#offices_info").css('display', 'block');
                           $("#offices_info").html(html);
+                          var url2 = $("#url").val() + "displayMap";
+                          $.ajax({
+                            type: "POST",
+                            url: url2,
+                            data: { id: id, lang: lang }
+                          })
+                            .success(function( html ) {
+                                  $("#offices_map").css('display', 'block');
+                                  $("#offices_map").html(html);
+                                  
+                            });
                   });
+              }else if($(this).val() == 0){
+                  $("#offices_info").hide();
+                  $("#offices_map").hide();
+              }
             });
 
         });
 
-
-
-function search_validation ()
-{
-        // return true;
-}
 
 function formValidation()
 {
