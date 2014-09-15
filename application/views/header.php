@@ -85,7 +85,7 @@
                     <span class="glyphicon glyphicon-globe"></span>
                      <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
                     <span>/</span> -->
-
+                    <?php //printme($uri);?>
                     <?php if ($uri == 'trainingCenter'): ?>
                         <a href='<?= base_url().'en/'.$uri?>'>English</a>
                         <span>/</span>
