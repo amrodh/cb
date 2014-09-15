@@ -43,6 +43,19 @@
 	}
 
 
+	function generateMap($latitude,$longitude,$height,$width)
+	{
+		echo '
+		 <iframe
+                  width="'.$height.'"
+                  height="'.$width.'"
+                  frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCNNfcTu6tsiWJkLtEZWyaPk2_syUlGue0&center='.$latitude.','.$longitude.'&zoom=18&maptype=satellite">
+                </iframe>
+		';
+	}
+
+
 
 
 
