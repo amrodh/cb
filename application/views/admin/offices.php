@@ -30,7 +30,6 @@
                             <thead>
                             <tr>
                                 <th>District</th>
-                                <th>Address</th>
                             </tr>
                             </thead>
                             <?php if (is_array($offices)): ?>
@@ -39,7 +38,6 @@
                                 <td>
                                     <?= $office->district_en; ?>
                                 </td>
-                                <td><?php echo $office->address_en; ?></td>
                                 <td>
                                     <a href="offices/<?= $office->id; ?>">
                                         <span class="glyphicon glyphicon-arrow-right"></span>
@@ -47,7 +45,10 @@
                                 </td>
                             </tr>          
                             <?php endforeach ?>   
-
+                            <?php else: ?>
+                                <div class="alert alert-warning">
+                                    No Offices Found..
+                                </div>
                             <?php endif ?>
                                             
                         </table>

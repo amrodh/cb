@@ -106,7 +106,7 @@
 
 
 .tab-pane{
-	height:450px;
+	min-height:569.5px;
 }
 
 .propertyTable{
