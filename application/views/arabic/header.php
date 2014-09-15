@@ -14,7 +14,7 @@
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
 
-        <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
+       <!-- <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>-->
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
 
         <!-- Custom Fonts -->

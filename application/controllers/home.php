@@ -750,6 +750,7 @@ class Home extends CI_Controller {
 		$this->lang->load('viewallproperties', $lang);
 		$this->lang->load('forgetpassword', $lang);
 		$this->lang->load('resetpassword', $lang);
+		$this->lang->load('offices', $lang);
 		// $this->lang->load('viewallproperties', $lang);
 		// $this->lang->load('viewallproperties', $lang);
 	}
@@ -903,7 +904,20 @@ function resetpassword()
 	function offices()
 	{
 		$data = $this->init();
+		$this->load->model('office');
+		$data['offices'] = $this->office->getOffices();
 		$this->load->view($data['languagePath'].'offices', $data);
+	}
+
+	function displayOffice()
+	{
+		$data = $this->init();
+		$this->load->model('office');
+		// printme($data);exit();
+		$data['currentLang'] = $_POST['lang'];
+		// printme($data['currentLang']);
+		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
+		$this->load->view('displayOffice', $data);
 	}
 
 }

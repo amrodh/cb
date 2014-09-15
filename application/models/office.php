@@ -30,9 +30,6 @@ class office extends CI_Model {
     }
 
 
-  
-
-
     function getOfficeByID($id)
     {
 

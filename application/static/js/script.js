@@ -310,7 +310,21 @@ e.preventDefault();
            });
            
 
-        
+            $("#offices_select").change(function() {
+                // alert($("[name='language']").val());
+                var url = $("#url").val();
+                url = url + "displayOffice";
+                var lang = $("[name='language']").val();
+                id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { id: id, lang: lang }
+                  })
+                    .success(function( html ) {
+                          $("#offices_info").html(html);
+                  });
+            });
 
         });
 
