@@ -631,9 +631,29 @@ class Home extends CI_Controller {
 
 		
 		$uri = $this->uri->uri_string;
-		if(strpos($uri, 'ar') !== false || strpos($uri, 'en') !== false ){
-				
-			if(strpos($uri, 'ar')!== false)
+		// printme (explode('ar/', $uri));exit();
+		if (strpos($uri, 'ar') == 0 || strpos($uri, 'en') == 0){
+			if(strpos($uri, 'ar') == 0)
+			{
+				$data['uri'] = explode('ar/', $uri);
+				if(isset($data['uri'][1])){
+					$data['uri'] = $data['uri'][1];
+				}else{
+					$data['uri'] = '';
+				}
+				// printme($data['uri']);exit();
+			}
+			else
+			{
+				$data['uri'] = explode('en/', $uri);
+				if(isset($data['uri'][1])){
+					$data['uri'] = $data['uri'][1];
+				}else{
+					$data['uri'] = '';
+				}
+			}
+		}elseif (strpos($uri, 'ar/') !== false || strpos($uri, 'en/') !== false ){
+			if(strpos($uri, 'ar/')!== false)
 				$data['uri'] = explode('ar/', $uri);
 			else
 				$data['uri'] = explode('en/', $uri);
@@ -642,10 +662,26 @@ class Home extends CI_Controller {
 				$data['uri'] = $data['uri'][1];
 			else
 				$data['uri'] = $data['uri'][0];
-
 		}else{
+			
 			$data['uri'] = $this->uri->uri_string;
 		}
+		// printme($data['uri']);exit();
+		// if(strpos($uri, 'ar') !== false || strpos($uri, 'en') !== false ){
+				
+		// 	if(strpos($uri, 'ar')!== false)
+		// 		$data['uri'] = explode('ar/', $uri);
+		// 	else
+		// 		$data['uri'] = explode('en/', $uri);
+
+		// 	if(isset($data['uri'][1]))
+		// 		$data['uri'] = $data['uri'][1];
+		// 	else
+		// 		$data['uri'] = $data['uri'][0];
+
+		// }else{
+		// 	$data['uri'] = $this->uri->uri_string;
+		// }
 
 		//printme($data['uri']);exit();
 
