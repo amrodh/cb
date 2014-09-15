@@ -30,6 +30,21 @@ class office extends CI_Model {
     }
 
 
+    function deleteOffice($id)
+    {
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->delete('office');
+
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+
+          return true;
+    }
+
+
   
 
 
@@ -49,6 +64,39 @@ class office extends CI_Model {
            return false; 
 
     }
+
+
+    function update($id,$params)
+    {
+       $q = $this
+              ->db
+              ->where('id',$id)
+              ->update('office',$params);
+
+       if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+    }
+
+     function getArray($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->limit(1)
+              ->get('office');
+
+           if($q->num_rows >0){
+              return $q->row_array();
+           } 
+
+           return false; 
+
+    }
+
 
 
    function insertOffice($params)

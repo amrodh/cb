@@ -26,6 +26,21 @@ class Property extends CI_Model {
     }
 
 
+     function deleteAuction($id)
+    {
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->delete('auction');
+
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+
+          return true;
+    }
+
+
      function updateProperty($id,$params)
      {
          $q = $this
@@ -39,6 +54,23 @@ class Property extends CI_Model {
 
         return true;
      }
+
+      function updateAuction($id,$params)
+     {
+         $q = $this
+              ->db
+              ->where('id',$id)
+              ->update('auction',$params);
+
+       if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+     }
+
+
+
 
     function getAllProperties()
     {
@@ -154,6 +186,24 @@ class Property extends CI_Model {
 
            if($q->num_rows >0){
               return $q->row();
+           } 
+
+           return false; 
+
+    }
+
+
+     function getAuctionByIdArray($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->limit(1)
+              ->get('auction');
+
+           if($q->num_rows >0){
+              return $q->row_array();
            } 
 
            return false; 

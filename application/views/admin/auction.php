@@ -26,14 +26,15 @@
                         <div class="panel-body">
                             <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Auctions" />
                          </div>
-                        <table class="table" id="dev-table">
+                        
+                            <?php if (is_array($auctions)): ?>
+                                <table class="table" id="dev-table">
                             <thead>
                             <tr>
                                 <th>Title</th>
                                 <th>Date Held</th>
                             </tr>
                             </thead>
-                            <?php if (is_array($auctions)): ?>
                                 <?php foreach($auctions as $auction): ?>
                                 <tr>
                                 <td>
@@ -46,7 +47,11 @@
                                     </a>
                                 </td>
                             </tr>          
-                            <?php endforeach ?>       
+                            <?php endforeach ?>  
+                            <?php else: ?>
+                            <div class="alert alert-warning">
+                                No Auctions Found..
+                            </div>     
                             <?php endif ?>
                                             
                         </table>

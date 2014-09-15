@@ -301,6 +301,49 @@ class Admin extends CI_Controller {
 		$id = $id[1];
 
 		$data['auction'] = $this->property->getAuctionById($id);
+
+
+		if(isset($_POST['delete'])){
+			$this->load->view('admin/auctiondelete', $data);
+			return;
+		}
+
+		if(isset($_POST['edit'])){
+			$data['params'] = $this->property->getAuctionByIdArray($id);
+			$this->load->view('admin/auctionedit', $data);
+			return;
+		}
+
+		if(isset($_POST['confirmdelete'])){
+			$this->property->deleteAuction($id);
+			redirect('admin/auctions');
+		}
+
+		if(isset($_POST['confirmedit'])){
+
+			unset($_POST['confirmedit']);
+			if($_FILES['userfile']['error'] != 0){
+				$this->property->updateAuction($id,$_POST);
+				redirect('admin/auctions/'.$data['auction']->id);
+			}else{
+				$path = $this->config->config['upload_path'];
+				$this->config->set_item('upload_path',$path.'/auctions');
+
+				$fileExtension = explode('.',$_FILES['userfile']['name']);
+				$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+
+				$upload = uploadme($this);
+				$_POST['image'] = $_FILES['userfile']['name'];
+				$this->property->updateAuction($id,$_POST);
+				redirect('admin/auctions/'.$data['auction']->id);
+				// printme($_FILES);
+				// exit();
+			}
+			
+			
+		}
+
+
 		$this->load->view('admin/auctionprofile', $data);
 	}
 
@@ -327,9 +370,33 @@ class Admin extends CI_Controller {
 		$id = $this->uri->uri_string;
 		$id = explode('offices/', $id);
 		$id = $id[1];
-
-
+		
 		$data['office'] = $this->office->getOfficeByID($id);
+
+		if(isset($_POST['delete'])){
+			$this->load->view('admin/officedelete', $data);
+			return;
+		}
+
+		if(isset($_POST['edit'])){
+			$data['params'] = $this->office->getArray($id);
+			$this->load->view('admin/officeedit', $data);
+			return;
+		}
+
+		if(isset($_POST['confirmdelete'])){
+			$this->office->deleteOffice($id);
+			redirect('admin/offices');
+		}
+
+		if(isset($_POST['confirmedit'])){
+			unset($_POST['confirmedit']);
+			$this->office->update($id,$_POST);
+			redirect('admin/offices/'.$data['office']->id);
+		}
+
+
+		
 
 		$this->load->view('admin/officeprofile', $data);
 	}
