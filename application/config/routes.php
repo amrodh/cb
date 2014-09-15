@@ -15,6 +15,8 @@ $route['admin/script'] = 'admin/script';
 $route['admin/users'] = 'admin/users';
 $route['admin/alert'] = 'admin/checkPropertyAlert';
 $route['admin/content'] = 'admin/content';
+$route['admin/offices'] = 'admin/offices';
+$route['admin/offices/new'] = 'admin/newOffice';
 $route['admin/content/new'] = 'admin/addContent';
 $route['admin/deletecontent/(:any)'] = 'admin/deleteContent';
 $route['admin/editcontent/(:any)'] = 'admin/editContent';
@@ -29,6 +31,7 @@ $route['admin/auctions'] = 'admin/auction';
 $route['admin/courses'] = 'admin/courses';
 $route['admin/courses/new'] = 'admin/newCourse';
 $route['admin/courses/(:any)'] = 'admin/showCourse';
+$route['admin/offices/(:any)'] = 'admin/showOffice';
 
 $route['admin/auctions/new'] = 'admin/NewAuction';
 $route['admin/vacancies/new'] = 'admin/NewVacancy';

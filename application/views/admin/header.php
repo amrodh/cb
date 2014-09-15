@@ -107,10 +107,13 @@
                         <a href="<?php echo base_url(); ?>admin/vacancies"><i class="glyphicon glyphicon-briefcase"></i> Vacancies</a>
                     </li>
                     <li <?php if($request == 'courses') echo 'class="active"'; ?>>
-                        <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-list-alt"></i> Courses</a>
+                        <a href="<?php echo base_url(); ?>admin/courses"><i class="glyphicon glyphicon-th-large"></i> Courses</a>
                     </li>
                      <li <?php if($request == 'content') echo 'class="active"'; ?>>
                         <a href="<?php echo base_url(); ?>admin/content"><i class="glyphicon glyphicon-list-alt"></i> Content Management</a>
+                    </li>
+                    <li <?php if($request == 'offices') echo 'class="active"'; ?>>
+                        <a href="<?php echo base_url(); ?>admin/offices"><i class="glyphicon glyphicon-pushpin"></i> Offices</a>
                     </li>
                     
                 </ul>

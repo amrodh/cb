@@ -282,6 +282,16 @@ class Admin extends CI_Controller {
 	}
 
 
+	public function offices()
+	{	
+		$data = $this->init();
+		
+		$data['offices'] = $this->office->getOffices();
+		$this->load->view('admin/offices', $data);
+
+	}
+
+
 	public function showAuction()
 	{
 		$data = $this->init();
@@ -307,6 +317,21 @@ class Admin extends CI_Controller {
 		$data['course'] = $this->course->getCourseByID($id);
 
 		$this->load->view('admin/courseprofile', $data);
+	}
+
+
+	public function showOffice()
+	{
+		$data = $this->init();
+
+		$id = $this->uri->uri_string;
+		$id = explode('offices/', $id);
+		$id = $id[1];
+
+
+		$data['office'] = $this->office->getOfficeByID($id);
+
+		$this->load->view('admin/officeprofile', $data);
 	}
 
 
@@ -355,6 +380,22 @@ class Admin extends CI_Controller {
 		}
 
 		$this->load->view('admin/newcourse', $data);
+	}
+
+
+
+	public function newOffice()
+	{
+		$data = $this->init();
+		if(isset($_POST['submit']))
+		{
+			$data['params'] = $_POST;
+			unset($_POST['submit']);
+			$insert = $this->office->insertOffice($_POST);
+
+			redirect('admin/offices/'.$this->db->insert_id());
+		}
+		$this->load->view('admin/newoffice', $data);
 	}
 
 
