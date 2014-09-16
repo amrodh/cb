@@ -934,4 +934,16 @@ function resetpassword()
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
 		$this->load->view('displayMap', $data);
 	}
+
+	function newsletterSingle()
+	{
+		$data = $this->init();
+		$this->load->view('newsletter_single', $data);
+	}
+
+	function newsletterBanner()
+	{
+		$data = $this->init();
+		$this->load->view('newsletter_banner', $data);
+	}
 }
