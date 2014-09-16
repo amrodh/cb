@@ -15,7 +15,7 @@
 }
 
 *{
-    font-family: 'Ubuntu';
+    font-family: 'ubuntu_medium';
 }
 
 body{
@@ -255,7 +255,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     position: absolute;
 }
 
-.slider_components{
+.slider_components, .newsletter_components{
     position: relative;
     font-size: 35px;
     color: white;
@@ -1805,6 +1805,57 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     width: 16%;
 }
 
+.newsletter_container{
+    border: 10px solid #233f71;
+    padding: 5%;
+    background-color: white;
+    margin-top: 5%;
+}
+
+#newsletter_logo{
+    position: absolute;
+    margin-top: -8.5%;
+    margin-left: -2%;
+}
+
+.newsletter_logo{
+    width: 170px; 
+}
+
+#newsletter_title{
+    font-size: 40px;
+}
+
+#newsletter_mainImg{
+    width: 100%;
+    position: relative;
+}
+
+#newsletter_heading{
+    position: absolute;
+    margin-top: -7%;
+    font-size: 65px;
+    margin-left: 41%;
+    color: gold;
+}
+
+#newsletter_content{
+    margin-top: 3%;
+}
+
+.newsletter_banner{
+    margin-bottom: 4%;
+}
+
+.newsletter_banner_imgs{
+    width: 1023px;
+    position: absolute;
+}
+
+.newsletter_components{
+    margin-top: 10%;
+}
+
 @media only screen and (min-width: 1200px){
     #footer_last_col{
         /*width: 30%;*/
@@ -2042,3 +2093,9 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     font-family: "droidarabickufi_bold";
     src: url('../fonts/DroidKufi-Bold.ttf');
 }
+
+@font-face {
+    font-family: "ubuntu_medium";
+    src: url('../fonts/Ubuntu-M.ttf');
+}
+

@@ -126,6 +126,10 @@ $route["$appended_lang/offices"] = "home/offices";
 $route["$appended_lang/home"] = "home";
 
 
+//Temporary
+$route["newsletterSingle"] = "home/newsletterSingle";
+$route["newsletterBanner"] = "home/newsletterBanner";
+
 
 
 /* End of file routes.php */

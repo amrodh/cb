@@ -1,5 +1,5 @@
 *{
-    font-family: 'Ubuntu';
+    font-family: 'ubuntu_medium';
 }
 
 .loginDiv input{
@@ -123,6 +123,10 @@
 	
 }
 
+@font-face {
+    font-family: "ubuntu_medium";
+    src: url('../fonts/Ubuntu-M.ttf');
+}
 
 .usersLandingContent{
 	min-height: 553px;
