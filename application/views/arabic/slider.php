@@ -1,65 +1,18 @@
 
 <div class="hidden-sm hidden-xs slider" dir="ltr">
     <ul class="bxslider" style="height: 455px!important;" dir="ltr">
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li>
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li>
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li>
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li dir="rtl">
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li>
-          <li dir="rtl">
-              <a href="<?php echo base_url(); ?>viewAllProperties"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/images/sliderimg.png"></a>
-              <div class="slider_logo">
-                  <img src="<?php echo base_url(); ?>application/static/images/sliderlogo.png">
-              </div>
-              <div class="slider_components">
-                  <p>منزل أحلامك الأن بنصف السعر</p>
-                  <p>إحجز الأن</p>
-              </div>
-          </li>
+          <?php foreach ($slides as $slide): ?>
+            <?php //printme($slide->id);exit(); ?>
+              <li dir="rtl">
+                  <a href="<?php echo base_url().$slide->link_ar; ?>"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->image;?>"></a>
+                  <div class="slider_logo">
+                      <img src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->alt_logo;?>">
+                  </div>
+                  <div class="slider_components">
+                      <p><?php echo $slide->h1_ar;?></p>
+                      <p><?php echo $slide->h2_ar;?></p>
+                  </div>
+              </li>
+          <?php endforeach ?>
       </ul>
 </div>

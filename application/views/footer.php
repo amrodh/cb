@@ -200,6 +200,7 @@
                 2014 Coldwell Banker. All Rights Reserved.
             </p>
         </div>
+        <input type="hidden" name="currentLanguage" id="currentLanguage" value="<?=$language?>">
         </body>
 
 
@@ -212,6 +213,7 @@
                     auto:true
                 });
                 $("[data-toggle='popover']").popover();
+                // alert($('#currentLanguage').val());
             });
             
             var navHeight = $('.navbar-collapse').height();
