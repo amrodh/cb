@@ -29,6 +29,20 @@ class Course extends CI_Model {
 
     }
 
+    function update($id,$params)
+     {
+         $q = $this
+              ->db
+              ->where('id',$id)
+              ->update('course',$params);
+
+       if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+     }
+
 
     function delete($id)
     {
@@ -63,6 +77,25 @@ class Course extends CI_Model {
            return false; 
 
     }
+
+
+    function getArray($id)
+    {
+
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->limit(1)
+              ->get('course');
+
+           if($q->num_rows >0){
+              return $q->row_array();
+           } 
+
+           return false; 
+
+    }
+
 
 
    function insertCourse($params)
