@@ -20,6 +20,11 @@ class Home extends CI_Controller {
 		$this->load->model('content');
 		$data['cities'] = $this->service->getCities();
 		$data['slides'] = $this->content->getActiveSliders();
+		// $inputs = array('CompanyId' => 2,
+		// 	'commercialId' => 2, 
+		// 	'residentialId' => 2);
+		// $data['featuredProperties'] = $this->service->getFeaturedProperties();
+		// printme($data['featuredProperties']);exit();
 		// printme($data['slides'][1]->id);exit();
 		// printme($data['language']);exit();
 		$this->load->view($data['languagePath'].'home',$data);
@@ -482,6 +487,7 @@ class Home extends CI_Controller {
 		$this->load->model('property');
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
+
 		// printme($data['languagePath']);exit();
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
@@ -753,6 +759,7 @@ class Home extends CI_Controller {
 		$this->lang->load('forgetpassword', $lang);
 		$this->lang->load('resetpassword', $lang);
 		$this->lang->load('offices', $lang);
+		$this->lang->load('featuredProperties', $lang);
 		// $this->lang->load('viewallproperties', $lang);
 		// $this->lang->load('viewallproperties', $lang);
 	}

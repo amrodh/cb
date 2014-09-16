@@ -168,6 +168,22 @@ class service extends CI_Model {
         return $result->GetPropertyinfoResult ;
     }
 
+    function getFeaturedProperties($inputs)
+    {
+        // $inputs = array('companyId' => $cityID,
+        //                 'commercialId' => );
+        $result = $this->client->GetFeaturedProperty($inputs);
+        $data = array();
+        // if(is_array($result->GetFeaturedPropertyResult->DistrictItem)){
+        //     foreach ($result->GetFeaturedPropertyResult->DistrictItem as $district) {
+        //        $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
+        //     }
+        //     return $data;
+        // }
+        // else 
+        //     return 0; 
+    }
+
    
 
 }

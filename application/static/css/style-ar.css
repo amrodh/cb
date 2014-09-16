@@ -618,7 +618,7 @@ li.active>a{
     margin-top: 30px;
 }
 
-#property_alert_header{
+#property_alert_header, #featuredProperty_header{
     width: 179px;
     margin-right: 80px;
 }
@@ -627,7 +627,7 @@ li.active>a{
     margin-top: 30px;
 }
 
-.property_alert_body{
+.property_alert_body, .featuredProperty_body{
     /*border: 1px solid red;*/
     /*height: 180px;*/
     width: 100%;
@@ -1831,6 +1831,10 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     background-color: white;
     padding: 0;
     margin-bottom: 0;
+}
+
+#featuredProperty_header{
+    width: 16%;
 }
 
 @media only screen and (min-width: 1200px){

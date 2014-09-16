@@ -5,6 +5,7 @@
 	    <div class="visible-sm visible-xs hidden-lg hidden-md">
 	        <?php include('search.php'); ?>
 	    </div>
+    <?php include('featuredProperties.php'); ?>    
     <?php include('property_alert.php'); ?>       
 </div>
 <?php include('footer.php'); ?>
