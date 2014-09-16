@@ -946,6 +946,10 @@ li.active>a{
     /*margin-left: 50px;*/
 }
 
+.tab-pane{
+    /*height: auto!important;*/
+}
+
 .properties_common_bottom_div, .offices_divs{
     /*height: 20px;*/
     border-radius: 10px;

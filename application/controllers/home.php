@@ -17,8 +17,11 @@ class Home extends CI_Controller {
 			$data = $this->init();
 
 		$this->load->model('service');
+		$this->load->model('content');
 		$data['cities'] = $this->service->getCities();
-		// printme($data);exit();
+		$data['slides'] = $this->content->getActiveSliders();
+		// printme($data['slides'][1]->id);exit();
+		// printme($data['language']);exit();
 		$this->load->view($data['languagePath'].'home',$data);
 	}
 
@@ -718,7 +721,6 @@ class Home extends CI_Controller {
 		$this->loadLanguage($data['language']);
 
 		return $data;
-
 		
 	}
 
@@ -922,9 +924,7 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$this->load->model('office');
-		// $data['currentLang'] = $_POST['lang'];
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
-		// printme(officeInfo);exit();
 		$this->load->view('displayMap', $data);
 	}
 }

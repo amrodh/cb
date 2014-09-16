@@ -912,7 +912,7 @@ li.active>a{
     /*margin-left: 50px;*/
 }
 .tab-pane{
-    height: auto;
+    height: auto!important;
 }
 
 .properties_common_bottom_div, .offices_divs{
