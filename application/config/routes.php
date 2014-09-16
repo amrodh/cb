@@ -21,6 +21,8 @@ $route['admin/content/new'] = 'admin/addContent';
 $route['admin/deletecontent/(:any)'] = 'admin/deleteContent';
 $route['admin/editcontent/(:any)'] = 'admin/editContent';
 
+$route['admin/newsletter/create'] = 'admin/createNewsletter';
+
 
 $route['admin/sendall'] = 'admin/newsletterSend';
 

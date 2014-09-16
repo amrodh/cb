@@ -206,6 +206,13 @@ class Admin extends CI_Controller {
 		
 	}
 
+	public function  createNewsletter()
+	{
+		$data = $this->init();
+		
+		$this->load->view('admin/createnewsletter', $data);
+	}
+
 
 	public function checkpasswordchange()
 	{

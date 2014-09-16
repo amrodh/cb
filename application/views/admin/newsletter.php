@@ -22,7 +22,7 @@
             
        
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-9">
                         <div class="panel-body">
                             <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Users" />
                          </div>
@@ -52,9 +52,9 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="panel panel-primary">
-                             <a href="<?php echo base_url(); ?>admin/sendall">
+                             <a href="<?php echo base_url(); ?>admin/newsletter/create">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Send Newsletter To All</span>
+                                    <span class="pull-left">Create Newsletter</span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>

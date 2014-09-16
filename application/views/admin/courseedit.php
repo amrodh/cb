@@ -12,8 +12,8 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-      <div class="row">
-        <div class="col-lg-12" >
+      <div class="row" style="border:1px solid red;height:500px;">
+        <div class="col-lg-12">
    
    
           <div class="panel panel-info">

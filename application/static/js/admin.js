@@ -7,10 +7,19 @@ jQuery(document).ready(function($) {
 	$(".changePasswordCancel").click(function(){
 		$(".changePasswordContainer").slideUp('slow');
 		$(".changePasswordAnchor").fadeIn('slow');
-	});
+	});	
 });
 
 
+$("#newsletterSelect").change(function(){
+
+		$(".newsletterContent").each(function(){
+			$(this).addClass('hide');
+		});
+		
+		value = $(this).val();
+		$("#"+value).removeClass('hide');
+	});
 
 
 $('.bxslider').bxSlider({

@@ -11,7 +11,7 @@
     <script src="<?php echo base_url(); ?>application/static/js/plugins/morris/morris.min.js"></script>
     <script src="<?php echo base_url(); ?>application/static/js/plugins/morris/morris-data.js"></script>
     <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
 
 
 </body>
