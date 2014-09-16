@@ -26,5 +26,30 @@
 	            <p>AND PAYMENT ON 6 YEARS</p>
 	        </div>
 		</div>
+
+		<div id="newsletter_contact">
+			<a href="">
+                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
+            </a>
+            <a href="">
+                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+            </a>
+            <a href="">
+                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+            </a>
+            <a href="">
+                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+            </a>
+            <div style="float:right;">
+            	<img style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
+                <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 24px;color: #233f71;">
+                    <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
+                </div>
+                <div style="margin-top: -13%;font-size: 36px;color: #233f71;">
+                16223 
+                </div>
+            </div>
+            
+		</div>
 	</div>
 <?php include('footer.php'); ?>
