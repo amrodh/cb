@@ -18,7 +18,7 @@
         <link type="text/css" href="<?= base_url();?>/application/static/css/style.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
         
-        <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css">
+        <!-- <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css"> -->
         <title>
             <?=$page_title?>
         </title>

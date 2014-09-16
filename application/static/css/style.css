@@ -15,7 +15,7 @@
 }
 
 *{
-    font-family: 'Ubuntu';
+    font-family: 'ubuntu_medium';
 }
 
 body{
@@ -2042,3 +2042,9 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     font-family: "droidarabickufi_bold";
     src: url('../fonts/DroidKufi-Bold.ttf');
 }
+
+@font-face {
+    font-family: "ubuntu_medium";
+    src: url('../fonts/Ubuntu-M.ttf');
+}
+
