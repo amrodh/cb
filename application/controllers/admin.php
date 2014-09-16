@@ -356,6 +356,15 @@ class Admin extends CI_Controller {
 				$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 
 				$upload = uploadme($this);
+
+				if(isset($upload['error'])){
+
+					$data['params'] = $this->property->getAuctionByIdArray($id);
+					$data['error'] = $upload['error'];
+					$this->load->view('admin/auctionedit', $data);
+					return;
+				}
+
 				$_POST['image'] = $_FILES['userfile']['name'];
 				$this->property->updateAuction($id,$_POST);
 				redirect('admin/auctions/'.$data['auction']->id);
@@ -390,8 +399,8 @@ class Admin extends CI_Controller {
 		}
 
 		if(isset($_POST['edit'])){
-			$data['params'] = $this->property->getAuctionByIdArray($id);
-			$this->load->view('admin/auctionedit', $data);
+			$data['params'] = $this->course->getArray($id);
+			$this->load->view('admin/courseedit', $data);
 			return;
 		}
 
@@ -404,21 +413,27 @@ class Admin extends CI_Controller {
 
 			unset($_POST['confirmedit']);
 			if($_FILES['userfile']['error'] != 0){
-				$this->property->updateAuction($id,$_POST);
-				redirect('admin/auctions/'.$data['auction']->id);
+				$this->course->update($id,$_POST);
+				redirect('admin/courses/'.$data['course']->id);
 			}else{
 				$path = $this->config->config['upload_path'];
-				$this->config->set_item('upload_path',$path.'/auctions');
+				$this->config->set_item('upload_path',$path.'/courses');
 
 				$fileExtension = explode('.',$_FILES['userfile']['name']);
 				$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 
 				$upload = uploadme($this);
+				if(isset($upload['error'])){
+
+					$data['params'] = $this->course->getArray($id);
+					$data['error'] = $upload['error'];
+					$this->load->view('admin/courseedit', $data);
+					return;
+
+				}
 				$_POST['image'] = $_FILES['userfile']['name'];
-				$this->property->updateAuction($id,$_POST);
-				redirect('admin/auctions/'.$data['auction']->id);
-				// printme($_FILES);
-				// exit();
+				$this->course->update($id,$_POST);
+				redirect('admin/courses/'.$data['course']->id);
 			}
 			
 			

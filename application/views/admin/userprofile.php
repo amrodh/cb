@@ -140,7 +140,7 @@
                     </div>
             <?php else: ?>
               <div id="successAlert" class="alert alert-warning " role="alert">
-                        No properties found..
+                        No Properties found..
               </div>
             <?php endif ?>
           </div>
@@ -179,7 +179,7 @@
                     </div>
             <?php else: ?>
               <div id="successAlert" class="alert alert-warning " role="alert">
-                        No properties found..
+                        No Favorites found..
               </div>
             <?php endif ?>
           </div>
@@ -238,9 +238,9 @@
                     </div>
                   </div>
                   <a href="javascript:void(0);"  class="changePasswordAnchor" data-toggle="tooltip" >
-                      <ul>
+                      <!-- <ul>
                         <li>Change Password</li>
-                      </ul>
+                      </ul> -->
                   </a>
                 </div>
               </div>
