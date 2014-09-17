@@ -9,7 +9,6 @@
                     <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li>
                 </ul>
             </div>
-
             <div class="tab-content property_details_body">
                 <div class="tab-pane active" id="details">
                     <div class="row">
@@ -141,7 +140,7 @@
                                                 <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
                                                 <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
                                             </div>
-                                            <div class="form-group"><?php echo $this->lang->line('propertydetails_email'); ?>E-mail</label>
+                                            <div class="form-group"><label><?php echo $this->lang->line('propertydetails_email'); ?>E-mail</label>
                                                 <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
                                             </div>
                                             <div class="form-group">
