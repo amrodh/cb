@@ -129,6 +129,7 @@ $route["$appended_lang/home"] = "home";
 //Temporary
 $route["newsletterSingle"] = "home/newsletterSingle";
 $route["newsletterBanner"] = "home/newsletterBanner";
+$route["newsletterProperties"] = "home/newsletterProperties";
 
 
 

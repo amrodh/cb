@@ -946,4 +946,10 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->view('newsletter_banner', $data);
 	}
+
+	function newsletterProperties()
+	{
+		$data = $this->init();
+		$this->load->view('newsletter_properties', $data);
+	}
 }
