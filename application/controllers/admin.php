@@ -209,11 +209,76 @@ class Admin extends CI_Controller {
 	public function  createNewsletter()
 	{
 		$data = $this->init();
+
+		$users = $this->user->getSubscribedUsers();
 		
+		if(is_array($users)){
+			foreach ($users as $user) {
+				if(!$this->checkmail($user->user_identifier))
+					$user->user_identifier = $this->user->getUserByID($user->user_identifier)->email;
+			}
+		}
+		
+		$data['users'] = $users;
+
+		if(isset($_POST['confirmsingle'])){
+			$recievers = "";
+			if(isset($_POST['checkAll'])){
+
+				foreach ($users as $user) {
+					if(!$this->checkmail($user->user_identifier)){
+						$recievers.= $this->user->getUserByID($user->user_identifier)->email.',';
+					}else{
+						$recievers.= $user->user_identifier.',';
+					}
+				}
+			}else{
+					foreach ($_POST['singlecheck'] as $user) {
+					$recievers .= $user.',';
+					}
+					
+			}
+			// printme($_POST);
+			// exit();
+			$this->sendSingle($_POST,$recievers);
+		}
+
+		if(isset($_POST['singlepreview'])){
+
+			$path = $this->config->config['upload_path'];
+			$this->config->set_item('upload_path',$path.'/temp');
+			$fileExtension = explode('.',$_FILES['userfile']['name']);
+			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+			$upload = uploadme($this);
+
+			if(isset($upload['error'])){
+				$data['[params'] = $_POST;
+				$data['error'] = $upload['error'];
+			}else{
+				$_POST['image'] = $upload['upload_data']['file_name'];
+				$data['params'] = $_POST;
+				$this->load->view('admin/newsletter_single', $data);
+				return;
+			}
+
+			printme($_FILES);
+			printme($_POST);
+			exit();
+		}
 		$this->load->view('admin/createnewsletter', $data);
 	}
 
 
+
+	public function sendSingle($params,$list)
+	{
+		// printme($params);
+		// printme($list);
+		// exit();
+		$data['params'] = $params;
+		$body = $this->load->view('admin/single_template', $data, true);
+		$this->smtpmailer('NewsLetter',$body,'a.ahmed@enlightworld.com');
+	}
 	public function checkpasswordchange()
 	{
 		$data = $this->init();
@@ -966,7 +1031,9 @@ class Admin extends CI_Controller {
 			{
 			 show_error($this->email->print_debugger());
 			}
-}
+	}
+
+
 
 }
 

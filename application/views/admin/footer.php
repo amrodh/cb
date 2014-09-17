@@ -13,7 +13,6 @@
     <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>
 
-
 </body>
 
 </html>

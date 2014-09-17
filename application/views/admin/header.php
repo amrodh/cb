@@ -13,10 +13,11 @@
 
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
-
-<?php if ($request == 'content'): ?>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
-<?php endif ?>
+
+<!-- <?php if ($request == 'content'): ?> -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+<!-- <?php endif ?> -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
 <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
