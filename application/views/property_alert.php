@@ -57,7 +57,7 @@
                         <?php endif ?>
                       
                    </div>
-                    <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 132px;">
+                    <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 17%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span id="property_alert_caret" class="caret"></span>
                     </div>
                     <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit propertyAlertButton" style="position: absolute;margin-left: 71.5%;margin-top: 17px;">Notify Me</button>
