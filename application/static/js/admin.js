@@ -16,7 +16,7 @@ $("#newsletterSelect").change(function(){
 		$(".newsletterContent").each(function(){
 			$(this).addClass('hide');
 		});
-		
+
 		value = $(this).val();
 		$("#"+value).removeClass('hide');
 	});
@@ -27,7 +27,34 @@ $('.bxslider').bxSlider({
 });
 
 
+$("#checkall").click(function(){
+	if($('#checkall').is(':checked')){
+		$(".singlecheck").each(function(){
+			$(this).prop('checked', true); 
+			$(this).attr('disabled','disabled');
+		});
+	}else{
+		$(".singlecheck").each(function(){
+			$(this).prop('checked', false); 
+			$(this).removeAttr('disabled');
+		});
+	}
+});
 
+
+function checkSingleNewsletterForm()
+{
+	if($('#checkall').is(':checked'))
+		$("#singleFormID").submit();
+
+
+	$(".singlecheck").each(function(){
+		if($(this).is(':checked'))
+			$("#singleFormID").submit();
+	});
+
+	return false;
+}
 
 function completeChangePassword()
 {

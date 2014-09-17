@@ -1817,17 +1817,15 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
 }
 
 #newsletter_logo{
+    width:30%;
     position: absolute;
-    margin-top: -8.5%;
+    margin-top: -18.5%;
     margin-left: -2%;
 }
 
-.newsletter_logo{
-    width: 170px; 
-}
 
 #newsletter_title{
-    font-size: 40px;
+    font-size: 150%;
 }
 
 #newsletter_mainImg{
@@ -1837,8 +1835,9 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
 
 #newsletter_heading{
     position: absolute;
-    margin-top: -7%;
-    font-size: 65px;
+    margin-top: -12%;
+    /*font-size: 65px;*/
+    font-size:200%;
     margin-left: 41%;
     color: gold;
 }
