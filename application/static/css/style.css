@@ -1849,7 +1849,8 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
 }
 
 #newsletter_content{
-    margin-top: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .newsletter_banner{
