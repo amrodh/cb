@@ -266,35 +266,43 @@
                     <div class="modal-body">
                         <form class="form-inline" id="property_form" role="form">
                             <div class="form-group">
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
                                 </div>
-                                <div class="col-lg-10">
+                                <div class="col-lg-8">
                                     <input type="text" class="form-control" id="property_first_name" placeholder="Enter First Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
                                 </div>
-                                <div class="col-lg-10">
+                                <div class="col-lg-8">
                                     <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="property_email"><?php echo $this->lang->line('propertydetails_email'); ?>E-mail</label>
-                                <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
+                                <div class="col-lg-4">
+                                    <label for="property_email"><?php echo $this->lang->line('propertydetails_email'); ?></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
-                                <input type="text" class="form-control" id="property_phone" placeholder="Enter Phone">
+                                <div class="col-lg-4">
+                                    <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="property_phone" placeholder="Enter Phone">
+                                </div>
                             </div>
                             <div class="form-group" style="width: 97%;">
                                 <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                 <textarea class="form-control" id="property_form_textarea" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="cmdCalc_Click(this.form);"><?php echo $this->lang->line('propertydetails_button'); ?></button>
+                                <button type="submit" class="btn btn-default property_btn" id="contact_form_btn" onClick="cmdCalc_Click(this.form);"><?php echo $this->lang->line('propertydetails_button'); ?></button>
                             </div>
                         </form>
                     </div>

@@ -1067,6 +1067,10 @@ li.active>a{
     z-index: 999;
 }
 
+/*.form-inline .form-control{
+    width: 100%;
+}*/
+
 .btn > a{
     text-decoration: none;
     color: black;
@@ -1290,11 +1294,16 @@ li.active>a{
     /*color: red;*/
 }
 
-#property_form_btn{
+#property_form_btn, #contact_form_btn{
     width: 100px;
     margin-top: -82%;
     margin-left: 385%;
     margin-bottom: 0;
+}
+
+#contact_form_btn{
+    margin-left: 220%;
+    margin-top: 0;
 }
 
 .form-group{
@@ -1355,10 +1364,15 @@ li.active>a{
     border: 1px solid #d4d4d4;
 }
 
-.compare_img{
+.compare_img, .featuredProperty_img{
     width: 100%;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.featuredProperty_img{
+    width: 50%;
+    margin: auto;
 }
 
 .compare_images{
