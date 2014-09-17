@@ -28,15 +28,15 @@
             <a href="">
                 <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
             </a>
-            <div style="float:right;">
+            <div style="float:right;margin-top:-1%;">
             	<img style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
-                <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 24px;color: #233f71;">
+                <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 200%: #233f71;">
                     <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
                 </div>
-                <div style="margin-top: -13%;font-size: 36px;color: #233f71;">
+                <div style="margin-top: -18%;font-size: 350%;color: #233f71;margin-left: 6%;">
                 16223 
                 </div>
             </div>
-            </div>
+        </div>
 	</div>
 <?php include('footer.php'); ?>
