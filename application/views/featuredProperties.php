@@ -11,7 +11,7 @@
                     <div class="properties_number compare_number">
                         1
                     </div>
-                    <div class="compare_img">
+                    <div class="featuredProperty_img">
                         <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
                     </div>
                     <div class="compare_description">
@@ -32,7 +32,7 @@
                     <div class="properties_number compare_number">
                         2
                     </div>
-                    <div class="compare_img">
+                    <div class="featuredProperty_img">
                         <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
                     </div>
                     <div class="compare_description">
@@ -53,7 +53,7 @@
                     <div class="properties_number compare_number">
                         3
                     </div>
-                    <div class="compare_img">
+                    <div class="featuredProperty_img">
                         <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
                     </div>
                     <div class="compare_description">

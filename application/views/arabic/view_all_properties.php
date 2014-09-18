@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                     <div class="properties_contact">
-                                        <a href="#" class="properties_contact_btn">
+                                        <a href="#contactModal" class="properties_contact_btn" data-toggle="modal">
                                             <?php echo $this->lang->line('viewallproperties_contact'); ?>
                                         </a>
                                     </div>
@@ -254,6 +254,62 @@
                 </a>
             </div>
         </form>
+    </div>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Contact</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline" id="property_form" role="form">
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="property_first_name" placeholder="Enter First Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label for="property_email"><?php echo $this->lang->line('propertydetails_email'); ?></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="property_phone" placeholder="Enter Phone">
+                            </div>
+                        </div>
+                        <div class="form-group" style="width: 97%;">
+                            <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
+                            <textarea class="form-control" id="property_form_textarea" style="width:100%;" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default property_btn" id="contact_form_btn" onClick="cmdCalc_Click(this.form);"><?php echo $this->lang->line('propertydetails_button'); ?></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
