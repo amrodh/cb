@@ -338,7 +338,8 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('user');
 		$token = $this->uri->uri_string;
-		$token = explode('validate/', $token)[1];
+		$token = explode('validate/', $token);
+		$token = $token[1];
 		$tokenInfo = $this->user->checkToken($token);
 		if ($tokenInfo->is_valid == 1)
 		{
@@ -876,7 +877,9 @@ function resetpassword()
 	$this->load->model('user');
 	$data = $this->init();
 	$token = $this->uri->uri_string;
-	$token = explode('resetpassword/', $token)[1];
+	$token = explode('resetpassword/', $token);
+	$token = $token[1];
+
 	$tokenInfo = $this->user->checkToken($token);
 	$data['token'] = $tokenInfo->token;
 	$data['user_email'] = $tokenInfo->email;
