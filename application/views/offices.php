@@ -28,7 +28,7 @@
 					<?php //printme($language);?>
 					</div>
 				</div>
-				<div class="col-lg-6" id="offices_map">
+				<div class="col-lg-6" id="offices_map" style="height: 100%;">
 				 <?php 
 				 		// generateMap('-33.8569','151.2152','100%','300px');
 				  ?>
@@ -36,6 +36,7 @@
 			</div>
         </div>
         <input type="hidden" name="language" id="language" value="<?=$language?>">
+        <input type="hidden" name="address" id="address" value="">
 	</div>
 	
 <?php include('footer.php') ?>

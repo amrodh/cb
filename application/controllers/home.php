@@ -932,7 +932,9 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->model('office');
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
-		$this->load->view('displayMap', $data);
+		echo $data['officeInfo']->address_en;
+		//printme($data['officeInfo']->address_en);exit();
+		//$this->load->view('displayMap', $data);
 	}
 
 	function newsletterSingle()

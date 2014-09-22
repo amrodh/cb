@@ -313,7 +313,18 @@ e.preventDefault();
             $("#offices_select").change(function() {
               // alert($(this).val());
               if ($(this).val() != 0){
-                
+                 var geocoder;
+                 var map;
+                 geocoder = new google.maps.Geocoder();
+                 var latlng = new google.maps.LatLng(-33.8569, 151.2152);
+                 var mapOptions = {
+                     zoom: 8,
+                     center: latlng,
+                     mapTypeId: google.maps.MapTypeId.ROADMAP
+                 }
+                 map = new google.maps.Map(document.getElementById('offices_map'), mapOptions);
+
+
                 var url = $("#url").val();
                 url = url + "displayOffice";
                 var lang = $("[name='language']").val();
@@ -333,8 +344,22 @@ e.preventDefault();
                             data: { id: id, lang: lang }
                           })
                             .success(function( html ) {
-                                  $("#offices_map").css('display', 'block');
-                                  $("#offices_map").html(html);
+                                  $('#address').val(html);
+                                  var address = html;
+                                    geocoder.geocode( { 'address': address}, function(results, status) {
+                                      if (status == google.maps.GeocoderStatus.OK) {
+                                        map.setCenter(results[0].geometry.location);
+                                        var marker = new google.maps.Marker({
+                                            map: map,
+                                            position: results[0].geometry.location
+                                        });
+                                      } else {
+                                        alert('Geocode was not successful for the following reason: ' + status);
+                                      }
+                                    });
+                              //alert($('#address').val());
+                                  //$("#offices_map").css('display', 'block');
+                                  //$("#offices_map").html(html);
                                   
                             });
                   });
