@@ -346,6 +346,7 @@ e.preventDefault();
                             .success(function( html ) {
                                   $('#address').val(html);
                                   var address = html;
+                                  $('#offices_map').show();
                                     geocoder.geocode( { 'address': address}, function(results, status) {
                                       if (status == google.maps.GeocoderStatus.OK) {
                                         map.setCenter(results[0].geometry.location);

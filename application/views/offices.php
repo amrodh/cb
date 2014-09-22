@@ -11,27 +11,31 @@
         </div>
         <div id="auctions_bottom_div">
 	        <div class="row">
-				<div class="col-lg-6 offices_divs">
-					<div class="row" id="offices_selector">
-						<?php echo $this->lang->line('offices_subtitle'); ?>
-						<?php $i = 0; ?>
-						<select class="selectpicker" name="offices_select" id="offices_select">
-							<option value="0">Select Office</option>
-							<!-- <option value="0">Select City</option> -->
-                            <?php foreach ($offices as $office): ?>
-                                <option value="<?= $offices[$i]->id ?>"><?= $offices[$i]->district_en ?></option>
-                                <?php $i++?>
-                            <?php endforeach ?>
-						</select>
+				<div class="col-lg-12 offices_divs">
+					<div class="row" style="width: 100%;">
+						<div class="col-lg-6">
+							<div class="row" id="offices_selector">
+								<?php echo $this->lang->line('offices_subtitle'); ?>
+								<?php $i = 0; ?>
+								<select class="selectpicker" name="offices_select" id="offices_select">
+									<option value="0">Select Office</option>
+									<!-- <option value="0">Select City</option> -->
+		                            <?php foreach ($offices as $office): ?>
+		                                <option value="<?= $offices[$i]->id ?>"><?= $offices[$i]->district_en ?></option>
+		                                <?php $i++?>
+		                            <?php endforeach ?>
+								</select>
+							</div>
+							<div class="row" id="offices_info">
+							<?php //printme($language);?>
+							</div>
+						</div>
+						<div class="col-lg-6" id="offices_map" style="height: 100%;">
+						 <?php 
+						 		// generateMap('-33.8569','151.2152','100%','300px');
+						  ?>
+						</div>
 					</div>
-					<div class="row" id="offices_info">
-					<?php //printme($language);?>
-					</div>
-				</div>
-				<div class="col-lg-6" id="offices_map" style="height: 100%;">
-				 <?php 
-				 		// generateMap('-33.8569','151.2152','100%','300px');
-				  ?>
 				</div>
 			</div>
         </div>
