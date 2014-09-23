@@ -16,17 +16,10 @@ class Home extends CI_Controller {
 
 			$data = $this->init();
 
-		$this->load->model('service');
+		// $this->load->model('service');
 		$this->load->model('content');
-		$data['cities'] = $this->service->getCities();
+		// $data['cities'] = $this->service->getCities();
 		$data['slides'] = $this->content->getActiveSliders();
-		// $inputs = array('CompanyId' => 2,
-		// 	'commercialId' => 2, 
-		// 	'residentialId' => 2);
-		// $data['featuredProperties'] = $this->service->getFeaturedProperties();
-		// printme($data['featuredProperties']);exit();
-		// printme($data['slides'][1]->id);exit();
-		// printme($data['language']);exit();
 		$this->load->view($data['languagePath'].'home',$data);
 	}
 
@@ -404,8 +397,8 @@ class Home extends CI_Controller {
 			}else{
 
 				
-				$city = $this->service->getCityByID($_POST['city']);
-				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				// $city = $this->service->getCityByID($_POST['city']);
+				// $district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
 
 
 				$params = array ('user_id' => $data['user']->id,
@@ -440,7 +433,8 @@ class Home extends CI_Controller {
 								$_FILES['userfile']['size'] = $image['size'];
 								$params['image_url'] = $_FILES['userfile']['name'];
 								if (!isset($data['imageFlag'])){
-									if(!isset(uploadme($this)['error'])){
+									$upload = uploadme($this);
+									if(!isset($upload['error'])){
 										$this->load->model('property');
 										$this->property->insertImage($params);
 										$data['insertProcess'] = true;
@@ -487,7 +481,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('property');
 		$this->load->model('service');
-		$data['cities'] = $this->service->getCities();
+		// $data['cities'] = $this->service->getCities();
 
 		// printme($data['languagePath']);exit();
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -526,7 +520,8 @@ class Home extends CI_Controller {
 			$vacancy_id = 11;
 
 		}else{
-			$vacancy_id = explode('uploadCV/', $vacancy_id)[1];
+			$expodeCV = explode('uploadCV/', $vacancy_id);
+			$vacancy_id = $expodeCV[1];
 
 		}
 
@@ -556,13 +551,16 @@ class Home extends CI_Controller {
 				}
 			}
 			
-			$filename = explode('.', $_FILES['userfile']['name'])[0];
-			$ext = explode('.', $_FILES['userfile']['name'])[1];
+			$filename = explode('.', $_FILES['userfile']['name']);
+			$filename = $filename[0];
+			$ext = explode('.', $_FILES['userfile']['name']);
+			$ext = $ext[1];
 			$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
 			$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
 			$this->config->set_item('allowed_types','pdf|doc|docx');
 			
-			if(isset(uploadme($this)['upload_data'])){
+			$upload = uploadme($this);
+			if(isset($upload['upload_data'])){
 				$params = array('user_identifier' => $id,
 				'first_name' => $firstname,
 				'last_name' => $lastname,
@@ -574,7 +572,8 @@ class Home extends CI_Controller {
 					$data['uploadSuccess'] = $this->lang->line('uploadCV_success');
 				}
 			}else{
-				$data['uploadError'] = uploadme($this)['error'];
+				$uploadError = uploadme($this);
+				$data['uploadError'] = $uploadError['error'];
 			}
 
 			
@@ -620,7 +619,7 @@ class Home extends CI_Controller {
 				$data['is_valid'] = $data['user']->is_valid;
 			}
 			$this->load->model('service');
-			$data['cities'] = $this->service->getCities();
+			// $data['cities'] = $this->service->getCities();
 			if ($this->user->is_subscribed($data['user']->id))
 			{
 				$data['is_subscribed'] = true;
@@ -648,7 +647,9 @@ class Home extends CI_Controller {
 		if ($posEn !== false || $posEn2 !== false ){
 			if ($posAr == false || $posAr2 == false)
 			{
-				if (explode('ar/', $uri)[0] == $uri)
+				$explodeAr = explode('ar/', $uri);
+				$explodeEn = explode('en/', $uri);
+				if ($explodeAr[0] == $uri)
 				{
 					$data['uri'] = explode('en/', $uri);
 					if(isset($data['uri'][1])){
@@ -657,7 +658,7 @@ class Home extends CI_Controller {
 						$data['uri'] = '';
 					}
 				}
-				elseif (explode('en/', $uri)[0] == $uri){
+				elseif ($explodeEn[0] == $uri){
 					$data['uri'] = explode('ar/', $uri);
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
@@ -678,8 +679,9 @@ class Home extends CI_Controller {
 		}
 		elseif ($posAr !== false || $posAr2 !== false){
 			if ($posEn == false || $posEn2 == false){
-
-				if (explode('en/', $uri)[0] == $uri)
+				$explodeAr = explode('ar/', $uri);
+				$explodeEn = explode('en/', $uri);
+				if ($explodeEn[0] == $uri)
 				{
 					$data['uri'] = explode('ar/', $uri);
 					if(isset($data['uri'][1])){
@@ -688,7 +690,7 @@ class Home extends CI_Controller {
 						$data['uri'] = '';
 					}
 				}
-				elseif (explode('ar/', $uri)[0] == $uri){
+				elseif ($explodeAr[0] == $uri){
 					$data['uri'] = explode('en/', $uri);
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
@@ -792,7 +794,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('service');
 		$data = $this->init();
-		$data['districts'] = $this->service->getDistricts($_POST['id']);
+		// $data['districts'] = $this->service->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
 
 		if ($data['districts'] != 0)

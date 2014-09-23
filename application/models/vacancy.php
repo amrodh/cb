@@ -195,9 +195,12 @@ class Vacancy extends CI_Model {
                   if($toss == 1){
                      $query = $this->db->query("
                            SELECT id,first_name,last_name FROM user ORDER BY rand() limit 1 ");
-                     $params['user_identifier'] = $query->result_array()[0]['id'];
-                     $params['first_name'] = $query->result_array()[0]['first_name'];
-                     $params['last_name'] = $query->result_array()[0]['last_name'];
+                     $params['user_identifier'] = $query->result_array();
+                     $params['user_identifier'] = $params['user_identifier'][0]['id'];
+                     $params['first_name'] = $query->result_array();
+                     $params['first_name'] = $params['first_name'][0]['first_name'];
+                     $params['last_name'] = $query->result_array();
+                     $params['last_name'] = $params['last_name'][0]['last_name'];
                   }else{
                     $params['user_identifier'] = 'test@test.com';
                     $params['first_name'] = 'test';
