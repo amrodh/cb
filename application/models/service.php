@@ -7,8 +7,52 @@ class service extends CI_Model {
     function __construct()
     {
         parent::__construct();
-        // $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+        $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
         
+    }
+
+    function search()
+    {
+        $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
+        $inputs = array(
+            'searchMode' => 'Exact',
+            'Bedrooms' => '',
+            'PropertyId' => '',
+            'Purpose' => '',
+            'PriceLowerLimit' => 1,
+            'PriceUpperLimit' => 1000000000,
+            'PunitSale' => '',
+            'RentPriceLowerLimit' => 1,
+            'RentPriceUpperLimit' => 10000000000,
+            'PunitRent' => '',
+            'AreaLowerLimit' => 1,
+            'AreaUpperLimit' => 10000000000,
+            'PropertyType' => '',
+            'PropertyFor' => '',
+            'BoxLocation' => '',
+            'BudgetFrom' => '',
+            'BudgetTo' => '',
+            'AreaFrom' => '',
+            'AreaTo' => '',
+            'AreaUnitId' => '',
+            'LineOfBusinessId' => $LineOfBusinessId,
+            'CompanyId' => '',
+            'sortmode' => '',
+            'sortType' => '',
+            'pageIndex' => '',
+            'licences' => '',
+            'isFeatured' => false,
+            'resultsCountPerPage' => ''
+            );
+        
+        $results = $this->client->Search($inputs);
+        // printme($results);exit();
+        $data = array();
+        foreach ($results->SearchResult as $result) {
+           $data[] = $result;
+        }
+        printme($data);exit();
+        return $data;
     }
 
     // function getCities()

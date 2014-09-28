@@ -18,7 +18,8 @@ class Home extends CI_Controller {
 
 		// $this->load->model('service');
 		$this->load->model('content');
-		// $data['cities'] = $this->service->getCities();
+		// $data['searchResult'] = $this->service->search();
+		// printme($sample);exit();
 		$data['slides'] = $this->content->getActiveSliders();
 		$this->load->view($data['languagePath'].'home',$data);
 	}

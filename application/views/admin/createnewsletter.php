@@ -26,8 +26,13 @@
                                     <table class="table table-user-information">
                                     <tbody>
                                       <tr>
+                                        <td>Title:</td>
+                                        <td><input type="text" name="title">
+                                        </td>
+                                      </tr>
+                                      <tr>
                                         <td>Upper Text:</td>
-                                        <td><input type="text" name="upper">
+                                        <td><textarea name="upper" id="" cols="30" rows="10"></textarea>
                                         </td>
                                       </tr>
                                       <tr>
@@ -46,11 +51,6 @@
                                     <input type="submit" name="singlepreview" class="btn btn-primary" value="Preview">
                                     </form>
                                 </div>
-                                
-
-
-                            
-
                             </div>
                         </div>
                         <!-- <div class="panel-footer">

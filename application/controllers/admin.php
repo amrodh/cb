@@ -82,7 +82,8 @@ class Admin extends CI_Controller {
 
 		if(is_array($data['favorites'])){
 			foreach ($data['favorites'] as $favorite ) {
-				$favorite->property = $this->property->getPropertyByID($favorite->property_id)[0];
+				$property = $this->property->getPropertyByID($favorite->property_id);
+				$favorite->property = $property[0];
 			}
 		}
 
@@ -251,8 +252,9 @@ class Admin extends CI_Controller {
 			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 			$upload = uploadme($this);
 
+			// printme($_POST);exit();
 			if(isset($upload['error'])){
-				$data['[params'] = $_POST;
+				$data['params'] = $_POST;
 				$data['error'] = $upload['error'];
 			}else{
 				$_POST['image'] = $upload['upload_data']['file_name'];
@@ -272,12 +274,64 @@ class Admin extends CI_Controller {
 
 	public function sendSingle($params,$list)
 	{
-		// printme($params);
+		//printme($params['lower']);
 		// printme($list);
+		//exit();
+		// $html2pdf = new HTML2PDF('P', 'A4', 'en');
+		// // printme($html2pdf);
+		// //exit();
+		
+		// $content = '
+		// 	<div class="col-lg-7 newsletter_container" style="border: 10px solid #233f71;padding: 5%;background-color: white;margin-top: 5%;">
+		// 	    <div class="col-lg-12">
+		// 	        <div id="newsletter_logo">
+		// 	            <img class="newsletter_logo img-responsive" style="width:30%;position: absolute;margin: -18.5% 0% 0% -2%!important;" src="'.base_url().'/application/static/images/logo.png">
+		// 	        </div>
+		// 	        <div id="newsletter_title" style="font-size: 150%;">
+		// 	            This is the 25th edition of the Coldwell Banker Newsletter
+		// 	        </div>
+		// 	        <div id="newsletter_image">
+		// 	            <img id="newsletter_mainImg" style="width: 100%;position: relative;" class="img-responsive" src="'.base_url().'/application/static/upload/temp/'.$params['image'].'"> 
+		// 	            <div id="newsletter_heading" style="position: absolute;margin-top: -12%;font-size:200%;margin-left: 41%;color: gold;">
+		// 	                '.$params['upper'].'
+		// 	            </div>
+		// 	        </div>
+		// 	        <div id="newsletter_content" style="margin-top: 2%;margin-bottom: 2%;">
+		// 	             '.$params['lower'].'
+		// 	        </div>
+		// 	        <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;">
+		// 	            <a href="">
+		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_linkedin.png">
+		// 	            </a>
+		// 	            <a href="">
+		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_gmail.png">
+		// 	            </a>
+		// 	            <a href="">
+		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_fb.png">
+		// 	            </a>
+		// 	            <a href="">
+		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_twitter.png">
+		// 	            </a>
+		// 	            <img style="margin-left: 10%" src="'.base_url().'/application/static/images/icon_phone.png"/>
+		// 	            <div style="float:right;margin-top:-1%;">
+		// 	               <div class="footer_col_title" style="margin-top: -23%;margin-left: 35px;font-size: 150%; color: #233f71;">
+		// 	                   Contact Us<br>
+		// 	               </div>
+		// 	               <div style="margin-top: -10%;font-size: 200%;color: #233f71;margin-left: 20%;">
+		// 	               16223 
+		// 	               </div>
+		// 	            </div>
+		// 	        </div>
+		// 	    </div>
+	 //    	</div>
+		// ';
+		
+		// $html2pdf->writeHTML($content);
+		// $file = $html2pdf->Output(getcwd().'/application/static/pdfs/temp.pdf','F');
 		// exit();
 		$data['params'] = $params;
 		$body = $this->load->view('admin/single_template', $data, true);
-		$this->smtpmailer('NewsLetter',$body,'a.ahmed@enlightworld.com');
+		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
 	}
 	public function checkpasswordchange()
 	{
@@ -1016,6 +1070,8 @@ class Admin extends CI_Controller {
 		  'charset' => 'iso-8859-1',
 		  'wordwrap' => TRUE
 			);
+
+		 
 
 		  $this->load->library('email', $config);
 		  $this->email->set_newline("\r\n");

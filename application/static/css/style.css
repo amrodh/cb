@@ -1825,21 +1825,25 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
 
 .newsletter_container{
     border: 10px solid #233f71;
-    padding: 5%;
+    padding: 1%;
     background-color: white;
     margin-top: 5%;
 }
 
 #newsletter_logo{
     width:30%;
-    position: absolute;
-    margin-top: -18.5%;
-    margin-left: -2%;
+    margin-right: 2%;
+    float: left;
+    /*position: absolute;*/
+    /*margin-top: -18.5%;*/
+    /*margin-left: -2%;*/
 }
 
 
 #newsletter_title{
-    font-size: 150%;
+    font-size: 140%;
+    float: left;
+    padding-top: 2%;
 }
 
 #newsletter_mainImg{

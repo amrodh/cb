@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://odevh.com/temp/';
+$config['base_url']	= 'http://localhost/ColdwellBanker';
 
 /*
 |--------------------------------------------------------------------------
