@@ -10,14 +10,13 @@
                     <input type="hidden" id="url" value="<?= base_url();?>">
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Type</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                     </div>
@@ -43,14 +42,11 @@
                    </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type">
-                                <option>Select Contract Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Contract Type</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                     </div>
