@@ -11,25 +11,26 @@ class service extends CI_Model {
         
     }
 
-    function search()
+    function search($inputs)
     {
+        // printme($inputs);exit();
         $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
         $inputs = array(
             'searchMode' => 'Exact',
             'Bedrooms' => '',
             'PropertyId' => '',
             'Purpose' => '',
-            'PriceLowerLimit' => 1,
-            'PriceUpperLimit' => 1000000000,
+            'PriceLowerLimit' => $inputs['PriceLowerLimit'],
+            'PriceUpperLimit' => $inputs['PriceUpperLimit'],
             'PunitSale' => '',
-            'RentPriceLowerLimit' => 1,
-            'RentPriceUpperLimit' => 10000000000,
+            'RentPriceLowerLimit' => $inputs['PriceLowerLimit'],
+            'RentPriceUpperLimit' => $inputs['PriceUpperLimit'],
             'PunitRent' => '',
-            'AreaLowerLimit' => 1,
-            'AreaUpperLimit' => 10000000000,
-            'PropertyType' => '',
-            'PropertyFor' => '',
-            'BoxLocation' => '',
+            'AreaLowerLimit' => $inputs['AreaLowerLimit'],
+            'AreaUpperLimit' => $inputs['AreaUpperLimit'],
+            'PropertyType' => '1',
+            'PropertyFor' => $inputs['PropertyFor'],
+            'BoxLocation' => $inputs['BoxLocation'],
             'BudgetFrom' => '',
             'BudgetTo' => '',
             'AreaFrom' => '',
@@ -42,7 +43,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
-            'resultsCountPerPage' => ''
+            'resultsCountPerPage' => '10'
             );
         
         $results = $this->client->Search($inputs);
@@ -51,13 +52,12 @@ class service extends CI_Model {
         foreach ($results->SearchResult as $result) {
            $data[] = $result;
         }
-        printme($data);exit();
+        // printme($data);exit();
         return $data;
     }
 
     function getCities()
     {
-
 
          // $q = $this
          //      ->db
@@ -189,14 +189,26 @@ class service extends CI_Model {
     {
         $inputs = array('lineofB' => $id);
         $result = $this->client->Getpropertytypes($inputs);
+
         $data = array();
         foreach ($result->GetpropertytypesResult->PropertyType as $property) {
-          if($property->PropertyTypeName != 'Other')
-           $data[] = $property->PropertyTypeName;
+          if($property->PropertyTypeName != 'Other'){
+            $data[$property->PropertyTypePK] = $property->PropertyTypeName;
+          }
         }
-         $data[] = 'Other';
-         return $data;
+        return $data;
     } 
+
+    function getPropertyTypeByID($lob, $id)
+    {
+        $inputs = array('lineofB' => $lob);
+        $result = $this->client->Getpropertytypes($inputs);
+        foreach ($result->GetpropertytypesResult->PropertyType as $property) {
+          if($property->PropertyTypePK == $id){
+            return $property->PropertyTypeName;
+          }
+        }
+    }
 
 
     function getServiceType()
@@ -207,6 +219,17 @@ class service extends CI_Model {
            $data[] = array('id' => $types->ServicePK , 'name' => $types->ServiceName);
         }
         return $data;
+    }
+
+    function getServiceTypeByID($id)
+    {
+        $result = $this->client->GetServiceType();
+        foreach ($result->GetServiceTypeResult->Service as $types) {
+            if ($types->ServicePK == $id)
+            {
+                return $types->ServiceName;
+            }
+        }
     }
 
 

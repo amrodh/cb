@@ -370,6 +370,40 @@ e.preventDefault();
               }
             });
 
+
+            $('[name="searchSubmit1"]').click(function(event) {
+              var propertyType = $('[name="type"]').val();
+              var city = $('[name="city"]').val();
+              var district = $('[name="district"]').val();
+              var contractType = $('[name="contractType"').val();
+              var price = $('[name="price"]').val();
+              var area = $('[name="area"]').val();
+
+              $('[name="districtName"]').val($('[name="district"]').val());
+              $('#lob').val('1');
+
+              // alert(propertyType);
+              // alert(city);
+              // alert(district);
+
+              // alert(contractType);
+              // alert(price);
+              // alert(area);
+              // // alert('hi');
+              // var url = $("#url").val();
+              // url = url+"viewAllProperties";
+              // // alert(url);
+              //  $.ajax({
+              //     type: "POST",
+              //     url: url,
+              //     data: { district: district }
+              //   })
+              //     .success(function( html ) {
+              //       // alert(html);
+              //     });
+
+            });
+
         });
 
 

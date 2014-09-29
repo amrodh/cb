@@ -35,13 +35,10 @@
                                <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار نوع العقد</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                                <option value="0">إختار نوع العقد</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <?php if (!isset($loggedIn)): ?>

@@ -37,14 +37,11 @@
                            <div class="property_alert_col_title title_margin">
                                <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
                            </div>
-                           <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type">
-                                <option value="0">Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Contract Type</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <?php if (!isset($loggedIn)): ?>

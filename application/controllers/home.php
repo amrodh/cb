@@ -18,10 +18,17 @@ class Home extends CI_Controller {
 
 		$this->load->model('service');
 		$this->load->model('content');
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['cities'] = $this->service->getCities();
-		$data['serviceTypes'] = $this->service->getServiceType();
+
 		$data['slides'] = $this->content->getActiveSliders();
+		$data['cities'] = $this->service->getCities();
+		// printme($this->service->Search());
+		$data['serviceTypes'] = $this->service->getServiceType();
+		$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+
+		// printme($data['propertyType1']);exit();
+
+
 		$this->load->view($data['languagePath'].'home',$data);
 	}
 
@@ -483,9 +490,77 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('property');
 		$this->load->model('service');
-		// $data['cities'] = $this->service->getCities();
+		$data['cities'] = $this->service->getCities();
 
-		// printme($data['languagePath']);exit();
+		// printme($_POST);
+
+		if (isset($_POST))
+		{
+			if ($_POST['type'] == 0)
+			{
+				$type = '';
+			}else{
+				$type = $_POST['type'];
+				// $type = $this->service->getPropertyTypeByID($_POST['lob'], $_POST['type']);
+			}
+
+			if ($_POST['city'] == 0)
+			{
+				$boxLocation = '';
+			}
+			else{
+				if ($_POST['districtName'] == 0)
+				{
+					$boxLocation = $this->service->getCityByID($_POST['city']);
+				}
+				else{
+					$boxLocation = $this->service->getDistrictByID($_POST['city'], $_POST['districtName']);
+				}
+			}
+
+			if ($_POST['contractType'] == 0)
+			{
+				$propertyFor = '';
+
+			}else{
+				$propertyFor = $this->service->getServiceTypeByID($_POST['contractType']);
+			}
+
+			if ($_POST['price'] == 0)
+			{
+				$priceLowerLimit = 1;
+				$priceUpperLimit = 1000000000000000;
+			}else{
+				$price = explode(' - ', $_POST['price']);
+				$priceLowerLimit = $price[0];
+				$priceUpperLimit = $price[1];
+			}
+
+			if ($_POST['area'] == 0)
+			{
+				$areaLowerLimit = 1;
+				$areaUpperLimit = 100000000;
+			}else{
+				$area = explode(' - ', $_POST['area']);
+				$areaLowerLimit = $area[0];
+				$areaUpperLimit = $area[1];
+			}
+
+			$searchParams = array(
+				'PropertyType' => $type,
+				'BoxLocation' => $boxLocation,
+				'PropertyFor' => $propertyFor,
+				'PriceLowerLimit' => $priceLowerLimit,
+				'PriceUpperLimit' => $priceUpperLimit,
+				'AreaLowerLimit' => $areaLowerLimit,
+				'AreaUpperLimit' => $areaUpperLimit
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			$data['searchResults'] = $data['searchResults'][0];
+			printme($data['searchResults']);exit();
+		}
+
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
 
@@ -796,7 +871,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('service');
 		$data = $this->init();
-		// $data['districts'] = $this->service->getDistricts($_POST['id']);
+		$data['districts'] = $this->service->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
 
 		if ($data['districts'] != 0)

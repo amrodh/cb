@@ -37,18 +37,17 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" id="search_type_1" name="type_1" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="search_type_1" name="type_1" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Type</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>
-                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
+                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 30%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 17px;" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
@@ -122,33 +121,29 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" id="search_type_2" name="type_2" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="search_type_2" name="type_2" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Type</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
-                           <select class="selectpicker" id="search_propertyType_2" name="propertyType_2" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="search_propertyType_2" name="propertyType_2" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Contract Type</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>
                     
-                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
+                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 30%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();"><?php echo $this->lang->line('search_button'); ?></button>
@@ -225,33 +220,29 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Type</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType2 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
-                           <select class="selectpicker" id="search_propertyType_3" name="propertyType_3" data-style="btn" data-title="Select Type">
-                                <option>Select Type</option> 
-                                <option>Apartment</option>
-                                <option>Building</option>
-                                <option>Furnished Apartment</option>
-                                <option>Office</option>
-                                <option>Shop</option>
-                                <option>Villa</option>
+                           <select class="selectpicker" id="search_propertyType_3" name="propertyType_3" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Contract Type</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>
                     
-                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 132px;">
+                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 30%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
                     </div>
                     <button type="button" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 47%;margin-top: 17px;" onclick="redirect();">Search</button>

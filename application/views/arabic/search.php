@@ -37,14 +37,13 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار النوع</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار النوع</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>
@@ -128,28 +127,24 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار النوع</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار النوع</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                               <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار النوع</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار النوع</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>
@@ -228,28 +223,24 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار النوع</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار النوع</option> 
+                                <?php $count = 0; ?>
+                                <?php foreach ($propertyType2 as $type): ?>
+                                    <option value="<?= $count ?>"><?= $type ?></option>
+                                <?php $count++ ?>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                               <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option>إختار النوع</option> 
-                                <option>شقة</option>
-                                <option>بناء</option>
-                                <option>شقة مفروشة</option>
-                                <option>مكتب</option>
-                                <option>محل</option>
-                                <option>فيلا</option>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار النوع</option> 
+                                <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                    </div>

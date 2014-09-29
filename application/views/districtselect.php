@@ -1,6 +1,6 @@
 <?php if ($key == 1): ?>
 	<select class="selectpicker" name="district" id="searchHome_district" data-style="btn" data-title="Select District" data-size="5">
-      <option>Select District</option>
+      <option value="0">Select District</option>
 		<?php foreach ($districts as $item): ?>
 			<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 		<?php endforeach ?>
@@ -12,7 +12,7 @@
                <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
            </div>
            <select class="selectpicker" id="search_district_1" name="district_1" data-style="btn" data-title="Select District" data-size="5">
-                <option>Select District</option>
+                <option value="0">Select District</option>
                 <?php foreach ($districts as $item): ?>
 				<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 				<?php endforeach ?>
@@ -25,7 +25,7 @@
 		               <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
 		           </div>
 		           <select class="selectpicker" id="search_district_2" name="district_2" data-style="btn" data-title="Select District" data-size="5">
-		                <option>Select District</option>
+		                <option value="0">Select District</option>
 		                <?php foreach ($districts as $item): ?>
 						<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 						<?php endforeach ?>
@@ -38,7 +38,7 @@
 		               <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
 		           </div>
 		           <select class="selectpicker" id="search_district_3" name="district_3" data-style="btn" data-title="Select District" data-size="5">
-		                <option>Select District</option>
+		                <option value="0">Select District</option>
 		                <?php foreach ($districts as $item): ?>
 						<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 						<?php endforeach ?>
@@ -51,7 +51,7 @@
 	                       <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
 	                   </div>
 	                   <select class="selectpicker" id="propertyAlert_district" name="alert_district" data-style="btn" data-title="Select District" data-size="5">
-			                <option>Select District</option>
+			                <option value="0">Select District</option>
 			                <?php foreach ($districts as $item): ?>
 							<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 							<?php endforeach ?>
@@ -63,7 +63,7 @@
                             <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
                         </div>
                         <select class="selectpicker" data-style="btn" id="shareProperty_district" data-title="Select District" name="district" data-size="5">
-                             <option>Select District</option>
+                             <option value="0">Select District</option>
                              <?php foreach ($districts as $item): ?>
 							<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
 							<?php endforeach ?>
