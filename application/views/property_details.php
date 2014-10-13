@@ -1,6 +1,9 @@
 <?php include('header.php'); ?>
         <div class="container" id="property_address_div">
-            Kilo 19, City View, Sahrawy, Alex - Cairo Desert Road
+            <h1><b> <?php if ($searchResults->LocationProject != ''): ?>
+            <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationProject; ?>,
+            <?php endif ?>
+            <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationDistrict; ?>, <?php echo $searchResults->LocationCity; ?></b></h1>
         </div>
         <div class="container" id="property_details_container">
             <div id="property_tabs_header">
@@ -62,10 +65,13 @@
                                         General
                                     </div>
                                     <div class="property_features_divs_details">
-                                        Special Program: Previews
+                                        Bedrooms: <?php echo $searchResults->BedRoomsNumber;?> 
+                                        <?php if ($searchResults->BathRoomsNumber != 0): ?>
+                                            , Bathrooms: <?php echo $searchResults->BathRoomsNumber;?>
+                                        <?php endif ?>
                                     </div>
                                 </div>
-                                <div class="property_features_divs">
+                                <!-- <div class="property_features_divs">
                                     <div class="property_features_divs_title">
                                         Feature
                                     </div>
@@ -88,7 +94,7 @@
                                     <div class="property_features_divs_details">
                                         Style: Other Style
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -98,13 +104,116 @@
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
                             </div>
                             <div id="property_description_content">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
+                                <div class="row" style="margin-left: 0;">
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle1'); ?> </b> <?php echo $searchResults->UnitId;?>
+                                </div>
+                                <div class="row" style="margin-left: 0;">
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle2'); ?> </b> <?php echo $searchResults->PrpertyTypeStr;?>
+                                </div>
+                                <div class="row" style="margin-left: 0;">
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle3'); ?> </b> <?php echo explode('.',$searchResults->TotalArea)[0];?> <?php echo $searchResults->AreaunitStr;?>s
+                                </div>
+                                <div class="row" style="margin-left: 0;">
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle4'); ?> </b> <?php echo $searchResults->SalesTypeStr;?>
+                                </div>
+                                <div class="row" style="margin-left: 0;">
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle5'); ?> </b> <?php echo $searchResults->InteriorFinishing;?>
+                                </div>
+                                <div class="row" style="margin-left: 0;">
+                                    <?php if ($searchResults->SalesTypeStr == 'Sale'): ?>
+                                        <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->SaleCurrency.' '.number_format(explode('.',$searchResults->SalePrice)[0]); ?></span>
+                                    <?php else: ?>
+                                        <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span>
+                                    <?php endif ?>
+                                </div>
+                                <!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
                                 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
                                 im veniam,quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet, co
                                 ectetuer adipiscing elit, sed diam nonummy nibh.. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
                                 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
                                 im veniam, quis nostrud exerci tation ullamcorper..im veniam, <br>
-                                Price: <b>EGP 2,000,000</b>.
+                                Price: <b>EGP 2,000,000</b>. -->
+                            </div>
+                        </div>
+                        <div id="property_contact" class="property_borders">
+                            <div class="property_titles">
+                                <?php echo $this->lang->line('propertydetails_title4'); ?>
+                            </div>
+                            <div id="property_contact_content">
+                                <div class="row">
+                                    <form class="form-inline" id="property_form" role="form" method="post" action="">
+                                            <div class="form-group" style="width:100%;">
+                                                <div class="col-lg-4">
+                                                    <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" name="firstName" id="property_first_name" placeholder="Enter First Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="width:100%;">
+                                                <div class="col-lg-4">
+                                                    <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" name="lastName" id="property_last_name" placeholder="Enter Last Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="width:100%;">
+                                                <div class="col-lg-4">
+                                                    <label><?php echo $this->lang->line('propertydetails_email'); ?></label>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <input type="email" class="form-control" name="email" id="property_email" placeholder="Enter E-mail">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="width:100%;">
+                                                <div class="col-lg-4">
+                                                    <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
+                                                </div>
+                                                <div class="col-lg-8"> 
+                                                    <input type="text" class="form-control" name="phone" id="property_phone" placeholder="Enter Phone">
+                                                </div>
+                                            </div>
+                                        <div class="form-group">
+                                           <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
+                                                <label class="checkbox-inline">
+                                                   <input type="checkbox" id="inlineChkbx1" name="interest[]" value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
+                                                </label>
+                                                <!-- <label class="checkbox-inline">
+                                                   <input type="checkbox" id="inlineChkbx2" name="interest[]" value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
+                                                </label> -->
+                                                <label class="checkbox-inline">
+                                                   <input type="checkbox" id="inlineChkbx3" name="interest[]" value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
+                                                </label>
+                                           </p>
+                                        </div>
+                                        <div class="form-group" style="width: 97%;">
+                                            <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
+                                            <textarea class="form-control" name="comments" id="property_form_textarea" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
+                                        </div>
+                                        <!-- <div> -->
+                                            <p><?php echo $this->lang->line('propertydetails_footnote'); ?></p>
+                                        <!-- </div> -->
+                                        <?php if (isset($contactError)) :?>
+                                        <div class="row" style="width: 100%;text-align:center;margin-left:0%;margin-top:2%;">
+                                            <div class="alert alert-danger" role="alert">
+                                               <?= $contactError; ?>
+                                            </div>
+                                        </div>
+                                        <?php else: ?>
+                                            <?php if (isset($contactSuccess)): ?>
+                                                <div class="row"  style="width: 94.5%;margin-left:3%;margin-top:2%;">
+                                                    <div class="alert alert-success" role="alert" style="text-align: center;">
+                                                        <?= $contactSuccess; ?>
+                                                    </div>
+                                                </div>
+                                            <?php endif ?>
+                                        <?php endif ?>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div id="property_calculator" class="property_borders">
@@ -122,52 +231,6 @@
                                     <div class="property_calculator_data">
                                         <?php echo $this->lang->line('propertydetails_calculator_subtitle1'); ?> <a href="#calculatorTallModal" data-toggle="modal"> Launch Calculator</a>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="property_contact" class="property_borders">
-                            <p>
-                                <?php echo $this->lang->line('propertydetails_title4'); ?>
-                            </p>
-                            <div id="property_contact_content">
-                                <div class="row">
-                                    <form class="form-inline" id="property_form" role="form">
-                                            <div class="form-group">
-                                                <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
-                                                <input type="text" class="form-control" id="property_first_name" placeholder="Enter First Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
-                                                <input type="text" class="form-control" id="property_last_name" placeholder="Enter Last Name">
-                                            </div>
-                                            <div class="form-group"><label><?php echo $this->lang->line('propertydetails_email'); ?>E-mail</label>
-                                                <input type="email" class="form-control" id="property_email" placeholder="Enter E-mail">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
-                                                <input type="text" class="form-control" id="property_phone" placeholder="Enter Phone">
-                                            </div>
-                                        <div class="form-group">
-                                           <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
-                                                <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx1"value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
-                                                </label>
-                                                <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx2"value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
-                                                </label>
-                                                <label class="checkbox-inline">
-                                                   <input type="checkbox" id="inlineChkbx3"value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
-                                                </label>
-                                           </p>
-                                        </div>
-                                        <div class="form-group" style="width: 97%;">
-                                            <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
-                                            <textarea class="form-control" id="property_form_textarea" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="cmdCalc_Click(this.form);"><?php echo $this->lang->line('propertydetails_button'); ?></button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

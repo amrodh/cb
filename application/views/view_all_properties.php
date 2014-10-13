@@ -1,50 +1,62 @@
-<?php // printme($searchSubmit);exit(); ?>
 <?php include('header.php'); ?>
         <div id="search_div">
             <?php include('search.php'); ?>
         </div>
-
+        <input type="hidden" id="totalResults" name="totalResults" value="<?php if (isset($totalResults)) { echo $totalResults; }?>">
+        <input type="hidden" id="lastResult" name="lastResult" value="0">
         <div class="container properties_main_div">
             <form>
                 <div class="properties_top_div">
                     <div id="properties_top_header_div">
                         <!--<div id="properties_top_header_left_div">-->
-                            <p style="padding-left: 20px;"><b>1 - 10</b> of <b>221</b> Homes for Sale in Mohandeseen</p>
+                            <p style="padding-left: 20px;"><b><span id="startResult">1</span> - <span id="endResult" value="">10</span></b> of <b><?php if (isset($totalResults)) { echo $totalResults; }?></b> Homes for Sale and Rent</p>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols">
                                         View 
-                                        <select class="selectpicker" style="width: 10px;" data-style="btn" data-title="Select Type">
-                                        <option>10</option> 
-                                        <option>20</option>
-                                        <option>30</option>
-                                        <option>40</option>
-                                        <option>50</option>
+                                        <select class="selectpicker" style="width: 10px;" data-style="btn" data-title="Select Type" name="viewResults" id="viewResults">
+                                        <option value="10">10</option> 
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
                                     </select>
                                         results per page
                                     </div>
-                                    <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols2">
+                                    <!-- <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols2">
+                                        <a id="nextPage">next</a>
+                                    </div> -->
+                                    <!-- <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols2">
                                         Sort Results By
                                         <select class="selectpicker" style="width: 10px;" data-style="btn" data-title="Select Type">
-                                        <option>Price High - Low</option> 
-                                        <option>Price Low - High</option>
-                                        <option>City A - Z</option>
-                                        <option>City Z - A</option>
-                                        <option>Area High - Low</option>
-                                        <option>Area Low - High</option>
-                                    </select>
-                                    </div>
+                                            <option>Price High - Low</option> 
+                                            <option>Price Low - High</option>
+                                            <option>City A - Z</option>
+                                            <option>City Z - A</option>
+                                            <option>Area High - Low</option>
+                                            <option>Area Low - High</option>
+                                        </select>
+                                    </div> -->
                                 </div>
                             </div>
                     </div>
                 </div>
                 <div id="properties_bottom_div">
-                    <div class="container">
+                    <?php if (isset($noResults)) :?>
+                        <div class="row" style="width: 100%;text-align:center;margin-left:0%;margin-top:2%;">
+                            <div class="alert alert-danger" role="alert">
+                               <?= $noResults; ?>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="container">
                         <div class="row">
                             <div class="col-lg-7 col-sm-11 col-md-8 col-xs-12 properties_header_cols" id="properties_bottom_left_div">
-                            <?php $count = 1; //printme($searchResults);exit();?>
+                            <?php $count = 1;?>
                             <?php if (is_array($searchResults)): ?>
-                                <?php foreach ($searchResults as $result): ?>
+                                <?php for ($i=0 + $increment; $i < 10 + $increment; $i++) { ?>
+                                <?php if ($i < $totalResults): ?>
+                                    <?php //printme ($totalResults);exit(); ?>
                                     <div class="properties_common_bottom_div">
                                         <div class="checkbox properties_ckbx">
                                             <label>
@@ -55,24 +67,32 @@
                                             <img src="<?= base_url();?>/application/static/images/sample_property.png"/>
                                         </div>
                                         <div class="properties_number">
-                                            <?php echo $count;  ?>
+                                            <?php echo $count; ?>
                                         </div>
                                         <div class="properties_info">
-                                            <div class="properties_title">
-                                                EGP <?php echo number_format(explode('.',$result->SalePrice)[0]); ?><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
+                                        <?php //printme($searchResults) ;exit();?>
+                                            <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
+                                                <div class="col-lg-11" style="float: left; padding:0;">
+                                                    <b> <?php if ($searchResults[$i]->LocationProject != ''): ?>
+                                                    <?php echo $searchResults[$i]->LocationProject; ?>,
+                                                    <?php endif ?>
+                                                    <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b>
+                                                </div>
+                                                <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
                                             </div>
-                                            <div class="properties_content">
-                                                <b>Est.Mo/Payment:</b> EGP <?php echo number_format(ceil((explode('.',$result->SalePrice)[0])/12)); ?> <br>
-                                                <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
-                                                <b>Kilo 19, City View, Sahrawy, Alex - Cairo Desert Road</b><br><br>
-
-                                                <!-- <i>More info if available</i> -->
+                                            <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
+                                                <?php else: ?>                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
+                                                <?php endif ?>
                                             </div>
                                         </div>
                                         <div class="properties_details_div">
                                             <div class="btn-group properties_details_btns_div">
                                                 <button type="button" class="btn btn-default properties_btns">
-                                                    <a href="<?= base_url();?>propertyDetails">
+                                                    <a href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                     </a>
@@ -95,14 +115,298 @@
                                                 </div>
                                             </div>
                                             <div class="properties_contact">
-                                                <a href="#contactModal" class="properties_contact_btn" data-toggle="modal"> 
+                                                <a href="#contactModal" class="" style="text-decoration: none;color: white;s" data-toggle="modal"> 
                                                     <?php echo $this->lang->line('viewallproperties_contact'); ?>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <?php $count++; ?>
-                                <?php endforeach ?>
+                                <?php endif ?>
+                                    <?php $count++;} ?>
+                                <div id="results20" class="hide"> 
+                                    <?php for ($i = 10 + $increment; $i < 20 + $increment; $i++) { ?>
+                                    <?php if ($i <= $totalResults): ?>
+                                        <div class="properties_common_bottom_div">
+                                            <div class="checkbox properties_ckbx">
+                                                <label>
+                                                  <input name="property_chkbx[]" type="checkbox"> 
+                                                </label>
+                                            </div>
+                                            <div class="properties_img">
+                                                <img src="<?= base_url();?>/application/static/images/sample_property.png"/>
+                                            </div>
+                                            <div class="properties_number">
+                                                <?php echo $count; ?>
+                                            </div>
+                                            <div class="properties_info">
+                                                <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
+                                                    <div class="col-lg-11" style="float: left; padding:0;">
+                                                        <b> <?php if ($searchResults[$i]->LocationProject != ''): ?>
+                                                        <?php echo $searchResults[$i]->LocationProject; ?>,
+                                                        <?php endif ?>
+                                                        <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b>
+                                                    </div>
+                                                    <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
+                                                </div>
+                                                <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                    <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
+                                                    <?php else: ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
+                                                    <?php endif ?>
+                                                    <!-- <b><?php echo $searchResults[$i]->LocationProject; ?>, <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b><br><br> -->
+                                                </div>
+                                            </div>
+                                            <div class="properties_details_div">
+                                                <div class="btn-group properties_details_btns_div">
+                                                    <button type="button" class="btn btn-default properties_btns">
+                                                        <a href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>">
+                                                            <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                            <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                        0 <?php echo $this->lang->line('viewallproperties_images'); ?>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
+                                                        <?php echo $this->lang->line('viewallproperties_share'); ?>
+                                                    </button>
+                                                </div>
+                                                <div class="properties_share_div">
+                                                    <div class="row" style="margin: auto;">
+                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                    </div>
+                                                    <div class="row" style="margin: auto;margin-top: 8%;">
+                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                    </div>
+                                                </div>
+                                                <div class="properties_contact">
+                                                    <a href="#contactModal" class="" style="text-decoration: none;color: white;s" data-toggle="modal"> 
+                                                        <?php echo $this->lang->line('viewallproperties_contact'); ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                   <?php $count++; } ?>
+                                </div>
+                                <div id="results30" class="hide"> 
+                                    <?php for ($i = 20 + $increment; $i < 30 + $increment; $i++) { ?>
+                                    <?php if ($i <= $totalResults): ?>
+                                        <div class="properties_common_bottom_div">
+                                            <div class="checkbox properties_ckbx">
+                                                <label>
+                                                  <input name="property_chkbx[]" type="checkbox"> 
+                                                </label>
+                                            </div>
+                                            <div class="properties_img">
+                                                <img src="<?= base_url();?>/application/static/images/sample_property.png"/>
+                                            </div>
+                                            <div class="properties_number">
+                                                <?php echo $count; ?>
+                                            </div>
+                                            <div class="properties_info">
+                                                <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
+                                                    <div class="col-lg-11" style="float: left; padding:0;">
+                                                        <b> <?php if ($searchResults[$i]->LocationProject != ''): ?>
+                                                        <?php echo $searchResults[$i]->LocationProject; ?>,
+                                                        <?php endif ?>
+                                                        <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b>
+                                                    </div>
+                                                    <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
+                                                </div>
+                                                <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                    <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
+                                                    <?php else: ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
+                                                    <?php endif ?>
+                                                    <!-- <b><?php echo $searchResults[$i]->LocationProject; ?>, <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b><br><br> -->
+                                                </div>
+                                            </div>
+                                            <div class="properties_details_div">
+                                                <div class="btn-group properties_details_btns_div">
+                                                    <button type="button" class="btn btn-default properties_btns">
+                                                        <a href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>">
+                                                            <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                            <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                        0 <?php echo $this->lang->line('viewallproperties_images'); ?>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
+                                                        <?php echo $this->lang->line('viewallproperties_share'); ?>
+                                                    </button>
+                                                </div>
+                                                <div class="properties_share_div">
+                                                    <div class="row" style="margin: auto;">
+                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                    </div>
+                                                    <div class="row" style="margin: auto;margin-top: 8%;">
+                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                    </div>
+                                                </div>
+                                                <div class="properties_contact">
+                                                    <a href="#contactModal" class="" style="text-decoration: none;color: white;s" data-toggle="modal"> 
+                                                        <?php echo $this->lang->line('viewallproperties_contact'); ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                   <?php $count++; } ?>
+                                </div>
+                                <div id="results40" class="hide"> 
+                                    <?php for ($i = 30 + $increment; $i < 40 + $increment; $i++) { ?>
+                                    <?php if ($i <= $totalResults): ?>
+                                        <div class="properties_common_bottom_div">
+                                            <div class="checkbox properties_ckbx">
+                                                <label>
+                                                  <input name="property_chkbx[]" type="checkbox"> 
+                                                </label>
+                                            </div>
+                                            <div class="properties_img">
+                                                <img src="<?= base_url();?>/application/static/images/sample_property.png"/>
+                                            </div>
+                                            <div class="properties_number">
+                                                <?php echo $count; ?>
+                                            </div>
+                                            <div class="properties_info">
+                                                <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
+                                                    <div class="col-lg-11" style="float: left; padding:0;">
+                                                        <b> <?php if ($searchResults[$i]->LocationProject != ''): ?>
+                                                        <?php echo $searchResults[$i]->LocationProject; ?>,
+                                                        <?php endif ?>
+                                                        <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b>
+                                                    </div>
+                                                    <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
+                                                </div>
+                                                <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                    <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
+                                                    <?php else: ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
+                                                    <?php endif ?>
+                                                    <!-- <b><?php echo $searchResults[$i]->LocationProject; ?>, <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b><br><br> -->
+                                                </div>
+                                            </div>
+                                            <div class="properties_details_div">
+                                                <div class="btn-group properties_details_btns_div">
+                                                    <button type="button" class="btn btn-default properties_btns">
+                                                        <a href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>">
+                                                            <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                            <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                        0 <?php echo $this->lang->line('viewallproperties_images'); ?>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
+                                                        <?php echo $this->lang->line('viewallproperties_share'); ?>
+                                                    </button>
+                                                </div>
+                                                <div class="properties_share_div">
+                                                    <div class="row" style="margin: auto;">
+                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                    </div>
+                                                    <div class="row" style="margin: auto;margin-top: 8%;">
+                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                    </div>
+                                                </div>
+                                                <div class="properties_contact">
+                                                    <a href="#contactModal" class="" style="text-decoration: none;color: white;s" data-toggle="modal"> 
+                                                        <?php echo $this->lang->line('viewallproperties_contact'); ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                   <?php $count++; } ?>
+                                </div>
+                                <div id="results50" class="hide"> 
+                                    <?php for ($i = 40 + $increment; $i < 50 + $increment; $i++) { ?>
+                                    <?php if ($i <= $totalResults): ?>
+                                        <div class="properties_common_bottom_div">
+                                            <div class="checkbox properties_ckbx">
+                                                <label>
+                                                  <input name="property_chkbx[]" type="checkbox"> 
+                                                </label>
+                                            </div>
+                                            <div class="properties_img">
+                                                <img src="<?= base_url();?>/application/static/images/sample_property.png"/>
+                                            </div>
+                                            <div class="properties_number">
+                                                <?php echo $count; ?>
+                                            </div>
+                                            <div class="properties_info">
+                                                <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
+                                                    <div class="col-lg-11" style="float: left; padding:0;">
+                                                        <b> <?php if ($searchResults[$i]->LocationProject != ''): ?>
+                                                        <?php echo $searchResults[$i]->LocationProject; ?>,
+                                                        <?php endif ?>
+                                                        <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b>
+                                                    </div>
+                                                    <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
+                                                </div>
+                                                <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                    <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
+                                                    <?php else: ?>
+                                                    <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                    <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
+                                                    <?php endif ?>
+                                                    <!-- <b><?php echo $searchResults[$i]->LocationProject; ?>, <?php echo $searchResults[$i]->LocationDistrict; ?>, <?php echo $searchResults[$i]->LocationCity; ?></b><br><br> -->
+                                                </div>
+                                            </div>
+                                            <div class="properties_details_div">
+                                                <div class="btn-group properties_details_btns_div">
+                                                    <button type="button" class="btn btn-default properties_btns">
+                                                        <a href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>">
+                                                            <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                            <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" data-toggle="modal" data-target="#imagesModal"> 
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                        0 <?php echo $this->lang->line('viewallproperties_images'); ?>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
+                                                        <?php echo $this->lang->line('viewallproperties_share'); ?>
+                                                    </button>
+                                                </div>
+                                                <div class="properties_share_div">
+                                                    <div class="row" style="margin: auto;">
+                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                    </div>
+                                                    <div class="row" style="margin: auto;margin-top: 8%;">
+                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                    </div>
+                                                </div>
+                                                <div class="properties_contact">
+                                                    <a href="#contactModal" class="" style="text-decoration: none;color: white;s" data-toggle="modal"> 
+                                                        <?php echo $this->lang->line('viewallproperties_contact'); ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                   <?php $count++; } ?>
+                                </div>
                             <?php endif ?>
                             </div>
                             <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div">
@@ -110,13 +414,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="properties_compare_div">
+                    <div id="properties_compare_div">
                     <!-- <button type="submit" class="btn btn-default properties_contact_btn" onclick="redirect('en');">Compare</button> -->
                     <a href="<?=base_url(); ?>compareProperties" class="" style="text-decoration: none;color: white;">
                         <?php echo $this->lang->line('viewallproperties_button'); ?>
                     </a>
                 </div>
+                    <?php endif ?>
+                    
+                </div>
+                
             </form>
         </div>
 

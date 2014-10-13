@@ -1,7 +1,14 @@
 <div style="width: 100%; margin-top: 8%;">
     <div id="featuredProperty_header">
         <ul class="nav nav-tabs nav-justified property_alert_box" id="featuredProperty_tabs">
-           <li class="active"><a href="#alert" data-toggle="tab"><?php echo $this->lang->line('featured_title'); ?></a></li>
+           <li class="active">
+               <a href="#alert" data-toggle="tab">
+                    <span style="color:orange;" id"notifier"><b>
+                        <span class="glyphicon glyphicon-tower"></span>
+                    </span>
+                    <?php echo $this->lang->line('featured_title'); ?>
+               </a>
+           </li>
         </ul>
     </div>
     <div class="tab-content featuredProperty_body">

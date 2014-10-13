@@ -10,4 +10,5 @@ $lang['shareproperty_input5']	= "المنطقة";
 $lang['shareproperty_input6']	= "العنوان";
 $lang['shareproperty_input7']	= "المميزات";
 $lang['shareproperty_input8']	= "حمل صور";
+$lang['shareproperty_input9']	= "الفئة";
 $lang['shareproperty_button']	= "قدم";

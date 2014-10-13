@@ -83,6 +83,9 @@ $route["$appended_lang/viewAllProperties"] = "home/viewAllProperties";
 $route['propertyDetails'] = 'home/propertyDetails';
 $route["$appended_lang/propertyDetails"] = "home/propertyDetails";
 
+$route['propertyDetails/(:any)'] = 'home/propertyDetails';
+$route["$appended_lang/propertyDetails/(:any)"] = "home/propertyDetails";
+
 $route['careers'] = 'home/careers';
 $route["$appended_lang/careers"] = "home/careers";
 
@@ -110,6 +113,7 @@ $route['trainingCenter'] = 'home/trainingCenter';
 $route["$appended_lang/trainingCenter"] = "home/trainingCenter";
 
 $route['getDistricts'] = 'home/getDistricts';
+$route['getPropertyTypes'] = 'home/getPropertyTypes';
 $route['displayOffice'] = 'home/displayOffice';
 $route['displayMap'] = 'home/displayMap';
 

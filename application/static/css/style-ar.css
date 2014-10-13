@@ -482,6 +482,11 @@ margin-right: 850px;
     width: 76%;
 }
 
+.search_advanced{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
 .property_alert_advanced{
     color: #1e4270;
 }
@@ -491,15 +496,10 @@ margin-right: 850px;
 }
 
 .search_bottom_row{
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     display: none;
 }
 
-/*.search_bottom_row{*/
-/*#bottom_row{
-    margin-top: 5px;
-    visibility: hidden;
-}*/
  .property_alert_bottom_row{
     margin-top: 5px;
     display: none;
@@ -964,9 +964,17 @@ li.active>a{
     position: relative;
 }
 
+#properties_top_header_div > div > div > div > div > button{
+    padding-right: 25%;
+}
+
+#properties_top_header_div > div > div > div > div > button > span.caret{
+    margin-right: -90%;
+}
+
 .properties_ckbx{
     margin: 0;
-    float: left;
+    float: right;
 }
 
 .properties_img{
@@ -982,7 +990,7 @@ li.active>a{
     font-size: 17px;
     margin-top: -124px;
     text-align: center;
-    margin-right: 5px;
+    margin-right: 26px;
     /*border-radius: 5px;*/
 }
 
@@ -990,14 +998,16 @@ li.active>a{
     /*border: 1px solid red;*/
     float: left;
     margin-top: -130px;
-    margin-left: 0px;
+    margin-left: 6%;
+    width: 60%;
 }
 
 .properties_title{
     color: #4a679a;
     font-size: 17px;
     font-weight: bold;
-    width: 120%;
+    width: 100%;
+    margin-bottom: 3%;
 }
 
 .properties_content{
@@ -1022,7 +1032,7 @@ li.active>a{
 .properties_star_icon{
     height: 30px;
     width: 30px;
-    margin-left: 50%;
+    /*margin-right: 37%;*/
 }
 
 .properties_contact{
@@ -1103,11 +1113,11 @@ li.active>a{
 
 #property_address_div{
     color: white;
-    font-weight: bold;
-    padding: 20px 60px;
-    margin-top: 50px;
+    /*font-weight: bold;*/
+    /*padding: 20px 60px;*/
+    /*margin-top: 50px;*/
     margin-bottom: 20px;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 
 #property_details_container{
@@ -1187,7 +1197,7 @@ li.active>a{
 }
 
 #property_carousel{
-    width: 80%;
+    width: 92%;
     margin: 0 auto;
 }
 
@@ -1293,6 +1303,7 @@ li.active>a{
 }
 
 #property_description_content{
+    padding-right: 3.2%;
     color: black;
 }
 
@@ -1314,7 +1325,7 @@ li.active>a{
 }
 
 #property_form{
-    padding-left: 17px;
+    padding-right: 17px;
     margin-bottom: 0;
 }
 
@@ -1326,12 +1337,12 @@ li.active>a{
 #property_form_btn, #contact_form_btn{
     width: 100px;
     margin-top: -48px;
-    margin-right: 413px;
+    margin-right: 387%;
     margin-bottom: 0;
 }
 
 #contact_form_btn{
-    margin-left: 220%;
+    margin-right: 216%;
     margin-top: 0;
 }
 
@@ -1340,8 +1351,8 @@ li.active>a{
 }
 
 #property_form_textarea{
-    width: 125%;
-    padding-right: 110px;
+    width: 100%;
+    padding-left: 110px;
 }
 
 label{

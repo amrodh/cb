@@ -13,35 +13,35 @@ $(document).ready(function ()
           });
 
           $('body').on('change', '#file', function() {
-if (this.files && this.files[0]) {
-abc += 1; // Incrementing global variable by 1.
-var z = abc - 1;
-var x = $(this).parent().find('#previewimg' + z).remove();
-$(this).before("<div id='abcd" + abc + "' class='abcd'><img style='width: 100px;height:100px;' id='previewimg" + abc + "' src=''/></div>");
-var reader = new FileReader();
-reader.onload = imageIsLoaded;
-reader.readAsDataURL(this.files[0]);
-$(this).hide();
-$("#abcd" + abc).append($("<img/>", {
-id: 'img',
-src: '../application/static/images/x.png',
-alt: 'delete'
-}).click(function() {
-$(this).parent().parent().remove();
-}));
-}
-});
+              if (this.files && this.files[0]) {
+                  abc += 1; // Incrementing global variable by 1.
+                  var z = abc - 1;
+                  var x = $(this).parent().find('#previewimg' + z).remove();
+                  $(this).before("<div id='abcd" + abc + "' class='abcd'><img style='width: 100px;height:100px;' id='previewimg" + abc + "' src=''/></div>");
+                  var reader = new FileReader();
+                  reader.onload = imageIsLoaded;
+                  reader.readAsDataURL(this.files[0]);
+                  $(this).hide();
+                  $("#abcd" + abc).append($("<img/>", {
+                    id: 'img',
+                    src: '../application/static/images/x.png',
+                    alt: 'delete'
+                  }).click(function() {
+                    $(this).parent().parent().remove();
+                  }));
+              }
+          });
 // To Preview Image
-function imageIsLoaded(e) {
-$('#previewimg' + abc).attr('src', e.target.result);
-};
-$('#upload').click(function(e) {
-var name = $(":file").val();
-if (!name) {
-alert("First Image Must Be Selected");
-e.preventDefault();
-}
-});
+      function imageIsLoaded(e) {
+        $('#previewimg' + abc).attr('src', e.target.result);
+      };
+      $('#upload').click(function(e) {
+          var name = $(":file").val();
+          if (!name) {
+              alert("First Image Must Be Selected");
+              e.preventDefault();
+          }
+      });
 
             //alert(document.title);
            if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
@@ -381,28 +381,118 @@ e.preventDefault();
 
               $('[name="districtName"]').val($('[name="district"]').val());
               $('#lob').val('1');
-
-              // alert(propertyType);
-              // alert(city);
-              // alert(district);
-
-              // alert(contractType);
-              // alert(price);
-              // alert(area);
-              // // alert('hi');
-              // var url = $("#url").val();
-              // url = url+"viewAllProperties";
-              // // alert(url);
-              //  $.ajax({
-              //     type: "POST",
-              //     url: url,
-              //     data: { district: district }
-              //   })
-              //     .success(function( html ) {
-              //       // alert(html);
-              //     });
-
             });
+
+            $('#viewResults').change(function(event) {
+                  var oldEndResult = $('#endResult').text();
+                  $('#endResult').html($(this).val());
+                  var i;
+                  if ($(this).val() == 10){
+                      for (i = 20; i < $('#totalResults').val(); i += 10)
+                      {
+                          if ($('#results'+i).css('display') == 'block'){
+                              $('#results'+i).addClass('hide');
+                          }else{
+                              break;
+                          }
+                      }
+                  }else if ($(this).val() > 10){
+                      if ($(this).val() < oldEndResult){
+                        for (i = oldEndResult; i > $(this).val(); i -= 10)
+                        {
+                            $('#results'+ i).addClass('hide');
+                        }
+                      }
+                      else{
+                        for (i = 20; i <= $(this).val(); i += 10)
+                        {
+                            $('#results'+ i).removeClass('hide');
+                        }
+                      }
+                  }
+            });
+
+            $('#searchHome_lob').change(function(event) {
+              var lob = $(this).val();
+              var url = $("#url").val();
+              var key = 1;
+              url = url+"getPropertyTypes";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { lob: lob, key: key }
+                })
+                  .success(function( response ) {
+                    // alert (response);
+                    if (response != 0)
+                        {
+                          $("#propertyContainer").show();
+                          $("#propertyContainer").html(response);
+                          $('#searchHome_type').selectpicker();
+                          $('#disabled_property').css('display', 'none');
+                        }
+                        else
+                        {
+                            $("#propertyContainer").hide();
+                            $('#disabled_property').css('display', 'block');
+                            $('#searchHome_disabled_type').attr('disabled', true);
+                            $("[data-id='searchHome_disabled_type']").attr('disabled', true);
+                            // $("#searchHome_district").hide();
+                            // $("[data-id='searchHome_district']").hide();
+                        }
+                  });
+            });
+
+            $('#shareProperty_lob').change(function(event) {
+                var lob = $(this).val();
+                var url = $("#url").val();
+                var key = 2;
+                url = url+"getPropertyTypes";
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { lob: lob, key: key }
+                  })
+                    .success(function( response ) {
+                      // alert (response);
+                      if (response != 0)
+                          {
+                            $("#shareProperty_propertyContainer").show();
+                            $("#shareProperty_propertyContainer").html(response);
+                            $('#shareProperty_type').selectpicker();
+                            $('#shareProperty_disabled_property').css('display', 'none');
+                          }
+                          else
+                          {
+                              $("#shareProperty_propertyContainer").hide();
+                              $('#disabled_property').css('display', 'block');
+                              $('#shareProperty_disabled_type').attr('disabled', true);
+                              $("[data-id='shareProperty_disabled_type']").attr('disabled', true);
+                              // $("#searchHome_district").hide();
+                              // $("[data-id='searchHome_district']").hide();
+                          }
+                    });
+            });
+
+            // $('#nextPage').click(function(event) {
+            //   var url = $("#url").val();
+            //   url = url+"viewAllProperties";
+            //   var increment = $('#endResult').text();
+            //    $.ajax({
+            //       type: "POST",
+            //       url: url,
+            //       data: { increment: city_id, key: key }
+            //     })
+            //       .success(function( html ) {
+            //         if (html != 0)
+            //         { 
+            //         }
+            //         else
+            //         {
+            //         }
+            //       });
+            //   // alert('hi');
+            // });
 
         });
 
@@ -447,7 +537,7 @@ function toggleVisibility()
                 }
             else 
                 {
-                    $('.search_components2').animate({marginTop:"10px"});
+                    $('.search_components2').animate({marginTop:"5px"});
                     $('.search_btn_submit').animate({marginTop:"67px"});
                 }
         }

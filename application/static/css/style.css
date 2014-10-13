@@ -477,6 +477,11 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     width: 76%;
 }
 
+.search_advanced{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 .property_alert_advanced{
     color: #1e4270;
 }
@@ -956,13 +961,15 @@ li.active>a{
     float: left;
     margin-top: -130px;
     margin-left: 210px;
+    width: 60%;
 }
 
 .properties_title{
     color: #4a679a;
-    font-size: 17px;
+    font-size: 110%;
     font-weight: bold;
-    width: 120%;
+    width: 100%;
+    /*margin-bottom: 3%;*/
 }
 
 .properties_details_div{
@@ -982,8 +989,9 @@ li.active>a{
 
 .properties_star_icon{
     height: 30px;
-    width: 30px;
-    margin-left: 57%;
+    /*width: 30px;*/
+    float: right;
+    /*margin-left: 57%;*/
 }
 
 .properties_contact{
@@ -1078,11 +1086,11 @@ li.active>a{
 
 #property_address_div{
     color: white;
-    font-weight: bold;
-    padding: 20px 60px;
-    margin-top: 50px;
+    /*font-weight: bold;*/
+    /*padding: 20px 60px;*/
+    /*margin-top: 50px;*/
     margin-bottom: 20px;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 
 #property_details_container{
@@ -1296,7 +1304,7 @@ li.active>a{
 
 #property_form_btn, #contact_form_btn{
     width: 100px;
-    margin-top: -82%;
+    margin-top: -48%;
     margin-left: 385%;
     margin-bottom: 0;
 }

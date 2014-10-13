@@ -37,6 +37,7 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
+                           <?php //printme($propertyType1);exit(); ?>
                            <select class="selectpicker" id="search_type_1" name="type_1" data-style="btn" data-title="Select Type" data-size="5">
                                 <option value="0">Select Type</option> 
                                 <?php $count = 0; ?>
@@ -64,8 +65,9 @@
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
                                 <option>750,000 - 1,000,000</option>
-                                <option>1,000,000 - 2,000,000</option>
-                                <option>2,000,000 - 5,000,000</option>
+                                <option value="1000000 - 5000000">1,000,000 - 5,000,000</option>
+                                <option value="5000000 - 20000000">5,000,000 - 20,000,000</option>
+                                <option value="20000000+">20,000,000+</option>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
@@ -160,8 +162,9 @@
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
                                 <option>750,000 - 1,000,000</option>
-                                <option>1,000,000 - 2,000,000</option>
-                                <option>2,000,000 - 5,000,000</option>
+                                <option value="1000000 - 5000000">1,000,000 - 5,000,000</option>
+                                <option value="5000000 - 20000000">5,000,000 - 20,000,000</option>
+                                <option value="20000000+">20,000,000+</option>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
@@ -259,8 +262,9 @@
                                 <option>250,000 - 500,000</option>
                                 <option>500,000 - 750,000</option>
                                 <option>750,000 - 1,000,000</option>
-                                <option>1,000,000 - 2,000,000</option>
-                                <option>2,000,000 - 5,000,000</option>
+                                <option value="1000000 - 5000000">1,000,000 - 5,000,000</option>
+                                <option value="5000000 - 20000000">5,000,000 - 20,000,000</option>
+                                <option value="20000000+">20,000,000+</option>
                            </select>
                        </div>
                        <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">

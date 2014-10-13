@@ -191,10 +191,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="">
                                 <li>
-                                    <a href="">BUY</a>
+                                    <a href="">شراء</a>
                                 </li>
                                 <li>
-                                    <a href="">RENT</a>
+                                    <a href="">تأجير</a>
                                 </li>
                             </ul>
                         </li>

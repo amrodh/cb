@@ -19,7 +19,7 @@ class service extends CI_Model {
             'searchMode' => 'Exact',
             'Bedrooms' => '',
             'PropertyId' => '',
-            'Purpose' => '',
+            'Purpose' => $inputs['PropertyFor'],
             'PriceLowerLimit' => $inputs['PriceLowerLimit'],
             'PriceUpperLimit' => $inputs['PriceUpperLimit'],
             'PunitSale' => '',
@@ -43,38 +43,78 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
-            'resultsCountPerPage' => '10'
+            'resultsCountPerPage' => '100'
             );
         
+// printme($inputs);
+
         $results = $this->client->Search($inputs);
-        // printme($results);exit();
+// printme($results);exit();
+
         $data = array();
-        foreach ($results->SearchResult as $result) {
-           $data[] = $result;
+        if ($results->TotalResults != 0)
+        {
+            foreach ($results->SearchResult as $result) {
+                // printme($result);exit();
+                $data['results'] = $result;
+            }
+            $data['totalResults'] = $results->TotalResults;
+        }else{
+            $data['results'] = '';
+            $data['totalResults'] = $results->TotalResults;
         }
+        
         // printme($data);exit();
+        
         return $data;
+    }
+
+
+    function getPropertyByID($id)
+    {
+        $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
+        $inputs = array(
+            'searchMode' => 'Exact',
+            'PropertyID' => $id,
+            'LineOfBusinessId' => $LineOfBusinessId,
+            'CompanyId' => ''
+            );
+        $results = $this->client->GetResultsByPropertyID($inputs);
+        return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
+    }
+
+    function getPropertyImages($id, $unitId)
+    {
+        $inputs = array(
+            'PropertyId' => $id,
+            'UnitId' => $unitId,
+            'ImageType' => '',
+            'URL' => ''
+            );
+        $results = $this->client->GetListOfImages($inputs);
+        printme($results);exit();
+        return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 
     function getCities()
     {
 
-         // $q = $this
-         //      ->db
-         //      ->get('city');
+         $q = $this
+              ->db
+              ->get('city');
 
-         //   if($q->num_rows >0){
-         //      return $q->result_array();
-         //   } 
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
 
-         //   return false;  
-        $inputs = array('CountryFK' => 73);
-        $result = $this->client->GetCities($inputs);
-        $data = array();
-        foreach ($result->GetCitiesResult->City as $city) {
-           $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
-        }
-         return $data;
+           return false;  
+        // $inputs = array('CountryFK' => 73);
+        // $result = $this->client->GetCities($inputs);
+        // $data = array();
+        // foreach ($result->GetCitiesResult->City as $city) {
+        //    $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
+        // }
+        //  return $data;
     }
 
     function importCitiesIntoDB()

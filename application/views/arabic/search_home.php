@@ -1,22 +1,32 @@
   <div class="container hidden-sm hidden-xs" id="search_home_container" style="">
-    <form id="search_form">
+    <form id="search_form" role="form" name="searchForm1" method="post" action="<?php echo base_url();?>ar/viewAllProperties">
         <div class="search_body2">
             <div id="home">
                 <div class="container search_components2" style="margin-top: 54px;">
                     <div class="row" id="search2_title">
                         <!-- العثور على منزل --><?php echo $this->lang->line('searchhome_title'); ?>
                     </div>
+                    <input type="hidden" id="url" value="<?= base_url();?>">
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
-                                <option value="0">إختار النوع</option> 
-                                <?php $count = 0; ?>
-                                <?php foreach ($propertyType1 as $type): ?>
-                                    <option value="<?= $count ?>"><?= $type ?></option>
-                                <?php $count++ ?>
-                                <?php endforeach ?>
+                           <select class="selectpicker" name="lob" id="searchHome_lob" data-style="btn" data-title="Select Category" data-size="5">
+                                <option value="0">إختار الفئة</option> 
+                                <option value="1">عقارات سكنية</option>
+                                <option value="2">عقارات تجارية</option>
+                                <option value="3">مزادات</option>
+                                <option value="4">مشاريع تجارية</option>
                            </select>
                        </div>
+                    </div>
+                    <div class="row search_top_row" id="searchHome_type_select">
+                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="propertyContainer">
+
+                        </div>
+                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
+                            <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
+                                <option value="0">Select Type</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
@@ -32,25 +42,14 @@
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="districtContainer">
                        </div>
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_district">
-                           <select class="selectpicker" id="searchhome_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>
+                           <select class="selectpicker" name="district" id="searchhome_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>
                               <option>Select District</option> 
                            </select>
                        </div>
                    </div>
-                    <!-- <div class="row search_top_row">
-                       <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" data-style="btn" data-title="Select District">
-                                <option>إختار المنطقة</option>
-                                <option>المهندسين</option>
-                                <option>المعادي</option>
-                                <option>مدينة نصر</option>
-                                <option>مصر الجديدة</option>
-                           </select>
-                       </div>
-                   </div> -->
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" data-style="btn" data-title="Select Type" data-size="5">
+                           <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type" data-size="5">
                                 <option value="0">إختار نوع العقد</option> 
                                 <?php foreach ($serviceTypes as $type): ?>
                                     <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
@@ -65,7 +64,7 @@
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                           <select class="selectpicker" data-style="btn" data-title="Select Price" data-size="5">
+                           <select class="selectpicker" name="price" id="searchHome_price" data-style="btn" data-title="Select Price" data-size="5">
                                 <option>إختار السعر</option>
                                 <option value="100000 - 250000">100,000 - 250,000</option>
                                 <option value="250000 - 500000">250,000 - 500,000</option>
@@ -79,7 +78,7 @@
                     </div>
                     <div class="row search_bottom_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
-                           <select class="selectpicker" data-style="btn" data-title="Select Price" data-size="5">
+                           <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price" data-size="5">
                                 <option>إختار المساحة</option>
                                 <option value="50 - 100">50 - 100 m<sup>2</sup></option>
                                 <option value="100 - 130">100 - 130 m<sup>2</sup></option>

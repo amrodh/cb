@@ -10,4 +10,5 @@ $lang['shareproperty_input5']	= "District";
 $lang['shareproperty_input6']	= "Address";
 $lang['shareproperty_input7']	= "Features";
 $lang['shareproperty_input8']	= "Upload Images";
+$lang['shareproperty_input9']	= "Category";
 $lang['shareproperty_button']	= "Submit";

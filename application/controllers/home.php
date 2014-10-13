@@ -26,8 +26,6 @@ class Home extends CI_Controller {
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-		// printme($data['propertyType1']);exit();
-
 
 		$this->load->view($data['languagePath'].'home',$data);
 	}
@@ -382,9 +380,10 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('property');
 		$this->load->model('service');
+
 		$username = $this->session->userdata('username');
 		$data = $this->init();
-
+		$data['cities'] = $this->service->getCities();
 		
 		if (isset($_POST['submit'])){
 			$data['params'] = $_POST;
@@ -406,8 +405,8 @@ class Home extends CI_Controller {
 			}else{
 
 				
-				// $city = $this->service->getCityByID($_POST['city']);
-				// $district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				$city = $this->service->getCityByID($_POST['city']);
+				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
 
 
 				$params = array ('user_id' => $data['user']->id,
@@ -491,10 +490,24 @@ class Home extends CI_Controller {
 		$this->load->model('property');
 		$this->load->model('service');
 		$data['cities'] = $this->service->getCities();
+		$data['serviceTypes'] = $this->service->getServiceType();
+		$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-		// printme($_POST);
+		// printme($data['user']->id);exit();
 
-		if (isset($_POST))
+		// if (isset($data['loggedIn'])){
+		// 	$data['userFavorites'] = getUserFavorites($data['user']->id);
+		// }
+
+		if (isset($_POST['increment'])){
+			$data['increment'] = $_POST['increment'];
+			$data['lastResult'] = $_POST['lastResult'];
+		}else{
+			$data['increment'] = 0;
+		}
+
+		if (isset($_POST['searchSubmit1']))
 		{
 			if ($_POST['type'] == 0)
 			{
@@ -557,8 +570,32 @@ class Home extends CI_Controller {
 			);
 
 			$data['searchResults'] = $this->service->Search($searchParams);
-			$data['searchResults'] = $data['searchResults'][0];
-			printme($data['searchResults']);exit();
+			// printme($data['searchResults']['totalResults']);
+			// printme($data['searchResults']['results']);exit();
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				
+			}else{
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
+			
+			// printme($data['searchResults']['totalResults']);exit();
+		}else{
+			$searchParams = array(
+				'PropertyType' => '',
+				'BoxLocation' => '',
+				'PropertyFor' => '',
+				'PriceLowerLimit' => 1,
+				'PriceUpperLimit' => 100000000000000,
+				'AreaLowerLimit' => 1,
+				'AreaUpperLimit' => 100000000000000
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			$data['totalResults'] = $data['searchResults']['totalResults'];
+			$data['searchResults'] = $data['searchResults']['results'];
+			// printme($data['searchResults']);exit();
 		}
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -575,7 +612,49 @@ class Home extends CI_Controller {
 	public function propertyDetails ()
 	{
 		$data = $this->init();
+		$propertyId = explode('/', $data['uri']);
+		$data['propertyId'] = $propertyId[1];
 		$this->load->model('property');
+		$this->load->model('service');
+		$this->load->model('user');
+		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
+
+
+		if (isset($_POST['submit'])){
+			if (empty($_POST['firstName'])){
+				$data['contactError'] = "Please insert First Name";
+			}elseif (empty($_POST['lastName'])) {
+				$data['contactError'] = "Please insert Last Name";
+			}elseif (empty($_POST['email'])){
+				$data['contactError'] = "Please insert E-mail";
+			}elseif (empty($_POST['phone'])) {
+				$data['contactError'] = "Please insert Phone";
+			}elseif (!isset($_POST['interest'])){
+				$data['contactError'] = "Please choose your interest";
+			}else{
+
+				foreach ($_POST['interest'] as $interest) {
+					$interests[] = $interest;
+					// printme($method);
+				}
+				// printme($interests);exit();
+
+				$params = array(
+					'first_name' => $_POST['firstName'],
+					'last_name' => $_POST['lastName'],
+					'email' => $_POST['email'],
+					'phone' => $_POST['phone'],
+					'comments' => $_POST['comments'], 
+					'propertyId' => $data['propertyId']
+					);
+				if ($this->user->insertContactInformation($params, $interests)){
+					$data['contactSuccess'] = "Your Contact Info was inserted successfully!";
+				}
+			}
+		}
+
+
+		// $data['images'] = $this->service->getPropertyImages($data['propertyId'],$data['searchResults']->UnitId);
 		$this->load->view($data['languagePath'].'property_details',$data);
 	}
 
@@ -677,6 +756,10 @@ class Home extends CI_Controller {
 	public function auction ()
 	{
 		$data = $this->init();
+		$this->load->model('service');
+		$data['serviceTypes'] = $this->service->getServiceType();
+		$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();
 		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
@@ -717,6 +800,7 @@ class Home extends CI_Controller {
 
 		
 		$uri = $this->uri->uri_string;
+		// printme($uri);
 		$posAr = strpos($uri, 'ar/');
 		$posEn = strpos($uri, 'en/');
 		$posAr2 = strpos($uri, 'ar');
@@ -732,7 +816,7 @@ class Home extends CI_Controller {
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
 					}else{
-						$data['uri'] = '';
+						$data['uri'] = $uri;
 					}
 				}
 				elseif ($explodeEn[0] == $uri){
@@ -740,7 +824,7 @@ class Home extends CI_Controller {
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
 					}else{
-						$data['uri'] = '';
+						$data['uri'] = $uri;
 					}
 				}
 			}
@@ -749,7 +833,7 @@ class Home extends CI_Controller {
 				if(isset($data['uri'][1])){
 					$data['uri'] = $data['uri'][1];
 				}else{
-					$data['uri'] = '';
+					$data['uri'] = $uri;
 				}
 			}
 			
@@ -764,7 +848,7 @@ class Home extends CI_Controller {
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
 					}else{
-						$data['uri'] = '';
+						$data['uri'] = $uri;
 					}
 				}
 				elseif ($explodeAr[0] == $uri){
@@ -772,32 +856,25 @@ class Home extends CI_Controller {
 					if(isset($data['uri'][1])){
 						$data['uri'] = $data['uri'][1];
 					}else{
-						$data['uri'] = '';
+						$data['uri'] = $uri;
 					}
 				}
-
-
-
-				// $data['uri'] = explode('ar/', $uri);
-				// if(isset($data['uri'][1])){
-				// 	$data['uri'] = $data['uri'][1];
-				// }else{
-				// 	$data['uri'] = '';
-				// }
 			}
 			else{
 				$data['uri'] = explode('en/', $uri);
 				if(isset($data['uri'][1])){
 					$data['uri'] = $data['uri'][1];
 				}else{
-					$data['uri'] = '';
+					$data['uri'] = $uri;
 				}
 			}
 		}
 		else{
-			$data['uri'] = '';
+			// printme($uri);
+			$data['uri'] = $uri;
 		}
 
+		// printme($data['uri']);
 
 		$data['language'] = $this->uri->segment(1);
 		$data['languagePath'] = '';
@@ -991,6 +1068,19 @@ function resetpassword()
 	}
 	$this->load->view($data['languagePath'].'reset_password', $data);
 }
+
+	function getPropertyTypes()
+	{
+		$lob = $_POST['lob'];
+		$this->load->model('service');
+		$data = $this->init();
+		$data['propertyType'] = $this->service->Getpropertytypes($lob);
+		$data['key'] = $_POST['key'];
+		if ($data['propertyType'] != 0)
+		{
+			$this->load->view('propertyselect', $data);
+		}
+	}
 
 	function offices()
 	{

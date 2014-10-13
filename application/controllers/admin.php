@@ -267,6 +267,11 @@ class Admin extends CI_Controller {
 			printme($_POST);
 			exit();
 		}
+
+		if (isset($_POST['bannerspreview'])){
+			// printme($_POST);exit();
+		}
+
 		$this->load->view('admin/createnewsletter', $data);
 	}
 

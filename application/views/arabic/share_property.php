@@ -42,6 +42,7 @@
                                             <?php echo $this->lang->line('shareproperty_input1'); ?>
                                         </div>
                                         <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                            <option value="0">إختار المساحة</option>
                                              <option <?php if (isset($params)){ if($params['area'] == '50'){ ?>selected="true" <?php };} ?> value="50">50 m<sup>2</sup></option>
                                              <option <?php if (isset($params)){ if($params['area'] == '100'){ ?>selected="true" <?php };} ?> value="100">100 m<sup>2</sup></option>
                                              <option <?php if (isset($params)){ if($params['area'] == '130'){ ?>selected="true" <?php };} ?> value="130">130 m<sup>2</sup></option>
@@ -54,16 +55,25 @@
                                     </div>
                                     <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                         <div class="shareproperty_titles title_margin">
+                                            <?php echo $this->lang->line('shareproperty_input9'); ?>
+                                        </div>
+                                        <select class="selectpicker" data-style="btn" data-title="Select Type" id="shareProperty_lob" name="shareProperty_lob">
+                                            <option value="0">إختار الفئة</option> 
+                                            <option value="1">عقارات سكنية</option>
+                                            <option value="2">عقارات تجارية</option>
+                                            <option value="3">مزادات</option>
+                                            <option value="4">مشاريع تجارية</option>
+                                        </select>
+                                    </div>
+                                    <div id="shareProperty_propertyContainer">
+                                        
+                                    </div>
+                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" id="shareProperty_disabled_property">
+                                        <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input2'); ?>
                                         </div>
-                                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                            <option>إختار النوع</option> 
-                                            <option>شقة</option>
-                                            <option>بناء</option>
-                                            <option>شقة مفروشة</option>
-                                            <option>مكتب</option>
-                                            <option>محل</option>
-                                            <option>فيلا</option>
+                                        <select class="selectpicker" data-style="btn" data-title="Select Type" name="shareProperty_type" disabled id="shareProperty_disabled_type">
+                                             <option>Select Type</option> 
                                         </select>
                                     </div>
                                     <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
@@ -78,9 +88,16 @@
                                              <option <?php if (isset($params)){ if($params['price'] == '750,000 - 1,000,000'){ ?>selected="true" <?php }} ?> value="750,000 - 1,000,000">750,000 - 1,000,000</option>
                                              <option <?php if (isset($params)){ if($params['price'] == '1,000,000 - 2,000,000'){ ?>selected="true" <?php }} ?> value="1,000,000 - 2,000,000">1,000,000 - 2,000,000</option>
                                              <option <?php if (isset($params)){ if($params['price'] == '2,000,000 - 5,000,000'){ ?>selected="true" <?php }} ?> value="2,000,000 - 5,000,000">2,000,000 - 5,000,000</option>
+                                             <option <?php if (isset($params)){ if($params['price'] == '5,000,000 - 20,000,000'){ ?>selected="true" <?php }} ?> value="5,000,000 - 20,000,000">5,000,000 - 20,000,000</option>
+                                             <option <?php if (isset($params)){ if($params['price'] == '20,000,000+'){ ?>selected="true" <?php }} ?> value="20,000,000+">20,000,000+</option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                    <!-- <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                        
+                                    </div> -->
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             <?php echo $this->lang->line('shareproperty_input4'); ?>
                                         </div>
@@ -91,28 +108,41 @@
                                             <?php endforeach ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row" style="margin-top: 20px;">
                                     <div id="shareProperty_districtContainer">
                                      
                                     </div>
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
-                                            <?php echo $this->lang->line('shareproperty_input6'); ?>
+                                            المنطقة
                                         </div>
-                                        <textarea class="form-control" rows="2" name="address" id="address"></textarea>
+                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
+                                             <option>Select District</option>
+                                             <?php foreach ($districts as $item): ?>
+                                            <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
                                     </div>
+                                    <!--  -->
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                        <div class="shareproperty_titles title_margin" id="search_title_district">
+                                            <?php echo $this->lang->line('shareproperty_input6'); ?>
+                                        </div>
+                                        <textarea class="form-control" rows="3" name="address" id="address"></textarea>
+                                    </div>
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                         <label for="features" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input7'); ?></label>
                                         <textarea class="form-control" rows="3" name="features" id="features" value="<?php if(isset($params)) echo $params['features']; ?>"><?php if(isset($params)) echo $params['features']; ?></textarea>
                                     </div>
+                                    
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
                                             <input type="file" name="img[]"  multiple="multiple">
-                                            <input type="button" id="add_more" class="upload" value="Add More Files"/>
+                                            <input type="button" id="add_more" class="upload" value="Add More Images"/>
                                             <!-- <p style="font-size:11px;margin-top:1%;">يمكنك إختيار صور متعددة</p> -->
                                         </div>
                                     </div>

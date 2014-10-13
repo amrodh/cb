@@ -321,6 +321,30 @@ class User extends CI_Model {
            return false;
    }
 
+   function insertContactInformation($params, $interests)
+   {
+        $interestArray = array();
+        
+
+        $query = $this->db->insert_string('contacts', $params);
+        $query = $this->db->query($query);
+
+        $id = $this->db->insert_id();
+
+        if($this->db->affected_rows() != 1){
+            return false;
+        }else{
+            foreach ($interests as $interest) {
+                $interestArray['userid'] = $id;
+                $interestArray['interest'] = $interest;
+                $query = $this->db->insert_string('contacts_interest', $interestArray);
+                $query = $this->db->query($query);
+            }
+            return true;
+        }
+            
+   }
+
 
    function populateDB()
    {

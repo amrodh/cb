@@ -10,13 +10,32 @@
                         <input type="hidden" id="url" value="<?= base_url();?>">
                         <div class="row search_top_row">
                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                               <select class="selectpicker" name="lob" id="searchHome_lob" data-style="btn" data-title="Select Category" data-size="5">
+                                    <option value="0">Select Category</option> 
+                                    <option value="1">Residential</option>
+                                    <option value="2">Commercial</option>
+                                    <option value="3">Auctions</option>
+                                    <option value="4">Commercial Projects</option>
+                               </select>
+                           </div>
+                        </div>
+                        <div class="row search_top_row" id="searchHome_type_select">
+                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="propertyContainer">
+
+                            </div>
+                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
+                                <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
+                                    <option value="0">Select Type</option> 
+                                </select>
+                            </div>
+                           <!-- <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                                <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type" data-size="5">
                                     <option value="0">Select Type</option> 
-                                    <?php foreach ($propertyType1 as $index => $type): ?>
+                                    <?php foreach ($propertyType as $index => $type): ?>
                                         <option value="<?= $index; ?>"><?= $type ?></option>
                                     <?php endforeach ?>
                                </select>
-                           </div>
+                           </div> -->
                         </div>
                         <div class="row search_top_row">
                             <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
@@ -61,9 +80,9 @@
                                     <option value="250000 - 500000">250,000 - 500,000</option>
                                     <option value="500000 - 750000">500,000 - 750,000</option>
                                     <option value="750000 - 1000000">750,000 - 1,000,000</option>
-                                    <option value="1000000 - 2000000">1,000,000 - 2,000,000</option>
-                                    <option value="2000000 - 5000000">2,000,000 - 5,000,000</option>
-                                    <option value="5000000 - 10000000">2,000,000 - 10,000,000</option>
+                                    <option value="1000000 - 2000000">1,000,000 - 5,000,000</option>
+                                    <option value="5000000 - 10000000">5,000,000 - 20,000,000</option>
+                                    <option value="5000000 - 10000000">20,000,000+</option>
                                </select>
                            </div>
                         </div>

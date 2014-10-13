@@ -9,10 +9,6 @@ class Favorites extends CI_Model {
         parent::__construct();
     }
 
-    
-
-    
-
      
     function getUserFavorites($userID)
     {
@@ -29,9 +25,6 @@ class Favorites extends CI_Model {
            return false; 
 
     }
-
-     
-
    
 function test()
 {
