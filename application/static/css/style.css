@@ -14,6 +14,17 @@
     padding: 0px;
 }
 
+.caret_reversed {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-bottom: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
 *{
     font-family: 'ubuntu_medium';
 }
@@ -546,11 +557,11 @@ li.active>a{
     border-top-width: 0;
     border-bottom: 4px solid #000000;
 }*/
-.caret-reversed{
+/*.caret-reversed{
    border-top-width: 0;
     border-bottom: 4px solid #000000; 
 }
-
+*/
 .search_btn_submit, .share_btn_submit, .property_alert_btn_submit, .search_btn_submit2, .property_alert_btn_submit2, .profile_btn_submit, .register_btn_submit, .calculator_btn_submit, .search_btn_submit3{
     width: 130px;
     font-size: 17px;
@@ -1478,6 +1489,18 @@ li.active>a{
     margin-top: 20px;
 }
 
+/*#shareproperty_bottom_inner_div > div:nth-child(3) > div:nth-child(2) > div > div > button{
+    width: 100%;
+}
+
+#shareproperty_bottom_inner_div > div:nth-child(3) > div:nth-child(2) > div > div > div{
+    width: 30%;
+    min-width: 30%!important;
+}
+
+#shareproperty_bottom_inner_div > div:nth-child(3) > div:nth-child(2) > div > div{
+    width: 100%!important;
+}*/
 .modal.modal-wide .modal-dialog {
   width: 60%;
   margin-top: 100px;
@@ -1825,6 +1848,18 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     padding: 0;
     margin-bottom: 0;
     /*padding-left: 5%;*/
+    font-size: 120%;
+    font-family: 'ubuntu_medium';
+    font-weight: lighter;
+}
+
+.offices_titles{
+    font-weight: bolder;
+    font-size: 125%;
+}
+
+.contact_form_row{
+    margin-bottom: 1%;
 }
 
 #featuredProperty_header{

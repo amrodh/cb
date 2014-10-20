@@ -21,8 +21,8 @@
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href=""><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
-                        <a href=""><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
+                        <a href="<?=base_url();?>viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href="<?=base_url();?>viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -110,7 +110,12 @@
             </div>
                 <div id="footer_dropdown1_data"style="">
                     <b>By District</b><br>
-                    <p style="margin-top: 20px;">
+                    <div class="row" style="color: white;margin-top:2%;padding:1%;">
+                        <p><?php foreach ($districts as $item): ?>
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=villa"> <?= $item['name']; ?></a> . 
+                        <?php endforeach ?></p>
+                    </div>
+                    <!-- <p style="margin-top: 20px;">
                         <a href="">Mohandeseen  </a> . 
                         <a href="">Zamalek </a> . 
                         <a href="">Maadi </a> . 
@@ -118,7 +123,6 @@
                         <a href="">Helipolis </a> . 
                         <a href="">5th Settlement </a> . 
                         <a href="">6<sup>th</sup> October </a> . 
-
                     </p>
                     <p>
                         <a href="">Alexandria </a> . 
@@ -135,11 +139,16 @@
                         <a href="">Qena</a> . 
                         <a href="">Agamy</a> . 
                         <a href="">North Coast</a> . 
-                    </p>
+                    </p> -->
                 </div>
                 <div id="footer_dropdown2_data" style="">
                     <b>By District</b><br>
-                    <p style="margin-top: 20px;">
+                    <div class="row" style="color: white;margin-top:2%;padding:1%;">
+                        <p><?php foreach ($districts as $item): ?>
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=apartment"> <?= $item['name']; ?></a> . 
+                        <?php endforeach ?></p>
+                    </div>
+                    <!-- <p style="margin-top: 20px;">
                         <a href="">Mohandeseen  </a> . 
                         <a href="">Zamalek </a> . 
                         <a href="">Maadi </a> . 
@@ -147,7 +156,6 @@
                         <a href="">Helipolis </a> . 
                         <a href="">5th Settlement </a> . 
                         <a href="">6<sup>th</sup> October </a> . 
-
                     </p>
                     <p>
                         <a href="">Alexandria </a> . 
@@ -164,11 +172,16 @@
                         <a href="">Qena</a> . 
                         <a href="">Agamy</a> . 
                         <a href="">North Coast</a> . 
-                    </p>
+                    </p> -->
                 </div>
                 <div id="footer_dropdown3_data" style="">
                     <b>By District</b><br>
-                    <p style="margin-top: 20px;">
+                    <div class="row" style="color: white;margin-top:2%;padding:1%;">
+                        <p><?php foreach ($districts as $item): ?>
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=building"> <?= $item['name']; ?></a> . 
+                        <?php endforeach ?></p>
+                    </div>
+                    <!-- <p style="margin-top: 20px;">
                         <a href="">Mohandeseen  </a> . 
                         <a href="">Zamalek </a> . 
                         <a href="">Maadi </a> . 
@@ -176,7 +189,6 @@
                         <a href="">Helipolis </a> . 
                         <a href="">5th Settlement </a> . 
                         <a href="">6<sup>th</sup> October </a> . 
-
                     </p>
                     <p>
                         <a href="">Alexandria </a> . 
@@ -193,7 +205,7 @@
                         <a href="">Qena</a> . 
                         <a href="">Agamy</a> . 
                         <a href="">North Coast</a> . 
-                    </p>
+                    </p> -->
                 </div>
             <!--</div>-->
         </div>
@@ -208,6 +220,14 @@
 
       
         <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         <!--<script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.uploadify.min.js"></script>-->
         <script>
             $(document).ready(function() {
@@ -245,8 +265,8 @@
             // });
             
         </script>
-                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
-<script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
+        <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
 </body>
 
 </html>

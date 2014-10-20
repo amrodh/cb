@@ -52,8 +52,21 @@
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
                                 <label for="phone" class="shareproperty_titles"><?php echo $this->lang->line('register_input6'); ?></label>
-                                <input type="text" class="form-control register_textbx" name="phone" id="phone" placeholder="رجاءً أدخل رقم الهاتف"
-                                value="<?php if(isset($params)) echo $params['phone']; ?>" required>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <select class="selectpicker" id="country_Code" style="width:15%;!important" name="country_Code" data-style="btn" data-title="Select Code" data-size="5">
+                                            <option value="0">Code</option>
+                                            <?php foreach ($countryCodes as $code): ?>
+                                                <option value="<?= $code['id'] ?>"><pre><?= $code['id'];?>   <?= $code['name'] ?></pre></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control register_textbx" name="phone" id="phone" placeholder="رجاءً أدخل رقم الهاتف"
+                                        value="<?php if(isset($params)) echo $params['phone']; ?>" required>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -71,11 +84,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="padding-right: 1.5%;">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="newsletter"> <?php echo $this->lang->line('register_chkbx'); ?>
-                            </label>
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                            <div class="form-group register_groups">
+                                <label for="birthday" class="shareproperty_titles"><?php echo $this->lang->line('register_input9'); ?></label>
+                                <input type="date" class="form-control register_textbx" name="birthday" id="birthday"
+                                value="<?php if(isset($params)) echo $params['birthday']; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                            <div class="checkbox register_groups">
+                                <label>
+                                    <input type="checkbox" name="newsletter"> <?php echo $this->lang->line('register_chkbx'); ?>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="row" style="width: 32%;margin: auto;">

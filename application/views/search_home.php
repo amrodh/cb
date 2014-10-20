@@ -68,7 +68,7 @@
                            </div>
                         </div>
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
-                           <!--  Advanced Search --><?php echo $this->lang->line('searchhome_advanced'); ?> <span class="caret"></span>
+                           <!--  Advanced Search --><?php echo $this->lang->line('searchhome_advanced'); ?> <span class="caret" id="caret"></span>
                         </div>
                     </div>
                     <div class="container search_components">
@@ -80,9 +80,9 @@
                                     <option value="250000 - 500000">250,000 - 500,000</option>
                                     <option value="500000 - 750000">500,000 - 750,000</option>
                                     <option value="750000 - 1000000">750,000 - 1,000,000</option>
-                                    <option value="1000000 - 2000000">1,000,000 - 5,000,000</option>
-                                    <option value="5000000 - 10000000">5,000,000 - 20,000,000</option>
-                                    <option value="5000000 - 10000000">20,000,000+</option>
+                                    <option value="1000000 - 5000000">1,000,000 - 5,000,000</option>
+                                    <option value="5000000 - 20000000">5,000,000 - 20,000,000</option>
+                                    <option value="20000000">20,000,000+</option>
                                </select>
                            </div>
                         </div>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <input type="hidden" name="districtName" value="">
-            <input type="hidden" name="lob" id="lob" value="">
+            <input type="hidden" name="lob_selected" id="lob_selected" value="">
     </form>
     </div>
     <script src="<?php echo base_url(); ?>application/static/js/bootstrap-select.min.js"></script>

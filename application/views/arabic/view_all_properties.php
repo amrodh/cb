@@ -9,17 +9,33 @@
             <div class="properties_top_div">
                 <div id="properties_top_header_div">
                     <!--<div id="properties_top_header_left_div">-->
-                        <p style="padding-left: 20px;"><b><span id="startResult">1</span> - <span id="endResult" value="">10</span></b> من <b><?php if (isset($totalResults)) { echo $totalResults; }?></b> منزل للبيع و الايجار</p>
+                        <?php if ($totalResults !== 0): ?>
+                            <p style="padding-left: 20px;"><b><span id="startResult">1</span> - <?php if ($totalResults < 10): ?>
+                                <span id="endResult" value=""><?php echo $totalResults; ?></span>
+                            <?php else: ?>
+                                <span id="endResult" value="">١٠</span>
+                            <?php endif ?></b> من <b><?php if (isset($totalResults)) { echo $totalResults; }?></b> 
+                        <?php endif ?>
+                        <?php if (isset($commercial)): ?>
+                            <?php if (isset($commercialSale)): ?>
+                                ممتلكات تجارية للبيع
+                            <?php else: ?>
+                                ممتلكات تجارية للايجار
+                            <?php endif ?>
+                            <?php else: ?>
+                                منازل للبيع والإيجار
+                        <?php endif ?></p>
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 properties_header_cols">
                                     عرض 
                                     <select class="selectpicker" style="width: 10%;" data-style="btn" data-title="Select Type">
-                                        <option>١٠</option> 
-                                        <option>٢٠</option>
-                                        <option>٣٠</option>
-                                        <option>٤٠</option>
-                                        <option>٥٠</option>
+                                        <option value="10">١٠</option> 
+                                        <option value="20">٢٠</option>
+                                        <option value="30">٣٠</option>
+                                        <option value="40">٤٠</option>
+                                        <option value="50">٥٠</option>
                                     </select>
                                     نتائج في الصفحة
                                 </div>
@@ -55,7 +71,12 @@
                             <?php $count = 1;?>
                             <?php // printme($searchResults[0]);exit(); ?>
                             <?php if (is_array($searchResults)): ?>
-                                <?php for ($i=0 + $increment; $i < 10 + $increment; $i++) { ?>
+                                <?php if ($resultCount < 10): ?>
+                                    <?php $end = $resultCount; ?>
+                                <?php else: ?>
+                                    <?php $end = 10; ?>
+                                <?php endif ?>
+                                <?php for ($i=0 + $increment; $i < $end + $increment; $i++) { ?>
                                     <?php if ($i < $totalResults): ?>
                                         <div class="properties_common_bottom_div">
                                             <div class="checkbox properties_ckbx">
@@ -83,10 +104,14 @@
                                                 </div>
                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                     <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
                                                     <?php else: ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
                                                     <?php endif ?>
                                                 </div>
@@ -103,17 +128,22 @@
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         ٠ <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                     </button>
-                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                    <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                         <?php echo $this->lang->line('viewallproperties_share'); ?>
                                                     </button>
                                                 </div>
-                                                <div class="properties_share_div">
-                                                    <div class="row" style="margin: auto;">
-                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                <div class="properties_share_div" id="properties_share_div<?= $searchResults[$i]->PropertyId;?>">
+                                                    <div class="row" style="margin: auto;width:46%;">
+                                                        <div class="fb-share-button" data-layout="button" data-width="100%" data-href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>"></div>
+                                                        <!-- <a href="#"> -->
+                                                            <!-- <img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/> -->
+                                                        <!-- </a> -->
                                                     </div>
                                                     <div class="row" style="margin: auto;margin-top: 8%;">
-                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $searchResults[$i]->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                                        <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="properties_contact">
@@ -128,6 +158,9 @@
                                     <div id="results20" class="hide"> 
                                     <?php for ($i = 10 + $increment; $i < 20 + $increment; $i++) { ?>
                                     <?php if ($i <= $totalResults): ?>
+                                        <?php if (!isset($searchResults[$i])): ?>
+                                            <?php break; ?>
+                                        <?php endif ?>
                                         <div class="properties_common_bottom_div">
                                             <div class="checkbox properties_ckbx">
                                                 <label>
@@ -154,10 +187,14 @@
                                                 </div>
                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                     <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
                                                     <?php else: ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
                                                     <?php endif ?>
                                                 </div>
@@ -174,17 +211,22 @@
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         ٠ <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                     </button>
-                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                    <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                         <?php echo $this->lang->line('viewallproperties_share'); ?>
                                                     </button>
                                                 </div>
-                                                <div class="properties_share_div">
-                                                    <div class="row" style="margin: auto;">
-                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                <div class="properties_share_div" id="properties_share_div<?= $searchResults[$i]->PropertyId;?>">
+                                                    <div class="row" style="margin: auto;width:46%;">
+                                                        <div class="fb-share-button" data-layout="button" data-width="100%" data-href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>"></div>
+                                                        <!-- <a href="#"> -->
+                                                            <!-- <img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/> -->
+                                                        <!-- </a> -->
                                                     </div>
                                                     <div class="row" style="margin: auto;margin-top: 8%;">
-                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $searchResults[$i]->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                                        <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="properties_contact">
@@ -200,6 +242,9 @@
                                     <div id="results30" class="hide"> 
                                     <?php for ($i = 20 + $increment; $i < 30 + $increment; $i++) { ?>
                                     <?php if ($i <= $totalResults): ?>
+                                        <?php if (!isset($searchResults[$i])): ?>
+                                            <?php break; ?>
+                                        <?php endif ?>
                                         <div class="properties_common_bottom_div">
                                             <div class="checkbox properties_ckbx">
                                                 <label>
@@ -246,17 +291,22 @@
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         ٠ <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                     </button>
-                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                    <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                         <?php echo $this->lang->line('viewallproperties_share'); ?>
                                                     </button>
                                                 </div>
-                                                <div class="properties_share_div">
-                                                    <div class="row" style="margin: auto;">
-                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                <div class="properties_share_div" id="properties_share_div<?= $searchResults[$i]->PropertyId;?>">
+                                                    <div class="row" style="margin: auto;width:46%;">
+                                                        <div class="fb-share-button" data-layout="button" data-width="100%" data-href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>"></div>
+                                                        <!-- <a href="#"> -->
+                                                            <!-- <img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/> -->
+                                                        <!-- </a> -->
                                                     </div>
                                                     <div class="row" style="margin: auto;margin-top: 8%;">
-                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $searchResults[$i]->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                                        <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="properties_contact">
@@ -272,6 +322,9 @@
                                     <div id="results40" class="hide"> 
                                     <?php for ($i = 30 + $increment; $i < 40 + $increment; $i++) { ?>
                                     <?php if ($i <= $totalResults): ?>
+                                        <?php if (!isset($searchResults[$i])): ?>
+                                            <?php break; ?>
+                                        <?php endif ?>
                                         <div class="properties_common_bottom_div">
                                             <div class="checkbox properties_ckbx">
                                                 <label>
@@ -298,10 +351,14 @@
                                                 </div>
                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                     <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
                                                     <?php else: ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
                                                     <?php endif ?>
                                                 </div>
@@ -318,17 +375,22 @@
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         ٠ <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                     </button>
-                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                    <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                         <?php echo $this->lang->line('viewallproperties_share'); ?>
                                                     </button>
                                                 </div>
-                                                <div class="properties_share_div">
-                                                    <div class="row" style="margin: auto;">
-                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                <div class="properties_share_div" id="properties_share_div<?= $searchResults[$i]->PropertyId;?>">
+                                                    <div class="row" style="margin: auto;width:46%;">
+                                                        <div class="fb-share-button" data-layout="button" data-width="100%" data-href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>"></div>
+                                                        <!-- <a href="#"> -->
+                                                            <!-- <img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/> -->
+                                                        <!-- </a> -->
                                                     </div>
                                                     <div class="row" style="margin: auto;margin-top: 8%;">
-                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $searchResults[$i]->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                                        <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="properties_contact">
@@ -344,6 +406,9 @@
                                     <div id="results50" class="hide"> 
                                     <?php for ($i = 40 + $increment; $i < 50 + $increment; $i++) { ?>
                                     <?php if ($i <= $totalResults): ?>
+                                        <?php if (!isset($searchResults[$i])): ?>
+                                            <?php break; ?>
+                                        <?php endif ?>
                                         <div class="properties_common_bottom_div">
                                             <div class="checkbox properties_ckbx">
                                                 <label>
@@ -370,10 +435,14 @@
                                                 </div>
                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                     <?php if ($searchResults[$i]->SalesTypeStr == 'Sale'): ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->SaleCurrency.' '.number_format(explode('.',$searchResults[$i]->SalePrice)[0]); ?>
                                                     <?php else: ?>
-                                                        <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php if (!isset($commercial)): ?>
+                                                            <b><?php echo $searchResults[$i]->BedRoomsNumber; ?></b> غرف النوم<br>
+                                                        <?php endif ?>
                                                         <?php echo $searchResults[$i]->RentCurrency.' '.number_format(explode('.',$searchResults[$i]->RentPrice)[0]); ?>
                                                     <?php endif ?>
                                                 </div>
@@ -390,17 +459,22 @@
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                         ٠ <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                     </button>
-                                                    <button type="button" class="btn btn-default properties_btns" id="properties_share_btn">
+                                                    <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $searchResults[$i]->PropertyId;?>">
                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_plus.png" style="width: 24px;"/>
                                                         <?php echo $this->lang->line('viewallproperties_share'); ?>
                                                     </button>
                                                 </div>
-                                                <div class="properties_share_div">
-                                                    <div class="row" style="margin: auto;">
-                                                        <a href="#"><img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/></a>
+                                                <div class="properties_share_div" id="properties_share_div<?= $searchResults[$i]->PropertyId;?>">
+                                                    <div class="row" style="margin: auto;width:46%;">
+                                                        <div class="fb-share-button" data-layout="button" data-width="100%" data-href="<?= base_url();?>propertyDetails/<?= $searchResults[$i]->PropertyId;?>"></div>
+                                                        <!-- <a href="#"> -->
+                                                            <!-- <img class="properties_details_share1" src="<?= base_url();?>/application/static/images/fb-share.png" style=""/> -->
+                                                        <!-- </a> -->
                                                     </div>
                                                     <div class="row" style="margin: auto;margin-top: 8%;">
-                                                        <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a>
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $searchResults[$i]->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                                        <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                     </div>
                                                 </div>
                                                 <div class="properties_contact">

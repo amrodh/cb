@@ -21,7 +21,21 @@ class Home extends CI_Controller {
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->service->getCities();
-		// printme($this->service->Search());
+
+		// $data['featuredList'] = $this->service->getFeaturedProperties();
+		$searchParams = array(
+				'PropertyType' => '',
+				'BoxLocation' => '',
+				'PropertyFor' => '',
+				'PriceLowerLimit' => 1,
+				'PriceUpperLimit' => 100000000000000000,
+				'AreaLowerLimit' => 1,
+				'AreaUpperLimit' => 100000000000000000
+			);
+		// printme();
+		$results = $this->service->Search($searchParams);
+		$data['images'] = $this->service->getPropertyImages($results);
+		printme($data['images']);exit();
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
@@ -89,17 +103,23 @@ class Home extends CI_Controller {
 	{
 
 		$this->load->model('user');
+		$this->load->model('service');
 		$data = $this->init();
+		$data['countryCodes'] = $this->service->getCountryCodes();
+		// printme($data['countryCodes']);exit();
+
 		// printme(base_url().$data['language']);exit();
 		if(isset($_POST['submit'])){
-		
+		// printme($_POST);exit();
 			$firstname = $_POST['first_name'];
 			$lastname = $_POST['last_name'];
 			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$location	 = $_POST['location'];
+			$code	 = $_POST['country_Code'];
 			$phone	 = $_POST['phone'];
 			$password = $_POST['password'];
+			$birthday = $_POST['birthday'];
 			if (isset($_POST['newsletter']))
 			{
 				$newsletter = $_POST['newsletter'];
@@ -122,8 +142,11 @@ class Home extends CI_Controller {
 				$data['phoneError'] = 'Insert phone number';
 			}elseif (empty($_POST['location'])){
 				$data['passwordError'] = 'Insert password';
+			}elseif (empty($_POST['birthday'])) {
+				$data['birthdayError'] = 'Insert birthday';
 			}else
 			{
+				// printme($_POST);exit();
 				$user = $this->user->getUserByUsername($username);
 				if ($user)
 				{
@@ -134,10 +157,13 @@ class Home extends CI_Controller {
 						'first_name' => $_POST['first_name'],
 						'last_name' => $_POST['last_name'],
 						'location' => $_POST['location'],
-						'phone' => $_POST['phone'],
+						'phone' => $_POST['country_Code'].$_POST['phone'],
 						'password' => $_POST['password'],
+						'birthday' => $_POST['birthday'],
 						'is_valid' => 0
 						);
+
+					// printme($userData);exit();
 
 					if ($this->user->insertUser($userData))
 					{	
@@ -390,7 +416,9 @@ class Home extends CI_Controller {
 			// printme($_FILES);exit();
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['insertError'] = $this->lang->line('shareProperty_missing_area');
-			}elseif (empty($_POST['type']) || $_POST['type'] == 'Select Type') {
+			}elseif (empty($_POST['shareProperty_lob']) || $_POST['shareProperty_lob'] == 'Select Category' || $_POST['shareProperty_lob'] == 'إختار الفئة'){
+				$data['insertError'] = $this->lang->line('shareProperty_missing_category');
+			}elseif (empty($_POST['shareProperty_type']) || $_POST['shareProperty_type'] == 'Select Type') {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_type');
 			}elseif (empty($_POST['price']) || $_POST['price'] == 'Select Price') {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_price');
@@ -403,20 +431,31 @@ class Home extends CI_Controller {
 			}elseif (empty($_POST['features'])) {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_features');
 			}else{
-
 				
+				if ($_POST['shareProperty_lob'] == 1){
+					$category = 'Residential';
+				}elseif ($_POST['shareProperty_lob'] == 2) {
+					$category = 'Commercial';
+				}elseif ($_POST['shareProperty_lob'] == 3) {
+					$category = 'Auctions';
+				}elseif ($_POST['shareProperty_lob'] == 4) {
+					$category = 'Commercial Projects';
+				}
+
 				$city = $this->service->getCityByID($_POST['city']);
 				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
-
+				$propertyType = $this->service->getPropertyTypeByID($_POST['shareProperty_lob'],$_POST['shareProperty_type']);
 
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
-					'type' => $_POST['type'],
+					'category' => $category,
+					'type' => $propertyType,
 					'price' => $_POST['price'],
 					'district' => $district,
 					'features' => $_POST['features'],
 					'address' => $_POST['address'],
 					'city' => $city);
+				// printme($params);exit();
 				if ($this->property->insertProperty($params))
 				{
 					if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
@@ -494,8 +533,7 @@ class Home extends CI_Controller {
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-		// printme($data['user']->id);exit();
-
+// printme($data['propertyType1']);exit();
 		// if (isset($data['loggedIn'])){
 		// 	$data['userFavorites'] = getUserFavorites($data['user']->id);
 		// }
@@ -514,7 +552,6 @@ class Home extends CI_Controller {
 				$type = '';
 			}else{
 				$type = $_POST['type'];
-				// $type = $this->service->getPropertyTypeByID($_POST['lob'], $_POST['type']);
 			}
 
 			if ($_POST['city'] == 0)
@@ -542,11 +579,17 @@ class Home extends CI_Controller {
 			if ($_POST['price'] == 0)
 			{
 				$priceLowerLimit = 1;
-				$priceUpperLimit = 1000000000000000;
+				$priceUpperLimit = 1000000000000000000;
 			}else{
-				$price = explode(' - ', $_POST['price']);
-				$priceLowerLimit = $price[0];
-				$priceUpperLimit = $price[1];
+				if ($_POST['price'] == 20000000)
+				{
+					$priceLowerLimit = $_POST['price'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$price = explode(' - ', $_POST['price']);
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = $price[1];
+				}
 			}
 
 			if ($_POST['area'] == 0)
@@ -554,9 +597,15 @@ class Home extends CI_Controller {
 				$areaLowerLimit = 1;
 				$areaUpperLimit = 100000000;
 			}else{
-				$area = explode(' - ', $_POST['area']);
-				$areaLowerLimit = $area[0];
-				$areaUpperLimit = $area[1];
+				if ($_POST['area'] == 1000)
+				{
+					$priceLowerLimit = $_POST['area'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$area = explode(' - ', $_POST['area']);
+					$areaLowerLimit = $area[0];
+					$areaUpperLimit = $area[1];
+				}
 			}
 
 			$searchParams = array(
@@ -570,17 +619,276 @@ class Home extends CI_Controller {
 			);
 
 			$data['searchResults'] = $this->service->Search($searchParams);
-			// printme($data['searchResults']['totalResults']);
-			// printme($data['searchResults']['results']);exit();
 			if ($data['searchResults']['totalResults'] != 0){
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
-				
+				$data['resultCount'] = $data['totalResults'];
 			}else{
+				$data['resultCount'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
+		}elseif (isset($_POST['searchSubmit3'])) {
+			if ($_POST['type_2'] == 0)
+			{
+				$type = '';
+			}else{
+				$type = $_POST['type_2'];
+			}
+
+			if ($_POST['city_2'] == 0)
+			{
+				$boxLocation = '';
+			}
+			else{
+				if ($_POST['districtName_2'] == 0)
+				{
+					$boxLocation = $this->service->getCityByID($_POST['city_2']);
+				}
+				else{
+					$boxLocation = $this->service->getDistrictByID($_POST['city_2'], $_POST['districtName_2']);
+				}
+			}
+
+			if ($_POST['contractType_2'] == 0)
+			{
+				$propertyFor = '';
+
+			}else{
+				$propertyFor = $_POST['contractType_2'];
+			}
+
+			if ($_POST['price_2'] == 0)
+			{
+				$priceLowerLimit = 1;
+				$priceUpperLimit = 1000000000000000000;
+			}else{
+				if ($_POST['price_2'] == 20000000)
+				{
+					$priceLowerLimit = $_POST['price_2'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$price = explode(' - ', $_POST['price_2']);
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = $price[1];
+				}
+			}
+
+			if ($_POST['area_2'] == 0)
+			{
+				$areaLowerLimit = 1;
+				$areaUpperLimit = 100000000;
+			}else{
+				if ($_POST['area_2'] == 1000)
+				{
+					$priceLowerLimit = $_POST['area_2'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$area = explode(' - ', $_POST['area_2']);
+					$areaLowerLimit = $area[0];
+					$areaUpperLimit = $area[1];
+				}
+			}
+
+			$searchParams = array(
+				'PropertyType' => $type,
+				'BoxLocation' => $boxLocation,
+				'PropertyFor' => $propertyFor,
+				'PriceLowerLimit' => $priceLowerLimit,
+				'PriceUpperLimit' => $priceUpperLimit,
+				'AreaLowerLimit' => $areaLowerLimit,
+				'AreaUpperLimit' => $areaUpperLimit
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['resultCount'] = $data['totalResults'];
+			}else{
+				$data['totalResults'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
+
+		}elseif (isset($_POST['searchSubmit4'])) {
+			if ($_POST['type_3'] == 0)
+			{
+				$type = '';
+			}else{
+				$type = $_POST['type_3'];
+			}
+
+			if ($_POST['city_3'] == 0)
+			{
+				$boxLocation = '';
+			}
+			else{
+				if ($_POST['districtName_3'] == 0)
+				{
+					$boxLocation = $this->service->getCityByID($_POST['city_3']);
+				}
+				else{
+					$boxLocation = $this->service->getDistrictByID($_POST['city_3'], $_POST['districtName_3']);
+				}
+			}
+
+			if ($_POST['contractType_3'] == 0)
+			{
+				$propertyFor = '';
+
+			}else{
+				$propertyFor = $_POST['contractType_3'];
+			}
+
+			if ($_POST['price_3'] == 0)
+			{
+				$priceLowerLimit = 1;
+				$priceUpperLimit = 1000000000000000000;
+			}else{
+				if ($_POST['price_3'] == 20000000)
+				{
+					$priceLowerLimit = $_POST['price_3'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$price = explode(' - ', $_POST['price_3']);
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = $price[1];
+				}
+			}
+
+			if ($_POST['area_3'] == 0)
+			{
+				$areaLowerLimit = 1;
+				$areaUpperLimit = 100000000;
+			}else{
+				if ($_POST['area_3'] == 1000)
+				{
+					$priceLowerLimit = $_POST['area_3'];
+					$priceUpperLimit = 1000000000000000000;
+				}else{
+					$area = explode(' - ', $_POST['area_3']);
+					$areaLowerLimit = $area[0];
+					$areaUpperLimit = $area[1];
+				}
+			}
+
+			$searchParams = array(
+				'PropertyType' => $type,
+				'BoxLocation' => $boxLocation,
+				'PropertyFor' => $propertyFor,
+				'PriceLowerLimit' => $priceLowerLimit,
+				'PriceUpperLimit' => $priceUpperLimit,
+				'AreaLowerLimit' => $areaLowerLimit,
+				'AreaUpperLimit' => $areaUpperLimit
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['resultCount'] = $data['totalResults'];
+			}else{
+				$data['resultCount'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
+		}elseif (isset($_GET['contractType'])) {
+			if ($_GET['contractType'] == 'buy')
+			{
+				$searchParams = array(
+					'PropertyType' => '',
+					'BoxLocation' => '',
+					'PropertyFor' => '',
+					'PriceLowerLimit' => 1,
+					'PriceUpperLimit' => 100000000000000,
+					'AreaLowerLimit' => 1,
+					'AreaUpperLimit' => 100000000000000
+				);
+
+				$data['searchResults'] = $this->service->Search($searchParams);
+				$data['searchResults'] = $data['searchResults']['results'];
+				$results = array();
+				$count = 0;
+				foreach ($data['searchResults'] as $result) {
+					if ($result->LineofBusinessFK == 2)
+					{
+						if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+						{
+							$results[$count] = $result;
+							$count++;
+						}
+					}
+					
+				}
+				$data['searchResults'] = $results;
+				$data['commercial'] = true;
+				$data['commercialSale'] = true;
+				$data['resultCount'] = $count;
+				$data['totalResults'] = $count;
+			}else{
+				$searchParams = array(
+					'PropertyType' => '',
+					'BoxLocation' => '',
+					'PropertyFor' => '',
+					'PriceLowerLimit' => 1,
+					'PriceUpperLimit' => 100000000000000,
+					'AreaLowerLimit' => 1,
+					'AreaUpperLimit' => 100000000000000
+				);
+
+				$data['searchResults'] = $this->service->Search($searchParams);
+
+				if ($data['searchResults']['totalResults'] != 0){
+					$data['searchResults'] = $data['searchResults']['results'];
+					$results = array();
+					$count = 0;
+					foreach ($data['searchResults'] as $result) {
+						if ($result->LineofBusinessFK == 2)
+						{
+							if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
+							{
+								$results[$count] = $result;
+								$count++;
+							}
+						}
+					}
+					$data['searchResults'] = $results;
+					$data['commercial'] = true;
+					$data['commercialRent'] = true;
+					$data['resultCount'] = $count;
+					$data['totalResults'] = $count;
+				}else{
+					$data['totalResults'] = 0;
+					$data['noResults'] = "Sorry, there were no results that match your criteria";
+				}
+
+			}
+		}elseif (isset($_GET['district'])) {
+			if ($_GET['type'] == 'villa'){
+				$type = '10';
+			}elseif ($_GET['type'] == 'apartment') {
+				$type = '1';
+			}else{
+				$type = '11';
+			}
+			$searchParams = array(
+				'PropertyType' => $type,
+				'BoxLocation' => $_GET['district'],
+				'PropertyFor' => '',
+				'PriceLowerLimit' => 1,
+				'PriceUpperLimit' => 100000000000000,
+				'AreaLowerLimit' => 1,
+				'AreaUpperLimit' => 100000000000000
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['resultCount'] = $data['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+			}else{
+				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 			
-			// printme($data['searchResults']['totalResults']);exit();
 		}else{
 			$searchParams = array(
 				'PropertyType' => '',
@@ -594,6 +902,7 @@ class Home extends CI_Controller {
 
 			$data['searchResults'] = $this->service->Search($searchParams);
 			$data['totalResults'] = $data['searchResults']['totalResults'];
+			$data['resultCount'] = $data['searchResults']['totalResults'];
 			$data['searchResults'] = $data['searchResults']['results'];
 			// printme($data['searchResults']);exit();
 		}
@@ -763,6 +1072,7 @@ class Home extends CI_Controller {
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();
 		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
+		$data['cities'] = $this->service->getCities();
 		$this->load->view($data['languagePath'].'auction',$data);
 	}
 
@@ -882,6 +1192,8 @@ class Home extends CI_Controller {
 			$data['languagePath'] = 'arabic/';
 
 		$this->loadLanguage($data['language']);
+		$this->load->model('service');
+		$data['districts'] = $this->service->getAllDistricts();
 
 		return $data;
 		
@@ -1086,7 +1398,42 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$this->load->model('office');
+		$this->load->model('user');
 		$data['offices'] = $this->office->getOffices();
+
+
+		if (isset($_POST['submit']))
+		{
+			if (empty($_POST['contact_firstName']))
+			{
+				$data['contactError'] = $this->lang->line('offices_missing_firstName');
+			}elseif (empty($_POST['contact_lastName'])) {
+				$data['contactError'] = $this->lang->line('offices_missing_lastName');
+			}elseif (empty($_POST['contact_email'])) {
+				$data['contactError'] = $this->lang->line('offices_missing_email');
+			}elseif (empty($_POST['contact_phone'])) {
+				$data['contactError'] = $this->lang->line('offices_missing_phone');
+			}elseif (empty($_POST['contact_subject'])) {
+				$data['contactError'] = $this->lang->line('offices_missing_subject');
+			}else{
+
+				$params = array(
+					'first_name' => $_POST['contact_firstName'],
+					'last_name' => $_POST['contact_lastName'],
+					'email' => $_POST['contact_email'],
+					'phone' => $_POST['contact_phone'],
+					'comments' => $_POST['contact_subject'], 
+					'propertyId' => ''
+					);
+
+				$interests = array();
+				if ($this->user->insertContactInformation($params, $interests)){
+					$data['contactSuccess'] = $this->lang->line('offices_contact_success');
+				}else{
+					$data['contactError'] = $this->lang->line('offices_contact_error');
+				}
+			}
+		}
 		$this->load->view($data['languagePath'].'offices', $data);
 	}
 

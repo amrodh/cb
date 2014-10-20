@@ -324,7 +324,6 @@ class User extends CI_Model {
    function insertContactInformation($params, $interests)
    {
         $interestArray = array();
-        
 
         $query = $this->db->insert_string('contacts', $params);
         $query = $this->db->query($query);

@@ -346,6 +346,7 @@ $(document).ready(function ()
                             .success(function( html ) {
                                   $('#address').val(html);
                                   var address = html;
+                                  $('#offices_map').css('height', '100%');
                                   $('#offices_map').show();
                                     geocoder.geocode( { 'address': address}, function(results, status) {
                                       if (status == google.maps.GeocoderStatus.OK) {
@@ -378,9 +379,21 @@ $(document).ready(function ()
               var contractType = $('[name="contractType"').val();
               var price = $('[name="price"]').val();
               var area = $('[name="area"]').val();
+              var lob = $('[name="lob"]').val();
 
               $('[name="districtName"]').val($('[name="district"]').val());
-              $('#lob').val('1');
+              $('#lob_selected').val(lob);
+            });
+
+            $('[name="searchSubmit3"]').click(function(event) {
+              var propertyType = $('[name="type_2"]').val();
+              var city = $('[name="city_2"]').val();
+              var district = $('[name="district_2"]').val();
+              var price = $('[name="price_2"]').val();
+              var area = $('[name="area_2"]').val();
+
+              $('[name="districtName_2"]').val($('[name="district_2"]').val());
+              // $('#lob').val('1');
             });
 
             $('#viewResults').change(function(event) {
@@ -530,6 +543,8 @@ function toggleVisibility()
     if ($('.search_bottom_row').css('display') == 'none')
         {
             $(".search_bottom_row").slideDown("slow");
+            $("#caret").removeClass('caret');
+            $("#caret").addClass('caret_reversed');
             if (($(window).width() >= '768' && $(window).width() < '992') || ($(window).width() < '768'))
                 {
                     $('.search_components2').animate({marginTop:"20px"});
@@ -538,12 +553,14 @@ function toggleVisibility()
             else 
                 {
                     $('.search_components2').animate({marginTop:"5px"});
-                    $('.search_btn_submit').animate({marginTop:"67px"});
+                    $('.search_btn_submit').animate({marginTop:"45px"});
                 }
         }
         else 
         {
             $(".search_bottom_row").slideUp("slow");
+            $("#caret").removeClass('caret_reversed');
+            $("#caret").addClass('caret');
             if (($(window).width() >= '768' && $(window).width() < '992') || ($(window).width() < '768'))
                 {
                     $('.search_components2').animate({marginTop:"54px"});
@@ -583,13 +600,13 @@ function redirect_profile(language)
     
 }
 
-$('#properties_share_btn').click(function(event) {
-    // alert('hi');
-    if ($('.properties_share_div').css('display') == 'none'){
-      $(".properties_share_div").slideDown("slow");
+$('.properties_share_btn').click(function(event) {
+    // alert($(this).val());
+    if ($('#properties_share_div'+ $(this).val()).css('display') == 'none'){
+      $("#properties_share_div" + $(this).val()).slideDown("slow");
     }
     else{
-      $(".properties_share_div").slideUp("slow");
+      $("#properties_share_div" + $(this).val()).slideUp("slow");
     }
 });
 
@@ -597,8 +614,9 @@ function toggleVisibility2 (){
     var margintop = $('#footer_div').css('margin-top');
 if ($('.property_alert_bottom_row').css('display') == 'none')
     {
-        
         $(".property_alert_bottom_row").slideDown("slow");
+        $("#caret").removeClass('caret');
+        $("#caret").addClass('caret_reversed');
         if (($(window).width() >= '768' && $(window).width() < '992') || ($(window).width() < '768'))
                 {
                     
@@ -613,6 +631,8 @@ if ($('.property_alert_bottom_row').css('display') == 'none')
     else
     {
         $(".property_alert_bottom_row").slideUp("slow");
+        $("#caret").removeClass('caret_reversed');
+        $("#caret").addClass('caret');
         if (($(window).width() >= '768' && $(window).width() < '992') || ($(window).width() < '768'))
                 {
                     $('#footer_div').animate({marginTop: margintop});

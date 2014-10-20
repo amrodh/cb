@@ -28,7 +28,7 @@ class service extends CI_Model {
             'PunitRent' => '',
             'AreaLowerLimit' => $inputs['AreaLowerLimit'],
             'AreaUpperLimit' => $inputs['AreaUpperLimit'],
-            'PropertyType' => '1',
+            'PropertyType' => $inputs['PropertyType'],
             'PropertyFor' => $inputs['PropertyFor'],
             'BoxLocation' => $inputs['BoxLocation'],
             'BudgetFrom' => '',
@@ -45,11 +45,7 @@ class service extends CI_Model {
             'isFeatured' => false,
             'resultsCountPerPage' => '100'
             );
-        
-// printme($inputs);
-
         $results = $this->client->Search($inputs);
-// printme($results);exit();
 
         $data = array();
         if ($results->TotalResults != 0)
@@ -83,18 +79,18 @@ class service extends CI_Model {
         return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 
-    function getPropertyImages($id, $unitId)
-    {
-        $inputs = array(
-            'PropertyId' => $id,
-            'UnitId' => $unitId,
-            'ImageType' => '',
-            'URL' => ''
-            );
-        $results = $this->client->GetListOfImages($inputs);
-        printme($results);exit();
-        return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
-    }
+    // function getPropertyImages($id, $unitId)
+    // {
+    //     $inputs = array(
+    //         'PropertyId' => $id,
+    //         'UnitId' => $unitId,
+    //         'ImageType' => '',
+    //         'URL' => ''
+    //         );
+    //     $results = $this->client->GetListOfImages($inputs);
+    //     printme($results);exit();
+    //     return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
+    // }
 
     function getCities()
     {
@@ -115,6 +111,23 @@ class service extends CI_Model {
         //    $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
         // }
         //  return $data;
+    }
+
+    function getPropertyImages($array)
+    {
+        // printme($array['results']);exit();
+        foreach ($array['results'] as $result) {
+            printme($result['PropertyId']);exit();
+        }
+        $inputs = array(
+            'PropertyId' => $id,
+            'UnitId' => '',
+            'ImageType' => 'Image',
+            'URL' => ''
+            );
+        $results = $this->client->GetListOfImages($inputs);
+        printme($results);exit();
+        // return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 
     function importCitiesIntoDB()
@@ -154,7 +167,7 @@ class service extends CI_Model {
     {   
 
         $cities = $this->getCitiesFromDB();
-         $this->db->empty_table('district'); 
+        $this->db->empty_table('district'); 
         foreach ($cities as $city) {
             $inputs = array('cityId' => $city->id);
             $result = $this->client->GetDistrictList($inputs);
@@ -224,6 +237,18 @@ class service extends CI_Model {
             return false;
     }
     
+    function getAllDistricts()
+    {
+        $q = $this
+              ->db
+              ->get('district');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
 
     function getPropertyTypes($id)
     {
@@ -282,9 +307,11 @@ class service extends CI_Model {
 
     function getFeaturedProperties($inputs)
     {
-        // $inputs = array('companyId' => $cityID,
-        //                 'commercialId' => );
+        $inputs = array('companyId' => '',
+                        'commercialId' => '',
+                        'residentialId' => '');
         $result = $this->client->GetFeaturedProperty($inputs);
+        printme($result);exit();
         $data = array();
         // if(is_array($result->GetFeaturedPropertyResult->DistrictItem)){
         //     foreach ($result->GetFeaturedPropertyResult->DistrictItem as $district) {
@@ -296,7 +323,19 @@ class service extends CI_Model {
         //     return 0; 
     }
 
-   
+    function getCountryCodes()
+    {
+        $result = $this->client->GetCountryCode();
+        if(is_array($result->GetCountryCodeResult->vw_CountryPhCode)){
+            foreach ($result->GetCountryCodeResult->vw_CountryPhCode as $code) {
+               $data[] = array('id' => $code->PhoneCode , 'name' => $code->CountryPhoneCode);
+            }
+            return $data;
+        }
+        else 
+            return 0;
+        // printme($data);exit();
+    }
 
 }
 

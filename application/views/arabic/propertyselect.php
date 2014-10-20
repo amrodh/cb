@@ -1,5 +1,5 @@
 <?php if ($key == 1): ?>
-	<select class="selectpicker" name="type" id="searchHome_type" name="type" data-style="btn" data-title="Select Type" data-size="5">
+	<select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type" data-size="5">
 	    <option value="0">Select Type</option> 
 	    <?php foreach ($propertyType as $index => $type): ?>
 	        <option value="<?= $index; ?>"><?= $type ?></option>

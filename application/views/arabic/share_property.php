@@ -111,7 +111,7 @@
                                     <div id="shareProperty_districtContainer">
                                      
                                     </div>
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" id="disabled_district_5">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             المنطقة
                                         </div>
@@ -122,7 +122,6 @@
                                             <?php endforeach ?>
                                         </select>
                                     </div>
-                                    <!--  -->
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">

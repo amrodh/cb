@@ -15,8 +15,8 @@
                     <div class="col-lg-8">
                         <div id="search_header" style="margin-top: -30px;">
                             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-                               <li class="active"><a href="#recent" id="auction_anchor1" data-toggle="tab"><?php echo $this->lang->line('auction_tab1'); ?></a></li>
-                               <li><a href="#upcoming" id="auction_anchor3" data-toggle="tab"><?php echo $this->lang->line('auction_tab2'); ?></a></li>
+                               <li class="active" style="padding: 0; height: 25px;"><a href="#recent" id="auction_anchor1" data-toggle="tab" style="height: 25px;padding: 0;padding-top: 2%;"><?php echo $this->lang->line('auction_tab1'); ?></a></li>
+                               <li style="padding: 0; height: 25px;"><a href="#upcoming" id="auction_anchor3" data-toggle="tab" style="height: 25px;padding: 0;padding-top: 2%;"><?php echo $this->lang->line('auction_tab2'); ?></a></li>
                             </ul>
                         </div>
                         <div class="tab-content auction_body">

@@ -13,6 +13,17 @@
     padding: 0px;
 }
 
+.caret_reversed {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-bottom: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
 
 *{
     font-family: 'droidarabickufi_regular';
@@ -533,7 +544,7 @@ li.active>a{
 
 .bootstrap-select.btn-group .btn .caret{
     position: relative;
-    margin-right: -10%;
+    margin-right: -40%;
     margin-top: 2%;
 }
 
@@ -962,6 +973,10 @@ li.active>a{
     margin-bottom: 10px;
     padding: 10px;
     position: relative;
+}
+
+.offices_divs{
+    background-color: white;   
 }
 
 #properties_top_header_div > div > div > div > div > button{
@@ -1834,7 +1849,8 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     color: #5a7baa;
 }
 
-.offices_divs{
+.
+_divs{
     background-color: white;   
 }
 
@@ -1857,6 +1873,16 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     background-color: white;
     padding: 0;
     margin-bottom: 0;
+    font-size: 120%;
+    font-family: 'droidarabickufi_regular';
+    font-weight: lighter;
+}
+
+.offices_titles{
+    font-size: 125%;
+}
+.contact_form_row{
+    margin-bottom: 1%;
 }
 
 #featuredProperty_header{
@@ -2150,6 +2176,11 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
 @font-face{
     font-family: "droidarabickufi_bold";
     src: url('../fonts/DroidKufi-Bold.ttf');
+}
+
+@font-face {
+    font-family: "ubuntu_medium";
+    src: url('../fonts/Ubuntu-M.ttf');
 }
 
 ::-webkit-input-placeholder {

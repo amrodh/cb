@@ -80,6 +80,9 @@ $route["$appended_lang/shareProperty"] = "home/shareProperty";
 $route['viewAllProperties'] = 'home/viewAllProperties';
 $route["$appended_lang/viewAllProperties"] = "home/viewAllProperties";
 
+$route['viewAllProperties/(:any)'] = 'home/viewAllProperties';
+$route["$appended_lang/viewAllProperties/(:any)"] = "home/viewAllProperties";
+
 $route['propertyDetails'] = 'home/propertyDetails';
 $route["$appended_lang/propertyDetails"] = "home/propertyDetails";
 

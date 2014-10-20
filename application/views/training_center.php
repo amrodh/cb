@@ -11,11 +11,14 @@
         </div>
         <div id="training_bottom_div">
         	<div class="row">
+        		<img style="width: 100%; margin-bottom: 1%;" src="<?php echo base_url(); ?>application/static/images/training_center.png">
+        	</div>
+        	<div class="row">
                 <div id="search_header" style="margin-top: -30px;">
                     <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-                       <li class="active"><a href="#course1" id="training_anchor1" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab1'); ?></a></li>
-                       <li><a href="#course2" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab2'); ?></a></li>
-                       <li><a href="#course3" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab3'); ?></a></li>
+                       <li class="active" style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course1" id="training_anchor1" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab1'); ?></a></li>
+                       <li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course2" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab2'); ?></a></li>
+                       <li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course3" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab3'); ?></a></li>
                     </ul>
                 </div>
                 <div class="tab-content training_body">

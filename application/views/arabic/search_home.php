@@ -58,7 +58,7 @@
                        </div>
                     </div>
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;">
-                        <!-- بحث بالتفصيل --> <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret"></span>
+                        <!-- بحث بالتفصيل --> <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
                 </div>
                 <div class="container search_components">
