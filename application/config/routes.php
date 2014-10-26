@@ -129,6 +129,9 @@ $route["$appended_lang/resetpassword/(:any)"] = "home/resetpassword";
 $route['offices'] = 'home/offices';
 $route["$appended_lang/offices"] = "home/offices";
 
+$route['about'] = 'home/about';
+$route["$appended_lang/about"] = "home/about";
+
 
 $route["$appended_lang/home"] = "home";
 

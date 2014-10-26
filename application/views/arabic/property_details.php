@@ -1,9 +1,15 @@
 <?php include('header.php'); ?>
+<div id="images" class="hide">
+    <?= $images; ?>
+</div>
         <div class="container" id="property_address_div">
-            <h1><b> <?php if ($searchResults->LocationProject != ''): ?>
-            <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationProject; ?>,
+            <h1><b> 
+            <?php if ($searchResults->LocationProject != ''): ?>
+                <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationProject; ?>, <?php echo $searchResults->LocationDistrict; ?>, <?php echo $searchResults->LocationCity; ?>
+            <?php else: ?>
+                <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationDistrict; ?>, <?php echo $searchResults->LocationCity; ?>
             <?php endif ?>
-            <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationDistrict; ?>, <?php echo $searchResults->LocationCity; ?></b></h1>
+            </b></h1>
         </div>
         <div class="container" id="property_details_container">
             <div id="property_tabs_header">
@@ -19,36 +25,17 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_details_images" class="property_borders">
                             <div id="property_details_mainimage">
-                                <img id="property_mainimage" src="<?= base_url();?>/application/static/images/sample_property_image.png">
+                                <img id="property_mainimage" src="">
                             </div>
                             <div class="visible-xs hidden-lg hidden-md hidden-sm" id="property_image_btn_div">
                                 <button type="button" class="btn btn-default property_btn">عرض المزيد من الصور</button>
                             </div>
                             <div id="property_details_thumbnails" class="hidden-xs">
-                                <p id="property_thumbnails_count">١ من ٤٥ صورة</p>
+                                <p id="property_thumbnails_count">١ من <span id="imgCount"></span> صورة</p>
                                 <div class="well property_well">
                                     <div class="carousel slide" id="property_carousel">
-                                        <div class="carousel-inner">
-                                            <div class="item active" style="margin-left: 10px;">
-                                                <div class="row">
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                    <div class="property_thumbnail"><img src="<?= base_url();?>/application/static/images/sample_property_image.png" alt="Image" class="img-responsive"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="carousel-inner" id="carousal_div">
+                                            
                                         </div>
                                         <a class="left carousel-control" href="#property_carousel" data-slide="prev"><img src="<?= base_url();?>/application/static/images/left_arrow.png">  </a>
                                         <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>/application/static/images/right_arrow.png"> </a>
@@ -349,6 +336,52 @@
           $('#property_tabs a:first').tab('show');
         });
         $(document).ready(function (){
+
+            var main_image_src = $(".imagesList > li:nth-child(1) > img").attr('src');
+           if(main_image_src){
+                $("#property_mainimage").attr('src', main_image_src);
+           }else{
+                $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/sample_property_image.png');
+           }
+
+           //item_html = $("#carousal_div").html();
+
+
+           var html_output ='';
+           var image_count = 0;
+           var flag = 1;
+
+           $(".imagesList li").each(function(){
+                image_count++;
+
+                if(image_count == 1){
+                    html_output += '<div class="item active"><div class="row">';
+                }
+
+                if(flag == 0){
+                    html_output += '<div class="item"><div class="row">';
+                    flag = 1;
+                }
+
+                html_output+= '<div class="property_thumbnail"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></a></div>';
+
+                if(image_count % 3 == 0 && flag == 1){
+                    html_output += '</div></div>';
+                    flag = 0;
+                }
+
+
+           });
+
+           if(image_count == 0){
+              $("#property_details_thumbnails").hide();
+           }
+
+           $("#imgCount").html(image_count);
+
+           $("#carousal_div").html(html_output);
+           
+
            $('.property_thumbnail > img').click(function (){
                $('#property_mainimage').attr("src", $(this).attr("src"));
            }) ;

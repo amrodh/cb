@@ -894,7 +894,7 @@ li.active>a{
     margin-right: 870px;
 }
 
-.properties_main_div, .compare_main_div, .shareproperty_main_div, .auctions_main_div, .training_main_div{
+.properties_main_div, .compare_main_div, .shareproperty_main_div, .auctions_main_div, .training_main_div, .about_main_div{
     padding: 0;
     width: 90%;
     /*height: 90%;*/
@@ -904,7 +904,7 @@ li.active>a{
     margin: 0px auto;
 }
 
-.properties_top_div, #compare_top_divstyle, .shareproperty_top_div, .auctions_top_div, .training_top_div{
+.properties_top_div, #compare_top_divstyle, .shareproperty_top_div, .auctions_top_div, .training_top_div, .about_top_div{
     width: 100%;
     height: 90px;
     background-color: #f0f0f0;
@@ -990,10 +990,16 @@ li.active>a{
 .properties_ckbx{
     margin: 0;
     float: right;
+    margin-left: 1%;
 }
 
 .properties_img{
     /*float: left;*/
+}
+
+.properties_top_div{
+    height: 5%;
+    padding-right: 20px;
 }
 
 .properties_number{
@@ -1119,6 +1125,21 @@ li.active>a{
     margin-top: -2%;
     position: absolute;
     z-index: 999;
+}
+
+.sorting_1{
+    border-top: none!important;
+}
+
+tbody > tr > td {
+    border: none!important;
+    border-top: none!important;
+}
+
+
+#properties_wrapper > .row > .col-xs-6{
+    direction: ltr;
+    float: left;
 }
 
 .btn > a{
@@ -1529,6 +1550,10 @@ label{
     margin-top: 20px;
 }
 
+.carousel-inner img{
+    cursor:pointer;
+}
+
 #passwordAlert{
     display: none;
     width: 65%;
@@ -1659,11 +1684,11 @@ margin-top: 5%
     font-weight: lighter;
 }
 
-.auctions_main_div, .training_main_div{
+.auctions_main_div, .training_main_div, .about_main_div{
     margin-top: 30px;
 }
 
-.auctions_top_div, .training_top_div{
+.auctions_top_div, .training_top_div, .about_top_div{
     padding-top: 10px;
     padding-right: 30px;
     font-size: 30px;
@@ -1676,7 +1701,7 @@ margin-top: 5%
     /*padding-top: 0px;*/
 }
 
-#auctions_breadcrumb, #training_breadcrumb{
+#auctions_breadcrumb, #training_breadcrumb, #about_breadcrumb{
     font-size: 11px;
 }
 

@@ -23,19 +23,20 @@ class Home extends CI_Controller {
 		$data['cities'] = $this->service->getCities();
 
 		// $data['featuredList'] = $this->service->getFeaturedProperties();
-		$searchParams = array(
-				'PropertyType' => '',
-				'BoxLocation' => '',
-				'PropertyFor' => '',
-				'PriceLowerLimit' => 1,
-				'PriceUpperLimit' => 100000000000000000,
-				'AreaLowerLimit' => 1,
-				'AreaUpperLimit' => 100000000000000000
-			);
+		// $searchParams = array(
+		// 		'PropertyType' => '',
+		// 		'BoxLocation' => '',
+		// 		'PropertyFor' => '',
+		// 		'PriceLowerLimit' => 1,
+		// 		'PriceUpperLimit' => 100000000000000000,
+		// 		'AreaLowerLimit' => 1,
+		// 		'AreaUpperLimit' => 100000000000000000
+		// 	);
 		// printme();
-		$results = $this->service->Search($searchParams);
-		$data['images'] = $this->service->getPropertyImages($results);
-		printme($data['images']);exit();
+		// $results = $this->service->Search($searchParams);
+
+		// $data['images'] = $this->service->getPropertyImages(210426, 210423);
+		// printme($data['images']);exit();
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
@@ -533,7 +534,7 @@ class Home extends CI_Controller {
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-// printme($data['propertyType1']);exit();
+		// printme($data['propertyType1']);exit();
 		// if (isset($data['loggedIn'])){
 		// 	$data['userFavorites'] = getUserFavorites($data['user']->id);
 		// }
@@ -623,6 +624,10 @@ class Home extends CI_Controller {
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
 				$data['resultCount'] = $data['totalResults'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+				}
 			}else{
 				$data['resultCount'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
@@ -704,6 +709,10 @@ class Home extends CI_Controller {
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
 				$data['resultCount'] = $data['totalResults'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+				}
 			}else{
 				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
@@ -786,10 +795,58 @@ class Home extends CI_Controller {
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
 				$data['resultCount'] = $data['totalResults'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+				}
 			}else{
 				$data['resultCount'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
+		}elseif (isset($_GET['category'])){
+			if($_GET['category'] == 'home' && isset($_GET['contractType2']))
+			{
+				$searchParams = array(
+					'PropertyType' => '',
+					'BoxLocation' => '',
+					'PropertyFor' => '',
+					'PriceLowerLimit' => 1,
+					'PriceUpperLimit' => 100000000000000,
+					'AreaLowerLimit' => 1,
+					'AreaUpperLimit' => 100000000000000
+				);	
+				$data['searchResults'] = $this->service->Search($searchParams);
+				if ($data['searchResults']['totalResults'] != 0)
+				{
+					$data['searchResults'] = $data['searchResults']['results'];
+					$results = array();
+					$count = 0;
+					foreach ($data['searchResults'] as $result) {
+						if ($result->LineofBusinessFK == 2)
+						{
+							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							{
+								$results[$count] = $result;
+								$count++;
+							}
+						}
+						
+					}
+					$data['searchResults'] = $results;
+					$data['commercial'] = true;
+					$data['commercialSale'] = true;
+					$data['resultCount'] = $count;
+					$data['totalResults'] = $count;
+					$data['images'] = array();
+					foreach ($data['searchResults'] as $property) {
+						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+					}
+				}else{
+					$data['totalResults'] = 0;
+					$data['noResults'] = "Sorry, there were no results that match your criteria";
+				}
+			}
+
 		}elseif (isset($_GET['contractType'])) {
 			if ($_GET['contractType'] == 'buy')
 			{
@@ -804,25 +861,36 @@ class Home extends CI_Controller {
 				);
 
 				$data['searchResults'] = $this->service->Search($searchParams);
-				$data['searchResults'] = $data['searchResults']['results'];
-				$results = array();
-				$count = 0;
-				foreach ($data['searchResults'] as $result) {
-					if ($result->LineofBusinessFK == 2)
-					{
-						if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+				if ($data['searchResults']['totalResults'] != 0)
+				{
+					$data['searchResults'] = $data['searchResults']['results'];
+					$results = array();
+					$count = 0;
+					foreach ($data['searchResults'] as $result) {
+						if ($result->LineofBusinessFK == 2)
 						{
-							$results[$count] = $result;
-							$count++;
+							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							{
+								$results[$count] = $result;
+								$count++;
+							}
 						}
+						
 					}
-					
+					$data['searchResults'] = $results;
+					$data['commercial'] = true;
+					$data['commercialSale'] = true;
+					$data['resultCount'] = $count;
+					$data['totalResults'] = $count;
+					$data['images'] = array();
+					foreach ($data['searchResults'] as $property) {
+						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+					}
+				}else{
+					$data['totalResults'] = 0;
+					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
-				$data['searchResults'] = $results;
-				$data['commercial'] = true;
-				$data['commercialSale'] = true;
-				$data['resultCount'] = $count;
-				$data['totalResults'] = $count;
+				
 			}else{
 				$searchParams = array(
 					'PropertyType' => '',
@@ -855,6 +923,10 @@ class Home extends CI_Controller {
 					$data['commercialRent'] = true;
 					$data['resultCount'] = $count;
 					$data['totalResults'] = $count;
+					$data['images'] = array();
+					foreach ($data['searchResults'] as $property) {
+						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+					}
 				}else{
 					$data['totalResults'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
@@ -884,6 +956,10 @@ class Home extends CI_Controller {
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['resultCount'] = $data['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+				}
 			}else{
 				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
@@ -904,6 +980,11 @@ class Home extends CI_Controller {
 			$data['totalResults'] = $data['searchResults']['totalResults'];
 			$data['resultCount'] = $data['searchResults']['totalResults'];
 			$data['searchResults'] = $data['searchResults']['results'];
+			$data['images'] = array();
+			foreach ($data['searchResults'] as $property) {
+				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+			}
+			// printme($images);exit();
 			// printme($data['searchResults']);exit();
 		}
 
@@ -927,7 +1008,9 @@ class Home extends CI_Controller {
 		$this->load->model('service');
 		$this->load->model('user');
 		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
+		
 
+		$data['images'] = $this->service->getPropertyImages($data['propertyId'], $data['searchResults']->UnitId);
 
 		if (isset($_POST['submit'])){
 			if (empty($_POST['firstName'])){
@@ -1229,7 +1312,7 @@ class Home extends CI_Controller {
 		$this->lang->load('resetpassword', $lang);
 		$this->lang->load('offices', $lang);
 		$this->lang->load('featuredProperties', $lang);
-		// $this->lang->load('viewallproperties', $lang);
+		$this->lang->load('about', $lang);
 		// $this->lang->load('viewallproperties', $lang);
 	}
 
@@ -1435,6 +1518,12 @@ function resetpassword()
 			}
 		}
 		$this->load->view($data['languagePath'].'offices', $data);
+	}
+
+	function about()
+	{
+		$data = $this->init();
+		$this->load->view($data['languagePath'].'about', $data);
 	}
 
 	function displayOffice()

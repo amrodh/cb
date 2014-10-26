@@ -43,7 +43,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
-            'resultsCountPerPage' => '100'
+            'resultsCountPerPage' => '20'
             );
         $results = $this->client->Search($inputs);
 
@@ -113,20 +113,17 @@ class service extends CI_Model {
         //  return $data;
     }
 
-    function getPropertyImages($array)
+    function getPropertyImages($id, $serial)
     {
-        // printme($array['results']);exit();
-        foreach ($array['results'] as $result) {
-            printme($result['PropertyId']);exit();
-        }
         $inputs = array(
             'PropertyId' => $id,
-            'UnitId' => '',
+            'UnitId' => $serial,
             'ImageType' => 'Image',
-            'URL' => ''
+            'URL' => 'http://64.150.184.135:81/'
             );
         $results = $this->client->GetListOfImages($inputs);
-        printme($results);exit();
+
+        return $results->GetListOfImagesResult;
         // return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 

@@ -2,8 +2,8 @@
     <form id="search_form">
         <div id="search_header">
             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-               <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li>
-               <li><a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a></li>
+               <!-- <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li> -->
+               <li class="active"><a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a></li>
                <li><a href="#commercials" data-toggle="tab"><?php echo $this->lang->line('search_tab3'); ?></a></li>
             </ul>
         </div>
@@ -92,7 +92,7 @@
                    </div>
                 </div>
             </div> -->
-            <div class="tab-pane" id="residentials">
+            <div class="tab-pane active" id="residentials">
                 <form id="search_form3" role="form" name="searchForm3" method="post" action="<?php echo base_url();?>viewAllProperties">
                     <input type="hidden" name="districtName_2" value="">
                     <input type="hidden" name="lob_2" id="lob_2" value="1">

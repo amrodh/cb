@@ -2,12 +2,14 @@
     <head>
         <title>ColdWell Banker</title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.css">
         <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->
         <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/static/css/uploadify.css" /> -->
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.js"></script>
         
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
@@ -175,7 +177,7 @@
                                     <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu3'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?category=home&contractType2=rent"><?php echo $this->lang->line('home_submenu3'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -210,7 +212,7 @@
                                 </li> -->
                             </ul>
                         </li>
-                        <li><a href=""><?php echo $this->lang->line('home_menu6'); ?></a></li>
+                        <li><a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_menu6'); ?></a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
