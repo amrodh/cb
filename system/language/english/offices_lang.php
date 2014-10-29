@@ -14,7 +14,7 @@ $lang['offices_input1']	= "First Name:";
 $lang['offices_input2']	= "Last Name:";
 $lang['offices_input3']	= "E-mail:";
 $lang['offices_input4']	= "Phone:";
-$lang['offices_input5']	= "Subject:";
+$lang['offices_input5']	= "Message:";
 
 $lang['offices_contact_success']	= "Your Contact Info was inserted successfully!";
 $lang['offices_contact_error']	= "Your Contact Info wasn't inserted successfully. Please try again later.";

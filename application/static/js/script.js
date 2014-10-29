@@ -487,28 +487,96 @@ $(document).ready(function ()
                     });
             });
 
-            // $('#nextPage').click(function(event) {
-            //   var url = $("#url").val();
-            //   url = url+"viewAllProperties";
-            //   var increment = $('#endResult').text();
-            //    $.ajax({
-            //       type: "POST",
-            //       url: url,
-            //       data: { increment: city_id, key: key }
-            //     })
-            //       .success(function( html ) {
-            //         if (html != 0)
-            //         { 
-            //         }
-            //         else
-            //         {
-            //         }
-            //       });
-            //   // alert('hi');
-            // });
+            $('.contact_button').click(function(event) {
+              // alert($(this).attr('id'));
+              $('#propertyID').val($(this).attr('id'));
+            });
+
+            
+
+            $('#contact_form_btn').click(function(event) {
+              // alert($('#propertyID').val());
+              var firstname = $('#property_first_name').val();
+              var lastname = $('#property_last_name').val();
+              var email = $('#property_email').val();
+              var phone = $('#property_phone').val();
+              var comments = $('#property_form_textarea').val();
+              var propertyID = $('#propertyID').val();
+                var url = $("#url").val();
+                url = url+"insertContact";
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID }
+                  })
+                    .success(function( response ) {
+                        if (response == 1){
+                            $('#success_message').removeClass('hide');
+                            jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+                                $('#success_message').addClass('hide');
+                                $('#property_form')[0].reset();
+                            });
+                        }else{
+                            $('#failure_message').removeClass('hide');
+                            jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+                                $('#failure_message').addClass('hide');
+                            });
+                        }
+                            
+                        // alert(response);
+                    });
+            });
+            
 
         });
 
+
+function favorites(propertyID, color)
+{
+    var propertyID = propertyID;
+    var url = $('#url').val();
+    var userID = $('#userID').val();
+    if ($('#icon_'+propertyID).attr('class') == 'properties_star_icon_orange')
+    {
+        $.ajax({
+          url: url+'deleteFavorite',
+          type: "POST",
+          data: {userID: userID, propertyID: propertyID}
+        })
+        .success(function(response) {
+            $('#icon_'+propertyID).attr('src', url+'application/static/images/icon_gray_star.png');
+            $('#icon_'+propertyID).removeClass('properties_star_icon_orange');
+            $('#icon_'+propertyID).addClass('properties_star_icon_gray');
+        });
+
+    }else
+        if($('#icon_'+propertyID).attr('class') == 'properties_star_icon_gray')
+        {
+            $.ajax({
+              url: url+'insertFavorite',
+              type: "POST",
+              data: {userID: userID, propertyID: propertyID}
+            })
+            .success(function(response) {
+              // alert(response);
+              $('#icon_'+propertyID).attr('src', url+'application/static/images/icon_orange_star.png');
+              $('#icon_'+propertyID).removeClass('properties_star_icon_gray');
+              $('#icon_'+propertyID).addClass('properties_star_icon_orange');
+            });
+        }
+}
+
+function checkValidation()
+{
+    if ($('[name="property_chkbx[]"]:checked').length > 3)
+    {
+      alert("You can only choose up to 3 properties for comparison.");
+      return false;
+    }else{
+      return true;
+    }
+
+}
 
 function formValidation()
 {

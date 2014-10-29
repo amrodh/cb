@@ -230,18 +230,29 @@ class Home extends CI_Controller {
 	public function profile()
 	{
 		$this->load->model('user');
+		$this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
+		// printme($data['user']->id);exit();
 		if(!isset($data['user']))
 			redirect('home');
+
+		$data['favorites'] = $this->user->getUserFavorites($data['user']->id);
+		$data['favoritesArray'] = array();
+		$data['favoritesImages'] = array();
+		foreach ($data['favorites'] as $key => $property) {
+
+			$data['favoritesArray'][$key] = $this->service->getPropertyByID($property->property_id);
+			// printme();exit();
+			$data['favoritesImages'][$property->property_id] = $this->service->getPropertyImages($property->property_id,$data['favoritesArray'][$key]->UnitId);		
+
+		}
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$location = $_POST['location'];
 			$phone = $_POST['phone'];
-
-
 
 			if (empty($username)) {
 				$data['usernameError'] = 'Insert Username';
@@ -486,6 +497,16 @@ class Home extends CI_Controller {
 										$this->load->model('property');
 										$this->property->insertImage($params);
 										$data['insertProcess'] = true;
+
+										$firstname = $data['user']->first_name;
+										$lastname = $data['user']->last_name;
+										$phone = $data['user']->phone;
+										$email = $data['user']->email;
+										$body = 'Name: '.$firstname.' '.$lastname.'<br>
+												E-mail: '.$email.'<br>
+												Phone: '.$phone.'<br>
+												Property Type: '.$propertyType;
+										$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com');
 									}else{
 										$this->property->deleteProperty($params['property_id']);
 										$data['insertProcess'] = false;
@@ -529,15 +550,23 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('property');
 		$this->load->model('service');
+		$this->load->model('user');
 		$data['cities'] = $this->service->getCities();
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-		// printme($data['propertyType1']);exit();
-		// if (isset($data['loggedIn'])){
-		// 	$data['userFavorites'] = getUserFavorites($data['user']->id);
-		// }
+
+		if (isset($data['loggedIn'])){
+			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
+			if(is_array($data['userFavorites'])){
+				foreach ($data['userFavorites'] as $property) {
+					$userFavorites[] = $property->property_id;
+				}
+			}
+		}
+
+		//printme($userFavorites);exit();
 
 		if (isset($_POST['increment'])){
 			$data['increment'] = $_POST['increment'];
@@ -982,10 +1011,17 @@ class Home extends CI_Controller {
 			$data['searchResults'] = $data['searchResults']['results'];
 			$data['images'] = array();
 			foreach ($data['searchResults'] as $property) {
+				if(isset($userFavorites)){
+					if(in_array($property->PropertyId,$userFavorites)){
+						$property->is_favorite = 1;
+					}else{
+						$property->is_favorite = 0;
+					}
+				}
 				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 			}
-			// printme($images);exit();
-			// printme($data['searchResults']);exit();
+			// printme($data['user']);exit();
+			// printme($data);exit();
 		}
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -996,6 +1032,24 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('property');
 		$this->load->model('service');
+
+		if(isset($_POST['compareSubmit']))
+		{
+			$properties = array();
+			$count = 0;
+			foreach ($_POST['property_chkbx'] as $key => $property) {
+				$propertyID = explode('_', $property);
+				$propertyID = $propertyID[1];
+				$data['properties'][$propertyID] = $this->service->getPropertyByID($propertyID);
+				$UnitId = $data['properties'][$propertyID]->UnitId;
+				$data['images'][$propertyID] = $this->service->getPropertyImages($propertyID, $UnitId);
+				$count++;
+			}
+			$data['propertyCount'] = $count;
+			// printme($data['properties']);exit();
+
+		}
+
 		$this->load->view($data['languagePath'].'compare_properties',$data);
 	}
 
@@ -1040,7 +1094,14 @@ class Home extends CI_Controller {
 					'propertyId' => $data['propertyId']
 					);
 				if ($this->user->insertContactInformation($params, $interests)){
+
 					$data['contactSuccess'] = "Your Contact Info was inserted successfully!";
+					$body = 'Name: '.$_POST['firstName'].' '.$_POST['lastName'].'<br>
+						E-mail: '.$_POST['email'].'<br>
+						Phone: '.$_POST['phone'].'<br>
+						PropertyID: '.$data['propertyId'].'<br>
+						Comments: '.$_POST['comments'];
+					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
 				}
 			}
 		}
@@ -1095,6 +1156,7 @@ class Home extends CI_Controller {
 					$firstname = $_POST['uploadcv_app_firstname'];
 					$lastname = $_POST['uploadcv_app_lastname'];
 					$id = $_POST['uploadcv_app_email'];
+					$email = $_POST['uploadcv_app_email'];
 					$data['params'] = $_POST;
 				}
 			}
@@ -1118,6 +1180,10 @@ class Home extends CI_Controller {
 				if ($this->vacancy->insertEnrollment($params))
 				{
 					$data['uploadSuccess'] = $this->lang->line('uploadCV_success');
+					$body = 'Name: '.$firstname.' '.$lastname.'<br>
+							E-mail: '.$email.'<br>
+							Vacancy: '.$vacancy_id;
+					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com');
 				}
 			}else{
 				$uploadError = uploadme($this);
@@ -1487,37 +1553,127 @@ function resetpassword()
 
 		if (isset($_POST['submit']))
 		{
-			if (empty($_POST['contact_firstName']))
+			if(!isset($data['loggedIn']))
 			{
-				$data['contactError'] = $this->lang->line('offices_missing_firstName');
-			}elseif (empty($_POST['contact_lastName'])) {
-				$data['contactError'] = $this->lang->line('offices_missing_lastName');
-			}elseif (empty($_POST['contact_email'])) {
-				$data['contactError'] = $this->lang->line('offices_missing_email');
-			}elseif (empty($_POST['contact_phone'])) {
-				$data['contactError'] = $this->lang->line('offices_missing_phone');
-			}elseif (empty($_POST['contact_subject'])) {
-				$data['contactError'] = $this->lang->line('offices_missing_subject');
-			}else{
+				if (empty($_POST['contact_firstName']))
+				{
+					$data['contactError'] = $this->lang->line('offices_missing_firstName');
+				}elseif (empty($_POST['contact_lastName'])) {
+					$data['contactError'] = $this->lang->line('offices_missing_lastName');
+				}elseif (empty($_POST['contact_email'])) {
+					$data['contactError'] = $this->lang->line('offices_missing_email');
+				}elseif (empty($_POST['contact_phone'])) {
+					$data['contactError'] = $this->lang->line('offices_missing_phone');
+				}elseif (empty($_POST['contact_subject'])) {
+					$data['contactError'] = $this->lang->line('offices_missing_subject');
+				}else{
 
+					$params = array(
+						'first_name' => $_POST['contact_firstName'],
+						'last_name' => $_POST['contact_lastName'],
+						'email' => $_POST['contact_email'],
+						'phone' => $_POST['contact_phone'],
+						'comments' => $_POST['contact_subject'], 
+						'propertyId' => ''
+						);
+
+					$interests = array();
+					if ($this->user->insertContactInformation($params, $interests)){
+						echo 1;
+						$body = 'Name: '.$_POST['contact_firstName'].' '.$_POST['contact_lastName'].'<br>
+								E-mail: '.$_POST['contact_email'].'<br>
+								Phone: '.$_POST['contact_phone'].'<br>
+								Comments: '.$_POST['contact_subject'];
+						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+						// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
+					}else{
+						echo 0;
+						// $data['contactError'] = $this->lang->line('offices_contact_error');
+					}
+				}
+			}else{
+				$firstname = $data['user']->first_name;
+				$lastname = $data['user']->last_name;
+				$phone = $data['user']->phone;
+				$email = $data['user']->email;
 				$params = array(
-					'first_name' => $_POST['contact_firstName'],
-					'last_name' => $_POST['contact_lastName'],
-					'email' => $_POST['contact_email'],
-					'phone' => $_POST['contact_phone'],
-					'comments' => $_POST['contact_subject'], 
-					'propertyId' => ''
-					);
+						'first_name' => $firstname,
+						'last_name' => $lastname,
+						'email' => $email,
+						'phone' => $phone,
+						'comments' => $_POST['contact_subject'], 
+						'propertyId' => ''
+						);
 
 				$interests = array();
 				if ($this->user->insertContactInformation($params, $interests)){
-					$data['contactSuccess'] = $this->lang->line('offices_contact_success');
+					echo 1;
+					$body = 'Name: '.$firstname.' '.$lastname.'<br>
+							E-mail: '.$email.'<br>
+							Phone: '.$phone.'<br>
+							Comments: '.$_POST['contact_subject'];
+					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+					// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 				}else{
-					$data['contactError'] = $this->lang->line('offices_contact_error');
+					echo 0;
+					// $data['contactError'] = $this->lang->line('offices_contact_error');
 				}
+				// printme($firstname);exit();
 			}
+			
 		}
 		$this->load->view($data['languagePath'].'offices', $data);
+	}
+
+	function insertContact ()
+	{
+		$this->load->model('user');
+		$data = $this->init();
+		$interests = array();
+		$params = array(
+			'first_name' => $_POST['firstname'],
+			'last_name' => $_POST['lastname'],
+			'email' => $_POST['email'],
+			'phone' => $_POST['phone'],
+			'comments' => $_POST['comments'], 
+			'propertyId' => $_POST['propertyID']
+			);
+		// printme($params);
+		if ($this->user->insertContactInformation($params, $interests)){
+			echo 1;
+			$body = 'Name: '.$_POST['firstname'].' '.$_POST['lastname'].'<br>
+					E-mail: '.$_POST['email'].'<br>
+					Phone: '.$_POST['phone'].'<br>
+					PropertyID: '.$_POST['propertyID'].'<br>
+					Comments: '.$_POST['comments'];
+			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
+		}else{
+			echo 0;
+		}
+	}
+
+	function insertFavorite()
+	{
+		$params = array(
+			'user_id' => $_POST['userID'],
+			'property_id' => $_POST['propertyID']
+		);
+		if ($this->user->insertFavorite($params)){
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+
+	function deleteFavorite()
+	{
+		$userID = $_POST['userID'];
+		$propertyID = $_POST['propertyID'];
+		if ($this->user->deleteFavorite($userID, $propertyID)){
+			echo 1;
+		}else{
+			echo 0;
+		}
 	}
 
 	function about()

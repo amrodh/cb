@@ -126,6 +126,43 @@ class User extends CI_Model {
            return false;  
      }
 
+     function getUserFavorites($id)
+     {
+          $q = $this
+              ->db
+              ->where('user_id',$id)
+              ->get('user_favorites');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+           return false; 
+     }
+
+     function insertFavorite ($params)
+     {
+          $query = $this->db->insert_string('user_favorites', $params);
+          $query = $this->db->query($query);
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+          return true;
+     }
+
+     function deleteFavorite ($userID, $propertyID)
+     {
+
+          $q = $this
+              ->db
+              ->where('user_id',$userID)
+              ->where('property_id', $propertyID)
+              ->delete('user_favorites');
+          if($this->db->affected_rows() != 1){
+            return false;
+          }
+          return true;
+     }
+
      function getRootByUsername($username)
      {
         $q = $this

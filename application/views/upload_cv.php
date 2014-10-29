@@ -37,14 +37,14 @@
                             </div>
                         </div>
                         <?php if (isset($uploadError)) :?>
-                        <div class="row" style="width: 55%;margin: auto;margin-left:36%;">
+                        <div class="row" style="width: 100%;margin: auto;text-align:center;">
                             <div class="alert alert-danger" role="alert">
                                 <?=$uploadError; ?> 
                             </div>
                         </div>
                         <?php endif ?>
                         <?php if (isset($uploadSuccess)) :?>
-                        <div class="row" style="width: 55%;margin: auto;margin-left:36%;">
+                        <div class="row" style="width: 100%;margin: auto;text-align:center;">
                             <div class="alert alert-success" role="alert">
                                 <?=$uploadSuccess; ?> 
                             </div>

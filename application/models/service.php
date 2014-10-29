@@ -76,6 +76,7 @@ class service extends CI_Model {
             'CompanyId' => ''
             );
         $results = $this->client->GetResultsByPropertyID($inputs);
+        // printme($results);exit();
         return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 

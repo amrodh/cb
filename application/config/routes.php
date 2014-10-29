@@ -132,6 +132,14 @@ $route["$appended_lang/offices"] = "home/offices";
 $route['about'] = 'home/about';
 $route["$appended_lang/about"] = "home/about";
 
+$route['insertContact'] = 'home/insertContact';
+$route["$appended_lang/insertContact"] = "home/insertContact";
+
+$route['insertFavorite'] = 'home/insertFavorite';
+$route["$appended_lang/insertFavorite"] = "home/insertFavorite";
+
+$route['deleteFavorite'] = 'home/deleteFavorite';
+$route["$appended_lang/deleteFavorite"] = "home/deleteFavorite";
 
 $route["$appended_lang/home"] = "home";
 

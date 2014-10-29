@@ -41,34 +41,37 @@
 							<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle2'); ?></p>
 							<form role="form" action="" method="post">
 								<div class="form-group" style="width:100%;">
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
-				                            <label for="contact_firstName"><?php echo $this->lang->line('offices_input1'); ?></label>
-				                            <input type="text" class="form-control" name="contact_firstName" id="contact_firstName" placeholder="Enter first name">
+									<?php if (!isset($loggedIn)): ?>
+										<div class="row contact_form_row">
+				                        	<div class="col-lg-6">
+					                            <label for="contact_firstName"><?php echo $this->lang->line('offices_input1'); ?></label>
+					                            <input type="text" class="form-control" name="contact_firstName" id="contact_firstName" placeholder="Enter first name" required>
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
-				                            <label for="contact_lastName"><?php echo $this->lang->line('offices_input2'); ?></label>
-				                            <input type="text" class="form-control" name="contact_lastName" id="contact_lastName" placeholder="Enter last name">
+				                        <div class="row contact_form_row">
+				                        	<div class="col-lg-6">
+					                            <label for="contact_lastName"><?php echo $this->lang->line('offices_input2'); ?></label>
+					                            <input type="text" class="form-control" name="contact_lastName" id="contact_lastName" placeholder="Enter last name" required>
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row"> 
-			                        	<div class="col-lg-6">
-				                        	<label for="contact_email"><?php echo $this->lang->line('offices_input3'); ?></label>
-				                        	<input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="Enter E-mail">
+				                        <div class="row contact_form_row"> 
+				                        	<div class="col-lg-6">
+					                        	<label for="contact_email"><?php echo $this->lang->line('offices_input3'); ?></label>
+					                        	<input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="Enter E-mail" required>
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
-				                        	<label for="contact_phone"><?php echo $this->lang->line('offices_input4'); ?></label>
-				                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="Enter Phone">
+				                        <div class="row contact_form_row">
+				                        	<div class="col-lg-6">
+					                        	<label for="contact_phone"><?php echo $this->lang->line('offices_input4'); ?></label>
+					                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="Enter Phone" required>
+					                        </div>
 				                        </div>
-			                        </div>
+									<?php endif ?>
+			                        
 			                        <div class="row contact_form_row">
 				                        <div class="col-lg-12">
 				                        	<label for="contact_subject"><?php echo $this->lang->line('offices_input5');?></label>
-				                        	<textarea class="form-control" name="contact_subject" id="contact_subject" rows="3"></textarea>
+				                        	<textarea class="form-control" name="contact_subject" id="contact_subject" rows="3" required></textarea>
 				                        </div>
 			                        </div>
 			                        <div class="row">
