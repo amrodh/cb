@@ -27,7 +27,7 @@ $(document).ready(function ()
                     src: '../application/static/images/x.png',
                     alt: 'delete'
                   }).click(function() {
-                    $(this).parent().parent().remove();
+                    $(this).parent().remove();
                   }));
               }
           });
@@ -56,7 +56,7 @@ $(document).ready(function ()
 
 
            $("#btn_subscribe").click(function(){
-
+              // alert('hi');
            		var email;
            		if( $("#footer_subscribe_email").length == 0){
            			email = 'user';
@@ -66,27 +66,27 @@ $(document).ready(function ()
            				return false;
            			}
            		}
-
+              // alert(email);return;
            		var url = $("#url").val();
 		        url = url+"subscribeuser";
 		        $.ajax({
 		          type: "POST",
 		          url: url,
-		          data: { id: email }
-		        })
-		          .success(function( msg ) {
-		                $(".footer_col_title").hide();
+		          data: { id: email },
+              success: function( msg ) {
+		                $("#footer_bottom_div").hide();
 		                $("#btn_subscribe").hide();
                         $("#footer_subscribe_email").hide();
                         $("#successMessage").addClass('alert-success');
                         $("#successMessage").show();
-                        $("#successMessage").html('Subscription was successfull.');
-		          }),
-                  error(function() {
+                        $("#successMessage").html('Subscription was successful.');
+		          },
+                  error:function() {
                         $("#successMessage").addClass('alert-danger');
                         $("#successMessage").show();
                         $("#successMessage").html('Subscription failed. Please try again later');
-                  });
+                  }
+                });
 
 
 

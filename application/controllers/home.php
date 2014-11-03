@@ -483,8 +483,6 @@ class Home extends CI_Controller {
 							 	$i++;
 							}
 							
-							// printme($_FILES);exit();
-
 							foreach ($images as $image) {
 								$fileExtension = explode('.',$image['name']);
 								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
@@ -532,8 +530,9 @@ class Home extends CI_Controller {
 		if($_POST['id'] == 'user'){
 			$params['user_identifier'] = $this->session->userdata['id'];
 		}else{
-			$params['user_identifier'];
+			$params['user_identifier'] = $_POST['id'];
 		}
+		// printme($_POST['id']);
 		$process = $this->user->insertNewsletterData($params);
 		if($process)
 		{
@@ -1020,8 +1019,6 @@ class Home extends CI_Controller {
 				}
 				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 			}
-			// printme($data['user']);exit();
-			// printme($data);exit();
 		}
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -1046,8 +1043,6 @@ class Home extends CI_Controller {
 				$count++;
 			}
 			$data['propertyCount'] = $count;
-			// printme($data['properties']);exit();
-
 		}
 
 		$this->load->view($data['languagePath'].'compare_properties',$data);
@@ -1122,6 +1117,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('user');
 
+		// printme($data['uri']);
 
 		$vacancy_id = $data['uri'];
 
@@ -1165,6 +1161,7 @@ class Home extends CI_Controller {
 			$filename = $filename[0];
 			$ext = explode('.', $_FILES['userfile']['name']);
 			$ext = $ext[1];
+			// if ($ext != 'pdf' && $ext != 'doc' &&)
 			$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
 			$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
 			$this->config->set_item('allowed_types','pdf|doc|docx');
@@ -1187,7 +1184,7 @@ class Home extends CI_Controller {
 				}
 			}else{
 				$uploadError = uploadme($this);
-				$data['uploadError'] = $uploadError['error'];
+				$data['uploadError'] = $uploadError['error']." (pdf, doc and docx)";
 			}
 
 			

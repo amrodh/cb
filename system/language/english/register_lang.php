@@ -10,6 +10,6 @@ $lang['register_input5']	= "Location";
 $lang['register_input6']	= "Phone";
 $lang['register_input7']	= "Password";
 $lang['register_input8']	= "Confirm Password";
-$lang['register_input9']	= "Birthday";
+$lang['register_input9']	= "Birth Date";
 $lang['register_chkbx']	= "Subscribe for Newsletter";
 $lang['register_button']	= "Submit";

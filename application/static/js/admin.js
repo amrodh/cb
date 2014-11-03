@@ -64,6 +64,25 @@ $("#newsletterSelect").change(function(){
 		$("#"+value).removeClass('hide');
 	});
 
+$('#addMoreIDs').click(function(event) {
+	$.getScript("../../application/static/js/getDelete.js");
+	if ($('#propertyID').val().match(/^\d+$/))
+	{
+		$('#propertiesIDs').append('<tr id="'+$('#propertyID').val()+'"><td>'+$('#propertyID').val()+'<input type="hidden" name="properties[]" value="'+$('#propertyID').val()+'"></td><td><img id"'+$('#propertyID').val()+'" src="../../application/static/images/x.png" class="deleteBtn"></td></tr>');
+	}
+	else{
+		$('#numeric_alert').removeClass('hide');
+		jQuery("#numeric_alert").delay(2000).fadeOut("slow",function(){
+            $('#numeric_alert').addClass('hide');
+        });
+		
+		// alert('');
+	}
+	
+	
+});
+
+	
 
 $('.bxslider').bxSlider({
     auto:true

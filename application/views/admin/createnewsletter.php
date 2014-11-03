@@ -83,6 +83,51 @@
                                         <input type="submit" name="bannerspreview" class="btn btn-primary" value="Preview">
                                     </form>
                                 </div>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                <div class="hide newsletterContent" id="properties">
+                                    <div class="col-lg-6">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Title:</td>
+                                                    <td><input type="text" name="title">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lower Text:</td>
+                                                    <td>
+                                                    <textarea name="lower" id="" cols="30" rows="10"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PropertyID:</td>
+                                                    <td>
+                                                        <input type="number" id="propertyID" name="propertyID">
+                                                        <input type="button" id="addMoreIDs" value="Add More Properties">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <input type="submit" name="propertiespreview" class="btn btn-primary" value="Preview">
+                                        <div class="row hide" id="numeric_alert" style="width: 100%;margin-top:2%;">
+                                            <div class="alert alert-danger" role="alert" style="text-align: center;">
+                                                Please insert numeric values only.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <table id="propertiesIDs">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Property IDs</td>
+                                                    <td>Delete</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                </form>
+                                
                             </div>
                         </div>
                         <!-- <div class="panel-footer">

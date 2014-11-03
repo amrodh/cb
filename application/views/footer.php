@@ -101,11 +101,12 @@
                         <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
                     </div>
                 <?php endif ?>
-                        <div class="row"  style="width: 100%;">
-                            <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
-                                
-                            </div>
-                        </div>
+                        
+                </div>
+                <div class="row"  style="width: 100%;">
+                    <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
+                        
+                    </div>
                 </div>
             </div>
                 <div id="footer_dropdown1_data"style="">

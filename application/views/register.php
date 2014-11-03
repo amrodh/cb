@@ -62,7 +62,7 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control register_textbx" style="width: 100%" name="phone" id="phone" placeholder="Please enter phone number"
+                                        <input type="text" class="form-control register_textbx" style="width: 66%" name="phone" id="phone" placeholder="Please enter phone number"
                                         value="<?php if(isset($params)) echo $params['phone']; ?>" required>
                                     </div>
                                 </div>
@@ -78,17 +78,17 @@
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="confirmpassword" class="shareproperty_titles"><?php echo $this->lang->line('register_input8'); ?></label>
-                                <input type="password" class="form-control register_textbx" name="confirmpassword" id="confirmpassword" placeholder="Enter password" required>
+                                <label for="birthday" class="shareproperty_titles"><?php echo $this->lang->line('register_input9'); ?></label>
+                                <input type="date" class="form-control register_textbx" name="birthday" id="birthday"
+                                value="<?php if(isset($params)) echo $params['birthday']; ?>" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
                             <div class="form-group register_groups">
-                                <label for="birthday" class="shareproperty_titles"><?php echo $this->lang->line('register_input9'); ?></label>
-                                <input type="date" class="form-control register_textbx" name="birthday" id="birthday"
-                                value="<?php if(isset($params)) echo $params['birthday']; ?>" required>
+                                <label for="confirmpassword" class="shareproperty_titles"><?php echo $this->lang->line('register_input8'); ?></label>
+                                <input type="password" class="form-control register_textbx" name="confirmpassword" id="confirmpassword" placeholder="Enter password" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">

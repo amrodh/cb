@@ -130,21 +130,21 @@
                                                                     </div>
                                                                     <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                         <div class="row" style="margin: auto;width:46%;">
-                                                                            <!-- <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div> -->
+                                                                            <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                         </div>
                                                                         <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                            <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a> -->
+                                                                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
                                                                             <script>
-                                                                            // !function(d,s,id)
-                                                                            // {
-                                                                            //     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-                                                                            //     if(!d.getElementById(id)){
-                                                                            //         js=d.createElement(s);
-                                                                            //         js.id=id;
-                                                                            //         js.src=p+'://platform.twitter.com/widgets.js';
-                                                                            //         fjs.parentNode.insertBefore(js,fjs);
-                                                                            //     }
-                                                                            // }(document, 'script', 'twitter-wjs');
+                                                                            !function(d,s,id)
+                                                                            {
+                                                                                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                                                                                if(!d.getElementById(id)){
+                                                                                    js=d.createElement(s);
+                                                                                    js.id=id;
+                                                                                    js.src=p+'://platform.twitter.com/widgets.js';
+                                                                                    fjs.parentNode.insertBefore(js,fjs);
+                                                                                }
+                                                                            }(document, 'script', 'twitter-wjs');
                                                                             </script>
                                                                             <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                                         </div>
@@ -234,21 +234,21 @@
                                                                     </div>
                                                                     <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                         <div class="row" style="margin: auto;width:46%;">
-                                                                            <!-- <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div> -->
+                                                                            <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                         </div>
                                                                         <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                            <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a> -->
+                                                                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
                                                                             <script>
-                                                                            // !function(d,s,id)
-                                                                            // {
-                                                                            //     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-                                                                            //     if(!d.getElementById(id)){
-                                                                            //         js=d.createElement(s);
-                                                                            //         js.id=id;
-                                                                            //         js.src=p+'://platform.twitter.com/widgets.js';
-                                                                            //         fjs.parentNode.insertBefore(js,fjs);
-                                                                            //     }
-                                                                            // }(document, 'script', 'twitter-wjs');
+                                                                            !function(d,s,id)
+                                                                            {
+                                                                                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                                                                                if(!d.getElementById(id)){
+                                                                                    js=d.createElement(s);
+                                                                                    js.id=id;
+                                                                                    js.src=p+'://platform.twitter.com/widgets.js';
+                                                                                    fjs.parentNode.insertBefore(js,fjs);
+                                                                                }
+                                                                            }(document, 'script', 'twitter-wjs');
                                                                             </script>
                                                                             <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                                         </div>
@@ -436,26 +436,26 @@
              //          }
              //        });
 
-            // var map;
-            // var elevator;
-            // var myOptions = {
-            //     zoom: 1,
-            //     center: new google.maps.LatLng(0, 0),
-            //     mapTypeId: 'terrain'
-            // };
-            // map = new google.maps.Map($('#properties_bottom_right_div')[0], myOptions);
+            var map;
+            var elevator;
+            var myOptions = {
+                zoom: 1,
+                center: new google.maps.LatLng(0, 0),
+                mapTypeId: 'terrain'
+            };
+            map = new google.maps.Map($('#properties_bottom_right_div')[0], myOptions);
 
-            // for (var x = 0; x < addresses.length; x++) {
-            //     $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-            //         var p = data.results[0].geometry.location
-            //         var latlng = new google.maps.LatLng(p.lat, p.lng);
-            //         new google.maps.Marker({
-            //             position: latlng,
-            //             map: map
-            //         });
+            for (var x = 0; x < addresses.length; x++) {
+                $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+                    var p = data.results[0].geometry.location
+                    var latlng = new google.maps.LatLng(p.lat, p.lng);
+                    new google.maps.Marker({
+                        position: latlng,
+                        map: map
+                    });
 
-            //     });
-            // }
+                });
+            }
 
 
             $('.imgModal').click(function(event) {

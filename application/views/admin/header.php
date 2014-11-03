@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
 
 <!-- <?php if ($request == 'content'): ?> -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css"> -->
 <!-- <?php endif ?> -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">

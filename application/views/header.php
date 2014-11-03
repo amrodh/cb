@@ -76,7 +76,7 @@
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="register"><?php echo $this->lang->line('home_register'); ?></a>
+                         <a href="<?=base_url();?>register"><?php echo $this->lang->line('home_register'); ?></a>
                      </label>
                       
                 <?php endif ?>
