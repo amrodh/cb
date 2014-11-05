@@ -13,7 +13,12 @@ $(document).ready(function ()
           });
 
           $('body').on('change', '#file', function() {
-              if (this.files && this.files[0]) {
+            // alert('ho');
+            var ext = $('#file').val().split('.').pop().toLowerCase();
+            if($.inArray(ext, ['pdf']) == -1) {
+                // alert('invalid extension!');
+                // return;
+                if (this.files && this.files[0]) {
                   abc += 1; // Incrementing global variable by 1.
                   var z = abc - 1;
                   var x = $(this).parent().find('#previewimg' + z).remove();
@@ -30,6 +35,9 @@ $(document).ready(function ()
                     $(this).parent().remove();
                   }));
               }
+            }
+            // alert($('#file').val());return;
+              
           });
 // To Preview Image
       function imageIsLoaded(e) {
