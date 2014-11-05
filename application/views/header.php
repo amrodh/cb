@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>ColdWell Banker</title>
+        <title><?= $title;?></title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.css">
         <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->

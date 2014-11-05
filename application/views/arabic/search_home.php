@@ -13,8 +13,8 @@
                                 <option value="0">إختار الفئة</option> 
                                 <option value="1">عقارات سكنية</option>
                                 <option value="2">عقارات تجارية</option>
-                                <option value="3">مزادات</option>
-                                <option value="4">مشاريع تجارية</option>
+                                <!-- <option value="3">مزادات</option>
+                                <option value="4">مشاريع تجارية</option> -->
                            </select>
                        </div>
                     </div>

@@ -18,5 +18,14 @@
 			    <?php endforeach ?>
             </select>
         </div>
+    <?php else: ?>
+    	<?php if ($key == 3): ?>
+    		<select class="selectpicker" name="type" id="marketIndex_propertyType" name="type" data-style="btn" data-title="Select Type" data-size="5">
+			    <option value="0">Select Type</option> 
+			    <?php foreach ($propertyType as $index => $type): ?>
+			        <option value="<?= $index; ?>"><?= $type ?></option>
+			    <?php endforeach ?>
+			</select>
+    	<?php endif ?>
 	<?php endif ?>
 <?php endif ?>

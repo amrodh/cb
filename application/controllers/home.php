@@ -16,6 +16,8 @@ class Home extends CI_Controller {
 
 			$data = $this->init();
 
+		$data['title'] = 'ColdWell Banker | Home';	
+
 		$this->load->model('service');
 		$this->load->model('content');
 
@@ -106,12 +108,10 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('service');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->service->getCountryCodes();
-		// printme($data['countryCodes']);exit();
 
-		// printme(base_url().$data['language']);exit();
 		if(isset($_POST['submit'])){
-		// printme($_POST);exit();
 			$firstname = $_POST['first_name'];
 			$lastname = $_POST['last_name'];
 			$username = $_POST['username'];
@@ -200,7 +200,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().'validate/'.$token->token.'"> Validate My Account</a>
 		';
-		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email);
+		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email, '');
 	}
 
 	public function emailUpdateValidation($id)
@@ -212,7 +212,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().'validate/'.$token->token.'"> Verify Email Update</a>
 		';
-		$this->smtpmailer('Email Update Verification',$body,$token->email);
+		$this->smtpmailer('Email Update Verification',$body,$token->email, '');
 	}
 
 	public function forgotPasswordValidation($id, $language)
@@ -224,7 +224,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().$language.'/resetpassword/'.$token->token.'"> Reset Password</a>
 		';
-		$this->smtpmailer('Reset Password',$body,$token->email);
+		$this->smtpmailer('Reset Password',$body,$token->email, '');
 	}
 
 	public function profile()
@@ -233,6 +233,7 @@ class Home extends CI_Controller {
 		$this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Profile';
 		// printme($data['user']->id);exit();
 		if(!isset($data['user']))
 			redirect('home');
@@ -421,6 +422,7 @@ class Home extends CI_Controller {
 
 		$username = $this->session->userdata('username');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Share your Property';
 		$data['cities'] = $this->service->getCities();
 		
 		if (isset($_POST['submit'])){
@@ -489,6 +491,7 @@ class Home extends CI_Controller {
 								$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
 								$_FILES['userfile']['size'] = $image['size'];
 								$params['image_url'] = $_FILES['userfile']['name'];
+								$this->config->set_item('allowed_types','pdf|jpg|jpeg|png');
 								if (!isset($data['imageFlag'])){
 									$upload = uploadme($this);
 									if(!isset($upload['error'])){
@@ -504,7 +507,7 @@ class Home extends CI_Controller {
 												E-mail: '.$email.'<br>
 												Phone: '.$phone.'<br>
 												Property Type: '.$propertyType;
-										$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com');
+										$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
 									}else{
 										$this->property->deleteProperty($params['property_id']);
 										$data['insertProcess'] = false;
@@ -547,6 +550,7 @@ class Home extends CI_Controller {
 	public function viewAllProperties ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Available Properties';
 		$this->load->model('property');
 		$this->load->model('service');
 		$this->load->model('user');
@@ -895,7 +899,7 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
+						if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
 						{
 							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
 							{
@@ -937,7 +941,7 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
+						if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
 						{
 							if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
 							{
@@ -1005,6 +1009,7 @@ class Home extends CI_Controller {
 			);
 
 			$data['searchResults'] = $this->service->Search($searchParams);
+			// printme($data['searchResults']);exit();
 			$data['totalResults'] = $data['searchResults']['totalResults'];
 			$data['resultCount'] = $data['searchResults']['totalResults'];
 			$data['searchResults'] = $data['searchResults']['results'];
@@ -1051,13 +1056,15 @@ class Home extends CI_Controller {
 	public function propertyDetails ()
 	{
 		$data = $this->init();
+		// $data['title'] = 'ColdWell Banker | Registration';
 		$propertyId = explode('/', $data['uri']);
 		$data['propertyId'] = $propertyId[1];
 		$this->load->model('property');
 		$this->load->model('service');
 		$this->load->model('user');
 		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
-		
+		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
+		// printme($data['searchResults']);exit();
 
 		$data['images'] = $this->service->getPropertyImages($data['propertyId'], $data['searchResults']->UnitId);
 
@@ -1076,10 +1083,7 @@ class Home extends CI_Controller {
 
 				foreach ($_POST['interest'] as $interest) {
 					$interests[] = $interest;
-					// printme($method);
 				}
-				// printme($interests);exit();
-
 				$params = array(
 					'first_name' => $_POST['firstName'],
 					'last_name' => $_POST['lastName'],
@@ -1095,8 +1099,10 @@ class Home extends CI_Controller {
 						E-mail: '.$_POST['email'].'<br>
 						Phone: '.$_POST['phone'].'<br>
 						PropertyID: '.$data['propertyId'].'<br>
+						Property Address: '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity.'<br>
+						Property Type: '.$data['searchResults']->PrpertyTypeStr.'<br>
 						Comments: '.$_POST['comments'];
-					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
+					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
 				}
 			}
 		}
@@ -1109,12 +1115,14 @@ class Home extends CI_Controller {
 	public function careers ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Careers';
 		$this->load->view($data['languagePath'].'careers',$data);
 	}
 
 	public function uploadCV ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Apply Now';
 		$this->load->model('user');
 
 		// printme($data['uri']);
@@ -1180,7 +1188,9 @@ class Home extends CI_Controller {
 					$body = 'Name: '.$firstname.' '.$lastname.'<br>
 							E-mail: '.$email.'<br>
 							Vacancy: '.$vacancy_id;
-					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com');
+					$attachment = base_url().'application/static/upload/careers'.$_FILES['userfile']['name'] ;
+					// printme($attachment);exit();
+					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com', $attachment);
 				}
 			}else{
 				$uploadError = uploadme($this);
@@ -1197,6 +1207,7 @@ class Home extends CI_Controller {
 	public function joinUs ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Join Us';
 		$this->load->model('vacancy');
 		$data['vacancies'] = $this->vacancy->getVacancies();
 		$this->load->view($data['languagePath'].'join_us',$data);
@@ -1205,12 +1216,15 @@ class Home extends CI_Controller {
 	public function marketIndex ()
 	{
 		$data = $this->init();
+		$data['districts'] = $this->service->getAllDistricts();
+		$data['title'] = 'ColdWell Banker | Market Index';
 		$this->load->view($data['languagePath'].'market_index',$data);
 	}
 
 	public function auction ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Auctions';
 		$this->load->model('service');
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
@@ -1426,7 +1440,7 @@ class Home extends CI_Controller {
 	}
 
 
-function smtpmailer($subject,$body,$to) { 
+function smtpmailer($subject,$body,$to, $attachment) { 
 
 		 date_default_timezone_set('America/Los_Angeles');
 		 $config = Array(
@@ -1446,7 +1460,12 @@ function smtpmailer($subject,$body,$to) {
 		  $this->email->to($to); // change it to yours
 		  $this->email->subject($subject);
 		  $this->email->message($body);
-
+		  // printme($attachment);exit();
+		  // if ($attachment != '')
+		  // {
+	  	// 		$this->email->attach($attachment);
+		  // }
+		  
 
 		  if($this->email->send())
 			return true;
@@ -1459,6 +1478,7 @@ function smtpmailer($subject,$body,$to) {
 function trainingCenter()
 {
 	$data = $this->init();
+	$data['title'] = 'ColdWell Banker | Training Center';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }
 
@@ -1545,6 +1565,7 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->model('office');
 		$this->load->model('user');
+		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
 
 
@@ -1581,7 +1602,7 @@ function resetpassword()
 								E-mail: '.$_POST['contact_email'].'<br>
 								Phone: '.$_POST['contact_phone'].'<br>
 								Comments: '.$_POST['contact_subject'];
-						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
 						// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 					}else{
 						echo 0;
@@ -1609,7 +1630,7 @@ function resetpassword()
 							E-mail: '.$email.'<br>
 							Phone: '.$phone.'<br>
 							Comments: '.$_POST['contact_subject'];
-					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
 					// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 				}else{
 					echo 0;
@@ -1643,7 +1664,7 @@ function resetpassword()
 					Phone: '.$_POST['phone'].'<br>
 					PropertyID: '.$_POST['propertyID'].'<br>
 					Comments: '.$_POST['comments'];
-			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
+			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
 		}else{
 			echo 0;
 		}
@@ -1676,6 +1697,7 @@ function resetpassword()
 	function about()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | About Us';
 		$this->load->view($data['languagePath'].'about', $data);
 	}
 

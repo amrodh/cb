@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            Coldwell Banker
+            <?= $title;?>
         </title>
         <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme-ar.css"> -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-ar.min.css">

@@ -43,7 +43,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
-            'resultsCountPerPage' => '20'
+            'resultsCountPerPage' => '30'
             );
         $results = $this->client->Search($inputs);
 

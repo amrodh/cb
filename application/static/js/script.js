@@ -455,6 +455,38 @@ $(document).ready(function ()
                         }
                   });
             });
+            
+            $('#marketIndex_lob').change(function(event) {
+              var lob = $(this).val();
+              var url = $("#url").val();
+              var key = 3;
+              url = url+"getPropertyTypes";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { lob: lob, key: key }
+                })
+                  .success(function( response ) {
+                    // alert (response);
+                    if (response != 0)
+                        {
+                          $("#market_propertyContainer").show();
+                          $("#market_propertyContainer").html(response);
+                          $('#marketIndex_type').selectpicker();
+                          $('#market_disabled_property').css('display', 'none');
+                        }
+                        else
+                        {
+                            $("#market_propertyContainer").hide();
+                            $('#market_disabled_property').css('display', 'block');
+                            $('#marketIndex_disabled_property').attr('disabled', true);
+                            $("[data-id='marketIndex_disabled_property']").attr('disabled', true);
+                            // $("#searchHome_district").hide();
+                            // $("[data-id='searchHome_district']").hide();
+                        }
+                  });
+            });
+
 
             $('#shareProperty_lob').change(function(event) {
                 var lob = $(this).val();
