@@ -274,8 +274,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div">
-
+                            <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div" style="padding-top: 19%;text-align: center;color: red;font-size: 200%;">
+                                Maps Coming Soon!
                             </div>
                         </div>
                     </div>  
@@ -436,26 +436,26 @@
              //          }
              //        });
 
-            var map;
-            var elevator;
-            var myOptions = {
-                zoom: 1,
-                center: new google.maps.LatLng(0, 0),
-                mapTypeId: 'terrain'
-            };
-            map = new google.maps.Map($('#properties_bottom_right_div')[0], myOptions);
+            // var map;
+            // var elevator;
+            // var myOptions = {
+            //     zoom: 1,
+            //     center: new google.maps.LatLng(0, 0),
+            //     mapTypeId: 'terrain'
+            // };
+            // map = new google.maps.Map($('#properties_bottom_right_div')[0], myOptions);
 
-            for (var x = 0; x < addresses.length; x++) {
-                $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-                    var p = data.results[0].geometry.location
-                    var latlng = new google.maps.LatLng(p.lat, p.lng);
-                    new google.maps.Marker({
-                        position: latlng,
-                        map: map
-                    });
+            // for (var x = 0; x < addresses.length; x++) {
+            //     $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+            //         var p = data.results[0].geometry.location
+            //         var latlng = new google.maps.LatLng(p.lat, p.lng);
+            //         new google.maps.Marker({
+            //             position: latlng,
+            //             map: map
+            //         });
 
-                });
-            }
+            //     });
+            // }
 
 
             $('.imgModal').click(function(event) {

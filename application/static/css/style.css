@@ -1742,6 +1742,11 @@ li.active>#auction_anchor1, li.active>#auction_anchor2, li.active>#auction_ancho
     margin-top: 2%;
 }
 
+.training_body_bottom_div > p > img{
+    width: 50%!important;
+height: 60%!important;
+}
+
 #auction_div1{
     float: left;
     padding-right: 5px;

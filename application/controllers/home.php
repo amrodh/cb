@@ -438,8 +438,8 @@ class Home extends CI_Controller {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_price');
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_city');
-			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-				$data['insertError'] = $this->lang->line('shareProperty_missing_district');
+			// }elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
+			// 	$data['insertError'] = $this->lang->line('shareProperty_missing_district');
 			}elseif (empty($_POST['address'])) {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_address');
 			}elseif (empty($_POST['features'])) {
@@ -457,7 +457,12 @@ class Home extends CI_Controller {
 				}
 
 				$city = $this->service->getCityByID($_POST['city']);
-				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				if ($_POST['district'] != 0){
+					$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				}else{
+					$district = '';
+				}
+				
 				$propertyType = $this->service->getPropertyTypeByID($_POST['shareProperty_lob'],$_POST['shareProperty_type']);
 
 				$params = array ('user_id' => $data['user']->id,
@@ -484,7 +489,7 @@ class Home extends CI_Controller {
 							 	$images['image_'.$i]['tmp_name'] = $_FILES['img']['tmp_name'][$i];
 							 	$i++;
 							}
-							
+							$count=0;
 							foreach ($images as $image) {
 								$fileExtension = explode('.',$image['name']);
 								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
@@ -499,15 +504,9 @@ class Home extends CI_Controller {
 										$this->property->insertImage($params);
 										$data['insertProcess'] = true;
 
-										$firstname = $data['user']->first_name;
-										$lastname = $data['user']->last_name;
-										$phone = $data['user']->phone;
-										$email = $data['user']->email;
-										$body = 'Name: '.$firstname.' '.$lastname.'<br>
-												E-mail: '.$email.'<br>
-												Phone: '.$phone.'<br>
-												Property Type: '.$propertyType;
-										$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
+										$imageAttachments[$count] = getcwd().'/application/static/upload/'.$_FILES['userfile']['name'];
+										$count++;
+										
 									}else{
 										$this->property->deleteProperty($params['property_id']);
 										$data['insertProcess'] = false;
@@ -516,6 +515,20 @@ class Home extends CI_Controller {
 								}
 								
 							}
+							$firstname = $data['user']->first_name;
+							$lastname = $data['user']->last_name;
+							$phone = $data['user']->phone;
+							$email = $data['user']->email;
+							$body = 'Name: '.$firstname.' '.$lastname.'<br>
+									E-mail: '.$email.'<br>
+									Phone: '.$phone.'<br>
+									Property Type: '.$propertyType;
+							if(isset($imageAttachments)){
+								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', $imageAttachments);
+							}else{
+								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
+							}
+							
 						}
 						// $data['insertProcess'] = true;
 				}else{
@@ -658,6 +671,13 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
@@ -743,6 +763,13 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
@@ -829,6 +856,13 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
@@ -871,6 +905,13 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
@@ -916,6 +957,13 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
@@ -957,6 +1005,13 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
@@ -990,6 +1045,13 @@ class Home extends CI_Controller {
 				$data['searchResults'] = $data['searchResults']['results'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
@@ -1188,7 +1250,7 @@ class Home extends CI_Controller {
 					$body = 'Name: '.$firstname.' '.$lastname.'<br>
 							E-mail: '.$email.'<br>
 							Vacancy: '.$vacancy_id;
-					$attachment = base_url().'application/static/upload/careers'.$_FILES['userfile']['name'] ;
+					$attachment = getcwd().'/application/static/upload/careers/'.$_FILES['userfile']['name'] ;
 					// printme($attachment);exit();
 					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com', $attachment);
 				}
@@ -1461,14 +1523,25 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  $this->email->subject($subject);
 		  $this->email->message($body);
 		  // printme($attachment);exit();
-		  // if ($attachment != '')
-		  // {
-	  	// 		$this->email->attach($attachment);
-		  // }
+		  if ($attachment != '')
+		  {
+		  		if (is_array($attachment)){
+		  			foreach ($attachment as $value) {
+		  				// printme($value);
+		  				$this->email->attach($value);
+		  			}
+		  		}else{
+		  			$this->email->attach($attachment);
+		  		}
+	  			
+		  }
 		  
 
 		  if($this->email->send())
+		  {
+		  	// echo $this->email->print_debugger();die;
 			return true;
+		}
 		 else
 			{
 			 show_error($this->email->print_debugger());
@@ -1477,7 +1550,10 @@ function smtpmailer($subject,$body,$to, $attachment) {
 
 function trainingCenter()
 {
+	$this->load->model('course');
 	$data = $this->init();
+	$data['courses'] = $this->course->getCourses();
+	// printme($data['courses']);
 	$data['title'] = 'ColdWell Banker | Training Center';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }
@@ -1699,6 +1775,12 @@ function resetpassword()
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | About Us';
 		$this->load->view($data['languagePath'].'about', $data);
+	}
+	function franchise()
+	{
+		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Franchise';
+		$this->load->view($data['languagePath'].'franchise', $data);
 	}
 
 	function displayOffice()

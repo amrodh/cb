@@ -132,6 +132,9 @@ $route["$appended_lang/offices"] = "home/offices";
 $route['about'] = 'home/about';
 $route["$appended_lang/about"] = "home/about";
 
+$route['franchise'] = 'home/franchise';
+$route["$appended_lang/franchise"] = "home/franchise";
+
 $route['insertContact'] = 'home/insertContact';
 $route["$appended_lang/insertContact"] = "home/insertContact";
 

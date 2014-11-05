@@ -486,6 +486,7 @@ class Admin extends CI_Controller {
 		$data = $this->init();
 		
 		$data['courses'] = $this->course->getCourses();
+		// printme($data['courses']);exit();
 		$this->load->view('admin/courses', $data);
 
 	}
@@ -577,7 +578,7 @@ class Admin extends CI_Controller {
 
 		$data['course'] = $this->course->getCourseByID($id);
 
-
+		// printme($data['course'] );exit();
 
 		if(isset($_POST['delete'])){
 			$this->load->view('admin/coursedelete', $data);
@@ -689,28 +690,28 @@ class Admin extends CI_Controller {
 		$data = $this->init();
 		
 
-			if(isset($_POST['submit']))
+		if(isset($_POST['submit']))
 		{
+			// printme($_POST);exit();
+			// $fileExtension = explode('.',$_FILES['userfile']['name']);
+			// $_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+			// $path = $this->config->config['upload_path'];
+			// $this->config->set_item('upload_path',$path.'/courses');
 
-			$fileExtension = explode('.',$_FILES['userfile']['name']);
-			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
-			$path = $this->config->config['upload_path'];
-			$this->config->set_item('upload_path',$path.'/courses');
+			// unset($_POST['submit']);
+			// $_POST['image'] = $_FILES['userfile']['name'];
+			// $insert = $this->course->insertCourse($_POST);
+			// if($insert){
 
-			unset($_POST['submit']);
-			$_POST['image'] = $_FILES['userfile']['name'];
-			$insert = $this->course->insertCourse($_POST);
-			if($insert){
-
-				$upload = uploadme($this);
-				if($upload){
+			// 	$upload = uploadme($this);
+			// 	if($upload){
 					redirect('admin/courses/'.$this->db->insert_id());
-				}else{
-					$data['error'] = true;
-					$data['errorMsg'] = 'Upload Failed, Try again';
-				}
+			// 	}else{
+			// 		$data['error'] = true;
+			// 		$data['errorMsg'] = 'Upload Failed, Try again';
+			// 	}
 
-			}
+			// }
 		}
 
 		$this->load->view('admin/newcourse', $data);

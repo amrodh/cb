@@ -19,10 +19,10 @@
                     <tbody>
                       <tr>
                         <td>
-                          <img style="width:300px;" src="<?= base_url();?>application/static/upload/courses/<?= $course->image; ?>" alt="">
+                          <!-- <img style="width:300px;" src="<?= base_url();?>application/static/upload/courses/<?= $course->image; ?>" alt=""> -->
                         </td>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <td width="%">Description:</td>
                         <td width="%"><?php echo $course->text; ?></td>
                         <td width="%" >
@@ -31,10 +31,10 @@
                           </span>
                           </td>
                         <td></td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td width="%">Feature:</td>
-                        <td width="%"><?php echo $course->feature; ?></td>
+                        <td id="img_td" width="%"><?php echo $course->feature; ?></td>
                         <td width="%" >
                           <span style="float:right;">
                             <?php echo $course->feature_ar; ?>

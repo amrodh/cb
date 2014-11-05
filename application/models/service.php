@@ -7,7 +7,12 @@ class service extends CI_Model {
     function __construct()
     {
         parent::__construct();
-        $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+        try {
+            $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+        } catch (Exception $e) {
+            printme($e);
+        }
+        
         
     }
 

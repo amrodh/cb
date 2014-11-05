@@ -124,7 +124,7 @@
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             District
                                         </div>
-                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
+                                        <select class="selectpicker" data-style="btn" name="district" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
                                              <option>Select District</option>
                                              <?php foreach ($districts as $item): ?>
                                             <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>

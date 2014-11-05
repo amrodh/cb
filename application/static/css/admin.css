@@ -17,6 +17,15 @@
 	background-color: #f1f1f1;
 }
 
+#img_td > p > img{
+	width: 50%!important;
+	height: 10%!important;
+}
+
+#img_td > table, #img_td > tbody>table >tr>td{
+	/*border: 1px solid red!important;*/
+}
+
 .hide{
 	display: none;
 }
