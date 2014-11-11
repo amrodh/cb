@@ -34,7 +34,7 @@
               <form action="" method="post" enctype="multipart/form-data">
                 
                 
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-12 col-lg-12 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -48,7 +48,7 @@
                       <tr>
                         <td>Description</td>
                         <td>
-                            <textarea name="description" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
+                            <textarea name="description" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
                          </td>
                         <!-- <td>
                         <textarea style="text-align:right;direction:RTL;" name="description_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description_ar']; ?></textarea>
@@ -88,3 +88,7 @@
     </div>
 
 <?php include('footer.php') ?>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+</script>

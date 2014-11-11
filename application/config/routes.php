@@ -145,6 +145,7 @@ $route['deleteFavorite'] = 'home/deleteFavorite';
 $route["$appended_lang/deleteFavorite"] = "home/deleteFavorite";
 
 $route["$appended_lang/home"] = "home";
+$route["createExcel"] = "home/createExcel";
 
 
 //Temporary

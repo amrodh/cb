@@ -52,7 +52,7 @@
 <body>
 
 <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image:url('<?php echo base_url(); ?>application/static/images/logo.png');background-size:16.5% 100%;background-repeat:no-repeat;" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

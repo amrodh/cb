@@ -698,20 +698,21 @@ class Admin extends CI_Controller {
 			// $path = $this->config->config['upload_path'];
 			// $this->config->set_item('upload_path',$path.'/courses');
 
-			// unset($_POST['submit']);
+			unset($_POST['submit']);
 			// $_POST['image'] = $_FILES['userfile']['name'];
-			// $insert = $this->course->insertCourse($_POST);
-			// if($insert){
+			// printme($_POST);exit();
+			$insert = $this->course->insertCourse($_POST);
+			if($insert){
 
-			// 	$upload = uploadme($this);
-			// 	if($upload){
-					redirect('admin/courses/'.$this->db->insert_id());
-			// 	}else{
-			// 		$data['error'] = true;
-			// 		$data['errorMsg'] = 'Upload Failed, Try again';
-			// 	}
+				// $upload = uploadme($this);
+				// if($upload){
+				redirect('admin/courses/'.$this->db->insert_id());
+				// }else{
+				// 	$data['error'] = true;
+				// 	$data['errorMsg'] = 'Upload Failed, Try again';
+				// }
 
-			// }
+			}
 		}
 
 		$this->load->view('admin/newcourse', $data);

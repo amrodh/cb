@@ -472,7 +472,7 @@ $(document).ready(function ()
                         {
                           $("#market_propertyContainer").show();
                           $("#market_propertyContainer").html(response);
-                          $('#marketIndex_type').selectpicker();
+                          $('#marketIndex_propertyType').selectpicker();
                           $('#market_disabled_property').css('display', 'none');
                         }
                         else

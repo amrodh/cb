@@ -34,7 +34,7 @@
               <form action="" method="post" enctype="multipart/form-data">
                 
                 
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-12 col-lg-12 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -51,7 +51,7 @@
                             <textarea name="feature" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['feature']; ?></textarea>
                          </td>
                         <td>
-                        <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="editor2" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
+                            <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="editor2" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
                         </td>
                         <td>وصف</td>
                       </tr>
@@ -77,16 +77,18 @@
                      
                     </tbody>
                   </table>
-                  </form>
-                  
-                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
                 </div>
+                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+              </form>
+                  
+                  
+                
                
               </div>
             </div>
             <?php if (isset($error)): ?>
               <div id="successAlert" class="alert alert-danger " role="alert">
-                      <?= $error; ?> 
+                  <?= $error; ?> 
               </div>
             <?php endif ?>
            
@@ -107,7 +109,7 @@
     </div>
 
 <?php include('footer.php') ?>
-<script> 
+<script>
     CKEDITOR.replace( 'editor1' );
     CKEDITOR.replace( 'editor2' );
 </script>

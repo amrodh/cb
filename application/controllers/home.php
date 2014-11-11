@@ -1819,4 +1819,65 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->view('newsletter_properties', $data);
 	}
+
+	// function createExcel()
+	// {
+	// 	$this->load->library('excel');
+	// 	$this->load->model('service');
+	// 	$this->excel->setActiveSheetIndex(0);
+	// 	$categories = array(
+	// 		0 => 'Residential', 
+	// 		1 => 'Commercial'
+	// 		);
+	// 	$propertyType1 = $this->service->Getpropertytypes(1);
+	// 	$propertyType2 = $this->service->Getpropertytypes(2);
+	// 	$districts = $this->service->getAllDistricts();
+	// 	$contractTypes = array(
+	// 		0 => 'Sale',
+	// 		1 => 'Rent'
+	// 		);
+	// 	$alphas = range('A', 'Z');
+	// 	// printme(phpinfo());exit();
+	// 	$count = 1;
+	// 	foreach ($categories as $category) {
+	// 		if($category == 'Residential')
+	// 		{
+	// 			foreach ($propertyType1 as $type1) {
+
+	// 				foreach ($districts as $district) {
+						
+	// 					foreach ($contractTypes as $contractType) {
+
+	// 						$this->excel->getActiveSheet()->SetCellValue('A'.$count, $category);
+	// 						$this->excel->getActiveSheet()->SetCellValue('B'.$count, $type1);
+	// 						$this->excel->getActiveSheet()->SetCellValue('C'.$count, $district['name']);
+	// 						$this->excel->getActiveSheet()->SetCellValue('D'.$count, $contractType);
+	// 						$count++;
+	// 					}
+	// 				}
+	// 			}
+	// 		}else{
+	// 			foreach ($propertyType1 as $type2) {
+
+	// 				foreach ($districts as $district) {
+						
+	// 					foreach ($contractTypes as $contractType) {
+
+	// 						$this->excel->getActiveSheet()->SetCellValue('A'.$count, $category);
+	// 						$this->excel->getActiveSheet()->SetCellValue('B'.$count, $type1);
+	// 						$this->excel->getActiveSheet()->SetCellValue('C'.$count, $district['name']);
+	// 						$this->excel->getActiveSheet()->SetCellValue('D'.$count, $contractType);
+	// 						$count++;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+			
+	// 	}
+	// 	$this->excel->save(getcwd().'/application/static/input2.xls');
+	// 	exit();
+	// 	// $this->excel->getActiveSheet()->SetCellValue('B2', "whatever");
+		
+		
+	// }
 }

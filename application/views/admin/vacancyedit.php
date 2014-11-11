@@ -1,9 +1,6 @@
 <?php include('header.php'); ?>
 
     <div id="wrapper">
-
-        
-
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -48,7 +45,7 @@
                       <tr>
                         <td>Description</td>
                         <td>
-                            <textarea name="description" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
+                            <textarea name="description" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
                          </td>
                         <!-- <td>
                         <textarea style="text-align:right;direction:RTL;" name="description_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description_ar']; ?></textarea>
@@ -89,3 +86,7 @@
     </div>
 
 <?php include('footer.php') ?>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+</script>
