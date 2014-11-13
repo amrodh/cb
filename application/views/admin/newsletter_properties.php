@@ -28,9 +28,9 @@
                             </div>
                             <?php if ($count % 3 != 0): ?>
                                 <td style="background-color: #f6f6f6; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
-                                    <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;">
+                                    <!-- <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;">
                                         <?php echo $count+1; ?>
-                                    </div>
+                                    </div> -->
                                     <div class="compare_img">
                                         <input type="hidden" name="image_<?= $property->PropertyId;?>" value="">
                                         <img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
