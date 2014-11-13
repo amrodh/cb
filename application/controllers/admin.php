@@ -280,6 +280,7 @@ class Admin extends CI_Controller {
 		}
 
 		if(isset($_POST['singlepreview'])){
+			// printme($_POST);exit();
 			$path = $this->config->config['upload_path'];
 			$this->config->set_item('upload_path',$path.'/temp');
 			$fileExtension = explode('.',$_FILES['userfile']['name']);
@@ -289,6 +290,7 @@ class Admin extends CI_Controller {
 			if(isset($upload['error'])){
 				$data['params'] = $_POST;
 				$data['error'] = $upload['error'];
+				printme($upload['error']);exit();
 			}else{
 				$_POST['image'] = $upload['upload_data']['file_name'];
 				$data['params'] = $_POST;
