@@ -624,7 +624,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price'] == 20000000)
@@ -640,8 +640,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 1000000000000000;
 			}else{
 				if ($_POST['area'] == 1000)
 				{
@@ -717,7 +717,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price_2'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price_2'] == 20000000)
@@ -733,8 +733,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area_2'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 10000000000000;
 			}else{
 				if ($_POST['area_2'] == 1000)
 				{
@@ -811,7 +811,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price_3'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price_3'] == 20000000)
@@ -827,8 +827,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area_3'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 100000000000000;
 			}else{
 				if ($_POST['area_3'] == 1000)
 				{
@@ -875,14 +875,20 @@ class Home extends CI_Controller {
 		}elseif (isset($_GET['category'])){
 			if($_GET['category'] == 'home' && isset($_GET['contractType2']))
 			{
+				if ($_GET['contractType2'] == 'rent'){
+					$propertyFor = 2;
+				}elseif ($_GET['contractType2'] = 'sale'){
+					$propertyFor = 1;
+				}
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => $propertyFor,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
-					'AreaUpperLimit' => 100000000000000
+					'AreaLowerLimit' => 0,
+					'AreaUpperLimit' => 100000000000000, 
+					'lineOfBusiness' => 1
 				);	
 				$data['searchResults'] = $this->service->Search($searchParams);
 				if ($data['searchResults']['totalResults'] != 0)
@@ -891,14 +897,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
-						{
-							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2)
+						// {
+							// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 						
 					}
 					$data['searchResults'] = $results;
@@ -930,10 +936,10 @@ class Home extends CI_Controller {
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => 1,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
+					'AreaLowerLimit' => 0,
 					'AreaUpperLimit' => 100000000000000
 				);
 
@@ -944,14 +950,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
-						{
-							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
+						// {
+							// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 						
 					}
 					$data['searchResults'] = $results;
@@ -980,10 +986,10 @@ class Home extends CI_Controller {
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => 2,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
+					'AreaLowerLimit' => 0,
 					'AreaUpperLimit' => 100000000000000
 				);
 
@@ -994,14 +1000,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
-						{
-							if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
+						// {
+							// if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 					}
 					$data['searchResults'] = $results;
 					$data['commercial'] = true;
@@ -1037,10 +1043,10 @@ class Home extends CI_Controller {
 			$searchParams = array(
 				'PropertyType' => $type,
 				'BoxLocation' => $_GET['district'],
-				'PropertyFor' => '',
-				'PriceLowerLimit' => 1,
+				'PropertyFor' => 3,
+				'PriceLowerLimit' => 0,
 				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 1,
+				'AreaLowerLimit' => 0,
 				'AreaUpperLimit' => 100000000000000
 			);
 
@@ -1070,10 +1076,10 @@ class Home extends CI_Controller {
 			$searchParams = array(
 				'PropertyType' => '',
 				'BoxLocation' => '',
-				'PropertyFor' => '',
-				'PriceLowerLimit' => 1,
+				'PropertyFor' => 3,
+				'PriceLowerLimit' => 0,
 				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 1,
+				'AreaLowerLimit' => 0,
 				'AreaUpperLimit' => 100000000000000
 			);
 

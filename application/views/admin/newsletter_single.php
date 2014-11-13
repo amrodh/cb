@@ -78,6 +78,7 @@
             </tr>
             <?php foreach($users as $user): ?>
                 <tr>
+                <?php // printme($user->user_identifier);exit(); ?>
                 <td><input type="checkbox" class="singlecheck" name="singlecheck[]" value="<?= $user->user_identifier; ?>"></td>
                 <td>
                     <?php if (is_object($user->user_identifier)): ?>
