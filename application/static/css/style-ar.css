@@ -959,6 +959,7 @@ li.active>a{
     border: 1px solid #a2a2a2;
     border-radius: 10px;
     background: url(../images/sample_map.png);
+    /*opacity: 0.5%;*/
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-bottom: 20px;

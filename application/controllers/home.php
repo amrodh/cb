@@ -682,6 +682,7 @@ class Home extends CI_Controller {
 				}
 			}else{
 				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_POST['searchSubmit3'])) {
@@ -773,6 +774,7 @@ class Home extends CI_Controller {
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
+				$data['resultCount'] = 0;
 				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
@@ -867,6 +869,7 @@ class Home extends CI_Controller {
 				}
 			}else{
 				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_GET['category'])){
@@ -916,6 +919,7 @@ class Home extends CI_Controller {
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 			}
@@ -968,6 +972,7 @@ class Home extends CI_Controller {
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 				
@@ -1016,6 +1021,7 @@ class Home extends CI_Controller {
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 
@@ -1056,6 +1062,7 @@ class Home extends CI_Controller {
 				}
 			}else{
 				$data['totalResults'] = 0;
+				$data['resultCount'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 			
@@ -1072,20 +1079,28 @@ class Home extends CI_Controller {
 
 			$data['searchResults'] = $this->service->Search($searchParams);
 			// printme($data['searchResults']);exit();
-			$data['totalResults'] = $data['searchResults']['totalResults'];
-			$data['resultCount'] = $data['searchResults']['totalResults'];
-			$data['searchResults'] = $data['searchResults']['results'];
-			$data['images'] = array();
-			foreach ($data['searchResults'] as $property) {
-				if(isset($userFavorites)){
-					if(in_array($property->PropertyId,$userFavorites)){
-						$property->is_favorite = 1;
-					}else{
-						$property->is_favorite = 0;
+
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['resultCount'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
 					}
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
-				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+			}else{
+				$data['totalResults'] = 0;
+				$data['resultCount'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
+			
 		}
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);

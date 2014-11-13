@@ -275,7 +275,9 @@
                                 </table>
                             </div>
                             <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div" style="padding-top: 19%;text-align: center;color: red;font-size: 200%;">
-                                Maps Coming Soon!
+                                <div style="border: 1px solid red;position: relative;width: 293px;height: 500px;margin-top:-86%;margin-left: -6%;border-radius: 10px;text-align: center;padding-top: 93%;font-size: 210%;background: rgba(0, 0, 0, 0.3);color: red;">
+                                    Coming Soon
+                                </div>
                             </div>
                         </div>
                     </div>  
