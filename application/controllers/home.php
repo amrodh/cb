@@ -1332,16 +1332,20 @@ class Home extends CI_Controller {
 
 		
 		$uri = $this->uri->uri_string;
-		// printme($uri);
+		// printme($uri);exit();
 		$posAr = strpos($uri, 'ar/');
 		$posEn = strpos($uri, 'en/');
 		$posAr2 = strpos($uri, 'ar');
 		$posEn2 = strpos($uri, 'en');
+		
 		if ($posEn !== false || $posEn2 !== false ){
 			if ($posAr == false || $posAr2 == false)
 			{
+				// printme($uri);exit();
 				$explodeAr = explode('ar/', $uri);
 				$explodeEn = explode('en/', $uri);
+				// printme($explodeAr);
+				// printme($explodeEn);exit();
 				if ($explodeAr[0] == $uri)
 				{
 					$data['uri'] = explode('en/', $uri);
@@ -1405,7 +1409,9 @@ class Home extends CI_Controller {
 			// printme($uri);
 			$data['uri'] = $uri;
 		}
-
+		if (($uri == 'en') || ($uri == 'ar')){
+			$data['uri'] = '';
+		}
 		// printme($data['uri']);
 
 		$data['language'] = $this->uri->segment(1);
