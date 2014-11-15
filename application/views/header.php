@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>ColdWell Banker</title>
+        <title><?= $title;?></title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.css">
         <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->
@@ -76,7 +76,7 @@
                      /
                      <label for="" style="margin-left:3%;">
                          <span class="glyphicon glyphicon-plus-sign"></span>
-                         <a href="register"><?php echo $this->lang->line('home_register'); ?></a>
+                         <a href="<?=base_url();?>register"><?php echo $this->lang->line('home_register'); ?></a>
                      </label>
                       
                 <?php endif ?>
@@ -212,7 +212,21 @@
                                 </li> -->
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_menu6'); ?></a></li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -41.5%;">
+                                <li>
+                                    <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url();?>en/franchise"><?php echo $this->lang->line('home_submenu10'); ?></a>
+                                </li>
+                            </ul>
+
+                        <!-- <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_menu6'); ?></a> -->
+                        </li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>

@@ -16,13 +16,32 @@
         	<div class="row">
                 <div id="search_header" style="margin-top: -30px;">
                     <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
-                       <li class="active" style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course1" id="training_anchor1" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab1'); ?></a></li>
-                       <li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course2" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab2'); ?></a></li>
-                       <li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course3" id="training_anchor3" data-toggle="tab"><?php echo $this->lang->line('trainingcenter_tab3'); ?></a></li>
+                    <?php $count=1; ?>
+                    <?php foreach ($courses as $course): ?>
+                    	<?php if ($count == 1): ?>
+                    		<li class="active" style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor1" data-toggle="tab"><?php echo $course->title; ?></a></li>
+                    	<?php else: ?>
+                    		<li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor3" data-toggle="tab"><?php echo $course->title; ?></a></li>
+                    	<?php endif ?>
+                    	<?php $count++; ?>
+                    <?php endforeach ?>
                     </ul>
                 </div>
                 <div class="tab-content training_body">
-                    <div class="tab-pane active" id="course1">
+                	<?php $count2=1; ?>
+                	<?php foreach ($courses as $course): ?>
+                		<?php if ($count2 == 1): ?>
+                			<div class="tab-pane active courses_div" id="course<?=$count2; ?>">
+                				<?php echo $course->feature;?>
+                			</div>
+                		<?php else: ?>
+                			<div class="tab-pane courses_div" id="course<?=$count2; ?>">
+                				<?php echo $course->feature;?>
+                			</div>
+                		<?php endif ?>
+                		<?php $count2++ ?>
+                	<?php endforeach ?>
+                    <!-- <div class="tab-pane active" id="course1">
 	                    <div class="training_body_top_div">
 	                    </div>
 	                    <div class="training_body_bottom_div">
@@ -33,7 +52,6 @@
 	                    		<div class="col-lg-6">
 	                    			<div class="training_title">
 	                    				Real Estate Diploma
-	                    			<!-- 	<?php echo $this->lang->line('trainingcenter_tab1'); ?> -->
 	                    			</div>
 	                    			<div class="training_content1">
 	                    			 	<p>
@@ -50,7 +68,7 @@
 											estate, the course consists of both theoretical and practical elements of the real estate sales 
 											process with the emphasis on negotiations and closings.
 										</p>
-	                    				<!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. -->
+	                    				
 	                    			</div>
 	                    		</div>
 	                    	</div>
@@ -235,18 +253,14 @@
 	                    				</td>
 	                    			</tr>
 	                    		</table>
-	                    		<!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-	                    		<br><br>
-	                    		Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-	                    		<br><br>
-	                    		Lorem  ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.-->
 	                    	</div>
 	                    </div>
-                    </div>
-                    <div class="tab-pane" id="course2">
+                    </div>  -->
+                    <!-- <div class="tab-pane" id="course2">
                     	<div class="training_body_top_div">
 	                    </div>
 	                    <div class="training_body_bottom_div">
+	                    	<?php echo $courses[2]->feature; ?>
 	                    	<div class="row">
 	                    		<div class="col-lg-6">
 	                    			<img style="width: 100%;" src="<?php echo base_url(); ?>application/static/images/trainingcenter.jpg">
@@ -266,10 +280,10 @@
 	                    		Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
 	                    		<br><br>
 	                    		Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-	                    	</div>
+	                    	</div> 
 	                    </div>
-                    </div>
-                    <div class="tab-pane" id="course3">
+                    </div> -->
+                    <!-- <div class="tab-pane" id="course3">
                     	<div class="training_body_top_div">
 	                    </div>
 	                    <div class="training_body_bottom_div">
@@ -294,7 +308,7 @@
 	                    		Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
 	                    	</div>
 	                    </div>
-                    </div>
+                    </div> -->
             	</div>
         	</div>
     	</div>

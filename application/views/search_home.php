@@ -14,8 +14,8 @@
                                     <option value="0">Select Category</option> 
                                     <option value="1">Residential</option>
                                     <option value="2">Commercial</option>
-                                    <option value="3">Auctions</option>
-                                    <option value="4">Commercial Projects</option>
+                                    <!-- <option value="3">Auctions</option>
+                                    <option value="4">Commercial Projects</option> -->
                                </select>
                            </div>
                         </div>

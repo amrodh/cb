@@ -12,7 +12,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-      <div class="row" style="border:1px solid red;height:500px;">
+      <div class="row" style="height:500px;">
         <div class="col-lg-12">
    
    
@@ -25,7 +25,7 @@
               <form action="" method="post" enctype="multipart/form-data">
                 
                 
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-12 col-lg-12 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -39,16 +39,16 @@
                       <tr>
                         <td>Upper Content</td>
                         <td>
-                            <textarea name="feature" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['feature']; ?></textarea>
+                            <textarea name="feature" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['feature']; ?></textarea>
                          </td>
                         <td>
-                        <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
+                            <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="editor2" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
                         </td>
                         <td>وصف</td>
                       </tr>
 
 
-                      <tr>
+                      <!-- <tr>
                         <td>Lower Content</td>
                         <td>
                             <textarea name="text" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['text']; ?></textarea>
@@ -57,18 +57,18 @@
                         <textarea style="text-align:right;direction:RTL;" name="text_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['text_ar']; ?></textarea>
                         </td>
                         <td>وصف</td>
-                      </tr>
+                      </tr> -->
                        
 
-                      <tr>
+                      <!-- <tr>
                         <td>Image / الصورة</td>
                         <td><input type="file" name="userfile">
                         </td>
-                      </tr>
+                      </tr> -->
 
                       <tr>
                         <td>
-                          <img style="width:150px;height:150px;" src="<?= base_url();?>application/static/upload/courses/<?= $course->image; ?>" alt="">
+                          <!-- <img style="width:150px;height:150px;" src="<?= base_url();?>application/static/upload/courses/<?= $course->image; ?>" alt=""> -->
                         </td>
                       </tr>
                      
@@ -106,3 +106,9 @@
     </div>
 
 <?php include('footer.php') ?>
+
+
+<script>
+    CKEDITOR.replace( 'editor1' );
+    CKEDITOR.replace( 'editor2' );
+</script>

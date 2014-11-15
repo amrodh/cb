@@ -21,8 +21,8 @@
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?=base_url();?>viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
-                        <a href="<?=base_url();?>viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
+                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -101,11 +101,12 @@
                         <input type="submit" value="Subscribe" name="btn_subscribe" id="btn_subscribe">
                     </div>
                 <?php endif ?>
-                        <div class="row"  style="width: 100%;">
-                            <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
-                                
-                            </div>
-                        </div>
+                        
+                </div>
+                <div class="row"  style="width: 100%;">
+                    <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
+                        
+                    </div>
                 </div>
             </div>
                 <div id="footer_dropdown1_data"style="">
@@ -267,6 +268,7 @@
         </script>
         
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
+        
         <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
 </body>
 

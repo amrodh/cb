@@ -34,7 +34,7 @@
               <form action="" method="post" enctype="multipart/form-data">
                 
                 
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-12 col-lg-12 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -48,16 +48,16 @@
                       <tr>
                         <td>Upper Content</td>
                         <td>
-                            <textarea name="feature" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['feature']; ?></textarea>
+                            <textarea name="feature" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['feature']; ?></textarea>
                          </td>
                         <td>
-                        <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
+                            <textarea style="text-align:right;direction:RTL;" name="feature_ar" id="editor2" cols="30" rows="10"><?php if(isset($params)) echo $params['feature_ar']; ?></textarea>
                         </td>
                         <td>وصف</td>
                       </tr>
 
 
-                      <tr>
+                      <!-- <tr>
                         <td>Lower Content</td>
                         <td>
                             <textarea name="text" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['text']; ?></textarea>
@@ -66,27 +66,29 @@
                         <textarea style="text-align:right;direction:RTL;" name="text_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['text_ar']; ?></textarea>
                         </td>
                         <td>وصف</td>
-                      </tr>
+                      </tr> -->
                        
 
-                      <tr>
+                      <!-- <tr>
                         <td>Image / الصورة</td>
                         <td><input type="file" name="userfile" required>
                         </td>
-                      </tr>
+                      </tr> -->
                      
                     </tbody>
                   </table>
-                  </form>
-                  
-                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
                 </div>
+                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+              </form>
+                  
+                  
+                
                
               </div>
             </div>
             <?php if (isset($error)): ?>
               <div id="successAlert" class="alert alert-danger " role="alert">
-                      <?= $error; ?> 
+                  <?= $error; ?> 
               </div>
             <?php endif ?>
            
@@ -107,3 +109,7 @@
     </div>
 
 <?php include('footer.php') ?>
+<script>
+    CKEDITOR.replace( 'editor1' );
+    CKEDITOR.replace( 'editor2' );
+</script>

@@ -201,8 +201,6 @@ class Admin extends CI_Controller {
 
 			$min++;
 		}
-
-
 		//$this->smtpmailer($subject,$body,$mails);
 		
 	}
@@ -219,7 +217,7 @@ class Admin extends CI_Controller {
 					$user->user_identifier = $this->user->getUserByID($user->user_identifier)->email;
 			}
 		}
-		
+
 		$data['users'] = $users;
 
 		if(isset($_POST['confirmsingle'])){
@@ -239,37 +237,127 @@ class Admin extends CI_Controller {
 					}
 					
 			}
-			// printme($_POST);
-			// exit();
 			$this->sendSingle($_POST,$recievers);
+		}elseif (isset($_POST['confirmBanner'])) {
+			// printme($_POST);exit();
+			$recievers = "";
+			if(isset($_POST['checkAll'])){
+
+				foreach ($users as $user) {
+					if(!$this->checkmail($user->user_identifier)){
+						$recievers.= $this->user->getUserByID($user->user_identifier)->email.',';
+					}else{
+						$recievers.= $user->user_identifier.',';
+					}
+				}
+			}else{
+					foreach ($_POST['singlecheck'] as $user) {
+					$recievers .= $user.',';
+					}
+					
+			}
+			$this->sendBanner($_POST,$recievers);
+		}elseif(isset($_POST['confirmProperties'])){
+			// printme($_POST);exit();
+
+			$recievers = "";
+			if(isset($_POST['checkAll'])){
+
+				foreach ($users as $user) {
+					if(!$this->checkmail($user->user_identifier)){
+						$recievers.= $this->user->getUserByID($user->user_identifier)->email.',';
+					}else{
+						$recievers.= $user->user_identifier.',';
+					}
+				}
+			}else{
+					foreach ($_POST['singlecheck'] as $user) {
+					$recievers .= $user.',';
+					}
+					
+			}
+			$this->sendProperties($_POST,$recievers);
 		}
 
 		if(isset($_POST['singlepreview'])){
-
+			// printme($_POST);exit();
 			$path = $this->config->config['upload_path'];
 			$this->config->set_item('upload_path',$path.'/temp');
 			$fileExtension = explode('.',$_FILES['userfile']['name']);
 			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 			$upload = uploadme($this);
 
-			// printme($_POST);exit();
 			if(isset($upload['error'])){
 				$data['params'] = $_POST;
 				$data['error'] = $upload['error'];
+				printme($upload['error']);exit();
 			}else{
 				$_POST['image'] = $upload['upload_data']['file_name'];
 				$data['params'] = $_POST;
 				$this->load->view('admin/newsletter_single', $data);
 				return;
 			}
-
-			printme($_FILES);
-			printme($_POST);
-			exit();
 		}
 
 		if (isset($_POST['bannerspreview'])){
-			// printme($_POST);exit();
+			$path = $this->config->config['upload_path'];
+			$this->config->set_item('upload_path',$path.'/temp');
+
+			if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
+				$images = array();
+				$params = array();
+				$imageNames = array();
+				$params['property_id'] = $this->db->insert_id();
+				$i = 0;
+				foreach ($_FILES['img']['name'] as $name) {
+				 	$images['image_'.$i]['name'] = $name;
+				 	$images['image_'.$i]['type'] = $_FILES['img']['type'][$i];
+				 	$images['image_'.$i]['size'] = $_FILES['img']['size'][$i];
+				 	$images['image_'.$i]['tmp_name'] = $_FILES['img']['tmp_name'][$i];
+				 	$i++;
+				}
+				$x = 0;
+				foreach ($images as $image) {
+					$fileExtension = explode('.',$image['name']);
+					$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+					$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
+					$_FILES['userfile']['size'] = $image['size'];
+					$params['image_url'] = $_FILES['userfile']['name'];
+
+					$upload = uploadme($this);
+					if(isset($upload['error'])){
+						$data['params'] = $_POST;
+						// 
+						$data['error'] = $upload['error'];
+					}else{
+						$imageNames['image_'.$x] = $_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+						$data['params'] = $_POST;
+					}
+					$x++;
+				}
+				$data['imgCount'] = $i;
+				$data['images'] = $imageNames;
+				$_POST['images'] = $data['images'];
+				$this->load->view('admin/newsletter_banner', $data);
+				return;
+			}
+		}
+
+		if (isset($_POST['propertiespreview']))
+		{
+			$this->load->model('service');
+			$path = $this->config->config['upload_path'];
+			$this->config->set_item('upload_path',$path.'/temp');
+			$properties = array();
+			foreach ($_POST['properties'] as $key => $property) {
+				$data['properties'][$key]=$this->service->getPropertyByID($property);
+				$data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+			}
+			// printme($data['images']);exit();
+			$data['params'] = $_POST;
+			
+			$this->load->view('admin/newsletter_properties', $data);
+			return;
 		}
 
 		$this->load->view('admin/createnewsletter', $data);
@@ -279,65 +367,34 @@ class Admin extends CI_Controller {
 
 	public function sendSingle($params,$list)
 	{
-		//printme($params['lower']);
-		// printme($list);
-		//exit();
-		// $html2pdf = new HTML2PDF('P', 'A4', 'en');
-		// // printme($html2pdf);
-		// //exit();
-		
-		// $content = '
-		// 	<div class="col-lg-7 newsletter_container" style="border: 10px solid #233f71;padding: 5%;background-color: white;margin-top: 5%;">
-		// 	    <div class="col-lg-12">
-		// 	        <div id="newsletter_logo">
-		// 	            <img class="newsletter_logo img-responsive" style="width:30%;position: absolute;margin: -18.5% 0% 0% -2%!important;" src="'.base_url().'/application/static/images/logo.png">
-		// 	        </div>
-		// 	        <div id="newsletter_title" style="font-size: 150%;">
-		// 	            This is the 25th edition of the Coldwell Banker Newsletter
-		// 	        </div>
-		// 	        <div id="newsletter_image">
-		// 	            <img id="newsletter_mainImg" style="width: 100%;position: relative;" class="img-responsive" src="'.base_url().'/application/static/upload/temp/'.$params['image'].'"> 
-		// 	            <div id="newsletter_heading" style="position: absolute;margin-top: -12%;font-size:200%;margin-left: 41%;color: gold;">
-		// 	                '.$params['upper'].'
-		// 	            </div>
-		// 	        </div>
-		// 	        <div id="newsletter_content" style="margin-top: 2%;margin-bottom: 2%;">
-		// 	             '.$params['lower'].'
-		// 	        </div>
-		// 	        <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;">
-		// 	            <a href="">
-		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_linkedin.png">
-		// 	            </a>
-		// 	            <a href="">
-		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_gmail.png">
-		// 	            </a>
-		// 	            <a href="">
-		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_fb.png">
-		// 	            </a>
-		// 	            <a href="">
-		// 	                <img class="newsletter_social_icons" style="margin-right: 1%;" src="'.base_url().'/application/static/images/icon_twitter.png">
-		// 	            </a>
-		// 	            <img style="margin-left: 10%" src="'.base_url().'/application/static/images/icon_phone.png"/>
-		// 	            <div style="float:right;margin-top:-1%;">
-		// 	               <div class="footer_col_title" style="margin-top: -23%;margin-left: 35px;font-size: 150%; color: #233f71;">
-		// 	                   Contact Us<br>
-		// 	               </div>
-		// 	               <div style="margin-top: -10%;font-size: 200%;color: #233f71;margin-left: 20%;">
-		// 	               16223 
-		// 	               </div>
-		// 	            </div>
-		// 	        </div>
-		// 	    </div>
-	 //    	</div>
-		// ';
-		
-		// $html2pdf->writeHTML($content);
-		// $file = $html2pdf->Output(getcwd().'/application/static/pdfs/temp.pdf','F');
-		// exit();
 		$data['params'] = $params;
 		$body = $this->load->view('admin/single_template', $data, true);
 		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
 	}
+
+	public function sendBanner($params,$list)
+	{
+		$data['params'] = $params;
+		$body = $this->load->view('admin/banner_template', $data, true);
+		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
+	}
+
+	public function sendProperties($params, $list)
+	{
+		$this->load->model('service');
+		$data['params'] = $params;
+		// printme($params);exit();
+		foreach ($params['properties'] as $key => $property) {
+			// printme($);
+			$data['properties'][$key]=$this->service->getPropertyByID($property);
+			$data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+		}
+		// printme($data);exit();
+		$body = $this->load->view('admin/properties_template', $data, true);
+		$this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');
+	}
+
+
 	public function checkpasswordchange()
 	{
 		$data = $this->init();
@@ -431,6 +488,7 @@ class Admin extends CI_Controller {
 		$data = $this->init();
 		
 		$data['courses'] = $this->course->getCourses();
+		// printme($data['courses']);exit();
 		$this->load->view('admin/courses', $data);
 
 	}
@@ -522,7 +580,7 @@ class Admin extends CI_Controller {
 
 		$data['course'] = $this->course->getCourseByID($id);
 
-
+		// printme($data['course'] );exit();
 
 		if(isset($_POST['delete'])){
 			$this->load->view('admin/coursedelete', $data);
@@ -634,26 +692,27 @@ class Admin extends CI_Controller {
 		$data = $this->init();
 		
 
-			if(isset($_POST['submit']))
+		if(isset($_POST['submit']))
 		{
-
-			$fileExtension = explode('.',$_FILES['userfile']['name']);
-			$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
-			$path = $this->config->config['upload_path'];
-			$this->config->set_item('upload_path',$path.'/courses');
+			// printme($_POST);exit();
+			// $fileExtension = explode('.',$_FILES['userfile']['name']);
+			// $_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+			// $path = $this->config->config['upload_path'];
+			// $this->config->set_item('upload_path',$path.'/courses');
 
 			unset($_POST['submit']);
-			$_POST['image'] = $_FILES['userfile']['name'];
+			// $_POST['image'] = $_FILES['userfile']['name'];
+			// printme($_POST);exit();
 			$insert = $this->course->insertCourse($_POST);
 			if($insert){
 
-				$upload = uploadme($this);
-				if($upload){
-					redirect('admin/courses/'.$this->db->insert_id());
-				}else{
-					$data['error'] = true;
-					$data['errorMsg'] = 'Upload Failed, Try again';
-				}
+				// $upload = uploadme($this);
+				// if($upload){
+				redirect('admin/courses/'.$this->db->insert_id());
+				// }else{
+				// 	$data['error'] = true;
+				// 	$data['errorMsg'] = 'Upload Failed, Try again';
+				// }
 
 			}
 		}

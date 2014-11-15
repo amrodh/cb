@@ -34,6 +34,9 @@
                                     <label for="uploadcv_app_uploadcv"><?php echo $this->lang->line('uploadcv_input4'); ?></label>
                                     <input type="file" name="userfile" id="uploadcv_app_uploadcv">
                                 </div>
+                                <div class="row" style="margin-left: 0;margin-right:0;">
+                                    Allowed file extensions: .pdf, .doc and .docx
+                                </div>
                             </div>
                         </div>
                         <?php if (isset($uploadError)) :?>

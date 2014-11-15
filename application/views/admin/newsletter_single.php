@@ -62,6 +62,7 @@
     </div>
     <div class="col-lg-3" style="margin-top:5.5%;margin-left:1%;">
     <form action="" id="singleFormID" method="post" onsubmit="checkSingleNewsletterForm();return false;">
+    <input type="hidden" name="title" value="<?= $params['title']; ?>">
     <input type="hidden" name="lower" value="<?= $params['lower']; ?>">
     <input type="hidden" name="upper" value="<?= $params['upper']; ?>">
     <input type="hidden" name="image" value="<?= $params['image']; ?>">
@@ -77,6 +78,7 @@
             </tr>
             <?php foreach($users as $user): ?>
                 <tr>
+                <?php // printme($user->user_identifier);exit(); ?>
                 <td><input type="checkbox" class="singlecheck" name="singlecheck[]" value="<?= $user->user_identifier; ?>"></td>
                 <td>
                     <?php if (is_object($user->user_identifier)): ?>

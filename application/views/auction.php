@@ -21,141 +21,135 @@
                         </div>
                         <div class="tab-content auction_body">
                             <div class="tab-pane active" id="recent">
-                                <div class="auction_body_top_div">
-                                    <div id="auction_div1"> Results <b>1 - 10</b> of <b>68</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View </div>
-                                    <div id="auction_div2">
-                                        <select class="selectpicker" id="auction_dropdown" data-style="btn" data-title="10">
-                                            <option>20</option> 
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select> 
-                                    </div> 
-                                    <div id="auction_div3">
-                                        results per page. 
-                                    </div>
-                                    <div id="auction_div4">
-                                        <a href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">next</a>
-                                    </div>
-                                </div>
+                                <!-- <div class="auction_body_top_div">
+                                </div> -->
                                 <div class="auction_body_bottom_div">
-                                <?php if (is_array($recentAuctions)): ?>
-                                    <?php foreach ($recentAuctions as $auction): ?>
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
-                                            </div>
-                                           <!--  <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div> -->
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                <?= $auction->title; ?>
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    <?= $auction->date_held; ?>
-                                                </div>
-                                                <div class="row">
-                                                    <?= $auction->text; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                                <?php else: ?>
-                                    <div class="alert alert-warning" style="text-align: center;width: 90%;margin: auto;">
-                                        None Available
-                                    </div>
-                                <?php endif ?>
-                                
+                                    <table id="auctionsRecent" style="border:none;" class="table table-striped table-bordered" border="0" cellspacing="0" width="100%">
+                                        <thead id="thead">
+                                            <tr>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                 
+                                        <tfoot id="tfoot">
+                                            <tr>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php if (is_array($recentAuctions)): ?>
+                                                <?php foreach ($recentAuctions as $auction): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row auction_content">
+                                                                <div class="col-lg-4">
+                                                                    <div class="auction_img">
+                                                                        <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <div class="auction_content_title">
+                                                                        <?= $auction->title; ?>
+                                                                    </div>
+                                                                    <div class="auction_content_body">
+                                                                        <div class="row auction_date">
+                                                                            <?= $auction->date_held; ?>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <?= $auction->text; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            <?php endforeach ?>
+                                            <?php else: ?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row" style="margin:auto; width:95%;">
+                                                            <div class="alert alert-warning" style="text-align: center;width: 90%;margin: auto;">
+                                                                None Available
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endif ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             
                             <div class="tab-pane" id="upcoming">
-                                <div class="auction_body_top_div">
-                                    <div id="auction_div1"> Results <b>1 - 10</b> of <b>68</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View </div>
-                                    <div id="auction_div2">
-                                        <select class="selectpicker" id="auction_dropdown" data-style="btn" data-title="10">
-                                            <option>20</option> 
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select> 
-                                    </div> 
-                                    <div id="auction_div3">
-                                        results per page. 
-                                    </div>
-                                    <div id="auction_div4">
-                                        <a href="#">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">next</a>
-                                    </div>
-                                </div>
-
+                                <!-- <div class="auction_body_top_div">
+                                </div>-->
                                 <div class="auction_body_bottom_div">
-                                <?php if (is_array($upcomingAuctions)): ?>
-                                    <?php foreach ($upcomingAuctions as $auction): ?>
-                                    <div class="row auction_content">
-                                        <div class="col-lg-3">
-                                            <div class="auction_img">
-                                                <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
-                                            </div>
-                                           <!--  <div class="auction_rating">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                                <img src="<?= base_url();?>/application/static/images/icon_star.png" alt="Image" class="img-responsive">
-                                            </div> -->
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="auction_content_title">
-                                                <?= $auction->title; ?>
-                                            </div>
-                                            <div class="auction_content_body">
-                                                <div class="row auction_date">
-                                                    <?= $auction->date_held; ?>
-                                                </div>
-                                                <div class="row">
-                                                    <?= $auction->text; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                                <?php else: ?>
-                                <div class="alert alert-warning">
-                                        None Available
-                                    </div>
-                                <?php endif ?>
-                                    
-                                    
+                                    <table id="auctionsUpcoming" style="border:none;" class="table table-striped table-bordered" border="0" cellspacing="0" width="100%">
+                                        <thead id="thead">
+                                            <tr>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                 
+                                        <tfoot id="tfoot">
+                                            <tr>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php if (is_array($upcomingAuctions)): ?>
+                                                <?php foreach ($upcomingAuctions as $auction): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row auction_content">
+                                                                <div class="col-lg-4">
+                                                                    <div class="auction_img">
+                                                                        <img src="<?= base_url();?>/application/static/upload/auctions/<?= $auction->image; ?>" alt="Image" class="img-responsive">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-8">
+                                                                    <div class="auction_content_title">
+                                                                        <?= $auction->title; ?>
+                                                                    </div>
+                                                                    <div class="auction_content_body">
+                                                                        <div class="row auction_date">
+                                                                            <?= $auction->date_held; ?>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <?= $auction->text; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            <?php else: ?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row" style="margin:auto; width:95%;">
+                                                            <div class="alert alert-warning">
+                                                                None Available
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endif ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="row auction_search">
+                       <!--  <div class="row auction_search">
                             <div class="col-lg-7">
                                 <input type="text" class="form-control" id="auction_search_txtbx">
                             </div>
                             <div class="col-lg-5">
                                 <button type="submit" class="search_btn_submit3">Search</button>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row auction_top_tool">
                             <div class="auction_toptool_title">
                                 <?php echo $this->lang->line('auction_calculator_title'); ?>
@@ -268,5 +262,22 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            </form>=
+            </form>
         <?php include('footer.php'); ?>
+
+
+<script type="text/javascript">
+    $(document).ready(function (){
+
+            $('#auctionsRecent').dataTable();
+            $('#auctionsUpcoming').dataTable();
+
+            $("#thead").css('display', 'none');
+            $("#tfoot").css('display', 'none');
+
+            $('#auctionsUpcoming > #thead').css('display', 'none');
+            $('#auctionsUpcoming > #tfoot').css('display', 'none');
+
+        });
+</script>
+

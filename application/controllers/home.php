@@ -16,6 +16,8 @@ class Home extends CI_Controller {
 
 			$data = $this->init();
 
+		$data['title'] = 'ColdWell Banker | Home';	
+
 		$this->load->model('service');
 		$this->load->model('content');
 
@@ -106,12 +108,10 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('service');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->service->getCountryCodes();
-		// printme($data['countryCodes']);exit();
 
-		// printme(base_url().$data['language']);exit();
 		if(isset($_POST['submit'])){
-		// printme($_POST);exit();
 			$firstname = $_POST['first_name'];
 			$lastname = $_POST['last_name'];
 			$username = $_POST['username'];
@@ -200,7 +200,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().'validate/'.$token->token.'"> Validate My Account</a>
 		';
-		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email);
+		$this->smtpmailer('Welcome To ColdWell Banker',$body,$token->email, '');
 	}
 
 	public function emailUpdateValidation($id)
@@ -212,7 +212,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().'validate/'.$token->token.'"> Verify Email Update</a>
 		';
-		$this->smtpmailer('Email Update Verification',$body,$token->email);
+		$this->smtpmailer('Email Update Verification',$body,$token->email, '');
 	}
 
 	public function forgotPasswordValidation($id, $language)
@@ -224,7 +224,7 @@ class Home extends CI_Controller {
 		</br>
 		 <a href="'.base_url().$language.'/resetpassword/'.$token->token.'"> Reset Password</a>
 		';
-		$this->smtpmailer('Reset Password',$body,$token->email);
+		$this->smtpmailer('Reset Password',$body,$token->email, '');
 	}
 
 	public function profile()
@@ -233,6 +233,7 @@ class Home extends CI_Controller {
 		$this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Profile';
 		// printme($data['user']->id);exit();
 		if(!isset($data['user']))
 			redirect('home');
@@ -421,6 +422,7 @@ class Home extends CI_Controller {
 
 		$username = $this->session->userdata('username');
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Share your Property';
 		$data['cities'] = $this->service->getCities();
 		
 		if (isset($_POST['submit'])){
@@ -436,8 +438,8 @@ class Home extends CI_Controller {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_price');
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_city');
-			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-				$data['insertError'] = $this->lang->line('shareProperty_missing_district');
+			// }elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
+			// 	$data['insertError'] = $this->lang->line('shareProperty_missing_district');
 			}elseif (empty($_POST['address'])) {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_address');
 			}elseif (empty($_POST['features'])) {
@@ -455,7 +457,12 @@ class Home extends CI_Controller {
 				}
 
 				$city = $this->service->getCityByID($_POST['city']);
-				$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				if ($_POST['district'] != 0){
+					$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+				}else{
+					$district = '';
+				}
+				
 				$propertyType = $this->service->getPropertyTypeByID($_POST['shareProperty_lob'],$_POST['shareProperty_type']);
 
 				$params = array ('user_id' => $data['user']->id,
@@ -482,15 +489,14 @@ class Home extends CI_Controller {
 							 	$images['image_'.$i]['tmp_name'] = $_FILES['img']['tmp_name'][$i];
 							 	$i++;
 							}
-							
-							// printme($_FILES);exit();
-
+							$count=0;
 							foreach ($images as $image) {
 								$fileExtension = explode('.',$image['name']);
 								$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
 								$_FILES['userfile']['tmp_name'] = $image['tmp_name'];
 								$_FILES['userfile']['size'] = $image['size'];
 								$params['image_url'] = $_FILES['userfile']['name'];
+								$this->config->set_item('allowed_types','pdf|jpg|jpeg|png');
 								if (!isset($data['imageFlag'])){
 									$upload = uploadme($this);
 									if(!isset($upload['error'])){
@@ -498,15 +504,9 @@ class Home extends CI_Controller {
 										$this->property->insertImage($params);
 										$data['insertProcess'] = true;
 
-										$firstname = $data['user']->first_name;
-										$lastname = $data['user']->last_name;
-										$phone = $data['user']->phone;
-										$email = $data['user']->email;
-										$body = 'Name: '.$firstname.' '.$lastname.'<br>
-												E-mail: '.$email.'<br>
-												Phone: '.$phone.'<br>
-												Property Type: '.$propertyType;
-										$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com');
+										$imageAttachments[$count] = getcwd().'/application/static/upload/'.$_FILES['userfile']['name'];
+										$count++;
+										
 									}else{
 										$this->property->deleteProperty($params['property_id']);
 										$data['insertProcess'] = false;
@@ -515,6 +515,20 @@ class Home extends CI_Controller {
 								}
 								
 							}
+							$firstname = $data['user']->first_name;
+							$lastname = $data['user']->last_name;
+							$phone = $data['user']->phone;
+							$email = $data['user']->email;
+							$body = 'Name: '.$firstname.' '.$lastname.'<br>
+									E-mail: '.$email.'<br>
+									Phone: '.$phone.'<br>
+									Property Type: '.$propertyType;
+							if(isset($imageAttachments)){
+								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', $imageAttachments);
+							}else{
+								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
+							}
+							
 						}
 						// $data['insertProcess'] = true;
 				}else{
@@ -532,8 +546,9 @@ class Home extends CI_Controller {
 		if($_POST['id'] == 'user'){
 			$params['user_identifier'] = $this->session->userdata['id'];
 		}else{
-			$params['user_identifier'];
+			$params['user_identifier'] = $_POST['id'];
 		}
+		// printme($_POST['id']);
 		$process = $this->user->insertNewsletterData($params);
 		if($process)
 		{
@@ -548,6 +563,7 @@ class Home extends CI_Controller {
 	public function viewAllProperties ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Available Properties';
 		$this->load->model('property');
 		$this->load->model('service');
 		$this->load->model('user');
@@ -608,7 +624,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price'] == 20000000)
@@ -624,8 +640,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 1000000000000000;
 			}else{
 				if ($_POST['area'] == 1000)
 				{
@@ -655,10 +671,18 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
 				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_POST['searchSubmit3'])) {
@@ -693,7 +717,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price_2'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price_2'] == 20000000)
@@ -709,8 +733,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area_2'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 10000000000000;
 			}else{
 				if ($_POST['area_2'] == 1000)
 				{
@@ -740,9 +764,17 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
+				$data['resultCount'] = 0;
 				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
@@ -779,7 +811,7 @@ class Home extends CI_Controller {
 
 			if ($_POST['price_3'] == 0)
 			{
-				$priceLowerLimit = 1;
+				$priceLowerLimit = 0;
 				$priceUpperLimit = 1000000000000000000;
 			}else{
 				if ($_POST['price_3'] == 20000000)
@@ -795,8 +827,8 @@ class Home extends CI_Controller {
 
 			if ($_POST['area_3'] == 0)
 			{
-				$areaLowerLimit = 1;
-				$areaUpperLimit = 100000000;
+				$areaLowerLimit = 0;
+				$areaUpperLimit = 100000000000000;
 			}else{
 				if ($_POST['area_3'] == 1000)
 				{
@@ -826,23 +858,37 @@ class Home extends CI_Controller {
 				$data['resultCount'] = $data['totalResults'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
 				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_GET['category'])){
 			if($_GET['category'] == 'home' && isset($_GET['contractType2']))
 			{
+				if ($_GET['contractType2'] == 'rent'){
+					$propertyFor = 2;
+				}elseif ($_GET['contractType2'] = 'sale'){
+					$propertyFor = 1;
+				}
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => $propertyFor,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
-					'AreaUpperLimit' => 100000000000000
+					'AreaLowerLimit' => 0,
+					'AreaUpperLimit' => 100000000000000, 
+					'lineOfBusiness' => 1
 				);	
 				$data['searchResults'] = $this->service->Search($searchParams);
 				if ($data['searchResults']['totalResults'] != 0)
@@ -851,14 +897,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
-						{
-							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2)
+						// {
+							// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 						
 					}
 					$data['searchResults'] = $results;
@@ -868,10 +914,18 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 			}
@@ -882,10 +936,10 @@ class Home extends CI_Controller {
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => 1,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
+					'AreaLowerLimit' => 0,
 					'AreaUpperLimit' => 100000000000000
 				);
 
@@ -896,14 +950,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
-						{
-							if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
+						// {
+							// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 						
 					}
 					$data['searchResults'] = $results;
@@ -913,10 +967,18 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 				
@@ -924,10 +986,10 @@ class Home extends CI_Controller {
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
-					'PropertyFor' => '',
-					'PriceLowerLimit' => 1,
+					'PropertyFor' => 2,
+					'PriceLowerLimit' => 0,
 					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 1,
+					'AreaLowerLimit' => 0,
 					'AreaUpperLimit' => 100000000000000
 				);
 
@@ -938,14 +1000,14 @@ class Home extends CI_Controller {
 					$results = array();
 					$count = 0;
 					foreach ($data['searchResults'] as $result) {
-						if ($result->LineofBusinessFK == 2)
-						{
-							if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
-							{
+						// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
+						// {
+							// if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
+							// {
 								$results[$count] = $result;
 								$count++;
-							}
-						}
+							// }
+						// }
 					}
 					$data['searchResults'] = $results;
 					$data['commercial'] = true;
@@ -954,10 +1016,18 @@ class Home extends CI_Controller {
 					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
+						if(isset($userFavorites)){
+							if(in_array($property->PropertyId,$userFavorites)){
+								$property->is_favorite = 1;
+							}else{
+								$property->is_favorite = 0;
+							}
+						}
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
 					$data['totalResults'] = 0;
+					$data['resultCount'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
 
@@ -973,10 +1043,10 @@ class Home extends CI_Controller {
 			$searchParams = array(
 				'PropertyType' => $type,
 				'BoxLocation' => $_GET['district'],
-				'PropertyFor' => '',
-				'PriceLowerLimit' => 1,
+				'PropertyFor' => 3,
+				'PriceLowerLimit' => 0,
 				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 1,
+				'AreaLowerLimit' => 0,
 				'AreaUpperLimit' => 100000000000000
 			);
 
@@ -987,10 +1057,18 @@ class Home extends CI_Controller {
 				$data['searchResults'] = $data['searchResults']['results'];
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
 			}else{
 				$data['totalResults'] = 0;
+				$data['resultCount'] = 0;
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 			
@@ -998,30 +1076,37 @@ class Home extends CI_Controller {
 			$searchParams = array(
 				'PropertyType' => '',
 				'BoxLocation' => '',
-				'PropertyFor' => '',
-				'PriceLowerLimit' => 1,
+				'PropertyFor' => 3,
+				'PriceLowerLimit' => 0,
 				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 1,
+				'AreaLowerLimit' => 0,
 				'AreaUpperLimit' => 100000000000000
 			);
 
 			$data['searchResults'] = $this->service->Search($searchParams);
-			$data['totalResults'] = $data['searchResults']['totalResults'];
-			$data['resultCount'] = $data['searchResults']['totalResults'];
-			$data['searchResults'] = $data['searchResults']['results'];
-			$data['images'] = array();
-			foreach ($data['searchResults'] as $property) {
-				if(isset($userFavorites)){
-					if(in_array($property->PropertyId,$userFavorites)){
-						$property->is_favorite = 1;
-					}else{
-						$property->is_favorite = 0;
+			// printme($data['searchResults']);exit();
+
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['resultCount'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
 					}
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 				}
-				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+			}else{
+				$data['totalResults'] = 0;
+				$data['resultCount'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
-			// printme($data['user']);exit();
-			// printme($data);exit();
+			
 		}
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -1046,8 +1131,6 @@ class Home extends CI_Controller {
 				$count++;
 			}
 			$data['propertyCount'] = $count;
-			// printme($data['properties']);exit();
-
 		}
 
 		$this->load->view($data['languagePath'].'compare_properties',$data);
@@ -1056,13 +1139,15 @@ class Home extends CI_Controller {
 	public function propertyDetails ()
 	{
 		$data = $this->init();
+		// $data['title'] = 'ColdWell Banker | Registration';
 		$propertyId = explode('/', $data['uri']);
 		$data['propertyId'] = $propertyId[1];
 		$this->load->model('property');
 		$this->load->model('service');
 		$this->load->model('user');
 		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
-		
+		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
+		// printme($data['searchResults']);exit();
 
 		$data['images'] = $this->service->getPropertyImages($data['propertyId'], $data['searchResults']->UnitId);
 
@@ -1081,10 +1166,7 @@ class Home extends CI_Controller {
 
 				foreach ($_POST['interest'] as $interest) {
 					$interests[] = $interest;
-					// printme($method);
 				}
-				// printme($interests);exit();
-
 				$params = array(
 					'first_name' => $_POST['firstName'],
 					'last_name' => $_POST['lastName'],
@@ -1100,8 +1182,10 @@ class Home extends CI_Controller {
 						E-mail: '.$_POST['email'].'<br>
 						Phone: '.$_POST['phone'].'<br>
 						PropertyID: '.$data['propertyId'].'<br>
+						Property Address: '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity.'<br>
+						Property Type: '.$data['searchResults']->PrpertyTypeStr.'<br>
 						Comments: '.$_POST['comments'];
-					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
+					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
 				}
 			}
 		}
@@ -1114,14 +1198,17 @@ class Home extends CI_Controller {
 	public function careers ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Careers';
 		$this->load->view($data['languagePath'].'careers',$data);
 	}
 
 	public function uploadCV ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Apply Now';
 		$this->load->model('user');
 
+		// printme($data['uri']);
 
 		$vacancy_id = $data['uri'];
 
@@ -1165,6 +1252,7 @@ class Home extends CI_Controller {
 			$filename = $filename[0];
 			$ext = explode('.', $_FILES['userfile']['name']);
 			$ext = $ext[1];
+			// if ($ext != 'pdf' && $ext != 'doc' &&)
 			$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
 			$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
 			$this->config->set_item('allowed_types','pdf|doc|docx');
@@ -1183,11 +1271,13 @@ class Home extends CI_Controller {
 					$body = 'Name: '.$firstname.' '.$lastname.'<br>
 							E-mail: '.$email.'<br>
 							Vacancy: '.$vacancy_id;
-					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com');
+					$attachment = getcwd().'/application/static/upload/careers/'.$_FILES['userfile']['name'] ;
+					// printme($attachment);exit();
+					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com', $attachment);
 				}
 			}else{
 				$uploadError = uploadme($this);
-				$data['uploadError'] = $uploadError['error'];
+				$data['uploadError'] = $uploadError['error']." (pdf, doc and docx)";
 			}
 
 			
@@ -1200,6 +1290,7 @@ class Home extends CI_Controller {
 	public function joinUs ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Join Us';
 		$this->load->model('vacancy');
 		$data['vacancies'] = $this->vacancy->getVacancies();
 		$this->load->view($data['languagePath'].'join_us',$data);
@@ -1208,12 +1299,15 @@ class Home extends CI_Controller {
 	public function marketIndex ()
 	{
 		$data = $this->init();
+		$data['districts'] = $this->service->getAllDistricts();
+		$data['title'] = 'ColdWell Banker | Market Index';
 		$this->load->view($data['languagePath'].'market_index',$data);
 	}
 
 	public function auction ()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Auctions';
 		$this->load->model('service');
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
@@ -1259,16 +1353,20 @@ class Home extends CI_Controller {
 
 		
 		$uri = $this->uri->uri_string;
-		// printme($uri);
+		// printme($uri);exit();
 		$posAr = strpos($uri, 'ar/');
 		$posEn = strpos($uri, 'en/');
 		$posAr2 = strpos($uri, 'ar');
 		$posEn2 = strpos($uri, 'en');
+		
 		if ($posEn !== false || $posEn2 !== false ){
 			if ($posAr == false || $posAr2 == false)
 			{
+				// printme($uri);exit();
 				$explodeAr = explode('ar/', $uri);
 				$explodeEn = explode('en/', $uri);
+				// printme($explodeAr);
+				// printme($explodeEn);exit();
 				if ($explodeAr[0] == $uri)
 				{
 					$data['uri'] = explode('en/', $uri);
@@ -1332,7 +1430,9 @@ class Home extends CI_Controller {
 			// printme($uri);
 			$data['uri'] = $uri;
 		}
-
+		if (($uri == 'en') || ($uri == 'ar')){
+			$data['uri'] = '';
+		}
 		// printme($data['uri']);
 
 		$data['language'] = $this->uri->segment(1);
@@ -1429,7 +1529,7 @@ class Home extends CI_Controller {
 	}
 
 
-function smtpmailer($subject,$body,$to) { 
+function smtpmailer($subject,$body,$to, $attachment) { 
 
 		 date_default_timezone_set('America/Los_Angeles');
 		 $config = Array(
@@ -1449,10 +1549,26 @@ function smtpmailer($subject,$body,$to) {
 		  $this->email->to($to); // change it to yours
 		  $this->email->subject($subject);
 		  $this->email->message($body);
-
+		  // printme($attachment);exit();
+		  if ($attachment != '')
+		  {
+		  		if (is_array($attachment)){
+		  			foreach ($attachment as $value) {
+		  				// printme($value);
+		  				$this->email->attach($value);
+		  			}
+		  		}else{
+		  			$this->email->attach($attachment);
+		  		}
+	  			
+		  }
+		  
 
 		  if($this->email->send())
+		  {
+		  	// echo $this->email->print_debugger();die;
 			return true;
+		}
 		 else
 			{
 			 show_error($this->email->print_debugger());
@@ -1461,7 +1577,11 @@ function smtpmailer($subject,$body,$to) {
 
 function trainingCenter()
 {
+	$this->load->model('course');
 	$data = $this->init();
+	$data['courses'] = $this->course->getCourses();
+	// printme($data['courses']);
+	$data['title'] = 'ColdWell Banker | Training Center';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }
 
@@ -1548,6 +1668,7 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->model('office');
 		$this->load->model('user');
+		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
 
 
@@ -1584,7 +1705,7 @@ function resetpassword()
 								E-mail: '.$_POST['contact_email'].'<br>
 								Phone: '.$_POST['contact_phone'].'<br>
 								Comments: '.$_POST['contact_subject'];
-						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
 						// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 					}else{
 						echo 0;
@@ -1612,7 +1733,7 @@ function resetpassword()
 							E-mail: '.$email.'<br>
 							Phone: '.$phone.'<br>
 							Comments: '.$_POST['contact_subject'];
-					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com');
+					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
 					// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 				}else{
 					echo 0;
@@ -1646,7 +1767,7 @@ function resetpassword()
 					Phone: '.$_POST['phone'].'<br>
 					PropertyID: '.$_POST['propertyID'].'<br>
 					Comments: '.$_POST['comments'];
-			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com');
+			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
 		}else{
 			echo 0;
 		}
@@ -1679,7 +1800,14 @@ function resetpassword()
 	function about()
 	{
 		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | About Us';
 		$this->load->view($data['languagePath'].'about', $data);
+	}
+	function franchise()
+	{
+		$data = $this->init();
+		$data['title'] = 'ColdWell Banker | Franchise';
+		$this->load->view($data['languagePath'].'franchise', $data);
 	}
 
 	function displayOffice()
@@ -1718,4 +1846,65 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->view('newsletter_properties', $data);
 	}
+
+	// function createExcel()
+	// {
+	// 	$this->load->library('excel');
+	// 	$this->load->model('service');
+	// 	$this->excel->setActiveSheetIndex(0);
+	// 	$categories = array(
+	// 		0 => 'Residential', 
+	// 		1 => 'Commercial'
+	// 		);
+	// 	$propertyType1 = $this->service->Getpropertytypes(1);
+	// 	$propertyType2 = $this->service->Getpropertytypes(2);
+	// 	$districts = $this->service->getAllDistricts();
+	// 	$contractTypes = array(
+	// 		0 => 'Sale',
+	// 		1 => 'Rent'
+	// 		);
+	// 	$alphas = range('A', 'Z');
+	// 	// printme(phpinfo());exit();
+	// 	$count = 1;
+	// 	foreach ($categories as $category) {
+	// 		if($category == 'Residential')
+	// 		{
+	// 			foreach ($propertyType1 as $type1) {
+
+	// 				foreach ($districts as $district) {
+						
+	// 					foreach ($contractTypes as $contractType) {
+
+	// 						$this->excel->getActiveSheet()->SetCellValue('A'.$count, $category);
+	// 						$this->excel->getActiveSheet()->SetCellValue('B'.$count, $type1);
+	// 						$this->excel->getActiveSheet()->SetCellValue('C'.$count, $district['name']);
+	// 						$this->excel->getActiveSheet()->SetCellValue('D'.$count, $contractType);
+	// 						$count++;
+	// 					}
+	// 				}
+	// 			}
+	// 		}else{
+	// 			foreach ($propertyType1 as $type2) {
+
+	// 				foreach ($districts as $district) {
+						
+	// 					foreach ($contractTypes as $contractType) {
+
+	// 						$this->excel->getActiveSheet()->SetCellValue('A'.$count, $category);
+	// 						$this->excel->getActiveSheet()->SetCellValue('B'.$count, $type1);
+	// 						$this->excel->getActiveSheet()->SetCellValue('C'.$count, $district['name']);
+	// 						$this->excel->getActiveSheet()->SetCellValue('D'.$count, $contractType);
+	// 						$count++;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+			
+	// 	}
+	// 	$this->excel->save(getcwd().'/application/static/input2.xls');
+	// 	exit();
+	// 	// $this->excel->getActiveSheet()->SetCellValue('B2', "whatever");
+		
+		
+	// }
 }

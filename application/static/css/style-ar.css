@@ -763,6 +763,9 @@ li.active>a{
 .careers_overlay_div_btn>a{
     color: white!important;
     text-decoration: none!important;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 #careers_notifier{
@@ -941,7 +944,7 @@ li.active>a{
     padding: 5px 10px;
 }
 
-#properties_bottom_div, #compare_bottom_div, #auctions_bottom_div, #training_bottom_div{
+#properties_bottom_div, #compare_bottom_div, #auctions_bottom_div, #training_bottom_div, #about_bottom_div{
     padding: 30px;
 }
 
@@ -956,6 +959,7 @@ li.active>a{
     border: 1px solid #a2a2a2;
     border-radius: 10px;
     background: url(../images/sample_map.png);
+    /*opacity: 0.5%;*/
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-bottom: 20px;
@@ -1220,7 +1224,7 @@ tbody > tr > td {
 }
 
 #property_mainimage{
-    height: 300px;
+    height: 390px;
     /*height: 60%;*/
     width: 100%;
 }
@@ -1704,6 +1708,15 @@ margin-top: 5%
 
 #auctions_breadcrumb, #training_breadcrumb, #about_breadcrumb{
     font-size: 11px;
+}
+
+#auctionsRecent_wrapper, #auctionsUpcoming_wrapper{
+    padding: 3%;
+}
+
+#auctionsRecent_wrapper > .row > .col-xs-6 ,#auctionsUpcoming_wrapper > .row > .col-xs-6 {
+direction: ltr;
+float: left;
 }
 
 .breadcrumb_styling{

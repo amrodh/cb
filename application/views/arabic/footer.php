@@ -82,20 +82,26 @@
                         <?php if (isset($is_valid)): ?>
                             <?php if (!$is_subscribed): ?>
                             <div id="footer_subscribtion">
-                                <input style="margin-left:0;" type="submit" value="إشترك في النشرة الإخبارية" name="btn_subscribe" id="btn_subscribe">
+                                <input style="margin-left:0;" type="submit" value="Subscribe to our Newsletter" name="btn_subscribe" id="btn_subscribe">
                             </div>
                             <?php endif ?>
                         <?php endif ?>
                         
                     <?php else: ?>
-                    <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
-                        إشترك في النشرة الإخبارية
-                    </div>
-                    <div id="footer_subscribtion">
-                        <input type="text" name="footer_subscribe_email" id="footer_subscribe_email" placeholder="بريدك الالكتروني"/>
-                        <input type="submit" value="إشترك" name="btn_subscribe" id="btn_subscribe">
-                    </div>
+                        <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
+                            إشترك في النشرة الإخبارية
+                        </div>
+                        <div id="footer_subscribtion">
+                            <input type="text" name="footer_subscribe_email" id="footer_subscribe_email" placeholder="بريدك الالكتروني"/>
+                            <input type="submit" value="إشترك" name="btn_subscribe" id="btn_subscribe">
+                        </div>
                     <?php endif ?>
+
+                </div>
+                <div class="row"  style="width: 100%;margin-top:4%;">
+                    <div class="alert" id="successMessage" style="display:none; width: 100%;" role="alert">
+                        
+                    </div>
                 </div>
             </div>
                 <div id="footer_dropdown1_data"style="">
@@ -105,32 +111,6 @@
                            <a style="color:white;" href="<?=base_url();?>ar/viewAllProperties?district=<?=$item['name'];?>&type=villa"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">المهندسين  </a> . 
-                        <a href="">الزمالك </a> . 
-                        <a href="">المعادي </a> . 
-                        <a href="">مدينة نصر </a> . 
-                        <a href="">مصر الجديدة </a> . 
-                        <a href="">التجمع الخامس </a> . 
-                        <a href="">السادس من أكتوبر </a> . 
-
-                    </p>
-                    <p>
-                        <a href="">الاسكندرية </a> . 
-                        <a href="">بورسعيد </a> . 
-                        <a href="">الهرم</a> . 
-                        <a href="">الصحراوي</a> . 
-                        <a href="">العباسية</a> . 
-                        <a href="">الدقي</a> . 
-                        <a href="">حلوان</a> . 
-                        <a href="">العجوزة</a> . 
-                    </p>
-                    <p>
-                        <a href="">سوهاج</a> . 
-                        <a href="">قنا</a> . 
-                        <a href="">العجمي</a> . 
-                        <a href="">الساحل الشمالي</a> . 
-                    </p> -->
                 </div>
                 <div id="footer_dropdown2_data" style="">
                     <b>المنطقة</b><br>
@@ -139,32 +119,6 @@
                            <a style="color:white;" href="<?=base_url();?>ar/viewAllProperties?district=<?=$item['name'];?>&type=apartment"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">المهندسين  </a> . 
-                        <a href="">الزمالك </a> . 
-                        <a href="">المعادي </a> . 
-                        <a href="">مدينة نصر </a> . 
-                        <a href="">مصر الجديدة </a> . 
-                        <a href="">التجمع الخامس </a> . 
-                        <a href="">السادس من أكتوبر </a> . 
-
-                    </p>
-                    <p>
-                        <a href="">الاسكندرية </a> . 
-                        <a href="">بورسعيد </a> . 
-                        <a href="">الهرم</a> . 
-                        <a href="">الصحراوي</a> . 
-                        <a href="">العباسية</a> . 
-                        <a href="">الدقي</a> . 
-                        <a href="">حلوان</a> . 
-                        <a href="">العجوزة</a> . 
-                    </p>
-                    <p>
-                        <a href="">سوهاج</a> . 
-                        <a href="">قنا</a> . 
-                        <a href="">العجمي</a> . 
-                        <a href="">الساحل الشمالي</a> . 
-                    </p> -->
                 </div>
                 <div id="footer_dropdown3_data" style="">
                     <b>المنطقة</b><br>
@@ -173,32 +127,6 @@
                            <a style="color:white;" href="<?=base_url();?>ar/viewAllProperties?district=<?=$item['name'];?>&type=building"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">المهندسين  </a> . 
-                        <a href="">الزمالك </a> . 
-                        <a href="">المعادي </a> . 
-                        <a href="">مدينة نصر </a> . 
-                        <a href="">مصر الجديدة </a> . 
-                        <a href="">التجمع الخامس </a> . 
-                        <a href="">السادس من أكتوبر </a> . 
-
-                    </p>
-                    <p>
-                        <a href="">الاسكندرية </a> . 
-                        <a href="">بورسعيد </a> . 
-                        <a href="">الهرم</a> . 
-                        <a href="">الصحراوي</a> . 
-                        <a href="">العباسية</a> . 
-                        <a href="">الدقي</a> . 
-                        <a href="">حلوان</a> . 
-                        <a href="">العجوزة</a> . 
-                    </p>
-                    <p>
-                        <a href="">سوهاج</a> . 
-                        <a href="">قنا</a> . 
-                        <a href="">العجمي</a> . 
-                        <a href="">الساحل الشمالي</a> . 
-                    </p> -->
                 </div>
         </div>
         <div class="container">

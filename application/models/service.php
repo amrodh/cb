@@ -7,14 +7,24 @@ class service extends CI_Model {
     function __construct()
     {
         parent::__construct();
-        $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+        try {
+            $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+        } catch (Exception $e) {
+            printme($e);
+        }
+        
         
     }
 
     function search($inputs)
     {
+        if (isset($inputs['lineOfBusiness'])){
+            $lineOfBusiness = array (0 => $inputs['lineOfBusiness']);
+        }else{
+            $lineOfBusiness = array();
+        }
         // printme($inputs);exit();
-        $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
+        // $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
         $inputs = array(
             'searchMode' => 'Exact',
             'Bedrooms' => '',
@@ -29,24 +39,26 @@ class service extends CI_Model {
             'AreaLowerLimit' => $inputs['AreaLowerLimit'],
             'AreaUpperLimit' => $inputs['AreaUpperLimit'],
             'PropertyType' => $inputs['PropertyType'],
-            'PropertyFor' => $inputs['PropertyFor'],
+            'PropertyFor' => '',
             'BoxLocation' => $inputs['BoxLocation'],
             'BudgetFrom' => '',
             'BudgetTo' => '',
             'AreaFrom' => '',
             'AreaTo' => '',
             'AreaUnitId' => '',
-            'LineOfBusinessId' => $LineOfBusinessId,
+            'LineOfBusinessId' => $lineOfBusiness,
             'CompanyId' => '',
             'sortmode' => '',
             'sortType' => '',
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
-            'resultsCountPerPage' => '20'
+            'resultsCountPerPage' => '30'
             );
-        $results = $this->client->Search($inputs);
 
+
+        $results = $this->client->Search($inputs);
+// printme($results);exit();
         $data = array();
         if ($results->TotalResults != 0)
         {
@@ -76,22 +88,8 @@ class service extends CI_Model {
             'CompanyId' => ''
             );
         $results = $this->client->GetResultsByPropertyID($inputs);
-        // printme($results);exit();
         return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
-
-    // function getPropertyImages($id, $unitId)
-    // {
-    //     $inputs = array(
-    //         'PropertyId' => $id,
-    //         'UnitId' => $unitId,
-    //         'ImageType' => '',
-    //         'URL' => ''
-    //         );
-    //     $results = $this->client->GetListOfImages($inputs);
-    //     printme($results);exit();
-    //     return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
-    // }
 
     function getCities()
     {

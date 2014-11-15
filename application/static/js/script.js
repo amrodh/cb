@@ -27,7 +27,7 @@ $(document).ready(function ()
                     src: '../application/static/images/x.png',
                     alt: 'delete'
                   }).click(function() {
-                    $(this).parent().parent().remove();
+                    $(this).parent().remove();
                   }));
               }
           });
@@ -56,7 +56,7 @@ $(document).ready(function ()
 
 
            $("#btn_subscribe").click(function(){
-
+              // alert('hi');
            		var email;
            		if( $("#footer_subscribe_email").length == 0){
            			email = 'user';
@@ -66,27 +66,27 @@ $(document).ready(function ()
            				return false;
            			}
            		}
-
+              // alert(email);return;
            		var url = $("#url").val();
 		        url = url+"subscribeuser";
 		        $.ajax({
 		          type: "POST",
 		          url: url,
-		          data: { id: email }
-		        })
-		          .success(function( msg ) {
-		                $(".footer_col_title").hide();
+		          data: { id: email },
+              success: function( msg ) {
+		                $("#footer_bottom_div").hide();
 		                $("#btn_subscribe").hide();
                         $("#footer_subscribe_email").hide();
                         $("#successMessage").addClass('alert-success');
                         $("#successMessage").show();
-                        $("#successMessage").html('Subscription was successfull.');
-		          }),
-                  error(function() {
+                        $("#successMessage").html('Subscription was successful.');
+		          },
+                  error:function() {
                         $("#successMessage").addClass('alert-danger');
                         $("#successMessage").show();
                         $("#successMessage").html('Subscription failed. Please try again later');
-                  });
+                  }
+                });
 
 
 
@@ -455,6 +455,38 @@ $(document).ready(function ()
                         }
                   });
             });
+            
+            $('#marketIndex_lob').change(function(event) {
+              var lob = $(this).val();
+              var url = $("#url").val();
+              var key = 3;
+              url = url+"getPropertyTypes";
+               $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: { lob: lob, key: key }
+                })
+                  .success(function( response ) {
+                    // alert (response);
+                    if (response != 0)
+                        {
+                          $("#market_propertyContainer").show();
+                          $("#market_propertyContainer").html(response);
+                          $('#marketIndex_propertyType').selectpicker();
+                          $('#market_disabled_property').css('display', 'none');
+                        }
+                        else
+                        {
+                            $("#market_propertyContainer").hide();
+                            $('#market_disabled_property').css('display', 'block');
+                            $('#marketIndex_disabled_property').attr('disabled', true);
+                            $("[data-id='marketIndex_disabled_property']").attr('disabled', true);
+                            // $("#searchHome_district").hide();
+                            // $("[data-id='searchHome_district']").hide();
+                        }
+                  });
+            });
+
 
             $('#shareProperty_lob').change(function(event) {
                 var lob = $(this).val();

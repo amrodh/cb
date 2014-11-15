@@ -32,7 +32,7 @@
                 <a style="text-decoration: none;" href="www.google.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png"></a>
                 <a style="text-decoration: none;" href="www.facebook.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png"></a>
                 <a style="text-decoration: none;" href="www.twitter.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png"></a>
-                <img style="margin-top: -5px;margin-left: 54%" src="<?= base_url(); ?>application/static/images/callcenter.png"/>        
+                <img style="margin-top: -5px;margin-left: 50%" src="<?= base_url(); ?>application/static/images/callcenter.png"/>        
         </div>
         
      </td>

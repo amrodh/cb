@@ -7,56 +7,45 @@
                         <div class="market_index_col_title title_margin">
                             <?php echo $this->lang->line('marketindex_title1'); ?>
                         </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                            <option>إختر النوع</option> 
-                            <option>شقة</option>
-                            <option>بناء</option>
-                            <option>شقة مفروشة</option>
-                            <option>مكتب</option>
-                            <option>محل</option>
-                            <option>فيلا</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                        <div class="market_index_col_title title_margin">
-                            <?php echo $this->lang->line('marketindex_title2'); ?>
-                        </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                            <option>إختر النوع</option> 
-                            <option>شقة</option>
-                            <option>بناء</option>
-                            <option>شقة مفروشة</option>
-                            <option>مكتب</option>
-                            <option>محل</option>
-                            <option>فيلا</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                        <div class="market_index_col_title title_margin">
-                            <?php echo $this->lang->line('marketindex_title3'); ?>
-                        </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                            <option>إختر النوع</option> 
-                            <option>شقة</option>
-                            <option>بناء</option>
-                            <option>شقة مفروشة</option>
-                            <option>مكتب</option>
-                            <option>محل</option>
-                            <option>فيلا</option>
+                        <select class="selectpicker" name="lob" id="marketIndex_lob" data-style="btn" data-title="Select Category" data-size="5">
+                            <option value="0">إختار الفئة</option> 
+                            <option value="1">سكنية</option>
+                            <option value="2">تجارية</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
                             <?php echo $this->lang->line('marketindex_title4'); ?>
                         </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                            <option>إختر النوع</option> 
-                            <option>شقة</option>
-                            <option>بناء</option>
-                            <option>شقة مفروشة</option>
-                            <option>مكتب</option>
-                            <option>محل</option>
-                            <option>فيلا</option>
+                        <div id="market_propertyContainer">
+                            
+                        </div>
+                        <div id="market_disabled_property">
+                            <select class="selectpicker" id="marketIndex_disabled_property" name="marketIndex_propertyType" data-style="btn" data-title="Select Type" disabled>
+                                <option value="0">إختار نوع العقار</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                        <div class="market_index_col_title title_margin">
+                            <?php echo $this->lang->line('marketindex_title2'); ?>
+                        </div>
+                        <select class="selectpicker" name="marketIndex_district" data-style="btn" data-title="Select District">
+                            <option value="0">إختار المنطقة</option> 
+                            <?php foreach ($districts as $district): ?>
+                                <option value="<?php echo $district['id']; ?>"><?= $district['name'];?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                        <div class="market_index_col_title title_margin">
+                            <?php echo $this->lang->line('marketindex_title3'); ?>
+                        </div>
+                        <select class="selectpicker" name="marketIndex_contractType" data-style="btn" data-title="Select Type">
+                            <option value="0">إختار نوع العقد</option> 
+                            <option value="Sale">للبيع</option>
+                            <option value="Rent">للايجار</option>
                         </select>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
 
 <!-- <?php if ($request == 'content'): ?> -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/style.css"> -->
 <!-- <?php endif ?> -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css">
  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/datepicker.css">
@@ -52,7 +52,7 @@
 <body>
 
 <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-image:url('<?php echo base_url(); ?>application/static/images/logo.png');background-size:16.5% 100%;background-repeat:no-repeat;" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

@@ -7,56 +7,46 @@
                         <div class="market_index_col_title title_margin">
                             <?php echo $this->lang->line('marketindex_title1'); ?>
                         </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                             <option>Select Type</option> 
-                             <option>Apartment</option>
-                             <option>Building</option>
-                             <option>Furnished Apartment</option>
-                             <option>Office</option>
-                             <option>Shop</option>
-                             <option>Villa</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                        <div class="market_index_col_title title_margin">
-                            <?php echo $this->lang->line('marketindex_title2'); ?>
-                        </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                             <option>Select Type</option> 
-                             <option>Apartment</option>
-                             <option>Building</option>
-                             <option>Furnished Apartment</option>
-                             <option>Office</option>
-                             <option>Shop</option>
-                             <option>Villa</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
-                        <div class="market_index_col_title title_margin">
-                            <?php echo $this->lang->line('marketindex_title3'); ?>
-                        </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                             <option>Select Type</option> 
-                             <option>Apartment</option>
-                             <option>Building</option>
-                             <option>Furnished Apartment</option>
-                             <option>Office</option>
-                             <option>Shop</option>
-                             <option>Villa</option>
+                        <select class="selectpicker" name="lob" id="marketIndex_lob" data-style="btn" data-title="Select Category" data-size="5">
+                            <option value="0">Select Category</option> 
+                            <option value="1">Residential</option>
+                            <option value="2">Commercial</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                         <div class="market_index_col_title title_margin">
                             <?php echo $this->lang->line('marketindex_title4'); ?>
                         </div>
-                        <select class="selectpicker" data-style="btn" data-title="Select Type">
-                             <option>Select Type</option> 
-                             <option>Apartment</option>
-                             <option>Building</option>
-                             <option>Furnished Apartment</option>
-                             <option>Office</option>
-                             <option>Shop</option>
-                             <option>Villa</option>
+                        <div id="market_propertyContainer">
+                            
+                        </div>
+                        <div id="market_disabled_property">
+                            <select class="selectpicker" id="marketIndex_disabled_property" name="marketIndex_propertyType" data-style="btn" data-title="Select Type" disabled>
+                                <option value="0">Select Property Type</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                        <div class="market_index_col_title title_margin">
+                            <?php echo $this->lang->line('marketindex_title2'); ?>
+                        </div>
+                        <select class="selectpicker" name="marketIndex_district" data-style="btn" data-title="Select District">
+                            <option value="0">Select District</option> 
+                            <?php foreach ($districts as $district): ?>
+                                <option value="<?php echo $district['id']; ?>"><?= $district['name'];?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    
+                    <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                        <div class="market_index_col_title title_margin">
+                            <?php echo $this->lang->line('marketindex_title3'); ?>
+                        </div>
+                        <select class="selectpicker" name="marketIndex_contractType" data-style="btn" data-title="Select Type">
+                            <option value="0">Select Contract Type</option> 
+                            <option value="Sale">Sale</option>
+                            <option value="Rent">Rent</option>
                         </select>
                     </div>
                 </div>

@@ -1,9 +1,6 @@
 <?php include('header.php'); ?>
 
     <div id="wrapper">
-
-        
-
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -41,19 +38,19 @@
                         <td>Name:</td>
                         <td><input type="text" name="name" required pattern=".{4,}" title="4 characters minimum" value="<?php if(isset($params)) echo $params['name']; ?>">
                         </td>
-                        <td><input style="text-align:right;direction:RTL;" type="text" name="name_ar" value="<?php if(isset($params)) echo $params['name_ar']; ?>" required>
+                        <!-- <td><input style="text-align:right;direction:RTL;" type="text" name="name_ar" value="<?php if(isset($params)) echo $params['name_ar']; ?>" required>
                         </td>
-                        <td>الأسم</td>
+                        <td>الأسم</td> -->
                       </tr>
                       <tr>
                         <td>Description</td>
                         <td>
-                            <textarea name="description" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
+                            <textarea name="description" id="editor1" cols="30" rows="10"><?php if(isset($params)) echo $params['description']; ?></textarea>
                          </td>
-                        <td>
+                        <!-- <td>
                         <textarea style="text-align:right;direction:RTL;" name="description_ar" id="" cols="30" rows="10"><?php if(isset($params)) echo $params['description_ar']; ?></textarea>
                         </td>
-                        <td>وصف</td>
+                        <td>وصف</td> -->
                       </tr>
                      
                     </tbody>
@@ -89,3 +86,7 @@
     </div>
 
 <?php include('footer.php') ?>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+</script>

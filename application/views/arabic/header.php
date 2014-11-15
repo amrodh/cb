@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            Coldwell Banker
+            <?= $title;?>
         </title>
         <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme-ar.css"> -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-ar.min.css">
@@ -219,7 +219,20 @@
                                 </li> -->
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>ar/about" class="header_items_rtl"><?php echo $this->lang->line('home_menu6'); ?></a></li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: 1%;">
+                                <li>
+                                    <a href="<?= base_url();?>ar/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url();?>ar/franchise"><?php echo $this->lang->line('home_submenu11'); ?></a>
+                                </li>
+                            </ul>
+                            <!-- <a href="<?= base_url();?>ar/about" class="header_items_rtl"><?php echo $this->lang->line('home_menu6'); ?></a> -->
+                        </li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
