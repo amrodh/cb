@@ -574,12 +574,16 @@ class Home extends CI_Controller {
 
 
 		if (isset($data['loggedIn'])){
+			// printme('hello');exit();
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
 				foreach ($data['userFavorites'] as $property) {
 					$userFavorites[] = $property->property_id;
 				}
+			}else{
+				$userFavorites = array();
 			}
+			// printme($userFavorites);exit();
 		}
 
 		//printme($userFavorites);exit();
