@@ -23,32 +23,11 @@ class Home extends CI_Controller {
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->service->getCities();
-<<<<<<< HEAD
 
-		// $data['featuredList'] = $this->service->getFeaturedProperties();
-		// $searchParams = array(
-		// 		'PropertyType' => '',
-		// 		'BoxLocation' => '',
-		// 		'PropertyFor' => '',
-		// 		'PriceLowerLimit' => 1,
-		// 		'PriceUpperLimit' => 100000000000000000,
-		// 		'AreaLowerLimit' => 1,
-		// 		'AreaUpperLimit' => 100000000000000000
-		// 	);
-		// printme();
-		// $results = $this->service->Search($searchParams);
-
-		// $data['images'] = $this->service->getPropertyImages(210426, 210423);
-		// printme($data['images']);exit();
+		
 		//$data['serviceTypes'] = $this->service->getServiceType();
 		//$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
-=======
-		
-		$data['serviceTypes'] = $this->service->getServiceType();
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['propertyType2'] = $this->service->Getpropertytypes(2);
->>>>>>> 1007efd417563e801f55f6c098260cd6c417e5ff
 
 		// $districts = $this->service->getAllDistricts();
 		// $neighborhoods = array();
@@ -57,10 +36,10 @@ class Home extends CI_Controller {
 		// }
 		// printme($neighborhoods);exit();
 		
-		$data['featuredProperties']=$this->service->getFeaturedProperties();
-		foreach ($data['featuredProperties'] as $property) {
-			$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
-		}
+		// $data['featuredProperties']=$this->service->getFeaturedProperties();
+		// foreach ($data['featuredProperties'] as $property) {
+		// 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		// }
 
 
 		$this->load->view($data['languagePath'].'home',$data);
