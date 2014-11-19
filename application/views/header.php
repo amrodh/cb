@@ -187,10 +187,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -18.5%;">
                                 <li>
-                                    <a href="<?=base_url();?>viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_submenu4'); ?></a>
+                                    <a href="<?=base_url();?>en/viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_submenu4'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url();?>viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_submenu5'); ?></a>
+                                    <a href="<?=base_url();?>en/viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_submenu5'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -221,7 +221,7 @@
                                     <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/franchise"><?php echo $this->lang->line('home_submenu10'); ?></a>
+                                    <a href="<?= base_url();?>en/franchise"><?php echo $this->lang->line('home_submenu11'); ?></a>
                                 </li>
                             </ul>
 

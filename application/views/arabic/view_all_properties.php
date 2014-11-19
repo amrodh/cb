@@ -265,7 +265,7 @@
                                 </table>
                             </div>
                             <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div">
-                                <div style="border: 1px solid red;position: relative;width: 293px;height: 500px;margin-right: -6%;border-radius: 10px;text-align: center;padding-top: 93%;font-size: 210%;background: rgba(0, 0, 0, 0.3);color: red;">
+                                <div style="position: relative;width: 293px;height: 500px;margin-right: -6%;border-radius: 10px;text-align: center;padding-top: 80%;font-size: 380%;background: rgba(0, 0, 0, 0.3);color: white;">
                                     قريبا
                                 </div>
                             </div>

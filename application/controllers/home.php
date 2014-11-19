@@ -23,25 +23,22 @@ class Home extends CI_Controller {
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->service->getCities();
-
-		// $data['featuredList'] = $this->service->getFeaturedProperties();
-		// $searchParams = array(
-		// 		'PropertyType' => '',
-		// 		'BoxLocation' => '',
-		// 		'PropertyFor' => '',
-		// 		'PriceLowerLimit' => 1,
-		// 		'PriceUpperLimit' => 100000000000000000,
-		// 		'AreaLowerLimit' => 1,
-		// 		'AreaUpperLimit' => 100000000000000000
-		// 	);
-		// printme();
-		// $results = $this->service->Search($searchParams);
-
-		// $data['images'] = $this->service->getPropertyImages(210426, 210423);
-		// printme($data['images']);exit();
+		
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
 		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+
+		// $districts = $this->service->getAllDistricts();
+		// $neighborhoods = array();
+		// foreach ($districts as $key => $district) {
+		// 	$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
+		// }
+		// printme($neighborhoods);exit();
+		
+		$data['featuredProperties']=$this->service->getFeaturedProperties();
+		foreach ($data['featuredProperties'] as $property) {
+			$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		}
 
 
 		$this->load->view($data['languagePath'].'home',$data);
@@ -597,11 +594,12 @@ class Home extends CI_Controller {
 
 		if (isset($_POST['searchSubmit1']))
 		{
-			if ($_POST['type'] == 0)
+			// printme($_POST);exit();
+			if ($_POST['typeName'] == 0)
 			{
 				$type = '';
 			}else{
-				$type = $_POST['type'];
+				$type = $_POST['typeName'];
 			}
 
 			if ($_POST['city'] == 0)
@@ -1076,6 +1074,42 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 			
+		}elseif (isset($_GET['featured'])){
+			$searchParams = array(
+				'PropertyType' => '',
+				'BoxLocation' => '',
+				'PropertyFor' => 3,
+				'PriceLowerLimit' => 0,
+				'PriceUpperLimit' => 100000000000000,
+				'AreaLowerLimit' => 0,
+				'AreaUpperLimit' => 100000000000000,
+				'isFeatured' =>true,
+				'useFeaturedFilter' => true
+			);
+
+			$data['searchResults'] = $this->service->Search($searchParams);
+			// printme($data['searchResults']);exit();
+
+			if ($data['searchResults']['totalResults'] != 0){
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['resultCount'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+				}
+			}else{
+				$data['totalResults'] = 0;
+				$data['resultCount'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
 		}else{
 			$searchParams = array(
 				'PropertyType' => '',

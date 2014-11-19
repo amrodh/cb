@@ -1,5 +1,5 @@
 <?php include('header.php'); ?>
-        <?php include('search.php'); ?>
+        <!-- <?php //include('search.php'); ?> -->
         <div class="container auctions_main_div">
             <div class="auctions_top_div">
                 <?php echo $this->lang->line('auction_title'); ?>
@@ -142,14 +142,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                       <!--  <div class="row auction_search">
-                            <div class="col-lg-7">
-                                <input type="text" class="form-control" id="auction_search_txtbx">
-                            </div>
-                            <div class="col-lg-5">
-                                <button type="submit" class="search_btn_submit3">Search</button>
-                            </div>
-                        </div> -->
                         <div class="row auction_top_tool">
                             <div class="auction_toptool_title">
                                 <?php echo $this->lang->line('auction_calculator_title'); ?>

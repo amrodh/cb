@@ -2,6 +2,14 @@ var abc = 0;
 $(document).ready(function ()
         {
 
+          $('li.dropdown').click(function(event) {
+            if ($('li.dropdown').hasClass('open')){
+              $('li.dropdown > a.dropdown-toggle').css('background-color', '#23395b');
+              $('li.dropdown > a.dropdown-toggle').css('color', 'white');
+            }
+          });
+
+
           $('#add_more').click(function() {
             $(this).before($("<div/>", {
             id: 'filediv'
@@ -382,6 +390,7 @@ $(document).ready(function ()
               var lob = $('[name="lob"]').val();
 
               $('[name="districtName"]').val($('[name="district"]').val());
+              $('[name="typeName"]').val($('[name="type"]').val());
               $('#lob_selected').val(lob);
             });
 

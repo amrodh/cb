@@ -220,7 +220,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
+                            <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: 1%;">
