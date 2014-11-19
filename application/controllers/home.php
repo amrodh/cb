@@ -25,21 +25,21 @@ class Home extends CI_Controller {
 		$data['cities'] = $this->service->getCities();
 
 		
-		//$data['serviceTypes'] = $this->service->getServiceType();
-		//$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		$data['serviceTypes'] = $this->service->getServiceType();
+		$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
-		// $districts = $this->service->getAllDistricts();
-		// $neighborhoods = array();
-		// foreach ($districts as $key => $district) {
-		// 	$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
-		// }
-		// printme($neighborhoods);exit();
+		$districts = $this->service->getAllDistricts();
+		$neighborhoods = array();
+		foreach ($districts as $key => $district) {
+			$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
+		}
+		printme($neighborhoods);exit();
 		
-		// $data['featuredProperties']=$this->service->getFeaturedProperties();
-		// foreach ($data['featuredProperties'] as $property) {
-		// 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
-		// }
+		$data['featuredProperties']=$this->service->getFeaturedProperties();
+		foreach ($data['featuredProperties'] as $property) {
+			$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		}
 
 
 		$this->load->view($data['languagePath'].'home',$data);
