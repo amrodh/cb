@@ -25,9 +25,10 @@ class Home extends CI_Controller {
 		$data['cities'] = $this->service->getCities();
 
 		
-		$data['serviceTypes'] = $this->service->getServiceType();
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		//$data['serviceTypes'] = $this->service->getServiceType();
+		
+		//$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
 		// $districts = $this->service->getAllDistricts();
 		// $neighborhoods = array();
