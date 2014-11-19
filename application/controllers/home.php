@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		//$this->load->model('service');
+		$this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();

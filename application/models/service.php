@@ -9,7 +9,7 @@ class service extends CI_Model {
         parent::__construct();
 
         //printme(phpinfo());
-       /* libxml_disable_entity_loader(false);
+        libxml_disable_entity_loader(false);
         ini_set( "soap.wsdl_cache_enabled", "0" );
         $options = array( 
                 'exceptions'=>0, 
@@ -20,7 +20,7 @@ class service extends CI_Model {
             $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
         } catch (Exception $e) {
             printme($e);
-        }*/
+        }
         
         // $opts = array(
         //     'ssl' => array('ciphers'=>'RC4-SHA')
