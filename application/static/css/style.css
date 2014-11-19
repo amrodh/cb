@@ -309,7 +309,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 .footer_social_icons{
-    margin: 0 2px;
+    /*margin: 0 2px;*/
     width: 30px;
     /*height: 15px;*/
 }
@@ -1422,7 +1422,7 @@ tbody > tr > td {
 }
 
 .featuredProperty_img{
-    width: 50%;
+    /*width: 50%;*/
     margin: auto;
 }
 
@@ -1438,8 +1438,9 @@ tbody > tr > td {
 
 .compare_description{
     margin-top: 10px;
-    padding-left: 20px;
-    padding-right: 3px;
+    /*padding-left: 20px;*/
+    /*padding-right: 3px;*/
+    width: 100%;
 }
 
 .compare_description_title{
@@ -1449,6 +1450,7 @@ tbody > tr > td {
 
 .compare_description_content{
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .compare_price_text{
@@ -1863,6 +1865,7 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
     border-radius: 5px;
     background-color: white;
     margin-bottom: 5px;
+    margin: 0;
 }
 
 .search_btn_submit3{
@@ -1939,7 +1942,7 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
 }
 
 #featuredProperty_header{
-    width: 18%;
+    width: 32%;
 }
 
 .newsletter_container{
@@ -2010,13 +2013,12 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
     padding: 20px 20px;
     background-color: #f6f6f6;
     border: 1px solid #d4d4d4;
-    width: 32%;
-    margin-left: 1%;
+    margin-bottom: 1%;
+    min-height: 405px;
+    /*width: 32%;*/
+    /*margin-left: 2%;*/
 }
 
-.newsletter_cols{
-    margin-bottom: 1%;
-}
 
 .newsletter_bannerImgs{
     margin-bottom: 2%;
@@ -2031,13 +2033,9 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
 }
 
 @media only screen and (min-width: 1200px){
-    #footer_last_col{
-        /*width: 30%;*/
-    }
-    
-    #btn_subscribe{
-        /*margin-top: -10% !important;*/
-        /*color: red;*/
+    .newsletter_cols{
+        width: 32%;
+        margin-left: 1%;
     }
 }
 

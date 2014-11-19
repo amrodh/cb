@@ -1,4 +1,4 @@
-<div class="container" style="width: 65%;">
+<div class="container" style="width: 90%;">
     <form id="search_form">
         <div id="search_header">
             <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">

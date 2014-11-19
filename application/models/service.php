@@ -44,8 +44,19 @@ class service extends CI_Model {
         }else{
             $lineOfBusiness = array();
         }
-        // printme($inputs);exit();
-        // $LineOfBusinessId = new SoapVar (array(), SOAP_ENC_OBJECT, "ArrayOflong", "http://schemas.microsoft.com/2003/10/Serialization/Arrays");
+
+        if (isset($inputs['isFeatured'])){
+            $isFeatured = $inputs['isFeatured'];
+        }else{
+            $isFeatured = false;
+        }
+
+        if (isset($inputs['useFeaturedFilter'])){
+            $useFeaturedFilter = $inputs['useFeaturedFilter'];
+        }else{
+            $useFeaturedFilter = false;
+        }
+
         $inputs = array(
             'searchMode' => 'Exact',
             'Bedrooms' => '',
@@ -73,8 +84,9 @@ class service extends CI_Model {
             'sortType' => '',
             'pageIndex' => '',
             'licences' => '',
-            'isFeatured' => false,
-            'resultsCountPerPage' => '30'
+            'isFeatured' => $isFeatured,
+            'resultsCountPerPage' => '30', 
+            'useFeaturedFilter' => $useFeaturedFilter
             );
 
 
@@ -267,6 +279,13 @@ class service extends CI_Model {
            return false; 
     }
 
+    function getNeighborhoods($districtID)
+    {
+        $result = $this->client->GetNeighborhoodList(1);
+        return $result;
+        // printme($result);exit();
+    }
+
     function getPropertyTypes($id)
     {
         $inputs = array('lineofB' => $id);
@@ -322,22 +341,90 @@ class service extends CI_Model {
         return $result->GetPropertyinfoResult ;
     }
 
-    function getFeaturedProperties($inputs)
+    function getFeaturedProperties()
     {
-        $inputs = array('companyId' => '',
-                        'commercialId' => '',
-                        'residentialId' => '');
-        $result = $this->client->GetFeaturedProperty($inputs);
-        printme($result);exit();
-        $data = array();
-        // if(is_array($result->GetFeaturedPropertyResult->DistrictItem)){
-        //     foreach ($result->GetFeaturedPropertyResult->DistrictItem as $district) {
-        //        $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
-        //     }
-        //     return $data;
-        // }
-        // else 
-        //     return 0; 
+        $lineOfBusiness1 = array(0 => '1');       //Residential
+        $lineOfBusiness2 = array(0 => '2');       //Commercial
+        $inputs1 = array(
+            'searchMode' => 'Exact',
+            'Bedrooms' => '',
+            'PropertyId' => '',
+            'Purpose' => '',
+            'PriceLowerLimit' => 0,
+            'PriceUpperLimit' => 1000000000000000000,
+            'PunitSale' => '',
+            'RentPriceLowerLimit' => 0,
+            'RentPriceUpperLimit' => 1000000000000000000,
+            'PunitRent' => '',
+            'AreaLowerLimit' => 0,
+            'AreaUpperLimit' => 1000000000000000000,
+            'PropertyType' => '',
+            'PropertyFor' => '',
+            'BoxLocation' => '',
+            'BudgetFrom' => '',
+            'BudgetTo' => '',
+            'AreaFrom' => '',
+            'AreaTo' => '',
+            'AreaUnitId' => '',
+            'LineOfBusinessId' => $lineOfBusiness1,
+            'CompanyId' => '',
+            'sortmode' => '',
+            'sortType' => '',
+            'pageIndex' => '',
+            'licences' => '',
+            'isFeatured' => true,
+            'resultsCountPerPage' => '2', 
+            'useFeaturedFilter' => true
+            );
+
+        $inputs2 = array(
+            'searchMode' => 'Exact',
+            'Bedrooms' => '',
+            'PropertyId' => '',
+            'Purpose' => '',
+            'PriceLowerLimit' => 0,
+            'PriceUpperLimit' => 1000000000000000000,
+            'PunitSale' => '',
+            'RentPriceLowerLimit' => 0,
+            'RentPriceUpperLimit' => 1000000000000000000,
+            'PunitRent' => '',
+            'AreaLowerLimit' => 0,
+            'AreaUpperLimit' => 1000000000000000000,
+            'PropertyType' => '',
+            'PropertyFor' => '',
+            'BoxLocation' => '',
+            'BudgetFrom' => '',
+            'BudgetTo' => '',
+            'AreaFrom' => '',
+            'AreaTo' => '',
+            'AreaUnitId' => '',
+            'LineOfBusinessId' => $lineOfBusiness2,
+            'CompanyId' => '',
+            'sortmode' => '',
+            'sortType' => '',
+            'pageIndex' => '',
+            'licences' => '',
+            'isFeatured' => true,
+            'resultsCountPerPage' => '1', 
+            'useFeaturedFilter' => true
+            );
+
+        $results1 = $this->client->Search($inputs1);
+        $results2 = $this->client->Search($inputs2);
+        // printme($results2->SearchResult);exit();
+
+        $count = 0;
+        $results = array();
+        foreach ($results1->SearchResult->PropertySingleSarchResult as $result) {
+            $results[$count] = $result;
+            $count++;
+        }
+        foreach ($results2->SearchResult as $result) {
+            $results[$count] = $result;
+            $count++;
+        }
+        return $results;
+        // printme($results);exit();
     }
 
     function getCountryCodes()

@@ -103,6 +103,7 @@
                            </div>
                        </div>
                        <input type="hidden" name="districtName" value="">
+                       <input type="hidden" name="typeName" value="">
                        <div class="row" style="width: 150px;margin: auto;">
                            <div class="col-lg-12">
                                 <!-- <input type="submit" class="btn btn-default search_btn_submit2" value="<?php echo $this->lang->line('searchhome_button'); ?>" name="searchSubmit1"/> -->

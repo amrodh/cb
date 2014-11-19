@@ -24,14 +24,14 @@
                         </div>
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
                             <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
-                                <option value="0">Select Type</option>
+                                <option value="0">إختار نوع العقار</option>
                             </select>
                         </div>
                     </div>
                     <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                             <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City" data-size="5">
-                                <option value="0">Select City</option>
+                                <option value="0">إختار المدينة</option>
                                 <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                 <?php endforeach ?>
@@ -43,7 +43,7 @@
                        </div>
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_district">
                            <select class="selectpicker" name="district" id="searchhome_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>
-                              <option>Select District</option> 
+                              <option>إختار المنطقة</option> 
                            </select>
                        </div>
                    </div>
@@ -92,6 +92,8 @@
                            </select>
                        </div>
                    </div>
+                   <input type="hidden" name="districtName" value="">
+                   <input type="hidden" name="typeName" value="">
                    <div class="row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
                             <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('searchhome_button'); ?></button>

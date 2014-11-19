@@ -1,4 +1,4 @@
-<div class="container" style="width: 65%;">
+<div class="container" style="width: 90%;">
     <div id="search_header">
         <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
            <!-- <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li> -->
