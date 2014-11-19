@@ -5,13 +5,34 @@ class service extends CI_Model {
 
     public $client ;
     function __construct()
-    {
+    {   
         parent::__construct();
+
+        //printme(phpinfo());
+       /* libxml_disable_entity_loader(false);
+        ini_set( "soap.wsdl_cache_enabled", "0" );
+        $options = array( 
+                'exceptions'=>0, 
+                'trace'=>1, 
+                'cache_wsdl'=>WSDL_CACHE_NONE 
+            ); 
         try {
-            $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl");
+            $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
         } catch (Exception $e) {
             printme($e);
-        }
+        }*/
+        
+        // $opts = array(
+        //     'ssl' => array('ciphers'=>'RC4-SHA')
+        //     );
+        //     ini_set( "soap.wsdl_cache_enabled", "0" );
+        //     $objSoapClient = new SoapClient(
+        //     'http://64.150.184.135:81/WebServ/searchservice.svc?wsdl',
+        //     array ( "encoding"=>"ISO-8859-1",
+        //     //'stream_context' => stream_context_create($opts),
+        //     "trace"=>1,
+        //     "exceptions"=>0,
+        //     "connection_timeout"=>2000 ));
         
         
     }

@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		$this->load->model('service');
+		//$this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();
@@ -39,9 +39,9 @@ class Home extends CI_Controller {
 
 		// $data['images'] = $this->service->getPropertyImages(210426, 210423);
 		// printme($data['images']);exit();
-		$data['serviceTypes'] = $this->service->getServiceType();
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		//$data['serviceTypes'] = $this->service->getServiceType();
+		//$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
 
 		$this->load->view($data['languagePath'].'home',$data);
