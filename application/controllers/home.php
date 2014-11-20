@@ -23,17 +23,19 @@ class Home extends CI_Controller {
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->service->getCities();
+
 		
-		$data['serviceTypes'] = $this->service->getServiceType();
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		//$data['serviceTypes'] = $this->service->getServiceType();
+		
+		//$data['propertyType1'] = $this->service->Getpropertytypes(1);
+		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
 		// $districts = $this->service->getAllDistricts();
 		// $neighborhoods = array();
 		// foreach ($districts as $key => $district) {
 		// 	$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
 		// }
-		// printme($neighborhoods);exit();
+		//printme($neighborhoods);exit();
 		
 		$data['featuredProperties']=$this->service->getFeaturedProperties();
 		foreach ($data['featuredProperties'] as $property) {
