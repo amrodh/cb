@@ -4,6 +4,8 @@ $(document).ready(function ()
 
           $('li.dropdown').click(function(event) {
             if ($('li.dropdown').hasClass('open')){
+              // alert($(this).children());return;
+              // $('#home_dropdown > li:nth-child(1) > a')
               $('li.dropdown > a.dropdown-toggle').css('background-color', '#23395b');
               $('li.dropdown > a.dropdown-toggle').css('color', 'white');
             }
