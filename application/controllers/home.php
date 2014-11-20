@@ -111,6 +111,10 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$this->load->model('service');
 		$data = $this->init();
+
+		if(isset($data['loggedIn']) && $data['loggedIn'] == 1)
+			redirect(base_url());
+
 		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->service->getCountryCodes();
 
