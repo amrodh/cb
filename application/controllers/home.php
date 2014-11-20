@@ -53,8 +53,8 @@ class Home extends CI_Controller {
 		$password = $_POST['password'];
 		$currentUrl = $_POST['currentUrl'];
 
-		printme($_POST);
-		exit();
+		// printme($_POST);
+		// exit();
 
 		$user = $this->user->getUserByUsername($username);
 		if($user){
