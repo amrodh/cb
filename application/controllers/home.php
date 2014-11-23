@@ -1702,7 +1702,7 @@ function resetpassword()
 	function getPropertyTypes()
 	{
 		$lob = $_POST['lob'];
-		$this->load->model('service');
+		// $this->load->model('service');
 		$data = $this->init();
 		$data['propertyType'] = $this->database->getPropertyTypes($lob);
 		$data['key'] = $_POST['key'];
