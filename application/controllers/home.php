@@ -24,12 +24,9 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->service->getCities();
 
-		
-		//$data['serviceTypes'] = $this->service->getServiceType();
-		
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		printme($data['propertyType1']);exit();
-		
+		// printme($this->database->getPropertyTypes(1));exit();
+
+		// $data['propertyType1'] = $this->service->Getpropertytypes(1);
 		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
 
 		// $districts = $this->service->getAllDistricts();
@@ -1707,7 +1704,7 @@ function resetpassword()
 		$lob = $_POST['lob'];
 		$this->load->model('service');
 		$data = $this->init();
-		$data['propertyType'] = $this->service->Getpropertytypes($lob);
+		$data['propertyType'] = $this->database->getPropertyTypes($lob);
 		$data['key'] = $_POST['key'];
 		if ($data['propertyType'] != 0)
 		{

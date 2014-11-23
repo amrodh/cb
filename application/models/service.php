@@ -462,6 +462,23 @@ class service extends CI_Model {
         // }
     }
 
+    function insertPropertyTypes()
+    {
+        // $propertyType1 = $this->getPropertyTypes(1);
+        // $propertyType2 = $this->getPropertyTypes(2);
+
+        // foreach ($propertyType1 as $key => $type) {
+        //     $data = array('category_id' => 1 , 'property_id' => $key, 'property_name' => $type);
+        //     $query = $this->db->insert_string('property_type', $data);
+        //     $query = $this->db->query($query);
+        // }
+        // foreach ($propertyType2 as $key => $type) {
+        //     $data = array('category_id' => 2 , 'property_id' => $key, 'property_name' => $type);
+        //     $query = $this->db->insert_string('property_type', $data);
+        //     $query = $this->db->query($query);
+        // }
+    }
+
 }
 
 

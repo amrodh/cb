@@ -46,6 +46,21 @@ class database extends CI_Model {
            return false; 
     }
 
+    function getPropertyTypes($id)
+    {
+
+        $q = $this
+              ->db
+              ->where('category_id',$id)
+              ->get('property_type');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    } 
+
 }
 
 
