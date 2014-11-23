@@ -61,9 +61,11 @@
                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                                <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type" data-size="5">
                                     <option value="0">Select Contract Type</option> 
-                                    <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="Sale">Sale</option>
+                                    <option value="Rent">Rent</option>
+                                   <!--  <?php foreach ($serviceTypes as $type): ?>
                                         <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                                    <?php endforeach ?>
+                                    <?php endforeach ?> -->
                                </select>
                            </div>
                         </div>
