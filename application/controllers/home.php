@@ -52,6 +52,10 @@ class Home extends CI_Controller {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		$currentUrl = $_POST['currentUrl'];
+
+		// printme($_POST);
+		// exit();
+
 		$user = $this->user->getUserByUsername($username);
 		if($user){
 			$login = $this->user->login($user->username,$password);
@@ -105,6 +109,10 @@ class Home extends CI_Controller {
 	{
 
 		$data = $this->init();
+
+		if(isset($data['loggedIn']) && $data['loggedIn'] == 1)
+			redirect(base_url());
+
 		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->database->getCountryCodes();
 		//printme($data['countryCodes'] );exit();
@@ -581,6 +589,12 @@ class Home extends CI_Controller {
 				$userFavorites = array();
 			}
 			// printme($userFavorites);exit();
+		}
+
+
+		if(isset($_POST['contact_submit'])){
+			printme($_POST);
+			exit();
 		}
 
 		//printme($userFavorites);exit();
