@@ -233,7 +233,7 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -23%;">
                                 <li>
-                                    <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu8'); ?></a>
+                                    <a href="<?= base_url();?>en/offices"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>en/careers"><?php echo $this->lang->line('home_submenu9'); ?></a>
