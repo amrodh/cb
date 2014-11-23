@@ -1353,7 +1353,7 @@ class Home extends CI_Controller {
 	public function marketIndex ()
 	{
 		$data = $this->init();
-		$data['districts'] = $this->service->getAllDistricts();
+		$data['districts'] = $this->database->getAllDistricts();
 		$data['title'] = 'ColdWell Banker | Market Index';
 		$this->load->view($data['languagePath'].'market_index',$data);
 	}
@@ -1362,14 +1362,10 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Auctions';
-		$this->load->model('service');
-		$data['serviceTypes'] = $this->service->getServiceType();
-		$data['propertyType1'] = $this->service->Getpropertytypes(1);
-		$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();
 		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
-		$data['cities'] = $this->service->getCities();
 		$this->load->view($data['languagePath'].'auction',$data);
 	}
 

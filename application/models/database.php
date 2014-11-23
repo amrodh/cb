@@ -33,6 +33,19 @@ class database extends CI_Model {
         // }
     }
 
+     function getAllDistricts()
+    {
+        $q = $this
+              ->db
+              ->get('district');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
+
 }
 
 
