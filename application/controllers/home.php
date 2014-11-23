@@ -1493,8 +1493,8 @@ class Home extends CI_Controller {
 			$data['languagePath'] = 'arabic/';
 
 		$this->loadLanguage($data['language']);
-		$this->load->model('service');
-		$data['districts'] = $this->service->getAllDistricts();
+		//$this->load->model('service');
+		//$data['districts'] = $this->service->getAllDistricts();
 
 		return $data;
 		
