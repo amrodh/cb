@@ -11,7 +11,7 @@
                 <div class="properties_top_div">
                     <div id="properties_top_header_div">
                         <?php if ($totalResults !== 0): ?>
-                            <?php if (isset($totalResults)) { echo $totalResults; }?></b>
+                            <?php if (isset($totalResults)) { echo $totalResults; }?>
                         <?php endif ?>
                         <?php if (isset($commercial)): ?>
                             <?php if (isset($commercialSale)): ?>
@@ -22,10 +22,6 @@
                         <?php else: ?>
                             Homes for Sale and Rent
                         <?php endif ?>
-                        <div class="container">
-                            <div class="row">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div id="properties_bottom_div">
@@ -83,10 +79,10 @@
                                                                 <div class="properties_info">
                                                                     <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                         <div class="col-lg-11" style="float: left; padding:0;">
-                                                                            <b> <?php if ($result->LocationProject != ''): ?>
+                                                                           <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"> <b> <?php if ($result->LocationProject != ''): ?>
                                                                             <?php echo $result->LocationProject; ?>,
                                                                             <?php endif ?>
-                                                                            <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b>
+                                                                            <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b></a>
                                                                         </div>
                                                                         <div class="col-lg-1" style="">
                                                                             <?php if ($result->is_favorite == 1): ?>
@@ -524,7 +520,7 @@
            });
 
            $(".paginate_button").click(function() {
-            // alert('hi');
+            alert('hi');
                $.getScript($('#url').val()+"application/static/js/getImages.js");
            });
 

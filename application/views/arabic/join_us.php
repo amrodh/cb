@@ -23,7 +23,7 @@
                                 <?= $vacancy->description;  ?>
                             </div>
                             <div class="careers_overlay_div_btn joinus_btn">
-                                <a href="upload/<?= $vacancy->id; ?>">
+                                <a href="uploadCV/<?= $vacancy->id; ?>">
                                     <?php echo $this->lang->line('joinus_button'); ?>
                                 </a>
                             </div>

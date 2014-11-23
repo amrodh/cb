@@ -35,7 +35,7 @@
                                     <input type="file" name="uploadcv_app_uploadcv" id="uploadcv_app_uploadcv">
                                 </div>
                                 <div class="row" style="margin-left: 0;margin-right:0;">
-                                    الملفات المسموح بها: .pdf, .doc and .docx
+                                    الملفات المسموح بها: <span style="direction:ltr;">.pdf, .doc and .docx</span>
                                 </div>
                             </div>
                         </div>

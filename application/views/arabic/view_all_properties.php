@@ -11,7 +11,7 @@
             <div class="properties_top_div">
                 <div id="properties_top_header_div">
                     <?php if ($totalResults !== 0): ?>
-                        <?php if (isset($totalResults)) { echo $totalResults; }?></b>
+                        <?php if (isset($totalResults)) { echo $totalResults; }?>
                     <?php endif ?>
                     <?php if (isset($commercial)): ?>
                         <?php if (isset($commercialSale)): ?>
@@ -21,7 +21,7 @@
                         <?php endif ?>
                         <?php else: ?>
                             منازل للبيع والإيجار
-                    <?php endif ?></p>
+                    <?php endif ?>
                 </div>
             </div>
             <div id="properties_bottom_div">
@@ -72,7 +72,7 @@
                                                                 <?= $images[$result->PropertyId]; ?>
                                                             </div>
                                                             <div class="properties_img">
-                                                                <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
+                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
                                                             </div>
                                                             <div class="properties_number">
                                                                 <?php echo $count; ?>
@@ -80,12 +80,19 @@
                                                             <div class="properties_info">
                                                                 <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                     <div class="col-lg-11" style="float: right; padding:0;">
-                                                                        <b> <?php if ($result->LocationProject != ''): ?>
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> <?php if ($result->LocationProject != ''): ?>
                                                                         <?php echo $result->LocationProject; ?>,
                                                                         <?php endif ?>
-                                                                        <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b>
+                                                                        <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b></a>
                                                                     </div>
-                                                                    <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div>
+                                                                    <div class="col-lg-1" style="">
+                                                                        <?php if ($result->is_favorite == 1): ?>
+                                                                            <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
+                                                                        <?php else: ?>
+                                                                            <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
+                                                                        <?php endif ?>
+                                                                        
+                                                                    </div>
                                                                 </div>
                                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                                     <?php if ($result->SalesTypeStr == 'Sale'): ?>
@@ -104,7 +111,7 @@
                                                             <div class="properties_details_div">
                                                                 <div class="btn-group properties_details_btns_div">
                                                                     <button type="button" class="btn btn-default properties_btns">
-                                                                        <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>">
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
                                                                             <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                                             <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                                         </a>

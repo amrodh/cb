@@ -81,7 +81,7 @@
         <div>
             <?php include 'property_alert.php'; ?>
         </div>
-        // <!-- <script src="http://localhost/ColdwellBanker/js/bootstrap-select.min.js"></script>
+        <!-- <script src="http://localhost/ColdwellBanker/js/bootstrap-select.min.js"></script>
         // <script src="http://localhost/ColdwellBanker/js/script.js"></script> -->
     </div>
         <?php include('footer.php'); ?>

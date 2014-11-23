@@ -31,8 +31,17 @@
                                 <!-- <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/> -->
                             </div>
                             <div class="compare_description">
-                                <div class="compare_description_title">
-                                    <?php echo $this->lang->line('compare_title1'); ?>
+                                <div class="compare_description_title" style="margin-bottom: 3%;">
+                                    <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>">
+                                        <?php 
+                                            $propertyName = $property->PrpertyTypeStr.' for '.$property->SalesTypeStr.' '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity;
+                                            //$propertyName .= $propertyName;
+                                            if(strlen($propertyName) > 52){
+                                                $propertyName = substr($propertyName,0,48).'..';
+                                            }
+                                            echo $propertyName;
+                                         ?>
+                                    </a>
                                 </div>
                                 <div class="compare_description_content">
                                     <div class="row" style="margin-left: 0;">
@@ -63,11 +72,19 @@
                                     <?php echo $this->lang->line('compare_title2'); ?>
                                 </div>
                                 <div class="compare_description_content">
-                                    <?php if ($property->LocationProject != ''): ?>
+                                    <?php 
+                                        $propertyName = $property->PrpertyTypeStr.' for '.$property->SalesTypeStr.' '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity;
+                                        //$propertyName .= $propertyName;
+                                        if(strlen($propertyName) > 52){
+                                            $propertyName = substr($propertyName,0,48).'..';
+                                        }
+                                        echo $propertyName;
+                                     ?>
+                                   <!--  <?php if ($property->LocationProject != ''): ?>
                                         <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
                                     <?php else: ?>
                                         <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
-                                    <?php endif ?>
+                                    <?php endif ?> -->
                                     <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna -->
                                 </div>
                                 <div class="compare_description_title">
@@ -112,6 +129,9 @@
                     </div>
                     <div id="compare_map_img">
                         <img src="<?= base_url();?>/application/static/images/compare_map.png"/>
+                    </div>
+                    <div class="map_overlay" style="">
+                        Coming Soon
                     </div>
                 </div>
 

@@ -152,7 +152,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?>  <span class="caret"  id="caret"></span>
                         </div>
-                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 3px;" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
@@ -177,16 +177,12 @@
                                </div>
                                <select class="selectpicker" id="search_area_2" name="area_2" data-style="btn" data-title="Select Price">
                                     <option>إختار المساحة</option>
-                                    <option value="50 - 100">50 - 100 m<sup>2</sup></option>
-                                    <option value="100 - 130">100 - 130 m<sup>2</sup></option>
-                                    <option value="130 - 150">130 - 150 m<sup>2</sup></option>
-                                    <option value="150 - 170">150 - 170 m<sup>2</sup></option>
-                                    <option value="170 - 200">170 - 200 m<sup>2</sup></option>
+                                    <option value="<50"> &#60;50 <sup>2</sup></option>
+                                    <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                     <option value="200 - 300">200 - 300 m<sup>2</sup></option>
-                                    <option value="300 - 350">300 - 350 m<sup>2</sup></option>
-                                    <option value="350 - 400">350 - 400 m<sup>2</sup></option>
-                                    <option value="400 - 1000">400 - 1000 m<sup>2</sup></option>
-                                    <option value="1000">1000+ m<sup>2</sup></option>
+                                    <option value="300 - 400">300 - 400 m<sup>2</sup></option>
+                                    <option value="400 - 500">400 - 500 m<sup>2</sup></option>
+                                    <option value=">500"> &#62;500 m<sup>2</sup></option>
                                </select>
                            </div>
                        </div>
@@ -255,7 +251,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                         </div>
-                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 45%;margin-top: 3px;" name="searchSubmit4">بحث</button>
+                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit4">بحث</button>
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">

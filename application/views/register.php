@@ -57,7 +57,7 @@
                                         <select class="selectpicker" id="country_Code" style="width:15%;!important" name="country_Code" data-style="btn" data-title="Select Code" data-size="5">
                                             <option value="0">Code</option>
                                             <?php foreach ($countryCodes as $code): ?>
-                                                <option value="<?= $code['id'] ?>"><pre><?= $code['id'];?>   <?= $code['name'] ?></pre></option>
+                                                <option value="<?= $code['country_code'] ?>"><pre><?= $code['country_code'];?>   <?= $code['country_name'] ?></pre></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>

@@ -28,7 +28,7 @@
     </head>
     <body> 
         <div id="top_div">
-            <div id="icons_div">
+            <div id="icons_div" class="hidden-xs hidden-sm">
                 <a href="">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
                 </a>
@@ -115,7 +115,7 @@
                           <?php echo $this->lang->line('home_login_text'); ?>
                       </div>
                     </div>
-                    <div class="modal-body" style="width:65%;margin-left:33%;">
+                    <div class="modal-body" style="width: 35%;margin: auto;">
                         <div class="row">
                              <div class="form-group login_form">
                                 <label style="width:100%" for="username" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input1'); ?></label>
@@ -166,10 +166,10 @@
                 <div class="collapse navbar-collapse bs-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right header_navbar">
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
+                            <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -45%;">
+                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -33%;">
                                 <li>
                                     <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
@@ -182,7 +182,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu2'); ?>
+                            <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu2'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -18.5%;">
@@ -197,10 +197,10 @@
                         <li><a href="<?= base_url();?>en/auction"><?php echo $this->lang->line('home_menu3'); ?></a></li>
                         <li><a href="<?= base_url();?>en/trainingCenter"><?php echo $this->lang->line('home_menu4'); ?></a></li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?> 
+                            <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?> 
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="margin-right: -70.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="services_dropdown" style="margin-right: -54.5%;">
                                 <li>
                                     <a href="<?= base_url();?>en/marketIndex"><?php echo $this->lang->line('home_submenu6'); ?></a>
                                 </li>
@@ -213,7 +213,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
+                            <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -41.5%;">
@@ -228,12 +228,12 @@
                         <!-- <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_menu6'); ?></a> -->
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
+                            <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -23%;">
                                 <li>
-                                    <a href="<?= base_url();?>en/offices"><?php echo $this->lang->line('home_submenu8'); ?></a>
+                                    <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>en/careers"><?php echo $this->lang->line('home_submenu9'); ?></a>

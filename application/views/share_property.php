@@ -1,5 +1,4 @@
-
-        <?php include('header.php'); ?>
+<?php include('header.php'); ?>
         <div class="container shareproperty_main_div">
             <div class="shareproperty_top_div">
                 <?php echo $this->lang->line('shareproperty_title'); ?>
@@ -44,7 +43,7 @@
                                             <?php echo $this->lang->line('shareproperty_input1'); ?>
                                         </div>
                                         <select class="selectpicker" data-style="btn" data-title="Select Area" id="area" name="area">
-                                             <option>Select Area</option>
+                                             <option value="0">Select Area</option>
                                              <option <?php if (isset($params)){ if($params['area'] == '50'){ ?>selected="true" <?php };} ?> value="50">50 m<sup>2</sup></option>
                                              <option <?php if (isset($params)){ if($params['area'] == '100'){ ?>selected="true" <?php };} ?> value="100">100 m<sup>2</sup></option>
                                              <option <?php if (isset($params)){ if($params['area'] == '130'){ ?>selected="true" <?php };} ?> value="130">130 m<sup>2</sup></option>
@@ -59,7 +58,7 @@
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input9'); ?>
                                         </div>
-                                        <select class="selectpicker" data-style="btn" data-title="Select Area" id="shareProperty_lob" name="shareProperty_lob">
+                                        <select class="selectpicker" data-style="btn" data-title="Select Type" id="shareProperty_lob" name="shareProperty_lob">
                                             <option value="0">Select Category</option>
                                             <option value="1">Residential</option>
                                             <option value="2">Commercial</option>
@@ -151,7 +150,7 @@
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
                                             <!-- <input type="file" name="img[]" multiple="multiple"> -->
                                             <input type="file" name="img[]" id="file">
-                                            <input type="button" id="add_more" class="upload" value="Add More Files"/>
+                                            <input type="button" id="add_more" class="upload" value="Add More Files" style="margin-top4%;" />
                                             <!-- <p style="font-size:11px;margin-top:1%;">You can select mutiple files if needed.</p> -->
                                         </div>
                                     </div>
@@ -168,6 +167,7 @@
                                     <input type="submit" class="btn btn-default share_btn_submit" value="<?php echo $this->lang->line('shareproperty_button'); ?>" name="submit">
                                 </div>
                             </div>
+                            <input type="hidden" name="districtName" value="">
                             </form>
                         </div>
                     </div>
@@ -189,6 +189,12 @@
         </div>
 
         <script type="text/javascript">
+            $(document).ready(function() {
+                $('[name=submit]').click(function(event) {
+                    $('[name="districtName"]').val($('[name="district"]').val());
+                    // alert('hi');
+                });
+            });
             // $(function() {
             //     $('#image_upload').uploadify({
             //         'swf'      : '<?php echo base_url(); ?>application/views/uploadify.swf',

@@ -41,7 +41,7 @@
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input1'); ?>
                                         </div>
-                                        <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                        <select class="selectpicker" data-style="btn" data-title="Select Area" id="area" name="area">
                                             <option value="0">إختار المساحة</option>
                                              <option <?php if (isset($params)){ if($params['area'] == '50'){ ?>selected="true" <?php };} ?> value="50">50 m<sup>2</sup></option>
                                              <option <?php if (isset($params)){ if($params['area'] == '100'){ ?>selected="true" <?php };} ?> value="100">100 m<sup>2</sup></option>
@@ -71,14 +71,14 @@
                                             <?php echo $this->lang->line('shareproperty_input2'); ?>
                                         </div>
                                         <select class="selectpicker" data-style="btn" data-title="Select Type" name="shareProperty_type" disabled id="shareProperty_disabled_type">
-                                             <option>Select Type</option> 
+                                             <option>إختار النوع</option> 
                                         </select>
                                     </div>
                                     <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input3'); ?>
                                         </div>
-                                        <select class="selectpicker" data-style="btn" data-title="Select Price">
+                                        <select class="selectpicker" data-style="btn" data-title="Select Price" name="price">
                                              <option>إختار السعر</option>
                                              <option <?php if (isset($params)){ if($params['price'] == '100,000 - 250,000'){ ?>selected="true" <?php }} ?> value="100,000 - 250,000">100,000 - 250,000</option>
                                              <option <?php if (isset($params)){ if($params['price'] == '250,000 - 500,000'){ ?>selected="true" <?php }} ?> value="250,000 - 500,000">250,000 - 500,000</option>
@@ -100,7 +100,7 @@
                                             <?php echo $this->lang->line('shareproperty_input4'); ?>
                                         </div>
                                         <select class="selectpicker" data-style="btn" data-title="Select City" id="shareProperty_city" name="city" data-size="5">
-                                             <option value="0">Select City</option>
+                                             <option value="0">إختار المدينة</option>
                                             <?php foreach ($cities as $city): ?>
                                                 <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
                                             <?php endforeach ?>
@@ -113,8 +113,8 @@
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             المنطقة
                                         </div>
-                                        <select class="selectpicker" data-style="btn" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
-                                             <option>Select District</option>
+                                        <select class="selectpicker" data-style="btn" name="district" id="shareProperty_disabled_district" data-title="Select District" data-size="5" disabled>
+                                             <option>إختار المنطقة</option>
                                              <?php foreach ($districts as $item): ?>
                                             <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
                                             <?php endforeach ?>
@@ -138,8 +138,8 @@
                                     <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
-                                            <input type="file" name="img[]"  multiple="multiple">
-                                            <input type="button" id="add_more" class="upload" value="Add More Images"/>
+                                            <input type="file" name="img[]"  id="file">
+                                            <input type="button" id="add_more" class="upload" value="إضافة المزيد من الصور" style="margin-top:4%;"/>
                                             <!-- <p style="font-size:11px;margin-top:1%;">يمكنك إختيار صور متعددة</p> -->
                                         </div>
                                     </div>

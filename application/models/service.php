@@ -429,16 +429,37 @@ class service extends CI_Model {
 
     function getCountryCodes()
     {
-        $result = $this->client->GetCountryCode();
-        if(is_array($result->GetCountryCodeResult->vw_CountryPhCode)){
-            foreach ($result->GetCountryCodeResult->vw_CountryPhCode as $code) {
-               $data[] = array('id' => $code->PhoneCode , 'name' => $code->CountryPhoneCode);
-            }
-            return $data;
-        }
-        else 
-            return 0;
+        // $result = $this->client->GetCountryCode();
+        // if(is_array($result->GetCountryCodeResult->vw_CountryPhCode)){
+        //     foreach ($result->GetCountryCodeResult->vw_CountryPhCode as $code) {
+        //        $data[] = array('id' => $code->PhoneCode , 'name' => $code->CountryPhoneCode);
+        //     }
+        //     return $data;
+        // }
+        // else 
+        //     return 0;
         // printme($data);exit();
+
+         $q = $this
+              ->db
+              ->get('country_code');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false;  
+
+    }
+
+    function insertCountryCodes()
+    {
+        // $codes = $this->getCountryCodes();
+        // foreach ($codes as $code) {
+        //     $data = array('country_code' => $code['id'] , 'country_name' => $code['name']);
+        //     $query = $this->db->insert_string('country_code', $data);
+        //     $query = $this->db->query($query);
+        // }
     }
 
 }

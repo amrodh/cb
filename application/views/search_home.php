@@ -90,15 +90,12 @@
                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
                                <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price" data-size="5">
                                     <option value="0">Select Area</option>
-                                    <option value="50 - 100">50 - 100 m<sup>2</sup></option>
-                                    <option value="100 - 130">100 - 130 m<sup>2</sup></option>
-                                    <option value="130 - 150">130 - 150 m<sup>2</sup></option>
-                                    <option value="150 - 170">150 - 170 m<sup>2</sup></option>
-                                    <option value="170 - 200">170 - 200 m<sup>2</sup></option>
+                                    <option value="<50"> &#60;50 <sup>2</sup></option>
+                                    <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                     <option value="200 - 300">200 - 300 m<sup>2</sup></option>
-                                    <option value="300 - 350">300 - 350 m<sup>2</sup></option>
-                                    <option value="350 - 400">350 - 400 m<sup>2</sup></option>
-                                    <option value="400 - 1000">400 - 1000 m<sup>2</sup></option>
+                                    <option value="300 - 400">300 - 400 m<sup>2</sup></option>
+                                    <option value="400 - 500">400 - 500 m<sup>2</sup></option>
+                                    <option value=">500"> &#62;500 m<sup>2</sup></option>
                                </select>
                            </div>
                        </div>
@@ -114,7 +111,7 @@
             </div>
         </div>
         <input type="hidden" name="districtName" value="">
-            <input type="hidden" name="lob_selected" id="lob_selected" value="">
+        <input type="hidden" name="lob_selected" id="lob_selected" value="">
     </form>
     </div>
     <script src="<?php echo base_url(); ?>application/static/js/bootstrap-select.min.js"></script>

@@ -1,8 +1,6 @@
 
         <div class="container" id="footer_div">
             <div class="row">
-            <!-- <input type="hidden" name="districtName" value="" form="search_form">
-            <input type="hidden" name="lob" id="lob" value="" form="search_form"> -->
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <a href="http://newhomes.com.eg/"><img style="width:112px;" src="<?= base_url(); ?>application/static/images/logo_newhomes.jpg"/></a>
                 </div>
@@ -59,19 +57,19 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-lg-8 col-md-4 col-sm-4">
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_1">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown1">
                             Villas
                             <span class="caret"></span>
                         </button>
                     </div>
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_2">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown2">
                             Apartment
                             <span class="caret"></span>
                         </button>
                     </div>
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_3">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown3">
                             Building
                             <span class="caret"></span>
@@ -93,7 +91,7 @@
                     <?php endif ?>
                     
                 <?php else: ?>
-                    <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
+                    <div class="footer_col_title" style="margin-bottom: 2%;margin-top:0;">
                         SUBSCRIBE TO OUR NEWSLETTER
                     </div>
                     <div id="footer_subscribtion">
@@ -116,31 +114,6 @@
                            <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=villa"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">Mohandeseen  </a> . 
-                        <a href="">Zamalek </a> . 
-                        <a href="">Maadi </a> . 
-                        <a href="">Nasr City </a> . 
-                        <a href="">Helipolis </a> . 
-                        <a href="">5th Settlement </a> . 
-                        <a href="">6<sup>th</sup> October </a> . 
-                    </p>
-                    <p>
-                        <a href="">Alexandria </a> . 
-                        <a href="">Port Said </a> . 
-                        <a href="">Haram</a> . 
-                        <a href="">Sahrawy</a> . 
-                        <a href="">Abasia</a> . 
-                        <a href="">Dokki</a> . 
-                        <a href="">Helwan</a> . 
-                        <a href="">Agouza</a> . 
-                    </p>
-                    <p>
-                        <a href="">Sohag</a> . 
-                        <a href="">Qena</a> . 
-                        <a href="">Agamy</a> . 
-                        <a href="">North Coast</a> . 
-                    </p> -->
                 </div>
                 <div id="footer_dropdown2_data" style="">
                     <b>By District</b><br>
@@ -149,31 +122,6 @@
                            <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=apartment"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">Mohandeseen  </a> . 
-                        <a href="">Zamalek </a> . 
-                        <a href="">Maadi </a> . 
-                        <a href="">Nasr City </a> . 
-                        <a href="">Helipolis </a> . 
-                        <a href="">5th Settlement </a> . 
-                        <a href="">6<sup>th</sup> October </a> . 
-                    </p>
-                    <p>
-                        <a href="">Alexandria </a> . 
-                        <a href="">Port Said </a> . 
-                        <a href="">Haram</a> . 
-                        <a href="">Sahrawy</a> . 
-                        <a href="">Abasia</a> . 
-                        <a href="">Dokki</a> . 
-                        <a href="">Helwan</a> . 
-                        <a href="">Agouza</a> . 
-                    </p>
-                    <p>
-                        <a href="">Sohag</a> . 
-                        <a href="">Qena</a> . 
-                        <a href="">Agamy</a> . 
-                        <a href="">North Coast</a> . 
-                    </p> -->
                 </div>
                 <div id="footer_dropdown3_data" style="">
                     <b>By District</b><br>
@@ -182,31 +130,6 @@
                            <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=building"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
-                    <!-- <p style="margin-top: 20px;">
-                        <a href="">Mohandeseen  </a> . 
-                        <a href="">Zamalek </a> . 
-                        <a href="">Maadi </a> . 
-                        <a href="">Nasr City </a> . 
-                        <a href="">Helipolis </a> . 
-                        <a href="">5th Settlement </a> . 
-                        <a href="">6<sup>th</sup> October </a> . 
-                    </p>
-                    <p>
-                        <a href="">Alexandria </a> . 
-                        <a href="">Port Said </a> . 
-                        <a href="">Haram</a> . 
-                        <a href="">Sahrawy</a> . 
-                        <a href="">Abasia</a> . 
-                        <a href="">Dokki</a> . 
-                        <a href="">Helwan</a> . 
-                        <a href="">Agouza</a> . 
-                    </p>
-                    <p>
-                        <a href="">Sohag</a> . 
-                        <a href="">Qena</a> . 
-                        <a href="">Agamy</a> . 
-                        <a href="">North Coast</a> . 
-                    </p> -->
                 </div>
             <!--</div>-->
         </div>

@@ -6,7 +6,7 @@
         <div id="auctions_bottom_div">
             <div class="row">
             	<?php echo $this->lang->line('forgotpassword_subtitle'); ?>
-            	<form role="form"  method="post" >
+            	<form role="form"  method="post" style="margin-top:1%;">
 					<input type="email" name="email" placeholder="<?php echo $this->lang->line('forgotpassword_placeholder'); ?>">
 					<input type="submit" name="submit" value="<?php echo $this->lang->line('forgotpassword_button'); ?>">
 				</form>

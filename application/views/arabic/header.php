@@ -30,7 +30,7 @@
 
     <body> 
         <div id="top_div">
-            <div id="icons_div">
+            <div id="icons_div" class="hidden-xs hidden-sm">
                 <a href="">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
                 </a>
@@ -178,13 +178,13 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="">
                                 <li>
-                                    <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
+                                    <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
+                                    <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_submenu3'); ?></a>
+                                    <a href="<?= base_url();?>ar/viewAllProperties?category=home&contractType2=rent"><?php echo $this->lang->line('home_submenu3'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -223,7 +223,7 @@
                             <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: 1%;">
+                            <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: 0%;">
                                 <li>
                                     <a href="<?= base_url();?>ar/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
                                 </li>

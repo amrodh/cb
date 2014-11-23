@@ -11,6 +11,30 @@ $(document).ready(function ()
             }
           });
 
+          $('.footer_dropdown_div').click(function(event) {
+            // alert($(this).attr('id'));
+            if ($(this).attr('id') == 'footer_dropdown_1'){
+              if($(this).hasClass('open')){
+                  $('#footer_dropdown1').css('color', 'white');
+              }else{
+                  $('#footer_dropdown1').css('color', '#333');
+              }
+
+            }else if($(this).attr('id') == 'footer_dropdown_2'){
+                if($(this).hasClass('open')){
+                    $('#footer_dropdown2').css('color', 'white');
+                }else{
+                    $('#footer_dropdown2').css('color', '#333');
+                }
+            }else if ($(this).attr('id') == 'footer_dropdown_3'){
+                if($(this).hasClass('open')){
+                    $('#footer_dropdown3').css('color', 'white');
+                }else{
+                    $('#footer_dropdown3').css('color', '#333');
+                }
+            }
+          });
+
 
           $('#add_more').click(function() {
             $(this).before($("<div/>", {
@@ -614,6 +638,9 @@ function checkValidation()
     if ($('[name="property_chkbx[]"]:checked').length > 3)
     {
       alert("You can only choose up to 3 properties for comparison.");
+      return false;
+    }else if ($('[name="property_chkbx[]"]:checked').length < 2){
+      alert("You must choose at least 2 properties for comparison.");
       return false;
     }else{
       return true;

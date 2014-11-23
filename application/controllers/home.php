@@ -104,12 +104,10 @@ class Home extends CI_Controller {
 	public function register ()
 	{
 
-		$this->load->model('user');
-		$this->load->model('service');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Registration';
-		$data['countryCodes'] = $this->service->getCountryCodes();
-
+		$data['countryCodes'] = $this->database->getCountryCodes();
+		//printme($data['countryCodes'] );exit();
 		if(isset($_POST['submit'])){
 			$firstname = $_POST['first_name'];
 			$lastname = $_POST['last_name'];
@@ -425,6 +423,7 @@ class Home extends CI_Controller {
 		$data['cities'] = $this->service->getCities();
 		
 		if (isset($_POST['submit'])){
+			// printme($_POST);exit();
 			$data['params'] = $_POST;
 			// printme($_FILES);exit();
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
@@ -437,8 +436,8 @@ class Home extends CI_Controller {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_price');
 			}elseif (empty($_POST['city']) || $_POST['city'] == 'Select City') {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_city');
-			// }elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
-			// 	$data['insertError'] = $this->lang->line('shareProperty_missing_district');
+			}elseif (empty($_POST['district']) || $_POST['district'] == 'Select District') {
+				$data['insertError'] = $this->lang->line('shareProperty_missing_district');
 			}elseif (empty($_POST['address'])) {
 				$data['insertError'] = $this->lang->line('shareProperty_missing_address');
 			}elseif (empty($_POST['features'])) {
@@ -527,9 +526,8 @@ class Home extends CI_Controller {
 							}else{
 								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
 							}
-							
 						}
-						// $data['insertProcess'] = true;
+						$data['insertProcess'] = true;
 				}else{
 					$data['insertError'] = "Error Inserting Property Data";
 				}
@@ -1157,7 +1155,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$this->load->model('property');
 		$this->load->model('service');
-
+		$data['title'] = 'Coldwell Banker | Compare Properties';
 		if(isset($_POST['compareSubmit']))
 		{
 			$properties = array();
@@ -1629,6 +1627,7 @@ function forgotPassword()
 {
 	$this->load->model('user');
 	$data = $this->init();
+	$data['title'] = 'Coldwell Banker | Forgot Password';
 	if ($data['language'] !== 'en' && $data['language'] !== 'ar'){
 		$language = 'en';
 	}
@@ -1653,6 +1652,7 @@ function resetpassword()
 {
 	$this->load->model('user');
 	$data = $this->init();
+	$data['title'] = 'Coldwell Banker | Reset Password';
 	$token = $this->uri->uri_string;
 	$token = explode('resetpassword/', $token);
 	$token = $token[1];

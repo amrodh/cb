@@ -29,11 +29,21 @@
                             </div>
                             <div class="compare_description">
                                 <div class="compare_description_title">
-                                    <?php if ($property->LocationProject != ''): ?>
+                                    <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>">
+                                        <?php 
+                                            $propertyName = $property->PrpertyTypeStr.' for '.$property->SalesTypeStr.' '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity;
+                                            //$propertyName .= $propertyName;
+                                            if(strlen($propertyName) > 52){
+                                                $propertyName = substr($propertyName,0,48).'..';
+                                            }
+                                            echo $propertyName;
+                                         ?>
+                                    </a>
+                                   <!--  <?php if ($property->LocationProject != ''): ?>
                                         <?php echo $property->PrpertyTypeStr;?> for <?php echo $property->SalesTypeStr;?> <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
                                     <?php else: ?>
                                         <?php echo $property->PrpertyTypeStr;?> for <?php echo $property->SalesTypeStr;?> <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
-                                    <?php endif ?>
+                                    <?php endif ?> -->
                                     <!-- <?php echo $this->lang->line('compare_title1'); ?> -->
                                 </div>
                                 <div class="compare_description_content">
@@ -62,6 +72,9 @@
                                         <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $property->RentCurrency.' '.number_format(explode('.',$property->RentPrice)[0]); ?></span>
                                     <?php endif ?>
                                 </div>
+                            </div>
+                            <div class="compare_more">
+                                <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>">See more</a>
                             </div>
                         </div>
                         <?php $count++; ?>

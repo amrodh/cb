@@ -9,9 +9,9 @@
                         <?php echo $this->lang->line('home_menu1'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
+                        <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
+                        <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a>
+                        <a href="<?= base_url();?>ar/viewAllProperties?category=home&contractType2=rent"><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -19,8 +19,8 @@
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?=base_url();?>viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
-                        <a href="<?=base_url();?>viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
+                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -28,8 +28,8 @@
                         <?php echo $this->lang->line('home_menu6'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href=""><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
+                        <a href="<?= base_url();?>ar/about"><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
+                        <a href="<?= base_url();?>ar/careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
                         <!-- Franchise<br> -->
                     </div>
                 </div>
@@ -57,19 +57,19 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-lg-8 col-md-4 col-sm-4">
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_1">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown1">
                             فيلا
                             <span class="caret"></span>
                         </button>
                     </div>
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_2">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown2">
                             شقة
                             <span class="caret"></span>
                         </button>
                     </div>
-                    <div class="dropdown footer_dropdown_div">
+                    <div class="dropdown footer_dropdown_div" id="footer_dropdown_3">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown3">
                             بناء
                             <span class="caret"></span>
@@ -88,7 +88,7 @@
                         <?php endif ?>
                         
                     <?php else: ?>
-                        <div class="footer_col_title" style="margin-bottom: 0;margin-top:0;">
+                        <div class="footer_col_title" style="margin-bottom: 2%;margin-top:0;">
                             إشترك في النشرة الإخبارية
                         </div>
                         <div id="footer_subscribtion">
