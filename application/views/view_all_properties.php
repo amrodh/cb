@@ -345,6 +345,19 @@
                                     <input type="text" class="form-control" id="property_phone" name="property_phone" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder4'); ?>">
                                 </div>
                             </div>
+                            <div class="form-group">
+                               <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
+                                    <label class="checkbox-inline">
+                                       <input type="checkbox" id="inlineChkbx1" name="interest[]" value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
+                                    </label>
+                                    <!-- <label class="checkbox-inline">
+                                       <input type="checkbox" id="inlineChkbx2" name="interest[]" value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
+                                    </label> -->
+                                    <label class="checkbox-inline">
+                                       <input type="checkbox" id="inlineChkbx3" name="interest[]" value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
+                                    </label>
+                               </p>
+                            </div>
                             <div class="form-group" style="width: 97%;">
                                 <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                 <textarea class="form-control" id="property_form_textarea" name="property_comments" rows="3"></textarea>
@@ -353,6 +366,7 @@
                             <div class="form-group">
                                 <input type="button" class="btn btn-default property_btn" name="contact_submit" id="contact_form_btn" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                             </div>
+                             <p><?php echo $this->lang->line('propertydetails_footnote'); ?></p>
                         </form>
                     </div>
                     <div class="modal-footer">

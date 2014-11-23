@@ -593,6 +593,12 @@ class Home extends CI_Controller {
 			// printme($userFavorites);exit();
 		}
 
+
+		if(isset($_POST['contact_submit'])){
+			printme($_POST);
+			exit();
+		}
+
 		//printme($userFavorites);exit();
 
 		if (isset($_POST['increment'])){

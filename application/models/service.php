@@ -14,12 +14,12 @@ class service extends CI_Model {
         $options = array( 
                 'exceptions'=>0, 
                 'trace'=>1, 
-                'cache_wsdl'=>WSDL_CACHE_NONE 
+                //'cache_wsdl'=>WSDL_CACHE_NONE 
             ); 
         try {
             $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
         } catch (Exception $e) {
-            printme($e);
+            //printme($e);
         }
         
         // $opts = array(
