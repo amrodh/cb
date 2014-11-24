@@ -6,7 +6,9 @@
               <li dir="rtl">
                   <a href="<?php echo base_url().$slide->link_ar; ?>"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->image;?>"></a>
                   <div class="slider_logo">
+                  <?php if ($slide->logo != ''): ?>
                       <img src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->alt_logo;?>">
+                  <?php endif ?>
                   </div>
                   <div class="slider_components">
                       <p><?php echo $slide->h1_ar;?></p>

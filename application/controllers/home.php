@@ -1025,17 +1025,17 @@ class Home extends CI_Controller {
 				}
 
 			}
-		}elseif (isset($_GET['district'])) {
-			if ($_GET['type'] == 'villa'){
+		}elseif (isset($_POST['district'])) {
+			if ($_POST['type'] == 'villa'){
 				$type = '10';
-			}elseif ($_GET['type'] == 'apartment') {
+			}elseif ($_POST['type'] == 'apartment') {
 				$type = '1';
 			}else{
 				$type = '11';
 			}
 			$searchParams = array(
 				'PropertyType' => $type,
-				'BoxLocation' => $_GET['district'],
+				'BoxLocation' => $_POST['district'],
 				'PropertyFor' => 3,
 				'PriceLowerLimit' => 0,
 				'PriceUpperLimit' => 100000000000000,
@@ -1065,7 +1065,7 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 			
-		}elseif (isset($_GET['featured'])){
+		}elseif (isset($_POST['featured'])){
 			$searchParams = array(
 				'PropertyType' => '',
 				'BoxLocation' => '',

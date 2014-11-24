@@ -6,7 +6,10 @@
               <li>
                   <a href="<?php echo base_url().$slide->link_en; ?>"><img class="slider_imgs" src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->image;?>"></a>
                   <div class="slider_logo">
-                      <img src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->logo;?>">
+                    <?php if ($slide->logo != ''): ?>
+                        <img src="<?php echo base_url(); ?>application/static/upload/slider/<?php echo $slide->logo;?>">
+                    <?php endif ?>
+                      
                   </div>
                   <div class="slider_components">
                       <p><?php echo $slide->h1_en;?></p>
