@@ -18,11 +18,11 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		$this->load->model('service');
+		//$this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();
-		$data['cities'] = $this->service->getCities();
+		$data['cities'] = $this->database->getCities();
 
 		// printme($this->database->getPropertyTypes(1));exit();
 
@@ -36,13 +36,25 @@ class Home extends CI_Controller {
 		// }
 		//printme($neighborhoods);exit();
 		
-		$data['featuredProperties']=$this->service->getFeaturedProperties();
-		foreach ($data['featuredProperties'] as $property) {
-			$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
-		}
+		// $data['featuredProperties']=$this->service->getFeaturedProperties();
+		// foreach ($data['featuredProperties'] as $property) {
+		// 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		// }
 
 
 		$this->load->view($data['languagePath'].'home',$data);
+	}
+
+
+	public function getFeaturedProperties()
+	{
+		$this->load->model('service');
+
+		$data['featuredProperties']=$this->service->getFeaturedProperties();
+		 foreach ($data['featuredProperties'] as $property) {
+		 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		 }
+		 $this->load->view('featuredProperties',$data);
 	}
 
 	public function authenticate()
@@ -80,6 +92,8 @@ class Home extends CI_Controller {
 		redirect($currentUrl);
 
 	}
+
+
 
 
 
@@ -1845,6 +1859,8 @@ function resetpassword()
 			echo 0;
 		}
 	}
+
+
 
 	function about()
 	{
