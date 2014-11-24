@@ -200,9 +200,14 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     /*margin-right: 40px;*/
 }
 
- #middle_div > nav > div > ul > li > a:focus{
+ #middle_div > nav > div > ul > li.open > a{
     background-color: white;
     color: #2f5081;
+}
+
+.a-dropdown{
+    background-color: #23395b;
+color: white;
 }
 
 .header_navbar > .dropdown.open >a:hover{

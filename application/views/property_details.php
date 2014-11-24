@@ -340,7 +340,7 @@
            if(main_image_src){
                 $("#property_mainimage").attr('src', main_image_src);
            }else{
-                $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/sample_property_image.png');
+                $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/No_image.svg');
            }
 
            //item_html = $("#carousal_div").html();

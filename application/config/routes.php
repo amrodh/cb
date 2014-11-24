@@ -155,6 +155,8 @@ $route["newsletterProperties"] = "home/newsletterProperties";
 
 
 $route['getFeaturedProperties'] = 'home/getFeaturedProperties';
+$route['getSearchResults'] = 'home/getSearchResults';
+
 
 
 /* End of file routes.php */

@@ -33,9 +33,6 @@
 </div>
 
 	<!-- End of Featured Properties -->
-
-
-
 	<?php //include('featuredProperties.php'); ?>  
 </div>
 
@@ -54,7 +51,7 @@
             })
               .success(function( html ) {
                 $(".featuredProperty_body").html(html);
-				    $(".propertyImages").each(function(){
+				        $(".propertyImages").each(function(){
 
 			        var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
 			        if(!image_src){

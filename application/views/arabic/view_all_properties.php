@@ -79,7 +79,7 @@
                                                             </div>
                                                             <div class="properties_info">
                                                                 <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
-                                                                    <div class="col-lg-11" style="float: left; padding:0;">
+                                                                    <div class="col-lg-11" style="float: right; padding:0;">
                                                                         <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> <?php if ($result->LocationProject != ''): ?>
                                                                         <?php echo $result->LocationProject; ?>,
                                                                         <?php endif ?>
@@ -117,7 +117,7 @@
                                                                         </a>
                                                                     </button>
                                                                     <button type="button" class="btn btn-default properties_btns imgModal" id="<?= $result->PropertyId; ?>" data-toggle="modal" data-target="#imagesModal"> 
-                                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                                        <!-- <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/> -->
                                                                         <span id="imgCount"></span> <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                                     </button>
                                                                     <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $result->PropertyId;?>">
@@ -190,7 +190,7 @@
                                                                     </div>
                                                                     <div class="properties_info">
                                                                         <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
-                                                                            <div class="col-lg-11" style="float: left; padding:0;">
+                                                                            <div class="col-lg-11" style="float: right; padding:0;">
                                                                                 <b> <?php if ($result->LocationProject != ''): ?>
                                                                                 <?php echo $result->LocationProject; ?>,
                                                                                 <?php endif ?>
@@ -221,7 +221,7 @@
                                                                                 </a>
                                                                             </button>
                                                                             <button type="button" class="btn btn-default properties_btns imgModal" id="<?= $result->PropertyId; ?>" data-toggle="modal" data-target="#imagesModal"> 
-                                                                                <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                                                <!-- <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/> -->
                                                                                 <span id="imgCount"></span> <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                                             </button>
                                                                             <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $result->PropertyId;?>">

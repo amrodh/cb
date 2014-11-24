@@ -78,6 +78,7 @@
                 </div>
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4" id="footer_bottom_div">
                 <input type="hidden" id="url" value="<?= base_url(); ?>">
+                <input type="hidden" id="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
                 <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                 <?php if (isset($loggedIn)): ?>
                     <?php if (isset($is_valid)): ?>
