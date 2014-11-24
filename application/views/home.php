@@ -28,7 +28,7 @@
         </ul>
     </div>
     <div class="tab-content featuredProperty_body">
-        <img style="width:5%;margin-left:50%;" src="<?= base_url();?>application/static/images/loader.gif" alt="">
+        <img style="width:5%;margin-left:50%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
     </div>
 </div>
 
@@ -45,10 +45,12 @@
 	jQuery(document).ready(function($) {
 
 		var url = $("#url").val();
+    var currentUrl = $("#currentUrl").val();
            url = url+"getFeaturedProperties";
            $.ajax({
               type: "POST",
-              url: url
+              url: url,
+              data:{language : currentUrl}
             })
               .success(function( html ) {
                 $(".featuredProperty_body").html(html);

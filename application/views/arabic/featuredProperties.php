@@ -1,4 +1,4 @@
-<div style="width: 100%; margin-top: 8%;">
+<!-- <div style="width: 100%; margin-top: 8%;">
     <div id="featuredProperty_header">
         <ul class="nav nav-tabs nav-justified property_alert_box" id="featuredProperty_tabs">
            <li class="active">
@@ -11,7 +11,7 @@
            </li>
         </ul>
     </div>
-    <div class="tab-content featuredProperty_body">
+    <div class="tab-content featuredProperty_body"> -->
         <div class="tab-pane active" id="home">
             <div class="row newsletter_rows">
                 <?php if (isset($featuredProperties)): ?>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="compare_more">
-                                <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>">See more</a>
+                                <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>">عرض المزيد</a>
                             </div>
                         </div>
                         <?php $count++; ?>
@@ -83,7 +83,7 @@
             </div>
         </div>
         <a style="text-align: left; float:left;" href="<?= base_url()?>ar/viewAllProperties?featured=true">عرض المزيد من العقارات المتميزة</a>
-    </div>
+    <!-- </div>
 </div>
 
 <script type="text/javascript">
@@ -104,4 +104,4 @@
         $("#image_"+id).attr('src',image_src);
        
    });
-</script>
+</script> -->

@@ -61,7 +61,7 @@
                         <span class="glyphicon glyphicon-log-out">
                         </span>
                         <form action="<?= base_url();?>logout" method="post" style="display:inline;">
-                        <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string; ?>">
+                        <!-- <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>"> -->
                         <input type="submit" value="Log Out" name="logoutSubmit" class="logoutSubmit">
                         </form>
                     </label>
@@ -104,7 +104,7 @@
             <input type="hidden" id="loginError" value="<?= $loginError; ?>">
         <?php endif ?>
         <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate">
-        <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string ?>">
+        <!-- <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string ?>"> -->
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">

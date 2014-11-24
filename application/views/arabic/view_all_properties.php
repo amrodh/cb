@@ -79,7 +79,7 @@
                                                             </div>
                                                             <div class="properties_info">
                                                                 <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
-                                                                    <div class="col-lg-11" style="float: right; padding:0;">
+                                                                    <div class="col-lg-11" style="float: left; padding:0;">
                                                                         <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> <?php if ($result->LocationProject != ''): ?>
                                                                         <?php echo $result->LocationProject; ?>,
                                                                         <?php endif ?>
@@ -183,7 +183,7 @@
                                                                                 <?php endif ?>
                                                                                 <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
                                                                     <div class="properties_img">
-                                                                        <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
                                                                     </div>
                                                                     <div class="properties_number">
                                                                         <?php echo $count; ?>
@@ -343,6 +343,16 @@
                             <div class="col-lg-8">
                                 <input type="text" class="form-control" id="property_phone" name="property_phone" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder4'); ?>">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
+                                <label class="checkbox-inline">
+                                   <input type="checkbox" id="inlineChkbx1" name="interest[]" value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
+                                </label>
+                                <label class="checkbox-inline">
+                                   <input type="checkbox" id="inlineChkbx3" name="interest[]" value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
+                                </label>
+                            </p>
                         </div>
                         <div class="form-group" style="width: 97%;">
                             <p><?php echo $this->lang->line('propertydetails_text'); ?></p>

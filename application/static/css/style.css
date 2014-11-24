@@ -1348,19 +1348,27 @@ tbody > tr > td {
     /*color: red;*/
 }
 
-#property_form_btn, #contact_form_btn{
+#property_form_btn{
     width: 100px;
     margin-top: -48%;
     margin-left: 385%;
     margin-bottom: 0;
 }
 
-#contact_form_btn{
+/*#contact_form_btn{
+    margin-left: 220%;
+    margin-top: 0;
+}*/
+
+.property_contact_btn{
+    width: 100px;
+    margin-bottom: 0;
     margin-left: 220%;
     margin-top: 0;
 }
 
 .form-group{
+    width: 100%;
     margin-bottom: 5px!important;
 }
 

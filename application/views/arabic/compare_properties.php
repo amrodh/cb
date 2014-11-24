@@ -176,6 +176,16 @@
                                                 <input type="text" class="form-control" id="property_phone" name="property_phone" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder4'); ?>">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <p> <?php echo $this->lang->line('propertydetails_interest'); ?> 
+                                                <label class="checkbox-inline">
+                                                   <input type="checkbox" id="inlineChkbx1" name="interest[]" value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                   <input type="checkbox" id="inlineChkbx3" name="interest[]" value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
+                                                </label>
+                                            </p>
+                                        </div>
                                         <div class="form-group" style="width: 97%;">
                                             <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                             <textarea class="form-control" id="property_form_textarea" name="property_comments" rows="3"></textarea>

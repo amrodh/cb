@@ -569,12 +569,19 @@ $(document).ready(function ()
               var phone = $('#property_phone').val();
               var comments = $('#property_form_textarea').val();
               var propertyID = $('#propertyID').val();
+              var interests = new Array();
+              $.each($("input[name='interest[]']:checked"), function() {
+                interests.push($(this).val());
+                // or you can do something to the actual checked checkboxes by working directly with  'this'
+                // something like $(this).hide() (only something useful, probably) :P
+              });
+              // alert(interests.val());return;
                 var url = $("#url").val();
                 url = url+"insertContact";
                  $.ajax({
                     type: "POST",
                     url: url,
-                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID }
+                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID, interests : interests }
                   })
                     .success(function( response ) {
                         if (response == 1){

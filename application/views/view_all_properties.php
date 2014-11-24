@@ -346,9 +346,6 @@
                                     <label class="checkbox-inline">
                                        <input type="checkbox" id="inlineChkbx1" name="interest[]" value="buying"> <?php echo $this->lang->line('propertydetails_chkbx1'); ?>
                                     </label>
-                                    <!-- <label class="checkbox-inline">
-                                       <input type="checkbox" id="inlineChkbx2" name="interest[]" value="selling"> <?php echo $this->lang->line('propertydetails_chkbx2'); ?>
-                                    </label> -->
                                     <label class="checkbox-inline">
                                        <input type="checkbox" id="inlineChkbx3" name="interest[]" value="renting"> <?php echo $this->lang->line('propertydetails_chkbx3'); ?>
                                     </label>
@@ -510,6 +507,10 @@
                $("#carousal_div").html(html_output);
             });
            
+           $('.contact_button').click(function(event) {
+                $('#propertyID').val($(this).attr('id'));
+               // alert($('#propertyID').val());return;
+           });
 
            $(".propertyImages").each(function(){
 
@@ -534,7 +535,7 @@
            });
 
            $(".paginate_button").click(function() {
-            alert('hi');
+           // alert('hi');
                $.getScript($('#url').val()+"application/static/js/getImages.js");
            });
 

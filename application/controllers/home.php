@@ -55,7 +55,12 @@ class Home extends CI_Controller {
 		 foreach ($data['featuredProperties'] as $property) {
 		 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
 		 }
-		 $this->load->view('featuredProperties',$data);
+
+		 if($_POST['language'] == 'ar')
+		 	$data['languagePath'] = 'arabic/';
+		 else
+		 	$data['languagePath'] = '';
+		 $this->load->view($data['languagePath'].'featuredProperties',$data);
 	}
 
 	public function authenticate()
@@ -602,10 +607,54 @@ class Home extends CI_Controller {
 		}
 
 
-		if(isset($_POST['contact_submit'])){
-			printme($_POST);
-			exit();
-		}
+		// if(isset($_POST['contact_submit'])){
+		// 	// printme($_POST);
+		// 	// exit();
+
+		// 	if (empty($_POST['property_first_name'])){
+		// 		$data['contactError'] = "Please insert First Name";
+		// 	}elseif (empty($_POST['property_last_name'])) {
+		// 		$data['contactError'] = "Please insert Last Name";
+		// 	}elseif (empty($_POST['property_email'])){
+		// 		$data['contactError'] = "Please insert E-mail";
+		// 	}elseif (empty($_POST['property_phone'])) {
+		// 		$data['contactError'] = "Please insert Phone";
+		// 	}elseif (!isset($_POST['interest'])){
+		// 		$data['contactError'] = "Please choose your interest";
+		// 	}elseif (empty($_POST['property_comments'])){
+		// 		$data['contactError'] = "Please enter your comment or inquiry.";
+		// 	}
+		// 	else{
+		// 		foreach ($_POST['interest'] as $interest) {
+		// 			$interests[] = $interest;
+		// 		}
+		// 		$params = array(
+		// 			'first_name' => $_POST['property_first_name'],
+		// 			'last_name' => $_POST['property_last_name'],
+		// 			'email' => $_POST['property_email'],
+		// 			'phone' => $_POST['property_phone'],
+		// 			'comments' => $_POST['property_comments'], 
+		// 			'propertyId' => $_POST['propertyID']
+		// 			);
+				
+		// 		// $property = $this->service->getPropertyByID($_POST['propertyID']);
+		// 		// printme($property->LocationProject);exit();
+
+		// 		if ($this->user->insertContactInformation($params, $interests)){
+
+				
+		// 			$data['contactSuccess'] = "Your Contact Info was inserted successfully!";
+		// 			$body = 'Name: '.$_POST['property_first_name'].' '.$_POST['property_last_name'].'<br>
+		// 				E-mail: '.$_POST['property_email'].'<br>
+		// 				Phone: '.$_POST['property_phone'].'<br>
+		// 				PropertyID: '.$_POST['propertyID'].'<br>
+		// 				Property Address: '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity.'<br>
+		// 				Property Type: '.$property->PrpertyTypeStr.'<br>
+		// 				Comments: '.$_POST['property_comments'];
+		// 			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
+		// 		}
+		// 	}
+		// }
 
 		//printme($userFavorites);exit();
 
@@ -1806,11 +1855,10 @@ function resetpassword()
 		$this->load->view($data['languagePath'].'offices', $data);
 	}
 
-	function insertContact ()
+	function insertContact()
 	{
 		$this->load->model('user');
 		$data = $this->init();
-		$interests = array();
 		$params = array(
 			'first_name' => $_POST['firstname'],
 			'last_name' => $_POST['lastname'],
@@ -1819,8 +1867,7 @@ function resetpassword()
 			'comments' => $_POST['comments'], 
 			'propertyId' => $_POST['propertyID']
 			);
-		// printme($params);
-		if ($this->user->insertContactInformation($params, $interests)){
+		if ($this->user->insertContactInformation($params, $_POST['interests'])){
 			echo 1;
 			$body = 'Name: '.$_POST['firstname'].' '.$_POST['lastname'].'<br>
 					E-mail: '.$_POST['email'].'<br>
