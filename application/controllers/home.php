@@ -568,9 +568,7 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
-		$this->load->model('property');
 		$this->load->model('service');
-		$this->load->model('user');
 		$data['cities'] = $this->service->getCities();
 		$data['serviceTypes'] = $this->service->getServiceType();
 		$data['propertyType1'] = $this->service->Getpropertytypes(1);
@@ -578,7 +576,6 @@ class Home extends CI_Controller {
 
 
 		if (isset($data['loggedIn'])){
-			// printme('hello');exit();
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
 				foreach ($data['userFavorites'] as $property) {
@@ -587,7 +584,6 @@ class Home extends CI_Controller {
 			}else{
 				$userFavorites = array();
 			}
-			// printme($userFavorites);exit();
 		}
 
 

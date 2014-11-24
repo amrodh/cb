@@ -85,7 +85,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '30', 
+            'resultsCountPerPage' => '50', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
 
