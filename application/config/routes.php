@@ -154,6 +154,8 @@ $route["newsletterBanner"] = "home/newsletterBanner";
 $route["newsletterProperties"] = "home/newsletterProperties";
 
 
+$route['getFeaturedProperties'] = 'home/getFeaturedProperties';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

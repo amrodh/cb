@@ -1,17 +1,3 @@
-<div style="width: 100%; margin-top: 8%;">
-    <div id="featuredProperty_header">
-        <ul class="nav nav-tabs nav-justified property_alert_box" id="featuredProperty_tabs">
-           <li class="active">
-                <a href="#alert" data-toggle="tab">
-                    <span style="color:orange;" id"notifier"><b>
-                        <span class="glyphicon glyphicon-tower"></span>
-                    </span>
-                    <?php echo $this->lang->line('featured_title'); ?>
-               </a>
-           </li>
-        </ul>
-    </div>
-    <div class="tab-content featuredProperty_body">
         <div class="tab-pane active" id="home">
         	<div class="row newsletter_rows">
                 <?php if (isset($featuredProperties)): ?>
@@ -38,12 +24,6 @@
                                         echo $propertyName;
                                      ?> 
                                     </a>
-                                   <!--  <?php if ($property->LocationProject != ''): ?>
-                                        <?php echo $property->PrpertyTypeStr;?> for <?php echo $property->SalesTypeStr;?> <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
-                                    <?php else: ?>
-                                        <?php echo $property->PrpertyTypeStr;?> for <?php echo $property->SalesTypeStr;?> <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
-                                    <?php endif ?>
-                                    -->
                                 </div>
                                 <div class="compare_description_content">
                                     <div class="row" style="margin-left: 0;margin-right: 0;">
@@ -82,27 +62,3 @@
             </div>
         </div>
         <a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true">See More Featured Properties</a>
-    </div>
-</div>
-
-<script type="text/javascript">
-
-   $(".propertyImages").each(function(){
-
-        var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
-        if(!image_src){
-            var id = $(this).attr('id');
-            var id = id.replace('img','');
-            $('#'+id).attr('disabled','disabled');
-            image_src = $("#url").val()+'/application/static/images/no_image.svg';
-        }
-        
-        var id = $(this).attr('id');
-        var id = id.replace('img','');
-
-        $("#image_"+id).attr('src',image_src);
-       
-   });
-</script>
-
-

@@ -23,6 +23,19 @@ class database extends CI_Model {
 
     }
 
+     function getCities()
+    {
+
+         $q = $this
+              ->db
+              ->get('city');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+           return false;  
+    }
+
     function insertCountryCodes()
     {
         // $codes = $this->getCountryCodes();
