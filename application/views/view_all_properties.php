@@ -25,7 +25,7 @@
         var url = $("#url").val();
         url = url+"getSearchResults";
         var currentUrl = $("#query_string").val();
-// alert(currentUrl);
+alert(currentUrl);
         if (currentUrl == '')
         {
             $.ajax({

@@ -26,7 +26,7 @@
 }
 
 *{
-    font-family: 'ubuntu_medium';
+    font-family: 'lucida';
 }
 
 body{
@@ -1969,7 +1969,7 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
     margin-bottom: 0;
     /*padding-left: 5%;*/
     font-size: 120%;
-    font-family: 'ubuntu_medium';
+    font-family: 'lucida';
     font-weight: lighter;
 }
 
@@ -2310,5 +2310,10 @@ li.active>#training_anchor1, li.active>#training_anchor2, li.active>#training_an
 @font-face {
     font-family: "ubuntu_medium";
     src: url('../fonts/Ubuntu-M.ttf');
+}
+
+@font-face {
+    font-family: "lucida";
+    src: url('../fonts/lucida.ttf');
 }
 

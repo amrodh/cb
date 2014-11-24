@@ -95,7 +95,7 @@
                     <?php else: ?>
                         <a href='<?= base_url().'en/'.str_replace('en', '',$uri)?>'>English</a>
                         <span>/</span>
-                        <a href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
+                        <a style="font-family: droidarabickufi_regular;" href='<?= base_url().'ar/'.str_replace('en', '',$uri)?>'>عربي</a>
                     <?php endif ?>
                 </label>
             </div>
