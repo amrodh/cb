@@ -57,4 +57,7 @@ $('.imgModal').click(function(event) {
                 }) ;
             });
 
-
+$(".paginate_button").click(function() {
+   // alert('hi');
+       $.getScript($('#url').val()+"application/static/js/getImages.js");
+   });

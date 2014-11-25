@@ -527,10 +527,10 @@ $(document).ready(function (){
 //        $(this).html('1');
 //    });
 
-   // $(".paginate_button").click(function() {
+   $(".paginate_button").click(function() {
    // alert('hi');
-   //     $.getScript($('#url').val()+"application/static/js/getImages.js");
-   // });
+       $.getScript($('#url').val()+"application/static/js/getImages.js");
+   });
 
    $(".imgModal").click(function(){
         $.getScript($('#url').val()+"application/static/js/carousel.js");
