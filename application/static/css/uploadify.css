@@ -4,6 +4,10 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 
+
+.dropdown-toggle a-dropdown{
+	background-color: #23395b;
+}
 .uploadify {
 	position: relative;
 	margin-bottom: 1em;

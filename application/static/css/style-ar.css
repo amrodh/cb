@@ -194,7 +194,8 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 
  #middle_div > nav > div > ul > li > a:focus{
     background-color: white;
-    color: #2f5081;
+    /*color: #2f5081;*/
+    color:white;
 }
 
 .header_navbar > .dropdown.open >a:hover{
