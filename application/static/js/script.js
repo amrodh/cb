@@ -155,7 +155,7 @@ $(document).ready(function ()
            $('#searchHome_city').change(function() {
             // alert($(this).val());
                $("#homeDistrict_loader").removeClass('hide');
-
+               language = $("#currentLanguage").val();
                if ($(this).val() !=0 ){
                    var url = $("#url").val();
                    var city_id = $(this).val();
@@ -164,7 +164,7 @@ $(document).ready(function ()
                    $.ajax({
                       type: "POST",
                       url: url,
-                      data: { id: city_id, key: key },
+                      data: { id: city_id, key: key  , lang:language},
                       success: function(html){
                         if (html != 0)
                         {
@@ -189,6 +189,7 @@ $(document).ready(function ()
            });
 
            $('#search_city_1').change(function() {
+            language = $("#currentLanguage").val();
             if ($(this).val() !=0){
                var url = $("#url").val();
                var city_id = $(this).val();
@@ -197,7 +198,7 @@ $(document).ready(function ()
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id, key: key }
+                  data: { id: city_id, key: key, lang:language }
                 })
                   .success(function( html ) {
                     if (html != 0)
@@ -230,6 +231,7 @@ $(document).ready(function ()
            });
 
            $('#search_city_2').change(function() {
+            language = $("#currentLanguage").val();
             if ($(this).val() !=0){
                var url = $("#url").val();
                var city_id = $(this).val();
@@ -238,7 +240,7 @@ $(document).ready(function ()
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id, key: key }
+                  data: { id: city_id, key: key, lang: language }
                 })
                   .success(function( html ) {
                     if (html != 0)
@@ -261,6 +263,7 @@ $(document).ready(function ()
            });
 
            $('#search_city_3').change(function() {
+            language = $("#currentLanguage").val();
             if ($(this).val() !=0){
                var url = $("#url").val();
                var city_id = $(this).val();
@@ -269,7 +272,7 @@ $(document).ready(function ()
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id, key: key }
+                  data: { id: city_id, key: key, lang:language }
                 })
                   .success(function( html ) {
                     if (html != 0)
@@ -292,6 +295,7 @@ $(document).ready(function ()
            });
 
            $('#propertyAlert_city').change(function() {
+            language = $("#currentLanguage").val();
             if ($(this).val() !=0){
                var url = $("#url").val();
                var city_id = $(this).val();
@@ -300,7 +304,7 @@ $(document).ready(function ()
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id, key: key }
+                  data: { id: city_id, key: key, lang: language }
                 })
                   .success(function( html ) {
                     if (html != 0)

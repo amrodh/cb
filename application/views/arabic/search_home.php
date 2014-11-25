@@ -22,6 +22,9 @@
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="propertyContainer">
 
                         </div>
+                        <div style="width:100%;position: absolute;margin-top: 3%;" class="hide" id="homeType_loader">
+                          <img style="width:5%;margin-right:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
+                        </div>
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
                             <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
                                 <option value="0">إختار نوع العقار</option>
@@ -40,6 +43,9 @@
                     </div>
                     <div class="row search_top_row">
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="districtContainer">
+                       </div>
+                       <div style="width:100%;position: absolute;margin-top: 3%;" class="hide" id="homeDistrict_loader">
+                          <img style="width:5%;margin-right:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
                        </div>
                        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_district">
                            <select class="selectpicker" name="district" id="searchhome_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>

@@ -392,7 +392,19 @@
         <script>
         $(document).ready(function (){
             $('#properties').dataTable({
-                "order": [[ 1, "asc" ]]
+                order: [[ 1, "asc" ]],
+                language: {
+                    search: "بحث:", 
+                    paginate: {
+                        first:      "الاخيرة",
+                        previous:   "السابقة",
+                        next:       "القادمة",
+                        last:       "الاخيرة"
+                    },
+                    lengthMenu: "عرض _MENU_ نتيجة", 
+                    info: "عرض _START_ إلى _END_ من _TOTAL_ نتيجة"
+                }
+
             });
 
 

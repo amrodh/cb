@@ -8,7 +8,7 @@
 
 
     <div class="container properties_main_div" id="main_div">
-        <img style="width:5%;margin-left:50%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
+        <img style="width:5%;margin-right:50%;" src="<?= base_url();?>application/static/images/loader.gif" alt="">
     </div>
 
 
@@ -22,12 +22,12 @@
 
         <script>
     jQuery(document).ready(function($) {
-
+// alert('hi');
         var url = $("#url").val();
         url = url+"getSearchResults";
         var currentUrl = $("#query_string").val();
         var currentLanguage = $('#currentLanguage').val();
-// alert();
+// alert(currentUrl);
         if (currentUrl == '')
         {
             $.ajax({
