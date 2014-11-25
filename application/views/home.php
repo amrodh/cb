@@ -28,7 +28,7 @@
         </ul>
     </div>
     <div class="tab-content featuredProperty_body">
-        <img style="width:5%;margin-left:50%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
+        <img style="width:4%;margin-left:50%;" src="<?= base_url();?>application/static/images/loader.gif" alt="">
     </div>
 </div>
 
