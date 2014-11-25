@@ -93,7 +93,7 @@
                    <input type="hidden" name="typeName" value="">
                    <div class="row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();"><?php echo $this->lang->line('searchhome_button'); ?></button>
+                            <button type="submit" class="btn btn-default search_btn_submit2" style="" onclick="redirect();" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
                        </div>
                    </div>
                 </div>

@@ -606,13 +606,13 @@ class Home extends CI_Controller {
 
 		if (isset($_POST['searchSubmit1']))
 		{
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			if($_POST['language'] == 'en' || $_POST['language'] == '' || $_POST['language'] == 'viewAllProperties')
 			{
 				$data['languagePath'] = '';
 			}else{
-				$data['languagePath'] = 'arabic';
+				$data['languagePath'] = 'arabic/';
 			}
-			// printme($_POST);exit();
+
 			if ($_POST['typeName'] == 0)
 			{
 				$type = '';
@@ -706,6 +706,13 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_POST['searchSubmit3'])) {
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic/';
+			}
+
 			if ($_POST['type_2'] == 0)
 			{
 				$type = '';
@@ -800,6 +807,13 @@ class Home extends CI_Controller {
 			}
 
 		}elseif (isset($_POST['searchSubmit4'])) {
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic/';
+			}
+
 			if ($_POST['type_3'] == 0)
 			{
 				$type = '';

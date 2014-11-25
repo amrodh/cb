@@ -163,7 +163,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 21%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
@@ -203,7 +203,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                            <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -266,7 +266,7 @@
                   <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 30%;">
                       <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                   </div>
-                  <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit4">Search</button>
+                  <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit4" value="searchSubmit4">Search</button>
               </div>
               <div class="container search_components">
                   <div class="row search_bottom_row" id="bottom_row">
@@ -306,7 +306,7 @@
                  </div>
                  <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                      <div class="col-lg-12">
-                          <button type="button" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4"><?php echo $this->lang->line('search_button'); ?></button>
+                          <button type="button" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4" value="searchSubmit4"><?php echo $this->lang->line('search_button'); ?></button>
                      </div>
                  </div>
               </div>

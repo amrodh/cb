@@ -150,32 +150,131 @@
             });
         }else{
             var mystring = currentUrl.split('&');
-            alert(mystring);
+            // alert(url);
             if (mystring.length > 2){
-                var lob = mystring[0].split('=');
-                lob = lob[1];
-                var type = mystring[1].split('=');
-                type = type[1];
-                var city = mystring[2].split('=');
-                lob = lob[1];
-                var lob = mystring[3].split('=');
-                lob = lob[1];
-                var lob = mystring[4].split('=');
-                lob = lob[1];
-                var lob = mystring[5].split('=');
-                lob = lob[1];
-                var lob = mystring[6].split('=');
-                lob = lob[1];
-                var lob = mystring[7].split('=');
-                lob = lob[1];
-                var lob = mystring[8].split('=');
-                lob = lob[1];
-                var lob = mystring[9].split('=');
-                lob = lob[1];
-                var lob = mystring[10].split('=');
-                lob = lob[1];
+                var submit = mystring[9].split('=');
+                submit = submit[1];
+                // alert(currentUrl);
+                if (submit == 'searchSubmit1'){
+                    // alert('hi');
+                    var lob = mystring[0].split('=');
+                    lob = lob[1];
+                    var city = mystring[2].split('=');
+                    city = city[1];
+                    var contractType = mystring[3].split('=');
+                    contractType = contractType[1];
+                    var price = mystring[4].split('=');
+                    price = price[1];
+                    var area = mystring[5].split('=');
+                    area = area[1];
+                    var districtName = mystring[6].split('=');
+                    districtName = districtName[1];
+                    var typeName = mystring[7].split('=');
+                    typeName = typeName[1];
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data:{language : currentLanguage, lob:lob, typeName:typeName, city:city, districtName : districtName, contractType: contractType, price:price, area:area, searchSubmit1: true}
+                    })
+                    .success(function( html ) {
+                        $("#main_div").html(html);
+                        $(".propertyImages").each(function(){
 
-                // alert(lob);
+                            var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+                            if(!image_src){
+                                var id = $(this).attr('id');
+                                var id = id.replace('img','');
+                                $('#'+id).attr('disabled','disabled');
+                                image_src = $("#url").val()+'/application/static/images/No_image.svg';
+                            }
+
+                            var id = $(this).attr('id');
+                            var id = id.replace('img','');
+
+                            $("#image_"+id).attr('src',image_src);
+                        });
+                    });
+                }else if(submit == 'searchSubmit3'){
+                    var lob = mystring[0].split('=');
+                    lob = lob[1];
+                    var city = mystring[2].split('=');
+                    city = city[1];
+                    var contractType = mystring[3].split('=');
+                    contractType = contractType[1];
+                    var price = mystring[4].split('=');
+                    price = price[1];
+                    var area = mystring[5].split('=');
+                    area = area[1];
+                    var districtName = mystring[6].split('=');
+                    districtName = districtName[1];
+                    var typeName = mystring[7].split('=');
+                    typeName = typeName[1];
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data:{language : currentLanguage, lob:lob, typeName:typeName,city:city, districtName : districtName, contractType: contractType, price:price, area:area, searchSubmit3: true}
+                    })
+                    .success(function( html ) {
+                        $("#main_div").html(html);
+                        $(".propertyImages").each(function(){
+
+                            var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+                            if(!image_src){
+                                var id = $(this).attr('id');
+                                var id = id.replace('img','');
+                                $('#'+id).attr('disabled','disabled');
+                                image_src = $("#url").val()+'/application/static/images/No_image.svg';
+                            }
+
+                            var id = $(this).attr('id');
+                            var id = id.replace('img','');
+
+                            $("#image_"+id).attr('src',image_src);
+                        });
+                    });
+                }else if(submit == 'searchSubmit4'){
+                    var lob = mystring[0].split('=');
+                    lob = lob[1];
+                    var city = mystring[2].split('=');
+                    city = city[1];
+                    var contractType = mystring[3].split('=');
+                    contractType = contractType[1];
+                    var price = mystring[4].split('=');
+                    price = price[1];
+                    var area = mystring[5].split('=');
+                    area = area[1];
+                    var districtName = mystring[6].split('=');
+                    districtName = districtName[1];
+                    var typeName = mystring[7].split('=');
+                    typeName = typeName[1];
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data:{language : currentLanguage, lob:lob, typeName:typeName,city:city, districtName : districtName, contractType: contractType, price:price, area:area, searchSubmit4: true}
+                    })
+                    .success(function( html ) {
+                        $("#main_div").html(html);
+                        $(".propertyImages").each(function(){
+
+                            var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+                            if(!image_src){
+                                var id = $(this).attr('id');
+                                var id = id.replace('img','');
+                                $('#'+id).attr('disabled','disabled');
+                                image_src = $("#url").val()+'/application/static/images/No_image.svg';
+                            }
+
+                            var id = $(this).attr('id');
+                            var id = id.replace('img','');
+
+                            $("#image_"+id).attr('src',image_src);
+                        });
+                    });
+                }
+                
             }else{
                 var district = mystring[0].split('=');
                 district = district[1];

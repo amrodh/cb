@@ -141,19 +141,22 @@ $(document).ready(function ()
            }
 
 
-            if($('[name="city"]').length > 0){
-                $('[name="city"]').change(function(){
-                    value = $('[name="city"]').val();
-                    if(value != 0){
-                        $("[name='district']").prop('disabled',false);
-                        $(".bootstrap-select > .dropdown-toggle").removeClass('disabled');
-                        $('.dropdown-menu > .inner > li').removeClass('disabled')
-                    }
-                });
-           }
+           //  if($('[name="city"]').length > 0){
+           //      $('[name="city"]').change(function(){
+           //          value = $('[name="city"]').val();
+           //          if(value != 0){
+           //              $("[name='district']").prop('disabled',false);
+           //              $(".bootstrap-select > .dropdown-toggle").removeClass('disabled');
+           //              $('.dropdown-menu > .inner > li').removeClass('disabled')
+           //          }
+           //      });
+           // }
 
            $('#searchHome_city').change(function() {
-               if ($(this).val() !=0){
+            // alert($(this).val());
+               $("#homeDistrict_loader").removeClass('hide');
+
+               if ($(this).val() !=0 ){
                    var url = $("#url").val();
                    var city_id = $(this).val();
                    var key = 1;
@@ -161,26 +164,27 @@ $(document).ready(function ()
                    $.ajax({
                       type: "POST",
                       url: url,
-                      data: { id: city_id, key: key }
-                    })
-                      .success(function( html ) {
+                      data: { id: city_id, key: key },
+                      success: function(html){
                         if (html != 0)
                         {
                           $("#districtContainer").show();
-                        	$("#districtContainer").html(html);
-                        	$('#searchHome_district').selectpicker();
+                          $("#districtContainer").html(html);
+                          $('#searchHome_district').selectpicker();
+                          $("#homeDistrict_loader").addClass('hide');
                           $('#disabled_district').css('display', 'none');
                         }
                         else
                         {
-                            $("#districtContainer").hide();
-                            $('#disabled_district').css('display', 'block');
-                            $('#searchhome_disabled_district').attr('disabled', true);
-                            $("[data-id='searchhome_disabled_district']").attr('disabled', true);
-                            // $("#searchHome_district").hide();
-                            // $("[data-id='searchHome_district']").hide();
+                          $("#districtContainer").hide();
+                          $("#homeDistrict_loader").addClass('hide');
+                          $('#disabled_district').css('display', 'block');
+                          $('#searchhome_disabled_district').attr('disabled', true);
+                          $("[data-id='searchhome_disabled_district']").attr('disabled', true);
                         }
-                      });
+                      }
+
+                    });
               }
            });
 
@@ -469,6 +473,8 @@ $(document).ready(function ()
             });
 
             $('#searchHome_lob').change(function(event) {
+              $("#homeType_loader").removeClass('hide');
+
               var lob = $(this).val();
               var url = $("#url").val();
               var key = 1;
@@ -484,6 +490,7 @@ $(document).ready(function ()
                         {
                           $("#propertyContainer").show();
                           $("#propertyContainer").html(response);
+                          $("#homeType_loader").addClass('hide');
                           $('#searchHome_type').selectpicker();
                           $('#disabled_property').css('display', 'none');
                         }
@@ -492,6 +499,7 @@ $(document).ready(function ()
                             $("#propertyContainer").hide();
                             $('#disabled_property').css('display', 'block');
                             $('#searchHome_disabled_type').attr('disabled', true);
+                            $("#homeType_loader").addClass('hide');
                             $("[data-id='searchHome_disabled_type']").attr('disabled', true);
                             // $("#searchHome_district").hide();
                             // $("[data-id='searchHome_district']").hide();
@@ -948,45 +956,45 @@ $('.share_btn_submit').click(function(event) {
     // }
 });
 
-$('[name="city"').change(function(event) {
-    $('[name="district"').prop('disabled', false);
-    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="city"').change(function(event) {
+//     $('[name="district"').prop('disabled', false);
+//     $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
-$('[name="city_1"').change(function(event) {
-    $('[name="district_1"').prop('disabled', false);
-    $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
-    $('[data-id="search_district_1"').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="city_1"').change(function(event) {
+//     $('[name="district_1"').prop('disabled', false);
+//     $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+//     $('[data-id="search_district_1"').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
-$('[name="city_2"').change(function(event) {
-    $('[name="district_2"').prop('disabled', false);
-    $('[data-id="search_district_2"').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="city_2"').change(function(event) {
+//     $('[name="district_2"').prop('disabled', false);
+//     $('[data-id="search_district_2"').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
-$('[name="city_3"').change(function(event) {
-    $('[name="district_3"').prop('disabled', false);
-    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
-    $('[data-id="search_district_3"').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="city_3"').change(function(event) {
+//     $('[name="district_3"').prop('disabled', false);
+//     // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+//     $('[data-id="search_district_3"').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
-$('[name="alert_city"').change(function(event) {
-    $('[name="alert_district"').prop('disabled', false);
-    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
-    $('[data-id="propertyAlert_district"').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="alert_city"').change(function(event) {
+//     $('[name="alert_district"').prop('disabled', false);
+//     // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+//     $('[data-id="propertyAlert_district"').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
-$('[name="searchHome_city"').change(function(event) {
-    $('[name="searchHome_district"').prop('disabled', false);
-    // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
-    $('[data-id="searchHome_district"').removeClass('disabled');
-    $('.dropdown-menu > .inner > li').removeClass('disabled');
-});
+// $('[name="searchHome_city"').change(function(event) {
+//     $('[name="searchHome_district"').prop('disabled', false);
+//     // $('.bootstrap-select > .dropdown-toggle').removeClass('disabled');
+//     $('[data-id="searchHome_district"').removeClass('disabled');
+//     $('.dropdown-menu > .inner > li').removeClass('disabled');
+// });
 
 
 $(".propertyAlertButton").click(function(){

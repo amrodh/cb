@@ -152,7 +152,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?>  <span class="caret"  id="caret"></span>
                         </div>
-                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
@@ -188,7 +188,7 @@
                        </div>
                        <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                            <div class="col-lg-12">
-                                <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                                <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
                            </div>
                        </div>
                     </div>
@@ -251,7 +251,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                         </div>
-                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit4">بحث</button>
+                        <button type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit4" value="searchSubmit4">بحث</button>
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
@@ -291,7 +291,7 @@
                        </div>
                        <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
                            <div class="col-lg-12">
-                                <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4"><?php echo $this->lang->line('search_button'); ?></button>
+                                <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4" value="searchSubmit4"><?php echo $this->lang->line('search_button'); ?></button>
                            </div>
                        </div>
                     </div>
