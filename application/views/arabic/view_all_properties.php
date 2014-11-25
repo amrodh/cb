@@ -26,13 +26,14 @@
         var url = $("#url").val();
         url = url+"getSearchResults";
         var currentUrl = $("#query_string").val();
+        var currentLanguage = $('#currentLanguage').val();
 // alert(currentUrl);
         if (currentUrl == '')
         {
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl}
+                data:{language : currentLanguage}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -56,7 +57,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl, catergory : 'home', contractType2 : 'rent'}
+                data:{language : currentLanguage, catergory : 'home', contractType2 : 'rent'}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -80,7 +81,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl, contractType : 'buy'}
+                data:{language : currentLanguage, contractType : 'buy'}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -104,7 +105,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl, contractType : 'rent'}
+                data:{language : currentLanguage, contractType : 'rent'}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -128,7 +129,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl, featured : true}
+                data:{language : currentLanguage, featured : true}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -161,7 +162,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentUrl, district : district, type : type}
+                data:{language : currentLanguage, district : district, type : type}
             })
             .success(function( html ) {
                 $("#main_div").html(html);

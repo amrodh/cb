@@ -212,7 +212,7 @@
                                                                     </a>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default properties_btns imgModal" id="<?= $result->PropertyId; ?>" data-toggle="modal" data-target="#imagesModal"> 
-                                                                    <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.jpg"/>
+                                                                    <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_gallery.jpg"/>
                                                                     <span id="imgCount"></span> <?php echo $this->lang->line('viewallproperties_images'); ?>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default properties_btns properties_share_btn" value="<?= $result->PropertyId;?>">

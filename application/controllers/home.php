@@ -590,6 +590,8 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		// $data['districts'] = $this->database->getAllDistricts();
 		$this->load->model('service');
+
+
 		if (isset($data['loggedIn'])){
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
@@ -604,6 +606,12 @@ class Home extends CI_Controller {
 
 		if (isset($_POST['searchSubmit1']))
 		{
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic';
+			}
 			// printme($_POST);exit();
 			if ($_POST['typeName'] == 0)
 			{
@@ -1137,7 +1145,7 @@ class Home extends CI_Controller {
 			}
 			
 		}
-		$this->load->view('search_results', $data);
+		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 
 	public function viewAllProperties ()
