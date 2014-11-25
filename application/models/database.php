@@ -59,6 +59,21 @@ class database extends CI_Model {
            return false; 
     }
 
+
+     function getDistricts($cityID)
+    {
+         $q = $this
+              ->db
+              ->where('city_id',$cityID)
+              ->get('district');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
+
     function getPropertyTypes($id)
     {
 

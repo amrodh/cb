@@ -8,13 +8,15 @@ class Home extends CI_Controller {
 		$data['session'] = $this->session;
 		$tmp = $this->session->flashdata('loginError');
 
+
 		if($tmp){
 			$data['loginError'] = $this->session->flashdata('loginError');
 			$data['login_username'] = $this->session->flashdata('login_username');
 			$data['loginErrorType'] = $this->session->flashdata('loginErrorType');
 		}
 
-			$data = $this->init();
+		$data = $this->init();
+
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
@@ -2068,6 +2070,7 @@ class Home extends CI_Controller {
 		if($data['language'] == 'ar')
 			$data['languagePath'] = 'arabic/';
 
+
 		$this->loadLanguage($data['language']);
 		//$this->load->model('service');
 		//$data['districts'] = $this->service->getAllDistricts();
@@ -2135,14 +2138,16 @@ class Home extends CI_Controller {
 
 	public function getDistricts()
 	{
-		$this->load->model('service');
 		$data = $this->init();
-		$data['districts'] = $this->service->getDistricts($_POST['id']);
+		$data['districts'] = $this->database->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
+
+		// printme($data);
+		// exit();
 
 		if ($data['districts'] != 0)
 		{
-			$this->load->view('districtselect', $data);
+			$this->load->view('arabic/districtselect', $data);
 		}
 	}
 
