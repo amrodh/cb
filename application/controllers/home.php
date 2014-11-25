@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 		$tmp = $this->session->flashdata('loginError');
 
 
+
 		if($tmp){
 			$data['loginError'] = $this->session->flashdata('loginError');
 			$data['login_username'] = $this->session->flashdata('login_username');
@@ -17,6 +18,7 @@ class Home extends CI_Controller {
 
 		$data = $this->init();
 
+		
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
@@ -73,6 +75,7 @@ class Home extends CI_Controller {
 		$password = $_POST['password'];
 		$currentUrl = $_POST['currentUrl'];
 
+		$data['districts'] = $this->database->getAllDistricts();
 		// printme($_POST);
 		// exit();
 
@@ -137,6 +140,7 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->database->getCountryCodes();
+		$data['districts'] = $this->database->getAllDistricts();
 		//printme($data['countryCodes'] );exit();
 		if(isset($_POST['submit'])){
 			$firstname = $_POST['first_name'];
@@ -261,6 +265,7 @@ class Home extends CI_Controller {
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Profile';
+		$data['districts'] = $this->database->getAllDistricts();
 		// printme($data['user']->id);exit();
 		if(!isset($data['user']))
 			redirect('home');
@@ -451,6 +456,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Share your Property';
 		$data['cities'] = $this->service->getCities();
+		$data['districts'] = $this->database->getAllDistricts();
 		
 		if (isset($_POST['submit'])){
 			// printme($_POST);exit();
@@ -592,6 +598,8 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		// $data['districts'] = $this->database->getAllDistricts();
 		$this->load->model('service');
+		$data['districts'] = $this->database->getAllDistricts();
+		// printme($data);exit();
 
 
 		if (isset($data['loggedIn'])){
@@ -608,7 +616,7 @@ class Home extends CI_Controller {
 
 		if (isset($_POST['searchSubmit1']))
 		{
-			if($_POST['language'] == 'en' || $_POST['language'] == '' || $_POST['language'] == 'viewAllProperties')
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
 			{
 				$data['languagePath'] = '';
 			}else{
@@ -911,6 +919,13 @@ class Home extends CI_Controller {
 		}elseif (isset($_POST['category'])){
 			if($_POST['category'] == 'home' && isset($_POST['contractType2']))
 			{
+
+				if($_POST['language'] == 'en' || $_POST['language'] == '')
+				{
+					$data['languagePath'] = '';
+				}else{
+					$data['languagePath'] = 'arabic/';
+				}
 				if ($_POST['contractType2'] == 'rent'){
 					$propertyFor = 2;
 				}elseif ($_POST['contractType2'] = 'sale'){
@@ -962,6 +977,12 @@ class Home extends CI_Controller {
 		}elseif (isset($_POST['contractType'])) {
 			if ($_POST['contractType'] == 'buy')
 			{
+				if($_POST['language'] == 'en' || $_POST['language'] == '')
+				{
+					$data['languagePath'] = '';
+				}else{
+					$data['languagePath'] = 'arabic/';
+				}
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
@@ -1006,6 +1027,12 @@ class Home extends CI_Controller {
 				}
 				
 			}else{
+				if($_POST['language'] == 'en' || $_POST['language'] == '')
+				{
+					$data['languagePath'] = '';
+				}else{
+					$data['languagePath'] = 'arabic/';
+				}
 				$searchParams = array(
 					'PropertyType' => '',
 					'BoxLocation' => '',
@@ -1050,6 +1077,13 @@ class Home extends CI_Controller {
 
 			}
 		}elseif (isset($_POST['district'])) {
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic/';
+			}
+
 			if ($_POST['type'] == 'villa'){
 				$type = '10';
 			}elseif ($_POST['type'] == 'apartment') {
@@ -1090,6 +1124,12 @@ class Home extends CI_Controller {
 			}
 			
 		}elseif (isset($_POST['featured'])){
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic/';
+			}
 			$searchParams = array(
 				'PropertyType' => '',
 				'BoxLocation' => '',
@@ -1126,6 +1166,13 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}else{
+			if($_POST['language'] == 'en' || $_POST['language'] == '')
+			{
+				$data['languagePath'] = '';
+			}else{
+				$data['languagePath'] = 'arabic/';
+			}
+
 			$searchParams = array(
 				'PropertyType' => '',
 				'BoxLocation' => '',
@@ -1169,579 +1216,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
 		$data['districts'] = $this->database->getAllDistricts();
-		// $this->load->model('service');
-		// $data['cities'] = $this->service->getCities();
-		// $data['serviceTypes'] = $this->service->getServiceType();
-		// $data['propertyType1'] = $this->service->Getpropertytypes(1);
-		// $data['propertyType2'] = $this->service->Getpropertytypes(2);
-
-
-		// if (isset($data['loggedIn'])){
-		// 	$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
-		// 	if(is_array($data['userFavorites'])){
-		// 		foreach ($data['userFavorites'] as $property) {
-		// 			$userFavorites[] = $property->property_id;
-		// 		}
-		// 	}else{
-		// 		$userFavorites = array();
-		// 	}
-		// }
-		
-
-		// if (isset($_POST['searchSubmit1']))
-		// {
-		// 	// printme($_POST);exit();
-		// 	if ($_POST['typeName'] == 0)
-		// 	{
-		// 		$type = '';
-		// 	}else{
-		// 		$type = $_POST['typeName'];
-		// 	}
-
-		// 	if ($_POST['city'] == 0)
-		// 	{
-		// 		$boxLocation = '';
-		// 	}
-		// 	else{
-		// 		if ($_POST['districtName'] == 0)
-		// 		{
-		// 			$boxLocation = $this->service->getCityByID($_POST['city']);
-		// 		}
-		// 		else{
-		// 			$boxLocation = $this->service->getDistrictByID($_POST['city'], $_POST['districtName']);
-		// 		}
-		// 	}
-
-		// 	if ($_POST['contractType'] == 0)
-		// 	{
-		// 		$propertyFor = '';
-
-		// 	}else{
-		// 		$propertyFor = $this->service->getServiceTypeByID($_POST['contractType']);
-		// 	}
-
-		// 	if ($_POST['price'] == 0)
-		// 	{
-		// 		$priceLowerLimit = 0;
-		// 		$priceUpperLimit = 1000000000000000000;
-		// 	}else{
-		// 		if ($_POST['price'] == 20000000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['price'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$price = explode(' - ', $_POST['price']);
-		// 			$priceLowerLimit = $price[0];
-		// 			$priceUpperLimit = $price[1];
-		// 		}
-		// 	}
-
-		// 	if ($_POST['area'] == 0)
-		// 	{
-		// 		$areaLowerLimit = 0;
-		// 		$areaUpperLimit = 1000000000000000;
-		// 	}else{
-		// 		if ($_POST['area'] == 1000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['area'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$area = explode(' - ', $_POST['area']);
-		// 			$areaLowerLimit = $area[0];
-		// 			$areaUpperLimit = $area[1];
-		// 		}
-		// 	}
-
-		// 	$searchParams = array(
-		// 		'PropertyType' => $type,
-		// 		'BoxLocation' => $boxLocation,
-		// 		'PropertyFor' => $propertyFor,
-		// 		'PriceLowerLimit' => $priceLowerLimit,
-		// 		'PriceUpperLimit' => $priceUpperLimit,
-		// 		'AreaLowerLimit' => $areaLowerLimit,
-		// 		'AreaUpperLimit' => $areaUpperLimit
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['resultCount'] = $data['totalResults'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['resultCount'] = 0;
-		// 		$data['totalResults'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-		// }elseif (isset($_POST['searchSubmit3'])) {
-		// 	if ($_POST['type_2'] == 0)
-		// 	{
-		// 		$type = '';
-		// 	}else{
-		// 		$type = $_POST['type_2'];
-		// 	}
-
-		// 	if ($_POST['city_2'] == 0)
-		// 	{
-		// 		$boxLocation = '';
-		// 	}
-		// 	else{
-		// 		if ($_POST['districtName_2'] == 0)
-		// 		{
-		// 			$boxLocation = $this->service->getCityByID($_POST['city_2']);
-		// 		}
-		// 		else{
-		// 			$boxLocation = $this->service->getDistrictByID($_POST['city_2'], $_POST['districtName_2']);
-		// 		}
-		// 	}
-
-		// 	if ($_POST['contractType_2'] == 0)
-		// 	{
-		// 		$propertyFor = '';
-
-		// 	}else{
-		// 		$propertyFor = $_POST['contractType_2'];
-		// 	}
-
-		// 	if ($_POST['price_2'] == 0)
-		// 	{
-		// 		$priceLowerLimit = 0;
-		// 		$priceUpperLimit = 1000000000000000000;
-		// 	}else{
-		// 		if ($_POST['price_2'] == 20000000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['price_2'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$price = explode(' - ', $_POST['price_2']);
-		// 			$priceLowerLimit = $price[0];
-		// 			$priceUpperLimit = $price[1];
-		// 		}
-		// 	}
-
-		// 	if ($_POST['area_2'] == 0)
-		// 	{
-		// 		$areaLowerLimit = 0;
-		// 		$areaUpperLimit = 10000000000000;
-		// 	}else{
-		// 		if ($_POST['area_2'] == 1000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['area_2'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$area = explode(' - ', $_POST['area_2']);
-		// 			$areaLowerLimit = $area[0];
-		// 			$areaUpperLimit = $area[1];
-		// 		}
-		// 	}
-
-		// 	$searchParams = array(
-		// 		'PropertyType' => $type,
-		// 		'BoxLocation' => $boxLocation,
-		// 		'PropertyFor' => $propertyFor,
-		// 		'PriceLowerLimit' => $priceLowerLimit,
-		// 		'PriceUpperLimit' => $priceUpperLimit,
-		// 		'AreaLowerLimit' => $areaLowerLimit,
-		// 		'AreaUpperLimit' => $areaUpperLimit
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['resultCount'] = $data['totalResults'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['resultCount'] = 0;
-		// 		$data['totalResults'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-
-		// }elseif (isset($_POST['searchSubmit4'])) {
-		// 	if ($_POST['type_3'] == 0)
-		// 	{
-		// 		$type = '';
-		// 	}else{
-		// 		$type = $_POST['type_3'];
-		// 	}
-
-		// 	if ($_POST['city_3'] == 0)
-		// 	{
-		// 		$boxLocation = '';
-		// 	}
-		// 	else{
-		// 		if ($_POST['districtName_3'] == 0)
-		// 		{
-		// 			$boxLocation = $this->service->getCityByID($_POST['city_3']);
-		// 		}
-		// 		else{
-		// 			$boxLocation = $this->service->getDistrictByID($_POST['city_3'], $_POST['districtName_3']);
-		// 		}
-		// 	}
-
-		// 	if ($_POST['contractType_3'] == 0)
-		// 	{
-		// 		$propertyFor = '';
-
-		// 	}else{
-		// 		$propertyFor = $_POST['contractType_3'];
-		// 	}
-
-		// 	if ($_POST['price_3'] == 0)
-		// 	{
-		// 		$priceLowerLimit = 0;
-		// 		$priceUpperLimit = 1000000000000000000;
-		// 	}else{
-		// 		if ($_POST['price_3'] == 20000000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['price_3'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$price = explode(' - ', $_POST['price_3']);
-		// 			$priceLowerLimit = $price[0];
-		// 			$priceUpperLimit = $price[1];
-		// 		}
-		// 	}
-
-		// 	if ($_POST['area_3'] == 0)
-		// 	{
-		// 		$areaLowerLimit = 0;
-		// 		$areaUpperLimit = 100000000000000;
-		// 	}else{
-		// 		if ($_POST['area_3'] == 1000)
-		// 		{
-		// 			$priceLowerLimit = $_POST['area_3'];
-		// 			$priceUpperLimit = 1000000000000000000;
-		// 		}else{
-		// 			$area = explode(' - ', $_POST['area_3']);
-		// 			$areaLowerLimit = $area[0];
-		// 			$areaUpperLimit = $area[1];
-		// 		}
-		// 	}
-
-		// 	$searchParams = array(
-		// 		'PropertyType' => $type,
-		// 		'BoxLocation' => $boxLocation,
-		// 		'PropertyFor' => $propertyFor,
-		// 		'PriceLowerLimit' => $priceLowerLimit,
-		// 		'PriceUpperLimit' => $priceUpperLimit,
-		// 		'AreaLowerLimit' => $areaLowerLimit,
-		// 		'AreaUpperLimit' => $areaUpperLimit
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['resultCount'] = $data['totalResults'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['resultCount'] = 0;
-		// 		$data['totalResults'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-		// }elseif (isset($_GET['category'])){
-		// 	if($_GET['category'] == 'home' && isset($_GET['contractType2']))
-		// 	{
-		// 		if ($_GET['contractType2'] == 'rent'){
-		// 			$propertyFor = 2;
-		// 		}elseif ($_GET['contractType2'] = 'sale'){
-		// 			$propertyFor = 1;
-		// 		}
-		// 		$searchParams = array(
-		// 			'PropertyType' => '',
-		// 			'BoxLocation' => '',
-		// 			'PropertyFor' => $propertyFor,
-		// 			'PriceLowerLimit' => 0,
-		// 			'PriceUpperLimit' => 100000000000000,
-		// 			'AreaLowerLimit' => 0,
-		// 			'AreaUpperLimit' => 100000000000000, 
-		// 			'lineOfBusiness' => 1
-		// 		);	
-		// 		$data['searchResults'] = $this->service->Search($searchParams);
-		// 		if ($data['searchResults']['totalResults'] != 0)
-		// 		{
-		// 			$data['searchResults'] = $data['searchResults']['results'];
-		// 			$results = array();
-		// 			$count = 0;
-		// 			foreach ($data['searchResults'] as $result) {
-		// 				// if ($result->LineofBusinessFK == 2)
-		// 				// {
-		// 					// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-		// 					// {
-		// 						$results[$count] = $result;
-		// 						$count++;
-		// 					// }
-		// 				// }
-						
-		// 			}
-		// 			$data['searchResults'] = $results;
-		// 			$data['commercial'] = true;
-		// 			$data['commercialSale'] = true;
-		// 			$data['resultCount'] = $count;
-		// 			$data['totalResults'] = $count;
-		// 			$data['images'] = array();
-		// 			foreach ($data['searchResults'] as $property) {
-		// 				if(isset($userFavorites)){
-		// 					if(in_array($property->PropertyId,$userFavorites)){
-		// 						$property->is_favorite = 1;
-		// 					}else{
-		// 						$property->is_favorite = 0;
-		// 					}
-		// 				}
-		// 				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 			}
-		// 		}else{
-		// 			$data['totalResults'] = 0;
-		// 			$data['resultCount'] = 0;
-		// 			$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 		}
-		// 	}
-
-		// }elseif (isset($_GET['contractType'])) {
-		// 	if ($_GET['contractType'] == 'buy')
-		// 	{
-		// 		$searchParams = array(
-		// 			'PropertyType' => '',
-		// 			'BoxLocation' => '',
-		// 			'PropertyFor' => 1,
-		// 			'PriceLowerLimit' => 0,
-		// 			'PriceUpperLimit' => 100000000000000,
-		// 			'AreaLowerLimit' => 0,
-		// 			'AreaUpperLimit' => 100000000000000
-		// 		);
-
-		// 		$data['searchResults'] = $this->service->Search($searchParams);
-		// 		if ($data['searchResults']['totalResults'] != 0)
-		// 		{
-		// 			$data['searchResults'] = $data['searchResults']['results'];
-		// 			$results = array();
-		// 			$count = 0;
-		// 			foreach ($data['searchResults'] as $result) {
-		// 				// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
-		// 				// {
-		// 					// if ($result->SalesTypeStr == 'Sale' || $result->SalesTypeStr == 'Sale/Rent ')
-		// 					// {
-		// 						$results[$count] = $result;
-		// 						$count++;
-		// 					// }
-		// 				// }
-						
-		// 			}
-		// 			$data['searchResults'] = $results;
-		// 			$data['commercial'] = true;
-		// 			$data['commercialSale'] = true;
-		// 			$data['resultCount'] = $count;
-		// 			$data['totalResults'] = $count;
-		// 			$data['images'] = array();
-		// 			foreach ($data['searchResults'] as $property) {
-		// 				if(isset($userFavorites)){
-		// 					if(in_array($property->PropertyId,$userFavorites)){
-		// 						$property->is_favorite = 1;
-		// 					}else{
-		// 						$property->is_favorite = 0;
-		// 					}
-		// 				}
-		// 				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 			}
-		// 		}else{
-		// 			$data['totalResults'] = 0;
-		// 			$data['resultCount'] = 0;
-		// 			$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 		}
-				
-		// 	}else{
-		// 		$searchParams = array(
-		// 			'PropertyType' => '',
-		// 			'BoxLocation' => '',
-		// 			'PropertyFor' => 2,
-		// 			'PriceLowerLimit' => 0,
-		// 			'PriceUpperLimit' => 100000000000000,
-		// 			'AreaLowerLimit' => 0,
-		// 			'AreaUpperLimit' => 100000000000000
-		// 		);
-
-		// 		$data['searchResults'] = $this->service->Search($searchParams);
-
-		// 		if ($data['searchResults']['totalResults'] != 0){
-		// 			$data['searchResults'] = $data['searchResults']['results'];
-		// 			$results = array();
-		// 			$count = 0;
-		// 			foreach ($data['searchResults'] as $result) {
-		// 				// if ($result->LineofBusinessFK == 2 || $result->LineofBusinessFK == 4)
-		// 				// {
-		// 					// if ($result->SalesTypeStr == 'Rent' || $result->SalesTypeStr == 'Sale/Rent ')
-		// 					// {
-		// 						$results[$count] = $result;
-		// 						$count++;
-		// 					// }
-		// 				// }
-		// 			}
-		// 			$data['searchResults'] = $results;
-		// 			$data['commercial'] = true;
-		// 			$data['commercialRent'] = true;
-		// 			$data['resultCount'] = $count;
-		// 			$data['totalResults'] = $count;
-		// 			$data['images'] = array();
-		// 			foreach ($data['searchResults'] as $property) {
-		// 				if(isset($userFavorites)){
-		// 					if(in_array($property->PropertyId,$userFavorites)){
-		// 						$property->is_favorite = 1;
-		// 					}else{
-		// 						$property->is_favorite = 0;
-		// 					}
-		// 				}
-		// 				$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 			}
-		// 		}else{
-		// 			$data['totalResults'] = 0;
-		// 			$data['resultCount'] = 0;
-		// 			$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 		}
-
-		// 	}
-		// }elseif (isset($_GET['district'])) {
-		// 	if ($_GET['type'] == 'villa'){
-		// 		$type = '10';
-		// 	}elseif ($_GET['type'] == 'apartment') {
-		// 		$type = '1';
-		// 	}else{
-		// 		$type = '11';
-		// 	}
-		// 	$searchParams = array(
-		// 		'PropertyType' => $type,
-		// 		'BoxLocation' => $_GET['district'],
-		// 		'PropertyFor' => 3,
-		// 		'PriceLowerLimit' => 0,
-		// 		'PriceUpperLimit' => 100000000000000,
-		// 		'AreaLowerLimit' => 0,
-		// 		'AreaUpperLimit' => 100000000000000
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['resultCount'] = $data['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['totalResults'] = 0;
-		// 		$data['resultCount'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-			
-		// }elseif (isset($_GET['featured'])){
-		// 	$searchParams = array(
-		// 		'PropertyType' => '',
-		// 		'BoxLocation' => '',
-		// 		'PropertyFor' => 3,
-		// 		'PriceLowerLimit' => 0,
-		// 		'PriceUpperLimit' => 100000000000000,
-		// 		'AreaLowerLimit' => 0,
-		// 		'AreaUpperLimit' => 100000000000000,
-		// 		'isFeatured' =>true,
-		// 		'useFeaturedFilter' => true
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	// printme($data['searchResults']);exit();
-
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['resultCount'] = $data['searchResults']['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['totalResults'] = 0;
-		// 		$data['resultCount'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-		// }else{
-		// 	$searchParams = array(
-		// 		'PropertyType' => '',
-		// 		'BoxLocation' => '',
-		// 		'PropertyFor' => 3,
-		// 		'PriceLowerLimit' => 0,
-		// 		'PriceUpperLimit' => 100000000000000,
-		// 		'AreaLowerLimit' => 0,
-		// 		'AreaUpperLimit' => 100000000000000
-		// 	);
-
-		// 	$data['searchResults'] = $this->service->Search($searchParams);
-		// 	// printme($data['searchResults']);exit();
-
-		// 	if ($data['searchResults']['totalResults'] != 0){
-		// 		$data['totalResults'] = $data['searchResults']['totalResults'];
-		// 		$data['resultCount'] = $data['searchResults']['totalResults'];
-		// 		$data['searchResults'] = $data['searchResults']['results'];
-		// 		$data['images'] = array();
-		// 		foreach ($data['searchResults'] as $property) {
-		// 			if(isset($userFavorites)){
-		// 				if(in_array($property->PropertyId,$userFavorites)){
-		// 					$property->is_favorite = 1;
-		// 				}else{
-		// 					$property->is_favorite = 0;
-		// 				}
-		// 			}
-		// 			$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-		// 		}
-		// 	}else{
-		// 		$data['totalResults'] = 0;
-		// 		$data['resultCount'] = 0;
-		// 		$data['noResults'] = "Sorry, there were no results that match your criteria";
-		// 	}
-			
-		// }
+		// printme($data);exit();
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
@@ -1752,6 +1227,7 @@ class Home extends CI_Controller {
 		$this->load->model('property');
 		$this->load->model('service');
 		$data['title'] = 'Coldwell Banker | Compare Properties';
+		$data['districts'] = $this->database->getAllDistricts();
 		if(isset($_POST['compareSubmit']))
 		{
 			$properties = array();
@@ -1781,6 +1257,7 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
 		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
+		$data['districts'] = $this->database->getAllDistricts();
 		// printme($data['searchResults']);exit();
 
 		$data['images'] = $this->service->getPropertyImages($data['propertyId'], $data['searchResults']->UnitId);
@@ -1833,6 +1310,7 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Careers';
+		$data['districts'] = $this->database->getAllDistricts();
 		$this->load->view($data['languagePath'].'careers',$data);
 	}
 
@@ -1840,6 +1318,7 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Apply Now';
+		$data['districts'] = $this->database->getAllDistricts();
 		$this->load->model('user');
 
 		// printme($data['uri']);
@@ -1926,6 +1405,7 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Join Us';
 		$this->load->model('vacancy');
+		$data['districts'] = $this->database->getAllDistricts();
 		$data['vacancies'] = $this->vacancy->getVacancies();
 		$this->load->view($data['languagePath'].'join_us',$data);
 	}
@@ -1942,7 +1422,7 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Auctions';
-		
+		$data['districts'] = $this->database->getAllDistricts();
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();
 		$data['upcomingAuctions'] = $this->property->getUpcomingAuctions();
@@ -2142,12 +1622,13 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
 
-		// printme($data);
-		// exit();
-
+		if($_POST['lang'] == 'ar')
+			$language='arabic/';
+		else
+			$language='';
 		if ($data['districts'] != 0)
 		{
-			$this->load->view('arabic/districtselect', $data);
+			$this->load->view($language.'districtselect', $data);
 		}
 	}
 
@@ -2305,7 +1786,7 @@ function resetpassword()
 		$this->load->model('user');
 		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
-
+		$data['districts'] = $this->database->getAllDistricts();
 
 		if (isset($_POST['submit']))
 		{
@@ -2436,12 +1917,14 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | About Us';
+		$data['districts'] = $this->database->getAllDistricts();
 		$this->load->view($data['languagePath'].'about', $data);
 	}
 	function franchise()
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Franchise';
+		$data['districts'] = $this->database->getAllDistricts();
 		$this->load->view($data['languagePath'].'franchise', $data);
 	}
 
@@ -2450,6 +1933,7 @@ function resetpassword()
 		$data = $this->init();
 		$this->load->model('office');
 		$data['currentLang'] = $_POST['lang'];
+		$data['districts'] = $this->database->getAllDistricts();
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
 		$this->load->view('displayOffice', $data);
 	}
