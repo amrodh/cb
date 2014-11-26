@@ -153,8 +153,18 @@ $(document).ready(function ()
            // }
 
            $('#searchHome_city').change(function() {
-            // alert($(this).val());
-               $("#homeDistrict_loader").removeClass('hide');
+                if($(this).val() == 0){
+                  if (!$("#homeDistrict_loader").hasClass('hide')){
+                      $("#homeDistrict_loader").addClass('hide');
+                  }
+                  $("#districtContainer").hide();
+                  $('#disabled_district').css('display', 'block');
+                  $('#searchhome_disabled_district').attr('disabled', true);
+                  $("[data-id='searchhome_disabled_district']").attr('disabled', true);
+                }else{
+                  $("#homeDistrict_loader").removeClass('hide');
+                }
+               
                language = $("#currentLanguage").val();
                if ($(this).val() !=0 ){
                    var url = $("#url").val();
@@ -1005,13 +1015,15 @@ $(".propertyAlertButton").click(function(){
         
         var city = $("#propertyAlert_city").val();
         var district = $("#propertyAlert_district").val();
-        var type = $("#propertyAlert_type").val();
+        var type = $("#propertyAlert_propertyType").val();
+        var contractType = $("#propertyAlert_type").val();
         var price = $("#propertyAlert_price").val();
         var price = replaceAll(',','', price);
         var area = $("#propertyAlert_area").val();
         var email = $("#alert_email").val();
-        var url   = $("#url").val();
+        var url   = $("#url").val() + 'insertPropertyAlert';
 
+        // alert(url);
 
 
         if($("#alert_email").length != 0){
@@ -1030,19 +1042,20 @@ $(".propertyAlertButton").click(function(){
              var user_id = $("#tmp__nm").val();
         }   
 
-         if( city==0 || district==0 || type==0){
-             $("#propertyAlertError").removeClass('hide');
-             $("#propertyAlertError").html('City, District and Contract Type are required');
-             $("#propertyAlertSuccess").addClass('hide');
-            return false;
-        }else{
+        //  if( city==0 || district==0 || type==0){
+        //      $("#propertyAlertError").removeClass('hide');
+        //      $("#propertyAlertError").html('City, District and Property Type are required');
+        //      $("#propertyAlertSuccess").addClass('hide');
+        //     return false;
+        // }else{
 
                 data = "city='"+city+"',district='"+district+"',type='"+type+"'";
                 if(price != 0 )
                     data += ",price='"+price+"'";
                  if(area != 0 )
                     data += ",area='"+area+"'";
-
+                if (contractType != 0)
+                    data += ",contractType='"+contractType+"'";
                 
 
                 $.ajax({
@@ -1055,7 +1068,7 @@ $(".propertyAlertButton").click(function(){
                             $("#propertyAlertError").addClass('hide');
                   });
              
-        }
+        // }
         $("#propertyAlertError").addClass('hide');
 
 });

@@ -89,6 +89,62 @@ class database extends CI_Model {
            return false; 
     } 
 
+    function getAllPropertyTypes()
+    {
+
+        $q = $this
+              ->db
+              ->order_by('property_name','asc')
+              ->get('property_type');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    } 
+
+    function getCityByID($id)
+    {
+        $q = $this
+              ->db
+              ->where('id',$id)
+              ->get('city');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
+
+    function getDistrictByID($id){
+      $q = $this
+              ->db
+              ->where('id',$id)
+              ->get('district');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
+
+    function getPropertyTypeID($name)
+    {
+        $q = $this
+              ->db
+              ->where('property_name',$name)
+              ->get('property_type');
+
+           if($q->num_rows >0){
+              return $q->result_array();
+           } 
+
+           return false; 
+    }
+
 }
 
 

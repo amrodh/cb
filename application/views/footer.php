@@ -9,9 +9,9 @@
                         <?php echo $this->lang->line('home_menu1'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -19,8 +19,8 @@
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
-                        <a href="<?=base_url();?>ar/viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
+                        <a href="<?=base_url();?>en/viewAllProperties?contractType=buy"><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href="<?=base_url();?>en/viewAllProperties?contractType=rent"><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="footer_col_content">
                         <a href=""><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
-                        <a href="<?= base_url().'ar/';?>careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
                         <!-- Franchise<br> -->
                     </div>
                 </div>

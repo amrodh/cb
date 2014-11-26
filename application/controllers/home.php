@@ -28,11 +28,15 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-// printme($data['districts']);exit();
-		// printme($this->database->getPropertyTypes(1));exit();
+		
 
-		// $data['propertyType1'] = $this->service->Getpropertytypes(1);
-		//$data['propertyType2'] = $this->service->Getpropertytypes(2);
+		// $this->property->propertyAlertCron();
+
+
+		$data['propertyType1'] = $this->database->getAllPropertyTypes();
+		// $data['propertyType2'] = $this->database->Getpropertytypes(2);
+
+		// printme($data['propertyType1']);exit();
 
 		// $districts = $this->service->getAllDistricts();
 		// $neighborhoods = array();
@@ -455,7 +459,7 @@ class Home extends CI_Controller {
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Share your Property';
-		$data['cities'] = $this->service->getCities();
+		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
 		
 		if (isset($_POST['submit'])){
@@ -1215,7 +1219,11 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
+		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
+		$data['propertyType1'] = $this->database->getAllPropertyTypes();
+		$data['propertyType2'] = $this->database->Getpropertytypes(2);
+
 		// printme($data);exit();
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
@@ -1595,7 +1603,7 @@ class Home extends CI_Controller {
 
 	public function insertPropertyAlert()
 	{
-		printme($_POST);
+		// printme($_POST);
 		$name = $_POST['name'];
 		if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
 	        $params['user_identifier'] = $name;

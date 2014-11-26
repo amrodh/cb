@@ -383,13 +383,10 @@ class Admin extends CI_Controller {
 	{
 		$this->load->model('service');
 		$data['params'] = $params;
-		// printme($params);exit();
 		foreach ($params['properties'] as $key => $property) {
-			// printme($);
 			$data['properties'][$key]=$this->service->getPropertyByID($property);
 			$data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
 		}
-		// printme($data);exit();
 		$body = $this->load->view('admin/properties_template', $data, true);
 		$this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');
 	}

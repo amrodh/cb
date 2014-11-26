@@ -88,7 +88,7 @@ class service extends CI_Model {
             'resultsCountPerPage' => '50', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
-
+// printme($inputs);
 
         $results = $this->client->Search($inputs);
 // printme($results);exit();
