@@ -356,10 +356,157 @@ function test()
   
   
 
-  
+  function propertyAlertCron()
+  {
+      $this->load->model('service');
+      $q = $this
+            ->db
+            ->get('user_property_alert');
+
+      $results = $q->result();
+      foreach ($results as $result) {
+          $identifier = $result->user_identifier;
+          if(!$this->checkmail($identifier)){
+              $tmp = $this->user->getUserByID($identifier);
+              $result->user_identifier = $tmp->email;
+          }
+          
+          $propertyData = explode(',', $result->property_data);
+// printme($propertyData);
+          $property_data = array();
+          $data = array();
+          $count = 0;
+          foreach ($propertyData as $key => $data) {
+              $tmp = explode('=', $data);
+              if ($tmp[0] == 'city'){
+                  $city = explode("'", $tmp[1]);
+                  $city = $this->database->getCityByID($city[1]);
+                  $property_data[$count]['city'] = $city[0]['name'];
+                  // $data2 = array('key' => $key, 'city' => $this->database->getCityByID($city[1][1]));
+                  // printme($city[1][1]);
+              }elseif ($tmp[0] == 'district'){
+                  $district = explode("'", $tmp[1]);
+                  $district = $this->database->getDistrictByID($district[1]);
+                  $property_data[$count]['district'] = $district[0]['name'];
+              }elseif ($tmp[0] == 'type') {
+                  $type = explode("'", $tmp[1]);
+                  $type = $type[1];
+                  $type = $this->database->getPropertyTypeID($type);
+                  $property_data[$count]['type'] = $type[0]['property_id'];
+              }elseif ($tmp[0] == 'price'){
+                  $price = explode("'", $tmp[1]);
+                  $price = $price[1];
+                  $price = explode(" - ", $price);
+                  $property_data[$count]['priceLowerLimit'] = $price[0];
+                  $property_data[$count]['priceUpperLimit'] = $price[1];
+              }elseif ($tmp[0] == 'area') {
+                  $area = explode("'", $tmp[1]);
+                  $area = $area[1];
+                  $area = explode(" - ", $area);
+                  $property_data[$count]['areaLowerLimit'] = $area[0];
+                  $property_data[$count]['areaUpperLimit'] = $area[1];
+              }elseif ($tmp[0] == 'contractType') {
+                  $contractType = explode("'", $tmp[1]);
+                  $property_data[$count]['contractType'] = $contractType[1];
+              }
+          }
+
+          
+
+          // if ()
+
+          if(!isset($property_data[$count]['city']))
+          {
+              $property_data[$count]['city'] = '';
+          }
+          if(!isset($property_data[$count]['district']))
+          {
+              $property_data[$count]['district'] = '';
+          }
+          if (!isset($property_data[$count]['type'])){
+              $property_data[$count]['type'] = '';
+          }
+          if(!isset($property_data[$count]['priceLowerLimit']))
+          {
+              $property_data[$count]['priceLowerLimit'] = 0;
+          }
+          if(!isset($property_data[$count]['priceUpperLimit']))
+          {
+              $property_data[$count]['priceUpperLimit'] = 100000000000000;
+          }
+          if(!isset($property_data[$count]['areaLowerLimit']))
+          {
+              $property_data[$count]['areaLowerLimit'] = 0;
+          }
+          if(!isset($property_data[$count]['areaUpperLimit']))
+          {
+              $property_data[$count]['areaUpperLimit'] = 100000000000000;
+          }
+          if(!isset($property_data[$count]['contractType']))
+          {
+              $property_data[$count]['contractType'] = '';
+          }
+// printme($property_data);
+          $searchParams = array(
+            'PropertyType' => $property_data[$count]['type'],
+            'BoxLocation' => $property_data[$count]['district'],
+            'PropertyFor' => $property_data[$count]['contractType'],
+            'PriceLowerLimit' => $property_data[$count]['priceLowerLimit'],
+            'PriceUpperLimit' => $property_data[$count]['priceUpperLimit'],
+            'AreaLowerLimit' => $property_data[$count]['areaLowerLimit'],
+            'AreaUpperLimit' => $property_data[$count]['areaUpperLimit']
+          );
+          $count++;
+
+          $searchResults = $this->service->search($searchParams);
+          // printme($searchResults);
+          // printme('=================');
+          if ($searchResults['totalResults'] != 0){
+              $data = array('title'=>'Coldwell Banker Daily Property Alert', 
+                       'properties' => $searchResults['results']);
+              foreach ($data['properties'] as $key => $property) {
+                printme($property);exit();
+                  $data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+              }
+              $this->load->view('admin/properties_template', $data, true);exit();
+              // $body = $this->load->view('admin/properties_template', $data, true);
+              // $this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');
+              // $this->load->view('admin/propertyAlert_template', $data);
+              // foreach ($data['searchResults'] as $key => $property) {
+                  // $data['properties'][$key]=$this->service->getPropertyByID($property);
+                  // $data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+              
+          }else{
+              // printme($searchResults);exit();
+          }
+          
+          
+      }
+      exit(); 
+
+  }
   
 
+  public function sendProperties($params,$list)
+  {
+      $this->load->model('service');
+      $data['params'] = $params;
+      foreach ($params['properties'] as $key => $property) {
+        $data['properties'][$key]=$this->service->getPropertyByID($property);
+        $data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+      }
+      $body = $this->load->view('admin/properties_template', $data, true);
+      $this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');
+  }
 
+  function checkmail($email)
+    {
+      if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
+           return true;
+       else
+        return false;
+        
+    }
     
 }
 

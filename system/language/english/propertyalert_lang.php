@@ -8,4 +8,5 @@ $lang['propertyalert_subtitle4'] = "Advanced Filters";
 $lang['propertyalert_subtitle5'] = "Price Range";
 $lang['propertyalert_subtitle6'] = "Area Range";
 $lang['propertyalert_subtitle7'] = "E-mail";
+$lang['propertyalert_subtitle8'] = "Property Type";
 $lang['propertyalert_button'] = "Notify Me";

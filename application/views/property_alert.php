@@ -42,15 +42,13 @@
                        </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="property_alert_col_title title_margin">
-                               <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
+                               <?php echo $this->lang->line('propertyalert_subtitle8'); ?>
                            </div>
-                           <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type" data-size="5">
-                                <option value="0">Select Contract Type</option> 
-                                <option value="Sale">Sale</option>
-                                <option value="Rent">Rent</option>
-                               <!--  <?php foreach ($serviceTypes as $type): ?>
-                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                                <?php endforeach ?> -->
+                           <select class="selectpicker" id="propertyAlert_propertyType" name="alert_propertyType" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Property Type</option> 
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $type['property_name'] ?>"><?= $type['property_name'] ?></option>
+                                <?php endforeach ?>
                            </select>
                        </div>
                        <?php if (!isset($loggedIn)): ?>
@@ -72,10 +70,24 @@
                 <div class="container property_alert_components">
                     <div class="row property_alert_bottom_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
+                           <div class="property_alert_col_title title_margin">
+                               <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
+                           </div>
+                           <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">Select Contract Type</option> 
+                                <option value="1">Sale</option>
+                                <option value="2">Rent</option>
+                               <!--  <?php foreach ($serviceTypes as $type): ?>
+                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                <?php endforeach ?> -->
+                           </select>
+                       </div>
+                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                             <div class="property_alert_col_title title_margin">
                                 <?php echo $this->lang->line('propertyalert_subtitle5'); ?>
                             </div>
                             <select class="selectpicker" id="propertyAlert_price" name="alert_price" data-style="btn" data-title="Select Price">
+                                <option value="0">Select Price</option>
                                 <option value="100000 - 250000">100,000 - 250,000</option>
                                 <option value="250000 - 500000">250,000 - 500,000</option>
                                 <option value="500000 - 750000">500,000 - 750,000</option>
@@ -91,7 +103,6 @@
                            </div>
                            <select class="selectpicker" id="propertyAlert_area" name="alert_area" data-style="btn" data-title="Select Price">
                                 <option value="0">Select Area</option>
-                                <option>إختار المساحة</option>
                                 <option value="<50"> &#60;50 <sup>2</sup></option>
                                 <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                 <option value="200 - 300">200 - 300 m<sup>2</sup></option>
