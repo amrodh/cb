@@ -170,13 +170,13 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -31.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -17.5%;">
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?category=home&contractType2=buy"><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?= base_url();?>en/viewAllProperties?category=home&contractType2=rent"><?php echo $this->lang->line('home_submenu3'); ?></a>
                                 </li>

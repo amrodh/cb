@@ -178,10 +178,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="">
                                 <li>
-                                    <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_submenu1'); ?></a>
+                                    <a href="<?= base_url();?>ar/viewAllProperties?category=home&contractType2=buy"><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
+                                    <!-- <a href="<?= base_url();?>ar/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a> -->
                                 </li>
                                 <li>
                                     <a href="<?= base_url();?>ar/viewAllProperties?category=home&contractType2=rent"><?php echo $this->lang->line('home_submenu3'); ?></a>
@@ -194,10 +194,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="">
                                 <li>
-                                    <a href="">شراء</a>
+                                    <a href="<?=base_url();?>ar/viewAllProperties?contractType=buy">شراء</a>
                                 </li>
                                 <li>
-                                    <a href="">تأجير</a>
+                                    <a href="<?=base_url();?>ar/viewAllProperties?contractType=rent">تأجير</a>
                                 </li>
                             </ul>
                         </li>

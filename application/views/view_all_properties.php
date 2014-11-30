@@ -76,6 +76,30 @@
                     $("#image_"+id).attr('src',image_src);
                 });
             });
+        }else if(currentUrl == 'category=home&contractType2=buy'){
+            $.ajax({
+                type: "POST",
+                url: url,
+                data:{language : currentLanguage, contractType : 'rent'}
+            })
+            .success(function( html ) {
+                $("#main_div").html(html);
+                $(".propertyImages").each(function(){
+
+                    var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+                    if(!image_src){
+                        var id = $(this).attr('id');
+                        var id = id.replace('img','');
+                        $('#'+id).attr('disabled','disabled');
+                        image_src = $("#url").val()+'/application/static/images/No_image.svg';
+                    }
+
+                    var id = $(this).attr('id');
+                    var id = id.replace('img','');
+
+                    $("#image_"+id).attr('src',image_src);
+                });
+            });
         }else if(currentUrl == 'contractType=buy'){
             $.ajax({
                 type: "POST",
