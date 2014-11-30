@@ -12,16 +12,20 @@
         </div>
         <div id="about_bottom_div">
             <p>
-                Franchising is a business strategy which has numerous advantages all of which contribute in propelling business to optimal levels. The basic elements which characterize any franchised business are accessibility to a well known brand, well structured operating system, and more importantly ongoing support. All of these elements help in jump starting a business. The proven business formula guarantees long term sustainability and growth, arising from a commitment to a powerful and esteemed brand which possesses great history and the ability to develop new market requirements. 
+                حق الإمتياز هو إستراتيجية تساهم فى دفع العمل التجاري إلى المستويات القصوي ، وتعد العناصر الأساسية فى  نجاح عملية حق الإمتياز هو إختيار العلامات التجارية المعروفة والناجحة، والتى تمتاز بالهيكلة ونظام التشغيل الجيد، والأهم مما سبق هو الدعم المستمر.
             </p>
             <p>
-                <span style="color:orange;"><b>Coldwell Banker</b></span> has always been a leading brand amongst franchised businesses, constantly topping the list of elite brands, and consistently being voted number one its field. In 2008, <span style="color:orange;"><b>Coldwell Banker</b></span> was ranked number one in the ‘Real Estate Top 200’ by the Wall Street Journal, REAL trends, and lore Magazine for the second time, and the brand has stood at the number one spot in the Franchise Times Top 200 for almost a decade.
-                Today, the <span style="color:orange;"><b>Coldwell Banker</b></span> network has extended internationally. An industry pioneer for more than a century through up and down markets, Egypt.
+                كل هذه العناصر تشكل المعادلة الناجحة لبدايه سريعه تضمن النمو والإستمرارية للعمل على المدى البعيد.
             </p>
             <p>
-                Serving the real estate industry for over 100 years, <span style="color:orange;"><b>Coldwell Banker</b></span>  has excelled at offering its franchisees the newest programs, technology, and professional know-how, which have yielded a success driven business model where benefits and gains are reaped by the franchisee network.
+                <span style="color:orange;"><b>كولدويل بانكر</b></span> علامة تجارية هامة لها الريادة بين "حق الإمتياز" وذلك بوجودها المستمر فى قائمة نخبة الشركات التي تمتلك علامات تجارية،  ففى عام 2008 صنفت كولدويل بانكر كرقم 1 فى قائمة أفضل 200 شركة عقارية من قبل جريدة وول ستريت، وشركة ريل تريند، ومجلة لور، للمرة الثانية، بالإضافة إلى أن <span style="color:orange;"><b>كولدويل بانكر</b></span> احتكرت المركز الأول فى قائمة ال200 لمنظمة الفرنشايز تايمز لمدة 10 سنوات تقريباً. وقد خدمت الشركة مجال الصناعات العقارية لأكثر من 100 عام.
             </p>
-            
+            <p>
+                وقد برعت <span style="color:orange;"><b>كولدويل بانكر</b></span> فى تقديمها لأحدث برامج حق الإمتياز وتقنيتها، بالإضافة إلى المهارات المحترفة فى هذا المجال، والتى أدت إلى قيادة نموذج ناجح من الأعمال.
+            </p>
+            <p>
+                لمعرفة المزيد من المعلومات عن خدمات إمتياز العلامات التجارية<br> اتصل بنا
+            </p>
         </div>
 	</div>
 <?php include('footer.php'); ?>

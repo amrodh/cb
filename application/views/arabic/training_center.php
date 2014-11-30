@@ -19,9 +19,9 @@
                     <?php $count=1; ?>
                     <?php foreach ($courses as $course): ?>
                     	<?php if ($count == 1): ?>
-                    		<li class="active" style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor1" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
+                    		<li class="active" style="padding: 0; height: 25px;"><a class="training_anchor" style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor1" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
                     	<?php else: ?>
-                    		<li style="padding: 0; height: 25px;"><a style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor3" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
+                    		<li style="padding: 0; height: 25px;"><a class="training_anchor" style="height: 25px;padding: 0;padding-top: 2%;" href="#course<?=$count;?>" id="training_anchor3" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
                     	<?php endif ?>
                     	<?php $count++; ?>
                     <?php endforeach ?>

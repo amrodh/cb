@@ -11,22 +11,26 @@
         </div>
         <div id="about_bottom_div">
             <p>
-                <span style="color:orange;"><b>Coldwell Banker</b></span> is the oldest and most established residential real estate
-                franchise system in North America, and it is known as one of the most innovative, 
-                forward-thinking real estate brands today. The founding tradition and heritage of 
-                providing professionalism and superior customer service remains the core of the 
-                <span style="color:orange;"><b>Coldwell Banker</b></span> philosophy more than 105 years later. 
+                Established in 1906 in San Francisco. Owned by Cendant which owns four divisions – real estate, hotel, car rental and hospitality services.
             </p>
             <p>
-                Today, the Coldwell Banker network has extended internationally. An industry 
-                pioneer for more than a century through up and down markets, 
-                <span style="color:orange;"><b>Coldwell Banker</b></span> Egypt
+                In late 2005 Cendant announced that <span style="color:orange;"><b>Coldwell Banker</b></span> would be part of a stand-alone real estate company named Realogy.
             </p>
+            <p>
+                Realogy participates in one-of-every-four residential real estate transactions in the United States.
+            </p>
+            <p>
+                Today, <span style="color:orange;"><b>Coldwell Banker</b></span> has a global reach, in 47 countries.
+            </p>
+            <p>
+                <span style="color:orange;"><b>Coldwell Banker</b></span> network has extended internationally. An industry pioneer for more than a century through up and down markets. 
+            </p>
+            <h4><b>Coldwell Banker Egypt</b></h4>
             <p>
                 Egypt is the headquarters for Coldwell banker in the Middle East, North Africa and 
                 Eastern Europe opening the door for professional real estate business in the region. 
                 <span style="color:orange;"><b>Coldwell Banker</b></span> launched in 2002, with a network of 17 residential and commercial 
-                offices, we serve clients throughout Egypt. Scope of work - Residential Real 
+                offices, we serve clients throughout Egypt. <b>Scope of work</b> - Residential Real 
                 Estate Brokerage. - Commercial Real Estate Brokerage - Real Estate Auctions - 
                 Investment Opportunities.  
             </p>

@@ -152,9 +152,9 @@
             var mystring = currentUrl.split('&');
             // alert(url);
             if (mystring.length > 2){
-                var submit = mystring[9].split('=');
+                var submit = mystring[8].split('=');
                 submit = submit[1];
-                // alert(currentUrl);
+                // alert(mystring);
                 if (submit == 'searchSubmit1'){
                     // alert('hi');
                     var lob = mystring[0].split('=');
