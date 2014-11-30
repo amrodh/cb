@@ -72,10 +72,17 @@
                                                             <div class="properties_info">
                                                                 <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                     <div class="col-lg-11" style="float: right; padding:0;">
-                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> <?php if ($result->LocationProject != ''): ?>
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> 
+                                                                       <!--  <?php if ($result->LocationProject != ''): ?>
                                                                         <?php echo $result->LocationProject; ?>,
                                                                         <?php endif ?>
-                                                                        <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b></a>
+                                                                        <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
+                                                                        <?php if ($result->LocationProject != ''): ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php else: ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php endif ?>
+                                                                        </b></a>
                                                                     </div>
                                                                     <div class="col-lg-1" style="">
                                                                         <?php if ($result->is_favorite == 1): ?>
@@ -183,10 +190,17 @@
                                                                     <div class="properties_info">
                                                                         <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                             <div class="col-lg-11" style="float: right; padding:0;">
-                                                                                <b> <?php if ($result->LocationProject != ''): ?>
+                                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> 
+                                                                                <?php if ($result->LocationProject != ''): ?>
+                                                                                    <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                                <?php else: ?>
+                                                                                    <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                                <?php endif ?>
+                                                                               <!--  <?php if ($result->LocationProject != ''): ?>
                                                                                 <?php echo $result->LocationProject; ?>,
                                                                                 <?php endif ?>
-                                                                                <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b>
+                                                                                <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
+                                                                                </b></a>
                                                                             </div>
                                                                             <!-- <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div> -->
                                                                         </div>

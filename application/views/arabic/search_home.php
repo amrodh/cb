@@ -35,8 +35,11 @@
                         <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
                             <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">إختار المدينة</option>
+                                <option value="3">Greater Cairo</option>
                                 <?php foreach ($cities as $city): ?>
-                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php if ($city['name'] != 'Greater Cairo'): ?>
+                                      <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php endif ?>
                                 <?php endforeach ?>
                             </select>
                        </div>

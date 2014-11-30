@@ -118,8 +118,11 @@
                            </div>
                             <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
+                                <option value="3">Greater Cairo</option>
                                 <?php foreach ($cities as $city): ?>
-                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php if ($city['name'] != 'Greater Cairo'): ?>
+                                      <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                    <?php endif ?>
                                 <?php endforeach ?>
                             </select>
                        </div>
@@ -221,8 +224,11 @@
                          </div>
                           <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
                               <option value="0">Select City</option>
+                              <option value="3">Greater Cairo</option>
                               <?php foreach ($cities as $city): ?>
-                                  <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                  <?php if ($city['name'] != 'Greater Cairo'): ?>
+                                    <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
+                                  <?php endif ?>
                               <?php endforeach ?>
                           </select>
                      </div>

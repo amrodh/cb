@@ -18,8 +18,8 @@
     <div id="featuredProperty_header">
         <ul class="nav nav-tabs nav-justified property_alert_box" id="featuredProperty_tabs">
            <li class="active">
-                <a href="#alert" data-toggle="tab">
-                    <span style="color:orange;" id"notifier"><b>
+                <a href="#alert" data-toggle="tab" style="color:#23395b!important;">
+                    <span style="color:#23395b;" id"notifier"><b>
                         <span class="glyphicon glyphicon-tower"></span>
                     </span>
                     <?php echo $this->lang->line('featured_title'); ?>

@@ -1153,6 +1153,7 @@ class Home extends CI_Controller {
 				$data['totalResults'] = $data['searchResults']['totalResults'];
 				$data['resultCount'] = $data['searchResults']['totalResults'];
 				$data['searchResults'] = $data['searchResults']['results'];
+				$data['featured'] = true;
 				$data['images'] = array();
 				foreach ($data['searchResults'] as $property) {
 					if(isset($userFavorites)){

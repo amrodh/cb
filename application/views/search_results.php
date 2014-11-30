@@ -5,15 +5,20 @@
                 <?php if ($totalResults !== 0): ?>
                     <?php if (isset($totalResults)) { echo $totalResults; }?>
                 <?php endif ?>
-                <?php if (isset($commercial)): ?>
-                    <?php if (isset($commercialSale)): ?>
-                        Commercial buildings for Sale
-                    <?php else: ?>
-                        Commercial buildings for Rent
-                    <?php endif ?>
+                <?php if (isset($featured)): ?>
+                    Featured Properties
                 <?php else: ?>
-                    Homes for Sale and Rent
+                    <?php if (isset($commercial)): ?>
+                        <?php if (isset($commercialSale)): ?>
+                            Commercial buildings for Sale
+                        <?php else: ?>
+                            Commercial buildings for Rent
+                        <?php endif ?>
+                    <?php else: ?>
+                        Homes for Sale and Rent
+                    <?php endif ?>
                 <?php endif ?>
+                
             </div>
         </div>
         <div id="properties_bottom_div">
@@ -71,10 +76,17 @@
                                                         <div class="properties_info">
                                                             <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                 <div class="col-lg-11" style="float: left; padding:0;">
-                                                                   <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"> <b> <?php if ($result->LocationProject != ''): ?>
+                                                                   <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"> <b> 
+                                                                        <?php if ($result->LocationProject != ''): ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php else: ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php endif ?>
+                                                                  <!--  <?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b></a>
+                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b> -->
+                                                                    </a>
                                                                 </div>
                                                                 <div class="col-lg-1" style="">
                                                                     <?php if ($result->is_favorite == 1): ?>
@@ -182,10 +194,17 @@
                                                         <div class="properties_info">
                                                             <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                 <div class="col-lg-11" style="float: left; padding:0;">
-                                                                    <b> <?php if ($result->LocationProject != ''): ?>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><b> 
+                                                                        <?php if ($result->LocationProject != ''): ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php else: ?>
+                                                                            <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
+                                                                        <?php endif ?>
+                                                                   <!--  <?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?></b>
+                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
+                                                                    </b></a>
                                                                 </div>
                                                                 <!-- <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div> -->
                                                             </div>

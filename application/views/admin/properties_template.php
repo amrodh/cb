@@ -13,9 +13,9 @@
     <?php $count = 0; ?>
     <tr>
     <?php foreach ($properties as $property): ?>
-           <!--  <div class="propertyImages hide" style="display:none;" id="img<?=$property->PropertyId; ?>">
+            <div class="propertyImages hide" style="display:none;" id="img<?=$property->PropertyId; ?>">
                 <?= $images[$property->PropertyId]; ?>
-            </div> -->
+            </div>
             <?php if ($count % 3 != 0): ?>
                 <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                    <!--  <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;background-color: white;color: orange;position: absolute;font-size: 17px;margin-top: -124px;text-align: center;margin-left: 23px;">
@@ -109,11 +109,11 @@
     <tr>
       <td>
         <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;width: 300%;">
-                <a style="text-decoration: none;" href="www.linkedin.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"></a>
-                <a style="text-decoration: none;" href="www.google.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png"></a>
-                <a style="text-decoration: none;" href="www.facebook.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png"></a>
-                <a style="text-decoration: none;" href="www.twitter.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png"></a>
-                <img style="margin-top: -5px;margin-left: 54%" src="<?= base_url(); ?>application/static/images/callcenter.png"/>        
+            <a style="text-decoration: none;" href="www.linkedin.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"></a>
+            <a style="text-decoration: none;" href="www.google.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png"></a>
+            <a style="text-decoration: none;" href="www.facebook.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png"></a>
+            <a style="text-decoration: none;" href="www.twitter.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png"></a>
+            <img style="margin-top: -5px;margin-left: 54%" src="<?= base_url(); ?>application/static/images/callcenter.png"/>        
         </div>
         
      </td>

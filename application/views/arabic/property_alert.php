@@ -3,8 +3,8 @@
         <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
                <li class="active">
-                  <a href="#alert" data-toggle="tab" style="padding: 6%;">
-                      <span style="color:orange;" id"notifier"><b>
+                  <a href="#alert" data-toggle="tab" style="color:#23395b!important;">
+                      <span style="color:#23395b;" id"notifier"><b>
                           <span class="glyphicon glyphicon-bell"></span>
                       </span>
                       <?php echo $this->lang->line('propertyalert_title'); ?>

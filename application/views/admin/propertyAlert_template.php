@@ -5,32 +5,31 @@
         </td>
         <td style="font-size: 190%;padding: 4%;">
             <?php 
-                if(isset($params))
-                    echo $params['title'];
+                if(isset($title))
+                    echo $title;
             ?>
         </td>
     </tr>
     <?php $count = 0; ?>
     <tr>
-    <?php foreach ($searchResults as $property): ?>
+    <?php foreach ($properties as $property): ?>
            <!--  <div class="propertyImages hide" style="display:none;" id="img<?=$property->PropertyId; ?>">
                 <?= $images[$property->PropertyId]; ?>
             </div> -->
             <?php if ($count % 3 != 0): ?>
                 <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                    <!--  <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;background-color: white;color: orange;position: absolute;font-size: 17px;margin-top: -124px;text-align: center;margin-left: 23px;">
-                        <?php echo $count+1; ?>
+                        <?php //echo $count+1; ?>
                     </div> -->
                     <div class="compare_img">
 
-                        <img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $params['image_'.$property->PropertyId]; ?>"/>
+                        <img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $image[$property->PropertyId]; ?>"/>
                     </div>
                     <div class="compare_description" style="padding-left: 0;padding-right: 0;">
-                        <div class="compare_description_title">
+                        <!-- <div class="compare_description_title">
                             Description
-                            <!-- <?php echo $this->lang->line('compare_title1'); ?> -->
-                        </div>
-                        <div class="compare_description_content">
+                        </div> -->
+                        <div class="compare_description_content" style="text-align: center;">
                             <?php if ($property->LocationProject != ''): ?>
                                 <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
                             <?php else: ?>
@@ -61,16 +60,15 @@
                 <tr>
                     <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                         <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;background-color: white;color: orange;position: absolute;font-size: 17px;margin-top: -124px;text-align: center;margin-left: 23px;">
-                            <?php echo $count+1; ?>
+                            <!-- <?php //echo $count+1; ?> -->
                         </div>
                         <div class="compare_img">
-                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $params['image_'.$property->PropertyId]; ?>"/></a>
+                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $image[$property->PropertyId]; ?>"/></a>
                         </div>
                         <div class="compare_description" style="padding-left: 0;padding-right: 0;">
-                            <div class="compare_description_title">
+                           <!--  <div class="compare_description_title">
                                 Description
-                                <!-- <?php echo $this->lang->line('compare_title1'); ?> -->
-                            </div>
+                            </div> -->
                             <div class="compare_description_content">
                                 <?php if ($property->LocationProject != ''): ?>
                                     <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
@@ -100,12 +98,6 @@
             <?php endif ?>
             <?php $count++; ?>
     <?php endforeach ?>
-    <tr>
-        <?php 
-            if(isset($params))
-                echo $params['lower'];
-        ?>
-    </tr>
     <tr>
       <td>
         <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;width: 300%;">

@@ -57,7 +57,7 @@ margin-top: 5%
     background-color: #23395b;
     position: relative;
     color: white;
-    margin-bottom: 3%;
+    margin-bottom: 4%;
     padding-left: 4%;
     padding-right: 5%;
 }
@@ -424,7 +424,7 @@ color: white;
 }
 
 #search2_title{
-    color: #f26522;
+    color: #eb7f00;
     text-align: center;
     font-size: 18px;
     margin-bottom: 20px;
@@ -623,7 +623,7 @@ li.active>a{
 }
 
 #property_alert_header, #featuredProperty_header{
-    width: 179px;
+    width: 32%;
     margin-left: 80px;
 }
 
@@ -907,7 +907,7 @@ li.active>a{
     color: #23395b;
     font-weight: bold;
     font-size: 20px;
-    padding-top: 5px;
+    padding-top: 7px;
     /*padding: 13px;*/
     /*padding-left: 20px;*/
     border-bottom: 1px solid #dadada;
