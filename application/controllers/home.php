@@ -1225,7 +1225,7 @@ class Home extends CI_Controller {
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
 
-		// printme($data);exit();
+		//printme($data['languagePath']);exit();
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}

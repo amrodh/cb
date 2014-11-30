@@ -1,6 +1,6 @@
  <!--<div id="emptydiv" style="float: left;"> </div>-->
     <div class="container visible-md visible-lg hidden-sm hidden-xs" id="search_home_container" style="">
-    <form id="search_form" role="form" name="searchForm1" method="get" action="<?php echo base_url();?>viewAllProperties">
+    <form id="search_form" role="form" name="searchForm1" method="get" action="<?php echo base_url()?>en/viewAllProperties">
         <div class="search_body2">
             <div id="home">
                     <div class="container search_components2" style="margin-top: 54px;">
