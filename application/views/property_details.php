@@ -15,7 +15,7 @@
             <div id="property_tabs_header">
                 <ul class="nav nav-tabs nav-justified" id="property_tabs">
                     <li class="active"><a href="#details" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab1'); ?></a></li>
-                    <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li>
+                    <!-- <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li> -->
                 </ul>
             </div>
             <div class="tab-content property_details_body">
@@ -224,9 +224,9 @@
                     </div>
                 </div>
                 </div>
-                <div class="tab-pane" id="map">
+                <!-- <div class="tab-pane" id="map">
 
-                </div>
+                </div> -->
             </div>
             <form>
             <div id="calculatorTallModal" class="modal modal-wide fade">
