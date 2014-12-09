@@ -26,7 +26,7 @@
         url = url+"getSearchResults";
         var currentUrl = $("#query_string").val();
         var currentLanguage = $('#currentLanguage').val();
-// alert();
+// alert(currentUrl);return;
         if (currentUrl == '')
         {
             $.ajax({
@@ -56,7 +56,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentLanguage, catergory : 'home', contractType2 : 'rent'}
+                data:{language : currentLanguage, category : 'home', contractType2 : 'rent'}
             })
             .success(function( html ) {
                 $("#main_div").html(html);
@@ -77,10 +77,11 @@
                 });
             });
         }else if(currentUrl == 'category=home&contractType2=buy'){
+            // alert(currentUrl);return;
             $.ajax({
                 type: "POST",
                 url: url,
-                data:{language : currentLanguage, contractType : 'rent'}
+                data:{language : currentLanguage, category : 'home', contractType2 : 'buy'}
             })
             .success(function( html ) {
                 $("#main_div").html(html);

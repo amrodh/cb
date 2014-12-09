@@ -1039,8 +1039,8 @@ li.active>a{
     width: 100px;
     height: 33px;
     font-size: 17px;
-    margin-top: -46px;
-    margin-left: 520px;
+    margin-top: 1.5%;
+    /*margin-left: 520px;*/
     background: -webkit-linear-gradient(#fec552, #eb7f04); 
     background: -o-linear-gradient(#fec552, #eb7f04); 
     background: -moz-linear-gradient(#fec552, #eb7f04); 
@@ -1050,6 +1050,7 @@ li.active>a{
     color: white;
     text-align: center;
     line-height: 32px;
+    float: right;
 }
 
 #properties_compare_div{
@@ -2055,7 +2056,7 @@ li.active>.training_anchor{
     background-color: #f6f6f6;
     border: 1px solid #d4d4d4;
     margin-bottom: 1%;
-    min-height: 405px;
+    min-height: 460px;
     /*width: 32%;*/
     /*margin-left: 2%;*/
 }

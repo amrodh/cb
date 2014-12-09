@@ -11,9 +11,12 @@ class service extends CI_Model {
         //printme(phpinfo());
         libxml_disable_entity_loader(false);
         ini_set( "soap.wsdl_cache_enabled", "0" );
+        //ini_set("default_socket_timeout", 6000);
+        //ini_set('max_execution_time', 10000); // just put a lot of time
         $options = array( 
                 'exceptions'=>0, 
-                'trace'=>1, 
+                'trace'=>1,
+                //'connection_timeout'=>10000,
                 //'cache_wsdl'=>WSDL_CACHE_NONE 
             ); 
         try {
@@ -21,19 +24,6 @@ class service extends CI_Model {
         } catch (Exception $e) {
             //printme($e);
         }
-        
-        // $opts = array(
-        //     'ssl' => array('ciphers'=>'RC4-SHA')
-        //     );
-        //     ini_set( "soap.wsdl_cache_enabled", "0" );
-        //     $objSoapClient = new SoapClient(
-        //     'http://64.150.184.135:81/WebServ/searchservice.svc?wsdl',
-        //     array ( "encoding"=>"ISO-8859-1",
-        //     //'stream_context' => stream_context_create($opts),
-        //     "trace"=>1,
-        //     "exceptions"=>0,
-        //     "connection_timeout"=>2000 ));
-        
         
     }
 
@@ -88,15 +78,14 @@ class service extends CI_Model {
             'resultsCountPerPage' => '50', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
-// printme($inputs);
 
         $results = $this->client->Search($inputs);
-// printme($results);exit();
+
         $data = array();
         if ($results->TotalResults != 0)
         {
             foreach ($results->SearchResult as $result) {
-                // printme($result);exit();
+                
                 $data['results'] = $result;
             }
             $data['totalResults'] = $results->TotalResults;
@@ -104,10 +93,49 @@ class service extends CI_Model {
             $data['results'] = '';
             $data['totalResults'] = $results->TotalResults;
         }
-        
-        // printme($data);exit();
-        
+        printme($data);exit();
         return $data;
+    }
+
+    function importPropertiesIntoDB()
+    {
+       
+        //echo phpinfo();
+        //exit();
+        $inputs = array(
+            'searchMode' => 'Exact',
+            'Bedrooms' => '',
+            'PropertyId' => '',
+            'Purpose' => 3,
+            'PriceLowerLimit' => 0,
+            'PriceUpperLimit' => 1000000000000000000,
+            'PunitSale' => '',
+            'RentPriceLowerLimit' => 0,
+            'RentPriceUpperLimit' => 1000000000000000000,
+            'PunitRent' => '',
+            'AreaLowerLimit' => 0,
+            'AreaUpperLimit' => 1000000000000000000,
+            'PropertyType' => '',
+            'PropertyFor' => '',
+            'BoxLocation' => '',
+            'BudgetFrom' => '',
+            'BudgetTo' => '',
+            'AreaFrom' => '',
+            'AreaTo' => '',
+            'AreaUnitId' => '',
+            'LineOfBusinessId' => array(),
+            'CompanyId' => '',
+            'sortmode' => '',
+            'sortType' => '',
+            'pageIndex' => '',
+            'licences' => '',
+            'isFeatured' => false,
+            'resultsCountPerPage' => '1300', 
+            'useFeaturedFilter' => false
+            );
+
+        $results = $this->client->Search($inputs);
+        printme($results);exit();
     }
 
 

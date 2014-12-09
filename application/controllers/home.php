@@ -28,7 +28,8 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		
+		$this->service->importPropertiesIntoDB();
+		exit();
 
 		// $this->property->propertyAlertCron();
 
@@ -921,6 +922,7 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}elseif (isset($_POST['category'])){
+			// printme('hi');exit();
 			if($_POST['category'] == 'home' && isset($_POST['contractType2']))
 			{
 
@@ -930,9 +932,10 @@ class Home extends CI_Controller {
 				}else{
 					$data['languagePath'] = 'arabic/';
 				}
+
 				if ($_POST['contractType2'] == 'rent'){
 					$propertyFor = 2;
-				}elseif ($_POST['contractType2'] = 'sale'){
+				}elseif ($_POST['contractType2'] = 'buy'){
 					$propertyFor = 1;
 				}
 				$searchParams = array(

@@ -1,5 +1,5 @@
 <div style="width: 100%;margin-bottom:16%;">
-    <form id="property_alert_form">
+    <!-- <form id="property_alert_form"> -->
         <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
                <li class="active">
@@ -39,17 +39,25 @@
                        </div>
                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="property_alert_col_title title_margin">
+                               <?php echo $this->lang->line('propertyalert_subtitle8'); ?>
+                           </div>
+                           <select class="selectpicker" id="propertyAlert_propertyType" name="alert_propertyType" data-style="btn" data-title="Select Type" data-size="5">
+                                <option value="0">إختار نوع العقار</option> 
+                                <?php foreach ($propertyType1 as $type): ?>
+                                    <option value="<?= $type['property_name'] ?>"><?= $type['property_name'] ?></option>
+                                <?php endforeach ?>
+                           </select>
+                       </div>
+                       <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
+                           <div class="property_alert_col_title title_margin">
                                <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option value="0">إختار نوع العقد</option> 
                                 <option value="Sale">بيع</option>
                                 <option value="Rent">إيجار</option>
-                               <!--  <?php foreach ($serviceTypes as $type): ?>
-                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                                <?php endforeach ?> -->
                            </select>
-                       </div>
+                       </div> -->
                        <?php if (!isset($loggedIn)): ?>
                          <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                             <div class="property_alert_col_title title_margin">
@@ -66,6 +74,17 @@
                 </div>
                 <div class="container property_alert_components">
                     <div class="row property_alert_bottom_row">
+
+                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
+                           <div class="property_alert_col_title title_margin">
+                               <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
+                           </div>
+                           <select class="selectpicker" data-style="btn" data-title="Select Type">
+                                <option value="0">إختار نوع العقد</option> 
+                                <option value="Sale">بيع</option>
+                                <option value="Rent">إيجار</option>
+                           </select>
+                        </div>
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
                             <div class="property_alert_col_title title_margin">
                                 <?php echo $this->lang->line('propertyalert_subtitle5'); ?>
@@ -116,5 +135,5 @@
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
     </div>

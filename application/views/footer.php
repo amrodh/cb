@@ -161,7 +161,6 @@
                     auto:true
                 });
                 $("[data-toggle='popover']").popover();
-                // alert($('#currentLanguage').val());
             });
             
             var navHeight = $('.navbar-collapse').height();
@@ -171,25 +170,16 @@
                     navHeight = $(this).height();
                 }
                 $('#middle_div').animate({
-                    'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
+                    'margin-bottom': '50%'
                    }, 300);
             });
             
             $('.navbar-collapse').on('hide.bs.collapse', function(){
                 navHeight = $(this).height();
                 $('#middle_div').animate({
-                  'margin-bottom': '23px'
+                  'margin-bottom': '4%'
                  }, 300);
               });
-
-            // $(function() {
-            //     $('#image_upload').uploadify({
-            //         'swf'      : '<?php echo base_url(); ?>application/views/uploadify.swf',
-            //         'uploader' : '<?php echo base_url(); ?>application/views/uploadify.php'
-            //         // Put your options here
-            //     });
-            // });
-            
         </script>
         
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>

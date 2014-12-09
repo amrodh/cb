@@ -103,7 +103,7 @@
                                    <?php echo $this->lang->line('search_drpdwn1'); ?>
                                </div>
                                 <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
-                                    <option value="0">Select City</option>
+                                    <option value="0">إختار المدينة</option>
                                     <option value="3">Greater Cairo</option>
                                     <?php foreach ($cities as $city): ?>
                                         <?php if ($city['name'] != 'Greater Cairo'): ?>
@@ -126,7 +126,7 @@
                                    <?php echo $this->lang->line('search_drpdwn2'); ?>
                                </div>
                                <select class="selectpicker" id="search_disabled_district_2" name="district_2" data-style="btn" data-title="Select District" data-size="5" disabled>
-                                  <option>Select District</option> 
+                                  <option>إختار المنطقة</option> 
                                </select>
                            </div>
                            <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">

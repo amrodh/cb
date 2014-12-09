@@ -30,10 +30,10 @@
                 </div>
             <?php else: ?>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 col-sm-11 col-md-8 col-xs-12 properties_header_cols" id="properties_bottom_left_div">
-                        <table id="properties" style="border:none;" class="table table-striped table-bordered" border="0" cellspacing="0" width="50%">
+            <div class="container" style="width:100%;">
+                <div class="row" style="width:100%;">
+                    <div class="col-lg-9 col-sm-11 col-md-9 col-xs-12 properties_header_cols" id="properties_bottom_left_div">
+                        <table id="properties" style="border:none;" class="table table-striped table-bordered" border="0" cellspacing="0" width="100%">
                             <thead id="thead">
                                 <tr>
                                     <th></th>
@@ -282,7 +282,7 @@
                         </table>
                     </div>
                     <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div" style="padding-top: 19%;text-align: center;color: red;font-size: 200%;">
-                        <div style="position: relative;width: 293px;height: 500px;margin-top:-86%;margin-left: -6%;border-radius: 10px;text-align: center;padding-top: 65%;font-size: 210%;background: rgba(0, 0, 0, 0.3);color: white;">
+                        <div style="position: relative;width: 112%;height: 500px;margin-top:-86%;margin-left: -6%;border-radius: 10px;text-align: center;padding-top: 65%;font-size: 210%;background: rgba(0, 0, 0, 0.3);color: white;">
                             Coming Soon
                         </div>
                     </div>

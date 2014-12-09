@@ -8,4 +8,5 @@ $lang['propertyalert_subtitle4'] = "بحث مفصل";
 $lang['propertyalert_subtitle5'] = "السعر";
 $lang['propertyalert_subtitle6'] = "المساحة";
 $lang['propertyalert_subtitle7'] = "البريد الالكتروني";
+$lang['propertyalert_subtitle8'] = "نوع العقار";
 $lang['propertyalert_button'] = "إرسال";
