@@ -145,6 +145,46 @@ class database extends CI_Model {
            return false; 
     }
 
+    function search($inputs)
+    {
+        $q = $this
+              ->db
+              ->where('AreaNumericValue <', $inputs('areaUpperLimit'))
+              ->where('AreaNumericValue >', $inputs('areaLowerLimit'))
+              ->where('PrpertyTypeStr', $inputs('PropertyType'))
+              ->where('LocationCity', $inputs('city'))
+              ->where('LocationDistrict', $inputs('district'))
+              ->where('SalesTypeStr', $inputs('PropertyFor'))
+              ->where('SalePrice <', $inputs('PriceUpperLimit'))
+              ->where('SalePrice >', $inputs('PriceLowerLimit'))
+              ->where('RentPrice <', $inputs('PriceUpperLimit'))
+              ->where('RentPrice >', $inputs('PriceLowerLimit'))
+              ->order_by('PropertyId','desc')
+              ->get('property_service');
+
+           if($q->num_rows >0){
+            printme($q->result_array());exit();
+              return $q->result_array();
+           } 
+           return false; 
+    }
+
+    function getPropertyTypeByID($id)
+    {
+        $q = $this
+              ->db
+              ->where('property_id', $id)
+              ->limit(1)
+              ->get('property_type');
+
+
+        if($q->num_rows >0){
+          // printme();exit();
+              return $q->result_array()[0]['property_name'];
+           } 
+           return false; 
+    }
+
 }
 
 

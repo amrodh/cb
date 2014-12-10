@@ -22,13 +22,13 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		$this->load->model('service');
+		// $this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		// $this->service->importPropertiesIntoDB();
+		// printme($this->database->getPropertyByID(1));
 		// exit();
 
 		// $this->property->propertyAlertCron();
@@ -621,6 +621,7 @@ class Home extends CI_Controller {
 
 		if (isset($_POST['searchSubmit1']))
 		{
+			// printme($_POST);exit();
 			if($_POST['language'] == 'en' || $_POST['language'] == '')
 			{
 				$data['languagePath'] = '';
@@ -632,8 +633,11 @@ class Home extends CI_Controller {
 			{
 				$type = '';
 			}else{
-				$type = $_POST['typeName'];
+				$type = $this->database->getPropertyTypeByID($_POST['typeName']);
 			}
+
+			// printme($_POST['typeName']);
+			// printme($type);exit();
 
 			if ($_POST['city'] == 0)
 			{
@@ -649,13 +653,20 @@ class Home extends CI_Controller {
 				}
 			}
 
-			if ($_POST['contractType'] == 0)
+			// printme($_POST['contractType']);
+
+			if ($_POST['contractType'] == '')
 			{
 				$propertyFor = '';
+				// printme('empty');
 
 			}else{
-				$propertyFor = $this->service->getServiceTypeByID($_POST['contractType']);
+				// printme('not empty');
+				$propertyFor = $_POST['contractType'];
+				// $propertyFor = $this->service->getServiceTypeByID($_POST['contractType']);
 			}
+			// exit();
+			// printme($propertyFor);exit();
 
 			if ($_POST['price'] == 0)
 			{
@@ -698,6 +709,8 @@ class Home extends CI_Controller {
 				'AreaLowerLimit' => $areaLowerLimit,
 				'AreaUpperLimit' => $areaUpperLimit
 			);
+
+			// printme($searchParams);exit();
 
 			$data['searchResults'] = $this->service->Search($searchParams);
 			if ($data['searchResults']['totalResults'] != 0){

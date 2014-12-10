@@ -175,9 +175,9 @@
             });
         }else{
             var mystring = currentUrl.split('&');
-            // alert(url);
+            // alert(mystring);
             if (mystring.length > 2){
-                var submit = mystring[8].split('=');
+                var submit = mystring[9].split('=');
                 submit = submit[1];
                 // alert(mystring);
                 if (submit == 'searchSubmit1'){
@@ -186,17 +186,17 @@
                     lob = lob[1];
                     var city = mystring[2].split('=');
                     city = city[1];
-                    var contractType = mystring[3].split('=');
+                    var contractType = mystring[4].split('=');
                     contractType = contractType[1];
-                    var price = mystring[4].split('=');
+                    var price = mystring[5].split('=');
                     price = price[1];
-                    var area = mystring[5].split('=');
+                    var area = mystring[6].split('=');
                     area = area[1];
-                    var districtName = mystring[6].split('=');
+                    var districtName = mystring[7].split('=');
                     districtName = districtName[1];
-                    var typeName = mystring[7].split('=');
+                    var typeName = mystring[8].split('=');
                     typeName = typeName[1];
-                    
+                    // alert(contractType);
                     $.ajax({
                         type: "POST",
                         url: url,
