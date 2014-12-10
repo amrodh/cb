@@ -10,14 +10,16 @@ class service extends CI_Model {
 
         //printme(phpinfo());
         libxml_disable_entity_loader(false);
+        // echo phpinfo();
+        // exit();
         ini_set( "soap.wsdl_cache_enabled", "0" );
-        //ini_set("default_socket_timeout", 6000);
-        //ini_set('max_execution_time', 10000); // just put a lot of time
+       
+        
         $options = array( 
                 'exceptions'=>0, 
                 'trace'=>1,
                 //'connection_timeout'=>10000,
-                //'cache_wsdl'=>WSDL_CACHE_NONE 
+                'cache_wsdl'=>WSDL_CACHE_NONE 
             ); 
         try {
             $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
