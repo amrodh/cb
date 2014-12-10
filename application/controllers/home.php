@@ -30,8 +30,8 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		// phpinfo();exit();
 		// printme(phpinfo());exit();
-		$this->service->importPropertiesIntoDB();
-		exit();
+		// $this->service->importPropertiesIntoDB();
+		// exit();
 
 		// $this->property->propertyAlertCron();
 
