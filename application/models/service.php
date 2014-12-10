@@ -126,7 +126,7 @@ class service extends CI_Model {
             'LineOfBusinessId' => array(),
             'CompanyId' => '',
             'sortmode' => '',
-            'sortType' => '',
+            'sortType' => 2,
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => false,
