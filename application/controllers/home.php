@@ -28,8 +28,6 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		// phpinfo();exit();
-		// printme(phpinfo());exit();
 		// $this->service->importPropertiesIntoDB();
 		// exit();
 

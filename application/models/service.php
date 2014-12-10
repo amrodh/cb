@@ -128,13 +128,20 @@ class service extends CI_Model {
     //         'sortType' => 1,
     //         'pageIndex' => '',
     //         'licences' => '',
-    //         'isFeatured' => false,
+    //         'isFeatured' => true,
     //         'resultsCountPerPage' => '1300', 
-    //         'useFeaturedFilter' => false
+    //         'useFeaturedFilter' => true
     //         );
 
     //     $results = $this->client->Search($inputs);
+    //     // printme($results);exit();
     //     // printme($results->SearchResult->PropertySingleSarchResult);exit();
+    //     foreach ($results->SearchResult->PropertySingleSarchResult as $key => $result) {
+    //         $data = array('propertyId' => $result->PropertyId);
+    //         $query = $this->db->insert_string('property_featured', $data);
+    //         $query = $this->db->query($query);
+    //     }
+    
     //     $data = array();
     //     if ($results->TotalResults != 0)
     //     {
