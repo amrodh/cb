@@ -24,7 +24,7 @@
 		           <div class="search_box_col_title title_margin" id="search_title_district">
 		               <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
 		           </div>
-		           <select class="selectpicker" id="search_district_2" name="district_2" data-style="btn" data-title="Select District" data-size="5">
+		           <select class="selectpicker" id="search_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">
 		                <option value="0">Select District</option>
 		                <?php foreach ($districts as $item): ?>
 						<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
@@ -37,7 +37,7 @@
 		           <div class="search_box_col_title title_margin" id="search_title_district">
 		               <!-- District --><?php echo $this->lang->line('search_drpdwn2'); ?>
 		           </div>
-		           <select class="selectpicker" id="search_district_3" name="district_3" data-style="btn" data-title="Select District" data-size="5">
+		           <select class="selectpicker" id="search_district_3" name="district" data-style="btn" data-title="Select District" data-size="5">
 		                <option value="0">Select District</option>
 		                <?php foreach ($districts as $item): ?>
 						<option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>

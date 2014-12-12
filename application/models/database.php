@@ -147,26 +147,81 @@ class database extends CI_Model {
 
     function search($inputs)
     {
-        $q = $this
-              ->db
-              ->where('AreaNumericValue <', $inputs('areaUpperLimit'))
-              ->where('AreaNumericValue >', $inputs('areaLowerLimit'))
-              ->where('PrpertyTypeStr', $inputs('PropertyType'))
-              ->where('LocationCity', $inputs('city'))
-              ->where('LocationDistrict', $inputs('district'))
-              ->where('SalesTypeStr', $inputs('PropertyFor'))
-              ->where('SalePrice <', $inputs('PriceUpperLimit'))
-              ->where('SalePrice >', $inputs('PriceLowerLimit'))
-              ->where('RentPrice <', $inputs('PriceUpperLimit'))
-              ->where('RentPrice >', $inputs('PriceLowerLimit'))
-              ->order_by('PropertyId','desc')
-              ->get('property_service');
+        // printme($inputs);
+        // printme(count($inputs));
+        // exit();
 
-           if($q->num_rows >0){
-            printme($q->result_array());exit();
-              return $q->result_array();
-           } 
-           return false; 
+        if (count($inputs) == 1)
+        {
+            // printme('hello');
+            $this->db->select('*');
+            $this->db->from('property_featured');
+            $this->db->order_by('propertyId','desc');
+            $query = $this->db->get();
+            $properties = array();
+            foreach ($query->result() as $key => $value) {
+              // printme($value);
+
+                $properties[$key] = $this->getPropertyByID($value->propertyId);
+                foreach ($properties[$key] as $property) {
+                    $properties[$key] = $property;
+                    $properties[$key] = (object) $property;
+                }
+            }
+            if ($query->num_rows >0)
+            {
+                $results = array(
+                  'results' => $properties,
+                  'totalResults' => $query->num_rows
+                  );
+                return $results;
+            }else{
+                return false; 
+            }
+            // printme($results);exit();
+        }else{
+            $this->db->select('*');
+            $this->db->from('property_service');
+            $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
+            $this->db->where('AreaNumericValue >', $inputs['AreaLowerLimit']);
+            $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
+            $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
+            $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
+            $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+            $this->db->where('LineofBusinessFK', $inputs['lob']);
+            if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
+                $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
+            }
+            if ($inputs['City'] != '' || $inputs['City'] != 0)
+            {
+                $this->db->where('LocationCity', $inputs['City']);
+            }
+            if ($inputs['District'] != '' || $inputs['District'] != 0)
+            {
+                $this->db->where('LocationDistrict', $inputs['District']);
+            }
+            if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
+            {
+                $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
+            }else{
+                $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+            }
+            $this->db->order_by('PropertyId','desc');
+            $query = $this->db->get();
+            // printme($this->db->last_query());
+            // printme($query->result());exit();
+            if ($query->num_rows >0)
+            {
+                $results = array(
+                  'results' => $query->result(),
+                  'totalResults' => $query->num_rows
+                  );
+                // printme($results);exit();
+                return $results;
+            }else{
+                return false; 
+            }
+        }
     }
 
     function getPropertyTypeByID($id)
@@ -181,6 +236,22 @@ class database extends CI_Model {
         if($q->num_rows >0){
           // printme();exit();
               return $q->result_array()[0]['property_name'];
+           } 
+           return false; 
+    }
+
+    function getPropertyByID($id)
+    {
+        $q = $this
+              ->db
+              ->where('PropertyId', $id)
+              ->limit(1)
+              ->get('property_service');
+
+
+        if($q->num_rows >0){
+          // printme();exit();
+              return $q->result_array();
            } 
            return false; 
     }

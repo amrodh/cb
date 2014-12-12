@@ -415,30 +415,30 @@ $(document).ready(function ()
             });
 
 
-            $('[name="searchSubmit1"]').click(function(event) {
-              var propertyType = $('[name="type"]').val();
-              var city = $('[name="city"]').val();
-              var district = $('[name="district"]').val();
-              var contractType = $('[name="contractType"').val();
-              var price = $('[name="price"]').val();
-              var area = $('[name="area"]').val();
-              var lob = $('[name="lob"]').val();
+            // $('[name="searchSubmit1"]').click(function(event) {
+            //   var propertyType = $('[name="type"]').val();
+            //   var city = $('[name="city"]').val();
+            //   var district = $('[name="district"]').val();
+            //   var contractType = $('[name="contractType"').val();
+            //   var price = $('[name="price"]').val();
+            //   var area = $('[name="area"]').val();
+            //   var lob = $('[name="lob"]').val();
 
-              $('[name="districtName"]').val($('[name="district"]').val());
-              $('[name="typeName"]').val($('[name="type"]').val());
-              $('#lob_selected').val(lob);
-            });
+            //   // $('[name="districtName"]').val($('[name="district"]').val());
+            //   // $('[name="typeName"]').val($('[name="type"]').val());
+            //   // $('#lob_selected').val(lob);
+            // });
 
-            $('[name="searchSubmit3"]').click(function(event) {
-              var propertyType = $('[name="type_2"]').val();
-              var city = $('[name="city_2"]').val();
-              var district = $('[name="district_2"]').val();
-              var price = $('[name="price_2"]').val();
-              var area = $('[name="area_2"]').val();
+            // $('[name="searchSubmit3"]').click(function(event) {
+            //   var propertyType = $('[name="type_2"]').val();
+            //   var city = $('[name="city_2"]').val();
+            //   var district = $('[name="district_2"]').val();
+            //   var price = $('[name="price_2"]').val();
+            //   var area = $('[name="area_2"]').val();
 
-              $('[name="districtName_2"]').val($('[name="district_2"]').val());
-              // $('#lob').val('1');
-            });
+            //   // $('[name="districtName_2"]').val($('[name="district_2"]').val());
+            //   // $('#lob').val('1');
+            // });
 
             $('#viewResults').change(function(event) {
                   var oldEndResult = $('#endResult').text();

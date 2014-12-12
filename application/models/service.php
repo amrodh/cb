@@ -82,7 +82,7 @@ class service extends CI_Model {
             );
 
         $results = $this->client->Search($inputs);
-
+        printme($results);exit();
         $data = array();
         if ($results->TotalResults != 0)
         {

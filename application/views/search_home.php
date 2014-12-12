@@ -102,7 +102,7 @@
                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
                                <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price" data-size="5">
                                     <option value="0">Select Area</option>
-                                    <option value="<50"> &#60;50 <sup>2</sup></option>
+                                    <option value="<50"> &#60;50 m<sup>2</sup></option>
                                     <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                     <option value="200 - 300">200 - 300 m<sup>2</sup></option>
                                     <option value="300 - 400">300 - 400 m<sup>2</sup></option>
@@ -111,8 +111,8 @@
                                </select>
                            </div>
                        </div>
-                       <input type="hidden" name="districtName" value="">
-                       <input type="hidden" name="typeName" value="">
+                       <!-- <input type="hidden" name="districtName" value=""> -->
+                       <!-- <input type="hidden" name="typeName" value=""> -->
                        <div class="row" style="width: 150px;margin: auto;">
                            <div class="col-lg-12">
                                 <!-- <input type="submit" class="btn btn-default search_btn_submit2" value="<?php echo $this->lang->line('searchhome_button'); ?>" name="searchSubmit1"/> -->
@@ -122,8 +122,8 @@
                     </div>
             </div>
         </div>
-        <input type="hidden" name="districtName" value="">
-        <input type="hidden" name="lob_selected" id="lob_selected" value="">
+        <!-- <input type="hidden" name="districtName" value=""> -->
+        <!-- <input type="hidden" name="lob_selected" id="lob_selected" value=""> -->
     </form>
     </div>
     <script src="<?php echo base_url(); ?>application/static/js/bootstrap-select.min.js"></script>

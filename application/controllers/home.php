@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		// $this->load->model('service');
+		$this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();
@@ -601,12 +601,9 @@ class Home extends CI_Controller {
 	public function getSearchResults()
 	{
 		$data = $this->init();
-		// $data['districts'] = $this->database->getAllDistricts();
 		$this->load->model('service');
 		$data['districts'] = $this->database->getAllDistricts();
-		// printme($data);exit();
-
-
+		$flag = false;
 		if (isset($data['loggedIn'])){
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
@@ -617,365 +614,20 @@ class Home extends CI_Controller {
 				$userFavorites = array();
 			}
 		}
-		
-
-		if (isset($_POST['searchSubmit1']))
-		{
-			// printme($_POST);exit();
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-
-			if ($_POST['typeName'] == 0)
-			{
-				$type = '';
-			}else{
-				$type = $this->database->getPropertyTypeByID($_POST['typeName']);
-			}
-
-			// printme($_POST['typeName']);
-			// printme($type);exit();
-
-			if ($_POST['city'] == 0)
-			{
-				$boxLocation = '';
-			}
-			else{
-				if ($_POST['districtName'] == 0)
+		// $data['uri'] = $data['uri'].$_GET['data'];
+		// printme($_GET['data']);exit();
+		$getData = explode('&', $_GET['data']);
+		foreach ($getData as $value) {
+			$value = explode('=', $value);
+			if($value[0] == 'featured'){
+				$flag = true;
+				$searchParams = array('featured' => true);
+				$data['searchResults'] = $this->database->search($searchParams);
+				// printme($data['searchResults']);exit();
+				if ($data['searchResults']['totalResults'] > 0)
 				{
-					$boxLocation = $this->service->getCityByID($_POST['city']);
-				}
-				else{
-					$boxLocation = $this->service->getDistrictByID($_POST['city'], $_POST['districtName']);
-				}
-			}
-
-			// printme($_POST['contractType']);
-
-			if ($_POST['contractType'] == '')
-			{
-				$propertyFor = '';
-				// printme('empty');
-
-			}else{
-				// printme('not empty');
-				$propertyFor = $_POST['contractType'];
-				// $propertyFor = $this->service->getServiceTypeByID($_POST['contractType']);
-			}
-			// exit();
-			// printme($propertyFor);exit();
-
-			if ($_POST['price'] == 0)
-			{
-				$priceLowerLimit = 0;
-				$priceUpperLimit = 1000000000000000000;
-			}else{
-				if ($_POST['price'] == 20000000)
-				{
-					$priceLowerLimit = $_POST['price'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$price = explode(' - ', $_POST['price']);
-					$priceLowerLimit = $price[0];
-					$priceUpperLimit = $price[1];
-				}
-			}
-
-			if ($_POST['area'] == 0)
-			{
-				$areaLowerLimit = 0;
-				$areaUpperLimit = 1000000000000000;
-			}else{
-				if ($_POST['area'] == 1000)
-				{
-					$priceLowerLimit = $_POST['area'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$area = explode(' - ', $_POST['area']);
-					$areaLowerLimit = $area[0];
-					$areaUpperLimit = $area[1];
-				}
-			}
-
-			$searchParams = array(
-				'PropertyType' => $type,
-				'BoxLocation' => $boxLocation,
-				'PropertyFor' => $propertyFor,
-				'PriceLowerLimit' => $priceLowerLimit,
-				'PriceUpperLimit' => $priceUpperLimit,
-				'AreaLowerLimit' => $areaLowerLimit,
-				'AreaUpperLimit' => $areaUpperLimit
-			);
-
-			// printme($searchParams);exit();
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['resultCount'] = $data['totalResults'];
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['resultCount'] = 0;
-				$data['totalResults'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-		}elseif (isset($_POST['searchSubmit3'])) {
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-
-			if ($_POST['type_2'] == 0)
-			{
-				$type = '';
-			}else{
-				$type = $_POST['type_2'];
-			}
-
-			if ($_POST['city_2'] == 0)
-			{
-				$boxLocation = '';
-			}
-			else{
-				if ($_POST['districtName_2'] == 0)
-				{
-					$boxLocation = $this->service->getCityByID($_POST['city_2']);
-				}
-				else{
-					$boxLocation = $this->service->getDistrictByID($_POST['city_2'], $_POST['districtName_2']);
-				}
-			}
-
-			if ($_POST['contractType_2'] == 0)
-			{
-				$propertyFor = '';
-
-			}else{
-				$propertyFor = $_POST['contractType_2'];
-			}
-
-			if ($_POST['price_2'] == 0)
-			{
-				$priceLowerLimit = 0;
-				$priceUpperLimit = 1000000000000000000;
-			}else{
-				if ($_POST['price_2'] == 20000000)
-				{
-					$priceLowerLimit = $_POST['price_2'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$price = explode(' - ', $_POST['price_2']);
-					$priceLowerLimit = $price[0];
-					$priceUpperLimit = $price[1];
-				}
-			}
-
-			if ($_POST['area_2'] == 0)
-			{
-				$areaLowerLimit = 0;
-				$areaUpperLimit = 10000000000000;
-			}else{
-				if ($_POST['area_2'] == 1000)
-				{
-					$priceLowerLimit = $_POST['area_2'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$area = explode(' - ', $_POST['area_2']);
-					$areaLowerLimit = $area[0];
-					$areaUpperLimit = $area[1];
-				}
-			}
-
-			$searchParams = array(
-				'PropertyType' => $type,
-				'BoxLocation' => $boxLocation,
-				'PropertyFor' => $propertyFor,
-				'PriceLowerLimit' => $priceLowerLimit,
-				'PriceUpperLimit' => $priceUpperLimit,
-				'AreaLowerLimit' => $areaLowerLimit,
-				'AreaUpperLimit' => $areaUpperLimit
-			);
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['resultCount'] = $data['totalResults'];
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['resultCount'] = 0;
-				$data['totalResults'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-
-		}elseif (isset($_POST['searchSubmit4'])) {
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-
-			if ($_POST['type_3'] == 0)
-			{
-				$type = '';
-			}else{
-				$type = $_POST['type_3'];
-			}
-
-			if ($_POST['city_3'] == 0)
-			{
-				$boxLocation = '';
-			}
-			else{
-				if ($_POST['districtName_3'] == 0)
-				{
-					$boxLocation = $this->service->getCityByID($_POST['city_3']);
-				}
-				else{
-					$boxLocation = $this->service->getDistrictByID($_POST['city_3'], $_POST['districtName_3']);
-				}
-			}
-
-			if ($_POST['contractType_3'] == 0)
-			{
-				$propertyFor = '';
-
-			}else{
-				$propertyFor = $_POST['contractType_3'];
-			}
-
-			if ($_POST['price_3'] == 0)
-			{
-				$priceLowerLimit = 0;
-				$priceUpperLimit = 1000000000000000000;
-			}else{
-				if ($_POST['price_3'] == 20000000)
-				{
-					$priceLowerLimit = $_POST['price_3'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$price = explode(' - ', $_POST['price_3']);
-					$priceLowerLimit = $price[0];
-					$priceUpperLimit = $price[1];
-				}
-			}
-
-			if ($_POST['area_3'] == 0)
-			{
-				$areaLowerLimit = 0;
-				$areaUpperLimit = 100000000000000;
-			}else{
-				if ($_POST['area_3'] == 1000)
-				{
-					$priceLowerLimit = $_POST['area_3'];
-					$priceUpperLimit = 1000000000000000000;
-				}else{
-					$area = explode(' - ', $_POST['area_3']);
-					$areaLowerLimit = $area[0];
-					$areaUpperLimit = $area[1];
-				}
-			}
-
-			$searchParams = array(
-				'PropertyType' => $type,
-				'BoxLocation' => $boxLocation,
-				'PropertyFor' => $propertyFor,
-				'PriceLowerLimit' => $priceLowerLimit,
-				'PriceUpperLimit' => $priceUpperLimit,
-				'AreaLowerLimit' => $areaLowerLimit,
-				'AreaUpperLimit' => $areaUpperLimit
-			);
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['resultCount'] = $data['totalResults'];
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['resultCount'] = 0;
-				$data['totalResults'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-		}elseif (isset($_POST['category'])){
-			// printme('hi');exit();
-			if($_POST['category'] == 'home' && isset($_POST['contractType2']))
-			{
-
-				if($_POST['language'] == 'en' || $_POST['language'] == '')
-				{
-					$data['languagePath'] = '';
-				}else{
-					$data['languagePath'] = 'arabic/';
-				}
-
-				if ($_POST['contractType2'] == 'rent'){
-					$propertyFor = 2;
-				}elseif ($_POST['contractType2'] = 'buy'){
-					$propertyFor = 1;
-				}
-				$searchParams = array(
-					'PropertyType' => '',
-					'BoxLocation' => '',
-					'PropertyFor' => $propertyFor,
-					'PriceLowerLimit' => 0,
-					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 0,
-					'AreaUpperLimit' => 100000000000000, 
-					'lineOfBusiness' => 1
-				);	
-				$data['searchResults'] = $this->service->Search($searchParams);
-				if ($data['searchResults']['totalResults'] != 0)
-				{
+					$data['totalResults'] = $data['searchResults']['totalResults'];
 					$data['searchResults'] = $data['searchResults']['results'];
-					$results = array();
-					$count = 0;
-					foreach ($data['searchResults'] as $result) {
-						$results[$count] = $result;
-						$count++;	
-					}
-					$data['searchResults'] = $results;
-					$data['commercial'] = true;
-					$data['commercialSale'] = true;
-					$data['resultCount'] = $count;
-					$data['totalResults'] = $count;
 					$data['images'] = array();
 					foreach ($data['searchResults'] as $property) {
 						if(isset($userFavorites)){
@@ -988,247 +640,118 @@ class Home extends CI_Controller {
 						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
-					$data['totalResults'] = 0;
 					$data['resultCount'] = 0;
+					$data['totalResults'] = 0;
 					$data['noResults'] = "Sorry, there were no results that match your criteria";
 				}
-			}
-
-		}elseif (isset($_POST['contractType'])) {
-			if ($_POST['contractType'] == 'buy')
-			{
-				if($_POST['language'] == 'en' || $_POST['language'] == '')
+				break;
+			}elseif ($value[0] == 'lob'){
+				$lob = $value[1];
+			}elseif($value[0] == 'city'){
+				if ($value[1] == 0 || $value[1] == '')
 				{
-					$data['languagePath'] = '';
+					$city = '';
 				}else{
-					$data['languagePath'] = 'arabic/';
+					$city = $this->database->getCityByID($value[1]);
+					$city = $city[0]['name'];
 				}
-				$searchParams = array(
-					'PropertyType' => '',
-					'BoxLocation' => '',
-					'PropertyFor' => 1,
-					'PriceLowerLimit' => 0,
-					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 0,
-					'AreaUpperLimit' => 100000000000000
-				);
-
-				$data['searchResults'] = $this->service->Search($searchParams);
-				if ($data['searchResults']['totalResults'] != 0)
+			}elseif($value[0] == 'district'){
+				// printme($value[1]);
+				if ($value[1] == 0 || $value[1] == '')
 				{
-					$data['searchResults'] = $data['searchResults']['results'];
-					$results = array();
-					$count = 0;
-					foreach ($data['searchResults'] as $result) {
-						$results[$count] = $result;
-						$count++;
-						
-					}
-					$data['searchResults'] = $results;
-					$data['commercial'] = true;
-					$data['commercialSale'] = true;
-					$data['resultCount'] = $count;
-					$data['totalResults'] = $count;
-					$data['images'] = array();
-					foreach ($data['searchResults'] as $property) {
-						if(isset($userFavorites)){
-							if(in_array($property->PropertyId,$userFavorites)){
-								$property->is_favorite = 1;
-							}else{
-								$property->is_favorite = 0;
-							}
-						}
-						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-					}
+					$district = '';
 				}else{
-					$data['totalResults'] = 0;
-					$data['resultCount'] = 0;
-					$data['noResults'] = "Sorry, there were no results that match your criteria";
+					$district = $this->database->getDistrictByID($value[1]);
+					$district = $district[0]['name'];
 				}
-				
-			}else{
-				if($_POST['language'] == 'en' || $_POST['language'] == '')
+			}elseif($value[0] == 'type'){
+				if ($value[1] == 0 || $value[1] == '')
 				{
-					$data['languagePath'] = '';
+					$type = '';
 				}else{
-					$data['languagePath'] = 'arabic/';
+					$type = $this->database->getPropertyTypeByID($value[1]);
 				}
-				$searchParams = array(
-					'PropertyType' => '',
-					'BoxLocation' => '',
-					'PropertyFor' => 2,
-					'PriceLowerLimit' => 0,
-					'PriceUpperLimit' => 100000000000000,
-					'AreaLowerLimit' => 0,
-					'AreaUpperLimit' => 100000000000000
-				);
-
-				$data['searchResults'] = $this->service->Search($searchParams);
-
-				if ($data['searchResults']['totalResults'] != 0){
-					$data['searchResults'] = $data['searchResults']['results'];
-					$results = array();
-					$count = 0;
-					foreach ($data['searchResults'] as $result) {
-						$results[$count] = $result;
-						$count++;
-					}
-					$data['searchResults'] = $results;
-					$data['commercial'] = true;
-					$data['commercialRent'] = true;
-					$data['resultCount'] = $count;
-					$data['totalResults'] = $count;
-					$data['images'] = array();
-					foreach ($data['searchResults'] as $property) {
-						if(isset($userFavorites)){
-							if(in_array($property->PropertyId,$userFavorites)){
-								$property->is_favorite = 1;
-							}else{
-								$property->is_favorite = 0;
-							}
-						}
-						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+			}elseif($value[0] == 'contractType'){
+				if ($value[1]  == '')
+				{
+					$propertyFor = '';
+				}else{
+					$propertyFor = $value[1];
+				}
+			}elseif($value[0] == 'price'){
+				$price = explode('+', $value[1]);
+				if (count($price) == 1)
+				{
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = 1000000000000000000;
+					// printme($priceLowerLimit);
+					// printme($priceUpperLimit);
+				}else{
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = $price[2];
+				}
+			}elseif($value[0] == 'area'){
+				$area = explode('+', $value[1]);
+				if (count($area) == 1)
+				{
+					if ($area[0] == '%3C50')
+					{
+						$areaLowerLimit = 0;
+						$areaUpperLimit = 50;
+					}elseif ($area[0] == '%3E500') {
+						$areaLowerLimit = 500;
+						$areaUpperLimit = 1000000000000000000;
+					}elseif($area[0] == 0){
+						$areaLowerLimit = 0;
+						$areaUpperLimit = 1000000000000000000;
 					}
 				}else{
-					$data['totalResults'] = 0;
-					$data['resultCount'] = 0;
-					$data['noResults'] = "Sorry, there were no results that match your criteria";
+					$areaLowerLimit = $area[0];
+					$areaUpperLimit = $area[2];
 				}
-
 			}
-		}elseif (isset($_POST['district'])) {
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-
-			if ($_POST['type'] == 'villa'){
-				$type = '10';
-			}elseif ($_POST['type'] == 'apartment') {
-				$type = '1';
-			}else{
-				$type = '11';
-			}
-			$searchParams = array(
-				'PropertyType' => $type,
-				'BoxLocation' => $_POST['district'],
-				'PropertyFor' => 3,
-				'PriceLowerLimit' => 0,
-				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 0,
-				'AreaUpperLimit' => 100000000000000
-			);
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['resultCount'] = $data['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['totalResults'] = 0;
-				$data['resultCount'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-			
-		}elseif (isset($_POST['featured'])){
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-			$searchParams = array(
-				'PropertyType' => '',
-				'BoxLocation' => '',
-				'PropertyFor' => 3,
-				'PriceLowerLimit' => 0,
-				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 0,
-				'AreaUpperLimit' => 100000000000000,
-				'isFeatured' =>true,
-				'useFeaturedFilter' => true
-			);
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			// printme($data['searchResults']);exit();
-
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['resultCount'] = $data['searchResults']['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['featured'] = true;
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['totalResults'] = 0;
-				$data['resultCount'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-		}else{
-			if($_POST['language'] == 'en' || $_POST['language'] == '')
-			{
-				$data['languagePath'] = '';
-			}else{
-				$data['languagePath'] = 'arabic/';
-			}
-
-			$searchParams = array(
-				'PropertyType' => '',
-				'BoxLocation' => '',
-				'PropertyFor' => 3,
-				'PriceLowerLimit' => 0,
-				'PriceUpperLimit' => 100000000000000,
-				'AreaLowerLimit' => 0,
-				'AreaUpperLimit' => 100000000000000
-			);
-
-			$data['searchResults'] = $this->service->Search($searchParams);
-			// printme($data['searchResults']);exit();
-
-			if ($data['searchResults']['totalResults'] != 0){
-				$data['totalResults'] = $data['searchResults']['totalResults'];
-				$data['resultCount'] = $data['searchResults']['totalResults'];
-				$data['searchResults'] = $data['searchResults']['results'];
-				$data['images'] = array();
-				foreach ($data['searchResults'] as $property) {
-					if(isset($userFavorites)){
-						if(in_array($property->PropertyId,$userFavorites)){
-							$property->is_favorite = 1;
-						}else{
-							$property->is_favorite = 0;
-						}
-					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-				}
-			}else{
-				$data['totalResults'] = 0;
-				$data['resultCount'] = 0;
-				$data['noResults'] = "Sorry, there were no results that match your criteria";
-			}
-			
 		}
+		// printme($flag);
+		if ($flag == false){
+			$searchParams = array(
+				'lob' => $lob,
+				'PropertyType' => $type,
+				'City' => $city,
+				'District' => $district,
+				'PropertyFor' => $propertyFor,
+				'PriceLowerLimit' => $priceLowerLimit,
+				'PriceUpperLimit' => $priceUpperLimit,
+				'AreaLowerLimit' => $areaLowerLimit,
+				'AreaUpperLimit' => $areaUpperLimit
+			);
+
+			// printme($searchParams);
+			$data['searchResults'] = $this->database->search($searchParams);
+			// printme($data['searchResults']);exit();
+			// exit();
+			if ($data['searchResults']['totalResults'] > 0)
+			{
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					if(isset($userFavorites)){
+						if(in_array($property->PropertyId,$userFavorites)){
+							$property->is_favorite = 1;
+						}else{
+							$property->is_favorite = 0;
+						}
+					}
+					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+					// printme($data['images'][$property->PropertyId]);exit();
+				}
+			}else{
+				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
+			}
+		}
+		// printme($data);exit();
 		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 
@@ -1238,8 +761,11 @@ class Home extends CI_Controller {
 		$data['title'] = 'ColdWell Banker | Available Properties';
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		$data['propertyType1'] = $this->database->getAllPropertyTypes();
+		$data['propertyType1'] = $this->database->Getpropertytypes(1);
+		// printme($data['propertyType1']);exit();
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
+		// printme($_GET);exit();
+		// printme($this->uri->uri_string);exit();
 
 		//printme($data['languagePath']);exit();
 
