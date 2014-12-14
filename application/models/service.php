@@ -82,7 +82,7 @@ class service extends CI_Model {
             );
 
         $results = $this->client->Search($inputs);
-
+        printme($results);exit();
         $data = array();
         if ($results->TotalResults != 0)
         {
@@ -95,50 +95,11 @@ class service extends CI_Model {
             $data['results'] = '';
             $data['totalResults'] = $results->TotalResults;
         }
-        printme($data);exit();
+        // printme($data);exit();
         return $data;
     }
 
-    function importPropertiesIntoDB()
-    {
-       
-        //echo phpinfo();
-        //exit();
-        $inputs = array(
-            'searchMode' => 'Exact',
-            'Bedrooms' => '',
-            'PropertyId' => '',
-            'Purpose' => 3,
-            'PriceLowerLimit' => 0,
-            'PriceUpperLimit' => 1000000000000000000,
-            'PunitSale' => '',
-            'RentPriceLowerLimit' => 0,
-            'RentPriceUpperLimit' => 1000000000000000000,
-            'PunitRent' => '',
-            'AreaLowerLimit' => 0,
-            'AreaUpperLimit' => 1000000000000000000,
-            'PropertyType' => '',
-            'PropertyFor' => '',
-            'BoxLocation' => '',
-            'BudgetFrom' => '',
-            'BudgetTo' => '',
-            'AreaFrom' => '',
-            'AreaTo' => '',
-            'AreaUnitId' => '',
-            'LineOfBusinessId' => array(),
-            'CompanyId' => '',
-            'sortmode' => '',
-            'sortType' => '1',
-            'pageIndex' => '',
-            'licences' => '',
-            'isFeatured' => false,
-            'resultsCountPerPage' => '1300', 
-            'useFeaturedFilter' => false
-            );
 
-        $results = $this->client->Search($inputs);
-        printme($results);exit();
-    }
 
 
     function getPropertyByID($id)
@@ -181,7 +142,7 @@ class service extends CI_Model {
             'PropertyId' => $id,
             'UnitId' => $serial,
             'ImageType' => 'Image',
-            'URL' => 'http://64.150.184.135:81/'
+            'URL' => 'http://64.150.184.135:81'
             );
         $results = $this->client->GetListOfImages($inputs);
 
@@ -507,6 +468,60 @@ class service extends CI_Model {
         //     $query = $this->db->insert_string('property_type', $data);
         //     $query = $this->db->query($query);
         // }
+    }
+
+    function insertImagesIntoDB()
+    {
+        $this->load->library('simple_html_dom');
+        $this->load->model('database');
+        $properties = $this->database->getAllProperties();
+        $data = array();
+        foreach ($properties as $key => $property) {
+            // printme($property['PropertyId']);
+            $data['images'][$property['PropertyId']] = $this->getPropertyImages($property['PropertyId'], $property['UnitId']);
+            $html = str_get_html(($data['images'][$property['PropertyId']]));
+            if($html && is_object($html)){
+                $count = 0;
+                $image = $html->find('img');
+                 
+                if(count($image) == 0){
+                    $data['image'][$property['PropertyId']] = getcwd().'/application/static/images/No_image.svg';
+                    continue;
+                }
+                foreach($image as $element) 
+                {   
+
+                     // printme($element->attr['src']);
+                     // exit();
+                    // exit();
+                    // $data['image'][$property['PropertyId']][$count] = $element->src;
+                    // printme(getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg');
+                    $ch = curl_init($element->attr['src']);
+                    $fp = fopen(getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg', 'w');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    
+                    // printme(curl_exec($ch));exit();
+
+                    if(curl_exec($ch) === false)
+                    {
+                        echo 'Curl error: ' . curl_error($ch);
+                    }
+                    else
+                    {
+                        echo 'Operation completed without any errors';
+                    }
+                    curl_close($ch);
+                    fclose($fp);
+                    $count++;
+                    exit();
+                }
+                  
+            }else{
+                $data['image'][$property['PropertyId']] = getcwd().'/application/static/images/No_image.svg';
+            }
+        }
+        // printme($data['image']);exit();
     }
 
 }

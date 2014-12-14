@@ -113,7 +113,9 @@
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=villa"> <?= $item['name']; ?></a> . 
+                        <?php //printme($item); ?>
+                        <!-- ?lob=1&type=villa&city=&district=<?=$item['name'];?>&contractType=&price=0&area=0 -->
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&type=10&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>
@@ -121,7 +123,7 @@
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=apartment"> <?= $item['name']; ?></a> . 
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&type=1&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>
@@ -129,7 +131,7 @@
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?district=<?=$item['name'];?>&type=building"> <?= $item['name']; ?></a> . 
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=2&type=11&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>

@@ -107,16 +107,16 @@
             </form>
         </div>  -->
         <div class="tab-pane active" id="residentials">
-            <form id="search_form3" role="form" name="searchForm3" method="post" action="<?php echo base_url();?>viewAllProperties">
-                <input type="hidden" name="districtName_2" value="">
-                <input type="hidden" name="lob_2" id="lob_2" value="1">
+            <form id="search_form3" role="form" name="searchForm3" method="get" action="<?php echo base_url();?>en/viewAllProperties">
+                <!-- <input type="hidden" name="districtName" value=""> -->
+                <input type="hidden" name="lob" id="lob" value="1">
                 <div class="container search_components">
                    <div class="row search_top_row">
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
-                            <select class="selectpicker" id="search_city_2" name="city_2" data-style="btn" data-title="Select City" data-size="5">
+                            <select class="selectpicker" id="search_city_2" name="city" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
                                 <option value="3">Greater Cairo</option>
                                 <?php foreach ($cities as $city): ?>
@@ -133,7 +133,7 @@
                            <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                <?php echo $this->lang->line('search_drpdwn2'); ?>
                            </div>
-                           <select class="selectpicker" id="search_disabled_district_2" name="district_2" data-style="btn" data-title="Select District" data-size="5" disabled>
+                           <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5" disabled>
                               <option>Select District</option> 
                            </select>
                        </div>
@@ -141,10 +141,12 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
-                           <select class="selectpicker" id="search_type_2" name="type_2" data-style="btn" data-title="Select Type" data-size="5">
+                           <?php //printme($propertyType1); ?>
+                           <select class="selectpicker" id="search_type_2" name="type" data-style="btn" data-title="Select Type" data-size="5">
                                 <option value="0">Select Type</option> 
                                 <?php foreach ($propertyType1 as $key => $type): ?>
-                                    <option value="<?= $key ?>"><?= $type ?></option>
+                                    <?php //printme($type); ?>
+                                    <option value="<?= $type['property_id'] ?>"><?= $type['property_name'] ?></option>
                                 <?php endforeach ?>
                            </select>
                        </div>
@@ -152,7 +154,7 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
-                           <select class="selectpicker" id="search_contractType_2" name="contractType_2" data-style="btn" data-title="Select Type" data-size="5">
+                           <select class="selectpicker" id="search_contractType_2" name="contractType" data-style="btn" data-title="Select Type" data-size="5">
                                 <option value="0">Select Contract Type</option> 
                                 <option value="Sale">Sale</option>
                                 <option value="Rent">Rent</option>
@@ -174,8 +176,8 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
-                           <select class="selectpicker" id="search_price_2" name="price_2" data-style="btn" data-title="Select Price">
-                                <option>Select Price</option>
+                           <select class="selectpicker" id="search_price_2" name="price" data-style="btn" data-title="Select Price" data-size="5">
+                                <option value="0">Select Price</option>
                                 <option value="100000 - 250000">100,000 - 250,000</option>
                                 <option value="250000 - 500000">250,000 - 500,000</option>
                                 <option value="500000 - 750000">500,000 - 750,000</option>
@@ -189,18 +191,14 @@
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
-                           <select class="selectpicker" id="search_area_2" name="area_2" data-style="btn" data-title="Select Price">
-                                <option>Select Area</option>
-                                <option value="50 - 100">50 - 100 m<sup>2</sup></option>
-                                <option value="100 - 130">100 - 130 m<sup>2</sup></option>
-                                <option value="130 - 150">130 - 150 m<sup>2</sup></option>
-                                <option value="150 - 170">150 - 170 m<sup>2</sup></option>
-                                <option value="170 - 200">170 - 200 m<sup>2</sup></option>
+                           <select class="selectpicker" id="search_area_2" name="area" data-style="btn" data-title="Select Price" data-size="5">
+                                <option value="0">Select Area</option>
+                                <option value="<50"> &#60;50 m<sup>2</sup></option>
+                                <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                 <option value="200 - 300">200 - 300 m<sup>2</sup></option>
-                                <option value="300 - 350">300 - 350 m<sup>2</sup></option>
-                                <option value="350 - 400">350 - 400 m<sup>2</sup></option>
-                                <option value="400 - 1000">400 - 1000 m<sup>2</sup></option>
-                                <option value="1000">1000+ m<sup>2</sup></option>
+                                <option value="300 - 400">300 - 400 m<sup>2</sup></option>
+                                <option value="400 - 500">400 - 500 m<sup>2</sup></option>
+                                <option value=">500"> &#62;500 m<sup>2</sup></option>
                            </select>
                        </div>
                    </div>
@@ -214,8 +212,8 @@
         </div>
         <div class="tab-pane" id="commercials">
             <form id="search_form4" role="form" name="searchForm4" method="post" action="<?php echo base_url();?>viewAllProperties">
-              <input type="hidden" name="districtName_3" value="">
-              <input type="hidden" name="lob_2" id="lob_2" value="2">
+              <!-- <input type="hidden" name="districtName" value=""> -->
+              <input type="hidden" name="lob" id="lob" value="2">
               <div class="container search_components">
                  <div class="row search_top_row">
                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
@@ -250,7 +248,7 @@
                          <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type" data-size="5">
                               <option value="0">Select Type</option> 
                               <?php foreach ($propertyType2 as $key => $type): ?>
-                                  <option value="<?= $key ?>"><?= $type ?></option>
+                                  <option value="<?= $type['property_id'] ?>"><?= $type['property_name'] ?></option>
                               <?php endforeach ?>
                          </select>
                      </div>
@@ -280,8 +278,8 @@
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn5'); ?>
                          </div>
-                         <select class="selectpicker" id="search_price_3" name="price_3" data-style="btn" data-title="Select Price">
-                              <option>Select Price</option>
+                         <select class="selectpicker" id="search_price_3" name="price_3" data-style="btn" data-title="Select Price" data-size="5">
+                              <option value="0">Select Price</option>
                               <option value="100000 - 250000">100,000 - 250,000</option>
                               <option value="250000 - 500000">250,000 - 500,000</option>
                               <option value="500000 - 750000">500,000 - 750,000</option>
@@ -295,17 +293,14 @@
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn6'); ?>
                          </div>
-                         <select class="selectpicker" id="search_area_3" name="area_3" data-style="btn" data-title="Select Price">
-                              <option>Select Area</option>
-                              <option value="50 - 100">50 - 100 m<sup>2</sup></option>
-                              <option value="100 - 130">100 - 130 m<sup>2</sup></option>
-                              <option value="130 - 150">130 - 150 m<sup>2</sup></option>
-                              <option value="150 - 170">150 - 170 m<sup>2</sup></option>
-                              <option value="170 - 200">170 - 200 m<sup>2</sup></option>
+                         <select class="selectpicker" id="search_area_3" name="area_3" data-style="btn" data-title="Select Price" data-size="5">
+                              <option value="0">Select Area</option>
+                              <option value="<50"> &#60;50 m<sup>2</sup></option>
+                              <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                               <option value="200 - 300">200 - 300 m<sup>2</sup></option>
-                              <option value="300 - 350">300 - 350 m<sup>2</sup></option>
-                              <option value="350 - 400">350 - 400 m<sup>2</sup></option>
-                              <option value="400 - 1000">400 - 1000 m<sup>2</sup></option>
+                              <option value="300 - 400">300 - 400 m<sup>2</sup></option>
+                              <option value="400 - 500">400 - 500 m<sup>2</sup></option>
+                              <option value=">500"> &#62;500 m<sup>2</sup></option>
                               <option value="1000">1000+ m<sup>2</sup></option>
                          </select>
                      </div>
