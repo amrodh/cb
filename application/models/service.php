@@ -491,17 +491,20 @@ class service extends CI_Model {
                 foreach($image as $element) 
                 {   
 
-                     // printme($element->attr['src']);
-                     // exit();
-                    // exit();
-                    // $data['image'][$property['PropertyId']][$count] = $element->src;
-                    // printme(getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg');
+                  
+                    $url = $element->attr['src'];
+                    $test = file_get_contents(trim($url));
+                    
+                    $img = getcwd().'/application/static/upload/property_images/image_test.jpg';
+                    file_put_contents($img, $test);
+                    exit();
+
                     $ch = curl_init($element->attr['src']);
                     $fp = fopen(getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg', 'w');
                     curl_setopt($ch, CURLOPT_FILE, $fp);
                     curl_setopt($ch, CURLOPT_HEADER, 0);
                     
-                    // printme(curl_exec($ch));exit();
+                   
 
                     if(curl_exec($ch) === false)
                     {
@@ -522,6 +525,13 @@ class service extends CI_Model {
             }
         }
         // printme($data['image']);exit();
+    }
+
+
+    function file_get_contents_utf8($fn) {
+     $content = file_get_contents($fn);
+      return mb_convert_encoding($content, 'UTF-8',
+          mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
     }
 
 }
