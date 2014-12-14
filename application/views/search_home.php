@@ -73,9 +73,6 @@
                                     <option value="0">Select Contract Type</option> 
                                     <option value="Sale">Sale</option>
                                     <option value="Rent">Rent</option>
-                                   <!--  <?php foreach ($serviceTypes as $type): ?>
-                                        <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                                    <?php endforeach ?> -->
                                </select>
                            </div>
                         </div>

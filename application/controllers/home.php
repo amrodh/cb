@@ -28,6 +28,7 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
+		$this->service->insertImagesIntoDB();
 		// printme($this->database->getPropertyByID(1));
 		// exit();
 
@@ -614,8 +615,15 @@ class Home extends CI_Controller {
 				$userFavorites = array();
 			}
 		}
-		// $data['uri'] = $data['uri'].$_GET['data'];
-		// printme($_GET['data']);exit();
+		if ($_GET['language'] == 'ar')
+		{
+			$data['languagePath'] = 'arabic/';
+		}else{
+			$data['languagePath'] = '';
+		}
+		// $this->lang->load('viewallproperties', $_GET['language']);
+		// $this->loadLanguage('viewallproperties', /$_GET['language']);
+// printme($data);exit();
 		$getData = explode('&', $_GET['data']);
 		foreach ($getData as $value) {
 			$value = explode('=', $value);
@@ -725,10 +733,9 @@ class Home extends CI_Controller {
 				'AreaUpperLimit' => $areaUpperLimit
 			);
 
-			// printme($searchParams);
+			
 			$data['searchResults'] = $this->database->search($searchParams);
-			// printme($data['searchResults']);exit();
-			// exit();
+			
 			if ($data['searchResults']['totalResults'] > 0)
 			{
 				$data['totalResults'] = $data['searchResults']['totalResults'];
@@ -743,7 +750,7 @@ class Home extends CI_Controller {
 						}
 					}
 					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-					// printme($data['images'][$property->PropertyId]);exit();
+					
 				}
 			}else{
 				$data['resultCount'] = 0;
@@ -751,7 +758,7 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}
-		// printme($data);exit();
+		
 		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 
@@ -764,10 +771,8 @@ class Home extends CI_Controller {
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
 		// printme($data['propertyType1']);exit();
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
-		// printme($_GET);exit();
-		// printme($this->uri->uri_string);exit();
-
-		//printme($data['languagePath']);exit();
+		$data['uri'] = $data['uri'].'?'.$_SERVER['QUERY_STRING'];
+		// printme($data);exit();
 
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
@@ -916,7 +921,6 @@ class Home extends CI_Controller {
 			$filename = $filename[0];
 			$ext = explode('.', $_FILES['userfile']['name']);
 			$ext = $ext[1];
-			// if ($ext != 'pdf' && $ext != 'doc' &&)
 			$_FILES['userfile']['name'] = $filename.'_'.time().'.'.$ext;
 			$this->config->set_item('upload_path',getcwd().'/application/static/upload/careers');
 			$this->config->set_item('allowed_types','pdf|doc|docx');
@@ -993,7 +997,6 @@ class Home extends CI_Controller {
 				$data['is_valid'] = $data['user']->is_valid;
 			}
 			$this->load->model('service');
-			// $data['cities'] = $this->service->getCities();
 			if ($this->user->is_subscribed($data['user']->id))
 			{
 				$data['is_subscribed'] = true;
@@ -1014,7 +1017,6 @@ class Home extends CI_Controller {
 
 		
 		$uri = $this->uri->uri_string;
-		// printme($uri);exit();
 		$posAr = strpos($uri, 'ar/');
 		$posEn = strpos($uri, 'en/');
 		$posAr2 = strpos($uri, 'ar');
@@ -1023,11 +1025,8 @@ class Home extends CI_Controller {
 		if ($posEn !== false || $posEn2 !== false ){
 			if ($posAr == false || $posAr2 == false)
 			{
-				// printme($uri);exit();
 				$explodeAr = explode('ar/', $uri);
 				$explodeEn = explode('en/', $uri);
-				// printme($explodeAr);
-				// printme($explodeEn);exit();
 				if ($explodeAr[0] == $uri)
 				{
 					$data['uri'] = explode('en/', $uri);
@@ -1088,24 +1087,28 @@ class Home extends CI_Controller {
 			}
 		}
 		else{
-			// printme($uri);
 			$data['uri'] = $uri;
 		}
 		if (($uri == 'en') || ($uri == 'ar')){
 			$data['uri'] = '';
 		}
-		// printme($data['uri']);
 
+		// printme($this->uri->segment(0));exit();
 		$data['language'] = $this->uri->segment(1);
+
+		if(isset($_GET['language'])){
+			$data['language'] = $_GET['language'];
+		}
+
 		$data['languagePath'] = '';
 		if($data['language'] == 'ar')
+		{
 			$data['languagePath'] = 'arabic/';
-
-
+		}else{
+			$data['languagePath'] = '';
+		}
+		// printme($data);exit();
 		$this->loadLanguage($data['language']);
-		//$this->load->model('service');
-		//$data['districts'] = $this->service->getAllDistricts();
-
 		return $data;
 		
 	}
@@ -1118,7 +1121,7 @@ class Home extends CI_Controller {
 			$lang = 'arabic';
 		else
 			$lang = 'english';
-
+		// printme($lang);exit();
 		$this->lang->load('home', $lang);
 		$this->lang->load('auction', $lang);
 		$this->lang->load('compare', $lang);
@@ -1173,6 +1176,7 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
 
+// printme($_POST['lang']);exit();
 		if($_POST['lang'] == 'ar')
 			$language='arabic/';
 		else

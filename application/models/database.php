@@ -256,6 +256,21 @@ class database extends CI_Model {
            return false; 
     }
 
+    function getAllProperties()
+    {
+        $q = $this
+              ->db
+              ->limit(10)
+              ->get('property_service');
+
+
+        if($q->num_rows >0){
+          // printme($q->result_array());exit();
+              return $q->result_array();
+           } 
+           return false; 
+    }
+
 }
 
 
