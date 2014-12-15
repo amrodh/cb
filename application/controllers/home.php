@@ -621,9 +621,7 @@ class Home extends CI_Controller {
 		}else{
 			$data['languagePath'] = '';
 		}
-		// $this->lang->load('viewallproperties', $_GET['language']);
-		// $this->loadLanguage('viewallproperties', /$_GET['language']);
-// printme($data);exit();
+		
 		$getData = explode('&', $_GET['data']);
 		foreach ($getData as $value) {
 			$value = explode('=', $value);

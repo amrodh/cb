@@ -278,16 +278,15 @@ class database extends CI_Model {
               ->where('property_id', $id)
               ->get('unit_image');
         $images = array();
-        foreach ($q->result_array() as $key => $image) {
-            $images[$id]['src'][$key] = $image['image'];
-        }
-        // $images[$id]['count'] = count($images[$id]['src']);
-        // printme(count($images[$id]));
         if($q->num_rows >0){
-          printme($images);exit();
-              return $q->result_array();
+              foreach ($q->result_array() as $key => $image) {
+                  $images['src'][$key] = $image['image'];
+              }
+              $images['count'] = count($images['src']);
+              printme($images['src'][0]);exit();
+              return $images;
            } 
-           return false; 
+        return false; 
     }
 
 }
