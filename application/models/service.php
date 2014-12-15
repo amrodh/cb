@@ -484,38 +484,25 @@ class service extends CI_Model {
                  
                 if(count($image) == 0){
                     $data['image'][$property['PropertyId']] = getcwd().'/application/static/images/No_image.svg';
+                    $data = array('property_id' => $property['PropertyId'] , 'image' => 'No_image.svg');
+                    $query = $this->db->insert_string('unit_image', $data);
+                    $query = $this->db->query($query);
+                    // printme('done1');
                     continue;
                 }
                 foreach($image as $element) 
                 {   
-
-                  
                     $url = $element->attr['src'];
                     $test = file_get_contents(trim($url));
                     
-                    $img = getcwd().'/application/static/upload/property_images/image_test.jpg';
+                    $img = getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg';
                     file_put_contents($img, $test);
-                    exit();
-
-                    $ch = curl_init($element->attr['src']);
-                    $fp = fopen(getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$property['PropertyId'].'.jpg', 'w');
-                    curl_setopt($ch, CURLOPT_FILE, $fp);
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    
-                   
-
-                    if(curl_exec($ch) === false)
-                    {
-                        echo 'Curl error: ' . curl_error($ch);
-                    }
-                    else
-                    {
-                        echo 'Operation completed without any errors';
-                    }
-                    curl_close($ch);
-                    fclose($fp);
+                    $data = array('property_id' => $property['PropertyId'] , 'image' => 'image_'.$count.'_'.$property['PropertyId'].'.jpg');
+                    $query = $this->db->insert_string('unit_image', $data);
+                    $query = $this->db->query($query);
+                    // printme('done2'.$property['PropertyId']);
                     $count++;
-                    exit();
+                    // exit();
                 }
                   
             }else{

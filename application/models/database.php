@@ -260,7 +260,7 @@ class database extends CI_Model {
     {
         $q = $this
               ->db
-              ->limit(10)
+              ->order_by('PropertyId', 'asc')
               ->get('property_service');
 
 
