@@ -602,7 +602,7 @@ class Home extends CI_Controller {
 	public function getSearchResults()
 	{
 		$data = $this->init();
-		$this->load->model('service');
+		// $this->load->model('service');
 		$data['districts'] = $this->database->getAllDistricts();
 		$flag = false;
 		if (isset($data['loggedIn'])){

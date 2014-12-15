@@ -61,10 +61,21 @@
                                                                 </label>
                                                             </div>
                                                             <div class="propertyImages hide" id="img<?=$result->PropertyId; ?>">
-                                                                <?= $images[$result->PropertyId]; ?>
+                                                                <ul class="imagesList">
+                                                                    <?php foreach ($images[$result->PropertyId]['src'] as $key => $image): ?>
+                                                                        <li>
+                                                                            <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                                                        </li>
+                                                                    <?php endforeach ?>
+                                                                </ul>
+                                                                <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                             </div>
+                                                            <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
+                                                                    <?php echo $result->LocationProject; ?>,
+                                                                    <?php endif ?>
+                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
                                                             <div class="properties_img">
-                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
+                                                                <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                             </div>
                                                             <div class="properties_number">
                                                                 <?php echo $count; ?>
@@ -175,14 +186,21 @@
                                                                         </label>
                                                                     </div>
                                                                     <div class="propertyImages hide" id="img<?=$result->PropertyId; ?>">
-                                                                        <?= $images[$result->PropertyId]; ?>
+                                                                        <ul class="imagesList">
+                                                                            <?php foreach ($images[$result->PropertyId]['src'] as $key => $image): ?>
+                                                                                <li>
+                                                                                    <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                                                                </li>
+                                                                            <?php endforeach ?>
+                                                                        </ul>
+                                                                        <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                                     </div>
                                                                     <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                                 <?php echo $result->LocationProject; ?>,
                                                                                 <?php endif ?>
                                                                                 <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
                                                                     <div class="properties_img">
-                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
+                                                                        <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                     </div>
                                                                     <div class="properties_number">
                                                                         <?php echo $count; ?>
@@ -462,32 +480,34 @@
 
                $("#carousal_div").html(html_output);
             });
-           
 
-           $(".propertyImages").each(function(){
+            $('.contact_button').click(function(event) {
+                    $('#propertyID').val($(this).attr('id'));
+                   // alert($('#propertyID').val());return;
+            });
 
-                var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
-                if(!image_src){
-                    var id = $(this).attr('id');
-                    var id = id.replace('img','');
-                    $('#'+id).attr('disabled','disabled');
-                    image_src = $("#url").val()+'/application/static/images/no_image.svg';
-                }
+           // $(".propertyImages").each(function(){
+
+           //      var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+           //      if(!image_src){
+           //          var id = $(this).attr('id');
+           //          var id = id.replace('img','');
+           //          $('#'+id).attr('disabled','disabled');
+           //          image_src = $("#url").val()+'/application/static/images/no_image.svg';
+           //      }
                 
-                var id = $(this).attr('id');
-                var id = id.replace('img','');
+           //      var id = $(this).attr('id');
+           //      var id = id.replace('img','');
 
-                $("#image_"+id).attr('src',image_src);
+           //      $("#image_"+id).attr('src',image_src);
                
-           });
+           // });
 
            $("[name='properties_length']").change(function() {
-            // alert('hi');
                $.getScript($('#url').val()+"application/static/js/getImages.js");
            });
 
            $(".paginate_button").click(function() {
-            // alert('hi');
                $.getScript($('#url').val()+"application/static/js/getImages.js");
            });
 

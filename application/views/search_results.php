@@ -200,7 +200,7 @@
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
                                                         <div class="properties_img">
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
+                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
                                                         <div class="properties_number">
                                                             <?php echo $count; ?>
@@ -548,20 +548,11 @@ $(document).ready(function (){
    // });
 
    $("[name='properties_length']").change(function() {
-    // alert('hi');
        $.getScript($('#url').val()+"application/static/js/getImages.js");
    });
 
-//    $( ".paginate_button" ).on( "click", function() {
-//   alert( $( this ).text() );
-// });
-
-//    $('.paginate_button').each(function(index, el) {
-//        $(this).html('1');
-//    });
 
    $(".paginate_button").click(function() {
-   // alert('hi');
        $.getScript($('#url').val()+"application/static/js/getImages.js");
    });
 

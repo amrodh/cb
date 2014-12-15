@@ -283,7 +283,7 @@ class database extends CI_Model {
                   $images['src'][$key] = $image['image'];
               }
               $images['count'] = count($images['src']);
-              printme($images['src'][0]);exit();
+              // printme($images['src'][0]);exit();
               return $images;
            } 
         return false; 
