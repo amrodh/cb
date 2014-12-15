@@ -631,7 +631,7 @@ class Home extends CI_Controller {
 				$flag = true;
 				$searchParams = array('featured' => true);
 				$data['searchResults'] = $this->database->search($searchParams);
-				// printme($data['searchResults']);exit();
+				
 				if ($data['searchResults']['totalResults'] > 0)
 				{
 					$data['totalResults'] = $data['searchResults']['totalResults'];
@@ -645,7 +645,8 @@ class Home extends CI_Controller {
 								$property->is_favorite = 0;
 							}
 						}
-						$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+						$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+						// $data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					}
 				}else{
 					$data['resultCount'] = 0;
@@ -749,7 +750,8 @@ class Home extends CI_Controller {
 							$property->is_favorite = 0;
 						}
 					}
-					$data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
+					$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+					// $data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
 					
 				}
 			}else{
