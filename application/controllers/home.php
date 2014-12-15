@@ -977,6 +977,8 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Auctions';
+
+		$this->database->getPropertyImages(162);
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['auctions'] = $this->property->getAuctions();
 		$data['recentAuctions'] = $this->property->getRecentAuctions();

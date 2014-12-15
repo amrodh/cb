@@ -271,6 +271,21 @@ class database extends CI_Model {
            return false; 
     }
 
+    function getPropertyImages($id)
+    {
+        $q = $this
+              ->db
+              ->where('property_id', $id)
+              ->get('unit_image');
+
+
+        if($q->num_rows >0){
+          printme($q->result_array());exit();
+              return $q->result_array();
+           } 
+           return false; 
+    }
+
 }
 
 
