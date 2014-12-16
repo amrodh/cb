@@ -26,7 +26,7 @@ class Home extends CI_Controller {
 
 
 		$this->load->model('cronjobs');
-		// $this->cronjobs->importNeighborhoodsCron();
+		$this->cronjobs->importPropertiesIntoDB();
 
 
 		// $data['propertyType2'] = $this->database->Getpropertytypes(2);

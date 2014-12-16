@@ -49,6 +49,12 @@ class service extends CI_Model {
             $useFeaturedFilter = false;
         }
 
+        if (isset($inputs['sortType'])) {
+            $sortType = $inputs['sortType'];
+        }else{
+            $sortType = '';
+        }
+
         $inputs = array(
             'searchMode' => 'Exact',
             'Bedrooms' => '',
@@ -73,16 +79,16 @@ class service extends CI_Model {
             'LineOfBusinessId' => $lineOfBusiness,
             'CompanyId' => '',
             'sortmode' => '',
-            'sortType' => '',
+            'sortType' => $sortType,
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '50', 
+            'resultsCountPerPage' => '1300', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
-
+        
         $results = $this->client->Search($inputs);
-        printme($results);exit();
+        
         $data = array();
         if ($results->TotalResults != 0)
         {
