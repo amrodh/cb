@@ -24,7 +24,7 @@
 
                             </div>
                             <div style="width:100%;position: absolute;margin-top: 3%;" class="hide" id="homeType_loader">
-                              <img style="width:5%;margin-left:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
+                              <img style="width:2%;margin-left:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
                             </div>
                             <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
                                 <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
@@ -112,8 +112,10 @@
                        <!-- <input type="hidden" name="typeName" value=""> -->
                        <div class="row" style="width: 150px;margin: auto;">
                            <div class="col-lg-12">
-                                <!-- <input type="submit" class="btn btn-default search_btn_submit2" value="<?php echo $this->lang->line('searchhome_button'); ?>" name="searchSubmit1"/> -->
-                                <button type="submit" class="btn btn-default search_btn_submit2" style="" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
+                                <div class="hidden_values">
+                                  
+                                </div>
+                                <button type="button" onclick="formValidate();" class="btn btn-default search_btn_submit2" style="" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
                            </div>
                        </div>
                     </div>
@@ -129,5 +131,22 @@
           $('#search_tabs a:first').tab('show');
 //          $('.selectpicker').selectpicker();
         });
+
+        function formValidate()
+        { 
+
+          var html_output = '';
+
+          if( $('[name="type"]').val() == 0 ){
+            html_output = '<input type="hidden" name="type" value="">';
+          }
+
+          if( $('[name="district"]').val() == 0 ){
+            html_output += '<input type="hidden" name="district" value="">';
+          }
+
+          $(".hidden_values").html(html_output);
+          $("#search_form").submit();
+        }
 
     </script>
