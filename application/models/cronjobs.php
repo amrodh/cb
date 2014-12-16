@@ -421,8 +421,10 @@ class CronJobs extends CI_Model {
 		$resultsArray = array();
 		$lastID = 0;
         $results = $this->service->search($inputs);
+        $serviceResults = array();
         foreach ($results['results'] as $key => $value) {
             $resultsArray[$key] = $value->PropertyId;
+            $serviceResults[$key] = $value;
             $count = $key+1;
             $lastID = $value->PropertyId;
         }
@@ -457,56 +459,142 @@ class CronJobs extends CI_Model {
         	if ($value->PropertyId > $lastID)
         	{
         		$resultsArray[$count] = $value->PropertyId;
+        		$serviceResults[$count] = $value;
             	$count++;
         	}
         }
 
-        // printme($resultsArray);exit();
+        $DBPropertiesKeys = array();
         $DBProperties = array();
         $Properties = $this->database->getAllProperties();
         foreach ($Properties as $key => $value) {
-        	$DBProperties[$key] = $value['PropertyId'];
+        	$DBPropertiesKeys[$key] = $value['PropertyId'];
+        	$DBProperties = $value;
         }
-        printme($DBProperties);exit();
+        // printme($DBProperties);exit();
         foreach ($resultsArray as $key => $value) {
-        	# code...
-        }
-
-        // printme($results);exit();
-        $data = array();
-        if ($results->TotalResults != 0)
-        {
-            foreach ($results->SearchResult->PropertySingleSarchResult as $key => $result) {
-                $data = array(
-                    'AreaNumericValue' => $result->AreaNumericValue, 
-                    'AreaUnit' => $result->AreaUnit,
-                    'AreaunitStr' => $result->AreaunitStr,
-                    'BalconiesNumber' => $result->BalconiesNumber,
-                    'BathRoomsNumber' => $result->BathRoomsNumber,
-                    'BedRoomsNumber' => $result->BedRoomsNumber,
-                    'InteriorFinishing' => $result->InteriorFinishing,
-                    'LineofBusinessFK' => $result->LineofBusinessFK,
-                    'LocationCity' => $result->LocationCity,
-                    'LocationDistrict' => $result->LocationDistrict,
-                    'LocationProject' => $result->LocationProject,
-                    'PropertyTypeFK' => $result->PropertyTypeFK,
-                    'PrpertyTypeStr' => $result->PrpertyTypeStr,
-                    'RentCurrency' => $result->RentCurrency,
-                    'RentPrice' => $result->RentPrice,
-                    'RentPricePerAreaUnit' => $result->RentPricePerAreaUnit,
-                    'SaleCurrency' => $result->SaleCurrency,
-                    'SalePrice' => $result->SalePrice,
-                    'SalePricePerAreaUnit' => $result->SalePricePerAreaUnit,
-                    'SalesTypeStr' => $result->SalesTypeStr,
-                    'TotalArea' => $result->TotalArea,
-                    'UnitId' => $result->UnitId,
-                    'PropertyId' => $result->PropertyId
+        	if (!in_array($value, $DBPropertiesKeys)){
+        		$data = array(
+                    'AreaNumericValue' => $serviceResults[$key]->AreaNumericValue, 
+                    'AreaUnit' => $serviceResults[$key]->AreaUnit,
+                    'AreaunitStr' => $serviceResults[$key]->AreaunitStr,
+                    'BalconiesNumber' => $serviceResults[$key]->BalconiesNumber,
+                    'BathRoomsNumber' => $serviceResults[$key]->BathRoomsNumber,
+                    'BedRoomsNumber' => $serviceResults[$key]->BedRoomsNumber,
+                    'InteriorFinishing' => $serviceResults[$key]->InteriorFinishing,
+                    'LineofBusinessFK' => $serviceResults[$key]->LineofBusinessFK,
+                    'LocationCity' => $serviceResults[$key]->LocationCity,
+                    'LocationDistrict' => $serviceResults[$key]->LocationDistrict,
+                    'LocationProject' => $serviceResults[$key]->LocationProject,
+                    'PropertyTypeFK' => $serviceResults[$key]->PropertyTypeFK,
+                    'PrpertyTypeStr' => $serviceResults[$key]->PrpertyTypeStr,
+                    'RentCurrency' => $serviceResults[$key]->RentCurrency,
+                    'RentPrice' => $serviceResults[$key]->RentPrice,
+                    'RentPricePerAreaUnit' => $serviceResults[$key]->RentPricePerAreaUnit,
+                    'SaleCurrency' => $serviceResults[$key]->SaleCurrency,
+                    'SalePrice' => $serviceResults[$key]->SalePrice,
+                    'SalePricePerAreaUnit' => $serviceResults[$key]->SalePricePerAreaUnit,
+                    'SalesTypeStr' => $serviceResults[$key]->SalesTypeStr,
+                    'TotalArea' => $serviceResults[$key]->TotalArea,
+                    'UnitId' => $serviceResults[$key]->UnitId,
+                    'PropertyId' => $serviceResults[$key]->PropertyId
                 );
                 $query = $this->db->insert_string('property_service', $data);
                 $query = $this->db->query($query);
-                printme($key);
-            }
+                $this->insertPropertyImage($serviceResults[$key]->PropertyId, $serviceResults[$key]->UnitId);
+        	}
         }
+
+        foreach ($DBPropertiesKeys as $key => $value) {
+        	if (!in_array($value, $resultsArray)){
+        		$this->deleteProperty($value);
+        	}
+        }
+
+        // printme($results);exit();
+        // $data = array();
+        // if ($results->TotalResults != 0)
+        // {
+        //     foreach ($results->SearchResult->PropertySingleSarchResult as $key => $result) {
+        //         $data = array(
+        //             'AreaNumericValue' => $result->AreaNumericValue, 
+        //             'AreaUnit' => $result->AreaUnit,
+        //             'AreaunitStr' => $result->AreaunitStr,
+        //             'BalconiesNumber' => $result->BalconiesNumber,
+        //             'BathRoomsNumber' => $result->BathRoomsNumber,
+        //             'BedRoomsNumber' => $result->BedRoomsNumber,
+        //             'InteriorFinishing' => $result->InteriorFinishing,
+        //             'LineofBusinessFK' => $result->LineofBusinessFK,
+        //             'LocationCity' => $result->LocationCity,
+        //             'LocationDistrict' => $result->LocationDistrict,
+        //             'LocationProject' => $result->LocationProject,
+        //             'PropertyTypeFK' => $result->PropertyTypeFK,
+        //             'PrpertyTypeStr' => $result->PrpertyTypeStr,
+        //             'RentCurrency' => $result->RentCurrency,
+        //             'RentPrice' => $result->RentPrice,
+        //             'RentPricePerAreaUnit' => $result->RentPricePerAreaUnit,
+        //             'SaleCurrency' => $result->SaleCurrency,
+        //             'SalePrice' => $result->SalePrice,
+        //             'SalePricePerAreaUnit' => $result->SalePricePerAreaUnit,
+        //             'SalesTypeStr' => $result->SalesTypeStr,
+        //             'TotalArea' => $result->TotalArea,
+        //             'UnitId' => $result->UnitId,
+        //             'PropertyId' => $result->PropertyId
+        //         );
+        //         $query = $this->db->insert_string('property_service', $data);
+        //         $query = $this->db->query($query);
+
+
+        //         // printme($key);
+        //     }
+        // }
+    }
+
+    function insertPropertyImage($propertyID, $unitID)
+    {
+    	$this->load->library('simple_html_dom');
+    	$this->load->model('service');
+    	$data['images'][$propertyID] = $this->service->getPropertyImages($propertyID, $unitID);
+    	$html = str_get_html(($data['images'][$propertyID]));
+        if($html && is_object($html)){
+            $count = 0;
+            $image = $html->find('img');
+             
+            if(count($image) == 0){
+                $data['image'][$propertyID] = getcwd().'/application/static/images/No_image.svg';
+                $data = array('property_id' => $property['PropertyId'] , 'image' => 'No_image.svg');
+                $query = $this->db->insert_string('unit_image', $data);
+                $query = $this->db->query($query);
+                // printme('done1');
+                continue;
+            }
+            foreach($image as $element) 
+            {   
+                $url = $element->attr['src'];
+                $test = file_get_contents(trim($url));
+                
+                $img = getcwd().'/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
+                file_put_contents($img, $test);
+                $data = array('property_id' => $propertyID , 'image' => 'image_'.$count.'_'.$propertyID.'.jpg');
+                $query = $this->db->insert_string('unit_image', $data);
+                $query = $this->db->query($query);
+                // printme('done2'.$propertyID);
+                $count++;
+                // exit();
+            }
+              
+        }else{
+            $data['image'][$propertyID] = getcwd().'/application/static/images/No_image.svg';
+        }
+    }
+
+    function deleteProperty($propertyID)
+    {
+    	$this->db->where('PropertyId', $propertyID);
+		$this->db->delete('property_service'); 
+
+		$this->db->where('property_id', $propertyID);
+		$this->db->delete('unit_image'); 
     }
 
 }
