@@ -27,7 +27,7 @@
                                 <?= $images[$property->PropertyId]; ?>
                             </div>
                             <div class="compare_img">
-                                <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/>
+                                <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/>
                                 <!-- <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/> -->
                             </div>
                             <div class="compare_description">
@@ -218,20 +218,20 @@
 
         <script type="text/javascript">
 
-           $(".propertyImages").each(function(){
+           // $(".propertyImages").each(function(){
 
-                var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
-                if(!image_src){
-                    var id = $(this).attr('id');
-                    var id = id.replace('img','');
-                    $('#'+id).attr('disabled','disabled');
-                    image_src = $("#url").val()+'/application/static/images/no_image.svg';
-                }
+           //      var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
+           //      if(!image_src){
+           //          var id = $(this).attr('id');
+           //          var id = id.replace('img','');
+           //          $('#'+id).attr('disabled','disabled');
+           //          image_src = $("#url").val()+'/application/static/images/no_image.svg';
+           //      }
                 
-                var id = $(this).attr('id');
-                var id = id.replace('img','');
+           //      var id = $(this).attr('id');
+           //      var id = id.replace('img','');
 
-                $("#image_"+id).attr('src',image_src);
+           //      $("#image_"+id).attr('src',image_src);
                
-           });
+           // });
         </script>

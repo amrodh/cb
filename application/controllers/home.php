@@ -22,17 +22,17 @@ class Home extends CI_Controller {
 
 		$data['title'] = 'ColdWell Banker | Home';	
 
-		$this->load->model('service');
+		// $this->load->model('service');
 		$this->load->model('content');
 
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		$this->service->insertImagesIntoDB();
+		// $this->service->insertImagesIntoDB();
 		// printme($this->database->getPropertyByID(1));
 		// exit();
 
-		// $this->property->propertyAlertCron();
+		
 
 
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
@@ -60,11 +60,11 @@ class Home extends CI_Controller {
 	public function getFeaturedProperties()
 	{	
 		$data = $this->init();
-		$this->load->model('service');
+		// $this->load->model('service');
 
-		$data['featuredProperties']=$this->service->getFeaturedProperties();
+		$data['featuredProperties']=$this->database->getFeaturedProperties();
 		 foreach ($data['featuredProperties'] as $property) {
-		 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
+		 	$data['featuredImages'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);		
 		 }
 
 		 if($_POST['language'] == 'ar')
@@ -621,7 +621,7 @@ class Home extends CI_Controller {
 		}else{
 			$data['languagePath'] = '';
 		}
-		
+
 		$getData = explode('&', $_GET['data']);
 		foreach ($getData as $value) {
 			$value = explode('=', $value);
@@ -769,55 +769,44 @@ class Home extends CI_Controller {
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
-		// printme($data['propertyType1']);exit();
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
 		$data['uri'] = $data['uri'].'?'.$_SERVER['QUERY_STRING'];
-		// printme($data);exit();
-
 		$this->load->view($data['languagePath'].'view_all_properties',$data);
 	}
 
 	public function compareProperties ()
 	{
 		$data = $this->init();
-		$this->load->model('property');
-		$this->load->model('service');
 		$data['title'] = 'Coldwell Banker | Compare Properties';
 		$data['districts'] = $this->database->getAllDistricts();
-		if(isset($_POST['compareSubmit']))
+		if(isset($_GET['compareSubmit']))
 		{
 			$properties = array();
 			$count = 0;
-			foreach ($_POST['property_chkbx'] as $key => $property) {
+			foreach ($_GET['property_chkbx'] as $key => $property) {
 				$propertyID = explode('_', $property);
 				$propertyID = $propertyID[1];
-				$data['properties'][$propertyID] = $this->service->getPropertyByID($propertyID);
-				$UnitId = $data['properties'][$propertyID]->UnitId;
-				$data['images'][$propertyID] = $this->service->getPropertyImages($propertyID, $UnitId);
+				$data['properties'][$propertyID] = $this->database->getPropertyByID($propertyID);
+				$data['properties'][$propertyID] = (object)$data['properties'][$propertyID][0];
+				$data['images'][$propertyID] = $this->database->getPropertyImages($propertyID);
 				$count++;
 			}
 			$data['propertyCount'] = $count;
 		}
-
+		$data['uri'] = $data['uri'].'?'.$_SERVER['QUERY_STRING'];
 		$this->load->view($data['languagePath'].'compare_properties',$data);
 	}
 
 	public function propertyDetails ()
 	{
 		$data = $this->init();
-		// $data['title'] = 'ColdWell Banker | Registration';
 		$propertyId = explode('/', $data['uri']);
 		$data['propertyId'] = $propertyId[1];
-		$this->load->model('property');
-		$this->load->model('service');
-		$this->load->model('user');
-		$data['searchResults'] = $this->service->getPropertyByID($data['propertyId']);
+		$data['searchResults'] = $this->database->getPropertyByID($data['propertyId']);
+		$data['searchResults'] = (object)  $data['searchResults'][0];
 		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
 		$data['districts'] = $this->database->getAllDistricts();
-		// printme($data['searchResults']);exit();
-
-		$data['images'] = $this->service->getPropertyImages($data['propertyId'], $data['searchResults']->UnitId);
-
+		$data['images'] = $this->database->getPropertyImages($data['propertyId']);
 		if (isset($_POST['submit'])){
 			if (empty($_POST['firstName'])){
 				$data['contactError'] = "Please insert First Name";
@@ -856,7 +845,6 @@ class Home extends CI_Controller {
 				}
 			}
 		}
-
 
 		// $data['images'] = $this->service->getPropertyImages($data['propertyId'],$data['searchResults']->UnitId);
 		$this->load->view($data['languagePath'].'property_details',$data);
@@ -998,7 +986,7 @@ class Home extends CI_Controller {
 			{
 				$data['is_valid'] = $data['user']->is_valid;
 			}
-			$this->load->model('service');
+			// $this->load->model('service');
 			if ($this->user->is_subscribed($data['user']->id))
 			{
 				$data['is_subscribed'] = true;
@@ -1250,6 +1238,7 @@ function trainingCenter()
 {
 	$this->load->model('course');
 	$data = $this->init();
+	// $this->property->propertyAlertCron();
 	$data['courses'] = $this->course->getCourses();
 	// printme($data['courses']);
 	$data['title'] = 'ColdWell Banker | Training Center';

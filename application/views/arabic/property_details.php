@@ -1,6 +1,13 @@
 <?php include('header.php'); ?>
 <div id="images" class="hide">
-    <?= $images; ?>
+    <ul class="imagesList">
+        <?php foreach ($images['src'] as $key => $image): ?>
+            <li>
+                <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+            </li>
+        <?php endforeach ?>
+    </ul>
+<!--     <?= $images; ?> -->
 </div>
         <div class="container" id="property_address_div">
             <h1><b> 

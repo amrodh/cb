@@ -24,7 +24,14 @@
                     <tr>
                     <?php foreach ($properties as $property): ?>
                             <div class="propertyImages hide" id="img<?=$property->PropertyId; ?>">
-                                <?= $images[$property->PropertyId]; ?>
+                                <ul class="imagesList">
+                                    <?php foreach ($images[$property->PropertyId]['src'] as $key => $image): ?>
+                                        <li>
+                                            <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                        </li>
+                                    <?php endforeach ?>
+                                </ul>
+                               <!--  <?= $images[$property->PropertyId]['src']; ?> -->
                             </div>
                             <?php if ($count % 3 != 0): ?>
                                 <td style="background-color: #f6f6f6; border: 1px solid #d4d4d4!important;padding: 1% 1%;">

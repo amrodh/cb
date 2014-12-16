@@ -345,17 +345,18 @@ class Admin extends CI_Controller {
 
 		if (isset($_POST['propertiespreview']))
 		{
-			$this->load->model('service');
+			// $this->load->model('service');
 			$path = $this->config->config['upload_path'];
 			$this->config->set_item('upload_path',$path.'/temp');
 			$properties = array();
 			foreach ($_POST['properties'] as $key => $property) {
-				$data['properties'][$key]=$this->service->getPropertyByID($property);
-				$data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+				$data['properties'][$key]=$this->database->getPropertyByID($property);
+				$data['properties'][$key] = (object)$data['properties'][$key][0];
+				$data['images'][$property] = $this->database->getPropertyImages($property, $data['properties'][$key]->UnitId);
 			}
 			// printme($data['images']);exit();
 			$data['params'] = $_POST;
-			
+			// printme($data['images']);exit();
 			$this->load->view('admin/newsletter_properties', $data);
 			return;
 		}
@@ -381,11 +382,13 @@ class Admin extends CI_Controller {
 
 	public function sendProperties($params, $list)
 	{
-		$this->load->model('service');
+		// $this->load->model('service');
 		$data['params'] = $params;
 		foreach ($params['properties'] as $key => $property) {
-			$data['properties'][$key]=$this->service->getPropertyByID($property);
-			$data['images'][$property] = $this->service->getPropertyImages($property, $data['properties'][$key]->UnitId);
+			$data['properties'][$key]=$this->database->getPropertyByID($property);
+			$data['properties'][$key]=$this->database->getPropertyByID($property);
+			$data['properties'][$key] = (object)$data['properties'][$key][0];
+			$data['images'][$property] = $this->database->getPropertyImages($property);
 		}
 		$body = $this->load->view('admin/properties_template', $data, true);
 		$this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');

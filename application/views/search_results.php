@@ -1,5 +1,5 @@
 <div class="">
-    <form role="form" id="compare_form" method="post" action="<?= base_url();?>compareProperties">
+    <form role="form" id="compare_form" method="get" action="<?= base_url();?>compareProperties">
         <div class="properties_top_div">
             <div id="properties_top_header_div">
                 <?php if ($totalResults !== 0): ?>
@@ -70,10 +70,10 @@
                                                             </ul>
                                                            <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                         </div>
-                                                        <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
+                                                        <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
+                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
                                                             <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
@@ -195,10 +195,10 @@
                                                             </ul>
                                                             <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                         </div>
-                                                        <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
+                                                        <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>">
+                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
                                                             <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>

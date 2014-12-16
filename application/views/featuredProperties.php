@@ -8,7 +8,14 @@
                         <?php echo $count; ?>
                     </div>
                     <div class="propertyImages hide" id="img<?=$property->PropertyId; ?>">
-                        <?= $featuredImages[$property->PropertyId]; ?>
+                        <ul class="imagesList">
+                            <?php foreach ($featuredImages[$property->PropertyId]['src'] as $key => $image): ?>
+                                <li>
+                                    <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                      <!--   <?= $featuredImages[$property->PropertyId]; ?> -->
                     </div>
                     <div class="featuredProperty_img">
                         <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>"> <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>

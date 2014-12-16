@@ -22,8 +22,7 @@
                         <?php //echo $count+1; ?>
                     </div> -->
                     <div class="compare_img">
-
-                        <img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $image[$property->PropertyId]; ?>"/>
+                        <img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $images[$property->PropertyId][0]; ?>"/>
                     </div>
                     <div class="compare_description" style="padding-left: 0;padding-right: 0;">
                         <!-- <div class="compare_description_title">
@@ -63,7 +62,7 @@
                             <!-- <?php //echo $count+1; ?> -->
                         </div>
                         <div class="compare_img">
-                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $image[$property->PropertyId]; ?>"/></a>
+                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo $images[$property->PropertyId][0]; ?>"/></a>
                         </div>
                         <div class="compare_description" style="padding-left: 0;padding-right: 0;">
                            <!--  <div class="compare_description_title">

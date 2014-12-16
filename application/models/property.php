@@ -361,7 +361,7 @@ function test()
       $this->load->library('simple_html_dom');
       $dataArray = array();
       // include(base_url().'application/libraries/simple_html_dom.php');
-      $this->load->model('service');
+      // $this->load->model('service');
       $q = $this
             ->db
             ->get('user_property_alert');
@@ -383,11 +383,12 @@ function test()
       }
 
       foreach ($dataArray as $key1 => $data1) {
-          printme($emails);
+          // printme($emails);
           $propertyData = explode(',', $key1);
           $property_data = array();
           $data = array();
           $count = 0;
+          // printme($propertyData);exit();
           foreach ($propertyData as $key => $data2) {
               $tmp = explode('=', $data2);
               if ($tmp[0] == 'city'){
@@ -431,6 +432,8 @@ function test()
           }
           if (!isset($property_data[$count]['type'])){
               $property_data[$count]['type'] = '';
+          }else{
+              $property_data[$count]['type'] = $this->database->getPropertyTypeByID($property_data[$count]['type']);
           }
           if(!isset($property_data[$count]['priceLowerLimit']))
           {
@@ -450,12 +453,26 @@ function test()
           }
           if(!isset($property_data[$count]['contractType']))
           {
-              $property_data[$count]['contractType'] = '';
+              $property_data[$count]['contractType'] = 'Sale/Rent';
           }
+          // printme($property_data);exit();
+          // $searchParams = array(
+          //     'lob' => $lob,
+          //     'PropertyType' => $type,
+          //     'City' => $city,
+          //     'District' => $district,
+          //     'PropertyFor' => $propertyFor,
+          //     'PriceLowerLimit' => $priceLowerLimit,
+          //     'PriceUpperLimit' => $priceUpperLimit,
+          //     'AreaLowerLimit' => $areaLowerLimit,
+          //     'AreaUpperLimit' => $areaUpperLimit
+          //   );
 
           $searchParams = array(
+            'lob' => '',
             'PropertyType' => $property_data[$count]['type'],
-            'BoxLocation' => $property_data[$count]['district'],
+            'City' => $property_data[$count]['city'],
+            'District' => $property_data[$count]['district'],
             'PropertyFor' => $property_data[$count]['contractType'],
             'PriceLowerLimit' => $property_data[$count]['priceLowerLimit'],
             'PriceUpperLimit' => $property_data[$count]['priceUpperLimit'],
@@ -463,37 +480,46 @@ function test()
             'AreaUpperLimit' => $property_data[$count]['areaUpperLimit']
           );
           $count++;
-
-          $searchResults = $this->service->search($searchParams);
+          $searchResults = $this->database->search($searchParams);
+          // printme($searchResults);exit();
           if ($searchResults['totalResults'] != 0){
               $data = array('title'=>'Coldwell Banker Daily Property Alert', 
                        'properties' => $searchResults['results']);
               foreach ($data['properties'] as $key => $property) {
-                  $data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId, $property->UnitId);
-                  $html = str_get_html(($data['images'][$property->PropertyId]));
-                  if($html && is_object($html)){
-                      $count = 0;
-                      $image = $html->find('img');
-                     
-                      if(count($image) == 0){
-                        $data['image'][$property->PropertyId] = getcwd().'/application/static/images/No_image.svg';
-                        continue;
-                      }
-                      foreach($image as $element) 
-                      {   
-                          if ($count == 0){
-                              $data['image'][$property->PropertyId] = $element->src;
-                          }
-                          else{
-                              break;
-                          }
-                          $count++;
-                      }
-                      
+                  $data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+                  if (!is_array($data['images'][$property->PropertyId]))
+                  {
+                      $data['images'][$property->PropertyId] = array ( 0 => getcwd().'/application/static/images/No_image.svg');
+                      // $data['images'][$property->PropertyId] = "not array";
                   }else{
-                      $data['image'][$property->PropertyId] = getcwd().'/application/static/images/No_image.svg';
+                    $data['images'][$property->PropertyId] = $data['images'][$property->PropertyId]['src'];
                   }
+                  // printme
+                  // $html = str_get_html(($data['images'][$property->PropertyId]));
+                  // if($html && is_object($html)){
+                  //     $count = 0;
+                  //     $image = $html->find('img');
+                     
+                  //     if(count($image) == 0){
+                  //       $data['image'][$property->PropertyId] = getcwd().'/application/static/images/No_image.svg';
+                  //       continue;
+                  //     }
+                  //     foreach($image as $element) 
+                  //     {   
+                  //         if ($count == 0){
+                  //             $data['image'][$property->PropertyId] = $element->src;
+                  //         }
+                  //         else{
+                  //             break;
+                  //         }
+                  //         $count++;
+                  //     }
+                      
+                  // }else{
+                  //     $data['image'][$property->PropertyId] = getcwd().'/application/static/images/No_image.svg';
+                  // }
               }
+              // printme($data['images']);exit();
                 $body = $this->load->view('admin/propertyAlert_template', $data, true);
                 $emails = explode(',', $data1);
                 foreach ($emails as $email) {

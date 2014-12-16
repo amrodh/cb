@@ -1,6 +1,13 @@
 <?php include('header.php'); ?>
 <div id="images" class="hide">
-    <?= $images; ?>
+    <ul class="imagesList">
+        <?php foreach ($images['src'] as $key => $image): ?>
+            <li>
+                <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+            </li>
+        <?php endforeach ?>
+    </ul>
+<!--     <?= $images; ?> -->
 </div>
         <div class="container" id="property_address_div">
             <h1><b> 
@@ -113,13 +120,6 @@
                                         <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span>
                                     <?php endif ?>
                                 </div>
-                                <!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
-                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
-                                im veniam,quis nostrud exerci tation ullamcorper.. Lorem ipsum dolor sit amet, co
-                                ectetuer adipiscing elit, sed diam nonummy nibh.. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy ni 
-                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad 
-                                im veniam, quis nostrud exerci tation ullamcorper..im veniam, <br>
-                                Price: <b>EGP 2,000,000</b>. -->
                             </div>
                         </div>
                         <div id="property_contact" class="property_borders">
@@ -342,9 +342,6 @@
            }else{
                 $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/No_image.svg');
            }
-
-           //item_html = $("#carousal_div").html();
-
 
            var html_output ='';
            var image_count = 0;

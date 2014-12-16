@@ -147,21 +147,14 @@ class database extends CI_Model {
 
     function search($inputs)
     {
-        // printme($inputs);
-        // printme(count($inputs));
-        // exit();
-
         if (count($inputs) == 1)
         {
-            // printme('hello');
             $this->db->select('*');
             $this->db->from('property_featured');
             $this->db->order_by('propertyId','desc');
             $query = $this->db->get();
             $properties = array();
             foreach ($query->result() as $key => $value) {
-              // printme($value);
-
                 $properties[$key] = $this->getPropertyByID($value->propertyId);
                 foreach ($properties[$key] as $property) {
                     $properties[$key] = $property;
@@ -188,7 +181,9 @@ class database extends CI_Model {
             $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
             $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
             $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
-            $this->db->where('LineofBusinessFK', $inputs['lob']);
+            if ($inputs['lob'] != '' || $inputs['lob'] != 0){
+                $this->db->where('LineofBusinessFK', $inputs['lob']);
+            }
             if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
                 $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
             }
@@ -287,6 +282,32 @@ class database extends CI_Model {
               return $images;
            } 
         return false; 
+    }
+
+    function getFeaturedProperties()
+    {
+        $this->db->select('*');
+        $this->db->from('property_featured');
+        $query = $this->db->get();
+        $count1 = 0;
+        $count2 = 0;
+        if ($query->num_rows >0)
+        {
+            foreach ($query->result() as $key => $value) {
+                $temp = $this->getPropertyByID($value->propertyId);
+                if ($count1 < 2 && $temp[0]['LineofBusinessFK'] == 1)
+                {
+                    $properties[$value->propertyId] = (object) $temp[0];
+                    $count1++;
+                }elseif ($count2 < 1 && $temp[0]['LineofBusinessFK'] == 2) {
+                    $properties[$value->propertyId] = (object) $temp[0];
+                    $count2++;
+                }
+            }
+            return $properties;
+        }else{
+            return false;
+        }
     }
 
 }
