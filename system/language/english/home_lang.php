@@ -28,9 +28,9 @@ $lang['home_login_placeholder2'] = "Please enter password";
 $lang['home_login_forgotpassword'] = "Forgot Password?";
 
 
-$lang['home_footer_submenu1'] = "Residential Compound";
+$lang['home_footer_submenu1'] = "Buy";
 $lang['home_footer_submenu2'] = "Pre-owned Property";
-$lang['home_footer_submenu3'] = "Rental";
+$lang['home_footer_submenu3'] = "Rent";
 $lang['home_footer_submenu4'] = "Buy";
 $lang['home_footer_submenu5'] = "Rent";
 $lang['home_footer_submenu6'] = "Market Index";

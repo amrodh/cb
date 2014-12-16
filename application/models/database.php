@@ -23,7 +23,7 @@ class database extends CI_Model {
 
     }
 
-     function getCities()
+    function getCities()
     {
 
          $q = $this
@@ -118,7 +118,8 @@ class database extends CI_Model {
            return false; 
     }
 
-    function getDistrictByID($id){
+    function getDistrictByID($id)
+    {
       $q = $this
               ->db
               ->where('id',$id)
@@ -130,6 +131,24 @@ class database extends CI_Model {
 
            return false; 
     }
+
+    function getDistrictID($name)
+    {
+        $q = $this
+          ->db
+          ->where('name',$name)
+          ->get('district');
+          // printme($q->result_array()[0]);exit();
+        if($q->num_rows >0){
+            return $q->result_array()[0];
+        } else{
+            printme($name);
+        }
+
+        return false; 
+    }
+
+    
 
     function getPropertyTypeID($name)
     {

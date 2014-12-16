@@ -28,9 +28,9 @@ $lang['home_login_placeholder2'] = "رجاءً أدخل كلمة السر";
 $lang['home_login_forgotpassword'] = "نسيت كلمة المرور";
 
 
-$lang['home_footer_submenu1'] = "مجمع سكني";
+$lang['home_footer_submenu1'] = "شراء";
 $lang['home_footer_submenu2'] = "عقارات مملوكة من قبل";
-$lang['home_footer_submenu3'] = "عقارات للتأجير";
+$lang['home_footer_submenu3'] = "تأجير";
 $lang['home_footer_submenu4'] = "شراء";
 $lang['home_footer_submenu5'] = "تأجير";
 $lang['home_footer_submenu6'] = "مؤشر السوق";

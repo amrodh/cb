@@ -17,25 +17,18 @@ class Home extends CI_Controller {
 		}
 
 		$data = $this->init();
-
-		
-
 		$data['title'] = 'ColdWell Banker | Home';	
-
-		// $this->load->model('service');
 		$this->load->model('content');
-
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		// $this->service->insertImagesIntoDB();
-		// printme($this->database->getPropertyByID(1));
-		// exit();
-
-		
-
-
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
+
+
+		$this->load->model('cronjobs');
+		// $this->cronjobs->importNeighborhoodsCron();
+
+
 		// $data['propertyType2'] = $this->database->Getpropertytypes(2);
 
 		// printme($data['propertyType1']);exit();
@@ -1238,9 +1231,7 @@ function trainingCenter()
 {
 	$this->load->model('course');
 	$data = $this->init();
-	// $this->property->propertyAlertCron();
 	$data['courses'] = $this->course->getCourses();
-	// printme($data['courses']);
 	$data['title'] = 'ColdWell Banker | Training Center';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }

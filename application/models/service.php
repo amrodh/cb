@@ -116,22 +116,22 @@ class service extends CI_Model {
     function getCities()
     {
 
-         $q = $this
-              ->db
-              ->get('city');
+         // $q = $this
+         //      ->db
+         //      ->get('city');
 
-           if($q->num_rows >0){
-              return $q->result_array();
-           } 
+         //   if($q->num_rows >0){
+         //      return $q->result_array();
+         //   } 
 
-           return false;  
-        // $inputs = array('CountryFK' => 73);
-        // $result = $this->client->GetCities($inputs);
-        // $data = array();
-        // foreach ($result->GetCitiesResult->City as $city) {
-        //    $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
-        // }
-        //  return $data;
+         //   return false;  
+        $inputs = array('CountryFK' => 73);
+        $result = $this->client->GetCities($inputs);
+        $data = array();
+        foreach ($result->GetCitiesResult->City as $city) {
+           $data[] = array('id' => $city->CityPk , 'name' => $city->CityName);
+        }
+         return $data;
     }
 
     function getPropertyImages($id, $serial)
@@ -218,27 +218,27 @@ class service extends CI_Model {
 
     function getDistricts($cityID)
     {
-        // $inputs = array('cityId' => $cityID);
-        // $result = $this->client->GetDistrictList($inputs);
-        // $data = array();
-        // if(is_array($result->GetDistrictListResult->DistrictItem)){
-        //     foreach ($result->GetDistrictListResult->DistrictItem as $district) {
-        //        $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
-        //     }
-        //     return $data;
-        // }
-        // else 
-        //     return 0; 
-         $q = $this
-              ->db
-              ->where('city_id',$cityID)
-              ->get('district');
+        $inputs = array('cityId' => $cityID);
+        $result = $this->client->GetDistrictList($inputs);
+        $data = array();
+        if(is_array($result->GetDistrictListResult->DistrictItem)){
+            foreach ($result->GetDistrictListResult->DistrictItem as $district) {
+               $data[] = array('id' => $district->DistrictId , 'name' => $district->DistrictName);
+            }
+            return $data;
+        }
+        else 
+            return 0; 
+         // $q = $this
+         //      ->db
+         //      ->where('city_id',$cityID)
+         //      ->get('district');
 
-           if($q->num_rows >0){
-              return $q->result_array();
-           } 
+         //   if($q->num_rows >0){
+         //      return $q->result_array();
+         //   } 
 
-           return false; 
+         //   return false; 
     }
 
     function getDistrictByID($cityID,$districtID)
