@@ -208,7 +208,8 @@ class Admin extends CI_Controller {
 	public function  createNewsletter()
 	{
 		$data = $this->init();
-
+		$data['neighborhoods'] = $this->database->getAllNeighborhoods();
+		// printme($data['neighborhoods'][0]->id);exit();
 		$users = $this->user->getSubscribedUsers();
 		
 		if(is_array($users)){
@@ -300,6 +301,11 @@ class Admin extends CI_Controller {
 		}
 
 		if (isset($_POST['bannerspreview'])){
+			$neighborhoodArray = explode(',', $_POST['neigborhoodArray']);
+			$_POST['neigborhoodArray'] = $neighborhoodArray;
+			// printme($_POST['neigborhoodArray']);
+			// exit();
+			// printme($_FILES);exit();
 			$path = $this->config->config['upload_path'];
 			$this->config->set_item('upload_path',$path.'/temp');
 
@@ -307,6 +313,7 @@ class Admin extends CI_Controller {
 				$images = array();
 				$params = array();
 				$imageNames = array();
+				$neighborhoods = array();
 				$params['property_id'] = $this->db->insert_id();
 				$i = 0;
 				foreach ($_FILES['img']['name'] as $name) {
@@ -327,7 +334,6 @@ class Admin extends CI_Controller {
 					$upload = uploadme($this);
 					if(isset($upload['error'])){
 						$data['params'] = $_POST;
-						// 
 						$data['error'] = $upload['error'];
 					}else{
 						$imageNames['image_'.$x] = $_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
@@ -335,9 +341,14 @@ class Admin extends CI_Controller {
 					}
 					$x++;
 				}
+				// foreach ($_POST['neigborhoodArray'] as $key => $neighborhood) {
+				// 	$neighborhoods['image_'.$key] = $neighborhood;
+				// }
 				$data['imgCount'] = $i;
 				$data['images'] = $imageNames;
+				// $data['neighborhoods'] = $neighborhoods;
 				$_POST['images'] = $data['images'];
+				// printme($data);exit();
 				$this->load->view('admin/newsletter_banner', $data);
 				return;
 			}
@@ -376,6 +387,7 @@ class Admin extends CI_Controller {
 	public function sendBanner($params,$list)
 	{
 		$data['params'] = $params;
+		// printme($data['params']);exit();
 		$body = $this->load->view('admin/banner_template', $data, true);
 		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
 	}
@@ -1154,6 +1166,13 @@ class Admin extends CI_Controller {
 			}
 	}
 
+	public function getAllNeighborhoods()
+	{
+		$this->load->model('database');
+		$neighborhoods = $this->database->getAllNeighborhoods();
+		// printme($neighborhoods);
+		echo json_encode($neighborhoods);
+	}
 
 
 }

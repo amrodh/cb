@@ -75,11 +75,21 @@
                                                     <td>Banners:</td>
                                                     <td>
                                                         <input type="file" id="file" name="img[]" required>
+                                                        <?php //printme($neighborhoods);exit(); ?>
+                                                        <select name="neighborhood_0" id="neighborhood" class="neighborhoods">
+                                                            <option value="0">Select Neighborhood</option>
+                                                            <?php foreach ($neighborhoods as $key => $neighborhood): ?>
+                                                                <option value="<?= $neighborhood->neighborhood?>"><?= $neighborhood->neighborhood?></option>
+                                                            <?php endforeach ?>
+                                                        </select>
                                                         <input type="button" id="add_more" class="upload" value="Add More Images"/>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <input type="hidden" name="url" id="url" value="<?= base_url();?>">
+                                        <input type="hidden" name="count" id="count" value="1">
+                                        <input type="hidden" name="neigborhoodArray" value="">
                                         <input type="submit" name="bannerspreview" class="btn btn-primary" value="Preview">
                                     </form>
                                 </div>

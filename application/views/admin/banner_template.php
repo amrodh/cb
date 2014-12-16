@@ -17,8 +17,10 @@
         ?>
     </tr>
     <tr>
+        <?php $count = 0; ?>
         <?php foreach ($params['images'] as $image): ?>
-            <img style="width: 338%;" class="img-responsive newsletter_bannerImgs" src="<?= base_url();?>/application/static/upload/temp/<?= $image; ?>">
+            <a href="<?=base_url();?>en/viewAllProperties?lob=&type=&city=&district=&project=<?=$params['neighborhoods'][$count]?>"><img style="width: 338%;" class="img-responsive newsletter_bannerImgs" src="<?= base_url();?>/application/static/upload/temp/<?= $image; ?>"></a>
+            <?php $count++; ?>
         <?php endforeach ?>
         
     </tr>

@@ -148,7 +148,7 @@ class database extends CI_Model {
         return false; 
     }
 
-    
+
 
     function getPropertyTypeID($name)
     {
@@ -200,6 +200,13 @@ class database extends CI_Model {
             $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
             $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
             $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+            if (isset($inputs['LocationProject']))
+            {
+                if($inputs['LocationProject'] != '' || $inputs['LocationProject'] != 0)
+                {
+                    $this->db->where('LocationProject', $inputs['LocationProject']);
+                }
+            }
             if ($inputs['lob'] != '' || $inputs['lob'] != 0){
                 $this->db->where('LineofBusinessFK', $inputs['lob']);
             }
@@ -327,6 +334,19 @@ class database extends CI_Model {
         }else{
             return false;
         }
+    }
+
+    function getAllNeighborhoods()
+    {
+        $this->db->select('*');
+        $this->db->order_by('neighborhood', 'asc');
+        $this->db->from('neighborhood');
+        $query = $this->db->get();
+        if ($query->num_rows >0)
+        {
+            return $query->result();
+        }
+        return false;
     }
 
 }

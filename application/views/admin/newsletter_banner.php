@@ -26,8 +26,10 @@
                 </div>
             </div>
             <div id="newsletter_image">
-                <?php foreach ($images as $image): ?>
-                    <img class="img-responsive newsletter_bannerImgs" src="<?= base_url();?>/application/static/upload/temp/<?= $image; ?>">
+                <?php $count = 0; ?>
+                <?php foreach ($images as $key => $image): ?>
+                    <a href="<?=base_url();?>en/viewAllProperties?lob=&type=&city=&district=&project=<?=$params['neigborhoodArray'][$count]?>&contractType=&price=0&area=0"><img class="img-responsive newsletter_bannerImgs" src="<?= base_url();?>/application/static/upload/temp/<?= $image; ?>"></a>
+                <?php $count++; ?>
                 <?php endforeach ?>
             </div>
             <div id="newsletter_content">
@@ -69,6 +71,9 @@
     <input type="hidden" name="upper" value="<?= $params['upper']; ?>">
     <?php foreach ($images as $key => $image ): ?>
         <input type="hidden" name="images[]" value="<?= $image; ?>">
+    <?php endforeach ?>
+    <?php foreach ($params['neigborhoodArray'] as $key => $neighborhood): ?>
+        <input type="hidden" name="neighborhoods[]" value="<?=$neighborhood;?>">
     <?php endforeach ?>
     
         <table class="table" id="dev-table">

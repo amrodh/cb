@@ -709,6 +709,13 @@ class Home extends CI_Controller {
 					$areaLowerLimit = $area[0];
 					$areaUpperLimit = $area[2];
 				}
+			}elseif($value[0] == 'project'){
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					$project = '';
+				}else{
+					$project = $value[1];
+				}
 			}
 		}
 		// printme($flag);
@@ -718,6 +725,7 @@ class Home extends CI_Controller {
 				'PropertyType' => $type,
 				'City' => $city,
 				'District' => $district,
+				'LocationProject' => $project,
 				'PropertyFor' => $propertyFor,
 				'PriceLowerLimit' => $priceLowerLimit,
 				'PriceUpperLimit' => $priceUpperLimit,

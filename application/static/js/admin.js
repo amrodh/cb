@@ -10,16 +10,44 @@ jQuery(document).ready(function($) {
 	});	
 });
 
+$('[name="bannerspreview"]').click(function(event) {
+	var neighborhoods = [];
+	$('.neighborhoods').each(function(index, el) {
+		neighborhoods[index] = $(this).val();
+	});
+	$('[name="neigborhoodArray"]').val(neighborhoods);
+	// alert(neighborhoods);return;
+});
+
 var abc = 0; 
 
 $('#add_more').click(function() {
-            $(this).before($("<div/>", {
-            id: 'filediv'
-            }).fadeIn('slow').append($("<input/>", {
-            name: 'img[]',
-            type: 'file',
-            id: 'file'
-            })));
+	var count = $('#count').val();
+	$(this).before($("<div/>", {
+	    id: 'filediv'
+	    }).fadeIn('slow').append($("<input/>", {
+	    name: 'img[]',
+	    type: 'file',
+	    id: 'file'
+	    })).append("<select id='neighborhoods' name='neighborhoods_" + count+"' class='neighborhoods'></select>"));
+	    // $('#filediv').append("<select id='neighborhoods' name='neighborhoods'></select>");
+	count = parseInt(count) +1;
+	$('#count').val(count);
+	var url = $('#url').val();
+	url = url + 'admin/getAllNeighborhoods';
+	$.ajax({
+		url: url,
+		type: 'POST'
+	})
+	.success(function(html) {
+		var html2 = JSON.parse(html);
+		for(var c in html2) {
+			$('.neighborhoods').append('<option value="'+html2[c].neighborhood+'">'+html2[c].neighborhood+'</option>');
+	    }
+		// alert(html);
+	});
+	
+            
           });
 
           $('body').on('change', '#file', function() {

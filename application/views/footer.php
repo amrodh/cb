@@ -28,7 +28,7 @@
                         <?php echo $this->lang->line('home_menu6'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href=""><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>about"><?php echo $this->lang->line('home_footer_submenu10'); ?><br></a>
                         <a href="<?= base_url().'en/';?>careers"><?php echo $this->lang->line('home_footer_submenu9'); ?><br></a>
                         <!-- Franchise<br> -->
                     </div>
