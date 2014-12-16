@@ -9,14 +9,14 @@ class CronJobs extends CI_Model {
 
     function cronJob()
     {
-    	printme('entered');
+    	// printme('entered');
     	$this->load->model('service');
   		$cities = $this->service->getCities();
 
   		foreach ($cities as $key => $city) {
   			$this->checkCity($city);
   		}
-  		printme('cities Done');
+  		// printme('cities Done');
   	//========================================================================================================================
   		$cities = $this->database->getCities();
   		foreach ($cities as $key => $city) {
@@ -28,7 +28,7 @@ class CronJobs extends CI_Model {
 	  			}
   			}
   		}
-		printme('districts Done');
+		// printme('districts Done');
   	//========================================================================================================================
   		$this->db->select('LocationDistrict');
   		$this->db->distinct();
@@ -50,7 +50,7 @@ class CronJobs extends CI_Model {
 				}
 			}
 		}
-		printme('projects Done');
+		// printme('projects Done');
 	//========================================================================================================================
 
 		$this->load->model('service');
@@ -234,7 +234,7 @@ class CronJobs extends CI_Model {
         	}
         }
 
-        printme('properties Done');
+        // printme('properties Done');
     }
 
     function propertyAlertCron()

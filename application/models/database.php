@@ -141,8 +141,6 @@ class database extends CI_Model {
           // printme($q->result_array()[0]);exit();
         if($q->num_rows >0){
             return $q->result_array()[0];
-        } else{
-            printme($name);
         }
 
         return false; 
