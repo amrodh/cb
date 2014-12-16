@@ -1571,4 +1571,11 @@ function resetpassword()
 		
 		
 	// }
+
+
+	function cron()
+	{
+		$this->load->model('cronjobs');
+		$this->cronjobs->cronJob();
+	}
 }

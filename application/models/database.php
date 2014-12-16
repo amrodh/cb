@@ -349,6 +349,18 @@ class database extends CI_Model {
         return false;
     }
 
+    function getAllFeaturedProperties()
+    {
+        $this->db->select('*');
+        $this->db->from('property_featured');
+        $query = $this->db->get();
+        if ($query->num_rows >0)
+        {
+            return $query->result();
+        }
+        return false;
+    }
+
 }
 
 

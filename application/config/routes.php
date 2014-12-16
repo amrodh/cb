@@ -147,6 +147,8 @@ $route["$appended_lang/deleteFavorite"] = "home/deleteFavorite";
 $route["$appended_lang/home"] = "home";
 $route["createExcel"] = "home/createExcel";
 
+$route["cron"] = "home/cron";
+
 
 //Temporary
 $route["newsletterSingle"] = "home/newsletterSingle";
