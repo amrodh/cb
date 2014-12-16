@@ -7,7 +7,7 @@
         <?php endif ?>
         
         <div class="container properties_main_div" id="main_div">
-            <img style="width:5%;margin-left:50%;" src="<?= base_url();?>application/static/images/loader.gif" alt="">
+            <img style="width:2%;margin-left:50%;" src="<?= base_url();?>application/static/images/loader.gif" alt="">
         </div>
 
 
