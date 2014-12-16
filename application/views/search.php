@@ -45,7 +45,7 @@
                            <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                <?php echo $this->lang->line('search_drpdwn2'); ?>
                            </div>
-                           <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5" disabled>
+                           <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">
                               <?php if (isset($_GET) && $_GET['lob'] == 1): ?>
                                 <?php foreach ($districts as $district): ?>
                                   <?php if ($district['id'] == $_GET['district']): ?>
@@ -137,7 +137,7 @@
             </form>
         </div>
         <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 2) echo 'active'; ?>" id="commercials">
-            <form id="search_form4" role="form" name="searchForm4" method="post" action="<?php echo base_url();?>viewAllProperties">
+            <form id="search_form4" role="form" name="searchForm4" method="get" action="<?php echo base_url();?>viewAllProperties">
               <!-- <input type="hidden" name="districtName" value=""> -->
               <input type="hidden" name="lob" id="lob" value="2">
               <div class="container search_components">
@@ -171,7 +171,7 @@
                          <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                              <?php echo $this->lang->line('search_drpdwn2'); ?>
                          </div>
-                         <select class="selectpicker" id="search_disabled_district_3" name="district_3" data-style="btn" data-title="Select District" data-size="5" disabled>
+                         <select class="selectpicker" id="search_disabled_district_3" name="district" data-style="btn" data-title="Select District" data-size="5">
                             <?php if (isset($_GET) && $_GET['lob'] == 2): ?>
                                 <?php foreach ($districts as $district): ?>
                                   <?php if ($district['id'] == $_GET['district']): ?>
@@ -205,7 +205,7 @@
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn3'); ?>
                          </div>
-                         <select class="selectpicker" id="search_contractType_3" name="contractType_3" data-style="btn" data-title="Select Type" data-size="5">
+                         <select class="selectpicker" id="search_contractType_3" name="contractType" data-style="btn" data-title="Select Type" data-size="5">
                                <option value="0" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>Select Contract Type</option> 
                                 <option value="Sale" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>Sale</option>
                                 <option value="Rent" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>Rent</option>

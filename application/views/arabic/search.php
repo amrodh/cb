@@ -12,7 +12,7 @@
         </div>
         <div class="tab-content search_body">
             <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'active'; ?> <?php if(isset($_GET) && $_GET['lob'] == 0) echo 'active'; ?>" id="residentials">
-                <form id="search_form3" role="form" name="searchForm3" method="post" action="<?php echo base_url();?>viewAllProperties">
+                <form id="search_form3" role="form" name="searchForm3" method="get" action="<?php echo base_url();?>viewAllProperties">
                     <!-- <input type="hidden" name="districtName_2" value=""> -->
                     <input type="hidden" name="lob" id="lob" value="1">
                     <div class="container search_components">
@@ -134,7 +134,7 @@
                 </form>
             </div>
             <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 2) echo 'active'; ?>" id="commercials">
-                <form id="search_form4" role="form" name="searchForm4" method="post" action="<?php echo base_url();?>viewAllProperties">
+                <form id="search_form4" role="form" name="searchForm4" method="get" action="<?php echo base_url();?>viewAllProperties">
                     <!-- <input type="hidden" name="districtName_3" value=""> -->
                     <input type="hidden" name="lob_2" id="lob_2" value="2">
                     <div class="container search_components">
