@@ -1,4 +1,4 @@
-<div style="width: 100%;margin-bottom:16%;">
+<div style="width: 100%;">
     <!-- <form id="property_alert_form"> -->
         <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
