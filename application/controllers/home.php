@@ -260,8 +260,8 @@ class Home extends CI_Controller {
 
 	public function profile()
 	{
-		$this->load->model('user');
-		$this->load->model('service');
+		// $this->load->model('user');
+		// $this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Profile';
@@ -274,12 +274,11 @@ class Home extends CI_Controller {
 		$data['favoritesArray'] = array();
 		$data['favoritesImages'] = array();
 		foreach ($data['favorites'] as $key => $property) {
-
-			$data['favoritesArray'][$key] = $this->service->getPropertyByID($property->property_id);
-			// printme();exit();
-			$data['favoritesImages'][$property->property_id] = $this->service->getPropertyImages($property->property_id,$data['favoritesArray'][$key]->UnitId);		
-
+			$data['favoritesArray'][$key] = $this->database->getPropertyByID($property->property_id);
+			$data['favoritesArray'][$key] = (object)$data['favoritesArray'][$key][0];
+			$data['favoritesImages'][$property->property_id] = $this->database->getPropertyImages($property->property_id);		
 		}
+		// printme($data['favoritesArray']);exit();
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];

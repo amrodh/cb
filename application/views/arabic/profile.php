@@ -148,7 +148,14 @@
                                                         </label>
                                                     </div>
                                                     <div class="propertyImages hide" id="img<?=$result->PropertyId; ?>">
-                                                        <?= $favoritesImages[$result->PropertyId]; ?>
+                                                        <ul class="imagesList">
+                                                            <?php foreach ($favoritesImages[$result->PropertyId]['src'] as $key => $image): ?>
+                                                                <li>
+                                                                    <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                                                </li>
+                                                            <?php endforeach ?>
+                                                        </ul>
+                                                       <!--  <?= $favoritesImages[$result->PropertyId]; ?> -->
                                                     </div>
                                                     <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                 <?php echo $result->LocationProject; ?>,
