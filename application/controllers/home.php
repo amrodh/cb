@@ -127,6 +127,7 @@ class Home extends CI_Controller {
 		$this->user->updateUser($userid, $params);
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
+		// printme($_POST);exit();
 		redirect($_POST['currentUrl']);
 	}
 

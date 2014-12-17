@@ -62,6 +62,7 @@
                         </span>
                         <form action="<?= base_url();?>logout" method="post" style="display:inline;">
                         <!-- <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>"> -->
+                        <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                         <input type="submit" value="Log Out" name="logoutSubmit" class="logoutSubmit">
                         </form>
                     </label>
