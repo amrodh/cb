@@ -46,7 +46,7 @@
                                <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                    <?php echo $this->lang->line('search_drpdwn2'); ?>
                                </div>
-                               <?php if (isset($_GET['district']) && $_GET['lob'] == 1): ?>
+                               <?php if (isset($_GET['district']) && $_GET['lob'] == 1 && $_GET['district'] != ''): ?>
                                   <select class="selectpicker" id="search_disabled_district_2" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
                                       <?php foreach ($districts as $district): ?>
                                           <?php if ($district['id'] == $_GET['district']): ?>
@@ -184,7 +184,7 @@
                                <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                                    <?php echo $this->lang->line('search_drpdwn2'); ?>
                                </div>
-                               <?php if (isset($_GET['district']) && $_GET['lob'] == 2): ?>
+                               <?php if (isset($_GET['district']) && $_GET['lob'] == 2 && $_GET['district'] != ''): ?>
                                   <select class="selectpicker" id="search_disabled_district_3" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
                                       <?php foreach ($districts as $district): ?>
                                           <?php if ($district['id'] == $_GET['district']): ?>
