@@ -68,4 +68,4 @@
         <?php endif ?>
     </div>
 </div>
-<a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true">See More Featured Properties</a>
+<a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true&lob=1">See More Featured Properties</a>

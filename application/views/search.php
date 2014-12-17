@@ -45,7 +45,7 @@
                            <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                <?php echo $this->lang->line('search_drpdwn2'); ?>
                            </div>
-                           <?php if (isset($_GET) && $_GET['lob'] == 1): ?>
+                           <?php if (isset($_GET['district']) && $_GET['lob'] == 1): ?>
                               <select class="selectpicker" id="search_disabled_district_2" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
                                   <?php foreach ($districts as $district): ?>
                                       <?php if ($district['id'] == $_GET['district']): ?>
@@ -99,9 +99,9 @@
                            <select class="selectpicker" id="search_contractType_2" name="contractType" data-style="btn" data-title="Select Type" data-size="5">
                                 
 
-                                <option value="0" <?php if(isset($_GET) && $_GET['lob'] == 1 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>Select Contract Type</option> 
-                                <option value="Sale" <?php if(isset($_GET) && $_GET['lob'] == 1 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>Sale</option>
-                                <option value="Rent" <?php if(isset($_GET) && $_GET['lob'] == 1 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>Rent</option>
+                                <option value="0" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 1 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>Select Contract Type</option> 
+                                <option value="Sale" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 1 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>Sale</option>
+                                <option value="Rent" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 1 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>Rent</option>
                                
                            </select>
                        </div>
@@ -110,7 +110,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 21%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
-                    <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>"><
+                    <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
@@ -187,7 +187,7 @@
                          <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                              <?php echo $this->lang->line('search_drpdwn2'); ?>
                          </div>
-                         <?php if (isset($_GET) && $_GET['lob'] == 2): ?>
+                         <?php if (isset($_GET['district']) && $_GET['lob'] == 2): ?>
                               <select class="selectpicker" id="search_disabled_district_3" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
                                   <?php foreach ($districts as $district): ?>
                                       <?php if ($district['id'] == $_GET['district']): ?>
@@ -238,9 +238,9 @@
                              <?php echo $this->lang->line('search_drpdwn3'); ?>
                          </div>
                          <select class="selectpicker" id="search_contractType_3" name="contractType" data-style="btn" data-title="Select Type" data-size="5">
-                               <option value="0" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>Select Contract Type</option> 
-                                <option value="Sale" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>Sale</option>
-                                <option value="Rent" <?php if(isset($_GET) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>Rent</option>
+                               <option value="0" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>Select Contract Type</option> 
+                                <option value="Sale" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>Sale</option>
+                                <option value="Rent" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>Rent</option>
                          </select>
                      </div>
                  </div>
