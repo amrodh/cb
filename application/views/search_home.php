@@ -66,6 +66,7 @@
                                   <option value="0">Select District</option> 
                                </select>
                            </div>
+                           <input type="hidden" name="project" value="">
                        </div>
                         <div class="row search_top_row">
                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">

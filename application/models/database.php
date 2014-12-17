@@ -50,8 +50,10 @@ class database extends CI_Model {
     {
         $q = $this
               ->db
+              ->order_by('name', 'asc')
               ->get('district');
 
+              // printme($q->result_array());exit();
            if($q->num_rows >0){
               return $q->result_array();
            } 
@@ -64,6 +66,7 @@ class database extends CI_Model {
     {
          $q = $this
               ->db
+              ->order_by('name', 'asc')
               ->where('city_id',$cityID)
               ->get('district');
 
@@ -79,6 +82,7 @@ class database extends CI_Model {
 
         $q = $this
               ->db
+              ->order_by('property_name', 'asc')
               ->where('category_id',$id)
               ->get('property_type');
 

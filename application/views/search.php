@@ -45,7 +45,22 @@
                            <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                <?php echo $this->lang->line('search_drpdwn2'); ?>
                            </div>
-                           <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">
+                           <?php if (isset($_GET) && $_GET['lob'] == 1): ?>
+                              <select class="selectpicker" id="search_disabled_district_2" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
+                                  <?php foreach ($districts as $district): ?>
+                                      <?php if ($district['id'] == $_GET['district']): ?>
+                                        <option value="<?= $district['id'] ?>" selected> <?= $district['name'] ?> </option>
+                                      <?php else: ?>
+                                        <option value="<?= $district['id'] ?>"> <?= $district['name'] ?> </option>
+                                      <?php endif ?>
+                                  <?php endforeach ?>
+                              </select>
+                           <?php else: ?>
+                                <select class="selectpicker" id="search_disabled_district_2" name="district_disabled" data-style="btn" data-title="Select District" data-size="5" disabled>
+                                    <option>Select District</option> 
+                                </select>
+                           <?php endif ?>
+                           <!-- <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">
                               <?php if (isset($_GET) && $_GET['lob'] == 1): ?>
                                 <?php foreach ($districts as $district): ?>
                                   <?php if ($district['id'] == $_GET['district']): ?>
@@ -55,8 +70,9 @@
                               <?php else: ?>
                                 <option>Select District</option> 
                               <?php endif ?>
-                           </select>
+                           </select> -->
                        </div>
+                       <input type="hidden" name="project" value="">
                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn4'); ?>
@@ -94,7 +110,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 21%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                    <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>"><
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
@@ -130,7 +146,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="searchSubmit3"><?php echo $this->lang->line('search_button'); ?></button>
+                            <input type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>"><?php echo $this->lang->line('search_button'); ?>
                        </div>
                    </div>
                 </div>
@@ -146,7 +162,7 @@
                          <div class="search_box_col_title title_margin" id="search_title_district">
                              <?php echo $this->lang->line('search_drpdwn1'); ?>
                          </div>
-                          <select class="selectpicker" id="search_city_3" name="city_3" data-style="btn" data-title="Select City" data-size="5">
+                          <select class="selectpicker" id="search_city_3" name="city" data-style="btn" data-title="Select City" data-size="5">
                               <option value="0">Select City</option>
                               <option value="3">Greater Cairo</option>
                               <option value="3" <?php if(isset($_GET['city']) && $_GET['lob'] == 2 && $_GET['city'] == 3) echo 'selected="selected"'; ?>>Greater Cairo</option>
@@ -171,7 +187,22 @@
                          <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                              <?php echo $this->lang->line('search_drpdwn2'); ?>
                          </div>
-                         <select class="selectpicker" id="search_disabled_district_3" name="district" data-style="btn" data-title="Select District" data-size="5">
+                         <?php if (isset($_GET) && $_GET['lob'] == 2): ?>
+                              <select class="selectpicker" id="search_disabled_district_3" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
+                                  <?php foreach ($districts as $district): ?>
+                                      <?php if ($district['id'] == $_GET['district']): ?>
+                                        <option value="<?= $district['id'] ?>" selected> <?= $district['name'] ?> </option>
+                                      <?php else: ?>
+                                        <option value="<?= $district['id'] ?>"> <?= $district['name'] ?> </option>
+                                      <?php endif ?>
+                                  <?php endforeach ?>
+                              </select>
+                         <?php else: ?>
+                              <select class="selectpicker" id="search_disabled_district_3" name="district_disabled" data-style="btn" data-title="Select District" data-size="5" disabled>
+                                  <option>Select District</option> 
+                              </select>
+                         <?php endif ?>
+                        <!--  <select class="selectpicker" id="search_disabled_district_3" name="district" data-style="btn" data-title="Select District" data-size="5">
                             <?php if (isset($_GET) && $_GET['lob'] == 2): ?>
                                 <?php foreach ($districts as $district): ?>
                                   <?php if ($district['id'] == $_GET['district']): ?>
@@ -181,13 +212,14 @@
                             <?php else: ?>
                                 <option>Select District</option> 
                             <?php endif ?>
-                         </select>
+                         </select> -->
                      </div>
+                     <input type="hidden" name="project" value="">
                      <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn4'); ?>
                          </div>
-                         <select class="selectpicker" id="search_type_3" name="type_3" data-style="btn" data-title="Select Type" data-size="5">
+                         <select class="selectpicker" id="search_type_3" name="type" data-style="btn" data-title="Select Type" data-size="5">
                               <option value="0">Select Type</option> 
                               <?php foreach ($propertyType2 as $key => $type): ?>
                                  <?php 
@@ -216,7 +248,7 @@
                   <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 30%;">
                       <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                   </div>
-                  <button type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit4" value="searchSubmit4">Search</button>
+                  <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
               </div>
               <div class="container search_components">
                   <div class="row search_bottom_row" id="bottom_row">
@@ -224,7 +256,7 @@
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn5'); ?>
                          </div>
-                         <select class="selectpicker" id="search_price_3" name="price_3" data-style="btn" data-title="Select Price" data-size="5">
+                         <select class="selectpicker" id="search_price_3" name="price" data-style="btn" data-title="Select Price" data-size="5">
                               <option value="0">Select Price</option>
                               <option value="100000 - 250000">100,000 - 250,000</option>
                               <option value="250000 - 500000">250,000 - 500,000</option>
@@ -239,7 +271,7 @@
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn6'); ?>
                          </div>
-                         <select class="selectpicker" id="search_area_3" name="area_3" data-style="btn" data-title="Select Price" data-size="5">
+                         <select class="selectpicker" id="search_area_3" name="area" data-style="btn" data-title="Select Price" data-size="5">
                               <option value="0">Select Area</option>
                               <option value="<50"> &#60;50 m<sup>2</sup></option>
                               <option value="100 - 200">100 - 200 m<sup>2</sup></option>
@@ -253,7 +285,7 @@
                  </div>
                  <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                      <div class="col-lg-12">
-                          <button type="button" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4" value="searchSubmit4"><?php echo $this->lang->line('search_button'); ?></button>
+                          <input type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
                      </div>
                  </div>
               </div>

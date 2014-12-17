@@ -22,6 +22,7 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
+		// printme($data['districts'] );exit();
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 
 
@@ -447,9 +448,9 @@ class Home extends CI_Controller {
 
 	public function shareProperty()
 	{
-		$this->load->model('user');
-		$this->load->model('property');
-		$this->load->model('service');
+		// $this->load->model('user');
+		// $this->load->model('property');
+		// $this->load->model('service');
 
 		$username = $this->session->userdata('username');
 		$data = $this->init();
@@ -489,14 +490,16 @@ class Home extends CI_Controller {
 					$category = 'Commercial Projects';
 				}
 
-				$city = $this->service->getCityByID($_POST['city']);
+				$city = $this->database->getCityByID($_POST['city']);
+				$city = $city[0]['name'];
 				if ($_POST['district'] != 0){
-					$district = $this->service->getDistrictByID($_POST['city'],$_POST['district']);
+					$district = $this->database->getDistrictByID($_POST['district']);
+					$district = $district[0]['name'];
 				}else{
 					$district = '';
 				}
 				
-				$propertyType = $this->service->getPropertyTypeByID($_POST['shareProperty_lob'],$_POST['shareProperty_type']);
+				$propertyType = $this->database->getPropertyTypeByID($_POST['shareProperty_lob'],$_POST['shareProperty_type']);
 
 				$params = array ('user_id' => $data['user']->id,
 					'area' => $_POST['area'],
@@ -615,7 +618,9 @@ class Home extends CI_Controller {
 			$data['languagePath'] = '';
 		}
 
+
 		$getData = explode('&', $_GET['data']);
+		// printme($getData);exit();
 		foreach ($getData as $value) {
 			$value = explode('=', $value);
 			if($value[0] == 'featured'){

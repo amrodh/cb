@@ -322,6 +322,7 @@ $(document).ready(function ()
 
            $('#shareProperty_city').change(function() {
             if ($(this).val() !=0){
+               var language = $("#currentLanguage").val();
                var url = $("#url").val();
                var city_id = $(this).val();
                var key = 6;
@@ -329,7 +330,7 @@ $(document).ready(function ()
                $.ajax({
                   type: "POST",
                   url: url,
-                  data: { id: city_id, key: key }
+                  data: { id: city_id, key: key, lang: language }
                 })
                   .success(function( html ) {
                     if (html != 0)
