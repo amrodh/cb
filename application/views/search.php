@@ -57,7 +57,7 @@
                               </select>
                            <?php else: ?>
                                 <select class="selectpicker" id="search_disabled_district_2" name="district_disabled" data-style="btn" data-title="Select District" data-size="5" disabled>
-                                    <option>Select District</option> 
+                                    <option value="0">Select District</option> 
                                 </select>
                            <?php endif ?>
                            <!-- <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">

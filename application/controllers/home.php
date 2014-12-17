@@ -601,6 +601,7 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		$flag = false;
 		$generalFlag = false;
+		$districtFlag = false;
 		if (isset($data['loggedIn'])){
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
@@ -673,6 +674,7 @@ class Home extends CI_Controller {
 				}else{
 					$district = $this->database->getDistrictByID($value[1]);
 					$district = $district[0]['name'];
+					$districtFlag = true;
 				}
 			}elseif($value[0] == 'type'){
 				if ($value[1] == 0 || $value[1] == '')
@@ -729,12 +731,18 @@ class Home extends CI_Controller {
 			}
 		}
 
-		if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '')
-		{
-			$generalFlag = true;
-		}
 		
+		
+
+		if ($districtFlag == false){
+			$district = '';
+		}
+
 		if ($flag == false){
+			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '')
+			{
+				$generalFlag = true;
+			}
 			$searchParams = array(
 				'lob' => $lob,
 				'PropertyType' => $type,
