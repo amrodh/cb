@@ -172,13 +172,13 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -17.5%;">
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&type=&city=&district=&contractType=Sale&price=0&area=0"><?php echo $this->lang->line('home_submenu1'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&type=&city=&district=&contractType=Sale&price=0&area=0&project="><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
                                 <!-- <li>
                                     <a href="<?= base_url();?>en/viewAllProperties"><?php echo $this->lang->line('home_submenu2'); ?></a>
                                 </li> -->
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&type=&city=&district=&contractType=Rent&price=0&area=0"><?php echo $this->lang->line('home_submenu3'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&type=&city=&district=&contractType=Rent&price=0&area=0&project="><?php echo $this->lang->line('home_submenu3'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -188,10 +188,10 @@
                             </a>
                             <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -16%;">
                                 <li>
-                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Sale&price=0&area=0"><?php echo $this->lang->line('home_submenu4'); ?></a>
+                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Sale&price=0&area=0&project="><?php echo $this->lang->line('home_submenu4'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Rent&price=0&area=0"><?php echo $this->lang->line('home_submenu5'); ?></a>
+                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Rent&price=0&area=0&project="><?php echo $this->lang->line('home_submenu5'); ?></a>
                                 </li>
                             </ul>
                         </li>
