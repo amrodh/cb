@@ -194,56 +194,83 @@ class database extends CI_Model {
             }
             // printme($results);exit();
         }else{
-            $this->db->select('*');
-            $this->db->from('property_service');
-            $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
-            $this->db->where('AreaNumericValue >', $inputs['AreaLowerLimit']);
-            $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
-            $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
-            $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
-            $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
-            if (isset($inputs['LocationProject']))
-            {
-                if($inputs['LocationProject'] != '' || $inputs['LocationProject'] != 0)
-                {
-                    $this->db->where('LocationProject', $inputs['LocationProject']);
+            if (isset($inputs['generalFlag'])){
+
+                if ($inputs['generalFlag'] == 1){
+                    $this->db->select('*');
+                    $this->db->from('property_service');
+                    $this->db->order_by('PropertyId','desc');
+                    $query = $this->db->get();
+                    // printme($this->db->last_query());
+                    // printme($query->result());exit();
+                    if ($query->num_rows >0)
+                    {
+                        $results = array(
+                          'results' => $query->result(),
+                          'totalResults' => $query->num_rows
+                          );
+                        // printme($results);exit();
+                        return $results;
+                    }else{
+                        return false; 
+                    }
+                }else{
+                    $this->db->select('*');
+                    $this->db->from('property_service');
+                    $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
+                    $this->db->where('AreaNumericValue >', $inputs['AreaLowerLimit']);
+                    if (isset($inputs['LocationProject']))
+                    {
+                        if($inputs['LocationProject'] != '' || $inputs['LocationProject'] != 0)
+                        {
+                            $this->db->where('LocationProject', $inputs['LocationProject']);
+                        }
+                    }
+                    if ($inputs['lob'] != '' || $inputs['lob'] != 0){
+                        $this->db->where('LineofBusinessFK', $inputs['lob']);
+                    }
+                    if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
+                        $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
+                    }
+                    if ($inputs['City'] != '' || $inputs['City'] != 0)
+                    {
+                        $this->db->where('LocationCity', $inputs['City']);
+                    }
+                    if ($inputs['District'] != '' || $inputs['District'] != 0)
+                    {
+                        $this->db->where('LocationDistrict', $inputs['District']);
+                    }
+                    if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
+                    {
+                        $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
+                        if ($inputs['PropertyFor'] == 'Sale'){
+                            $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
+                            $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
+                        }elseif($inputs['PropertyFor'] == 'Rent'){
+                            $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
+                            $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+                        }
+                    }else{
+                        $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+                    }
+                    $this->db->order_by('PropertyId','desc');
+                    $query = $this->db->get();
+                    // printme($this->db->last_query());
+                    // printme($query->result());exit();
+                    if ($query->num_rows >0)
+                    {
+                        $results = array(
+                          'results' => $query->result(),
+                          'totalResults' => $query->num_rows
+                          );
+                        // printme($results);exit();
+                        return $results;
+                    }else{
+                        return false; 
+                    }
                 }
             }
-            if ($inputs['lob'] != '' || $inputs['lob'] != 0){
-                $this->db->where('LineofBusinessFK', $inputs['lob']);
-            }
-            if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
-                $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
-            }
-            if ($inputs['City'] != '' || $inputs['City'] != 0)
-            {
-                $this->db->where('LocationCity', $inputs['City']);
-            }
-            if ($inputs['District'] != '' || $inputs['District'] != 0)
-            {
-                $this->db->where('LocationDistrict', $inputs['District']);
-            }
-            if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
-            {
-                $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
-            }else{
-                $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
-            }
-            $this->db->order_by('PropertyId','desc');
-            $query = $this->db->get();
-            // printme($this->db->last_query());
-            // printme($query->result());exit();
-            if ($query->num_rows >0)
-            {
-                $results = array(
-                  'results' => $query->result(),
-                  'totalResults' => $query->num_rows
-                  );
-                // printme($results);exit();
-                return $results;
-            }else{
-                return false; 
-            }
+            
         }
     }
 

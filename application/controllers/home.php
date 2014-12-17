@@ -600,6 +600,7 @@ class Home extends CI_Controller {
 		// $this->load->model('service');
 		$data['districts'] = $this->database->getAllDistricts();
 		$flag = false;
+		$generalFlag = false;
 		if (isset($data['loggedIn'])){
 			$data['userFavorites'] = $this->user->getUserFavorites($data['user']->id);
 			if(is_array($data['userFavorites'])){
@@ -650,7 +651,12 @@ class Home extends CI_Controller {
 				}
 				break;
 			}elseif ($value[0] == 'lob'){
-				$lob = $value[1];
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					$lob = '';
+				}else{
+					$lob = $value[1];
+				}
 			}elseif($value[0] == 'city'){
 				if ($value[1] == 0 || $value[1] == '')
 				{
@@ -676,7 +682,7 @@ class Home extends CI_Controller {
 					$type = $this->database->getPropertyTypeByID($value[1]);
 				}
 			}elseif($value[0] == 'contractType'){
-				if ($value[1]  == '')
+				if ($value[1]  == '' || $value[1]  == 0)
 				{
 					$propertyFor = '';
 				}else{
@@ -687,7 +693,7 @@ class Home extends CI_Controller {
 				if (count($price) == 1)
 				{
 					$priceLowerLimit = $price[0];
-					$priceUpperLimit = 1000000000000000000;
+					$priceUpperLimit = 1000000000000000000000000;
 					// printme($priceLowerLimit);
 					// printme($priceUpperLimit);
 				}else{
@@ -704,10 +710,10 @@ class Home extends CI_Controller {
 						$areaUpperLimit = 50;
 					}elseif ($area[0] == '%3E500') {
 						$areaLowerLimit = 500;
-						$areaUpperLimit = 1000000000000000000;
+						$areaUpperLimit = 10000000000000000000000000;
 					}elseif($area[0] == 0){
 						$areaLowerLimit = 0;
-						$areaUpperLimit = 1000000000000000000;
+						$areaUpperLimit = 10000000000000000000000000;
 					}
 				}else{
 					$areaLowerLimit = $area[0];
@@ -722,7 +728,12 @@ class Home extends CI_Controller {
 				}
 			}
 		}
-		// printme($flag);
+
+		if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '')
+		{
+			$generalFlag = true;
+		}
+		
 		if ($flag == false){
 			$searchParams = array(
 				'lob' => $lob,
@@ -734,9 +745,10 @@ class Home extends CI_Controller {
 				'PriceLowerLimit' => $priceLowerLimit,
 				'PriceUpperLimit' => $priceUpperLimit,
 				'AreaLowerLimit' => $areaLowerLimit,
-				'AreaUpperLimit' => $areaUpperLimit
+				'AreaUpperLimit' => $areaUpperLimit,
+				'generalFlag' => $generalFlag
 			);
-
+			// printme($searchParams);exit();
 			
 			$data['searchResults'] = $this->database->search($searchParams);
 			
