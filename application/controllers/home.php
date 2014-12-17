@@ -598,7 +598,8 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		// $this->load->model('service');
-		$data['districts'] = $this->database->getAllDistricts();
+		// $data['districts'] = $this->database->getAllDistricts();
+		// printme($data['districts']);exit();
 		$flag = false;
 		$generalFlag = false;
 		$districtFlag = false;
@@ -664,7 +665,10 @@ class Home extends CI_Controller {
 					$city = '';
 				}else{
 					$city = $this->database->getCityByID($value[1]);
+					$data['districts'] = $this->database->getDistricts($city[0]['id']);
 					$city = $city[0]['name'];
+					
+					// printme($data['districts']);exit();
 				}
 			}elseif($value[0] == 'district'){
 				// printme($value[1]);
@@ -792,7 +796,9 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
 		$data['cities'] = $this->database->getCities();
-		$data['districts'] = $this->database->getAllDistricts();
+		$data['districts'] = $this->database->getDistricts($_GET['city']);
+		// printme($_GET);exit();
+		// $data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
 		$data['uri'] = $data['uri'].'?'.$_SERVER['QUERY_STRING'];

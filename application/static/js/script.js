@@ -621,6 +621,7 @@ $(document).ready(function ()
 
 function favorites(propertyID, color)
 {
+  // alert('hi');
     var propertyID = propertyID;
     var url = $('#url').val();
     var userID = $('#userID').val();

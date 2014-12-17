@@ -161,7 +161,7 @@
                                </div>
                                 <select class="selectpicker" id="search_city_3" name="city" data-style="btn" data-title="Select City" data-size="5">
                                     <option value="0">Select City</option>
-                                    <option value="3">Greater Cairo</option>
+                                    <!-- <option value="3">Greater Cairo</option> -->
                                     <option value="3" <?php if(isset($_GET['city']) && $_GET['lob'] == 2 && $_GET['city'] == 3) echo 'selected="selected"'; ?>>Greater Cairo</option>
                                     <?php foreach ($cities as $city): ?>
                                       <?php 
