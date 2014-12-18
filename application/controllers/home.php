@@ -1516,7 +1516,23 @@ function resetpassword()
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
 		$data['phones'] = $this->office->getOfficePhones($_POST['id']);
-		// printme($data['phones']);exit();
+		$count1 = 0;
+		$count2 = 0;
+		$count3 = 0;
+		foreach ($data['phones']  as $key => $phone) {
+			if ($phone->category == 'residential')
+			{
+				$data['phonesResidential'][$count1] = $phone->phone;
+				$count1++;
+			}elseif ($phone->category == 'commercial') {
+				$data['phonesCommercial'][$count2] = $phone->phone;
+				$count2++;
+			}elseif ($phone->category == 'hotline') {
+				$data['phonesHotline'][$count3] = $phone->phone;
+				$count3++;
+			}
+		}
+		// printme(count($data['phones']));exit();
 		$this->load->view('displayOffice', $data);
 	}
 

@@ -23,8 +23,57 @@
 		<?php  echo $officeInfo->start_time;?> - <?php echo $officeInfo->end_time;?>
 		</div>
 	</div>
-	<?php //printme($phones); ?>
-	<?php foreach ($phones as $key => $phone): ?>
+	<?php // printme($phonesResidential);exit(); ?>
+	<?php if (isset($phonesResidential)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Residential)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesResidential as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php endif ?>
+	<?php if (isset($phonesCommercial)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Commercial)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesCommercial as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php endif ?>	
+	<?php if (isset($phonesHotline)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Commercial)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesHotline as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php endif ?>
+	
+<!-- 	<?php foreach ($phones as $key => $phone): ?>
 		<div class="row">
 			<div class="col-lg-4 offices_titles">
 				<?php echo $this->lang->line('offices_title4'); ?>   (<?php  echo $phone->category;?>)
@@ -33,7 +82,7 @@
 				<?php  printme($phone->phone);?>
 			</div>
 		</div> 
-	<?php endforeach ?>
+	<?php endforeach ?> -->
 	<div class="row">
 		<div class="col-lg-4 offices_titles">
 			Fax:
@@ -71,16 +120,66 @@
 	<?php  echo $officeInfo->start_time;?> - <?php echo $officeInfo->end_time;?>
 	</div>
 </div>
-<?php foreach ($phones as $key => $phone): ?>
-	<div class="row">
-		<div class="col-lg-4 offices_titles">
-			<?php echo $this->lang->line('offices_title4'); ?>   <?php  echo $phone->category;?>
+
+<?php if (isset($phonesResidential)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Residential)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesResidential as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
 		</div>
-		<div class="col-lg-8">
-			<?php  printme($phone->phone);?>
+	<?php endif ?>
+	<?php if (isset($phonesCommercial)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Commercial)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesCommercial as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
 		</div>
-	</div> 
-<?php endforeach ?>
+	<?php endif ?>	
+	<?php if (isset($phonesHotline)): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>  (Commercial)
+			</div>
+			<div class="col-lg-8">
+				<?php foreach ($phonesHotline as $key => $phone): ?>
+					<?php if ($key == 0): ?>
+						<span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php else: ?>
+						 / <span style="font-size: 120%;"><?php  echo $phone;?></span>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php endif ?>
+
+<!-- 	<?php foreach ($phones as $key => $phone): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>   <?php  echo $phone->category;?>
+			</div>
+			<div class="col-lg-8">
+				<?php  printme($phone->phone);?>
+			</div>
+		</div> 
+	<?php endforeach ?> -->
 <div class="row">
 	<div class="col-lg-4 offices_titles">
 		الفاكس:
