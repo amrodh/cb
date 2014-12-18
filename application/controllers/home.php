@@ -1363,7 +1363,7 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$this->load->model('office');
-		$this->load->model('user');
+		// $this->load->model('user');
 		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
 		$data['districts'] = $this->database->getAllDistricts();
@@ -1515,6 +1515,8 @@ function resetpassword()
 		$data['currentLang'] = $_POST['lang'];
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
+		$data['phones'] = $this->office->getOfficePhones($_POST['id']);
+		// printme($data['phones']);exit();
 		$this->load->view('displayOffice', $data);
 	}
 

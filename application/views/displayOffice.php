@@ -1,4 +1,4 @@
-<?php if ($currentLang == 'en'): ?>
+<?php if ($currentLang != 'ar'): ?>
 	<div class="row">
 		<div class="col-lg-4 offices_titles">
 			<?php echo $this->lang->line('offices_title1'); ?>
@@ -23,14 +23,25 @@
 		<?php  echo $officeInfo->start_time;?> - <?php echo $officeInfo->end_time;?>
 		</div>
 	</div>
+	<?php //printme($phones); ?>
+	<?php foreach ($phones as $key => $phone): ?>
+		<div class="row">
+			<div class="col-lg-4 offices_titles">
+				<?php echo $this->lang->line('offices_title4'); ?>   (<?php  echo $phone->category;?>)
+			</div>
+			<div class="col-lg-8">
+				<?php  printme($phone->phone);?>
+			</div>
+		</div> 
+	<?php endforeach ?>
 	<div class="row">
 		<div class="col-lg-4 offices_titles">
-			<?php echo $this->lang->line('offices_title4'); ?>
+			Fax:
 		</div>
 		<div class="col-lg-8">
-			<?php  printme($officeInfo->phone);?>
+			<?php  printme($officeInfo->fax);?>
 		</div>
-	</div>
+	</div> 
 <?php else: ?>
 
 <div class="row">
@@ -60,7 +71,25 @@
 	<?php  echo $officeInfo->start_time;?> - <?php echo $officeInfo->end_time;?>
 	</div>
 </div>
+<?php foreach ($phones as $key => $phone): ?>
+	<div class="row">
+		<div class="col-lg-4 offices_titles">
+			<?php echo $this->lang->line('offices_title4'); ?>   <?php  echo $phone->category;?>
+		</div>
+		<div class="col-lg-8">
+			<?php  printme($phone->phone);?>
+		</div>
+	</div> 
+<?php endforeach ?>
 <div class="row">
+	<div class="col-lg-4 offices_titles">
+		الفاكس:
+	</div>
+	<div class="col-lg-8">
+		<?php  printme($officeInfo->fax);?>
+	</div>
+</div> 
+<!-- <div class="row">
 	<div class="col-lg-4 offices_titles" style="text-align: right;">
 		<?php //echo $this->lang->line('offices_title4'); ?>
 		رقم التليفون:
@@ -68,7 +97,7 @@
 	<div class="col-lg-8" style="text-align: right;">
 		<?php  printme($officeInfo->phone);?>
 	</div>
-</div>
+</div> -->
 
 <?php endif ?>
 

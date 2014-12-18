@@ -24,11 +24,11 @@
                         <td><?php echo $office->address_en; ?></td>
                         <td><?php echo $office->address_ar; ?></td>
                       </tr>
-                      <tr>
+                     <!--  <tr>
                         <td >Phone:</td>
                         <td ><?php echo $office->phone; ?></td>
                         <td></td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td >Longitude:</td>
                         <td ><?php echo $office->longitude; ?></td>

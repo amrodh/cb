@@ -72,8 +72,17 @@
 
                       <tr>
                        <td>Phone</td>
+                       <td><select id="phone_category" name="phone_category_1" class="phone_category"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="hotline">Hotline</option></select></td>
                        <td>
-                         <input type="text" name="phone" value="<?php if(isset($params)) echo $params['phone']; ?>" required>
+                         <input type="text" name="phones[]" value="<?php if(isset($params)) echo $params['phone']; ?>" required>
+                       </td><td><input type="button" id="add_more_nums" class="upload" value="Add More Numbers"/></td><!-- <td></td> -->
+                      </tr>
+                      <input type="hidden" name="count" id="count" value="2">
+
+                      <tr id="tr_fax">
+                       <td>Fax</td>
+                       <td>
+                         <input type="text" name="fax" value="<?php if(isset($params)) echo $params['fax']; ?>" required>
                        </td><td></td><td></td>
                       </tr>
 
@@ -136,9 +145,10 @@
                      
                     </tbody>
                   </table>
+                  <input type="hidden" id="phone_categories" name="phone_categories" value="">
                   </form>
                   
-                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                  <input type="submit" name="submit" class="btn btn-primary" value="Submit" id="office_submit">
                 </div>
                
               </div>

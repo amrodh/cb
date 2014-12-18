@@ -19,6 +19,27 @@ $('[name="bannerspreview"]').click(function(event) {
 	// alert(neighborhoods);return;
 });
 
+
+$('#add_more_nums').click(function(event) {
+	var count = $('#count').val();
+	$('#tr_fax').before($('<tr><td>Phone'+count+'</td><td><select id="phone_category" name="phone_category_' + count + '" class="phone_category"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="hotline">Hotline</option></select></td><td id="td_phone"><input type="text" id="phones" name="phones[]"></td></tr>', {
+	    id: 'phonediv'
+	    })).fadeIn('slow');
+	count = parseInt(count) +1;
+	$('#count').val(count);
+});
+
+$('#office_submit').click(function(event) {
+	var phone_categories = [];
+	$('.phone_category').each(function(index, el) {
+		phone_categories[index] = $(this).val();
+	});
+	$('[name="phone_categories"]').val(phone_categories);
+	// alert(phone_categories);return;
+});
+
+
+
 var abc = 0; 
 
 $('#add_more').click(function() {

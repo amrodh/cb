@@ -110,8 +110,36 @@ class office extends CI_Model {
           return false;
         }
 
-        return true;
+        return $this->db->insert_id();
 
+   }
+
+   function insertPhones($phones, $categories, $id)
+   {
+      foreach ($phones as $key => $phone) {
+          $params = array(
+            'office_id' => $id,
+            'category' => $categories[$key],
+            'phone' => $phone
+            );
+
+          $query = $this->db->insert_string('office_phone', $params);
+          $query = $this->db->query($query);
+      }
+   }
+
+   function getOfficePhones($id)
+   {
+      $q = $this
+              ->db
+              ->where('office_id', $id)
+              ->get('office_phone');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
    }
 
 

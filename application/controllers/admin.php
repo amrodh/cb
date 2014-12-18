@@ -739,11 +739,31 @@ class Admin extends CI_Controller {
 		$data = $this->init();
 		if(isset($_POST['submit']))
 		{
-			$data['params'] = $_POST;
-			unset($_POST['submit']);
-			$insert = $this->office->insertOffice($_POST);
+			// printme($_POST);exit();
+				$categories = explode(',', $_POST['phone_categories']);
+				$data['params'] = $_POST;
+				$params = array(
+					'district_en' => $_POST['district_en'],
+					'district_ar' => $_POST['district_ar'],
+					'address_en' => $_POST['address_en'],
+					'address_ar' => $_POST['address_ar'],
+					'start_time' => $_POST['start_time'], 
+					'end_time' => $_POST['end_time'],
+					'latitude' => $_POST['latitude'],
+					'longitude' => $_POST['longitude'],
+					'fax' => $_POST['fax']
+					);
+				unset($_POST['submit']);
+				$insert = $this->office->insertOffice($params);
+				// printme($insert);exit();
+				$this->office->insertPhones($_POST['phones'], $categories, $insert);
+				redirect('admin/offices/'.$insert);
+				// printme($categories);exit();
+			
+			
+			
 
-			redirect('admin/offices/'.$this->db->insert_id());
+			
 		}
 		$this->load->view('admin/newoffice', $data);
 	}

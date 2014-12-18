@@ -372,6 +372,7 @@ $(document).ready(function ()
                 var url = $("#url").val();
                 url = url + "displayOffice";
                 var lang = $("[name='language']").val();
+                // alert(lang);
                 id = $(this).val();
                 $.ajax({
                     type: "POST",
