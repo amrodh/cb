@@ -797,7 +797,11 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
 		$data['cities'] = $this->database->getCities();
-		$data['districts'] = $this->database->getDistricts($_GET['city']);
+		if (isset($_GET['city']))
+		{
+			$data['districts'] = $this->database->getDistricts($_GET['city']);
+		}
+		
 		// printme($_GET);exit();
 		// $data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
