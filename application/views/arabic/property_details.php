@@ -100,7 +100,7 @@
                             </div>
                             <div id="property_description_content">
                                 <div class="row" style="margin-left: 0;">
-                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle1'); ?> </b> <?php echo $searchResults->UnitId;?>
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle1'); ?> </b> <?php echo $searchResults->PropertyId;?>
                                 </div>
                                 <div class="row" style="margin-left: 0;">
                                     <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle2'); ?> </b> <?php echo $searchResults->PrpertyTypeStr;?>
