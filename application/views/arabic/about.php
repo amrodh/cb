@@ -4,7 +4,7 @@
             <?php echo $this->lang->line('about_title'); ?>
             <div id="about_breadcrumb">
                 <ol class="breadcrumb breadcrumb_styling">
-                    <li><a href="http://localhost/ColdwellBanker"><?php echo $this->lang->line('about_breadcrumb1'); ?></a></li>
+                    <li><a href="<?= base_url();?>ar"><?php echo $this->lang->line('about_breadcrumb1'); ?></a></li>
                     <li class="active"><?php echo $this->lang->line('about_breadcrumb2'); ?></li>
                 </ol>
             </div>

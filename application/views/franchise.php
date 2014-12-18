@@ -5,7 +5,7 @@
             FRANCHISE
             <div id="about_breadcrumb">
                 <ol class="breadcrumb breadcrumb_styling">
-                    <li><a href="http://localhost/ColdwellBanker">Coldwell Banker Home</a></li>
+                    <li><a href="<?= base_url();?>">Coldwell Banker Home</a></li>
                     <li class="active">Franchise</li>
                 </ol>
             </div>

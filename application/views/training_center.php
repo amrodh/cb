@@ -4,7 +4,7 @@
             <?php echo $this->lang->line('trainingcenter_title'); ?>
             <div id="training_breadcrumb">
                 <ol class="breadcrumb breadcrumb_styling">
-                    <li><a href="http://localhost/ColdwellBanker"><?php echo $this->lang->line('trainingcenter_breadcrumb1'); ?></a></li>
+                    <li><a href="<?= base_url();?>"><?php echo $this->lang->line('trainingcenter_breadcrumb1'); ?></a></li>
                     <li class="active"><?php echo $this->lang->line('trainingcenter_breadcrumb2'); ?></li>
                 </ol>
             </div>
