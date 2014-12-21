@@ -75,7 +75,7 @@
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                             <div class="properties_img">
-                                                                <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                             </div>
                                                             <div class="properties_number">
                                                                 <?php echo $count; ?>
@@ -137,10 +137,10 @@
                                                                 </div>
                                                                 <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                     <div class="row" style="margin: auto;width:46%;">
-                                                                        <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
+                                                                        <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                     </div>
                                                                     <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=base_url(); ?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
                                                                         <script>
                                                                         !function(d,s,id)
                                                                         {
@@ -200,7 +200,7 @@
                                                                                 <?php endif ?>
                                                                                 <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                                     <div class="properties_img">
-                                                                        <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                     </div>
                                                                     <div class="properties_number">
                                                                         <?php echo $count; ?>
@@ -239,7 +239,7 @@
                                                                     <div class="properties_details_div">
                                                                         <div class="btn-group properties_details_btns_div">
                                                                             <button type="button" class="btn btn-default properties_btns">
-                                                                                <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>">
+                                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
                                                                                     <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                                                     <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                                                 </a>
