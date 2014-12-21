@@ -2,7 +2,7 @@
     <div id="search_header">
         <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
            <!-- <li class="active"><a href="#home" data-toggle="tab"><?php echo $this->lang->line('search_tab1'); ?></a></li> -->
-          <li <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'class="active"'; ?> <?php if(isset($_GET) && $_GET['lob'] == 0) echo 'class="active"'; ?>>
+          <li <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'class="active"'; ?> <?php if(isset($_GET['lob']) && $_GET['lob'] == 0) echo 'class="active"'; ?>>
               <a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a>
           </li>
           <li <?php if(isset($_GET['lob']) && $_GET['lob'] == 2) echo 'class="active"'; ?>>
@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="tab-content search_body">
-        <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'active'; ?> <?php if(isset($_GET) && $_GET['lob'] == 0) echo 'active'; ?>" id="residentials">
+        <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'active'; ?> <?php if(isset($_GET['lob']) && $_GET['lob'] == 0) echo 'active'; ?>" id="residentials">
             <form id="search_form3" role="form" name="searchForm3" method="get" action="<?php echo base_url();?>en/viewAllProperties">
                 <!-- <input type="hidden" name="districtName" value=""> -->
                 <input type="hidden" name="lob" id="lob" value="1">
