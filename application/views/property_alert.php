@@ -1,10 +1,9 @@
 <div style="width: 100%;">
-    <!-- <form id="property_alert_form"> -->
         <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
                 <li class="active">
                     <a href="#alert" data-toggle="tab" style="color:#eb7f00!important;">
-                        <span style="color:#eb7f00;" id"notifier"><b>
+                        <span style="color:#eb7f00;" id="notifier">
                             <span class="glyphicon glyphicon-bell"></span>
                         </span>
                         <?php echo $this->lang->line('propertyalert_title'); ?>
@@ -22,9 +21,11 @@
                             </div>
                             <select class="selectpicker" id="propertyAlert_city" name="alert_city" data-style="btn" data-title="Select City" data-size="5">
                                 <option value="0">Select City</option>
-                                <?php foreach ($cities as $city): ?>
+                                <?php if (isset($cities)): ?>
+                                  <?php foreach ($cities as $city): ?>
                                     <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
-                                <?php endforeach ?>
+                                  <?php endforeach ?>
+                                <?php endif ?>
                             </select>
                        </div>
                        <div id="districtContainer_4">
@@ -37,9 +38,6 @@
                               <option>Select District</option> 
                            </select>
                        </div>
-                       <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
-                           
-                       </div> -->
                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="property_alert_col_title title_margin">
                                <?php echo $this->lang->line('propertyalert_subtitle8'); ?>
@@ -77,9 +75,6 @@
                                 <option value="0">Select Contract Type</option> 
                                 <option value="1">Sale</option>
                                 <option value="2">Rent</option>
-                               <!--  <?php foreach ($serviceTypes as $type): ?>
-                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
-                                <?php endforeach ?> -->
                            </select>
                        </div>
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
@@ -132,10 +127,4 @@
                 </div>
             </div>
         </div>
-    <!-- </form> -->
     </div>
-    <script>
-//        $(function () {
-//          $('#search_tabs a:first').tab('show');
-//        });
-    </script>

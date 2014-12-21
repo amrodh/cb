@@ -1,21 +1,17 @@
-<?php //printme($title); ?>
-<?php if ($title == 'ColdWell Banker | Home'): ?>
-    <div class="container" id="footer_div" style="margin-top: 48%">
-<?php else: ?>
-    <div class="container" id="footer_div" style="margin-top: 16%">
-<?php endif ?>
+    <div class="container" id="footer_div" style="">
+
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
-                    <a href="http://newhomes.com.eg/"><img style="width:112px;" src="<?= base_url(); ?>application/static/images/logo_newhomes.jpg"/></a>
+                    <a href="http://newhomes.com.eg/"><img alt="" style="width:112px;" src="<?= base_url(); ?>application/static/images/logo_newhomes.jpg"/></a>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <div class="footer_col_title">
                         <?php echo $this->lang->line('home_menu1'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&type=&city=&district=&contractType=Sale&price=0&area=0&project="><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
                        <!--  <a href="<?= base_url().'en/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a> -->
-                        <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&type=&city=&district=&contractType=Rent&price=0&area=0&project="><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
+                        <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -23,8 +19,8 @@
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
                     <div class="footer_col_content">
-                        <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Sale&price=0&area=0&project="><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
-                        <a href="<?=base_url();?>en/viewAllProperties?lob=2&type=&city=&district=&contractType=Rent&price=0&area=0&project="><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
+                        <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
+                        <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -42,21 +38,21 @@
                         <?php echo $this->lang->line('home_menu7'); ?>
                     </div>
                     <div id="bottom_div">
-                        <img class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_twitter.png">
-                        <img class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_fb.png">
-                        <img class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_gmail.png">
-                        <img class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_linkedin.png"> 
+                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_twitter.png">
+                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_fb.png">
+                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_gmail.png">
+                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_linkedin.png"> 
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">
-                    <img style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
+                    <img alt="" style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
                     <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 18px;">
                         <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
                     </div>
                     <div style="margin-top: -15px;">
                     16223 
                     </div>
-                    <!--<a href="http://newhomes.com.eg/"><img style="margin-top: 19px;" src="http://localhost/ColdwellBanker/images/logo_newhomes.png"/></a>-->
+            
                 </div>
             </div>
             <div class="row">
@@ -113,13 +109,13 @@
                     </div>
                 </div>
             </div>
-                <div id="footer_dropdown1_data"style="">
+                <div id="footer_dropdown1_data" style="">
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
                         <?php //printme($item); ?>
-                        <!-- ?lob=1&type=villa&city=&district=<?=$item['name'];?>&contractType=&price=0&area=0 -->
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&type=10&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
+                        <!-- ?lob=1&amp;type=villa&amp;city=&amp;district=<?=$item['name'];?>&amp;contractType=&amp;price=0&amp;area=0 -->
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=10&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>
@@ -127,7 +123,7 @@
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&type=1&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=1&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>
@@ -135,7 +131,7 @@
                     <b>By District</b><br>
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
-                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=2&type=11&city=&district=<?=$item['id'];?>&contractType=&price=0&area=0"> <?= $item['name']; ?></a> . 
+                           <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=2&amp;type=11&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
                 </div>
@@ -157,7 +153,7 @@
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
         <!--<script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.uploadify.min.js"></script>-->
@@ -188,7 +184,7 @@
               });
         </script>
         
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;callback=initialize"></script>
         
         <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
 </body>
