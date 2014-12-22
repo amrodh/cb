@@ -69,14 +69,14 @@ $(document).ready(function ()
       });
 
             //alert(document.title);
-           if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
-               {
-                   $('#footer_div').css('margin-top' , '190px');
-               }
-            if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
-            {
-                 $('#footer_div').css('margin-top' , '30px');
-            }
+           // if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
+           //     {
+           //         $('#footer_div').css('margin-top' , '190px');
+           //     }
+           //  if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
+           //  {
+           //       $('#footer_div').css('margin-top' , '30px');
+           //  }
            $('.selectpicker').selectpicker();
 
 

@@ -1,8 +1,8 @@
-<?php if ($title == 'ColdWell Banker | Home'): ?>
+<!--  <?php if ($title == 'ColdWell Banker | Home'): ?>
     <div class="container" id="footer_div" style="margin-top: 48%">
 <?php else: ?>
     <div class="container" id="footer_div" style="margin-top: 16%">
-<?php endif ?>
+<?php endif ?> -->
         
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
