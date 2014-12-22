@@ -22,7 +22,6 @@ class Home extends CI_Controller {
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
-		// printme($data['districts'] );exit();
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 
 
@@ -801,9 +800,6 @@ class Home extends CI_Controller {
 		{
 			$data['districts'] = $this->database->getDistricts($_GET['city']);
 		}
-		
-		// printme($_GET);exit();
-		// $data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);
 		$data['uri'] = $data['uri'].'?'.$_SERVER['QUERY_STRING'];
@@ -890,7 +886,9 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Careers';
+		$data['cities'] = $this->database->getCities();
 		$data['districts'] = $this->database->getAllDistricts();
+		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 		$this->load->view($data['languagePath'].'careers',$data);
 	}
 

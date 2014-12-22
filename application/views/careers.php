@@ -34,4 +34,5 @@
             <?php include 'property_alert.php'; ?>
         </div>
     </div>
+
         <?php include('footer.php'); ?>
