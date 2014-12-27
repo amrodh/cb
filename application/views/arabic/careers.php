@@ -36,4 +36,6 @@
         <!-- <script src="http://localhost/ColdwellBanker/js/bootstrap-select.min.js"></script>
         // <script src="http://localhost/ColdwellBanker/js/script.js"></script> -->
     </div>
+    <div style="margin-top:16%;">
     <?php include('footer.php'); ?>
+    </div>

@@ -45,8 +45,8 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">
-                    <img alt="" style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
-                    <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 18px;">
+                    <img alt="" style="margin-top: -20px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
+                    <div class="footer_col_title" style="margin-top: -52px;margin-left: 35px;font-size: 18px;">
                         <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
                     </div>
                     <div style="margin-top: -15px;">
@@ -114,7 +114,6 @@
                     <div class="row" style="color: white;margin-top:2%;padding:1%;">
                         <p><?php foreach ($districts as $item): ?>
                         <?php //printme($item); ?>
-                        <!-- ?lob=1&amp;type=villa&amp;city=&amp;district=<?=$item['name'];?>&amp;contractType=&amp;price=0&amp;area=0 -->
                            <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=10&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
                         <?php endforeach ?></p>
                     </div>
@@ -145,18 +144,14 @@
         <input type="hidden" name="currentLanguage" id="currentLanguage" value="<?=$language?>">
         </body>
 
-
-      
-        <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.bxslider.min.js" ></script>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <!--<script type="text/javascript" src="<?= base_url();?>application/static/js/jquery.uploadify.min.js"></script>-->
         <script>
             $(document).ready(function() {
                 $('.bxslider').bxSlider({

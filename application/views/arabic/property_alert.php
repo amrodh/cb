@@ -1,6 +1,4 @@
-<div style="width: 100%;">
-    <!-- <form id="property_alert_form"> -->
-        <div id="property_alert_header">
+      <div id="property_alert_header">
             <ul class="nav nav-tabs nav-justified property_alert_box" id="property_alert_tabs">
                <li class="active">
                   <a href="#alert" data-toggle="tab" style="color:#eb7f00!important;">
@@ -48,16 +46,6 @@
                                 <?php endforeach ?>
                            </select>
                        </div>
-                       <!-- <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
-                           <div class="property_alert_col_title title_margin">
-                               <?php echo $this->lang->line('propertyalert_subtitle3'); ?>
-                           </div>
-                           <select class="selectpicker" data-style="btn" data-title="Select Type">
-                                <option value="0">إختار نوع العقد</option> 
-                                <option value="Sale">بيع</option>
-                                <option value="Rent">إيجار</option>
-                           </select>
-                       </div> -->
                        <?php if (!isset($loggedIn)): ?>
                          <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                             <div class="property_alert_col_title title_margin">
@@ -67,10 +55,11 @@
                         </div>
                         <?php endif ?>
                    </div>
-                    <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit" style="position: absolute; margin-right: 71.5%;">إرسال</button>
+                    <!-- <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit" style="position: absolute; margin-right: 71.5%;">إرسال</button> -->
                     <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 23%; float: right;margin-right: 0px;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span id="caret" class="caret"></span>
                     </div>
+                    <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit propertyAlertButton" style="position: absolute;margin-left: 71.5%;margin-top: 17px;">إرسال</button>
                 </div>
                 <div class="container property_alert_components">
                     <div class="row property_alert_bottom_row">
@@ -81,8 +70,8 @@
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Type">
                                 <option value="0">إختار نوع العقد</option> 
-                                <option value="Sale">بيع</option>
-                                <option value="Rent">إيجار</option>
+                                <option value="1">بيع</option>
+                                <option value="2">إيجار</option>
                            </select>
                         </div>
                         <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
@@ -106,12 +95,12 @@
                            </div>
                            <select class="selectpicker" data-style="btn" data-title="Select Price">
                                 <option>إختار المساحة</option>
-                                <option value="<50"> &#60;50 <sup>2</sup></option>
-                                <option value="100 - 200">100 - 200 m<sup>2</sup></option>
-                                <option value="200 - 300">200 - 300 m<sup>2</sup></option>
-                                <option value="300 - 400">300 - 400 m<sup>2</sup></option>
-                                <option value="400 - 500">400 - 500 m<sup>2</sup></option>
-                                <option value=">500"> &#62;500 m<sup>2</sup></option>
+                                <option value="<50"> &#60;50 &sup2;</option>
+                                <option value="100 - 200">100 - 200 m&sup2;</option>
+                                <option value="200 - 300">200 - 300 m&sup2;</option>
+                                <option value="300 - 400">300 - 400 m&sup2;</option>
+                                <option value="400 - 500">400 - 500 m&sup2;</option>
+                                <option value=">500"> &#62;500 m&sup2;</option>
                                 
                            </select>
                        </div>
@@ -119,7 +108,7 @@
                    <input type="hidden" id="tmp__nm" value="<?php if(isset($loggedIn)) echo $user->username; ?>">
                     <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                         <div class="col-lg-12">
-                             <button type="submit" class="btn btn-default property_alert_btn_submit2 propertyAlertButton"><?php echo $this->lang->line('propertyalert_button'); ?></button>
+                             <button type="button" class="btn btn-default property_alert_btn_submit2 propertyAlertButton"><?php echo $this->lang->line('propertyalert_button'); ?></button>
                         </div>
                     </div>
                     <div class="row" style="width: 52%;margin: auto;clear:both;">
@@ -135,5 +124,3 @@
                 </div>
             </div>
         </div>
-    <!-- </form> -->
-    </div>

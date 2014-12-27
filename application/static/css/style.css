@@ -196,6 +196,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 #middle_div > nav > div > ul > li > a{
     color: white;
     height: 99%;
+
     /*font-size: 15px;*/
     /*margin-right: 40px;*/
 }
@@ -203,6 +204,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
  #middle_div > nav > div > ul > li.open > a{
     background-color: white;
     color: #2f5081;
+    border-bottom: 3px solid white;
 }
 
 .a-dropdown{
@@ -341,7 +343,7 @@ color: white;
     font-size: 45px;
     font-weight: bold;
     color: white;
-    padding-top: 25px;
+    /*padding-top: 25px;*/
 }
 
 .footer_dropdown_div{
@@ -641,7 +643,7 @@ li.active>a{
 }
 
 .property_alert_body{
-    margin-bottom: 3%;
+    /*margin-bottom: 3%;*/
 }
 
 #alert_email{

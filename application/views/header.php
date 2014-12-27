@@ -90,7 +90,7 @@
         <?php if (isset($loginError)): ?>
             <input type="hidden" id="loginError" value="<?= $loginError; ?>">
         <?php endif ?>
-        <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate">
+        <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate" style="margin-bottom: 1%;">
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -129,7 +129,7 @@
                         <div class="col-lg-3" style="padding-top: 4%;">
                             <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
                         </div>
-                        <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
+                        <!-- <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>"> -->
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

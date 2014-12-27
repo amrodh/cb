@@ -30,9 +30,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            <?php include 'property_alert.php'; ?>
-        </div>
+        <?php include 'property_alert.php'; ?>
     </div>
-
-        <?php include('footer.php'); ?>
+<div style="margin-top:16%;">
+    <?php include('footer.php'); ?>
+    </div>
