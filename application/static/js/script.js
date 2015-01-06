@@ -389,6 +389,7 @@ $(document).ready(function ()
                             data: { id: id, lang: lang }
                           })
                             .success(function( html ) {
+                              // alert(html);
                                   $('#address').val(html);
                                   var address = html;
                                   $('#offices_map').css('height', '100%');
@@ -401,6 +402,8 @@ $(document).ready(function ()
                                             position: results[0].geometry.location
                                         });
                                       } else {
+                                        map.setCenter(results[0].geometry.location);
+                                        alert("Address not available on Map.");
                                         // alert('Geocode was not successful for the following reason: ' + status);
                                       }
                                     });

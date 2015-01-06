@@ -38,10 +38,18 @@
                         <?php echo $this->lang->line('home_menu7'); ?>
                     </div>
                     <div id="bottom_div">
-                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_twitter.png">
-                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_fb.png">
-                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_gmail.png">
-                        <img alt="" class="footer_social_icons" src="<?= base_url(); ?>application/static/images/icon_linkedin.png"> 
+                        <a href="http://www.twitter.com/CB_Egypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                        </a>
+                        <a href="https://www.facebook.com/ColdwellBankerEgypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+                        </a>
+                        <a href="http://www.youtube.com/user/ColdWellBankerEgypt1">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+                        </a>
+                        <a href="http://www.linkedin.com/company/coldwell-banker-egypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"> 
+                        </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">
