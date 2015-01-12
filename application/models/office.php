@@ -9,10 +9,6 @@ class office extends CI_Model {
         parent::__construct();
     }
 
-    
-
-    
-
      
     function getOffices()
     {
@@ -28,8 +24,6 @@ class office extends CI_Model {
            return false; 
 
     }
-
-
 
     function deleteOffice($id)
     {
@@ -140,6 +134,18 @@ class office extends CI_Model {
            } 
 
            return false; 
+   }
+
+   function getAllPhones()
+   {
+      $q = $this
+            ->db
+            ->get('office_phone');
+      if($q->num_rows >0){
+          return $q->result();
+      } 
+
+      return false; 
    }
 
 

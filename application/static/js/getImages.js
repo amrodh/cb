@@ -1,26 +1,8 @@
-// $(".propertyImages").each(function(){
-
-//     var image_src = $(this).find(".imagesList > li:nth-child(1) > img").attr('src');
-//     if(!image_src){
-//         var id = $(this).attr('id');
-//         var id = id.replace('img','');
-//         $('#'+id).attr('disabled','disabled');
-//         image_src = $("#url").val()+'/application/static/images/no_image.svg';
-//     }
-    
-//     var id = $(this).attr('id');
-//     var id = id.replace('img','');
-
-//     $("#image_"+id).attr('src',image_src);
-   
-// });
-
 $('.imgModal').click(function(event) {
         var propertyId = $(this).attr('id');
         var html_output ='';
         var image_count = 0;
         var flag = 1;
-
         var main_image_src = $("#image_"+propertyId).attr('src');
             $("#property_mainimage").attr('src', main_image_src);
 
@@ -30,7 +12,6 @@ $('.imgModal').click(function(event) {
 
        $("#img"+propertyId+" .imagesList li").each(function(){
             image_count++;
-
             if(image_count == 1){
                 html_output += '<div class="item active"><div class="row">';
             }
@@ -39,8 +20,7 @@ $('.imgModal').click(function(event) {
                 html_output += '<div class="item"><div class="row">';
                 flag = 1;
             }
-
-            html_output+= '<div class="property_thumbnail" style="margin-left:7%;"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></a></div>';
+            html_output+= "<div class='property_thumbnail' style='margin-left:7%;'><img src='"+$(this).find('img').attr('src')+"' alt='Image' class='img-responsive'></div>";
 
             if(image_count % 3 == 0 && flag == 1){
                 html_output += '</div></div>';
@@ -53,9 +33,11 @@ $('.imgModal').click(function(event) {
        }
 
        $("#carousal_div").html(html_output);
+       $.getScript($('#url').val()+"application/static/js/carousel.js");
     });
 
 $(".paginate_button").click(function() {
-   // alert('hi');
        $.getScript($('#url').val()+"application/static/js/getImages.js");
    });
+
+

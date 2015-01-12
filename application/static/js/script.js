@@ -785,6 +785,7 @@ if ($('.property_alert_bottom_row').css('display') == 'none')
                 {
                     
                     $('.property_alert_btn_submit2').animate({marginTop:"20px"});
+                    $('.property_alert_body').animate({marginBottom:"3%"});
                     $('#footer_div').animate({marginTop:"260px"});
                 }
             else 

@@ -8,7 +8,7 @@ $lang['offices_subtitle2']	= "Contact Us";
 $lang['offices_title1']	= "District:";
 $lang['offices_title2']	= "Address:";
 $lang['offices_title3']	= "Open Hours:";
-$lang['offices_title4']	= "Phone:";
+$lang['offices_title4']	= "Phone";
 
 $lang['offices_input1']	= "First Name:";
 $lang['offices_input2']	= "Last Name:";

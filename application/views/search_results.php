@@ -64,18 +64,19 @@
                                                             <ul class="imagesList">
                                                                 <?php foreach ($images[$result->PropertyId]['src'] as $key => $image): ?>
                                                                     <li>
-                                                                        <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                                                        <img src="<?= base_url();?>application/static/upload/property_images/<?= $image; ?>">
                                                                     </li>
                                                                 <?php endforeach ?>
                                                             </ul>
-                                                           <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
+                                                           <!--  <?php //$images[$result->PropertyId]['src']; 
+                                                           ?>  -->
                                                         </div>
                                                         <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
                                                         <div class="properties_number">
                                                             <?php echo $count; ?>
@@ -189,18 +190,18 @@
                                                             <ul class="imagesList">
                                                                 <?php foreach ($images[$result->PropertyId]['src'] as $key => $image): ?>
                                                                     <li>
-                                                                        <img src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>">
+                                                                        <img src="<?= base_url();?>application/static/upload/property_images/<?= $image; ?>">
                                                                     </li>
                                                                 <?php endforeach ?>
                                                             </ul>
-                                                            <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
+                                                            <!--  <?php  //$images[$result->PropertyId]['src']; ?>  -->
                                                         </div>
                                                         <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
                                                                     <?php echo $result->LocationProject; ?>,
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
                                                         <div class="properties_number">
                                                             <?php echo $count; ?>
@@ -418,7 +419,7 @@
 </div>
 
 
-<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<!-- <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script> -->
 <script>
 $(document).ready(function (){
 
@@ -440,28 +441,6 @@ $(document).ready(function (){
 
     // alert(addresses[0]);
      var addresses = ['Norway', 'Africa', 'Asia','North America','South America'];
-     // var geocoder;
-     //     var map;
-     //     geocoder = new google.maps.Geocoder();
-     //     var latlng = new google.maps.LatLng(0,0);
-     //     var mapOptions = {
-     //         zoom: 8,
-     //         center: latlng,
-     //         mapTypeId: google.maps.MapTypeId.ROADMAP
-     //     }
-     //     map = new google.maps.Map(document.getElementById('offices_map'), mapOptions);
-     //     var address = '53 shehab street, Mohandseen';
-     //     geocoder.geocode( { 'address': address}, function(results, status) {
-     //          if (status == google.maps.GeocoderStatus.OK) {
-     //            map.setCenter(results[0].geometry.location);
-     //            var marker = new google.maps.Marker({
-     //                map: map,
-     //                position: results[0].geometry.location
-     //            });
-     //          } else {
-     //            alert('Geocode was not successful for the following reason: ' + status);
-     //          }
-     //        });
 
     // var map;
     // var elevator;
@@ -490,13 +469,8 @@ $(document).ready(function (){
         var html_output ='';
         var image_count = 0;
         var flag = 1;
-
         var main_image_src = $("#image_"+propertyId).attr('src');
             $("#property_mainimage").attr('src', main_image_src);
-
-            $('.property_thumbnail > img').click(function (){
-               $('#property_mainimage').attr("src", $(this).attr("src"));
-            }) ;
 
        $("#img"+propertyId+" .imagesList li").each(function(){
             image_count++;
@@ -510,7 +484,7 @@ $(document).ready(function (){
                 flag = 1;
             }
 
-            html_output+= '<div class="property_thumbnail" style="margin-left:7%;"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></a></div>';
+            html_output+= '<div class="property_thumbnail" style="margin-left:7%;"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></div>';
 
             if(image_count % 3 == 0 && flag == 1){
                 html_output += '</div></div>';
@@ -523,8 +497,18 @@ $(document).ready(function (){
        }
 
        $("#carousal_div").html(html_output);
+       $.getScript($('#url').val()+"application/static/js/carousel.js");
     });
    
+    
+            // $('.property_thumbnail > img').click(function (){
+            //     // alert('hello1');
+            //    // $('#property_mainimage').attr("src", $(this).attr("src"));
+            //    alert($('#property_mainimage').attr("src"));
+            // }) ;
+
+
+
    $('.contact_button').click(function(event) {
         $('#propertyID').val($(this).attr('id'));
        // alert($('#propertyID').val());return;
@@ -553,12 +537,13 @@ $(document).ready(function (){
 
 
    $(".paginate_button").click(function() {
+    // alert('hi1');
        $.getScript($('#url').val()+"application/static/js/getImages.js");
    });
 
-   $(".imgModal").click(function(){
-        $.getScript($('#url').val()+"application/static/js/carousel.js");
-   });
+   // $(".imgModal").click(function(){
+        
+   // });
 
    $("#thead").css('display', 'none');
    $("#tfoot").css('display', 'none');

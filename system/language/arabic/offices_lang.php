@@ -7,7 +7,7 @@ $lang['offices_subtitle']	= "رجاءً إختر المنطقة";
 $lang['offices_title1']	= "المنطقة:";
 $lang['offices_title2']	= "العنوان:";
 $lang['offices_title3']	= "ساعات العمل:";
-$lang['offices_title4']	= "رقم الهاتف:";
+$lang['offices_title4']	= "رقم الهاتف";
 
 $lang['offices_input1']	= "الاسم الاول:";
 $lang['offices_input2']	= "إسم العائلة:";

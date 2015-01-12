@@ -4,7 +4,7 @@
             <?php echo $this->lang->line('offices_title'); ?>
             <div id="auctions_breadcrumb">
                 <ol class="breadcrumb breadcrumb_styling">
-                    <li><a href="http://localhost/ColdwellBanker"><?php echo $this->lang->line('offices_breadcrumb1'); ?></a></li>
+                    <li><a href="<?= base_url();?>"><?php echo $this->lang->line('offices_breadcrumb1'); ?></a></li>
                     <li class="active"><?php echo $this->lang->line('offices_breadcrumb2'); ?></li>
                 </ol>
             </div>
@@ -12,7 +12,7 @@
         <div id="auctions_bottom_div">
 	        <div class="row">
 				<div class="col-lg-12 offices_divs">
-					<div class="row" style="width: 100%;">
+					<!-- <div class="row" style="width: 100%;">
 						<div class="col-lg-6">
 							<div class="row" id="offices_selector">
 								<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle'); ?></p>
@@ -31,32 +31,32 @@
 						<div class="col-lg-6" id="offices_map">
 
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-6">
 							<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle2'); ?></p>
 							<form role="form" action="" method="post">
 								<div class="form-group" style="width:100%;">
 			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
+			                        	<div class="col-lg-12">
 				                            <label for="contact_firstName"><?php echo $this->lang->line('offices_input1'); ?></label>
 				                            <input type="text" class="form-control" name="contact_firstName" id="contact_firstName" placeholder="أدخل الإسم الأول">
 				                        </div>
 			                        </div>
 			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
+			                        	<div class="col-lg-12">
 				                            <label for="contact_lastName"><?php echo $this->lang->line('offices_input2'); ?></label>
 				                            <input type="text" class="form-control" name="contact_lastName" id="contact_lastName" placeholder="أدخل إسم العائلة">
 				                        </div>
 			                        </div>
 			                        <div class="row contact_form_row"> 
-			                        	<div class="col-lg-6">
+			                        	<div class="col-lg-12">
 				                        	<label for="contact_email"><?php echo $this->lang->line('offices_input3'); ?></label>
 				                        	<input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="أدخل البريد الالكتروني">
 				                        </div>
 			                        </div>
 			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-6">
+			                        	<div class="col-lg-12">
 				                        	<label for="contact_phone"><?php echo $this->lang->line('offices_input4'); ?></label>
 				                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="أدخل رقم الهاتف">
 				                        </div>
@@ -67,9 +67,9 @@
 				                        	<textarea class="form-control" name="contact_subject" id="contact_subject" rows="3"></textarea>
 				                        </div>
 			                        </div>
-			                        <div class="row">
-			                        	<div class="form-group" style="width: 10%; margin: auto;">
-                                            <input type="submit" style="margin-top: 0;margin-left: 0;" name="submit" class="btn btn-default property_btn" id="offices_contact_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
+			                        <div class="row" style="width: 38%;margin: auto;">
+			                        	<div class="form-group col-lg-12">
+                                            <input type="submit" name="submit" class="btn btn-default property_btn" id="offices_contact_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
 			                        </div>
 			                    </div>
@@ -90,6 +90,107 @@
                                 <?php endif ?>
                             <?php endif ?>
 						</div>
+						<div class="col-lg-6">
+							<div class="row" style="height: 60%;width: 100%;">
+								<div class="col-lg-12" id="offices_map" style="height: 100%;">
+
+								</div>
+							</div>
+							<div class="row">
+								<?php foreach ($offices as $key => $office): ?>
+									<h4><?php echo $office->district_ar; ?></h4>
+									<div class="row">
+										<div class="col-lg-4 offices_titles">
+											<?php echo $this->lang->line('offices_title2'); ?>
+										</div>
+										<div class="col-lg-8">
+										<?php echo $office->address_ar;?>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-4 offices_titles">
+											<?php echo $this->lang->line('offices_title3'); ?>
+										</div>
+										<div class="col-lg-8" style="">
+										<?php  echo $office->start_time;?> - <?php echo $office->end_time;?>
+										</div>
+									</div>
+									<?php if (isset($phonesResidential[$office->id])): ?>
+										<div class="row">
+											<div class="col-lg-4 offices_titles">
+												<?php echo $this->lang->line('offices_title4'); ?>  (سكني):
+											</div>
+											<div class="col-lg-8">
+												<?php foreach ($phonesResidential[$office->id] as $key => $phone): ?>
+													<?php if ($key == 0): ?>
+														<span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php else: ?>
+														 / <span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php endif ?>
+												<?php endforeach ?>
+											</div>
+										</div>
+									<?php endif ?>
+									<?php if (isset($phonesCommercial[$office->id])): ?>
+										<div class="row">
+											<div class="col-lg-4 offices_titles">
+												<?php echo $this->lang->line('offices_title4'); ?>  (تجاري):
+											</div>
+											<div class="col-lg-8">
+												<?php foreach ($phonesCommercial[$office->id] as $key => $phone): ?>
+													<?php if ($key == 0): ?>
+														<span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php else: ?>
+														 / <span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php endif ?>
+												<?php endforeach ?>
+											</div>
+										</div>
+									<?php endif ?>	
+									<?php if (isset($phonesHotline[$office->id])): ?>
+										<div class="row">
+											<div class="col-lg-4 offices_titles">
+												<?php echo $this->lang->line('offices_title4'); ?>  (الخط الساخن):
+											</div>
+											<div class="col-lg-8">
+												<?php foreach ($phonesHotline[$office->id] as $key => $phone): ?>
+													<?php if ($key == 0): ?>
+														<span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php else: ?>
+														 / <span style="direction: ltr;"><?php  echo $phone;?></span>
+													<?php endif ?>
+												<?php endforeach ?>
+											</div>
+										</div>
+									<?php endif ?>
+									<div class="row">
+										<div class="col-lg-4 offices_titles">
+											Fax:
+										</div>
+										<div class="col-lg-8">
+											<?php echo $office->fax;?>
+										</div>
+									</div> 
+								<?php endforeach ?>
+								<div class="hide">
+									<ul class="office_addresses">
+										<?php foreach ($offices as $key => $office): ?>
+												<li>
+													<?php if ($office->address_en == '116 & 118 Egy Build Road 90, New Cairo, Egypt'): ?>
+														<span>116 S El-Teseen St</span>
+													<?php else: ?>
+														<?php if ($office->address_en == '1,2 Hamis center, El Hay El Motamayez entrance, 6 October city'): ?>
+															<span>Madkhal Al Hay Al Motamez, 6th of October City, Giza</span>
+															<?php else: ?>
+																<span><?= $office->address_en?></span>
+														<?php endif ?>
+													<?php endif ?>
+												</li>
+										<?php endforeach ?>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -99,3 +200,47 @@
 	</div>
 	
 <?php include('footer.php') ?>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!-- <script src="../application/static/js/mapwithmarker.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		var map;
+		var elevator;
+		var myOptions = {
+		    zoom: 12,
+		    center: new google.maps.LatLng(30.0500, 31.2333),
+		    mapTypeId: 'terrain'
+		};
+		map = new google.maps.Map($('#offices_map')[0], myOptions);
+		var addresses = [];
+		var count = 0;
+		$('.office_addresses li').each(function(index, val) {
+			 addresses[count] = $(this).find('span').html();
+			 count = count +1;
+		});
+
+		var number;
+		for (var x = 0; x < addresses.length; x++) {
+			number = x + 1;
+		    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+		        var p = data.results[0].geometry.location
+		        var latlng = new google.maps.LatLng(p.lat, p.lng);
+		        // var marker = new MarkerWithLabel({
+		        //     position: latlng,
+		        //     map: map,
+		        //     labelContent: x,
+		        //     labelAnchor: new google.maps.Point(6, 35),
+		        //     labelClass: "labels", // the CSS class for the label
+		        //     labelInBackground: false
+		        //  });
+		        new google.maps.Marker({
+		            position: latlng,
+		            map: map, 
+		            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+number+'|FF0000|000000' 
+		        });
+
+		    });
+
+		}
+	}); 
+</script>

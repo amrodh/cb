@@ -24,6 +24,33 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 
+		// $inputs = array(
+  //             'searchMode' => 'Exact',
+  //             'Bedrooms' => '',
+  //             'PropertyId' => '',
+  //             'PropertyFor' => 3,
+  //             'PriceLowerLimit' => 0,
+  //             'PriceUpperLimit' => 1000000000000000000,
+  //             'PunitSale' => '',
+  //             'RentPriceLowerLimit' => 0,
+  //             'RentPriceUpperLimit' => 1000000000000000000,
+  //             'PunitRent' => '',
+  //             'AreaLowerLimit' => 0,
+  //             'AreaUpperLimit' => 1000000000000000000,
+  //             'PropertyType' => '',
+  //             'PropertyFor' => '',
+  //             'BoxLocation' => '',
+  //             'AreaUnitId' => '',
+  //             'CompanyId' => '',
+  //             'sortmode' => '',
+  //             'sortType' =>'1',
+  //             'isFeatured' => false,
+  //             'resultsCountPerPage' => '1300', 
+  //             'useFeaturedFilter' => false
+  //           );
+		// $this->load->model('service');
+		// $data['searchFunction'] = $this->service->search($inputs);
+		// exit();
 
 		// $this->load->model('cronjobs');
 		// $this->cronjobs->importPropertiesIntoDB();
@@ -735,9 +762,6 @@ class Home extends CI_Controller {
 			}
 		}
 
-		
-		
-
 		if ($districtFlag == false){
 			$district = '';
 		}
@@ -761,7 +785,10 @@ class Home extends CI_Controller {
 				'generalFlag' => $generalFlag
 			);
 			// printme($searchParams);exit();
-			
+			if ($lob == 2)
+			{
+				$data['commercial'] = true;
+			}
 			$data['searchResults'] = $this->database->search($searchParams);
 			
 			if ($data['searchResults']['totalResults'] > 0)
@@ -1361,9 +1388,90 @@ function resetpassword()
 	{
 		$data = $this->init();
 		$this->load->model('office');
-		// $this->load->model('user');
 		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
+		$data['phones'] = $this->office->getAllPhones();
+		// printme($data['offices']);exit();
+
+		$count1 = 0;
+		$count2 = 0;
+		$count3 = 0;
+		if(is_array($data['phones'])){
+			foreach ($data['phones']  as $key => $phone) {
+				if ($phone->category == 'residential')
+				{
+					$data['phonesResidential'][$phone->office_id][$count1] = $phone->phone;
+					$count1++;
+				}elseif ($phone->category == 'commercial') {
+					$data['phonesCommercial'][$phone->office_id][$count2] = $phone->phone;
+					$count2++;
+				}elseif ($phone->category == 'hotline') {
+					$data['phonesHotline'][$phone->office_id][$count3] = $phone->phone;
+					$count3++;
+				}
+			}
+		}
+		
+		if (isset($data['phonesResidential'])) {
+			foreach ($data['phonesResidential'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesResidential'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesResidential'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+		
+		if (isset($data['phonesCommercial']))
+		{
+			foreach ($data['phonesCommercial'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesCommercial'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesCommercial'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+		
+
+		if (isset($data['phonesHotline']))
+		{
+			foreach ($data['phonesHotline'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesHotline'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesHotline'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+
 		$data['districts'] = $this->database->getAllDistricts();
 
 		if (isset($_POST['submit']))

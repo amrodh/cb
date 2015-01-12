@@ -1,4 +1,3 @@
-<!-- <!DOCTYPE html> -->
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -129,7 +128,7 @@
                         <div class="col-lg-3" style="padding-top: 4%;">
                             <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
                         </div>
-                        <!-- <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>"> -->
+                        <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

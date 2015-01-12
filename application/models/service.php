@@ -77,7 +77,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '1300', 
+            'resultsCountPerPage' => '100', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
         
@@ -95,7 +95,7 @@ class service extends CI_Model {
             $data['results'] = '';
             $data['totalResults'] = $results->TotalResults;
         }
-        // printme($data);exit();
+        printme($data);exit();
         return $data;
     }
 
