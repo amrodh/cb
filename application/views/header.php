@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -19,17 +18,17 @@
     <body> 
         <div id="top_div">
             <div id="icons_div" class="hidden-xs hidden-sm">
-                <a href="">
-                    <img alt="" class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
+                <a href="http://www.linkedin.com/company/coldwell-banker-egypt">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
                 </a>
-                <a href="">
-                    <img alt="" class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+                <a href="http://www.youtube.com/user/ColdWellBankerEgypt1">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
                 </a>
-                <a href="">
-                    <img alt="" class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+                <a href="https://www.facebook.com/ColdwellBankerEgypt">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
                 </a>
-                <a href="">
-                    <img alt="" class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                <a href="http://www.twitter.com/CB_Egypt">
+                    <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
                 </a>
             </div>
 
@@ -90,7 +89,7 @@
         <?php if (isset($loginError)): ?>
             <input type="hidden" id="loginError" value="<?= $loginError; ?>">
         <?php endif ?>
-        <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate">
+        <form class="form-inline" role="form"  method="post" action="<?= base_url();?>authenticate" style="margin-bottom: 1%;">
             <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">

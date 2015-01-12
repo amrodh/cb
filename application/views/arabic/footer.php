@@ -1,9 +1,9 @@
-<?php if ($title == 'ColdWell Banker | Home'): ?>
+<!--  <?php if ($title == 'ColdWell Banker | Home'): ?>
     <div class="container" id="footer_div" style="margin-top: 48%">
 <?php else: ?>
-    <div class="container" id="footer_div" style="margin-top: 16%">
-<?php endif ?>
-        
+    
+<?php endif ?> -->
+        <div class="container" id="footer_div" style="">
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <a href="http://newhomes.com.eg/"><img style="width:112px;" src="<?= base_url();?>/application/static/images/logo_newhomes.jpg"/></a>
@@ -42,10 +42,18 @@
                         <?php echo $this->lang->line('home_menu7'); ?>
                     </div>
                     <div id="bottom_div">
-                        <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
-                        <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
-                        <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
-                        <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"> 
+                        <a href="http://www.twitter.com/CB_Egypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
+                        </a>
+                        <a href="https://www.facebook.com/ColdwellBankerEgypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
+                        </a>
+                        <a href="http://www.youtube.com/user/ColdWellBankerEgypt1">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
+                        </a>
+                        <a href="http://www.linkedin.com/company/coldwell-banker-egypt">
+                            <img class="footer_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"> 
+                        </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">

@@ -196,6 +196,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 #middle_div > nav > div > ul > li > a{
     color: white;
     height: 99%;
+
     /*font-size: 15px;*/
     /*margin-right: 40px;*/
 }
@@ -203,6 +204,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
  #middle_div > nav > div > ul > li.open > a{
     background-color: white;
     color: #2f5081;
+    border-bottom: 3px solid white;
 }
 
 .a-dropdown{
@@ -341,7 +343,7 @@ color: white;
     font-size: 45px;
     font-weight: bold;
     color: white;
-    padding-top: 25px;
+    /*padding-top: 25px;*/
 }
 
 .footer_dropdown_div{
@@ -640,9 +642,6 @@ li.active>a{
     padding: 30px 80px;
 }
 
-.property_alert_body{
-    margin-bottom: 3%;
-}
 
 #alert_email{
     width: 100%;
@@ -1976,7 +1975,7 @@ li.active>.training_anchor{
 
 .offices_titles{
     font-weight: bolder;
-    font-size: 125%;
+    /*font-size: 125%;*/
 }
 
 .contact_form_row{
@@ -2073,6 +2072,8 @@ li.active>.training_anchor{
 #propertiesIDs > tbody > tr> td{
     border: 3px solid black!important;
 }
+
+.labels { color: black; background-color: #FF8075; font-family: Arial; font-size: 11px; font-weight: bold; text-align: center; width: 12px; }
 
 @media only screen and (min-width: 1200px){
     .newsletter_cols{

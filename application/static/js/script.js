@@ -69,14 +69,14 @@ $(document).ready(function ()
       });
 
             //alert(document.title);
-           if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
-               {
-                   $('#footer_div').css('margin-top' , '190px');
-               }
-            if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
-            {
-                 $('#footer_div').css('margin-top' , '30px');
-            }
+           // if (document.title == "Properties" || document.title == "Market Index" || document.title == "Careers" || document.title == "Property Details") 
+           //     {
+           //         $('#footer_div').css('margin-top' , '190px');
+           //     }
+           //  if (document.title == 'Share Your Property' || document.title == 'User Registration' || document.title == 'Profile' || document.title == 'Auctions' || document.title == "Home Page")
+           //  {
+           //       $('#footer_div').css('margin-top' , '30px');
+           //  }
            $('.selectpicker').selectpicker();
 
 
@@ -389,6 +389,7 @@ $(document).ready(function ()
                             data: { id: id, lang: lang }
                           })
                             .success(function( html ) {
+                              // alert(html);
                                   $('#address').val(html);
                                   var address = html;
                                   $('#offices_map').css('height', '100%');
@@ -401,6 +402,8 @@ $(document).ready(function ()
                                             position: results[0].geometry.location
                                         });
                                       } else {
+                                        map.setCenter(results[0].geometry.location);
+                                        alert("Address not available on Map.");
                                         // alert('Geocode was not successful for the following reason: ' + status);
                                       }
                                     });
@@ -782,6 +785,7 @@ if ($('.property_alert_bottom_row').css('display') == 'none')
                 {
                     
                     $('.property_alert_btn_submit2').animate({marginTop:"20px"});
+                    $('.property_alert_body').animate({marginBottom:"3%"});
                     $('#footer_div').animate({marginTop:"260px"});
                 }
             else 

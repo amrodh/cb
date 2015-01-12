@@ -31,16 +31,16 @@
     <body> 
         <div id="top_div">
             <div id="icons_div" class="hidden-xs hidden-sm">
-                <a href="">
+                <a href="http://www.linkedin.com/company/coldwell-banker-egypt">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
                 </a>
-                <a href="">
+                <a href="http://www.youtube.com/user/ColdWellBankerEgypt1">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
                 </a>
-                <a href="">
+                <a href="https://www.facebook.com/ColdwellBankerEgypt">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
                 </a>
-                <a href="">
+                <a href="http://www.twitter.com/CB_Egypt">
                     <img class="header_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
                 </a>
             </div>

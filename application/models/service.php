@@ -7,24 +7,18 @@ class service extends CI_Model {
     function __construct()
     {   
         parent::__construct();
-
-        //printme(phpinfo());
         libxml_disable_entity_loader(false);
-        // echo phpinfo();
-        // exit();
         ini_set( "soap.wsdl_cache_enabled", "0" );
        
         
         $options = array( 
                 'exceptions'=>0, 
                 'trace'=>1,
-                //'connection_timeout'=>10000,
                 'cache_wsdl'=>WSDL_CACHE_NONE 
             ); 
         try {
             $this->client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
         } catch (Exception $e) {
-            //printme($e);
         }
         
     }
@@ -83,7 +77,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '1300', 
+            'resultsCountPerPage' => '100', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
         
@@ -101,7 +95,7 @@ class service extends CI_Model {
             $data['results'] = '';
             $data['totalResults'] = $results->TotalResults;
         }
-        // printme($data);exit();
+        printme($data);exit();
         return $data;
     }
 

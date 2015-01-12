@@ -136,7 +136,7 @@ class database extends CI_Model {
            return false; 
     }
 
-    function getDistrictID($name)
+    function getDistrictId($name)
     {
         $q = $this
           ->db
