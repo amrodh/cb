@@ -1,5 +1,4 @@
-    <div class="container" id="footer_div" style="">
-
+<div class="container" id="footer_div" style="">
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <a href="http://newhomes.com.eg/"><img alt="" style="width:112px;" src="<?= base_url(); ?>application/static/images/logo_newhomes.jpg"/></a>
