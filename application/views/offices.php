@@ -99,10 +99,10 @@
 							</div>
 							<div class="row">
 								<?php foreach ($offices as $key => $office): ?>
-									<h4><?php echo $office->district_en; ?></h4>
+									<h4><span><?php $key2 = $key +1;echo $key2.".   "; ?><?php echo $office->district_en; ?></h4>
 									<div class="row">
 										<div class="col-lg-4 offices_titles">
-											<?php echo $this->lang->line('offices_title2'); ?>
+											</span><?php echo $this->lang->line('offices_title2'); ?>
 										</div>
 										<div class="col-lg-8">
 										<?php echo $office->address_en;?>
@@ -175,9 +175,7 @@
 								<?php endforeach ?>
 								<div class="hide">
 									<ul class="office_addresses">
-									<?php //$count = 0; ?>
 										<?php foreach ($offices as $key => $office): ?>
-											<?php //if ($count < 3): ?>
 												<li>
 													<?php if ($office->address_en == '116 & 118 Egy Build Road 90, New Cairo, Egypt'): ?>
 														<span>116 S El-Teseen St</span>
@@ -189,9 +187,6 @@
 														<?php endif ?>
 													<?php endif ?>
 												</li>
-											<?php //endif ?>
-											
-											<?php //$count++; ?>
 										<?php endforeach ?>
 									</ul>
 								</div>
@@ -210,7 +205,6 @@
 	
 <?php include('footer.php') ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script src="../application/static/js/mapwithmarker.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var map;
@@ -227,29 +221,19 @@
 			 addresses[count] = $(this).find('span').html();
 			 count = count +1;
 		});
-
-		var number;
+		var iconCounter = 0;
+		var number = 1;
 		for (var x = 0; x < addresses.length; x++) {
-			number = x + 1;
 		    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-		        var p = data.results[0].geometry.location
+		        var p = data.results[0].geometry.location;
 		        var latlng = new google.maps.LatLng(p.lat, p.lng);
-		        // var marker = new MarkerWithLabel({
-		        //     position: latlng,
-		        //     map: map,
-		        //     labelContent: x,
-		        //     labelAnchor: new google.maps.Point(6, 35),
-		        //     labelClass: "labels", // the CSS class for the label
-		        //     labelInBackground: false
-		        //  });
 		        new google.maps.Marker({
 		            position: latlng,
 		            map: map, 
 		            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+number+'|FF0000|000000' 
 		        });
-
+		        number++;
 		    });
-
 		}
 	}); 
 </script>

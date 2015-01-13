@@ -271,8 +271,9 @@ class service extends CI_Model {
     function getNeighborhoods($districtID)
     {
         $result = $this->client->GetNeighborhoodList(1);
-        return $result;
         // printme($result);exit();
+        return $result;
+        
     }
 
     function getPropertyTypes($id)

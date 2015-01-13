@@ -65,7 +65,7 @@ class Home extends CI_Controller {
 		// foreach ($districts as $key => $district) {
 		// 	$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
 		// }
-		//printme($neighborhoods);exit();
+		// printme($neighborhoods);exit();
 		
 		// $data['featuredProperties']=$this->service->getFeaturedProperties();
 		// foreach ($data['featuredProperties'] as $property) {
