@@ -1,4 +1,4 @@
-
+<div class="container" id="footer_div" style="">
     <div class="container" id="footer_div" style="">
             <div class="row">
                 <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
