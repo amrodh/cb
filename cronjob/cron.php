@@ -1,20 +1,20 @@
 <?php
 
     
-    // libxml_disable_entity_loader(false);
-    // ini_set( "soap.wsdl_cache_enabled", "0" );
+    libxml_disable_entity_loader(false);
+    ini_set( "soap.wsdl_cache_enabled", "0" );
 
 
-    // $options = array( 
-    //     'exceptions'=>0, 
-    //     'trace'=>1,
-    //     'cache_wsdl'=>WSDL_CACHE_NONE 
-    // ); 
+    $options = array( 
+        'exceptions'=>0, 
+        'trace'=>1,
+        'cache_wsdl'=>WSDL_CACHE_NONE 
+    ); 
 
-    // try {
-    //     $client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
-    // } catch (Exception $e) {
-    // }
+    try {
+        $client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
+    } catch (Exception $e) {
+    }
 
     $con = mysqli_connect("localhost","root","root","cb");
 
@@ -24,8 +24,8 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
 
-      // cronJob($client, $con);
-      propertyAlertCron($con);
+      cronJob($client, $con);
+      // propertyAlertCron($con);
       // insertPropertyImage(1, 1);exit();
 
     function searchService($inputs , $client)
