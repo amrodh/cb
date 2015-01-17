@@ -556,29 +556,29 @@
            
             foreach ($resultsArray as $key => $value) {
             	if (!in_array($value, $DBPropertiesKeys)){
-                $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
-                $AreaUnit = $serviceResults[$key]['AreaUnit'];
-                $AreaunitStr = $serviceResults[$key]['AreaunitStr'];
-                $BalconiesNumber = $serviceResults[$key]['BalconiesNumber'];
-                $BathRoomsNumber = $serviceResults[$key]['BathRoomsNumber'];
-                $BedRoomsNumber = $serviceResults[$key]['BedRoomsNumber'];
-                $InteriorFinishing = $serviceResults[$key]['InteriorFinishing'];
-                $LineofBusinessFK = $serviceResults[$key]['LineofBusinessFK'];
-                $LocationCity = $serviceResults[$key]['LocationCity'];
-                $LocationDistrict = $serviceResults[$key]['LocationDistrict'];
-                $LocationProject = $serviceResults[$key]['LocationProject'];
-                $PropertyTypeFK = $serviceResults[$key]['PropertyTypeFK'];
-                $PrpertyTypeStr = $serviceResults[$key]['PrpertyTypeStr'];
-                $RentCurrency = $serviceResults[$key]['RentCurrency'];
-                $RentPrice = $serviceResults[$key]['RentPrice'];
-                $RentPricePerAreaUnit = $serviceResults[$key]['RentPricePerAreaUnit'];
-                $SaleCurrency = $serviceResults[$key]['SaleCurrency'];
-                $SalePrice = $serviceResults[$key]['SalePrice'];
-                $SalePricePerAreaUnit = $serviceResults[$key]['SalePricePerAreaUnit'];
-                $SalesTypeStr = $serviceResults[$key]['SalesTypeStr'];
-                $TotalArea = $serviceResults[$key]['TotalArea'];
-                $UnitId = $serviceResults[$key]['UnitId'];
-                $PropertyId = $serviceResults[$key]['PropertyId'];
+                $AreaNumericValue = $serviceResults[$key]->AreaNumericValue;
+                $AreaUnit = $serviceResults[$key]->AreaUnit;
+                $AreaunitStr = $serviceResults[$key]->AreaunitStr;
+                $BalconiesNumber = $serviceResults[$key]->BalconiesNumber;
+                $BathRoomsNumber = $serviceResults[$key]->BathRoomsNumber;
+                $BedRoomsNumber = $serviceResults[$key]->BedRoomsNumber;
+                $InteriorFinishing = $serviceResults[$key]->InteriorFinishing;
+                $LineofBusinessFK = $serviceResults[$key]->LineofBusinessFK;
+                $LocationCity = $serviceResults[$key]->LocationCity;
+                $LocationDistrict = $serviceResults[$key]->LocationDistrict;
+                $LocationProject = $serviceResults[$key]->LocationProject;
+                $PropertyTypeFK = $serviceResults[$key]->PropertyTypeFK;
+                $PrpertyTypeStr = $serviceResults[$key]->PrpertyTypeStr;
+                $RentCurrency = $serviceResults[$key]->RentCurrency;
+                $RentPrice = $serviceResults[$key]->RentPrice;
+                $RentPricePerAreaUnit = $serviceResults[$key]->RentPricePerAreaUnit;
+                $SaleCurrency = $serviceResults[$key]->SaleCurrency;
+                $SalePrice = $serviceResults[$key]->SalePrice;
+                $SalePricePerAreaUnit = $serviceResults[$key]->SalePricePerAreaUnit;
+                $SalesTypeStr = $serviceResults[$key]->SalesTypeStr;
+                $TotalArea = $serviceResults[$key]->TotalArea;
+                $UnitId = $serviceResults[$key]->UnitId;
+                $PropertyId = $serviceResults[$key]->PropertyId;
                     $sqlInsert = "INSERT INTO property_service (AreaNumericValue, AreaUnit, AreaunitStr, BalconiesNumber, BathRoomsNumber, BedRoomsNumber,
                       InteriorFinishing, LineofBusinessFK, LocationCity, LocationDistrict, LocationProject, PropertyTypeFK, PrpertyTypeStr, RentCurrency, 
                       RentPrice, RentPricePerAreaUnit, SaleCurrency, SalePrice, SalePricePerAreaUnit, SalesTypeStr, TotalArea, UnitId, PropertyId) 
