@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/static/css/dataTables.bootstrap.css">
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.slider.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/dataTables.bootstrap.js"></script>

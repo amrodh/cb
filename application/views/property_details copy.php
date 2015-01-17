@@ -29,30 +29,8 @@
                 <div class="tab-pane active" id="details">
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
-                        <div id="property_details_images" class="property_borders" style="height:480px!important; width:535px!important">
-                            <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
-                                <?php foreach ($images['src'] as $key => $image): ?>
-                                    <div>
-                                        <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                        <img u="thumb" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                            <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 185px; left: 25px;">
-                            </span>
-                            <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
-                            </span>
-                            <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
-                                <div u="slides" style="cursor: move;">
-                                    <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
-                                        <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
-                                        <div class=c>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Thumbnail Item Skin End -->
-                            </div>
-                            <!-- <div id="property_details_mainimage">
+                        <div id="property_details_images" class="property_borders">
+                            <div id="property_details_mainimage">
                                 <img id="property_mainimage" src="">
                             </div>
                             <div class="visible-xs hidden-lg hidden-md hidden-sm" id="property_image_btn_div">
@@ -69,9 +47,9 @@
                                         <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>application/static/images/right_arrow.png"> </a>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
-                        <div id="property_features_div" class="property_borders" style="margin-top: 9%;margin-left: -3%;width: 106%;">
+                        <div id="property_features_div" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
@@ -92,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-right:0;">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
@@ -336,153 +314,50 @@
         $(document).ready(function (){
            
 
-            var _SlideshowTransitions = [
-            //Fade in L
-                {$Duration: 1200, x: 0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            //Fade out R
-            //     , { $Duration: 1200, x: -0.3, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade in R
-            //     , { $Duration: 1200, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade out L
-            //     , { $Duration: 1200, x: 0.3, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+           var main_image_src = $(".imagesList > li:nth-child(1) > img").attr('src');
+           if(main_image_src){
+                $("#property_mainimage").attr('src', main_image_src);
+           }else{
+                $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/No_image.svg');
+           }
 
-            // //Fade in T
-            //     , { $Duration: 1200, y: 0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade out B
-            //     , { $Duration: 1200, y: -0.3, $SlideOut: true, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade in B
-            //     , { $Duration: 1200, y: -0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade out T
-            //     , { $Duration: 1200, y: 0.3, $SlideOut: true, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+           var html_output ='';
+           var image_count = 0;
+           var flag = 1;
 
-            // //Fade in LR
-            //     , { $Duration: 1200, x: 0.3, $Cols: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Column: 3 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade out LR
-            //     , { $Duration: 1200, x: 0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 3 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade in TB
-            //     , { $Duration: 1200, y: 0.3, $Rows: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Row: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade out TB
-            //     , { $Duration: 1200, y: 0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+           $(".imagesList li").each(function(){
+                image_count++;
 
-            // //Fade in LR Chess
-            //     , { $Duration: 1200, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade out LR Chess
-            //     , { $Duration: 1200, y: -0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade in TB Chess
-            //     , { $Duration: 1200, x: 0.3, $Rows: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Row: 3 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade out TB Chess
-            //     , { $Duration: 1200, x: -0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 3 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-
-            // //Fade in Corners
-            //     , { $Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-            // //Fade out Corners
-            //     , { $Duration: 1200, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-
-            // //Fade Clip in H
-            //     , { $Duration: 1200, $Delay: 20, $Clip: 3, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade Clip out H
-            //     , { $Duration: 1200, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseOutCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade Clip in V
-            //     , { $Duration: 1200, $Delay: 20, $Clip: 12, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-            // //Fade Clip out V
-            //     , { $Duration: 1200, $Delay: 20, $Clip: 12, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseOutCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-                ];
-
-            var options = {
-                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-                $AutoPlayInterval: 1500,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-                $PauseOnHover: 1,                                //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
-
-                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-                $ArrowKeyNavigation: true,                          //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
-                $SlideDuration: 800,                                //Specifies default duration (swipe) for slide in milliseconds
-
-                $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
-                    $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
-                    $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
-                    $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
-                    $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
-                },
-
-                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
-                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
-                    $ChanceToShow: 1                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                },
-
-                $ThumbnailNavigatorOptions: {                       //[Optional] Options to specify and enable thumbnail navigator or not
-                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
-                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-
-                    $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
-                    $SpacingX: 8,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
-                    $DisplayPieces: 6,                             //[Optional] Number of pieces to display, default value is 1
-                    $ParkingPosition: 200                          //[Optional] The offset position to park thumbnail
+                if(image_count == 1){
+                    html_output += '<div class="item active"><div class="row">';
                 }
-            };
 
-            var jssor_slider1 = new $JssorSlider$("property_details_images", options);
-            //responsive code begin
-            //you can remove responsive code if you don't want the slider scales while window resizes
-            function ScaleSlider() {
-                var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-                if (parentWidth)
-                    jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 800), 300));
-                else
-                    window.setTimeout(ScaleSlider, 30);
-            }
-            ScaleSlider();
+                if(flag == 0){
+                    html_output += '<div class="item"><div class="row">';
+                    flag = 1;
+                }
 
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
-            //responsive code end
+                html_output+= '<div class="property_thumbnail"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></a></div>';
 
-//===================================================================================================================
-
-           // var main_image_src = $(".imagesList > li:nth-child(1) > img").attr('src');
-           // if(main_image_src){
-           //      $("#property_mainimage").attr('src', main_image_src);
-           // }else{
-           //      $("#property_mainimage").attr('src', $("#url").val()+'/application/static/images/No_image.svg');
-           // }
-
-           // var html_output ='';
-           // var image_count = 0;
-           // var flag = 1;
-
-           // $(".imagesList li").each(function(){
-           //      image_count++;
-
-           //      if(image_count == 1){
-           //          html_output += '<div class="item active"><div class="row">';
-           //      }
-
-           //      if(flag == 0){
-           //          html_output += '<div class="item"><div class="row">';
-           //          flag = 1;
-           //      }
-
-           //      html_output+= '<div class="property_thumbnail"><img src="'+$(this).find('img').attr('src')+'" alt="Image" class="img-responsive"></a></div>';
-
-           //      if(image_count % 3 == 0 && flag == 1){
-           //          html_output += '</div></div>';
-           //          flag = 0;
-           //      }
+                if(image_count % 3 == 0 && flag == 1){
+                    html_output += '</div></div>';
+                    flag = 0;
+                }
 
 
-           // });
+           });
 
-           // if(image_count == 0){
-           //    $("#property_details_thumbnails").hide();
-           // }
+           if(image_count == 0){
+              $("#property_details_thumbnails").hide();
+           }
 
-           // $("#imgCount").html(image_count);
+           $("#imgCount").html(image_count);
 
-           // $("#carousal_div").html(html_output);
+           $("#carousal_div").html(html_output);
            
-           // $('.property_thumbnail > img').click(function (){
-           //     $('#property_mainimage').attr("src", $(this).attr("src"));
-           // }) ;
+           $('.property_thumbnail > img').click(function (){
+               $('#property_mainimage').attr("src", $(this).attr("src"));
+           }) ;
 
 
         });

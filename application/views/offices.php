@@ -99,7 +99,7 @@
 							</div>
 							<div class="row">
 								<?php foreach ($offices as $key => $office): ?>
-									<h4><span><?php $key2 = $key +1;echo $key2.".   "; ?><?php echo $office->district_en; ?></h4>
+									<h4><span><?php $key2 = $key +1;echo $key2.".   "; ?></span><?php echo $office->district_en; ?></h4>
 									<div class="row">
 										<div class="col-lg-4 offices_titles">
 											</span><?php echo $this->lang->line('offices_title2'); ?>

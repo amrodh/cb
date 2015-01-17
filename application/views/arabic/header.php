@@ -9,6 +9,8 @@
        <!--  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->
 
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.slider.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-ar.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.js"></script>
