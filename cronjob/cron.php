@@ -430,45 +430,45 @@
 
     function cronJob($client, $con)
     {
-    		$cities = getCitiesService($client);
-    		foreach ($cities as $key => $city) 
-        {
-    			 checkCity($city, $con);
-  		  }
+    		// $cities = getCitiesService($client);
+    		// foreach ($cities as $key => $city) 
+      //   {
+    		// 	 checkCity($city, $con);
+  		  // }
   		
   	
-    		$cities = getCitiesDB($con);
-    		foreach ($cities as $key => $city) {
-    			$districts = getDistrictsService($city['id'], $client);
-    			if (is_array($districts))
-    			{
-    				foreach ($districts as $key => $district) {
-    	  				checkDistrict($district, $con);
-    	  			}
-    			}
-    		}
+    		// $cities = getCitiesDB($con);
+    		// foreach ($cities as $key => $city) {
+    		// 	$districts = getDistrictsService($city['id'], $client);
+    		// 	if (is_array($districts))
+    		// 	{
+    		// 		foreach ($districts as $key => $district) {
+    	 //  				checkDistrict($district, $con);
+    	 //  			}
+    		// 	}
+    		// }
 
-        $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
-        $result = $con->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()) {
-                if ($row['LocationProject'] != '')
-                {
-                    $neighborhoods = checkNeighborhood($con);
-                    if (!in_array($row['LocationProject'], $neighborhoods))
-                    {
-                        $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
-                        if ($districtID != false){
-                            // $data = array('district_id' => $districtID['id'] , 'neighborhood' => $row['LocationProject']);
-                            $district_id = $districtID['id'];
-                            $neighborhood = $row['LocationProject'];
-                            $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
-                            $con->query($sqlInsert);
-                        }
-                    }
-                }
-            }
-        }
+      //   $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
+      //   $result = $con->query($sql);
+      //   if($result->num_rows > 0){
+      //       while($row = $result->fetch_assoc()) {
+      //           if ($row['LocationProject'] != '')
+      //           {
+      //               $neighborhoods = checkNeighborhood($con);
+      //               if (!in_array($row['LocationProject'], $neighborhoods))
+      //               {
+      //                   $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
+      //                   if ($districtID != false){
+      //                       // $data = array('district_id' => $districtID['id'] , 'neighborhood' => $row['LocationProject']);
+      //                       $district_id = $districtID['id'];
+      //                       $neighborhood = $row['LocationProject'];
+      //                       $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
+      //                       $con->query($sqlInsert);
+      //                   }
+      //               }
+      //           }
+      //       }
+      //   }
             $inputs = array(
               'searchMode' => 'Exact',
               'Bedrooms' => '',
@@ -500,7 +500,7 @@
             $serviceResults = array();
             foreach ($results['results'] as $key => $value) {
                 $resultsArray[$key] = $value->PropertyId;
-                $serviceResults[$key] = $value;
+                $serviceResults[$key] = (array) $value;
                 $count = $key+1;
                 $lastID = $value->PropertyId;
             }
@@ -540,7 +540,7 @@
               	}
             }
 
-            // print_r($resultsArray);
+            // print_r($serviceResults[1]->AgentFullName);exit();
             // print_r("<br>=================================================================================<br>");
 
 
@@ -556,29 +556,29 @@
            
             foreach ($resultsArray as $key => $value) {
             	if (!in_array($value, $DBPropertiesKeys)){
-                $AreaNumericValue = $serviceResults[$key]->AreaNumericValue;
-                $AreaUnit = $serviceResults[$key]->AreaUnit;
-                $AreaunitStr = $serviceResults[$key]->AreaunitStr;
-                $BalconiesNumber = $serviceResults[$key]->BalconiesNumber;
-                $BathRoomsNumber = $serviceResults[$key]->BathRoomsNumber;
-                $BedRoomsNumber = $serviceResults[$key]->BedRoomsNumber;
-                $InteriorFinishing = $serviceResults[$key]->InteriorFinishing;
-                $LineofBusinessFK = $serviceResults[$key]->LineofBusinessFK;
-                $LocationCity = $serviceResults[$key]->LocationCity;
-                $LocationDistrict = $serviceResults[$key]->LocationDistrict;
-                $LocationProject = $serviceResults[$key]->LocationProject;
-                $PropertyTypeFK = $serviceResults[$key]->PropertyTypeFK;
-                $PrpertyTypeStr = $serviceResults[$key]->PrpertyTypeStr;
-                $RentCurrency = $serviceResults[$key]->RentCurrency;
-                $RentPrice = $serviceResults[$key]->RentPrice;
-                $RentPricePerAreaUnit = $serviceResults[$key]->RentPricePerAreaUnit;
-                $SaleCurrency = $serviceResults[$key]->SaleCurrency;
-                $SalePrice = $serviceResults[$key]->SalePrice;
-                $SalePricePerAreaUnit = $serviceResults[$key]->SalePricePerAreaUnit;
-                $SalesTypeStr = $serviceResults[$key]->SalesTypeStr;
-                $TotalArea = $serviceResults[$key]->TotalArea;
-                $UnitId = $serviceResults[$key]->UnitId;
-                $PropertyId = $serviceResults[$key]->PropertyId;
+                $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
+                $AreaUnit = $serviceResults[$key]['AreaUnit'];
+                $AreaunitStr = $serviceResults[$key]['AreaunitStr'];
+                $BalconiesNumber = $serviceResults[$key]['BalconiesNumber'];
+                $BathRoomsNumber = $serviceResults[$key]['BathRoomsNumber'];
+                $BedRoomsNumber = $serviceResults[$key]['BedRoomsNumber'];
+                $InteriorFinishing = $serviceResults[$key]['InteriorFinishing'];
+                $LineofBusinessFK = $serviceResults[$key]['LineofBusinessFK'];
+                $LocationCity = $serviceResults[$key]['LocationCity'];
+                $LocationDistrict = $serviceResults[$key]['LocationDistrict'];
+                $LocationProject = $serviceResults[$key]['LocationProject'];
+                $PropertyTypeFK = $serviceResults[$key]['PropertyTypeFK'];
+                $PrpertyTypeStr = $serviceResults[$key]['PrpertyTypeStr'];
+                $RentCurrency = $serviceResults[$key]['RentCurrency'];
+                $RentPrice = $serviceResults[$key]['RentPrice'];
+                $RentPricePerAreaUnit = $serviceResults[$key]['RentPricePerAreaUnit'];
+                $SaleCurrency = $serviceResults[$key]['SaleCurrency'];
+                $SalePrice = $serviceResults[$key]['SalePrice'];
+                $SalePricePerAreaUnit = $serviceResults[$key]['SalePricePerAreaUnit'];
+                $SalesTypeStr = $serviceResults[$key]['SalesTypeStr'];
+                $TotalArea = $serviceResults[$key]['TotalArea'];
+                $UnitId = $serviceResults[$key]['UnitId'];
+                $PropertyId = $serviceResults[$key]['PropertyId'];
                     $sqlInsert = "INSERT INTO property_service (AreaNumericValue, AreaUnit, AreaunitStr, BalconiesNumber, BathRoomsNumber, BedRoomsNumber,
                       InteriorFinishing, LineofBusinessFK, LocationCity, LocationDistrict, LocationProject, PropertyTypeFK, PrpertyTypeStr, RentCurrency, 
                       RentPrice, RentPricePerAreaUnit, SaleCurrency, SalePrice, SalePricePerAreaUnit, SalesTypeStr, TotalArea, UnitId, PropertyId) 
@@ -640,15 +640,53 @@
                 'useFeaturedFilter' => true
             );
 
-            $featuredProperties = searchService($inputs, $client);
-            // print_r($featuredProperties);exit();
+            $lastID2 = 0;
+            $count3 = 0;
             $featuredResults = array();
             $featuredResultsKey = array();
-            $count2 = 0;
+            $featuredProperties = searchService($inputs, $client);
             foreach ($featuredProperties['results'] as $key => $value) {
                 $featuredResultsKey[$key] = $value->PropertyId;
                 $featuredResults[$key] = $value;
+                $count3 = $key + 1;
+                $lastID2 = $value->PropertyId;
             }
+
+            $inputs = array(
+                'searchMode' => 'Exact',
+                'Bedrooms' => '',
+                'PropertyId' => '',
+                'Purpose' => 3,
+                'PriceLowerLimit' => 0,
+                'PriceUpperLimit' => 1000000000000000000,
+                'PunitSale' => '',
+                'RentPriceLowerLimit' => 0,
+                'RentPriceUpperLimit' => 1000000000000000000,
+                'PunitRent' => '',
+                'AreaLowerLimit' => 0,
+                'AreaUpperLimit' => 1000000000000000000,
+                'PropertyType' => '',
+                'PropertyFor' => '',
+                'BoxLocation' => '',
+                'LineOfBusinessId' => '',
+                'CompanyId' => '',
+                'sortmode' => '',
+                'sortType' => 2,
+                'pageIndex' => '',
+                'licences' => '',
+                'isFeatured' => true,
+                'resultsCountPerPage' => '1300', 
+                'useFeaturedFilter' => true
+            );
+
+            $featuredProperties = searchService($inputs, $client);
+            foreach ($featuredProperties['results'] as $key => $value) {
+                $featuredResultsKey[$count3] = $value->PropertyId;
+                $featuredResults[$count3] = $value;
+                $count3++;
+            }
+
+            // print_r($featuredResults);exit();
             $DBFeaturedKey = array();
             $DBFeatured = getAllFeaturedPropertiesDB($con);
             foreach ($DBFeatured as $key => $value) {
@@ -659,10 +697,13 @@
             foreach ($featuredResultsKey as $key => $result) {
             	if (!in_array($result, $DBFeaturedKey))
             	{
-            		$data = array(
-                        'propertyId' => $featuredResults[$key]->PropertyId
-                    );
-                    $sql = "INSERT INTO property_featured (propertyId) VALUES ('$featuredResults[$key]->PropertyId')";
+            		// $data = array(
+              //           'propertyId' => $featuredResults[$key]->PropertyId
+              //       );
+                $ID = $featuredResults[$key]->PropertyId;
+                // print_r($featuredResults[$key]->PropertyId.'<br>');
+                // var_dump($featuredResults[$key]->PropertyId);exit();
+                    $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID)";
                     $result = $con->query($sql);
                     // $query = $this->db->insert_string('property_featured', $data);
                     // $query = $this->db->query($query);
@@ -840,27 +881,17 @@
                 $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
                 $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'No_image.svg')";
                 $result = $con->query($sql);
-                // $data = array('property_id' => $property['PropertyId'] , 'image' => 'No_image.svg');
-                // $query = $this->db->insert_string('unit_image', $data);
-                // $query = $this->db->query($query);
-                // printme('done1');
-                // continue;
             }
             foreach($image as $element) 
             {   
                 $url = $element->attr['src'];
                 $test = file_get_contents(trim($url));
-                
                 $img = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
                 file_put_contents($img, $test);
-                $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'image_'.$count.'_'.$propertyID.'.jpg')";
+                $img_name = 'image_'.$count.'_'.$propertyID.'.jpg';
+                $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', '$img_name')";
                 $result = $con->query($sql);
-                // $data = array('property_id' => $propertyID , 'image' => 'image_'.$count.'_'.$propertyID.'.jpg');
-                // $query = $this->db->insert_string('unit_image', $data);
-                // $query = $this->db->query($query);
-                // printme('done2'.$propertyID);
                 $count++;
-                // exit();
             }
               
         }else{
