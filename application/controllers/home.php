@@ -80,7 +80,6 @@ class Home extends CI_Controller {
 	public function getFeaturedProperties()
 	{	
 		$data = $this->init();
-		// $this->load->model('service');
 
 		$data['featuredProperties']=$this->database->getFeaturedProperties();
 		 foreach ($data['featuredProperties'] as $property) {

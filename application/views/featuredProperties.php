@@ -1,9 +1,18 @@
 <div class="tab-pane active" id="home">
-	<div class="row newsletter_rows">
+<?php if (count($featuredProperties < 3)): ?>
+    <div class="row newsletter_rows" style="width: 75%;margin: auto;">
+<?php else: ?>
+    <div class="row newsletter_rows">
+<?php endif ?>
         <?php if (isset($featuredProperties)): ?>
             <?php $count = 1; ?>
             <?php foreach ($featuredProperties as $property): ?>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="">
+                <?php if (count($featuredProperties) < 3): ?>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="width:48%;">
+                <?php else: ?>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="">
+                <?php endif ?>
+                
                     <div class="properties_number compare_number">
                         <?php echo $count; ?>
                     </div>

@@ -342,6 +342,7 @@ class database extends CI_Model {
     function getFeaturedProperties()
     {
         $this->db->select('*');
+        $this->db->order_by('propertyId', 'desc');
         $this->db->from('property_featured');
         $query = $this->db->get();
         $count1 = 0;

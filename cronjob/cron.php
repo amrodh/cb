@@ -18,7 +18,6 @@
 
     $con = mysqli_connect("localhost","root","root","cb");
 
-    // Check connection
     if (mysqli_connect_errno())
       {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -26,8 +25,6 @@
 
       cronJob($client, $con);
       // propertyAlertCron($con);
-      // insertPropertyImage(1, 1);exit();
-
     function searchService($inputs , $client)
     {
         if (isset($inputs['lineOfBusiness'])){
@@ -219,10 +216,6 @@
 
         $sql = "SELECT * FROM district WHERE name = '$name'";
         $result = $con->query($sql);
-        // $q = $this
-        //   ->db
-        //   ->where('name',$name)
-        //   ->get('district');
         if($result->num_rows >0){
               $count = 0;
                while($row = $result->fetch_assoc()) {
@@ -233,8 +226,7 @@
                     );
                   $count++;
               }
-              // print_r((object) $data);exit();
-              return (object) $data[0];
+              return $data[0];
            } 
            return false;  
     }
@@ -278,12 +270,6 @@
             }
             return (object) $data;
         } 
-
-
-        // if($q->num_rows >0){
-        //   // printme($q->result_array());exit();
-        //       return $q->result_array();
-        //    } 
            return false; 
     }
 
@@ -291,11 +277,6 @@
     {
         $sql = "SELECT * FROM property_featured";
         $result = $con->query($sql);
-
-        // $this->db->select('*');
-        // $this->db->from('property_featured');
-        // $query = $this->db->get();
-
         if($result->num_rows >0){
             $count = 0;
             while($row = $result->fetch_assoc()) {
@@ -334,15 +315,6 @@
 
         $sql = "SELECT * FROM district WHERE id = '$id'";
         $result = $con->query($sql);
-
-        // $q = $this
-        //         ->db
-        //         ->where('id',$id)
-        //         ->get('district');
-
-        //      if($q->num_rows >0){
-        //         return $q->result_array();
-        //      } 
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
@@ -380,16 +352,6 @@
             }
             return (object) $data[0];
         }
-
-        // $q = $this
-        //       ->db
-        //       ->where('property_name',$name)
-        //       ->get('property_type');
-
-        //    if($q->num_rows >0){
-        //       return $q->result_array();
-        //    } 
-
            return false; 
     }
 
@@ -412,19 +374,6 @@
             }
             return $data[0]['property_name'];
         }
-
-        // $q = $this
-        //       ->db
-        //       ->where('property_id', $id)
-        //       ->limit(1)
-        //       ->get('property_type');
-
-
-
-        // if($q->num_rows >0){
-        //   // printme();exit();
-        //       return $q->result_array()[0]['property_name'];
-        //    } 
            return false; 
     }
 
@@ -458,8 +407,8 @@
                     if (!in_array($row['LocationProject'], $neighborhoods))
                     {
                         $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
+
                         if ($districtID != false){
-                            // $data = array('district_id' => $districtID['id'] , 'neighborhood' => $row['LocationProject']);
                             $district_id = $districtID['id'];
                             $neighborhood = $row['LocationProject'];
                             $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
@@ -469,6 +418,9 @@
                 }
             }
         }
+
+
+
             $inputs = array(
               'searchMode' => 'Exact',
               'Bedrooms' => '',
@@ -684,7 +636,6 @@
             	if (!in_array($result, $DBFeaturedKey))
             	{
                     $ID = $featuredResults[$key]->PropertyId;
-                    
                     $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
                     $result = $con->query($sql);
                     if($result == true){
@@ -755,12 +706,6 @@
       $id = $city['id'];
           $sql = "SELECT * FROM city WHERE id = '$id'";
           $result = $con->query($sql);
-
-    		  // $q = $this
-        //         ->db
-        //         ->where('id', $city['id'])
-        //         ->get('city');
-
         if($result->num_rows  == 0){
             $cityId = $city['id'];
             $cityName = $city['name'];
@@ -770,9 +715,6 @@
             } else {
                 return false;
             }
-            // $data = array('id' => $city['id'] , 'name' => $city['name']);
-            // $query = $this->db->insert_string('city', $data);
-            // $query = $this->db->query($query);
        	}
        	return false;
   	}
@@ -782,11 +724,6 @@
         $id = $district['id'];
           $sql = "SELECT * FROM district WHERE id = '$id'";
           $result = $con->query($sql);
-        		// $q = $this
-          //           ->db
-          //           ->where('id', $district['id'])
-          //           ->get('district');
-
         if($result->num_rows  == 0){
             $districtId = $district['id'];
             $districtName = $district['name'];
@@ -796,10 +733,6 @@
             } else {
                 return false;
             }
-            // $data = array('id' => $district['id'] , 'name' => $district['name']);
-            // $query = $this->db->insert_string('district', $data);
-            // $query = $this->db->query($query);
-            // return true;
        	}
        	return false;
   	}
@@ -816,19 +749,6 @@
             }
             return $data;
          } 
-
-  		  // $q = $this
-        //         ->db
-        //         ->get('neighborhood');
-
-        //     $neighborhoods = array();
-
-        //     foreach ($q->result_array() as $key => $result) {
-        //     	$neighborhoods[$key] = $result['neighborhood'];
-        //     }
-        //     if($q->num_rows  > 0){
-        //     	return $neighborhoods;
-        //    	}
        	return false;
   	}
 
@@ -844,11 +764,6 @@
         }else{
           return false;
         }
-        // $this->db->where('PropertyId', $propertyID);
-        // $this->db->delete('property_service'); 
-
-        // $this->db->where('property_id', $propertyID);
-        // $this->db->delete('unit_image'); 
     }
 
     function insertPropertyImage($propertyID, $unitID, $client, $con)
@@ -892,7 +807,6 @@
             );
         $results = $client->GetListOfImages($inputs);
         return $results->GetListOfImagesResult;
-        // return $results->GetResultsByPropertyIDResult->PropertySingleSarchResult;
     }
 
     function getUserByID($ID, $con)
@@ -918,9 +832,6 @@
                     $count++;
                 }
                 $images['count'] = count($images['src']);
-                // print_r($images);
-                // print_r("<br>================================<br>");
-                // exit();
             return $images;
         } 
         return false; 
@@ -1049,26 +960,19 @@
                         'properties' => $searchResults['results']
                     );
                     foreach ($data['properties'] as $key => $property) {
-                        // print_r($data['properties']);exit();
                       $data['images'][$property['PropertyId']] = getPropertyImagesDB($property['PropertyId'], $con);
-                      // print_r($data['images'][$property['PropertyId']]);exit();
                       if (!is_array($data['images'][$property['PropertyId']]))
                       {
                           $data['images'][$property['PropertyId']] = array ( 0 => 'http://localhost/ColdwellBanker/application/static/images/No_image.svg');
-                          // $data['images'][$property->PropertyId] = "not array";
                       }else{
                         $data['images'][$property['PropertyId']] = $data['images'][$property['PropertyId']]['src'];
                       }
                     }
 
-                    
-
-                    // require_once('propertyAlert_template.php');
                     $body = file_get_contents('propertyAlert_template.php');
                     $headers  = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
                     $headers .= 'From: Website' . "\r\n";
-                    // print_r('hi');
                     $emails = explode(',', $data1);
                     foreach ($emails as $email) {
                         smtpmailer('New Properties',$body,$email, '');
