@@ -585,9 +585,9 @@ class Home extends CI_Controller {
 									Phone: '.$phone.'<br>
 									Property Type: '.$propertyType;
 							if(isset($imageAttachments)){
-								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', $imageAttachments);
+								$this->smtpmailer('Share Property',$body,'customerservice@cb-egypt.com', $imageAttachments);
 							}else{
-								$this->smtpmailer('Share Property',$body,'s.nahal@enlightworld.com', '');
+								$this->smtpmailer('Share Property',$body,'customerservice@cb-egypt.com', '');
 							}
 						}
 						$data['insertProcess'] = true;
@@ -899,7 +899,7 @@ class Home extends CI_Controller {
 						Property Address: '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity.'<br>
 						Property Type: '.$data['searchResults']->PrpertyTypeStr.'<br>
 						Comments: '.$_POST['comments'];
-					$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
+					$this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
 				}
 			}
 		}
@@ -989,7 +989,7 @@ class Home extends CI_Controller {
 							Vacancy: '.$vacancy_id;
 					$attachment = getcwd().'/application/static/upload/careers/'.$_FILES['userfile']['name'] ;
 					// printme($attachment);exit();
-					$this->smtpmailer('CV Application',$body,'s.nahal@enlightworld.com', $attachment);
+					$this->smtpmailer('CV Application',$body,'hr@cb-egypt.com', $attachment);
 				}
 			}else{
 				$uploadError = uploadme($this);
@@ -1506,7 +1506,7 @@ function resetpassword()
 								E-mail: '.$_POST['contact_email'].'<br>
 								Phone: '.$_POST['contact_phone'].'<br>
 								Comments: '.$_POST['contact_subject'];
-						$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
+						$this->smtpmailer('Contact Request',$body,'customerservice@cb-egypt.com', '');
 						// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 					}else{
 						echo 0;
@@ -1534,7 +1534,7 @@ function resetpassword()
 							E-mail: '.$email.'<br>
 							Phone: '.$phone.'<br>
 							Comments: '.$_POST['contact_subject'];
-					$this->smtpmailer('Contact Request',$body,'s.nahal@enlightworld.com', '');
+					$this->smtpmailer('Contact Request',$body,'customerservice@cb-egypt.com', '');
 					// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 				}else{
 					echo 0;
@@ -1566,7 +1566,7 @@ function resetpassword()
 					Phone: '.$_POST['phone'].'<br>
 					PropertyID: '.$_POST['propertyID'].'<br>
 					Comments: '.$_POST['comments'];
-			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
+			$this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
 		}else{
 			echo 0;
 		}

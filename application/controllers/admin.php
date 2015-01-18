@@ -380,22 +380,27 @@ class Admin extends CI_Controller {
 	public function sendSingle($params,$list)
 	{
 		$data['params'] = $params;
+		$emails = explode(',', $list);
 		$body = $this->load->view('admin/single_template', $data, true);
-		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
+		foreach ($emails as $key => $email) {
+			$this->smtpmailer('NewsLetter',$body,$email);
+		}
 	}
 
 	public function sendBanner($params,$list)
 	{
 		$data['params'] = $params;
-		// printme($data['params']);exit();
+		$emails = explode(',', $list);
 		$body = $this->load->view('admin/banner_template', $data, true);
-		$this->smtpmailer('NewsLetter',$body,'s.nahal@enlightworld.com');
+		foreach ($emails as $key => $email) {
+			$this->smtpmailer('NewsLetter',$body,$email);
+		}
 	}
 
 	public function sendProperties($params, $list)
 	{
-		// $this->load->model('service');
 		$data['params'] = $params;
+		$emails = explode(',', $list);
 		foreach ($params['properties'] as $key => $property) {
 			$data['properties'][$key]=$this->database->getPropertyByID($property);
 			$data['properties'][$key]=$this->database->getPropertyByID($property);
@@ -403,7 +408,9 @@ class Admin extends CI_Controller {
 			$data['images'][$property] = $this->database->getPropertyImages($property);
 		}
 		$body = $this->load->view('admin/properties_template', $data, true);
-		$this->smtpmailer('New Properties',$body,'s.nahal@enlightworld.com');
+		foreach ($emails as $key => $email) {
+			$this->smtpmailer('New Properties',$body,$email);
+		}
 	}
 
 
