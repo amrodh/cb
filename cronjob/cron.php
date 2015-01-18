@@ -430,45 +430,45 @@
 
     function cronJob($client, $con)
     {
-    		// $cities = getCitiesService($client);
-    		// foreach ($cities as $key => $city) 
-      //   {
-    		// 	 checkCity($city, $con);
-  		  // }
+    		$cities = getCitiesService($client);
+    		foreach ($cities as $key => $city) 
+        {
+    			 checkCity($city, $con);
+  		  }
   		
   	
-    		// $cities = getCitiesDB($con);
-    		// foreach ($cities as $key => $city) {
-    		// 	$districts = getDistrictsService($city['id'], $client);
-    		// 	if (is_array($districts))
-    		// 	{
-    		// 		foreach ($districts as $key => $district) {
-    	 //  				checkDistrict($district, $con);
-    	 //  			}
-    		// 	}
-    		// }
+    		$cities = getCitiesDB($con);
+    		foreach ($cities as $key => $city) {
+    			$districts = getDistrictsService($city['id'], $client);
+    			if (is_array($districts))
+    			{
+    				foreach ($districts as $key => $district) {
+    	  				checkDistrict($district, $con);
+    	  			}
+    			}
+    		}
 
-      //   $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
-      //   $result = $con->query($sql);
-      //   if($result->num_rows > 0){
-      //       while($row = $result->fetch_assoc()) {
-      //           if ($row['LocationProject'] != '')
-      //           {
-      //               $neighborhoods = checkNeighborhood($con);
-      //               if (!in_array($row['LocationProject'], $neighborhoods))
-      //               {
-      //                   $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
-      //                   if ($districtID != false){
-      //                       // $data = array('district_id' => $districtID['id'] , 'neighborhood' => $row['LocationProject']);
-      //                       $district_id = $districtID['id'];
-      //                       $neighborhood = $row['LocationProject'];
-      //                       $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
-      //                       $con->query($sqlInsert);
-      //                   }
-      //               }
-      //           }
-      //       }
-      //   }
+        $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
+        $result = $con->query($sql);
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()) {
+                if ($row['LocationProject'] != '')
+                {
+                    $neighborhoods = checkNeighborhood($con);
+                    if (!in_array($row['LocationProject'], $neighborhoods))
+                    {
+                        $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
+                        if ($districtID != false){
+                            // $data = array('district_id' => $districtID['id'] , 'neighborhood' => $row['LocationProject']);
+                            $district_id = $districtID['id'];
+                            $neighborhood = $row['LocationProject'];
+                            $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
+                            $con->query($sqlInsert);
+                        }
+                    }
+                }
+            }
+        }
             $inputs = array(
               'searchMode' => 'Exact',
               'Bedrooms' => '',
@@ -540,10 +540,6 @@
               	}
             }
 
-            // print_r($serviceResults[1]->AgentFullName);exit();
-            // print_r("<br>=================================================================================<br>");
-
-
             $DBPropertiesKeys = array();
             $DBProperties = array();
             $Properties = getAllPropertiesDB($con);
@@ -551,9 +547,7 @@
               	$DBPropertiesKeys[$key] = $value['PropertyId'];
               	$DBProperties = $value;
             }
-            // print_r($DBPropertiesKeys);
-            // print_r("<br>=================================================================================<br>");
-           
+
             foreach ($resultsArray as $key => $value) {
             	if (!in_array($value, $DBPropertiesKeys)){
                 $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
@@ -593,17 +587,11 @@
                     }else{
                       print_r('failed insert: '.$PropertyId);
                     }
-                    // $con->query($sqlInsert);
-                    // print_r($PropertyId);
                     insertPropertyImage($PropertyId, $UnitId, $client, $con);
             	}
             }
-            // exit();
-            print_r("<br>=========<br>");
-
             foreach ($DBPropertiesKeys as $key => $value) {
             	if (!in_array($value, $resultsArray)){
-                  // print_r($value);
             		  if (deleteProperty($value, $con)){
                       print_r("deleted: ".$value);
                   }else{
@@ -686,27 +674,24 @@
                 $count3++;
             }
 
-            // print_r($featuredResults);exit();
             $DBFeaturedKey = array();
             $DBFeatured = getAllFeaturedPropertiesDB($con);
             foreach ($DBFeatured as $key => $value) {
-              // print_r($value);exit();
             	 $DBFeaturedKey[$key] = $value['propertyId'];
             }
 
             foreach ($featuredResultsKey as $key => $result) {
             	if (!in_array($result, $DBFeaturedKey))
             	{
-            		// $data = array(
-              //           'propertyId' => $featuredResults[$key]->PropertyId
-              //       );
-                $ID = $featuredResults[$key]->PropertyId;
-                // print_r($featuredResults[$key]->PropertyId.'<br>');
-                // var_dump($featuredResults[$key]->PropertyId);exit();
-                    $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID)";
+                    $ID = $featuredResults[$key]->PropertyId;
+                    
+                    $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
                     $result = $con->query($sql);
-                    // $query = $this->db->insert_string('property_featured', $data);
-                    // $query = $this->db->query($query);
+                    if($result == true){
+                        print_r($ID."<br>");
+                    }else{
+                        echo $con->error."<br>";
+                    }
             	}
             }
 
@@ -715,8 +700,6 @@
             	{
                     $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
                     $result = $con->query($sql);
-                    // $this->db->where('propertyId', $result);
-                    // $this->db->delete('property_featured'); 
             	}
             }
     }
