@@ -1,4 +1,9 @@
-<!-- <link rel="stylesheet" type="text/css" href="style"> -->
+<html>
+<head>
+<title>The file to email</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
 <table style="width:95%; border: 10px solid #233f71;">
     <tr>
         <td style="width: 30%">
@@ -14,7 +19,6 @@
     <?php $count = 0; ?>
     <tr>
     <?php foreach ($data['properties'] as $property): ?>
-        <?php //print_r($property);exit(); ?>
             <?php if ($count % 3 != 0): ?>
                 <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                     <div class="compare_img">
@@ -103,3 +107,5 @@
      </td>
     </tr>
 </table>
+</body>
+</html>

@@ -25,6 +25,7 @@
 
       cronJob($client, $con);
       // propertyAlertCron($con);
+
     function searchService($inputs , $client)
     {
         if (isset($inputs['lineOfBusiness'])){
@@ -669,18 +670,8 @@
     { 
 
 	   date_default_timezone_set('America/Los_Angeles');
-	   // $config = Array(
-	   //  'protocol' => 'smtp',
-	   //  'smtp_host' => 'ssl://smtp.googlemail.com',
-	   //  'smtp_port' => 465,
-	   //  'smtp_user' => 's.nahal@enlightworld.com', // change it to yours
-	   //  'smtp_pass' => '01069393641', // change it to yours
-	   //  'mailtype' => 'html',
-	   //  'charset' => 'iso-8859-1',
-	   //  'wordwrap' => TRUE
-	   //  );
 
-	    require("phpmailer.php");
+	    require_once("phpmailer.php");
         $mail = new PHPMailer();
         $mail->IsSMTP();  // telling the class to use SMTP
         $mail->Host = "ssl://smtp.googlemail.com"; // Your SMTP PArameter
@@ -690,9 +681,9 @@
         $mail->Password = '01069393641';
         $mail->From     = "s.nahal@enlightworld.com";
         $mail->AddAddress($to);
+        $mail->IsHTML(true);
         $mail->Subject  = $subject;
         $mail->Body     = $body;
-        // $mail->
         if(!$mail->Send()) {
           echo 'Message was not sent.';
           echo 'Mailer error: ' . $mail->ErrorInfo;
@@ -837,6 +828,14 @@
         return false; 
     }
 
+    function getEmailContents(array $vars) {
+      extract($vars);
+
+      ob_start();
+      include 'propertyAlert_template.php';
+      return ob_get_clean();
+    }
+
     function propertyAlertCron($con)
     {
         require_once('simple_html_dom.php');
@@ -969,11 +968,11 @@
                       }
                     }
 
-                    $body = file_get_contents('propertyAlert_template.php');
+                    $body = getEmailContents(array('data' => $data));
                     $headers  = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
                     $headers .= 'From: Website' . "\r\n";
-                    $emails = explode(',', $data1);
+                     $emails = explode(',', $data1);
                     foreach ($emails as $email) {
                         smtpmailer('New Properties',$body,$email, '');
                     }
