@@ -65,6 +65,7 @@
                         <span class="glyphicon glyphicon-log-out">
                         </span>
                         <form action="<?= base_url();?>logout" method="post" style="display:inline;">
+                        <input type="hidden" id="query_string" name="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
                         <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                         <input type="submit" value="خروج" name="logoutSubmit" class="logoutSubmit">
                         </form>
@@ -109,6 +110,7 @@
         <?php endif ?>
         <form class="form-inline" role="form" action="<?= base_url();?>authenticate" method="post">
             <input type="hidden" name="currentUrl" value="<?= $this->uri->uri_string ?>">
+            <input type="hidden" id="query_string" name="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
         <div id="tallModal" class="modal modal-wide fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -148,11 +150,6 @@
                             <a href="<?= base_url();?>ar/forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
                         </div>
                     </div>
-                    <!-- <div class="modal-footer" style="margin: auto;width: 185px;">
-                        <div class="col-lg-12">
-                            <input type="submit" class="btn btn-default search_btn_submit2" value="إدخل<" name="submit">
-                       </div>
-                    </div> -->
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
