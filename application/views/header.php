@@ -53,6 +53,7 @@
                         </span>
                         <form action="<?= base_url();?>logout" method="post" style="display:inline;">
                         <!-- <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>"> -->
+                        <input type="hidden" id="query_string" name="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
                         <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                         <input type="submit" value="Log Out" name="logoutSubmit" class="logoutSubmit">
                         </form>
@@ -96,7 +97,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       <h4 class="modal-title">Login now</h4>
                       <div style="font-size: 12px;">
                           <?php echo $this->lang->line('home_login_text'); ?>
@@ -131,6 +132,7 @@
                             <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
                         </div>
                         <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
+                        <input type="hidden" id="query_string" name="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

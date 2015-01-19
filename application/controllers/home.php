@@ -98,12 +98,8 @@ class Home extends CI_Controller {
 		$this->load->model('user');
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$currentUrl = $_POST['currentUrl'];
-
+		$currentUrl = $_POST['currentUrl'].'?'.$_POST['query_string'];
 		$data['districts'] = $this->database->getAllDistricts();
-		// printme($_POST);
-		// exit();
-
 		$user = $this->user->getUserByUsername($username);
 		if($user){
 			$login = $this->user->login($user->username,$password);
@@ -126,7 +122,7 @@ class Home extends CI_Controller {
 		}
 		//printme($currentUrl);exit();
 		$this->session->set_flashdata('login_username', $username);
-		redirect($currentUrl);
+		redirect($currentUrl.'?'.$query);
 
 	}
 
@@ -153,7 +149,7 @@ class Home extends CI_Controller {
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
 		// printme($_POST);exit();
-		redirect($_POST['currentUrl']);
+		redirect($_POST['currentUrl'].'?'.$_POST['query_string']);
 	}
 
 	public function register ()
@@ -623,9 +619,7 @@ class Home extends CI_Controller {
 	public function getSearchResults()
 	{
 		$data = $this->init();
-		// $this->load->model('service');
-		// $data['districts'] = $this->database->getAllDistricts();
-		// printme($data['districts']);exit();
+		// printme($_GET);exit();
 		$flag = false;
 		$generalFlag = false;
 		$districtFlag = false;
@@ -714,12 +708,13 @@ class Home extends CI_Controller {
 					$type = $this->database->getPropertyTypeByID($value[1]);
 				}
 			}elseif($value[0] == 'contractType'){
-				if ($value[1]  == '' || $value[1]  == 0)
-				{
-					$propertyFor = '';
-				}else{
+				
+				// if ($value[1] != 'Sale' || $value[1] != 'Rent' || $value[1] != 'Sale/Rent')
+				// {
+					// $propertyFor = '';
+				// }else{
 					$propertyFor = $value[1];
-				}
+				// }
 			}elseif($value[0] == 'price'){
 				$price = explode('+', $value[1]);
 				if (count($price) == 1)
@@ -789,7 +784,7 @@ class Home extends CI_Controller {
 				$data['commercial'] = true;
 			}
 			$data['searchResults'] = $this->database->search($searchParams);
-			
+			// printme($data['searchResults']);exit();
 			if ($data['searchResults']['totalResults'] > 0)
 			{
 				$data['totalResults'] = $data['searchResults']['totalResults'];
@@ -804,8 +799,6 @@ class Home extends CI_Controller {
 						}
 					}
 					$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
-					// $data['images'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);
-					
 				}
 			}else{
 				$data['resultCount'] = 0;

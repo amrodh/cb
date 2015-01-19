@@ -77,9 +77,21 @@
                                                         <div class="properties_img">
                                                             <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
-                                                        <div class="properties_number">
-                                                            <?php echo $count; ?>
-                                                        </div>
+                                                        <?php if (strlen($count)>2): ?>
+                                                            <div class="properties_number" style="width:37px;">
+                                                                <?php echo $count; ?>
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <?php if (strlen($count)>3): ?>
+                                                                <div class="properties_number" style="width:45px;">
+                                                                    <?php echo $count; ?>
+                                                                </div>
+                                                            <?php else: ?>
+                                                                <div class="properties_number" style="">
+                                                                    <?php echo $count; ?>
+                                                                </div>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
                                                         <div class="properties_info">
                                                             <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                 <div class="col-lg-11" style="float: left; padding:0;">
@@ -202,9 +214,21 @@
                                                         <div class="properties_img">
                                                             <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                         </div>
-                                                        <div class="properties_number">
-                                                            <?php echo $count; ?>
-                                                        </div>
+                                                        <?php if (strlen($count)>2): ?>
+                                                            <div class="properties_number" style="width:37px;">
+                                                                <?php echo $count; ?>
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <?php if (strlen($count)>3): ?>
+                                                                <div class="properties_number" style="width:45px;">
+                                                                    <?php echo $count; ?>
+                                                                </div>
+                                                            <?php else: ?>
+                                                                <div class="properties_number" style="">
+                                                                    <?php echo $count; ?>
+                                                                </div>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
                                                         <div class="properties_info">
                                                             <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                 <div class="col-lg-11" style="float: left; padding:0;">

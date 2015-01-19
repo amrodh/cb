@@ -25,6 +25,7 @@
         var url = $("#url").val();
         url = url+"getSearchResults";
         var currentUrl = $("#query_string").val();
+        // alert(currentUrl);return;
         var currentLanguage = $('#currentLanguage').val();
         $.ajax({
             type: "GET",

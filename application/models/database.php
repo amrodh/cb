@@ -215,6 +215,8 @@ class database extends CI_Model {
                         return false; 
                     }
                 }else{
+                        // printme($inputs);exit();
+
                     $this->db->select('*');
                     $this->db->from('property_service');
                     $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
@@ -243,7 +245,7 @@ class database extends CI_Model {
                     if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
                     {
                         $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
-                        if ($inputs['PropertyFor'] == 'Sale'){
+                        if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
                             $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
                             $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
                         }elseif($inputs['PropertyFor'] == 'Rent'){
