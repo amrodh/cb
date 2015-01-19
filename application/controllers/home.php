@@ -799,6 +799,11 @@ class Home extends CI_Controller {
 						}
 					}
 					$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+					// printme($data['images'][$property->PropertyId]);
+					if ((!is_array($data['images'][$property->PropertyId]) || count($data['images'][$property->PropertyId]) < 1)) {
+						$data['images'][$property->PropertyId]['src'] = 'No_image.svg';
+					}
+
 				}
 			}else{
 				$data['resultCount'] = 0;
@@ -806,7 +811,7 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}
-		
+		// printme($data['images']);exit()
 		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 

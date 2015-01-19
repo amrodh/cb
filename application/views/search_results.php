@@ -212,7 +212,13 @@
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
+                                                        <?php //printme( $images[$result->PropertyId]); ?>
+                                                        <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                             <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                        <?php else: ?>
+                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                        <?php endif ?>
+                                                            
                                                         </div>
                                                         <?php if (strlen($count)>2): ?>
                                                             <div class="properties_number" style="width:37px;">
