@@ -351,7 +351,7 @@ function propertyAlertCron($con)
                   $data['images'][$property['PropertyId']] = getPropertyImagesDB($property['PropertyId'], $con);
                   if (!is_array($data['images'][$property['PropertyId']]))
                   {
-                      $data['images'][$property['PropertyId']] = array ( 0 => 'http://localhost/ColdwellBanker/application/static/images/No_image.svg');
+                      $data['images'][$property['PropertyId']] = array ( 0 => 'http://104.236.15.51/cb/application/static/images/No_image.svg');
                   }else{
                     $data['images'][$property['PropertyId']] = $data['images'][$property['PropertyId']]['src'];
                   }
