@@ -7,7 +7,7 @@
 <table style="width:95%; border: 10px solid #233f71;">
     <tr>
         <td style="width: 30%">
-            <img class="newsletter_logo img-responsive" style="width: 100%;" src="http://localhost/ColdwellBanker/application/static/images/logo.png">
+            <img class="newsletter_logo img-responsive" style="width: 100%;" src="http://104.236.15.51/cb/application/static/images/logo.png">
         </td>
         <td style="font-size: 190%;padding: 4%;">
             <?php 
@@ -22,10 +22,10 @@
             <?php if ($count % 3 != 0): ?>
                 <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                     <div class="compare_img">
-                        <?php if ($data['images'][$property['PropertyId']][0] == 'http://localhost/ColdwellBanker/application/static/images/No_image.svg'): ?>
-                            <a href="localhost/ColdwellBanker/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo $data['images'][$property['PropertyId']][0]; ?>"/></a>
+                        <?php if ($data['images'][$property['PropertyId']][0] == 'http://104.236.15.51/cb/application/static/images/No_image.svg'): ?>
+                            <a href="http://104.236.15.51/cb/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo $data['images'][$property['PropertyId']][0]; ?>"/></a>
                         <?php else: ?>
-                            <a href="localhost/ColdwellBanker/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo 'http://localhost/ColdwellBanker/application/static/upload/property_images/'.$data['images'][$property['PropertyId']][0]; ?>"/></a>
+                            <a href="lhttp://104.236.15.51/cb/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo 'http://104.236.15.51/cb/application/static/upload/property_images/'.$data['images'][$property['PropertyId']][0]; ?>"/></a>
                         <?php endif ?>
                     </div>
                     <div class="compare_description" style="padding-left: 0;padding-right: 0;">
@@ -58,10 +58,10 @@
                 <tr>
                     <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                         <div class="compare_img">
-                            <?php if ($data['images'][$property['PropertyId']][0] == 'http://localhost/ColdwellBanker/application/static/images/No_image.svg'): ?>
-                            <a href="localhost/ColdwellBanker/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo $data['images'][$property['PropertyId']][0]; ?>"/></a>
+                            <?php if ($data['images'][$property['PropertyId']][0] == 'http://104.236.15.51/cb/application/static/images/No_image.svg'): ?>
+                            <a href="http://104.236.15.51/cb/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo $data['images'][$property['PropertyId']][0]; ?>"/></a>
                         <?php else: ?>
-                            <a href="localhost/ColdwellBanker/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo 'http://localhost/ColdwellBanker/application/static/upload/property_images/'.$data['images'][$property['PropertyId']][0]; ?>"/></a>
+                            <a href="http://104.236.15.51/cb/en/propertyDetails/<?= $property['PropertyId'];?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property['PropertyId'];  ?>" src="<?php echo 'http://104.236.15.51/cb/application/static/upload/property_images/'.$data['images'][$property['PropertyId']][0]; ?>"/></a>
                         <?php endif ?>
                         </div>
                         <div class="compare_description" style="padding-left: 0;padding-right: 0;">
@@ -97,11 +97,11 @@
     <tr>
       <td>
         <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;width: 300%;">
-                <a style="text-decoration: none;" href="www.linkedin.com"><img class="newsletter_social_icons" src="http://localhost/ColdwellBanker/application/static/images/icon_linkedin.png"></a>
-                <a style="text-decoration: none;" href="www.google.com"><img class="newsletter_social_icons" src="http://localhost/ColdwellBanker/application/static/images/icon_gmail.png"></a>
-                <a style="text-decoration: none;" href="www.facebook.com"><img class="newsletter_social_icons" src="http://localhost/ColdwellBanker/application/static/images/icon_fb.png"></a>
-                <a style="text-decoration: none;" href="www.twitter.com"><img class="newsletter_social_icons" src="http://localhost/ColdwellBanker/application/static/images/icon_twitter.png"></a>
-                <img style="margin-top: -5px;margin-left: 54%" src="http://localhost/ColdwellBanker/application/static/images/callcenter.png"/>        
+                <a style="text-decoration: none;" href="http://www.linkedin.com/company/coldwell-banker-egypt"><img class="newsletter_social_icons" src="http://104.236.15.51/cb/application/static/images/icon_linkedin.png"></a>
+                <a style="text-decoration: none;" href="http://www.youtube.com/user/ColdWellBankerEgypt1"><img class="newsletter_social_icons" src="http://104.236.15.51/cb/application/static/images/icon_gmail.png"></a>
+                <a style="text-decoration: none;" href="https://www.facebook.com/ColdwellBankerEgypt"><img class="newsletter_social_icons" src="http://104.236.15.51/cb/application/static/images/icon_fb.png"></a>
+                <a style="text-decoration: none;" href="http://www.twitter.com/CB_Egypt"><img class="newsletter_social_icons" src="http://104.236.15.51/cb/application/static/images/icon_twitter.png"></a>
+                <img style="margin-top: -5px;margin-left: 54%" src="http://104.236.15.51/cb/application/static/images/callcenter.png"/>        
         </div>
         
      </td>
