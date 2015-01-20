@@ -871,6 +871,9 @@ class Home extends CI_Controller {
 		$propertyId = explode('/', $data['uri']);
 		$data['propertyId'] = $propertyId[1];
 		$data['searchResults'] = $this->database->getPropertyByID($data['propertyId']);
+		if (!is_array($data['searchResults'])) {
+			redirect(base_url());
+		}
 		$data['searchResults'] = (object)  $data['searchResults'][0];
 		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
 		$data['districts'] = $this->database->getAllDistricts();

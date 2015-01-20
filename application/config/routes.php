@@ -148,6 +148,7 @@ $route["$appended_lang/home"] = "home";
 $route["createExcel"] = "home/createExcel";
 
 $route["cron"] = "home/cron";
+
 $route['404']             = "home/my_404";
 $route['404_override']    = 'home/my_404';
 $route["$appended_lang/404"]             = "home/my_404";
