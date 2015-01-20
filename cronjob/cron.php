@@ -654,6 +654,9 @@
                     $result = $con->query($sql);
             	}
             }
+
+            $sqlInsertCron = "INSERT INTO cron (name) values ('cron')";
+            $result = $con->query($sqlInsertCron);
     }
 
     
