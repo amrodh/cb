@@ -1,233 +1,111 @@
-<?php include('header.php'); ?>
-	<div class="container newsletter_container">
-		<div id="newsletter_logo">
-			<img class="newsletter_logo" src="<?= base_url();?>/application/static/images/logo.png">
-		</div>
-		<div id="newsletter_title">
-			This is the 25th edition of the Coldwell Banker Newsletter
-		</div>
-		<div class="newsletter_properties_container">
-			<div class="row newsletter_rows">
-				<div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        1
-                    </div>
+<table style="width:95%; border: 10px solid #233f71;">
+    <tr>
+        <td style="width: 30%">
+            <img class="newsletter_logo img-responsive" style="width: 100%;" src="<?= base_url();?>/application/static/images/logo.png">
+        </td>
+        <td style="font-size: 190%;padding: 4%;">
+            Property Alert
+        </td>
+    </tr>
+    <?php $count = 0; ?>
+    <tr>
+    <?php foreach ($searchResults as $property): ?>
+            <?php if ($count % 3 != 0): ?>
+                <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
                     <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
+                    <?php //printme($images);
+                    //printme($property); ?>
+                        <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
                     </div>
-                    <div class="compare_description">
+                    <div class="compare_description" style="padding-left: 0;padding-right: 0;">
                         <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
+                            Description
                         </div>
                         <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            <?php if ($property->LocationProject != ''): ?>
+                                <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
+                            <?php else: ?>
+                                <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
+                            <?php endif ?>
+                            <br>
+                            Bedrooms: <?php echo $property->BedRoomsNumber;?> 
+                            <?php if ($property->BathRoomsNumber != 0): ?>
+                                , Bathrooms: <?php echo $property->BathRoomsNumber;?>
+                            <?php endif ?>
+                            <br>
+                            <?php if ($property->SalesTypeStr == 'Sale'): ?>
+                                <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $property->SaleCurrency.' '.number_format(explode('.',$property->SalePrice)[0]); ?></span>
+                            <?php else: ?>
+                                <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $property->RentCurrency.' '.number_format(explode('.',$property->RentPrice)[0]); ?></span>
+                            <?php endif ?>
+                            <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna -->
                         </div>
                     </div>
                     <div class="compare_price">
                         <div class="compare_price_text">
-                            EGP 2,000,000
+                            <!-- EGP 2,000,000 -->
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        2
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
+                </td>
+            <?php else: ?>
+                </tr>
+                <tr>
+                    <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
+                        <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;background-color: white;color: orange;position: absolute;font-size: 17px;margin-top: -124px;text-align: center;margin-left: 23px;">
+                            <?php echo $count+1; ?>
                         </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        <div class="compare_img">
+                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
                         </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
+                        <div class="compare_description" style="padding-left: 0;padding-right: 0;">
+                            <div class="compare_description_title">
+                                Description
+                            </div>
+                            <div class="compare_description_content">
+                                <?php if ($property->LocationProject != ''): ?>
+                                    <?php echo $property->LocationProject; ?>, <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
+                                <?php else: ?>
+                                    <?php echo $property->LocationDistrict; ?>, <?php echo $property->LocationCity; ?>
+                                <?php endif ?>
+                                <br>
+                                Bedrooms: <?php echo $property->BedRoomsNumber;?> 
+                                <?php if ($property->BathRoomsNumber != 0): ?>
+                                    , Bathrooms: <?php echo $property->BathRoomsNumber;?>
+                                <?php endif ?>
+                                <br>
+                                <?php if ($property->SalesTypeStr == 'Sale'): ?>
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $property->SaleCurrency.' '.number_format(explode('.',$property->SalePrice)[0]); ?></span>
+                                <?php else: ?>
+                                    <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $property->RentCurrency.' '.number_format(explode('.',$property->RentPrice)[0]); ?></span>
+                                <?php endif ?>
+                                <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna -->
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        3
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
+                        <div class="compare_price">
+                            <div class="compare_price_text">
+                                <!-- EGP 2,000,000 -->
+                            </div>
                         </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-			</div>
-			<div class="row newsletter_rows">
-				<div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        1
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        2
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        3
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-			</div>
-			<div class="row newsletter_rows">
-				<div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        1
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        2
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 newsletter_cols">
-                    <div class="properties_number compare_number">
-                        3
-                    </div>
-                    <div class="compare_img">
-                        <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/>
-                    </div>
-                    <div class="compare_description">
-                        <div class="compare_description_title">
-                            <?php echo $this->lang->line('compare_title1'); ?>
-                        </div>
-                        <div class="compare_description_content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        </div>
-                    </div>
-                    <div class="compare_price">
-                        <div class="compare_price_text">
-                            EGP 2,000,000
-                        </div>
-                    </div>
-                </div>
-			</div>
-		</div>
-		<div id="newsletter_content">
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
-		</div>
-		<div id="newsletter_contact">
-			<a href="">
-                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png">
-            </a>
-            <a href="">
-                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png">
-            </a>
-            <a href="">
-                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png">
-            </a>
-            <a href="">
-                <img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png">
-            </a>
-            <div style="float:right;margin-top:-1%;">
-            	<img style="margin-top: -8px;" src="<?= base_url(); ?>application/static/images/icon_phone.png"/>
-                <div class="footer_col_title" style="margin-top: -29px;margin-left: 35px;font-size: 200%;color: #233f71;">
-                    <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
-                </div>
-                <div style="margin-top: -18%;font-size: 350%;color: #233f71;margin-left: 6%;">
-                16223 
-                </div>
-            </div>
+                    </td>
+            <?php endif ?>
+            <?php $count++; ?>
+    <?php endforeach ?>
+    <tr>
+        <?php 
+            if(isset($params))
+                echo $params['lower'];
+        ?>
+    </tr>
+    <tr>
+      <td>
+        <div id="newsletter_contact" style="background-color: #ebebeb;padding: 2%;width: 300%;">
+            <a style="text-decoration: none;" href="www.linkedin.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_linkedin.png"></a>
+            <a style="text-decoration: none;" href="www.google.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_gmail.png"></a>
+            <a style="text-decoration: none;" href="www.facebook.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_fb.png"></a>
+            <a style="text-decoration: none;" href="www.twitter.com"><img class="newsletter_social_icons" src="<?= base_url();?>/application/static/images/icon_twitter.png"></a>
+            <img style="margin-top: -5px;margin-left: 54%" src="<?= base_url(); ?>application/static/images/callcenter.png"/>        
         </div>
-	</div>
-<?php include('footer.php'); ?>
+        
+     </td>
+    </tr>
+</table>

@@ -74,8 +74,8 @@
                        </div>
                        <select class="selectpicker" id="propertyAlert_type" name="alert_type" data-style="btn" data-title="Select Type" data-size="5">
                             <option value="0">Select Contract Type</option> 
-                            <option value="1">Sale</option>
-                            <option value="2">Rent</option>
+                            <option value="Sale">Sale</option>
+                            <option value="Rent">Rent</option>
                        </select>
                    </div>
                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">

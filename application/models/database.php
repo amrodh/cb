@@ -215,8 +215,6 @@ class database extends CI_Model {
                         return false; 
                     }
                 }else{
-                        // printme($inputs);exit();
-
                     $this->db->select('*');
                     $this->db->from('property_service');
                     $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
@@ -258,7 +256,7 @@ class database extends CI_Model {
                     $this->db->order_by('PropertyId','desc');
                     $query = $this->db->get();
                     // printme($this->db->last_query());
-                    // printme($query->result());exit();
+                    // printme($query->result());
                     if ($query->num_rows >0)
                     {
                         $results = array(

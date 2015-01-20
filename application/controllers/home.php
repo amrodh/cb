@@ -604,7 +604,7 @@ class Home extends CI_Controller {
 		}else{
 			$params['user_identifier'] = $_POST['id'];
 		}
-		// printme($_POST['id']);
+		
 		$process = $this->user->insertNewsletterData($params);
 		if($process)
 		{
@@ -1192,12 +1192,10 @@ class Home extends CI_Controller {
 		$this->lang->load('offices', $lang);
 		$this->lang->load('featuredProperties', $lang);
 		$this->lang->load('about', $lang);
-		// $this->lang->load('viewallproperties', $lang);
 	}
 
 	public function insertPropertyAlert()
 	{
-		// printme($_POST);
 		$name = $_POST['name'];
 		if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
 	        $params['user_identifier'] = $name;
@@ -1207,11 +1205,152 @@ class Home extends CI_Controller {
 	        $params['user_identifier'] = $user->id;
 	    }
 
-
 	    $params['property_data'] = $_POST['data'];
 	    $insertProcess = $this->property->insertPropertyAlert($params);
+	    $postData = explode(',', $_POST['data']);
+	    // printme($postData);exit();
+	    // city='3',district='107',type='Apartment',price='750000 - 1000000',area='300 - 400',contractType='1'
+	    foreach ($postData as $value) {
+			$value = explode('=', $value);
+			if($value[0] == 'city'){
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					$city = '';
+				}else{
+					$city = $this->database->getCityByID($value[1]);
+					$data['districts'] = $this->database->getDistricts($city[0]['id']);
+					$city = $city[0]['name'];
+				}
+			}elseif($value[0] == 'district'){
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					$district = '';
+				}else{
+					$district = $this->database->getDistrictByID($value[1]);
+					$district = $district[0]['name'];
+					$districtFlag = true;
+				}
+			}elseif($value[0] == 'type'){
+				// if ($value[1] == 0 || $value[1] == '')
+				// {
+					// $type = '';
+				// }else{
+					$type = $value[1];
+				// }
+			}elseif($value[0] == 'contractType'){
+				// if ($value[1] != 'Sale' || $value[1] != 'Rent' || $value[1] != 'Sale/Rent')
+				// {
+					// $propertyFor = '';
+				// }else{
+					$propertyFor = $value[1];
+				// }
+			}elseif($value[0] == 'price'){
+				$price = explode('-', $value[1]);
+				if (count($price) == 1)
+				{
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = 1000000000000000000000000;
+					// printme($priceLowerLimit);
+					// printme($priceUpperLimit);
+				}else{
+					$priceLowerLimit = $price[0];
+					$priceUpperLimit = $price[2];
+				}
+			}elseif($value[0] == 'area'){
+				$area = explode('-', $value[1]);
+				if (count($area) == 1)
+				{
+					if ($area[0] == '%3C50')
+					{
+						$areaLowerLimit = 0;
+						$areaUpperLimit = 50;
+					}elseif ($area[0] == '%3E500') {
+						$areaLowerLimit = 500;
+						$areaUpperLimit = 10000000000000000000000000;
+					}elseif($area[0] == 0){
+						$areaLowerLimit = 0;
+						$areaUpperLimit = 10000000000000000000000000;
+					}
+				}else{
+					$areaLowerLimit = $area[0];
+					$areaUpperLimit = $area[2];
+				}
+			}elseif($value[0] == 'project'){
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					$project = '';
+				}else{
+					$project = $value[1];
+				}
+			}
+		}
+
+		if (!isset($propertyFor))
+		{
+			$propertyFor = '';
+		}
+		if (!isset($priceLowerLimit))
+		{
+			$priceLowerLimit = 0;
+			$priceUpperLimit = 100000000000000000;
+		}
+		if (!isset($areaLowerLimit))
+		{
+			$areaLowerLimit = 0;
+			$areaUpperLimit = 1000000000000000000;
+		}
+
+		$searchParams = array(
+			'lob' => '',
+			'PropertyType' => $type,
+			'City' => $city,
+			'District' => $district,
+			'PropertyFor' => $propertyFor,
+			'PriceLowerLimit' => $priceLowerLimit,
+			'PriceUpperLimit' => $priceUpperLimit,
+			'AreaLowerLimit' => $areaLowerLimit,
+			'AreaUpperLimit' => $areaUpperLimit, 
+			'generalFlag' => false
+		);		
+		// printme($searchParams);
+	    
+		$data['searchResults'] = $this->database->search($searchParams);
+		// printme($data['searchResults']);
+		if ($data['searchResults']['totalResults'] > 0)
+		{
+			$data['totalResults'] = $data['searchResults']['totalResults'];
+			$data['searchResults'] = $data['searchResults']['results'];
+			$data['images'] = array();
+			foreach ($data['searchResults'] as $property) {
+				$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+				if ((!is_array($data['images'][$property->PropertyId]) || count($data['images'][$property->PropertyId]) < 1)) {
+					$data['images'][$property->PropertyId]['src'] = 'No_image.svg';
+				}
+
+			}
+		}else{
+			$data['resultCount'] = 0;
+			$data['totalResults'] = 0;
+			$data['noResults'] = "Sorry, there were no results that match your criteria";
+		}
+
 	    if($insertProcess)
+	    {
 	    	echo 'true';
+	    	// printme($data)
+	    	$body = $this->load->view('newsletter_properties', $data, true);
+	    	if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
+		        $this->smtpmailer('Property Alert',$body,$name, '');
+		    }
+		    else {
+		       $user = $this->user->getUserByUsername($name);
+		       $result = $this->smtpmailer('Property Alert',$body,$user->email, '');
+		       // printme($result);
+		       // var_dump($result);
+		    }
+		    // printme()
+			
+	    }
 	    else
 	    	echo 'false';
 	    

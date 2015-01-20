@@ -81,7 +81,6 @@ $(document).ready(function ()
 
 
            $("#btn_subscribe").click(function(){
-              // alert('hi');
            		var email;
            		if( $("#footer_subscribe_email").length == 0){
            			email = 'user';
@@ -91,7 +90,6 @@ $(document).ready(function ()
            				return false;
            			}
            		}
-              // alert(email);return;
            		var url = $("#url").val();
 		        url = url+"subscribeuser";
 		        $.ajax({
@@ -112,10 +110,6 @@ $(document).ready(function ()
                         $("#successMessage").html('Subscription failed. Please try again later');
                   }
                 });
-
-
-
-           		
            });
 
 
@@ -963,9 +957,6 @@ $(".propertyAlertButton").click(function(){
         var email = $("#alert_email").val();
         var url   = $("#url").val() + 'insertPropertyAlert';
 
-        // alert(url);
-
-
         if($("#alert_email").length != 0){
 
             if(validateEmail(email)){
@@ -982,28 +973,22 @@ $(".propertyAlertButton").click(function(){
              var user_id = $("#tmp__nm").val();
         }   
 
-        //  if( city==0 || district==0 || type==0){
-        //      $("#propertyAlertError").removeClass('hide');
-        //      $("#propertyAlertError").html('City, District and Property Type are required');
-        //      $("#propertyAlertSuccess").addClass('hide');
-        //     return false;
-        // }else{
-
-                data = "city='"+city+"',district='"+district+"',type='"+type+"'";
+                data = "city="+city+",district="+district+",type="+type;
                 if(price != 0 )
-                    data += ",price='"+price+"'";
+                    data += ",price="+price;
                  if(area != 0 )
-                    data += ",area='"+area+"'";
+                    data += ",area="+area;
                 if (contractType != 0)
-                    data += ",contractType='"+contractType+"'";
+                    data += ",contractType="+contractType;
                 
 
                 $.ajax({
                   type: "POST",
                   url: url,
-                  data: { name: user_id , data : data }
+                  data: { name: user_id , data : data, city: city, district: district, type: type, contractType:contractType, price:price, area:area }
                 })
                   .success(function( msg ) {
+                    alert(msg);
                             $("#propertyAlertSuccess").removeClass('hide');
                             $("#propertyAlertError").addClass('hide');
                   });
