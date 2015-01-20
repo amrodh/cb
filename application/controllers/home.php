@@ -77,6 +77,18 @@ class Home extends CI_Controller {
 	}
 
 
+	public function _remap($method, $params = array())
+    {
+        // Check if the requested route exists
+        if (method_exists($this, $method))
+        {
+            // Method exists - so just continue as normal
+            return call_user_func_array(array($this, $method), $params);
+        }else{
+        	redirect(base_url());
+        }
+    }
+
 	public function getFeaturedProperties()
 	{	
 		$data = $this->init();
