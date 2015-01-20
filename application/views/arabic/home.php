@@ -30,9 +30,10 @@
 		    </div>
 		</div>
 
-	<!-- End of Featured Properties -->
-
-
+</div>
+<div class="hide">
+    Coldwell Banker Egypt, Real Estate Egypt
+    Coldwell Banker Egypt is the premier Egypt real estate agency for full-service residential and commercial real estate property. Being the majorreal estate Egypt brokerage firm amongst all other real estate brokers locally & globally; Coldwell Banker Egypt is committed to play an important role in real estate Egypt investment and development to support long term growth plan for real estate market in Egypt. We provide our customers with all facilitates to find real estate for sale, rent, sell, buy real estate, legal services & property evaluation for luxury real estate.
 </div>
 <?php include('footer.php'); ?>
 

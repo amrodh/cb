@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="keywords" content=" real estate Egypt, real estate in Egypt, Egypt real estate, real estate agent Egypt, real estate for sale Egypt, real estate brokers Egypt, real estate agency Egypt, real estate property Egypt, real estate market Egypt, residential real estate Egypt, luxury real estate Egypt, buy real estate Egypt ">
         <title><?= $title;?></title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/static/css/dataTables.bootstrap.css">

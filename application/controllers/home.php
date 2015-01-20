@@ -8,8 +8,6 @@ class Home extends CI_Controller {
 		$data['session'] = $this->session;
 		$tmp = $this->session->flashdata('loginError');
 
-
-
 		if($tmp){
 			$data['loginError'] = $this->session->flashdata('loginError');
 			$data['login_username'] = $this->session->flashdata('login_username');
@@ -17,7 +15,7 @@ class Home extends CI_Controller {
 		}
 
 		$data = $this->init();
-		$data['title'] = 'ColdWell Banker | Home';	
+		$data['title'] = 'Coldwell Banker Egypt – Betna | Real estate Egypt | Egypt real estate';	
 		$this->load->model('content');
 		$data['slides'] = $this->content->getActiveSliders();
 		$data['cities'] = $this->database->getCities();
