@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2015 at 09:44 PM
+-- Generation Time: Jan 20, 2015 at 01:48 AM
 -- Server version: 5.5.33
 -- PHP Version: 5.5.3
 
@@ -429,6 +429,19 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`id`, `title`, `title_ar`, `text`, `text_ar`, `image`, `date_joined`, `feature`, `feature_ar`) VALUES
 (9, 'Coldwell Banker Real Estate Diploma', 'دبلومة كولدويل بانكر العقارية', '', '', '', '2014-11-30 12:26:11', '<p>Coldwell Banker Training Academy is considered the only one institute in the country for&nbsp;real estate and development education and this should help Egypt build their leaders of &nbsp;tomorrow and create a deeper pool of talent in the Real estate sales field.</p>\n\n<p>This course is designed to offer all candidates interested in Real Estate sales a greater&nbsp;insight into the profession of selling and closing deals.</p>\n\n<p>Coldwell Banker Diploma is delivered by professionals with over 10 years experience in real&nbsp;estate, the course consists of both theoretical and practical elements of the real estate sales&nbsp;process with the emphasis on negotiations and closings.</p>\n\n<p><strong>On completion of the diploma, students should have acquired:</strong></p>\n\n<ul>\n	<li>Introduction to real estate</li>\n	<li>Investment fundamentals of real estate</li>\n	<li>Real estate legalities</li>\n	<li>Real estate marketing</li>\n	<li>Cash flow management</li>\n	<li>Sales planning strategies</li>\n	<li>Negotiation strategies</li>\n	<li>Customer relationship management</li>\n</ul>\n\n<p>As a result you will always find reputable/qualified Real Estate developers under one Roof in&nbsp;Coldwell Banker</p>\n', '<p>أكاديمية كولدويل بانكر التدريبية هى المؤسسة العلمية الوحيدة فى مصر التى توفر دراسة&nbsp;لموظفيها فى مجال التطوير العقارى، مما يساهم فى المساعدة على إيجاد قادة المستقبل ذوي مهنية عالية، وخلق كم وافر من المحترفين فى مجال المبيعات العقارية.</p>\n\n<p>دبلومة كولدويل بانكر تقدم من خلال مجموعةمن المحترفين &nbsp;ذوي الخبرة لأكثر من 10 سنوات فى&nbsp;مجال العقارات، ويحتوى الكورس على العناصر النظرية والعملية فى خطوات بيع العقارات، وذلك مع&nbsp;التركيز على المفاوضات وكيفية إنهاء الصفقة.</p>\n\n<p>مع الإنتهاء من دراسة الدبلومة، سوف يكتسب المتدرب الآتى:</p>\n\n<ul>\n	<li>أساسيات الإستثمار العقارى</li>\n	<li>\n	<p>قوانين العقارات&nbsp;</p>\n	</li>\n	<li>\n	<p>السوق العقارى</p>\n	</li>\n	<li>\n	<p>إدارة التدفق النقدى&nbsp;</p>\n	</li>\n	<li>\n	<p>خطط وإستراتجيات المبيعات</p>\n	</li>\n	<li>\n	<p>إستراتجيات المفاوضات</p>\n	</li>\n	<li>\n	<p>إدارة علاقات العملاء</p>\n	</li>\n</ul>\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cron`
+--
+
+CREATE TABLE `cron` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -8552,16 +8565,17 @@ CREATE TABLE `user_property_alert` (
   `property_data` varchar(500) NOT NULL,
   `date_joined` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `user_property_alert`
 --
 
 INSERT INTO `user_property_alert` (`id`, `user_identifier`, `property_data`, `date_joined`) VALUES
-(21, 's.nahal@enlightworld.com', 'city=''3'',district=''107'',type=''Villa''', '2014-11-26 14:21:11'),
-(23, 's.nahal@enlightworld.com', 'city=''3'',district=''88'',type=''Duplex''', '2014-11-26 15:23:53'),
-(25, 'saranahal@aucegypt.edu', 'city=''3'',district=''88'',type=''Duplex''', '2014-11-27 12:19:57');
+(53, 'saranahal@aucegypt.edu', 'city=3,district=107,type=Apartment', '2015-01-20 00:38:17'),
+(54, 'saranahal@aucegypt.edu', 'city=3,district=107,type=Apartment', '2015-01-20 00:39:30'),
+(55, 'saranahal@aucegypt.edu', 'city=3,district=107,type=Apartment', '2015-01-20 00:40:04'),
+(56, 'saranahal@aucegypt.edu', 'city=3,district=107,type=Apartment', '2015-01-20 00:40:37');
 
 -- --------------------------------------------------------
 
