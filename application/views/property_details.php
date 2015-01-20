@@ -22,7 +22,7 @@
             <div id="property_tabs_header">
                 <ul class="nav nav-tabs nav-justified" id="property_tabs">
                     <li class="active"><a href="#details" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab1'); ?></a></li>
-                    <!-- <li><a href="#map" data-toggle="tab"><?php echo $this->lang->line('propertydetails_tab2'); ?></a></li> -->
+                    <!-- <li><a href="#map" data-toggle="tab"><?php //echo $this->lang->line('propertydetails_tab2'); ?></a></li> -->
                 </ul>
             </div>
             <div class="tab-content property_details_body">
@@ -93,18 +93,29 @@
                                 <div class="row" style="margin-left: 0;">
                                     <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle3'); ?> </b> <?php echo explode('.',$searchResults->TotalArea)[0];?> <?php echo $searchResults->AreaunitStr;?>s
                                 </div>
-                                <div class="row" style="margin-left: 0;">
+                                <!-- <div class="row" style="margin-left: 0;">
                                     <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle4'); ?> </b> <?php echo $searchResults->SalesTypeStr;?>
-                                </div>
+                                </div> -->
                                 <div class="row" style="margin-left: 0;">
                                     <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle5'); ?> </b> <?php echo $searchResults->InteriorFinishing;?>
                                 </div>
                                 <div class="row" style="margin-left: 0;">
-                                    <?php if ($searchResults->SalesTypeStr == 'Sale'): ?>
+                                    <?php if ($searchResults->SalesTypeStr == 'Rent'): ?>
+                                        <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span><br>
                                         <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->SaleCurrency.' '.number_format(explode('.',$searchResults->SalePrice)[0]); ?></span>
                                     <?php else: ?>
-                                        <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span>
+                                        <?php if ($searchResults->SalesTypeStr == 'Sale'): ?>
+                                            <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->SaleCurrency.' '.number_format(explode('.',$searchResults->SalePrice)[0]); ?></span>
+                                        <?php else: ?>
+                                            <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->SaleCurrency.' '.number_format(explode('.',$searchResults->SalePrice)[0]); ?></span><br>
+                                            <b style="color: #5a7baa;"><?php echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span>
+                                        <?php endif ?>
                                     <?php endif ?>
+                                 <!--    <?php // if ($searchResults->SalesTypeStr == 'Sale'): ?>
+                                        <b style="color: #5a7baa;"><?php //echo $this->lang->line('propertydetails_subtitle6'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->SaleCurrency.' '.number_format(explode('.',$searchResults->SalePrice)[0]); ?></span>
+                                    <?php //else: ?>
+                                        <b style="color: #5a7baa;"><?php //echo $this->lang->line('propertydetails_subtitle7'); ?> </b> <span style="font-size: 120%;color: orange;"> <?php echo $searchResults->RentCurrency.' '.number_format(explode('.',$searchResults->RentPrice)[0]); ?></span>
+                                    <?php //endif ?> -->
                                 </div>
                             </div>
                         </div>
