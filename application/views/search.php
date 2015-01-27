@@ -147,7 +147,7 @@
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
                        <div class="col-lg-12">
-                            <input type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>"><?php echo $this->lang->line('search_button'); ?>
+                            <input type="submit" class="btn btn-default search_btn_submit2 searchButton" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
                        </div>
                    </div>
                 </div>

@@ -58,13 +58,69 @@
                          <input type="text" name="longitude" value="<?php if(isset($params)) echo $params['longitude']; ?>" required>
                        </td><td></td><td></td>
                       </tr>
-
-                      <tr>
+                      <?php if (isset($phonesResidential[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Residential): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesResidential[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                          <input type="text" name="phones[]" value="<?php  echo $phone;?>">
+                                          <input type="hidden" name="phone_categories[]" value="residential">
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <?php if (isset($phonesCommercial[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Commercial): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesCommercial[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                            <input type="text" name="phones[]" value="<?php  echo $phone;?>">
+                                            <input type="hidden" name="phone_categories[]" value="commercial">
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <?php if (isset($phonesHotline[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Hotline): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesHotline[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                            <input type="text" name="phones[]" value="<?php  echo $phone;?>">
+                                            <input type="hidden" name="phone_categories[]" value="hotline">
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <!-- <tr>
                        <td>Phone</td>
                        <td>
-                         <input type="text" name="phone" value="<?php if(isset($params)) echo $params['phone']; ?>" required>
+                         <input type="text" name="phone" value="<?php //if(isset($params)) echo $params['phone']; ?>" required>
                        </td><td></td><td></td>
-                      </tr>
+                      </tr> -->
 
                       <tr>
                        <td>Working Hours</td>

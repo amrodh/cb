@@ -661,6 +661,87 @@ class Admin extends CI_Controller {
 		$id = $id[1];
 		
 		$data['office'] = $this->office->getOfficeByID($id);
+		$data['phones'] = $this->office->getOfficePhones($id);
+		$count1 = 0;
+		$count2 = 0;
+		$count3 = 0;
+		if(is_array($data['phones'])){
+			foreach ($data['phones']  as $key => $phone) {
+				if ($phone->category == 'residential')
+				{
+					$data['phonesResidential'][$phone->office_id][$count1] = $phone->phone;
+					$count1++;
+				}elseif ($phone->category == 'commercial') {
+					$data['phonesCommercial'][$phone->office_id][$count2] = $phone->phone;
+					$count2++;
+				}elseif ($phone->category == 'hotline') {
+					$data['phonesHotline'][$phone->office_id][$count3] = $phone->phone;
+					$count3++;
+				}
+			}
+		}
+		
+		if (isset($data['phonesResidential'])) {
+			foreach ($data['phonesResidential'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesResidential'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesResidential'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+		
+		if (isset($data['phonesCommercial']))
+		{
+			foreach ($data['phonesCommercial'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesCommercial'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesCommercial'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+		
+
+		if (isset($data['phonesHotline']))
+		{
+			foreach ($data['phonesHotline'] as $key => $phones) {
+				if (count($phones) > 1)
+				{
+					$count = 0;
+					$phoneArray = array();
+					foreach ($phones as $key2 => $phone) {
+						$phoneArray[$count] = $phone;
+						$count++;
+					}
+					$data['phonesHotline'][$key] = $phoneArray;
+				}else{
+					foreach ($phones as $key3 => $phone) {
+						$data['phonesHotline'][$key] = array(0=>$phone);
+					}
+				}
+			}
+		}
+
+
 
 		if(isset($_POST['delete'])){
 			$this->load->view('admin/officedelete', $data);
@@ -669,6 +750,89 @@ class Admin extends CI_Controller {
 
 		if(isset($_POST['edit'])){
 			$data['params'] = $this->office->getArray($id);
+			$data['phones'] = $this->office->getOfficePhones($id);
+
+			$count1 = 0;
+			$count2 = 0;
+			$count3 = 0;
+			if(is_array($data['phones'])){
+				foreach ($data['phones']  as $key => $phone) {
+					if ($phone->category == 'residential')
+					{
+						$data['phonesResidential'][$phone->office_id][$count1] = $phone->phone;
+						$count1++;
+					}elseif ($phone->category == 'commercial') {
+						$data['phonesCommercial'][$phone->office_id][$count2] = $phone->phone;
+						$count2++;
+					}elseif ($phone->category == 'hotline') {
+						$data['phonesHotline'][$phone->office_id][$count3] = $phone->phone;
+						$count3++;
+					}
+				}
+			}
+			
+			if (isset($data['phonesResidential'])) {
+				foreach ($data['phonesResidential'] as $key => $phones) {
+					if (count($phones) > 1)
+					{
+						$count = 0;
+						$phoneArray = array();
+						foreach ($phones as $key2 => $phone) {
+							$phoneArray[$count] = $phone;
+							$count++;
+						}
+						$data['phonesResidential'][$key] = $phoneArray;
+					}else{
+						foreach ($phones as $key3 => $phone) {
+							$data['phonesResidential'][$key] = array(0=>$phone);
+						}
+					}
+				}
+			}
+			
+			if (isset($data['phonesCommercial']))
+			{
+				foreach ($data['phonesCommercial'] as $key => $phones) {
+					if (count($phones) > 1)
+					{
+						$count = 0;
+						$phoneArray = array();
+						foreach ($phones as $key2 => $phone) {
+							$phoneArray[$count] = $phone;
+							$count++;
+						}
+						$data['phonesCommercial'][$key] = $phoneArray;
+					}else{
+						foreach ($phones as $key3 => $phone) {
+							$data['phonesCommercial'][$key] = array(0=>$phone);
+						}
+					}
+				}
+			}
+			
+
+			if (isset($data['phonesHotline']))
+			{
+				foreach ($data['phonesHotline'] as $key => $phones) {
+					if (count($phones) > 1)
+					{
+						$count = 0;
+						$phoneArray = array();
+						foreach ($phones as $key2 => $phone) {
+							$phoneArray[$count] = $phone;
+							$count++;
+						}
+						$data['phonesHotline'][$key] = $phoneArray;
+					}else{
+						foreach ($phones as $key3 => $phone) {
+							$data['phonesHotline'][$key] = array(0=>$phone);
+						}
+					}
+				}
+			}
+
+
+			// printme($data['phones']);exit();
 			$this->load->view('admin/officeedit', $data);
 			return;
 		}
@@ -679,13 +843,29 @@ class Admin extends CI_Controller {
 		}
 
 		if(isset($_POST['confirmedit'])){
+			// printme($_POST);exit();
 			unset($_POST['confirmedit']);
-			$this->office->update($id,$_POST);
+			$phonesArray = array();
+			$dataUpdate = array(
+				'district_en' => $_POST['district_en'],
+				'district_ar' => $_POST['district_ar'],
+				'address_en' => $_POST['address_en'],
+				'address_ar' => $_POST['address_ar'],
+				'start_time' => $_POST['start_time'],
+				'end_time' => $_POST['end_time'],
+			);
+
+			foreach ($_POST['phones'] as $key => $phone) {
+				$phoneArray[$key] = array(
+					'category' => $_POST['phone_categories'][$key],
+					'phone' => $phone
+				);
+				$this->office->updatePhones($data['office']->id, $phoneArray);
+			}
+			$this->office->update($data['office']->id,$dataUpdate);
 			redirect('admin/offices/'.$data['office']->id);
 		}
 
-
-		
 
 		$this->load->view('admin/officeprofile', $data);
 	}

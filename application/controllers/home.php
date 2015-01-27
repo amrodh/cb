@@ -92,9 +92,15 @@ class Home extends CI_Controller {
 		$data = $this->init();
 
 		$data['featuredProperties']=$this->database->getFeaturedProperties();
-		 foreach ($data['featuredProperties'] as $property) {
-		 	$data['featuredImages'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);		
-		 }
+		if($data['featuredProperties'] != false)
+		{
+			foreach ($data['featuredProperties'] as $property) {
+				$data['featuredImages'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);		
+			}
+		}else{
+			$data['no_featured'] = true;
+		}
+		 
 
 		 if($_POST['language'] == 'ar')
 		 	$data['languagePath'] = 'arabic/';
@@ -629,7 +635,6 @@ class Home extends CI_Controller {
 	public function getSearchResults()
 	{
 		$data = $this->init();
-		// printme($_GET);exit();
 		$flag = false;
 		$generalFlag = false;
 		$districtFlag = false;
@@ -652,7 +657,6 @@ class Home extends CI_Controller {
 
 
 		$getData = explode('&', $_GET['data']);
-		// printme($getData);exit();
 		foreach ($getData as $value) {
 			$value = explode('=', $value);
 			if($value[0] == 'featured'){
@@ -697,11 +701,8 @@ class Home extends CI_Controller {
 					$city = $this->database->getCityByID($value[1]);
 					$data['districts'] = $this->database->getDistricts($city[0]['id']);
 					$city = $city[0]['name'];
-					
-					// printme($data['districts']);exit();
 				}
 			}elseif($value[0] == 'district'){
-				// printme($value[1]);
 				if ($value[1] == 0 || $value[1] == '')
 				{
 					$district = '';
@@ -809,9 +810,9 @@ class Home extends CI_Controller {
 						}
 					}
 					$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
-					// printme($data['images'][$property->PropertyId]);
 					if ((!is_array($data['images'][$property->PropertyId]) || count($data['images'][$property->PropertyId]) < 1)) {
 						$data['images'][$property->PropertyId]['src'] = 'No_image.svg';
+						$data['images'][$property->PropertyId]['count'] = 1;
 					}
 
 				}
@@ -821,7 +822,7 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}
-		// printme($data['images']);exit()
+		// printme($data['images']);exit();
 		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 

@@ -75,7 +75,21 @@
                                                                     <?php endif ?>
                                                                     <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                            <?php if (is_array($images[$result->PropertyId]['src'])): ?>
+                                                                <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                <?php else: ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                <?php endif ?>
+                                                                <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
+                                                            <?php else: ?>
+                                                                <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                <?php else: ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                <?php endif ?>
+                                                                <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
+                                                            <?php endif ?>
                                                         </div>
                                                         <?php if (strlen($count)>2): ?>
                                                             <div class="properties_number" style="width:37px;">
@@ -205,19 +219,24 @@
                                                                     </li>
                                                                 <?php endforeach ?>
                                                             </ul>
-                                                            <!--  <?php  //$images[$result->PropertyId]['src']; ?>  -->
                                                         </div>
-                                                        <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
-                                                                    <?php echo $result->LocationProject; ?>,
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                         <div class="properties_img">
-                                                        <?php //printme( $images[$result->PropertyId]); ?>
-                                                        <?php if (is_array($images[$result->PropertyId]['src'])): ?>
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
-                                                        <?php else: ?>
-                                                            <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
-                                                        <?php endif ?>
+
+                                                            <?php if (is_array($images[$result->PropertyId]['src'])): ?>
+                                                                <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                <?php else: ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                <?php endif ?>
+                                                                <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
+                                                            <?php else: ?>
+                                                                <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                <?php else: ?>
+                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                <?php endif ?>
+                                                                <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
+                                                            <?php endif ?>
                                                             
                                                         </div>
                                                         <?php if (strlen($count)>2): ?>
@@ -244,13 +263,8 @@
                                                                         <?php else: ?>
                                                                             <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
                                                                         <?php endif ?>
-                                                                   <!--  <?php if ($result->LocationProject != ''): ?>
-                                                                    <?php echo $result->LocationProject; ?>,
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
                                                                     </b></a>
                                                                 </div>
-                                                                <!-- <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div> -->
                                                             </div>
                                                             <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                                 <?php if ($result->SalesTypeStr == 'Sale'): ?>

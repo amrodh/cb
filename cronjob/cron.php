@@ -508,12 +508,21 @@
             // $DBProperties = array();
             // $Properties = getAllPropertiesDB($con);
             // foreach ($Properties as $key => $value) {
+<<<<<<< HEAD
+            //   	$DBPropertiesKeys[$key] = $value['PropertyId'];
+            //   	$DBProperties = $value;
+            // }
+
+            foreach ($resultsArray as $key => $value) {
+            	// if (!in_array($value, $DBPropertiesKeys)){
+=======
             //    $DBPropertiesKeys[$key] = $value['PropertyId'];
             //    $DBProperties = $value;
             // }
 
             foreach ($resultsArray as $key => $value) {
               // if (!in_array($value, $DBPropertiesKeys)){
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
                 $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
                 $AreaUnit = $serviceResults[$key]['AreaUnit'];
                 $AreaunitStr = $serviceResults[$key]['AreaunitStr'];
@@ -552,17 +561,29 @@
                       print_r('failed insert: '.$PropertyId);
                     }
                     insertPropertyImage($PropertyId, $UnitId, $client, $con);
+<<<<<<< HEAD
+            	// }
+            }
+            // foreach ($DBPropertiesKeys as $key => $value) {
+            // 	if (!in_array($value, $resultsArray)){
+            // 		  if (deleteProperty($value, $con)){
+=======
               // }
             }
             // foreach ($DBPropertiesKeys as $key => $value) {
             //  if (!in_array($value, $resultsArray)){
             //      if (deleteProperty($value, $con)){
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             //           print_r("deleted: ".$value);
             //       }else{
             //           print_r("failed delete: ".$value);
             //       }
                   
+<<<<<<< HEAD
+            // 	}
+=======
             //  }
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             // }
 
             $inputs = array(
@@ -641,12 +662,21 @@
             // $DBFeaturedKey = array();
             // $DBFeatured = getAllFeaturedPropertiesDB($con);
             // foreach ($DBFeatured as $key => $value) {
+<<<<<<< HEAD
+            // 	 $DBFeaturedKey[$key] = $value['propertyId'];
+            // }
+
+            foreach ($featuredResultsKey as $key => $result) {
+            	// if (!in_array($result, $DBFeaturedKey))
+            	// {
+=======
             //   $DBFeaturedKey[$key] = $value['propertyId'];
             // }
 
             foreach ($featuredResultsKey as $key => $result) {
               // if (!in_array($result, $DBFeaturedKey))
               // {
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
                     $ID = $featuredResults[$key]->PropertyId;
                     $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
                     $result = $con->query($sql);
@@ -655,6 +685,17 @@
                     }else{
                         echo $con->error."<br>";
                     }
+<<<<<<< HEAD
+            	// }
+            }
+
+            // foreach ($DBFeaturedKey as $key => $result) {
+            // 	if (!in_array($result, $featuredResultsKey))
+            // 	{
+            //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
+            //         $result = $con->query($sql);
+            // 	}
+=======
               // }
             }
 
@@ -664,6 +705,7 @@
             //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
             //         $result = $con->query($sql);
             //  }
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             // }
 
             $sqlInsertCron = "INSERT INTO cron (name) values ('cron')";

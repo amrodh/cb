@@ -4,7 +4,7 @@
 <?php else: ?>
     <div class="row newsletter_rows">
 <?php endif ?>
-        <?php if (isset($featuredProperties)): ?>
+        <?php if (isset($featuredProperties) && $featuredProperties != false): ?>
             <?php $count = 1; ?>
             <?php foreach ($featuredProperties as $property): ?>
                 <?php if (count($featuredProperties) < 3): ?>
@@ -74,6 +74,8 @@
                 </div>
                 <?php $count++; ?>
             <?php endforeach ?>
+        <?php else: ?>
+            Currently, there are no featured properties. Please check again later. 
         <?php endif ?>
     </div>
 </div>
