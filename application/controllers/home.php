@@ -92,9 +92,15 @@ class Home extends CI_Controller {
 		$data = $this->init();
 
 		$data['featuredProperties']=$this->database->getFeaturedProperties();
-		 foreach ($data['featuredProperties'] as $property) {
-		 	$data['featuredImages'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);		
-		 }
+		if($data['featuredProperties'] != false)
+		{
+			foreach ($data['featuredProperties'] as $property) {
+				$data['featuredImages'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);		
+			}
+		}else{
+			$data['no_featured'] = true;
+		}
+		 
 
 		 if($_POST['language'] == 'ar')
 		 	$data['languagePath'] = 'arabic/';

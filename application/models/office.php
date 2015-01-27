@@ -75,6 +75,22 @@ class office extends CI_Model {
         return true;
     }
 
+    function updatePhones($id, $params)
+    {
+        // printme($params[0]);exit();
+        $q = $this
+              ->db
+              ->where('office_id',$id)
+              ->update('office_phone',$params[0]);
+        // printme($this->db->last_query());
+                    // printme($query->result());
+        if($this->db->affected_rows() != 1){
+          return false;
+        }
+
+        return true;
+    }
+
      function getArray($id)
     {
 

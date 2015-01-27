@@ -378,23 +378,23 @@
 
     function cronJob($client, $con)
     {
-    		$cities = getCitiesService($client);
-    		foreach ($cities as $key => $city) 
+        $cities = getCitiesService($client);
+        foreach ($cities as $key => $city) 
         {
-    			 checkCity($city, $con);
-  		  }
-  		
-  	
-    		$cities = getCitiesDB($con);
-    		foreach ($cities as $key => $city) {
-    			$districts = getDistrictsService($city['id'], $client);
-    			if (is_array($districts))
-    			{
-    				foreach ($districts as $key => $district) {
-    	  				checkDistrict($district, $con);
-    	  			}
-    			}
-    		}
+           checkCity($city, $con);
+        }
+      
+    
+        $cities = getCitiesDB($con);
+        foreach ($cities as $key => $city) {
+          $districts = getDistrictsService($city['id'], $client);
+          if (is_array($districts))
+          {
+            foreach ($districts as $key => $district) {
+                checkDistrict($district, $con);
+              }
+          }
+        }
 
         $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
         $result = $con->query($sql);
@@ -443,8 +443,8 @@
               'useFeaturedFilter' => false
             );
 
-      		$resultsArray = array();
-      		$lastID = 0;
+          $resultsArray = array();
+          $lastID = 0;
             $results = searchService($inputs, $client);
             $serviceResults = array();
             foreach ($results['results'] as $key => $value) {
@@ -481,12 +481,12 @@
 
             $results = searchService($inputs, $client);
             foreach ($results['results'] as $key => $value) {
-              	if ($value->PropertyId > $lastID)
-              	{
-              		$resultsArray[$count] = $value->PropertyId;
-              		$serviceResults[$count] = (array) $value;
-                  	$count++;
-              	}
+                if ($value->PropertyId > $lastID)
+                {
+                  $resultsArray[$count] = $value->PropertyId;
+                  $serviceResults[$count] = (array) $value;
+                    $count++;
+                }
             }
 
             // $files = glob('/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/*'); // get all file names
@@ -508,12 +508,21 @@
             // $DBProperties = array();
             // $Properties = getAllPropertiesDB($con);
             // foreach ($Properties as $key => $value) {
+<<<<<<< HEAD
             //   	$DBPropertiesKeys[$key] = $value['PropertyId'];
             //   	$DBProperties = $value;
             // }
 
             foreach ($resultsArray as $key => $value) {
             	// if (!in_array($value, $DBPropertiesKeys)){
+=======
+            //    $DBPropertiesKeys[$key] = $value['PropertyId'];
+            //    $DBProperties = $value;
+            // }
+
+            foreach ($resultsArray as $key => $value) {
+              // if (!in_array($value, $DBPropertiesKeys)){
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
                 $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
                 $AreaUnit = $serviceResults[$key]['AreaUnit'];
                 $AreaunitStr = $serviceResults[$key]['AreaunitStr'];
@@ -552,17 +561,29 @@
                       print_r('failed insert: '.$PropertyId);
                     }
                     insertPropertyImage($PropertyId, $UnitId, $client, $con);
+<<<<<<< HEAD
             	// }
             }
             // foreach ($DBPropertiesKeys as $key => $value) {
             // 	if (!in_array($value, $resultsArray)){
             // 		  if (deleteProperty($value, $con)){
+=======
+              // }
+            }
+            // foreach ($DBPropertiesKeys as $key => $value) {
+            //  if (!in_array($value, $resultsArray)){
+            //      if (deleteProperty($value, $con)){
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             //           print_r("deleted: ".$value);
             //       }else{
             //           print_r("failed delete: ".$value);
             //       }
                   
+<<<<<<< HEAD
             // 	}
+=======
+            //  }
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             // }
 
             $inputs = array(
@@ -641,12 +662,21 @@
             // $DBFeaturedKey = array();
             // $DBFeatured = getAllFeaturedPropertiesDB($con);
             // foreach ($DBFeatured as $key => $value) {
+<<<<<<< HEAD
             // 	 $DBFeaturedKey[$key] = $value['propertyId'];
             // }
 
             foreach ($featuredResultsKey as $key => $result) {
             	// if (!in_array($result, $DBFeaturedKey))
             	// {
+=======
+            //   $DBFeaturedKey[$key] = $value['propertyId'];
+            // }
+
+            foreach ($featuredResultsKey as $key => $result) {
+              // if (!in_array($result, $DBFeaturedKey))
+              // {
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
                     $ID = $featuredResults[$key]->PropertyId;
                     $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
                     $result = $con->query($sql);
@@ -655,6 +685,7 @@
                     }else{
                         echo $con->error."<br>";
                     }
+<<<<<<< HEAD
             	// }
             }
 
@@ -664,6 +695,17 @@
             //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
             //         $result = $con->query($sql);
             // 	}
+=======
+              // }
+            }
+
+            // foreach ($DBFeaturedKey as $key => $result) {
+            //  if (!in_array($result, $featuredResultsKey))
+            //  {
+            //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
+            //         $result = $con->query($sql);
+            //  }
+>>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
             // }
 
             $sqlInsertCron = "INSERT INTO cron (name) values ('cron')";
@@ -677,15 +719,15 @@
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
              return true;
         else
-          	return false;       
+            return false;       
     }
 
     function smtpmailer($subject,$body,$to, $attachment) 
     { 
 
-	   date_default_timezone_set('America/Los_Angeles');
+     date_default_timezone_set('America/Los_Angeles');
 
-	    require_once("phpmailer.php");
+      require_once("phpmailer.php");
         $mail = new PHPMailer();
         $mail->IsSMTP();  // telling the class to use SMTP
         $mail->Host = "ssl://smtp.googlemail.com"; // Your SMTP PArameter
@@ -704,10 +746,10 @@
         } else {
           echo 'Message has been sent.';
         }
-  	}	
+    } 
 
-  	function checkCity($city, $con)
-  	{
+    function checkCity($city, $con)
+    {
       $id = $city['id'];
           $sql = "SELECT * FROM city WHERE id = '$id'";
           $result = $con->query($sql);
@@ -720,12 +762,12 @@
             } else {
                 return false;
             }
-       	}
-       	return false;
-  	}
+        }
+        return false;
+    }
 
-  	function checkDistrict($district, $con)
-  	{
+    function checkDistrict($district, $con)
+    {
         $id = $district['id'];
           $sql = "SELECT * FROM district WHERE id = '$id'";
           $result = $con->query($sql);
@@ -738,12 +780,12 @@
             } else {
                 return false;
             }
-       	}
-       	return false;
-  	}
+        }
+        return false;
+    }
 
-  	function checkNeighborhood($con)
-  	{	
+    function checkNeighborhood($con)
+    { 
         $sql = "SELECT * FROM neighborhood";
         $result = $con->query($sql);
         if($result->num_rows >0){
@@ -754,8 +796,8 @@
             }
             return $data;
          } 
-       	return false;
-  	}
+        return false;
+    }
 
     function deleteProperty($propertyID, $con)
     {

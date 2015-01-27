@@ -24,11 +24,65 @@
                         <td><?php echo $office->address_en; ?></td>
                         <td><?php echo $office->address_ar; ?></td>
                       </tr>
-                     <!--  <tr>
-                        <td >Phone:</td>
-                        <td ><?php echo $office->phone; ?></td>
+                      <?php if (isset($phonesResidential[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Residential): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesResidential[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                          <?php  echo $phone;?>
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <?php if (isset($phonesCommercial[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Commercial): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesCommercial[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                            <?php  echo $phone;?>
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <?php if (isset($phonesHotline[$office->id])): ?>
+                          <tr>
+                              <td>
+                                Phones (Hotline): 
+                              </td>
+                              <td>
+                                <table>
+                                  <?php foreach ($phonesHotline[$office->id] as $key => $phone): ?>
+                                      <tr>
+                                        <td>
+                                            <?php  echo $phone;?>
+                                        </td>
+                                      </tr>
+                                  <?php endforeach ?>
+                                </table>
+                              </td>
+                          </tr>
+                      <?php endif ?>
+                      <tr>
+                        <td >Fax:</td>
+                        <td ><?php echo $office->fax; ?></td>
                         <td></td>
-                      </tr> -->
+                      </tr>
                       <tr>
                         <td >Longitude:</td>
                         <td ><?php echo $office->longitude; ?></td>

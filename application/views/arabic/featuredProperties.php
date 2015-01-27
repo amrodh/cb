@@ -74,6 +74,8 @@
                 </div>
                 <?php $count++; ?>
             <?php endforeach ?>
+            <?php else: ?>
+                Currently, there are no featured properties. Please check again later. 
         <?php endif ?>
     </div>
 </div>
