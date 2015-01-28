@@ -69,7 +69,7 @@
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '100', 
+            'resultsCountPerPage' => '1300', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
         
@@ -341,43 +341,43 @@
     }
     function cronJob($client, $con)
     {
-        // $cities = getCitiesService($client);
-        // foreach ($cities as $key => $city) 
-        // {
-        //    checkCity($city, $con);
-        // }
+        $cities = getCitiesService($client);
+        foreach ($cities as $key => $city) 
+        {
+           checkCity($city, $con);
+        }
       
     
-        // $cities = getCitiesDB($con);
-        // foreach ($cities as $key => $city) {
-        //   $districts = getDistrictsService($city['id'], $client);
-        //   if (is_array($districts))
-        //   {
-        //     foreach ($districts as $key => $district) {
-        //         checkDistrict($district, $con);
-        //       }
-        //   }
-        // }
-        // $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
-        // $result = $con->query($sql);
-        // if($result->num_rows > 0){
-        //     while($row = $result->fetch_assoc()) {
-        //         if ($row['LocationProject'] != '')
-        //         {
-        //             $neighborhoods = checkNeighborhood($con);
-        //             if (!in_array($row['LocationProject'], $neighborhoods))
-        //             {
-        //                 $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
-        //                 if ($districtID != false){
-        //                     $district_id = $districtID['id'];
-        //                     $neighborhood = $row['LocationProject'];
-        //                     $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
-        //                     $con->query($sqlInsert);
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        $cities = getCitiesDB($con);
+        foreach ($cities as $key => $city) {
+          $districts = getDistrictsService($city['id'], $client);
+          if (is_array($districts))
+          {
+            foreach ($districts as $key => $district) {
+                checkDistrict($district, $con);
+              }
+          }
+        }
+        $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
+        $result = $con->query($sql);
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()) {
+                if ($row['LocationProject'] != '')
+                {
+                    $neighborhoods = checkNeighborhood($con);
+                    if (!in_array($row['LocationProject'], $neighborhoods))
+                    {
+                        $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
+                        if ($districtID != false){
+                            $district_id = $districtID['id'];
+                            $neighborhood = $row['LocationProject'];
+                            $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
+                            $con->query($sqlInsert);
+                        }
+                    }
+                }
+            }
+        }
             $inputs = array(
               'searchMode' => 'Exact',
               'Bedrooms' => '',
