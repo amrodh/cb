@@ -170,7 +170,6 @@
 <?php include('footer.php'); ?>
 <script>
     $(document).ready(function (){
-alert('hi');
         (function() {
             var elem = document.createElement('input');
             elem.setAttribute('type', 'date');
