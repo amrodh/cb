@@ -31,46 +31,32 @@
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_details_images" class="property_borders" style="height:480px!important; width:535px!important">
-                            <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
-                                <?php foreach ($images['src'] as $key => $image): ?>
-                                    <div>
-                                        <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                        <img u="thumb" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                            <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 185px; left: 25px;">
-                            </span>
-                            <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
-                            </span>
-                            <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
-                                <div u="slides" style="cursor: move;">
-                                    <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
-                                        <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
-                                        <div class=c>
+                            <?php if (is_array($images['src'])): ?>
+                                <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
+                                    <?php foreach ($images['src'] as $key => $image): ?>
+                                        <div>
+                                            <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
+                                            <img u="thumb" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                                <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 185px; left: 25px;">
+                                </span>
+                                <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
+                                </span>
+                                <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
+                                    <div u="slides" style="cursor: move;">
+                                        <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
+                                            <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
+                                            <div class=c>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- Thumbnail Item Skin End -->
                                 </div>
-                                <!-- Thumbnail Item Skin End -->
-                            </div>
-                            <!-- <div id="property_details_mainimage">
-                                <img id="property_mainimage" src="">
-                            </div>
-                            <div class="visible-xs hidden-lg hidden-md hidden-sm" id="property_image_btn_div">
-                                <button type="button" class="btn btn-default property_btn">عرض المزيد من الصور</button>
-                            </div>
-                            <div id="property_details_thumbnails" class="hidden-xs">
-                                <p id="property_thumbnails_count">١ من <span id="imgCount"></span> صورة</p>
-                                <div class="well property_well">
-                                    <div class="carousel slide" id="property_carousel">
-                                        <div class="carousel-inner" id="carousal_div">
-                                            
-                                        </div>
-                                        <a class="left carousel-control" href="#property_carousel" data-slide="prev"><img src="<?= base_url();?>/application/static/images/left_arrow.png">  </a>
-                                        <a class="right carousel-control" href="#property_carousel" data-slide="next"> <img src="<?= base_url();?>/application/static/images/right_arrow.png"> </a>
-                                    </div>
-                                </div>
-                            </div> -->
+                            <?php else: ?>
+                                <img src="<?= base_url();?>/application/static/images/No_image.svg" class="img-responsive" style="width: 90%;margin: auto;">
+                            <?php endif ?>
                         </div>
                         <div id="property_features_div" class="property_borders" style="margin-top: 9%;margin-right: -3%;width: 106%;">
                             <div class="property_titles">
