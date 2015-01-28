@@ -1,27 +1,22 @@
 <?php
-
     
     libxml_disable_entity_loader(false);
     ini_set( "soap.wsdl_cache_enabled", "0" );
-
     $options = array( 
         'exceptions'=>0, 
         'trace'=>1,
         'cache_wsdl'=>WSDL_CACHE_NONE 
     ); 
-
     try {
         $client = new SoapClient("http://64.150.184.135:81/WebServ/searchservice.svc?wsdl",$options);
     } catch (Exception $e) {
     }
-
     $con = mysqli_connect("localhost","root","root","cb");
-
     if (mysqli_connect_errno())
       {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
-
+      print_r('hello');
       cronJob($client, $con);
 
     function searchService($inputs , $client)
@@ -31,25 +26,21 @@
         }else{
             $lineOfBusiness = array();
         }
-
         if (isset($inputs['isFeatured'])){
             $isFeatured = $inputs['isFeatured'];
         }else{
             $isFeatured = false;
         }
-
         if (isset($inputs['useFeaturedFilter'])){
             $useFeaturedFilter = $inputs['useFeaturedFilter'];
         }else{
             $useFeaturedFilter = false;
         }
-
         if (isset($inputs['sortType'])) {
             $sortType = $inputs['sortType'];
         }else{
             $sortType = '';
         }
-
         $inputs = array(
             'searchMode' => 'Exact',
             'Bedrooms' => '',
@@ -78,13 +69,12 @@
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '1300', 
+            'resultsCountPerPage' => '100', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
         
         $results = $client->Search($inputs);
         
-
         $data = array();
         if ($results->TotalResults != 0)
         {
@@ -99,7 +89,6 @@
         }
         return $data;
     }
-
     function getCitiesService($client)
     {
         $inputs = array('CountryFK' => 73);
@@ -110,7 +99,6 @@
         }
         return $data;
     }
-
     function getDistrictsService($cityID, $client)
     {
         $inputs = array('cityId' => $cityID);
@@ -125,12 +113,10 @@
         else 
             return 0; 
     }
-
     function searchDB($inputs, $con)
     {
         $AreaUpperLimit = $inputs['AreaUpperLimit'];
         $AreaLowerLimit = $inputs['AreaLowerLimit'];
-
         $sql = "SELECT * FROM property_service WHERE AreaNumericValue <= '$AreaUpperLimit' AND AreaNumericValue >= '$AreaLowerLimit'";
         if (isset($inputs['lob']) && $inputs['lob'] != ''){
             $lob = $inputs['lob'];
@@ -190,10 +176,8 @@
             return false;
         }
     }
-
     function getCitiesDB($con)
     {
-
           $sql = "SELECT * FROM city";
           $result = $con->query($sql);
           if($result->num_rows >0){
@@ -209,16 +193,13 @@
            } 
            return false;  
     }
-
     function getDistrictIdDB($name, $con)
     {
-
         $sql = "SELECT * FROM district WHERE name = '$name'";
         $result = $con->query($sql);
         if($result->num_rows >0){
               $count = 0;
                while($row = $result->fetch_assoc()) {
-
                   $data[$count] = array(
                     'id' => $row['id'],
                     'name' => $row['name']
@@ -229,16 +210,13 @@
            } 
            return false;  
     }
-
     function getAllPropertiesDB($con)
     {
         $sql = "SELECT * FROM property_service ORDER BY PropertyId ASC";
         $result = $con->query($sql);
-
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
-
                 $data[$count] = array(
                   'id' => $row['id'],
                   'AreaNumericValue' => $row['AreaNumericValue'],
@@ -271,7 +249,6 @@
         } 
            return false; 
     }
-
     function getAllFeaturedPropertiesDB($con)
     {
         $sql = "SELECT * FROM property_featured";
@@ -289,12 +266,10 @@
         }
         return false;
     }
-
     function getCityByIdDB($id, $con)
     {
         $sql = "SELECT * FROM city WHERE id = '$id'";
         $result = $con->query($sql);
-
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
@@ -308,16 +283,13 @@
         }
         return false; 
     }
-
     function getDistrictByIdDB($id, $con)
     {
-
         $sql = "SELECT * FROM district WHERE id = '$id'";
         $result = $con->query($sql);
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
-
                 $data[$count] = array(
                   'id' => $row['id'],
                   'name' => $row['name'],
@@ -327,20 +299,15 @@
             }
             return (object) $data;
         }
-
            return false; 
     }
-
     function getPropertyTypeIdDB($name, $con)
     {
-
         $sql = "SELECT * FROM property_type WHERE property_name = '$name'";
         $result = $con->query($sql);
-
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
-
                 $data[$count] = array(
                   'id' => $row['id'],
                   'category_id' => $row['category_id'],
@@ -353,16 +320,13 @@
         }
            return false; 
     }
-
     function getPropertyTypeByIdDB($id, $con)
     {
         $sql = "SELECT * FROM property_type WHERE property_id = '$id'";
         $result = $con->query($sql);
-
         if($result->num_rows >0){
             $count = 0;
              while($row = $result->fetch_assoc()) {
-
                 $data[$count] = array(
                   'id' => $row['id'],
                   'category_id' => $row['category_id'],
@@ -375,49 +339,45 @@
         }
            return false; 
     }
-
     function cronJob($client, $con)
     {
-        $cities = getCitiesService($client);
-        foreach ($cities as $key => $city) 
-        {
-           checkCity($city, $con);
-        }
+        // $cities = getCitiesService($client);
+        // foreach ($cities as $key => $city) 
+        // {
+        //    checkCity($city, $con);
+        // }
       
     
-        $cities = getCitiesDB($con);
-        foreach ($cities as $key => $city) {
-          $districts = getDistrictsService($city['id'], $client);
-          if (is_array($districts))
-          {
-            foreach ($districts as $key => $district) {
-                checkDistrict($district, $con);
-              }
-          }
-        }
-
-        $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
-        $result = $con->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()) {
-                if ($row['LocationProject'] != '')
-                {
-                    $neighborhoods = checkNeighborhood($con);
-                    if (!in_array($row['LocationProject'], $neighborhoods))
-                    {
-                        $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
-
-                        if ($districtID != false){
-                            $district_id = $districtID['id'];
-                            $neighborhood = $row['LocationProject'];
-                            $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
-                            $con->query($sqlInsert);
-                        }
-                    }
-                }
-            }
-        }
-
+        // $cities = getCitiesDB($con);
+        // foreach ($cities as $key => $city) {
+        //   $districts = getDistrictsService($city['id'], $client);
+        //   if (is_array($districts))
+        //   {
+        //     foreach ($districts as $key => $district) {
+        //         checkDistrict($district, $con);
+        //       }
+        //   }
+        // }
+        // $sql = "SELECT LocationDistrict, LocationProject FROM property_service GROUP BY LocationProject ORDER BY LocationDistrict ASC";
+        // $result = $con->query($sql);
+        // if($result->num_rows > 0){
+        //     while($row = $result->fetch_assoc()) {
+        //         if ($row['LocationProject'] != '')
+        //         {
+        //             $neighborhoods = checkNeighborhood($con);
+        //             if (!in_array($row['LocationProject'], $neighborhoods))
+        //             {
+        //                 $districtID = getDistrictIdDB($row['LocationDistrict'], $con);
+        //                 if ($districtID != false){
+        //                     $district_id = $districtID['id'];
+        //                     $neighborhood = $row['LocationProject'];
+        //                     $sqlInsert = "INSERT INTO neighborhood (district_id, neighborhood) VALUES ('$district_id', '$neighborhood')";
+        //                     $con->query($sqlInsert);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
             $inputs = array(
               'searchMode' => 'Exact',
               'Bedrooms' => '',
@@ -442,7 +402,6 @@
               'resultsCountPerPage' => '1300', 
               'useFeaturedFilter' => false
             );
-
           $resultsArray = array();
           $lastID = 0;
             $results = searchService($inputs, $client);
@@ -478,7 +437,6 @@
                   'resultsCountPerPage' => '1300', 
                   'useFeaturedFilter' => false
             );
-
             $results = searchService($inputs, $client);
             foreach ($results['results'] as $key => $value) {
                 if ($value->PropertyId > $lastID)
@@ -488,14 +446,12 @@
                     $count++;
                 }
             }
-
             // $files = glob('/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/*'); // get all file names
             $files = glob('/var/www/html/cb/application/static/upload/property_images/*'); // get all file names
             foreach($files as $file){ // iterate files
                 if(is_file($file))
                   unlink($file); // delete file
             }
-
             $sqlDelete = "TRUNCATE TABLE unit_image";
             mysqli_query($con, $sqlDelete);
             $sqlDelete2 = "TRUNCATE TABLE property_featured";
@@ -503,26 +459,7 @@
             $sqlDelete3 = "TRUNCATE TABLE property_service";
             mysqli_query($con, $sqlDelete3);
             
-
-            // $DBPropertiesKeys = array();
-            // $DBProperties = array();
-            // $Properties = getAllPropertiesDB($con);
-            // foreach ($Properties as $key => $value) {
-<<<<<<< HEAD
-            //   	$DBPropertiesKeys[$key] = $value['PropertyId'];
-            //   	$DBProperties = $value;
-            // }
-
             foreach ($resultsArray as $key => $value) {
-            	// if (!in_array($value, $DBPropertiesKeys)){
-=======
-            //    $DBPropertiesKeys[$key] = $value['PropertyId'];
-            //    $DBProperties = $value;
-            // }
-
-            foreach ($resultsArray as $key => $value) {
-              // if (!in_array($value, $DBPropertiesKeys)){
->>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
                 $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
                 $AreaUnit = $serviceResults[$key]['AreaUnit'];
                 $AreaunitStr = $serviceResults[$key]['AreaunitStr'];
@@ -561,31 +498,8 @@
                       print_r('failed insert: '.$PropertyId);
                     }
                     insertPropertyImage($PropertyId, $UnitId, $client, $con);
-<<<<<<< HEAD
-            	// }
             }
-            // foreach ($DBPropertiesKeys as $key => $value) {
-            // 	if (!in_array($value, $resultsArray)){
-            // 		  if (deleteProperty($value, $con)){
-=======
-              // }
-            }
-            // foreach ($DBPropertiesKeys as $key => $value) {
-            //  if (!in_array($value, $resultsArray)){
-            //      if (deleteProperty($value, $con)){
->>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
-            //           print_r("deleted: ".$value);
-            //       }else{
-            //           print_r("failed delete: ".$value);
-            //       }
-                  
-<<<<<<< HEAD
-            // 	}
-=======
-            //  }
->>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
-            // }
-
+            
             $inputs = array(
                 'searchMode' => 'Exact',
                 'Bedrooms' => '',
@@ -609,10 +523,9 @@
                 'pageIndex' => '',
                 'licences' => '',
                 'isFeatured' => true,
-                'resultsCountPerPage' => '1300', 
+                'resultsCountPerPage' => '10', 
                 'useFeaturedFilter' => true
             );
-
             $lastID2 = 0;
             $count3 = 0;
             $featuredResults = array();
@@ -624,96 +537,53 @@
                 $count3 = $key + 1;
                 $lastID2 = $value->PropertyId;
             }
-
-            $inputs = array(
-                'searchMode' => 'Exact',
-                'Bedrooms' => '',
-                'PropertyId' => '',
-                'Purpose' => 3,
-                'PriceLowerLimit' => 0,
-                'PriceUpperLimit' => 1000000000000000000,
-                'PunitSale' => '',
-                'RentPriceLowerLimit' => 0,
-                'RentPriceUpperLimit' => 1000000000000000000,
-                'PunitRent' => '',
-                'AreaLowerLimit' => 0,
-                'AreaUpperLimit' => 1000000000000000000,
-                'PropertyType' => '',
-                'PropertyFor' => '',
-                'BoxLocation' => '',
-                'LineOfBusinessId' => '',
-                'CompanyId' => '',
-                'sortmode' => '',
-                'sortType' => 2,
-                'pageIndex' => '',
-                'licences' => '',
-                'isFeatured' => true,
-                'resultsCountPerPage' => '1300', 
-                'useFeaturedFilter' => true
-            );
-
-            $featuredProperties = searchService($inputs, $client);
-            foreach ($featuredProperties['results'] as $key => $value) {
-                $featuredResultsKey[$count3] = $value->PropertyId;
-                $featuredResults[$count3] = $value;
-                $count3++;
-            }
-
-            // $DBFeaturedKey = array();
-            // $DBFeatured = getAllFeaturedPropertiesDB($con);
-            // foreach ($DBFeatured as $key => $value) {
-<<<<<<< HEAD
-            // 	 $DBFeaturedKey[$key] = $value['propertyId'];
+            // $inputs = array(
+            //     'searchMode' => 'Exact',
+            //     'Bedrooms' => '',
+            //     'PropertyId' => '',
+            //     'Purpose' => 3,
+            //     'PriceLowerLimit' => 0,
+            //     'PriceUpperLimit' => 1000000000000000000,
+            //     'PunitSale' => '',
+            //     'RentPriceLowerLimit' => 0,
+            //     'RentPriceUpperLimit' => 1000000000000000000,
+            //     'PunitRent' => '',
+            //     'AreaLowerLimit' => 0,
+            //     'AreaUpperLimit' => 1000000000000000000,
+            //     'PropertyType' => '',
+            //     'PropertyFor' => '',
+            //     'BoxLocation' => '',
+            //     'LineOfBusinessId' => '',
+            //     'CompanyId' => '',
+            //     'sortmode' => '',
+            //     'sortType' => 2,
+            //     'pageIndex' => '',
+            //     'licences' => '',
+            //     'isFeatured' => true,
+            //     'resultsCountPerPage' => '1300', 
+            //     'useFeaturedFilter' => true
+            // );
+            // $featuredProperties = searchService($inputs, $client);
+            // foreach ($featuredProperties['results'] as $key => $value) {
+            //     $featuredResultsKey[$count3] = $value->PropertyId;
+            //     $featuredResults[$count3] = $value;
+            //     $count3++;
             // }
-
+          
             foreach ($featuredResultsKey as $key => $result) {
-            	// if (!in_array($result, $DBFeaturedKey))
-            	// {
-=======
-            //   $DBFeaturedKey[$key] = $value['propertyId'];
-            // }
-
-            foreach ($featuredResultsKey as $key => $result) {
-              // if (!in_array($result, $DBFeaturedKey))
-              // {
->>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
-                    $ID = $featuredResults[$key]->PropertyId;
-                    $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
-                    $result = $con->query($sql);
-                    if($result == true){
-                        print_r($ID."<br>");
-                    }else{
-                        echo $con->error."<br>";
-                    }
-<<<<<<< HEAD
-            	// }
+                $ID = $featuredResults[$key]->PropertyId;
+                $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
+                $result = $con->query($sql);
+                if($result == true){
+                    print_r($ID."<br>");
+                }else{
+                    echo $con->error."<br>";
+                }
             }
-
-            // foreach ($DBFeaturedKey as $key => $result) {
-            // 	if (!in_array($result, $featuredResultsKey))
-            // 	{
-            //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
-            //         $result = $con->query($sql);
-            // 	}
-=======
-              // }
-            }
-
-            // foreach ($DBFeaturedKey as $key => $result) {
-            //  if (!in_array($result, $featuredResultsKey))
-            //  {
-            //         $sql = "DELETE FROM property_featured WHERE PropertyId = $result";
-            //         $result = $con->query($sql);
-            //  }
->>>>>>> ac9ed6775804e11429e91b33bc020732e23def76
-            // }
-
             $sqlInsertCron = "INSERT INTO cron (name) values ('cron')";
             $result = $con->query($sqlInsertCron);
     }
-
     
-
     function checkmail($email)
     {
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
@@ -721,12 +591,9 @@
         else
             return false;       
     }
-
     function smtpmailer($subject,$body,$to, $attachment) 
     { 
-
      date_default_timezone_set('America/Los_Angeles');
-
       require_once("phpmailer.php");
         $mail = new PHPMailer();
         $mail->IsSMTP();  // telling the class to use SMTP
@@ -747,7 +614,6 @@
           echo 'Message has been sent.';
         }
     } 
-
     function checkCity($city, $con)
     {
       $id = $city['id'];
@@ -765,7 +631,6 @@
         }
         return false;
     }
-
     function checkDistrict($district, $con)
     {
         $id = $district['id'];
@@ -783,7 +648,6 @@
         }
         return false;
     }
-
     function checkNeighborhood($con)
     { 
         $sql = "SELECT * FROM neighborhood";
@@ -798,7 +662,6 @@
          } 
         return false;
     }
-
     function deleteProperty($propertyID, $con)
     {
         $sql = "DELETE FROM property_service WHERE PropertyId = $propertyID";
@@ -812,7 +675,6 @@
           return false;
         }
     }
-
     function insertPropertyImage($propertyID, $unitID, $client, $con)
     {
       require_once('simple_html_dom.php');
@@ -846,7 +708,6 @@
             // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
         }
     }
-
     function getPropertyImages($id, $serial, $client)
     {
         $inputs = array(
@@ -858,7 +719,6 @@
         $results = $client->GetListOfImages($inputs);
         return $results->GetListOfImagesResult;
     }
-
     function getUserByID($ID, $con)
     {
           $sql = "SELECT * FROM user WHERE id = '$ID'";
@@ -868,7 +728,6 @@
           }
           return false;
     }
-
     function getPropertyImagesDB($id, $con)
     {
         $sql = "SELECT * FROM unit_image WHERE property_id = '$id'";
@@ -886,13 +745,10 @@
         } 
         return false; 
     }
-
     function getEmailContents(array $vars) {
       extract($vars);
-
       ob_start();
       include 'propertyAlert_template.php';
       return ob_get_clean();
     }
-
 ?>
