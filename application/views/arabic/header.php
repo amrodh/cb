@@ -1,34 +1,26 @@
 <html>
     <head>
-        <title>
-            <?= $title;?>
-        </title>
-        <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-theme-ar.css"> -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="keywords" content=" real estate Egypt, real estate in Egypt, Egypt real estate, real estate agent Egypt, real estate for sale Egypt, real estate brokers Egypt, real estate agency Egypt, real estate property Egypt, real estate market Egypt, residential real estate Egypt, luxury real estate Egypt, buy real estate Egypt ">
+        <title><?= $title;?></title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/bootstrap-ar.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.css">
-       <!--  <link rel="stylesheet" href="<?php echo base_url(); ?>application/static/css/admin.css"> -->
-
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>application/static/js/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/jssor.slider.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-ar.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/380cb78f450/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
-        
         <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/bootstrap-select.min.css" rel="stylesheet" />
-
-       <!-- <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/admin.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>application/static/js/filter.js"></script>
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>application/static/js/bootstrap-select.js"></script>
-
-        <!-- Custom Fonts -->
         <link type="text/css" href="<?= base_url();?>/application/static/css/style-ar.css" rel="stylesheet">
         <link href="<?= base_url();?>/application/static/css/jquery.bxslider.css" rel="stylesheet" />
         <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,500,700" rel="stylesheet" type="text/css">
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="keywords" content=" real estate Egypt, real estate in Egypt, Egypt real estate, real estate agent Egypt, real estate for sale Egypt, real estate brokers Egypt, real estate agency Egypt, real estate property Egypt, real estate market Egypt, residential real estate Egypt, luxury real estate Egypt, buy real estate Egypt ">
+        <link href="<?= base_url();?>/application/static/css/jquery-ui.css" rel="stylesheet" />
+        <link href="<?= base_url();?>/application/static/css/jquery-ui.min.css" rel="stylesheet" />
     </head>
 
     <body> 

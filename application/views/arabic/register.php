@@ -170,3 +170,17 @@
             </form>
         </div>
 <?php include('footer.php'); ?>
+<script>
+    $(document).ready(function (){
+
+        (function() {
+            var elem = document.createElement('input');
+            elem.setAttribute('type', 'date');
+     
+            if ( elem.type === 'text' ) {
+                $('#birthday').datepicker(); 
+            }
+        })();
+        
+    });
+</script>
