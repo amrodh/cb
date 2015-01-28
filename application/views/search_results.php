@@ -525,6 +525,7 @@ $(document).ready(function (){
 
     $('.imgModal').click(function(event) {
         $('#property_details_images').remove();
+        
         $('#image_body').html('<div id="property_details_images" class="" style="height:480px!important; width:535px!important;padding-left:4%;">'+
             '<div id="image_gallery" u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">'+
                                 '</div>'+
