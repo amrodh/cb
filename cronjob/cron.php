@@ -454,8 +454,8 @@
         //     }
         //     $sqlDelete = "TRUNCATE TABLE unit_image";
         //     mysqli_query($con, $sqlDelete);
-        //     $sqlDelete2 = "TRUNCATE TABLE property_featured";
-        //     mysqli_query($con, $sqlDelete2);
+            $sqlDelete2 = "TRUNCATE TABLE property_featured";
+            mysqli_query($con, $sqlDelete2);
         //     $sqlDelete3 = "TRUNCATE TABLE property_service";
         //     mysqli_query($con, $sqlDelete3);
             
