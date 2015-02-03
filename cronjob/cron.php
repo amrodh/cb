@@ -565,9 +565,13 @@
             );
             $featuredProperties = searchService($inputs, $client);
             foreach ($featuredProperties['results'] as $key => $value) {
+              if($value->PropertyId > $lastID2)
+              {
                 $featuredResultsKey[$count3] = $value->PropertyId;
                 $featuredResults[$count3] = $value;
                 $count3++;
+              }
+                
             }
           
           // print_r($featuredResultsKey);exit();
