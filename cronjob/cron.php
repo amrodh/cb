@@ -537,39 +537,40 @@
                 $count3 = $key + 1;
                 $lastID2 = $value->PropertyId;
             }
-            // $inputs = array(
-            //     'searchMode' => 'Exact',
-            //     'Bedrooms' => '',
-            //     'PropertyId' => '',
-            //     'Purpose' => 3,
-            //     'PriceLowerLimit' => 0,
-            //     'PriceUpperLimit' => 1000000000000000000,
-            //     'PunitSale' => '',
-            //     'RentPriceLowerLimit' => 0,
-            //     'RentPriceUpperLimit' => 1000000000000000000,
-            //     'PunitRent' => '',
-            //     'AreaLowerLimit' => 0,
-            //     'AreaUpperLimit' => 1000000000000000000,
-            //     'PropertyType' => '',
-            //     'PropertyFor' => '',
-            //     'BoxLocation' => '',
-            //     'LineOfBusinessId' => '',
-            //     'CompanyId' => '',
-            //     'sortmode' => '',
-            //     'sortType' => 2,
-            //     'pageIndex' => '',
-            //     'licences' => '',
-            //     'isFeatured' => true,
-            //     'resultsCountPerPage' => '1300', 
-            //     'useFeaturedFilter' => true
-            // );
-            // $featuredProperties = searchService($inputs, $client);
-            // foreach ($featuredProperties['results'] as $key => $value) {
-            //     $featuredResultsKey[$count3] = $value->PropertyId;
-            //     $featuredResults[$count3] = $value;
-            //     $count3++;
-            // }
+            $inputs = array(
+                'searchMode' => 'Exact',
+                'Bedrooms' => '',
+                'PropertyId' => '',
+                'Purpose' => 3,
+                'PriceLowerLimit' => 0,
+                'PriceUpperLimit' => 1000000000000000000,
+                'PunitSale' => '',
+                'RentPriceLowerLimit' => 0,
+                'RentPriceUpperLimit' => 1000000000000000000,
+                'PunitRent' => '',
+                'AreaLowerLimit' => 0,
+                'AreaUpperLimit' => 1000000000000000000,
+                'PropertyType' => '',
+                'PropertyFor' => '',
+                'BoxLocation' => '',
+                'LineOfBusinessId' => '',
+                'CompanyId' => '',
+                'sortmode' => '',
+                'sortType' => 2,
+                'pageIndex' => '',
+                'licences' => '',
+                'isFeatured' => true,
+                'resultsCountPerPage' => '1300', 
+                'useFeaturedFilter' => true
+            );
+            $featuredProperties = searchService($inputs, $client);
+            foreach ($featuredProperties['results'] as $key => $value) {
+                $featuredResultsKey[$count3] = $value->PropertyId;
+                $featuredResults[$count3] = $value;
+                $count3++;
+            }
           
+          // print_r($featuredResultsKey);exit();
             foreach ($featuredResultsKey as $key => $result) {
                 $ID = $featuredResults[$key]->PropertyId;
                 $sql = "INSERT INTO property_featured (propertyId) VALUES ('$ID')";
