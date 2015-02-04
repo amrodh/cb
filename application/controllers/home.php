@@ -1406,8 +1406,8 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'ssl://smtp.googlemail.com',
 		  'smtp_port' => 465,
-		  'smtp_user' => 's.nahal@enlightworld.com', // change it to yours
-		  'smtp_pass' => '01069393641', // change it to yours
+		  'smtp_user' => 'inquiries@cb-egypt.com', // change it to yours
+		  'smtp_pass' => 'Iq3214560', // change it to yours
 		  'mailtype' => 'html',
 		  'charset' => 'iso-8859-1',
 		  'wordwrap' => TRUE

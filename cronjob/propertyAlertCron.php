@@ -209,9 +209,9 @@ function smtpmailer($subject,$body,$to, $attachment)
     $mail->Host = "ssl://smtp.googlemail.com"; // Your SMTP PArameter
     $mail->Port = 465; // Your Outgoing Port
     $mail->SMTPAuth = true; // This Must Be True
-    $mail->Username = 's.nahal@enlightworld.com';
-    $mail->Password = '01069393641';
-    $mail->From     = "s.nahal@enlightworld.com";
+    $mail->Username = 'inquiries@cb-egypt.com';
+    $mail->Password = 'Iq3214560';
+    $mail->From     = "inquiries@cb-egypt.com";
     $mail->AddAddress($to);
     $mail->IsHTML(true);
     $mail->Subject  = $subject;
