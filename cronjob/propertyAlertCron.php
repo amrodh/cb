@@ -206,7 +206,8 @@ function smtpmailer($subject,$body,$to, $attachment)
     require_once("phpmailer.php");
     $mail = new PHPMailer();
     $mail->IsSMTP();  // telling the class to use SMTP
-    $mail->Host = "ssl://smtp.googlemail.com"; // Your SMTP PArameter
+    // $mail->Host = "ssl://smtp.googlemail.com"; // Your SMTP PArameter
+    $mail->Host = "ssl://mail.cb-egypt.com";
     $mail->Port = 465; // Your Outgoing Port
     $mail->SMTPAuth = true; // This Must Be True
     $mail->Username = 'inquiries@cb-egypt.com';
