@@ -1405,7 +1405,7 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		 $config = Array(
 		  'protocol' => 'smtp',
 		  // 'smtp_host' => 'ssl://smtp.googlemail.com',
-		  'smtp_host' => 'ssl://mail.cb-egypt.com:2096'
+		  'smtp_host' => 'ssl://mail.cb-egypt.com:2096',
 		  'smtp_port' => 465,
 		  'smtp_user' => 'inquiries@cb-egypt.com', // change it to yours
 		  'smtp_pass' => 'Iq3214560', // change it to yours
