@@ -2,9 +2,9 @@
 <div class="container" id="footer_div" style="">
 <div class="hide"><a href="Real-Estate-Egypt/Sitemap.html" title="Coldwell Banker Egypt company - Betna real estate Egypt - Sitemap">Sitemap</a></div>
     <div class="row">
-        <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
+        <!-- <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
             <a href="http://newhomes.com.eg/"><img alt="" style="width:112px;" src="<?= base_url(); ?>application/static/images/logo_newhomes.jpg"/></a>
-        </div>
+        </div> -->
         <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
             <div class="footer_col_title">
                 <?php echo $this->lang->line('home_menu1'); ?>
