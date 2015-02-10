@@ -16,7 +16,7 @@
                         <?php echo $count+1; ?>
                     </div>
                     <div class="compare_img">
-                        <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
+                        <a href="<?php echo base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
                     </div>
                     <div class="compare_description" style="padding-left: 0;padding-right: 0;">
                         <div class="compare_description_title">
@@ -56,7 +56,7 @@
                             <?php echo $count+1; ?>
                         </div>
                         <div class="compare_img">
-                            <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
+                            <a href="<?php echo base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
                         </div>
                         <div class="compare_description" style="padding-left: 0;padding-right: 0;">
                             <div class="compare_description_title">
