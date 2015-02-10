@@ -124,19 +124,14 @@ class Home extends CI_Controller {
 				redirect($currentUrl);
 				exit();
 			}else{
-				// $data['loginError'] = 'Password is not correct';
-				// $data['loginErrorType'] = '1';
 				 $this->session->set_flashdata('loginError', 'Password is not correct');
 				 $this->session->set_flashdata('loginErrorType', '1');
 			}
 		}else{
-			// $data['loginError'] = 'Username does not exsist';
-			// $data['loginErrorType'] = '2';
 			 $this->session->set_flashdata('loginError', 'Username does not exist');
 			 $this->session->set_flashdata('loginErrorType', '2');
 
 		}
-		//printme($currentUrl);exit();
 		$this->session->set_flashdata('login_username', $username);
 		redirect($currentUrl.'?'.$query);
 
@@ -149,7 +144,6 @@ class Home extends CI_Controller {
 	public function startSession($user)
 	{
 		$this->session->set_userdata($user);
-		// printme($user->id);exit();
 		$this->load->model('user');
 		$params = array('is_active' => 1);
 		$this->user->updateUser($user->id, $params);
@@ -164,7 +158,6 @@ class Home extends CI_Controller {
 		$this->user->updateUser($userid, $params);
 		$this->session->sess_destroy();
 		$this->session->unset_userdata();
-		// printme($_POST);exit();
 		redirect($_POST['currentUrl'].'?'.$_POST['query_string']);
 	}
 
@@ -179,7 +172,6 @@ class Home extends CI_Controller {
 		$data['title'] = 'ColdWell Banker | Registration';
 		$data['countryCodes'] = $this->database->getCountryCodes();
 		$data['districts'] = $this->database->getAllDistricts();
-		//printme($data['countryCodes'] );exit();
 		if(isset($_POST['submit'])){
 			$firstname = $_POST['first_name'];
 			$lastname = $_POST['last_name'];
@@ -216,7 +208,6 @@ class Home extends CI_Controller {
 				$data['birthdayError'] = 'Insert birthday';
 			}else
 			{
-				// printme($_POST);exit();
 				$user = $this->user->getUserByUsername($username);
 				if ($user)
 				{
@@ -232,8 +223,6 @@ class Home extends CI_Controller {
 						'birthday' => $_POST['birthday'],
 						'is_valid' => 0
 						);
-
-					// printme($userData);exit();
 
 					if ($this->user->insertUser($userData))
 					{	
@@ -275,7 +264,6 @@ class Home extends CI_Controller {
 	public function emailUpdateValidation($id)
 	{	
 		$token = $this->user->getToken($id);
-		//printme($token);exit();
 		$body = '
 		Please Validate updating your email by clicking on the following link 
 		</br>
@@ -287,7 +275,6 @@ class Home extends CI_Controller {
 	public function forgotPasswordValidation($id, $language)
 	{
 		$token = $this->user->getToken($id);
-		// printme($token);exit();
 		$body = '
 		Please click on the following link to reset your password.
 		</br>
@@ -298,13 +285,10 @@ class Home extends CI_Controller {
 
 	public function profile()
 	{
-		// $this->load->model('user');
-		// $this->load->model('service');
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Profile';
 		$data['districts'] = $this->database->getAllDistricts();
-		// printme($data['user']->id);exit();
 		if(!isset($data['user']))
 			redirect('home');
 
@@ -316,7 +300,6 @@ class Home extends CI_Controller {
 			$data['favoritesArray'][$key] = (object)$data['favoritesArray'][$key][0];
 			$data['favoritesImages'][$property->property_id] = $this->database->getPropertyImages($property->property_id);		
 		}
-		// printme($data['favoritesArray']);exit();
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];
@@ -363,10 +346,7 @@ class Home extends CI_Controller {
 							if ($_POST['email'] != $this->session->userdata('email')){
 								if ($this->user->insertTempEmail($this->session->userdata('id'),$_POST['email'],2))
 								{
-							// printme($data['user']->id);exit();
-
 									$this->emailUpdateValidation($this->db->insert_id());
-
 									$data['emailUpdateMessage'] = 'Please login to your email to confirm email update.';	
 								}
 								
@@ -496,9 +476,7 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		
 		if (isset($_POST['submit'])){
-			// printme($_POST);exit();
 			$data['params'] = $_POST;
-			// printme($_FILES);exit();
 			if (empty($_POST['area']) || $_POST['area'] == 'Select Area'){
 				$data['insertError'] = $this->lang->line('shareProperty_missing_area');
 			}elseif (empty($_POST['shareProperty_lob']) || $_POST['shareProperty_lob'] == 'Select Category' || $_POST['shareProperty_lob'] == 'إختار الفئة'){
@@ -547,7 +525,6 @@ class Home extends CI_Controller {
 					'features' => $_POST['features'],
 					'address' => $_POST['address'],
 					'city' => $city);
-				// printme($params);exit();
 				if ($this->property->insertProperty($params))
 				{
 					if(isset($_FILES) && $_FILES['img']['name']['0'] != "" ){
@@ -732,8 +709,6 @@ class Home extends CI_Controller {
 				{
 					$priceLowerLimit = $price[0];
 					$priceUpperLimit = 1000000000000000000000000;
-					// printme($priceLowerLimit);
-					// printme($priceUpperLimit);
 				}else{
 					$priceLowerLimit = $price[0];
 					$priceUpperLimit = $price[2];
@@ -789,13 +764,11 @@ class Home extends CI_Controller {
 				'AreaUpperLimit' => $areaUpperLimit,
 				'generalFlag' => $generalFlag
 			);
-			// printme($searchParams);exit();
 			if ($lob == 2)
 			{
 				$data['commercial'] = true;
 			}
 			$data['searchResults'] = $this->database->search($searchParams);
-			// printme($data['searchResults']);exit();
 			if ($data['searchResults']['totalResults'] > 0)
 			{
 				$data['totalResults'] = $data['searchResults']['totalResults'];
@@ -822,7 +795,6 @@ class Home extends CI_Controller {
 				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
 		}
-		// printme($data['images']);exit();
 		$this->load->view($data['languagePath'].'search_results', $data);
 	}
 
@@ -937,8 +909,6 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		$this->load->model('user');
 
-		// printme($data['uri']);
-
 		$vacancy_id = $data['uri'];
 
 		if($vacancy_id == 'uploadCV'){
@@ -1000,7 +970,6 @@ class Home extends CI_Controller {
 							E-mail: '.$email.'<br>
 							Vacancy: '.$vacancy_id;
 					$attachment = getcwd().'/application/static/upload/careers/'.$_FILES['userfile']['name'] ;
-					// printme($attachment);exit();
 					$this->smtpmailer('CV Application',$body,'hr@cb-egypt.com', $attachment);
 				}
 			}else{
@@ -1155,7 +1124,6 @@ class Home extends CI_Controller {
 			$data['uri'] = '';
 		}
 
-		// printme($this->uri->segment(0));exit();
 		$data['language'] = $this->uri->segment(1);
 
 		if(isset($_GET['language'])){
@@ -1169,7 +1137,6 @@ class Home extends CI_Controller {
 		}else{
 			$data['languagePath'] = '';
 		}
-		// printme($data);exit();
 		$this->loadLanguage($data['language']);
 		return $data;
 		
@@ -1183,7 +1150,6 @@ class Home extends CI_Controller {
 			$lang = 'arabic';
 		else
 			$lang = 'english';
-		// printme($lang);exit();
 		$this->lang->load('home', $lang);
 		$this->lang->load('auction', $lang);
 		$this->lang->load('compare', $lang);
@@ -1222,8 +1188,6 @@ class Home extends CI_Controller {
 	    $params['property_data'] = $_POST['data'];
 	    $insertProcess = $this->property->insertPropertyAlert($params);
 	    $postData = explode(',', $_POST['data']);
-	    // printme($postData);exit();
-	    // city='3',district='107',type='Apartment',price='750000 - 1000000',area='300 - 400',contractType='1'
 	    foreach ($postData as $value) {
 			$value = explode('=', $value);
 			if($value[0] == 'city'){
@@ -1264,8 +1228,6 @@ class Home extends CI_Controller {
 				{
 					$priceLowerLimit = $price[0];
 					$priceUpperLimit = 1000000000000000000000000;
-					// printme($priceLowerLimit);
-					// printme($priceUpperLimit);
 				}else{
 					$priceLowerLimit = $price[0];
 					$priceUpperLimit = $price[2];
@@ -1326,10 +1288,8 @@ class Home extends CI_Controller {
 			'AreaUpperLimit' => $areaUpperLimit, 
 			'generalFlag' => false
 		);		
-		// printme($searchParams);exit();
 	    
 		$data['searchResults'] = $this->database->search($searchParams);
-		// printme($data['searchResults']);exit();
 		if (is_array($data['searchResults']))
 		{
 			if ($data['searchResults']['totalResults'] > 0)
@@ -1372,8 +1332,6 @@ class Home extends CI_Controller {
 		$data = $this->init();
 		$data['districts'] = $this->database->getDistricts($_POST['id']);
 		$data['key'] = $_POST['key'];
-
-// printme($_POST['lang']);exit();
 		if($_POST['lang'] == 'ar')
 			$language='arabic/';
 		else
@@ -1416,12 +1374,10 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  $this->email->to($to); // change it to yours
 		  $this->email->subject($subject);
 		  $this->email->message($body);
-		  // printme($attachment);exit();
 		  if ($attachment != '')
 		  {
 		  		if (is_array($attachment)){
 		  			foreach ($attachment as $value) {
-		  				// printme($value);
 		  				$this->email->attach($value);
 		  			}
 		  		}else{
@@ -1431,14 +1387,13 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  }
 		  
 
-		  if($this->email->send())
-		  {
-		  	// echo $this->email->print_debugger();die;
-			return true;
-		}
-		 else
+		  	if($this->email->send())
+		  	{	
+				return true;
+			}
+			else
 			{
-			 show_error($this->email->print_debugger());
+				show_error($this->email->print_debugger());
 			}
 }
 
@@ -1538,7 +1493,6 @@ function resetpassword()
 		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
 		$data['phones'] = $this->office->getAllPhones();
-		// printme($data['offices']);exit();
 
 		$count1 = 0;
 		$count2 = 0;
@@ -1683,12 +1637,9 @@ function resetpassword()
 							Phone: '.$phone.'<br>
 							Comments: '.$_POST['contact_subject'];
 					$this->smtpmailer('Contact Request',$body,'customerservice@cb-egypt.com', '');
-					// $data['contactSuccess'] = $this->lang->line('offices_contact_success');
 				}else{
 					echo 0;
-					// $data['contactError'] = $this->lang->line('offices_contact_error');
 				}
-				// printme($firstname);exit();
 			}
 			
 		}
@@ -1787,8 +1738,6 @@ function resetpassword()
 				}
 			}
 		}
-		
-		// printme(count($data['phones']));exit();
 		$this->load->view('displayOffice', $data);
 	}
 
@@ -1798,8 +1747,6 @@ function resetpassword()
 		$this->load->model('office');
 		$data['officeInfo'] = $this->office->getOfficeByID($_POST['id']);
 		echo $data['officeInfo']->address_en;
-		//printme($data['officeInfo']->address_en);exit();
-		//$this->load->view('displayMap', $data);
 	}
 
 	function newsletterSingle()

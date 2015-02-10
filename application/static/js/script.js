@@ -988,7 +988,6 @@ $(".propertyAlertButton").click(function(){
                   data: { name: user_id , data : data, city: city, district: district, type: type, contractType:contractType, price:price, area:area }
                 })
                   .success(function( msg ) {
-                    // alert(msg);
                             $("#propertyAlertSuccess").removeClass('hide');
                             $("#propertyAlertError").addClass('hide');
                   });
