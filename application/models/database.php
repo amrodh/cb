@@ -257,6 +257,7 @@ class database extends CI_Model {
                     $query = $this->db->get();
                     // printme($this->db->last_query());
                     // printme($query->result());
+                    // exit();
                     if ($query->num_rows >0)
                     {
                         $results = array(

@@ -1249,7 +1249,7 @@ class Home extends CI_Controller {
 				// {
 					// $type = '';
 				// }else{
-					$type = $value[1];
+					$type = $this->database->getPropertyTypeByID($value[1]);
 				// }
 			}elseif($value[0] == 'contractType'){
 				// if ($value[1] != 'Sale' || $value[1] != 'Rent' || $value[1] != 'Sale/Rent')
@@ -1326,49 +1326,45 @@ class Home extends CI_Controller {
 			'AreaUpperLimit' => $areaUpperLimit, 
 			'generalFlag' => false
 		);		
-		// printme($searchParams);
+		// printme($searchParams);exit();
 	    
 		$data['searchResults'] = $this->database->search($searchParams);
-		// printme($data['searchResults']);
-		if ($data['searchResults']['totalResults'] > 0)
+		// printme($data['searchResults']);exit();
+		if (is_array($data['searchResults']))
 		{
-			$data['totalResults'] = $data['searchResults']['totalResults'];
-			$data['searchResults'] = $data['searchResults']['results'];
-			$data['images'] = array();
-			foreach ($data['searchResults'] as $property) {
-				$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
-				if ((!is_array($data['images'][$property->PropertyId]) || count($data['images'][$property->PropertyId]) < 1)) {
-					$data['images'][$property->PropertyId]['src'] = 'No_image.svg';
+			if ($data['searchResults']['totalResults'] > 0)
+			{
+				$data['totalResults'] = $data['searchResults']['totalResults'];
+				$data['searchResults'] = $data['searchResults']['results'];
+				$data['images'] = array();
+				foreach ($data['searchResults'] as $property) {
+					$data['images'][$property->PropertyId] = $this->database->getPropertyImages($property->PropertyId);
+					if ((!is_array($data['images'][$property->PropertyId]) || count($data['images'][$property->PropertyId]) < 1)) {
+						$data['images'][$property->PropertyId]['src'] = 'No_image.svg';
+					}
+
 				}
-
+			}else{
+				$data['resultCount'] = 0;
+				$data['totalResults'] = 0;
+				$data['noResults'] = "Sorry, there were no results that match your criteria";
 			}
-		}else{
-			$data['resultCount'] = 0;
-			$data['totalResults'] = 0;
-			$data['noResults'] = "Sorry, there were no results that match your criteria";
-		}
 
-	    if($insertProcess)
-	    {
-	    	echo 'true';
-	    	// printme($data)
-	    	$body = $this->load->view('newsletter_properties', $data, true);
-	    	if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
-		        $this->smtpmailer('Property Alert',$body,$name, '');
+		    if($insertProcess)
+		    {
+		    	$body = $this->load->view('newsletter_properties', $data, true);
+		    	if(filter_var($name, FILTER_VALIDATE_EMAIL)) {
+			        $this->smtpmailer('Property Alert',$body,$name, '');
+			    }
+			    else {
+			       $user = $this->user->getUserByUsername($name);
+			       $result = $this->smtpmailer('Property Alert',$body,$user->email, '');
+			    }
 		    }
-		    else {
-		       $user = $this->user->getUserByUsername($name);
-		       $result = $this->smtpmailer('Property Alert',$body,$user->email, '');
-		       // printme($result);
-		       // var_dump($result);
-		    }
-		    // printme()
-			
-	    }
-	    else
-	    	echo 'false';
-	    
-			exit();
+		    else
+				exit();
+		}
+		
 	}
 
 	public function getDistricts()
