@@ -12,9 +12,10 @@
     <?php foreach ($searchResults as $property): ?>
             <?php if ($count % 3 != 0): ?>
                 <td style="background-color: #f6f6f6; width:30%; border: 1px solid #d4d4d4!important;padding: 1% 1%;">
+                    <div class="properties_number compare_number" style="width: 3%;height: 3%;font-size:100%;background-color: white;color: orange;position: absolute;font-size: 17px;margin-top: -124px;text-align: center;margin-left: 23px;">
+                        <?php echo $count+1; ?>
+                    </div>
                     <div class="compare_img">
-                    <?php //printme($images);
-                    //printme($property); ?>
                         <a href="<?php base_url();?>propertyDetails/<?= $property->PropertyId;?>"><img class="compare_images" style="max-height: 104px;" id="image_<?= $property->PropertyId;  ?>" src="<?php echo base_url(); ?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/></a>
                     </div>
                     <div class="compare_description" style="padding-left: 0;padding-right: 0;">
