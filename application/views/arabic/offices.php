@@ -112,7 +112,9 @@
 											<?php echo $this->lang->line('offices_title3'); ?>
 										</div>
 										<div class="col-lg-8" style="direction: ltr;text-align: right;">
-										<?php  echo $office->start_time;?> am - <?php echo $office->end_time;?> pm
+										<?php  echo $office->start_time;?> am - <?php if ($office->end_time > 12): ?>
+											<?php $office->end_time = $office->end_time-12;?>
+										<?php endif ?><?php echo $office->end_time;?> pm
 										</div>
 									</div>
 									<?php if (isset($phonesResidential[$office->id])): ?>
