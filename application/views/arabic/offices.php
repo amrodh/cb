@@ -111,8 +111,8 @@
 										<div class="col-lg-4 offices_titles">
 											<?php echo $this->lang->line('offices_title3'); ?>
 										</div>
-										<div class="col-lg-8" style="">
-										<?php  echo $office->start_time;?> - <?php echo $office->end_time;?>
+										<div class="col-lg-8" style="direction: ltr;text-align: right;">
+										<?php  echo $office->start_time;?> am - <?php echo $office->end_time;?> pm
 										</div>
 									</div>
 									<?php if (isset($phonesResidential[$office->id])): ?>
