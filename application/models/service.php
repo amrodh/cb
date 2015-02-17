@@ -77,7 +77,7 @@ class service extends CI_Model {
             'pageIndex' => '',
             'licences' => '',
             'isFeatured' => $isFeatured,
-            'resultsCountPerPage' => '100', 
+            'resultsCountPerPage' => '10', 
             'useFeaturedFilter' => $useFeaturedFilter
             );
         
@@ -95,7 +95,7 @@ class service extends CI_Model {
             $data['results'] = '';
             $data['totalResults'] = $results->TotalResults;
         }
-        printme($data);exit();
+        // printme($data);exit();
         return $data;
     }
 
@@ -270,7 +270,7 @@ class service extends CI_Model {
 
     function getNeighborhoods($districtID)
     {
-        $result = $this->client->GetNeighborhoodList(1);
+        $result = $this->client->GetNeighborhoodList($districtID);
         // printme($result);exit();
         return $result;
         
