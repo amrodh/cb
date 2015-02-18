@@ -535,6 +535,10 @@ li.active>a{
     border: none;
 }
 
+.nav-tabs.nav-justified>li{
+    width: auto!important;
+}
+
 #search_tabs > li > a:hover{
     /*background-color: #1e4270;*/
     color: orange;
@@ -1762,6 +1766,11 @@ li.active>.training_anchor{
     background-color: #f0f0f0!important;
     border-top-left-radius: 10px!important;
     border-top-right-radius: 10px!important;
+}
+
+.training_anchor{
+    padding-left: 10px!important;
+    padding-right: 10px!important;
 }
 
 .auction_body{

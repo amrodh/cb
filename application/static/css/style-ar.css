@@ -28,6 +28,10 @@
     /*margin-left: -800%!important;*/
 }
 
+.nav-tabs.nav-justified>li{
+    width: auto!important;
+}
+
 *{
     font-family: 'droidarabickufi_regular';
 }
@@ -1784,6 +1788,11 @@ li.active>.training_anchor{
     background-color: #f0f0f0!important;
     border-top-left-radius: 10px!important;
     border-top-right-radius: 10px!important;
+}
+
+.training_anchor{
+    padding-left: 10px!important;
+    padding-right: 10px!important;
 }
 
 .auction_body{

@@ -1402,7 +1402,7 @@ function trainingCenter()
 	$this->load->model('course');
 	$data = $this->init();
 	$data['courses'] = $this->course->getCourses();
-	$data['title'] = 'ColdWell Banker | Training Center';
+	$data['title'] = 'ColdWell Banker | Training Academy';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }
 
