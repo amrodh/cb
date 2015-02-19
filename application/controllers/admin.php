@@ -620,29 +620,29 @@ class Admin extends CI_Controller {
 		if(isset($_POST['confirmedit'])){
 
 			unset($_POST['confirmedit']);
-			if($_FILES['userfile']['error'] != 0){
+			// if($_FILES['userfile']['error'] != 0){
+			// 	$this->course->update($id,$_POST);
+			// 	redirect('admin/courses/'.$data['course']->id);
+			// }else{
+				// $path = $this->config->config['upload_path'];
+				// $this->config->set_item('upload_path',$path.'/courses');
+
+				// $fileExtension = explode('.',$_FILES['userfile']['name']);
+				// $_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
+
+				// $upload = uploadme($this);
+				// if(isset($upload['error'])){
+
+				// 	$data['params'] = $this->course->getArray($id);
+				// 	$data['error'] = $upload['error'];
+				// 	$this->load->view('admin/courseedit', $data);
+				// 	return;
+
+				// }
+				// $_POST['image'] = $_FILES['userfile']['name'];
 				$this->course->update($id,$_POST);
 				redirect('admin/courses/'.$data['course']->id);
-			}else{
-				$path = $this->config->config['upload_path'];
-				$this->config->set_item('upload_path',$path.'/courses');
-
-				$fileExtension = explode('.',$_FILES['userfile']['name']);
-				$_FILES['userfile']['name'] = $fileExtension[0].'_'.time().'.'.$fileExtension[1];
-
-				$upload = uploadme($this);
-				if(isset($upload['error'])){
-
-					$data['params'] = $this->course->getArray($id);
-					$data['error'] = $upload['error'];
-					$this->load->view('admin/courseedit', $data);
-					return;
-
-				}
-				$_POST['image'] = $_FILES['userfile']['name'];
-				$this->course->update($id,$_POST);
-				redirect('admin/courses/'.$data['course']->id);
-			}
+			// }
 			
 			
 		}

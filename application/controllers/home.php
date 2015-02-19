@@ -5,6 +5,7 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
+		// echo date('YmdGi', strtotime("-1 days"));exit();
 		$data['session'] = $this->session;
 		$tmp = $this->session->flashdata('loginError');
 
@@ -48,6 +49,7 @@ class Home extends CI_Controller {
   //           );
 		// $this->load->model('service');
 		// $data['searchFunction'] = $this->service->search($inputs);
+		// printme($data['searchFunction']);
 		// exit();
 
 		// $this->load->model('cronjobs');
@@ -58,11 +60,12 @@ class Home extends CI_Controller {
 
 		// printme($data['propertyType1']);exit();
 
-		// $districts = $this->service->getAllDistricts();
+
+		// $districts = $this->database->getAllDistricts();
 		// $neighborhoods = array();
-		// foreach ($districts as $key => $district) {
-		// 	$neighborhoods[$key] = $this->service->getNeighborhoods($district['id']);
-		// }
+		// // foreach ($districts as $key => $district) {
+			// $neighborhoods = $this->service->getNeighborhoods(490);
+		// // }
 		// printme($neighborhoods);exit();
 		
 		// $data['featuredProperties']=$this->service->getFeaturedProperties();
