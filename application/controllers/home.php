@@ -50,6 +50,7 @@ class Home extends CI_Controller {
 		// $this->load->model('service');
 		// $data['searchFunction'] = $this->service->search($inputs);
 		// printme($data['searchFunction']);
+		// printme("<br><br>======================================<br><br>");
 		// exit();
 
 		// $this->load->model('cronjobs');
@@ -63,9 +64,10 @@ class Home extends CI_Controller {
 
 		// $districts = $this->database->getAllDistricts();
 		// $neighborhoods = array();
-		// // foreach ($districts as $key => $district) {
-			// $neighborhoods = $this->service->getNeighborhoods(490);
-		// // }
+		// foreach ($districts as $key => $district) {
+			// printme($district);
+			// $neighborhoods[$key] = $this->service->GetNeighborhoodList($district['id']);
+		// }
 		// printme($neighborhoods);exit();
 		
 		// $data['featuredProperties']=$this->service->getFeaturedProperties();
@@ -1405,6 +1407,7 @@ function trainingCenter()
 	$this->load->model('course');
 	$data = $this->init();
 	$data['courses'] = $this->course->getCourses();
+	$data['districts'] = $this->database->getAllDistricts();
 	$data['title'] = 'ColdWell Banker | Training Academy';
 	$this->load->view($data['languagePath'].'training_center', $data);
 }
