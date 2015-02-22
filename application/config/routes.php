@@ -112,8 +112,8 @@ $route["$appended_lang/auction"] = "home/auction";
 $route['compareProperties'] = 'home/compareProperties';
 $route["$appended_lang/compareProperties"] = "home/compareProperties";
 
-$route['trainingCenter'] = 'home/trainingCenter';
-$route["$appended_lang/trainingCenter"] = "home/trainingCenter";
+$route['trainingAcademy'] = 'home/trainingCenter';
+$route["$appended_lang/trainingAcademy"] = "home/trainingCenter";
 
 $route['getDistricts'] = 'home/getDistricts';
 $route['getPropertyTypes'] = 'home/getPropertyTypes';

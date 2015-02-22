@@ -194,7 +194,7 @@
                             </ul>
                         </li>
                         <!-- <li><a class="header_items_rtl" href="<?= base_url().'ar/';?>auction"><?php echo $this->lang->line('home_menu3'); ?></a></li> -->
-                        <li><a href="<?= base_url().'ar/';?>trainingCenter" class="header_items_rtl"><?php echo $this->lang->line('home_menu4'); ?></a></li>
+                        <li><a href="<?= base_url().'ar/';?>trainingAcademy" class="header_items_rtl"><?php echo $this->lang->line('home_menu4'); ?></a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle header_items_rtl" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?>
                                 <b class="caret"></b>

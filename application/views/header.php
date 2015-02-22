@@ -185,7 +185,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="<?= base_url();?>en/trainingCenter"><?php echo $this->lang->line('home_menu4'); ?></a></li>
+                        <li><a href="<?= base_url();?>en/trainingAcademy"><?php echo $this->lang->line('home_menu4'); ?></a></li>
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu5'); ?> 
                                 <b class="caret"></b>
