@@ -640,7 +640,7 @@ class Admin extends CI_Controller {
 
 				// }
 				// $_POST['image'] = $_FILES['userfile']['name'];
-				$this->course->update($id,$_POST);
+				$this->course->update($id,$_POST); 
 				redirect('admin/courses/'.$data['course']->id);
 			// }
 			
