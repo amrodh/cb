@@ -14,14 +14,34 @@
         		<img style="width: 100%; margin-bottom: 1%;" src="<?php echo base_url(); ?>application/static/images/training_center.png">
         	</div>
         	<div class="row">
-                <div id="search_header" style="margin-top: -30px;">
+                <div id="search_header" style="margin-top: -30px; width: 100%;">
                     <ul class="nav nav-tabs nav-justified search_box" id="search_tabs">
                     <?php $count=1; ?>
                     <?php foreach ($courses as $course): ?>
                     	<?php if ($count == 1): ?>
-                    		<li class="active" style="padding: 0; height: 25px;"><a class="training_anchor" style="height: 100%;padding: 0;" href="#course<?=$count;?>" id="training_anchor1" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
+                    		<li class="active" style="padding: 0; height: 25px;outline:none;">
+                    			<a class="training_anchor" style="height: 100%;padding: 0;" href="#course<?=$count;?>" id="training_anchor1" data-toggle="tab">
+                    				<?php //echo $course->title_ar; ?>
+                    				<?php $title2 = $course->title;
+                    				if(strlen($course->title_ar) > 35){
+		                                    $title2 = substr($course->title_ar,0,30).'..';
+		                                	}
+		                                echo $title2; 
+	                                ?> 
+                				</a>
+            				</li>
                     	<?php else: ?>
-                    		<li style="padding: 0; height: 25px;"><a class="training_anchor" style="height: 100%;padding: 0;" href="#course<?=$count;?>" id="training_anchor3" data-toggle="tab"><?php echo $course->title_ar; ?></a></li>
+                    		<li style="padding: 0; height: 25px;outline:none;">
+                    			<a class="training_anchor" style="height: 100%;padding: 0;" href="#course<?=$count;?>" id="training_anchor3" data-toggle="tab">
+                    				<?php //echo $course->title_ar; ?>
+                    				<?php $title2 = $course->title;
+                    				if(strlen($course->title_ar) > 35){
+			                                    $title2 = substr($course->title_ar,0,30).'..';
+			                                }
+			                                echo $title2; 
+	                                ?> 
+                				</a>
+            				</li>
                     	<?php endif ?>
                     	<?php $count++; ?>
                     <?php endforeach ?>
