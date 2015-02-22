@@ -25,7 +25,7 @@
                     			<?php 
                     			$title2 = $course->title;
                     			if(strlen($course->title) > 35){
-			                                    $title2 = substr($course->title,0,30).'..';
+			                                    $title2 = substr($course->title,0,25).'..';
 			                                }
 			                                echo $title2; 
 	                                ?> 
@@ -37,7 +37,7 @@
                     				<?php //echo $course->title; ?>
                     				<?php $title2 = $course->title;
                     				if(strlen($course->title) > 35){
-			                                    $title2 = substr($course->title,0,30).'..';
+			                                    $title2 = substr($course->title,0,25).'..';
 			                                }
 			                                echo $title2; 
 	                                ?> 
