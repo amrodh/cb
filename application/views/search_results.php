@@ -131,16 +131,24 @@
                                                                 </div>
                                                             </div>
                                                             <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                                <?php if (!isset($commercial)): ?>                                               
+                                                                    <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                <?php endif ?>
                                                                 <?php if ($result->SalesTypeStr == 'Sale'): ?>
-                                                                    <?php if (!isset($commercial)): ?>
-                                                                        <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>
-                                                                <?php else: ?>     
-                                                                    <?php if (!isset($commercial)): ?>                                               
-                                                                        <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]); ?>
+                                                                    <?php echo "Sale Price: ".$result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>
+                                                                    <?php if ($result->RentPrice[0] != 0): ?>
+                                                                        <?php echo "Rent Price: ". $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]);?>
+                                                                    <?php endif ?> 
+                                                                <?php else: ?>  
+                                                                    <?php if ($result->SalesTypeStr == 'Rent'): ?>
+                                                                        <?php echo "Rent Price: ".$result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]); ?>
+                                                                        <?php if ($result->SalePrice[0] != 0): ?>
+                                                                            <?php echo "Sale Price: ". $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]);?>
+                                                                        <?php endif ?>
+                                                                    <?php else: ?>
+                                                                        <?php echo "Sale Price: ". $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0])."<br>";?>
+                                                                        <?php echo "Rent Price: ". $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]);?>
+                                                                    <?php endif ?>   
                                                                 <?php endif ?>
                                                             </div>
                                                         </div>
@@ -267,16 +275,24 @@
                                                                 </div>
                                                             </div>
                                                             <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
+                                                                <?php if (!isset($commercial)): ?>                                               
+                                                                    <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                <?php endif ?>
                                                                 <?php if ($result->SalesTypeStr == 'Sale'): ?>
-                                                                    <?php if (!isset($commercial)): ?>
-                                                                        <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>
-                                                                <?php else: ?>     
-                                                                    <?php if (!isset($commercial)): ?>                                               
-                                                                        <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]); ?>
+                                                                    <?php echo "Sale Price: ".$result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>
+                                                                    <?php if ($result->RentPrice[0] != 0): ?>
+                                                                        <?php echo "Rent Price: ". $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]);?>
+                                                                    <?php endif ?> 
+                                                                <?php else: ?>  
+                                                                    <?php if ($result->SalesTypeStr == 'Rent'): ?>
+                                                                        <?php echo "Rent Price: ".$result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]); ?>
+                                                                        <?php if ($result->SalePrice[0] != 0): ?>
+                                                                            <?php echo "Sale Price: ". $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]);?>
+                                                                        <?php endif ?>
+                                                                    <?php else: ?>
+                                                                        <?php echo "Sale Price: ". $result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0])."<br>";?>
+                                                                        <?php echo "Rent Price: ". $result->RentCurrency.' '.number_format(explode('.',$result->RentPrice)[0]);?>
+                                                                    <?php endif ?>   
                                                                 <?php endif ?>
                                                             </div>
                                                         </div>

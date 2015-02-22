@@ -270,7 +270,7 @@ class service extends CI_Model {
 
     function getNeighborhoods($districtID)
     {
-        $result=array();
+        // $result=array();
         $result = $this->client->GetNeighborhoodList($districtID);
         // printme($result);exit();
         return $result;
