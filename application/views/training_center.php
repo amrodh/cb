@@ -13,7 +13,7 @@
         	<div class="row">
         		<img style="width: 100%; margin-bottom: 1%;" src="<?php echo base_url(); ?>application/static/images/training_center.png">
         	</div>
-        	<div class="row training_body" style="margin-bottom: 3%;">
+        	<div class="row" style="margin-bottom: 3%;">
         		<div class="courses_div">
         		Coldwell Banker Training Academy is considered one of the specialized institutes in Egypt that offers Real Estate education development and this should help Egypt build their leaders of  tomorrow and create a deeper pool of talents in the Real Estate sales field.
 				These courses are designed to offer all candidates interested in Real Estate sales a greater insight into the profession of selling and closing deals.
