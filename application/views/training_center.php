@@ -30,7 +30,11 @@
 				                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $count;?>"><?php echo $course->title; ?></a>
 				                </h4>
 				            </div>
-				            <div id="collapse<?php echo $count;?>" class="panel-collapse collapse in">
+				            <?php if ($count == 1): ?>
+				            	<div id="collapse<?php echo $count;?>" class="panel-collapse collapse in">
+				            <?php else: ?>
+				            	<div id="collapse<?php echo $count;?>" class="panel-collapse collapse">
+				            <?php endif ?>
 				                <div class="panel-body">
 				                    <p>
 				                    	<?php echo $course->feature;?>
