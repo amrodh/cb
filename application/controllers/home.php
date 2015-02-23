@@ -96,7 +96,7 @@ class Home extends CI_Controller {
 	{	
 		$data = $this->init();
 		$data['featuredProperties']=$this->database->getFeaturedProperties();
-		printme($data['featuredProperties']);exit();
+		// printme($data['featuredProperties']);exit();
 		if($data['featuredProperties'] != false)
 		{
 			foreach ($data['featuredProperties'] as $property) {
