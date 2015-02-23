@@ -163,12 +163,18 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -17.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -34%;">
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_submenu1'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project=&amp;locationType="><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_submenu3'); ?></a>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project=&amp;locationType="><?php echo $this->lang->line('home_submenu3'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu12'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=unit"><?php echo $this->lang->line('home_submenu13'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -176,12 +182,18 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu2'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -16%;">
+                            <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -37.5%;">
                                 <li>
                                     <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_submenu4'); ?></a>
                                 </li>
                                 <li>
                                     <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_submenu5'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu14'); ?></a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=unit"><?php echo $this->lang->line('home_submenu15'); ?></a>
                                 </li>
                             </ul>
                         </li>
@@ -200,7 +212,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown"  style="margin-right: -39.5%;">
+                            <ul class="dropdown-menu header_dropdown"  style="margin-right: -40.5%;">
                                 <li>
                                     <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
                                 </li>
@@ -213,7 +225,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" style="margin-right: -17.5%;">
+                            <ul class="dropdown-menu header_dropdown" style="margin-right: -18.5%;">
                                 <li>
                                     <a href="<?= base_url();?>en/offices"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>

@@ -113,6 +113,20 @@
         else 
             return 0; 
     }
+
+    function GetNeighborhoodList($districtID, $client)
+    {
+        $inputs = array('districtId' => $districtID);
+        $result = $client->GetNeighborhoodList($inputs);
+        $result = (array) $result->GetNeighborhoodListResult;
+        if (empty($result)){
+          return $result;
+        }else{
+          return $result['NeighborhoodItem'];
+        }
+        
+    }
+
     function searchDB($inputs, $con)
     {
         $AreaUpperLimit = $inputs['AreaUpperLimit'];
@@ -459,6 +473,33 @@
             $sqlDelete3 = "TRUNCATE TABLE property_service";
             mysqli_query($con, $sqlDelete3);
             
+
+            $updatedResult = array();
+
+            foreach ($serviceResults as $key => $result) {
+                $updatedResult = $result;
+                $districtID = getDistrictIdDB($result['LocationDistrict'], $con);
+                $neighborhoods = GetNeighborhoodList($districtID['id'], $client);
+                if(!empty($neighborhoods))
+                {
+                    foreach ($neighborhoods as $key2 => $neighborhood) {
+                        $updatedResult['LocationType'] = "unit";
+                        $serviceResults[$key] = $updatedResult;
+                        if ($result['LocationProject'] == $neighborhood->NeighborhoodName)
+                        {
+                            if ($neighborhood->NeighborhoodType == 2){
+                                $updatedResult['LocationType'] = "project";
+                                $serviceResults[$key] = $updatedResult;
+                            }
+                            break;
+                        }
+                    }
+                }else{
+                    $updatedResult['LocationType'] = "unit";
+                    $serviceResults[$key] = $updatedResult;
+                }
+            }
+
             foreach ($resultsArray as $key => $value) {
                 $AreaNumericValue = $serviceResults[$key]['AreaNumericValue'];
                 $AreaUnit = $serviceResults[$key]['AreaUnit'];
@@ -483,13 +524,10 @@
                 $TotalArea = $serviceResults[$key]['TotalArea'];
                 $UnitId = $serviceResults[$key]['UnitId'];
                 $PropertyId = $serviceResults[$key]['PropertyId'];
-                    $sqlInsert = "INSERT INTO property_service (AreaNumericValue, AreaUnit, AreaunitStr, BalconiesNumber, BathRoomsNumber, BedRoomsNumber,
-                      InteriorFinishing, LineofBusinessFK, LocationCity, LocationDistrict, LocationProject, PropertyTypeFK, PrpertyTypeStr, RentCurrency, 
-                      RentPrice, RentPricePerAreaUnit, SaleCurrency, SalePrice, SalePricePerAreaUnit, SalesTypeStr, TotalArea, UnitId, PropertyId) 
+                $LocationType = $serviceResults[$key]['LocationType'];
+                    $sqlInsert = "INSERT INTO property_service (AreaNumericValue, AreaUnit, AreaunitStr, BalconiesNumber, BathRoomsNumber, BedRoomsNumber, InteriorFinishing, LineofBusinessFK, LocationCity, LocationDistrict, LocationProject, LocationType, PropertyTypeFK, PrpertyTypeStr, RentCurrency, RentPrice, RentPricePerAreaUnit, SaleCurrency, SalePrice, SalePricePerAreaUnit, SalesTypeStr, TotalArea, UnitId, PropertyId) 
                       VALUES ('$AreaNumericValue', '$AreaUnit', '$AreaunitStr', 
-                      '$BalconiesNumber', '$BathRoomsNumber', '$BedRoomsNumber', '$InteriorFinishing', '$LineofBusinessFK', '$LocationCity',
-                      '$LocationDistrict', '$LocationProject', '$PropertyTypeFK', '$PrpertyTypeStr', '$RentCurrency', '$RentPrice', 
-                      '$RentPricePerAreaUnit', '$SaleCurrency', '$SalePrice', '$SalePricePerAreaUnit', '$SalesTypeStr', '$TotalArea', '$UnitId', '$PropertyId')";
+                      '$BalconiesNumber', '$BathRoomsNumber', '$BedRoomsNumber', '$InteriorFinishing', '$LineofBusinessFK', '$LocationCity', '$LocationDistrict', '$LocationProject', '$LocationType', '$PropertyTypeFK', '$PrpertyTypeStr', '$RentCurrency', '$RentPrice', '$RentPricePerAreaUnit', '$SaleCurrency', '$SalePrice', '$SalePricePerAreaUnit', '$SalesTypeStr', '$TotalArea', '$UnitId', '$PropertyId')";
                     
                     if (mysqli_query($con, $sqlInsert))
                     {

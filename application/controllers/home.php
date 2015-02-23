@@ -95,8 +95,8 @@ class Home extends CI_Controller {
 	public function getFeaturedProperties()
 	{	
 		$data = $this->init();
-
 		$data['featuredProperties']=$this->database->getFeaturedProperties();
+		printme($data['featuredProperties']);exit();
 		if($data['featuredProperties'] != false)
 		{
 			foreach ($data['featuredProperties'] as $property) {
@@ -617,7 +617,8 @@ class Home extends CI_Controller {
 	public function getSearchResults()
 	{
 		$data = $this->init();
-		$flag = false;
+		$data['districts'] = $this->database->getAllDistricts();
+		$flag = false;					//featured flag
 		$generalFlag = false;
 		$districtFlag = false;
 		if (isset($data['loggedIn'])){
@@ -744,6 +745,16 @@ class Home extends CI_Controller {
 				}else{
 					$project = $value[1];
 				}
+			}elseif ($value[0] == 'locationType'){
+				// printme($value[1]);exit();
+				// if ($value[1] == 0 || $value[1] == '')
+				// {
+				// 	printme('hi');
+				// 	$locationType = '';
+				// }else{
+					$locationType = $value[1];
+				// }
+				// printme($locationType);exit();
 			}
 		}
 
@@ -752,7 +763,7 @@ class Home extends CI_Controller {
 		}
 
 		if ($flag == false){
-			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '')
+			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '' && $locationType == '')
 			{
 				$generalFlag = true;
 			}
@@ -767,8 +778,10 @@ class Home extends CI_Controller {
 				'PriceUpperLimit' => $priceUpperLimit,
 				'AreaLowerLimit' => $areaLowerLimit,
 				'AreaUpperLimit' => $areaUpperLimit,
-				'generalFlag' => $generalFlag
+				'generalFlag' => $generalFlag, 
+				'locationType' => $locationType
 			);
+
 			if ($lob == 2)
 			{
 				$data['commercial'] = true;
@@ -807,10 +820,11 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Available Properties';
+		$data['districts'] = $this->database->getAllDistricts();
 		$data['cities'] = $this->database->getCities();
 		if (isset($_GET['city']))
 		{
-			$data['districts'] = $this->database->getDistricts($_GET['city']);
+			$data['districtsCity'] = $this->database->getDistricts($_GET['city']);
 		}
 		$data['propertyType1'] = $this->database->Getpropertytypes(1);
 		$data['propertyType2'] = $this->database->Getpropertytypes(2);

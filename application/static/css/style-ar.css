@@ -2295,11 +2295,11 @@ _divs{
     }
 }
 
-@media only screen and (min-width: 1040px) {
+/*@media only screen and (min-width: 1040px) {
     .collapse {
         display: block!important;
     }
-}
+}*/
 
 @media only screen and (max-width: 1040px) {
     .navbar-toggle {

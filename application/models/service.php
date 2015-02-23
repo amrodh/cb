@@ -12,7 +12,7 @@ class service extends CI_Model {
        
         
         $options = array( 
-                'exceptions'=>0, 
+                'exceptions'=>1, 
                 'trace'=>1,
                 'cache_wsdl'=>WSDL_CACHE_NONE 
             ); 
@@ -268,11 +268,10 @@ class service extends CI_Model {
            return false; 
     }
 
-    function getNeighborhoods($districtID)
+    function GetNeighborhoodList($districtID)
     {
-        // $result=array();
-        $result = $this->client->GetNeighborhoodList($districtID);
-        // printme($result);exit();
+        $inputs = array('districtId' => $districtID);
+        $result = $this->client->GetNeighborhoodList($inputs);
         return $result;
         
     }

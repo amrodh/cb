@@ -1,6 +1,6 @@
 <div class="tab-pane active" id="home">
 <?php if (count($featuredProperties < 3)): ?>
-    <div class="row newsletter_rows" style="width: 75%;margin: auto;">
+    <div class="row newsletter_rows" style="margin: auto;">
 <?php else: ?>
     <div class="row newsletter_rows">
 <?php endif ?>

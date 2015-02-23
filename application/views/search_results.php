@@ -9,11 +9,12 @@
                     Featured Properties
                 <?php else: ?>
                     <?php if (isset($commercial)): ?>
-                        <?php if (isset($commercialSale)): ?>
+                        Commercial buildings for Sale and Rent
+                       <!--  <?php if (isset($commercialSale)): ?>
                             Commercial buildings for Sale
                         <?php else: ?>
                             Commercial buildings for Rent
-                        <?php endif ?>
+                        <?php endif ?> -->
                     <?php else: ?>
                         Homes for Sale and Rent
                     <?php endif ?>

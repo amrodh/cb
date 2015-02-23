@@ -48,7 +48,7 @@
                            <?php if (isset($_GET['district']) && $_GET['lob'] == 1 && $_GET['district'] != ''): ?>
                             <?php //printme($districts); ?>
                               <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5">
-                                  <?php foreach ($districts as $district): ?>
+                                  <?php foreach ($districtsCity as $district): ?>
                                       <?php if ($district['id'] == $_GET['district']): ?>
                                         <option value="<?= $district['id'] ?>" selected> <?= $district['name'] ?> </option>
                                       <?php else: ?>
@@ -190,7 +190,7 @@
                          </div>
                          <?php if (isset($_GET['district']) && $_GET['lob'] == 2 && $_GET['district'] != ''): ?>
                               <select class="selectpicker" id="search_disabled_district_3" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
-                                  <?php foreach ($districts as $district): ?>
+                                  <?php foreach ($districtsCity as $district): ?>
                                       <?php if ($district['id'] == $_GET['district']): ?>
                                         <option value="<?= $district['id'] ?>" selected> <?= $district['name'] ?> </option>
                                       <?php else: ?>

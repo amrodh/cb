@@ -121,9 +121,10 @@
         <div id="footer_dropdown1_data" style="">
             <b>By District</b><br>
             <div class="row" style="color: white;margin-top:2%;padding:1%;">
+            <?php //printme($districts); ?>
                 <p><?php foreach ($districts as $item): ?>
                 <?php //printme($item); ?>
-                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=10&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
+                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=10&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0&amp;project="> <?= $item['name']; ?></a> . 
                 <?php endforeach ?></p>
             </div>
         </div>
@@ -131,7 +132,7 @@
             <b>By District</b><br>
             <div class="row" style="color: white;margin-top:2%;padding:1%;">
                 <p><?php foreach ($districts as $item): ?>
-                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=1&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
+                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=1&amp;type=1&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0&amp;project="> <?= $item['name']; ?></a> . 
                 <?php endforeach ?></p>
             </div>
         </div>
@@ -139,7 +140,7 @@
             <b>By District</b><br>
             <div class="row" style="color: white;margin-top:2%;padding:1%;">
                 <p><?php foreach ($districts as $item): ?>
-                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=2&amp;type=11&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0"> <?= $item['name']; ?></a> . 
+                   <a style="color:white;" href="<?=base_url();?>viewAllProperties?lob=2&amp;type=11&amp;city=&amp;district=<?=$item['id'];?>&amp;contractType=&amp;price=0&amp;area=0&amp;project="> <?= $item['name']; ?></a> . 
                 <?php endforeach ?></p>
             </div>
         </div>

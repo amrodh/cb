@@ -9,11 +9,12 @@
                         العقارات المميزة
                     <?php else: ?>
                         <?php if (isset($commercial)): ?>
-                            <?php if (isset($commercialSale)): ?>
+                            العقارات المميزة والإيجار
+                          <!--   <?php if (isset($commercialSale)): ?>
                                 ممتلكات تجارية للبيع
                             <?php else: ?>
                                 ممتلكات تجارية للايجار
-                            <?php endif ?>
+                            <?php endif ?> -->
                             <?php else: ?>
                                 منازل للبيع والإيجار
                         <?php endif ?>
