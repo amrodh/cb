@@ -350,35 +350,19 @@ class database extends CI_Model {
         $this->db->order_by('propertyId', 'desc');
         $this->db->from('property_featured');
         $query = $this->db->get();
-        $count1 = 0;    //residential count
-        $count2 = 0;    //commercial count
-        $residentialLocationType = false;    
-        $commercialLocationType = false;
+        $count1 = 0;
+        $count2 = 0;
         if ($query->num_rows >0)
         {
             foreach ($query->result() as $key => $value) {
                 $temp = $this->getPropertyByID($value->propertyId);
                 if ($count1 < 2 && $temp[0]['LineofBusinessFK'] == 1)
                 {
-                    if ($temp[0]['LocationType'] == 'project' && $residentialLocationType == false)
-                    {
-                        $properties[$value->propertyId] = (object) $temp[0];
-                        $count1++;
-                        $residentialLocationType = true;
-                    }elseif ($temp[0]['LocationType'] == 'unit') {
-                        $properties[$value->propertyId] = (object) $temp[0];
-                        $count1++;
-                    }
+                    $properties[$value->propertyId] = (object) $temp[0];
+                    $count1++;
                 }elseif ($count2 < 1 && $temp[0]['LineofBusinessFK'] == 2) {
-                    if ($temp[0]['LocationType'] == 'project' && $residentialLocationType == false)
-                    {
-                        $properties[$value->propertyId] = (object) $temp[0];
-                        $count2++;
-                        $commercialLocationType = true;
-                    }elseif ($temp[0]['LocationType'] == 'unit') {
-                        $properties[$value->propertyId] = (object) $temp[0];
-                        $count2++;
-                    }
+                    $properties[$value->propertyId] = (object) $temp[0];
+                    $count2++;
                 }
             }
             return $properties;
