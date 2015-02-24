@@ -2157,7 +2157,7 @@ li.active>.training_anchor{
 
 @media only screen and (min-width: 1200px){
     .newsletter_cols{
-        width: 32%;
+        width: 24%;
         margin-left: 1%;
     }
 }

@@ -544,8 +544,8 @@
                   $sqlSelect = "SELECT * FROM unit_image WHERE property_id = '$value'";
                   $result = mysqli_query($con, $sqlSelect);
                   while ($row = $result->fetch_assoc()) {
-                    $image = '/var/www/html/cb/application/static/upload/property_images/'.$row['image'];
-                      // $image = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/'.$row['image'];
+                    // $image = '/var/www/html/cb/application/static/upload/property_images/'.$row['image'];
+                      $image = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/'.$row['image'];
                       if (is_file($image))
                           unlink($image); // delete file
                   }
@@ -785,8 +785,8 @@
             $image = $html->find('img');
              
             if(count($image) == 0){
-                $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
-                // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
+                // $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
+                $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
                 $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'No_image.svg')";
                 $result = $con->query($sql);
             }
@@ -794,8 +794,8 @@
             {   
                 $url = $element->attr['src'];
                 $test = file_get_contents(trim($url));
-                // $img = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
-                $img = '/var/www/html/cb/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
+                $img = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
+                // $img = '/var/www/html/cb/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
                 file_put_contents($img, $test);
                 $img_name = 'image_'.$count.'_'.$propertyID.'.jpg';
                 $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', '$img_name')";
@@ -804,8 +804,8 @@
             }
               
         }else{
-            $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
-            // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
+            // $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
+            $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
         }
     }
     function getPropertyImages($id, $serial, $client)

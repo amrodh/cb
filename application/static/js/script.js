@@ -2,6 +2,16 @@ var abc = 0;
 $(document).ready(function ()
 {
 
+    $('.accordionToggle').click(function(event) {
+        if ($(this).find('span').hasClass('caret_reversed')){
+            $(this).find('span').removeClass('caret_reversed');
+            $(this).find('span').addClass('caret');
+        }else{
+            $(this).find('span').removeClass('caret');
+            $(this).find('span').addClass('caret_reversed');
+        }
+    });
+
           $('.footer_dropdown_div').click(function(event) {
             // alert($(this).attr('id'));
             if ($(this).attr('id') == 'footer_dropdown_1'){

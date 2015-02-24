@@ -27,7 +27,12 @@
         				<div class="panel panel-default">
 				            <div class="panel-heading">
 				                <h4 class="panel-title">
-				                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $count;?>"><?php echo $course->title; ?></a>
+                                    <?php if ($count == 1): ?>
+                                        <a data-toggle="collapse" class="accordionToggle" data-parent="#accordion" style="display: block; color:#23395b;" href="#collapse<?php echo $count;?>"><?php echo $course->title; ?><span class="caret_reversed pull-right" style="margin-top:0.6%;color:#23395b;"></span></a>
+                                    <?php else: ?>
+                                        <a data-toggle="collapse" class="accordionToggle" data-parent="#accordion" style="display: block; color:#23395b;" href="#collapse<?php echo $count;?>"><?php echo $course->title; ?><span class="caret pull-right" style="margin-top:0.6%;color:#23395b;"></span></a>
+                                    <?php endif ?>
+				                    <!-- <a data-toggle="collapse" class="accordionToggle" data-parent="#accordion" style="display: block;" href="#collapse<?php echo $count;?>"><?php echo $course->title; ?><span class="caret pull-right" style="margin-top:0.6%;"></span></a> -->
 				                </h4>
 				            </div>
 				            <?php if ($count == 1): ?>

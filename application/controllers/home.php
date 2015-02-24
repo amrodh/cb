@@ -644,9 +644,9 @@ class Home extends CI_Controller {
 			$value = explode('=', $value);
 			if($value[0] == 'featured'){
 				$flag = true;
-				$searchParams = array('featured' => true);
+				$lob = explode('=', $getData[1]);
+				$searchParams = array('featured' => true, 'lob' => $lob[1]);
 				$data['searchResults'] = $this->database->search($searchParams);
-				
 				if ($data['searchResults']['totalResults'] > 0)
 				{
 					$data['totalResults'] = $data['searchResults']['totalResults'];

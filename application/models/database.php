@@ -168,26 +168,35 @@ class database extends CI_Model {
 
     function search($inputs)
     {
-        if (count($inputs) == 1)
+      // printme($inputs);
+      // printme(count($inputs));exit();
+        if (count($inputs) == 2)
         {
             $this->db->select('*');
             $this->db->from('property_featured');
             $this->db->order_by('propertyId','desc');
             $query = $this->db->get();
-            $properties = array();
+            $finalProperties = array();
+            $count = 0;
             foreach ($query->result() as $key => $value) {
                 $properties[$key] = $this->getPropertyByID($value->propertyId);
                 foreach ($properties[$key] as $property) {
-                    $properties[$key] = $property;
-                    $properties[$key] = (object) $property;
+                    if ($property['LineofBusinessFK'] == $inputs['lob'])
+                    {
+                        $finalProperties[$count] = $property;
+                        $finalProperties[$count] = (object) $property;
+                        $count++;
+                    }
                 }
             }
+            // printme($finalProperties);exit();
             if ($query->num_rows >0)
             {
                 $results = array(
-                  'results' => $properties,
-                  'totalResults' => $query->num_rows
+                  'results' => $finalProperties,
+                  'totalResults' => count($finalProperties)
                   );
+                // printme($results);exit();
                 return $results;
             }else{
                 return false; 
@@ -352,19 +361,38 @@ class database extends CI_Model {
         $query = $this->db->get();
         $count1 = 0;
         $count2 = 0;
+        $residentialLocationType = false;
+        $commercialLocationType = false;
+
         if ($query->num_rows >0)
         {
             foreach ($query->result() as $key => $value) {
                 $temp = $this->getPropertyByID($value->propertyId);
+                // printme($temp);
                 if ($count1 < 2 && $temp[0]['LineofBusinessFK'] == 1)
                 {
-                    $properties[$value->propertyId] = (object) $temp[0];
-                    $count1++;
-                }elseif ($count2 < 1 && $temp[0]['LineofBusinessFK'] == 2) {
-                    $properties[$value->propertyId] = (object) $temp[0];
-                    $count2++;
+                    if ($temp[0]['LocationType'] == 'project' && $residentialLocationType == false)
+                    {
+                        $properties[$value->propertyId] = (object) $temp[0];
+                        $count1++;
+                        $residentialLocationType = true;
+                    }elseif ($temp[0]['LocationType'] == 'unit') {
+                        $properties[$value->propertyId] = (object) $temp[0];
+                        $count1++;
+                    }
+                }elseif ($count2 < 2 && $temp[0]['LineofBusinessFK'] == 2) {
+                    if ($temp[0]['LocationType'] == 'project' && $commercialLocationType == false)
+                    {
+                        $properties[$value->propertyId] = (object) $temp[0];
+                        $count2++;
+                        $commercialLocationType = true;
+                    }elseif ($temp[0]['LocationType'] == 'unit') {
+                        $properties[$value->propertyId] = (object) $temp[0];
+                        $count2++;
+                    }
                 }
             }
+            // exit();
             return $properties;
         }else{
             return false;

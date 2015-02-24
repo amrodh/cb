@@ -7,11 +7,11 @@
         <?php if (isset($featuredProperties) && $featuredProperties != false): ?>
             <?php $count = 1; ?>
             <?php foreach ($featuredProperties as $property): ?>
-                <?php if (count($featuredProperties) < 3): ?>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="width:48%;">
-                <?php else: ?>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="">
-                <?php endif ?>
+               <!--  <?php //if (count($featuredProperties) < 3): ?> -->
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="width:48%;"> -->
+               <!--  <?php //else: ?> -->
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 newsletter_cols" style="">
+               <!--  <?php //endif ?> -->
                 
                     <div class="properties_number compare_number">
                         <?php echo $count; ?>
@@ -80,6 +80,11 @@
     </div>
 </div>
 <?php if (isset($featuredProperties) && $featuredProperties != false): ?>
-    <a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true&lob=1">See More Featured Properties</a>
+    <a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=1">
+        See More Residential Featured Properties
+    </a>
+    <a style="text-align: right; float:right; margin-right: 2%;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=2">
+        See More Commercial Featured Properties
+    </a>
 <?php  endif ?>
 
