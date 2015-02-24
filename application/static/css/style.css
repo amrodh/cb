@@ -72,6 +72,10 @@ margin-top: 5%
     border: 2px solid #2f5081;
 }
 
+.navbar{
+    border: none;
+}
+
 nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 /*    background-color: white!important;
     color: #2f5081!important;*/
@@ -195,10 +199,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 #middle_div > nav > div > ul > li > a{
     color: white;
-    height: 99%;
-
-    /*font-size: 15px;*/
-    /*margin-right: 40px;*/
+    height: 100%;
 }
 
  #middle_div > nav > div > ul > li.open > a{
