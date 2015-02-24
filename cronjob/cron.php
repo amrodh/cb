@@ -417,7 +417,7 @@
               'isFeatured' => false,
               'resultsCountPerPage' => '1300', 
               'useFeaturedFilter' => false, 
-              'searchDateAnchor' =>  date('YmdGi', strtotime("-5 days"))
+              'searchDateAnchor' =>  date('YmdGi', strtotime("-1 days"))
             );
           $resultsArray = array();
           $lastID = 0;
@@ -453,7 +453,7 @@
                   'isFeatured' => false,
                   'resultsCountPerPage' => '1300', 
                   'useFeaturedFilter' => false, 
-                  'searchDateAnchor' =>  date('YmdGi', strtotime("-5 days"))
+                  'searchDateAnchor' =>  date('YmdGi', strtotime("-1 days"))
             );
             $results = searchService($inputs, $client);
             foreach ($results['results'] as $key => $value) {
