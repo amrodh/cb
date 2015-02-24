@@ -182,7 +182,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu2'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -21.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="commercial_dropdown" style="margin-right: -22;">
                                 <li>
                                     <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project=&amp;locationType="><?php echo $this->lang->line('home_submenu4'); ?></a>
                                 </li>
@@ -212,7 +212,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown"  style="margin-right: -40.5%;">
+                            <ul class="dropdown-menu header_dropdown"  style="margin-right: -40%;">
                                 <li>
                                     <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
                                 </li>
