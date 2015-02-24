@@ -79,4 +79,29 @@
         <?php endif ?>
     </div>
 </div>
-<a style="text-align: left; float:left;" href="<?= base_url()?>ar/viewAllProperties?featured=true">عرض المزيد من العقارات المتميزة</a>
+<?php if (isset($featuredProperties) && $featuredProperties != false): ?>
+    <div class="container" style="width: 100%;">
+        <div class="row">
+            <div class="col-lg-6">
+                <a style="display:block;text-align: center;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=1">
+                    عرض المزيد من العقارات السكنية المتميزة
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <a style="display:block;text-align: center;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=2">
+                    عرض المزيد من العقارات التجارية المتميزة
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- <a style="text-align: right; float:right;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=1">
+        See More Residential Featured Properties
+    </a>
+    <a style="text-align: right; float:right; margin-right: 2%;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=2">
+        See More Commercial Featured Properties
+    </a> -->
+<?php  endif ?>
+
+
+
+<!-- <a style="text-align: left; float:left;" href="<?= base_url()?>ar/viewAllProperties?featured=true">عرض المزيد من العقارات المتميزة</a> -->

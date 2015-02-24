@@ -3,12 +3,12 @@ $(document).ready(function ()
 {
 
     $('.accordionToggle').click(function(event) {
-        if ($(this).find('span').hasClass('caret_reversed')){
-            $(this).find('span').removeClass('caret_reversed');
+        if ($(this).find('span').hasClass('caret-right')){
+            $(this).find('span').removeClass('caret-right');
             $(this).find('span').addClass('caret');
         }else{
             $(this).find('span').removeClass('caret');
-            $(this).find('span').addClass('caret_reversed');
+            $(this).find('span').addClass('caret-right');
         }
     });
 

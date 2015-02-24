@@ -24,9 +24,24 @@
   border-left: 4px solid transparent;
 }
 
+.caret-right {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid;
+    display: inline-block;
+    height: 0;
+    vertical-align: top;
+    width: 0;
+}
+
 .navbar-toggle{
     /*margin-left: -800%!important;*/
 }
+
+.navbar{
+    border: none;
+}
+
 
 .nav-tabs.nav-justified>li{
     width: auto!important;
@@ -191,7 +206,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 #middle_div > nav > div > ul > li > a{
     color: white;
-    height: 99%;
+    height: 100%;
     /*font-size: 15px;*/
     /*margin-right: 40px;*/
 }
@@ -293,7 +308,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 #footer_div{
     background-color: #2f5081;
     width: 100%;
-    padding: 2% 10%;
+    padding: 2% 7%;
     padding-top: 0;
     margin-top: 30px;
     /*height: 290px;*/

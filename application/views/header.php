@@ -173,9 +173,9 @@
                                 <li>
                                     <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu12'); ?></a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=unit"><?php echo $this->lang->line('home_submenu13'); ?></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -192,9 +192,9 @@
                                 <li>
                                     <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu14'); ?></a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=unit"><?php echo $this->lang->line('home_submenu15'); ?></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li><a href="<?= base_url();?>en/trainingAcademy"><?php echo $this->lang->line('home_menu4'); ?></a></li>
