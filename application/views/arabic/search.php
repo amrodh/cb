@@ -5,7 +5,7 @@
                <li <?php if(isset($_GET['lob']) && $_GET['lob'] == 1) echo 'class="active"'; ?> <?php if(isset($_GET['lob']) && $_GET['lob'] == 0) echo 'class="active"'; ?>>
                  <a href="#residentials" data-toggle="tab"><?php echo $this->lang->line('search_tab2'); ?></a>
               </li>
-              <li <?php if(isset($_GET['lob']) && $_GET['lob'] == 2) echo 'class="active"'; ?>>
+              <li <?php if(isset($_GET['lob']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4)) echo 'class="active"'; ?>>
                 <a href="#commercials" data-toggle="tab"><?php echo $this->lang->line('search_tab3'); ?></a>
               </li>
             </ul>
@@ -149,7 +149,7 @@
                     </div>
                 </form>
             </div>
-            <div class="tab-pane <?php if(isset($_GET['lob']) && $_GET['lob'] == 2) echo 'active'; ?>" id="commercials">
+            <div class="tab-pane <?php if(isset($_GET['lob']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4)) echo 'active'; ?>" id="commercials">
                 <form id="search_form4" role="form" name="searchForm4" method="get" action="<?php echo base_url();?>viewAllProperties">
                     <!-- <input type="hidden" name="districtName_3" value=""> -->
                     <input type="hidden" name="lob_2" id="lob_2" value="2">
@@ -162,11 +162,11 @@
                                 <select class="selectpicker" id="search_city_3" name="city" data-style="btn" data-title="Select City" data-size="5">
                                     <option value="0">Select City</option>
                                     <!-- <option value="3">Greater Cairo</option> -->
-                                    <option value="3" <?php if(isset($_GET['city']) && $_GET['lob'] == 2 && $_GET['city'] == 3) echo 'selected="selected"'; ?>>Greater Cairo</option>
+                                    <option value="3" <?php if(isset($_GET['city']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['city'] == 3) echo 'selected="selected"'; ?>>Greater Cairo</option>
                                     <?php foreach ($cities as $city): ?>
                                       <?php 
 
-                                            if(isset($_GET['city']) && $_GET['lob'] == 2 && $_GET['city'] == $city['id'])
+                                            if(isset($_GET['city']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['city'] == $city['id'])
                                               $selected = 'selected="selected"';
                                             else
                                               $selected = '';
@@ -184,7 +184,7 @@
                                <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                                    <?php echo $this->lang->line('search_drpdwn2'); ?>
                                </div>
-                               <?php if (isset($_GET['district']) && $_GET['lob'] == 2 && $_GET['district'] != ''): ?>
+                               <?php if (isset($_GET['district']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['district'] != ''): ?>
                                   <select class="selectpicker" id="search_disabled_district_3" name="district_temp" data-style="btn" data-title="Select District" data-size="5">
                                       <?php foreach ($districts as $district): ?>
                                           <?php if ($district['id'] == $_GET['district']): ?>
@@ -221,7 +221,7 @@
                                     <?php foreach ($propertyType2 as $key => $type): ?>
                                  <?php 
 
-                                      if(isset($_GET['type']) && $_GET['lob'] == 2 && $_GET['type'] == $type['property_id'])
+                                      if(isset($_GET['type']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['type'] == $type['property_id'])
                                         $selected = 'selected="selected"';
                                       else
                                         $selected = '';
@@ -235,9 +235,9 @@
                                   <?php echo $this->lang->line('search_drpdwn3'); ?>
                                </div>
                                <select class="selectpicker" id="search_contractType_3" name="contractType" data-style="btn" data-title="Select Type" data-size="5">
-                                <option value="0" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>إختار النوع</option> 
-                                <option value="Sale" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>بيع</option>
-                                <option value="Rent" <?php if(isset($_GET['contractType']) && $_GET['lob'] == 2 && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>إيجار</option>
+                                <option value="0" <?php if(isset($_GET['contractType']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['contractType'] == 0) echo 'selected="selected"' ?>>إختار النوع</option> 
+                                <option value="Sale" <?php if(isset($_GET['contractType']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['contractType'] == 'Sale') echo 'selected="selected"' ?>>بيع</option>
+                                <option value="Rent" <?php if(isset($_GET['contractType']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['contractType'] == 'Rent') echo 'selected="selected"' ?>>إيجار</option>
                                </select>
                            </div>
                        </div>
