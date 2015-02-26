@@ -380,8 +380,8 @@ class database extends CI_Model {
                         $properties[$value->propertyId] = (object) $temp[0];
                         $count1++;
                     }
-                }elseif ($count2 < 2 && $temp[0]['LineofBusinessFK'] == 2) {
-                    if ($temp[0]['LocationType'] == 'project' && $commercialLocationType == false)
+                }elseif ($count2 < 2 && ($temp[0]['LineofBusinessFK'] == 4 || $temp[0]['LineofBusinessFK'] == 2 )) {
+                    if ($commercialLocationType == false)
                     {
                         $properties[$value->propertyId] = (object) $temp[0];
                         $count2++;
