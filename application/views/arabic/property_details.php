@@ -182,6 +182,7 @@
                                         <div class="form-group">
                                             <input type="submit" name="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
+                                        <input type="hidden" id="propertyID" value="<?php echo $searchResults->PropertyId?>">
                                         <!-- <div class="form-group"> -->
                                             <p><?php echo $this->lang->line('propertydetails_footnote'); ?></p>
                                         <!-- </div> -->
@@ -335,6 +336,16 @@
           $('#property_tabs a:first').tab('show');
         });
         $(document).ready(function (){
+
+            $('#property_form_btn').click(function(event) {
+                var msg_length = $("#property_form_textarea").val().length;
+                var email = $("#property_email").val();
+                var phone = $("#property_phone").val();
+                var language = $("#language").val();
+                var serial = $("#propertyID").val();
+                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|DOWN_PAYMENT', ' ContactUs');
+                // alert($('#propertyID').val());return;
+            });
 
             var _SlideshowTransitions = [
             //Fade in L
