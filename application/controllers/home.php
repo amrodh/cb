@@ -782,7 +782,7 @@ class Home extends CI_Controller {
 				'locationType' => $locationType
 			);
 
-			if ($lob == 2)
+			if ($lob == 2 || $lob == 4)
 			{
 				$data['commercial'] = true;
 			}
