@@ -60,6 +60,10 @@
 					                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="Enter Phone" required>
 					                        </div>
 				                        </div>
+				                    <?php else: ?>
+				                    	<input type="hidden" name="contact_email" id="contact_email" value="<?= $user->email;?>">
+				                    	<input type="hidden" name="contact_phone" id="contact_phone" value="<?= $user->phone;?>">
+
 									<?php endif ?>
 			                        
 			                        <div class="row contact_form_row">
@@ -209,6 +213,13 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#offices_contact_btn").click(function(){
+			var msg_length = $("#contact_subject").val().length;
+			var email = $("#contact_email").val();
+			var phone = $("#contact_phone").val();
+			var language = $("#language").val();
+			ga('send', 'event', 'ContactUs', 'Submit|Contact|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE', ' ContactUs');
+		});
 		var map;
 		var elevator;
 		var myOptions = {

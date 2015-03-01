@@ -512,6 +512,9 @@
           type="text/javascript"></script>
         <script>
         $(document).ready(function (){
+
+
+
             $('#properties').dataTable({
                 order: [[ 1, "asc" ]],
                 language: {
@@ -614,8 +617,14 @@
             
 
             $('.contact_button').click(function(event) {
-                    $('#propertyID').val($(this).attr('id'));
-                   // alert($('#propertyID').val());return;
+                $('#propertyID').val($(this).attr('id'));
+                var msg_length = $("#property_form_textarea").val().length;
+                var email = $("#property_email").val();
+                var phone = $("#property_phone").val();
+                var language = $("#language").val();
+                var serial = $("#propertyID").val();
+                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|SubmitUnit', ' ContactUs');
+                // alert($('#propertyID').val());return;
             });
 
            $("[name='properties_length']").change(function() {

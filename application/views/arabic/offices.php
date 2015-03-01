@@ -205,6 +205,13 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#offices_contact_btn").click(function(){
+			var msg_length = $("#contact_subject").val().length;
+			var email = $("#contact_email").val();
+			var phone = $("#contact_phone").val();
+			var language = $("#language").val();
+			ga('send', 'event', 'ContactUs', 'Submit|Contact|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE', ' ContactUs');
+		});
 		var map;
 		var elevator;
 		var myOptions = {

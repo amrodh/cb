@@ -1514,7 +1514,7 @@ function resetpassword()
 		$data['title'] = 'ColdWell Banker | Offices';
 		$data['offices'] = $this->office->getOffices();
 		$data['phones'] = $this->office->getAllPhones();
-
+		// printme($data);exit();
 		$count1 = 0;
 		$count2 = 0;
 		$count3 = 0;
