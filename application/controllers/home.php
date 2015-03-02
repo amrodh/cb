@@ -966,6 +966,8 @@ class Home extends CI_Controller {
 				}
 			}
 			
+			// printme($vacancy_id);exit();
+
 			$filename = explode('.', $_FILES['userfile']['name']);
 			$filename = $filename[0];
 			$ext = explode('.', $_FILES['userfile']['name']);

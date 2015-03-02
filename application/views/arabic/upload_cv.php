@@ -1,5 +1,5 @@
         <?php include('header.php'); ?>
-        <form role="form" name="applyForm"  method="post" action="<?= base_url().'ar/';?>uploadCV" enctype="multipart/form-data">
+        <form role="form" name="applyForm"  method="post" action="" enctype="multipart/form-data">
             <div class="container uploadcv_app_div">
                 <div class="uploadcv_app_top_div">
                     <?php echo $this->lang->line('uploadcv_title'); ?>
