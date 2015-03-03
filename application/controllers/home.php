@@ -1728,8 +1728,8 @@ function resetpassword()
 					Phone: '.$_POST['phone'].'<br>
 					CourseID: '.$_POST['courseID'].'<br>
 					Comments: '.$_POST['comments'];
-			// $this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
-			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
+			$this->smtpmailer('Course Inquiries',$body,'customerservice@cb-egypt.com', '');
+			// $this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
 			echo 1;
 		}else{
 			echo 0;
