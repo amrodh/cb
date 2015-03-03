@@ -1436,7 +1436,7 @@ function trainingCenter()
 {
 	$this->load->model('course');
 	$data = $this->init();
-	printme($data);exit();
+	// printme($data);exit();
 	$data['courses'] = $this->course->getCourses();
 	$data['districts'] = $this->database->getAllDistricts();
 	$data['title'] = 'ColdWell Banker | Training Academy';
