@@ -136,8 +136,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
-                                                                    <?php if (!isset($commercial)): ?>                                               
-                                                                        <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                    <?php if (!isset($commercial)): ?>  
+                                                                        <?php if ($result->BedRoomsNumber != 0): ?>                                             
+                                                                            <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                        <?php endif ?>
                                                                     <?php endif ?>
                                                                     <?php if ($result->SalesTypeStr == 'Sale'): ?>
                                                                         <?php echo "Sale Price: ".$result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>
@@ -289,7 +291,9 @@
                                                                         </div>
                                                                         <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                                             <?php if (!isset($commercial)): ?>                                               
-                                                                                <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                                <?php if ($result->BedRoomsNumber != 0): ?>                                             
+                                                                                    <b><?php echo $result->BedRoomsNumber; ?></b> Bedrooms<br>
+                                                                                <?php endif ?>
                                                                             <?php endif ?>
                                                                             <?php if ($result->SalesTypeStr == 'Sale'): ?>
                                                                                 <?php echo "Sale Price: ".$result->SaleCurrency.' '.number_format(explode('.',$result->SalePrice)[0]); ?>

@@ -506,8 +506,6 @@
                 $DBProperties = $value;
             }
 
-
-
             foreach ($resultsArray as $key => $value) {
               // print_r($value);
               if (!in_array($value, $DBPropertiesKeys)){
