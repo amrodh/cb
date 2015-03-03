@@ -42,16 +42,15 @@
                
               </div>
             </div>
-             <div class="panel-footer" style="height:51px;">
-                    <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
-                    <span class="pull-right">
-                        <form action="" method="post">
-                           <input style="color:white" type="submit" name="edit"   class="button btn btn-sm " value="Edit"> 
-                           <input style="color:white" type="submit" name="delete" class="button btn btn-sm " value="Delete">
-                        </form>
-                    </span>
-                </div>
-            
+            <div class="panel-footer" style="height:51px;">
+                <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
+                <span class="pull-right">
+                    <form action="" method="post">
+                       <input style="color:white" type="submit" name="edit"   class="button btn btn-sm " value="Edit"> 
+                       <input style="color:white" type="submit" name="delete" class="button btn btn-sm " value="Delete">
+                    </form>
+                </span>
+            </div>
           </div>
 
 
@@ -67,7 +66,7 @@
                             <tr>
                                 <th>Username</th>
                                 <th>First Name</th>
-                                <th>Lasr Name</th>
+                                <th>Last Name</th>
                                 <th>Application Date</th>
                                 <th>Résumé</th>
                             </tr>

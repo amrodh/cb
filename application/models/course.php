@@ -11,7 +11,19 @@ class Course extends CI_Model {
 
     
 
-    
+    function getUsersInquiries($course_id)
+    {
+         $q = $this
+              ->db
+              ->where('trainingId',$course_id)
+              ->get('contact_training');
+
+           if($q->num_rows >0){
+              return $q->result();
+           } 
+
+           return false; 
+    }
 
      
     function getCourses()

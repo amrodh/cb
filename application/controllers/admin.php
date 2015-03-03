@@ -597,9 +597,10 @@ class Admin extends CI_Controller {
 		$id = $id[1];
 
 
-		$data['course'] = $this->course->getCourseByID($id);
 
-		// printme($data['course'] );exit();
+		$data['course'] = $this->course->getCourseByID($id);
+		$data['users'] = $this->course->getUsersInquiries($id);
+		// printme($data['users'] );exit();
 
 		if(isset($_POST['delete'])){
 			$this->load->view('admin/coursedelete', $data);
