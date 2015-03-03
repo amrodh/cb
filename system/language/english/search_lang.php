@@ -9,4 +9,5 @@ $lang['search_drpdwn3'] = "For Sale/Rent";
 $lang['search_drpdwn4'] = "Property Type";
 $lang['search_drpdwn5'] = "Price Range";
 $lang['search_drpdwn6'] = "Area Range";
+$lang['search_drpdwn7'] = "Serial Number";
 $lang['search_button'] = "Search";

@@ -58,7 +58,7 @@
                                   </select>
                                <?php else: ?>
                                     <select class="selectpicker" id="search_disabled_district_2" name="district_disabled" data-style="btn" data-title="Select District" data-size="5" disabled>
-                                        <option>Select District</option> 
+                                        <option>إختار المنطقة</option> 
                                     </select>
                                <?php endif ?>
                                <!-- <select class="selectpicker" id="search_disabled_district_2" name="district" data-style="btn" data-title="Select District" data-size="5" disabled>
@@ -107,7 +107,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?>  <span class="caret"  id="caret"></span>
                         </div>
-                        <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
+                        <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 68%;margin-top: -20px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
@@ -116,7 +116,7 @@
                                    <?php echo $this->lang->line('search_drpdwn5'); ?>
                                </div>
                                <select class="selectpicker" id="search_price_2" name="price" data-style="btn" data-title="Select Price">
-                                    <option>إختار السعر</option>
+                                    <option value="0">إختار السعر</option>
                                     <option value="100000 - 250000">100,000 - 250,000</option>
                                     <option value="250000 - 500000">250,000 - 500,000</option>
                                     <option value="500000 - 750000">500,000 - 750,000</option>
@@ -126,12 +126,12 @@
                                     <option value="20000000">20,000,000+</option>
                                </select>
                            </div>
-                           <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
+                           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                                <div class="search_box_col_title title_margin">
                                    <?php echo $this->lang->line('search_drpdwn6'); ?>
                                </div>
                                <select class="selectpicker" id="search_area_2" name="area" data-style="btn" data-title="Select Price">
-                                    <option>إختار المساحة</option>
+                                    <option value="0">إختار المساحة</option>
                                     <option value="<50"> &#60;50 <sup>2</sup></option>
                                     <option value="100 - 200">100 - 200 m<sup>2</sup></option>
                                     <option value="200 - 300">200 - 300 m<sup>2</sup></option>
@@ -139,6 +139,13 @@
                                     <option value="400 - 500">400 - 500 m<sup>2</sup></option>
                                     <option value=">500"> &#62;500 m<sup>2</sup></option>
                                </select>
+                           </div>
+                           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                               <div class="search_box_col_title title_margin">
+                                   <?php echo $this->lang->line('search_drpdwn7'); ?>
+                               </div>
+                               <input type="text" name="serialNum" id="serialNum" placeholder="أدخل الرقم المسلسل للعقار">
+                               <input type="hidden" name="locationType">
                            </div>
                        </div>
                        <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">
@@ -160,7 +167,7 @@
                                    <?php echo $this->lang->line('search_drpdwn1'); ?>
                                </div>
                                 <select class="selectpicker" id="search_city_3" name="city" data-style="btn" data-title="Select City" data-size="5">
-                                    <option value="0">Select City</option>
+                                    <option value="0">إختار المدينة</option>
                                     <!-- <option value="3">Greater Cairo</option> -->
                                     <option value="3" <?php if(isset($_GET['city']) && ($_GET['lob'] == 2 || $_GET['lob'] == 4) && $_GET['city'] == 3) echo 'selected="selected"'; ?>>Greater Cairo</option>
                                     <?php foreach ($cities as $city): ?>
@@ -196,7 +203,7 @@
                                   </select>
                              <?php else: ?>
                                   <select class="selectpicker" id="search_disabled_district_3" name="district_disabled" data-style="btn" data-title="Select District" data-size="5" disabled>
-                                      <option>Select District</option> 
+                                      <option>إختار المنطقة</option> 
                                   </select>
                              <?php endif ?>
                                <!-- <select class="selectpicker" id="search_disabled_district_3" name="district" data-style="btn" data-title="Select District" data-size="5" disabled>
@@ -245,7 +252,7 @@
                         <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                         </div>
-                        <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 22%;margin-top: 3px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
+                        <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 68%;margin-top: -20px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
@@ -254,7 +261,7 @@
                                    <?php echo $this->lang->line('search_drpdwn5'); ?>
                                </div>
                                <select class="selectpicker" id="search_price_3" name="price" data-style="btn" data-title="Select Price">
-                                    <option>إختار السعر</option>
+                                    <option value="0">إختار السعر</option>
                                     <option value="100000 - 250000">100,000 - 250,000</option>
                                     <option value="250000 - 500000">250,000 - 500,000</option>
                                     <option value="500000 - 750000">500,000 - 750,000</option>
@@ -264,12 +271,12 @@
                                     <option value="20000000">20,000,000+</option>
                                </select>
                            </div>
-                           <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
+                           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                                <div class="search_box_col_title title_margin">
                                    <?php echo $this->lang->line('search_drpdwn6'); ?>
                                </div>
                                <select class="selectpicker" id="search_area_3" name="area" data-style="btn" data-title="Select Price">
-                                    <option>إختار المساحة</option>
+                                    <option value="0">إختار المساحة</option>
                                     <option value="50 - 100">50 - 100 m<sup>2</sup></option>
                                     <option value="100 - 130">100 - 130 m<sup>2</sup></option>
                                     <option value="130 - 150">130 - 150 m<sup>2</sup></option>
@@ -281,6 +288,13 @@
                                     <option value="400 - 1000">400 - 1000 m<sup>2</sup></option>
                                     <option value="1000">1000+ m<sup>2</sup></option>
                                </select>
+                           </div>
+                           <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                               <div class="search_box_col_title title_margin">
+                                   <?php echo $this->lang->line('search_drpdwn7'); ?>
+                               </div>
+                               <input type="text" name="serialNum" id="serialNum" placeholder="أدخل الرقم المسلسل للعقار">
+                               <input type="hidden" name="locationType">
                            </div>
                        </div>
                        <div class="hidden-lg hidden-md row" style="width: 150px;margin: auto;">

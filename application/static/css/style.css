@@ -433,16 +433,16 @@ color: white;
     /*float: left;*/
     background-color: rgba(30, 66, 112, 0.8);
     padding: 30px 20px;
-    padding-top: 7px;
+    padding-top: 2px;
 }
 
 #search2_title{
     color: #eb7f00;
     text-align: center;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px dashed white;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
 }
 
 #search_home_container{
@@ -458,10 +458,37 @@ color: white;
 
 .search_cols{
     /*width: 25%;*/
+    margin-bottom: 2px;
 }
 
 #search_header{
     width:40%;
+}
+
+.search_top_row{
+    height: 35px;
+    /*margin-bottom: 3%;*/
+}
+
+.visible_search_cols{
+    height: 100%;
+}
+
+.disabled_row{
+    margin-bottom: 5px;
+}
+
+#serialNum{
+    width: 100%;
+    border-radius: 5px;
+    border: transparent;
+    height: 97%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*="span"]{
+    margin-bottom: 0;
 }
 
 .search_keyword{
@@ -527,6 +554,7 @@ color: white;
 .search_bottom_row{
     margin-top: 5px;
     display: none;
+    height: 35px;
 }
 
 /*.search_bottom_row{*/

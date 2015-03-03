@@ -755,6 +755,17 @@ class Home extends CI_Controller {
 					$locationType = $value[1];
 				// }
 				// printme($locationType);exit();
+			}elseif ($value[0] == 'serialNum') {
+				// printme($value[1]);exit();
+				if ($value[1] == 0 || $value[1] == '')
+				{
+					// printme('hi');
+					$serialNum = '';
+				}else{
+					$serialNum = $value[1];
+				}
+				// printme($serialNum);exit();
+				// printme($value[1]);
 			}
 		}
 
@@ -779,13 +790,15 @@ class Home extends CI_Controller {
 				'AreaLowerLimit' => $areaLowerLimit,
 				'AreaUpperLimit' => $areaUpperLimit,
 				'generalFlag' => $generalFlag, 
-				'locationType' => $locationType
+				'locationType' => $locationType, 
+				'PropertyId' => $serialNum
 			);
 
 			if ($lob == 2 || $lob == 4)
 			{
 				$data['commercial'] = true;
 			}
+			// printme($searchParams);exit();
 			$data['searchResults'] = $this->database->search($searchParams);
 			if ($data['searchResults']['totalResults'] > 0)
 			{

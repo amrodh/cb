@@ -633,7 +633,7 @@ $(document).ready(function (){
         var phone = $("#property_phone").val();
         var language = $("#language").val();
         var serial = $("#propertyID").val();
-        ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|SubmitUnit', ' ContactUs');
+        ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|DOWN_PAYMENT', ' ContactUs');
    });
 
    $("[name='properties_length']").change(function() {

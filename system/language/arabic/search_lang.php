@@ -9,4 +9,5 @@ $lang['search_drpdwn3'] = "للبيع / للايجار";
 $lang['search_drpdwn4'] = "نوع الملكية";
 $lang['search_drpdwn5'] = "السعر";
 $lang['search_drpdwn6'] = "المساحة";
+$lang['search_drpdwn7'] = "الرقم المسلسل";
 $lang['search_button'] = "بحث";

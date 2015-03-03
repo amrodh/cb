@@ -17,7 +17,7 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  margin-right: 2px;
   vertical-align: middle;
   border-bottom: 4px solid;
   border-right: 4px solid transparent;
@@ -442,7 +442,7 @@ width: 326px;
 /* float: left; */
 background-color: rgba(30, 66, 112, 0.8);
 padding: 30px 20px;
-padding-top: 7px;
+padding-top: 2px;
 margin-right: 285%;
 }
 .tab-content>.active{
@@ -453,9 +453,9 @@ margin-right: 285%;
     color: #eb7f00;
     text-align: center;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px dashed white;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
     font-family: 'droidarabickufi_bold';
 }
 
@@ -472,10 +472,32 @@ margin-right: 285%;
 
 .search_cols{
     /*width: 25%;*/
+    margin-bottom: 2px;
 }
 
 #search_header{
     width:40%;
+}
+
+.search_top_row{
+    height: 35px;
+}
+
+.visible_search_cols{
+    height: 100%;
+}
+
+.disabled_row{
+    margin-bottom: 5px;
+}
+
+#serialNum{
+    width: 100%;
+    border-radius: 5px;
+    border: transparent;
+    height: 97%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .search_keyword{
@@ -519,8 +541,8 @@ margin-right: 285%;
     margin-top: 15px;
     margin-bottom: 10px;
     color: white;
-    margin-left: 470px;
-    float: right;
+    margin-right: 3px;
+    /*float: right;*/
     font-weight: bold;
     width: 76%;
 }
@@ -539,8 +561,9 @@ margin-right: 285%;
 }
 
 .search_bottom_row{
-    /*margin-top: 5px;*/
+    margin-top: 5px;
     display: none;
+    height: 35px;
 }
 
  .property_alert_bottom_row{

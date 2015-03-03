@@ -721,7 +721,12 @@ function toggleVisibility()
             else 
                 {
                     $('.search_components2').animate({marginTop:"5px"});
-                    $('.search_btn_submit').animate({marginTop:"45px"});
+                    if ($("#currentLanguage").val() == 'ar'){
+                        $('.search_btn_submit').animate({marginTop:"25px"});
+                    }else{
+                        $('.search_btn_submit').animate({marginTop:"67px"});
+                    }
+                    
                 }
         }
         else 
@@ -737,7 +742,12 @@ function toggleVisibility()
             else 
                 {
                     $('.search_components2').animate({marginTop:"54px"});
-                    $('.search_btn_submit').animate({marginTop:"17px"});
+                    if ($("#currentLanguage").val() == 'ar'){
+                        $('.search_btn_submit').animate({marginTop:"-20px"});
+                    }else{
+                        $('.search_btn_submit').animate({marginTop:"35px"});
+                    }
+                    
                 }
         }
 }

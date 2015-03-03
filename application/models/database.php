@@ -224,64 +224,86 @@ class database extends CI_Model {
                         return false; 
                     }
                 }else{
-                  // printme($inputs);
-                    $this->db->select('*');
-                    $this->db->from('property_service');
-                    $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
-                    $this->db->where('AreaNumericValue >', $inputs['AreaLowerLimit']);
-                    if (isset($inputs['LocationProject']))
+                    if ($inputs['PropertyId'] == '')
                     {
-                        if($inputs['LocationProject'] != '' || $inputs['LocationProject'] != 0)
+                        $this->db->select('*');
+                        $this->db->from('property_service');
+                        $this->db->where('AreaNumericValue <', $inputs['AreaUpperLimit']);
+                        $this->db->where('AreaNumericValue >', $inputs['AreaLowerLimit']);
+                        if (isset($inputs['LocationProject']))
                         {
-                            $this->db->where('LocationProject', $inputs['LocationProject']);
+                            if($inputs['LocationProject'] != '' || $inputs['LocationProject'] != 0)
+                            {
+                                $this->db->where('LocationProject', $inputs['LocationProject']);
+                            }
                         }
-                    }
-                    if ($inputs['lob'] != '' || $inputs['lob'] != 0){
-                        $this->db->where('LineofBusinessFK', $inputs['lob']);
-                    }
-                    if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
-                        $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
-                    }
-                    if ($inputs['City'] != '' || $inputs['City'] != 0)
-                    {
-                        $this->db->where('LocationCity', $inputs['City']);
-                    }
-                    if ($inputs['District'] != '' || $inputs['District'] != 0)
-                    {
-                        $this->db->where('LocationDistrict', $inputs['District']);
-                    }
-                    if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
-                    {
-                        $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
-                        if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
-                            $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
-                            $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
-                        }elseif($inputs['PropertyFor'] == 'Rent'){
-                            $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
-                            $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+                        if ($inputs['lob'] != '' || $inputs['lob'] != 0){
+                            $this->db->where('LineofBusinessFK', $inputs['lob']);
+                        }
+                        if ($inputs['PropertyType'] != '' || $inputs['PropertyType'] != 0){
+                            $this->db->where('PrpertyTypeStr', $inputs['PropertyType']);
+                        }
+                        if ($inputs['City'] != '' || $inputs['City'] != 0)
+                        {
+                            $this->db->where('LocationCity', $inputs['City']);
+                        }
+                        if ($inputs['District'] != '' || $inputs['District'] != 0)
+                        {
+                            $this->db->where('LocationDistrict', $inputs['District']);
+                        }
+                        if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
+                        {
+                            $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
+                            if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
+                                $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
+                                $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
+                            }elseif($inputs['PropertyFor'] == 'Rent'){
+                                $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
+                                $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+                            }
+                        }else{
+                            $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+                        }
+                        if ($inputs['locationType'] != '' || $inputs['locationType'] != 0){
+                            $this->db->where('LocationType', $inputs['locationType']);
+                        }
+                        $this->db->order_by('PropertyId','desc');
+                        $query = $this->db->get();
+                        // printme($this->db->last_query());
+                        // printme($query->result());
+                        // exit();
+                        if ($query->num_rows >0)
+                        {
+                            $results = array(
+                              'results' => $query->result(),
+                              'totalResults' => $query->num_rows
+                              );
+                            // printme($results);exit();
+                            return $results;
+                        }else{
+                            return false; 
                         }
                     }else{
-                        $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+                        $this->db->select('*');
+                        $this->db->from('property_service');
+                        $this->db->where('PropertyId', $inputs['PropertyId']);
+                        $query = $this->db->get();
+                        // printme($this->db->last_query());
+                        // printme($query->result());
+                        // exit();
+                        if ($query->num_rows >0)
+                        {
+                            $results = array(
+                              'results' => $query->result(),
+                              'totalResults' => $query->num_rows
+                              );
+                            // printme($results);exit();
+                            return $results;
+                        }else{
+                            return false; 
+                        }
                     }
-                    if ($inputs['locationType'] != '' || $inputs['locationType'] != 0){
-                        $this->db->where('LocationType', $inputs['locationType']);
-                    }
-                    $this->db->order_by('PropertyId','desc');
-                    $query = $this->db->get();
-                    // printme($this->db->last_query());
-                    // printme($query->result());
-                    // exit();
-                    if ($query->num_rows >0)
-                    {
-                        $results = array(
-                          'results' => $query->result(),
-                          'totalResults' => $query->num_rows
-                          );
-                        // printme($results);exit();
-                        return $results;
-                    }else{
-                        return false; 
-                    }
+                    
                 }
             }
             

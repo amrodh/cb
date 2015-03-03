@@ -111,7 +111,7 @@
                     <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 21%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
-                    <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
+                    <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 35px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
@@ -130,7 +130,7 @@
                                 <option value="20000000">20,000,000+</option>
                            </select>
                        </div>
-                       <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
@@ -143,6 +143,13 @@
                                 <option value="400 - 500">400 - 500 m<sup>2</sup></option>
                                 <option value=">500"> &#62;500 m<sup>2</sup></option>
                            </select>
+                       </div>
+                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                           <div class="search_box_col_title title_margin">
+                               <?php echo $this->lang->line('search_drpdwn7'); ?>
+                           </div>
+                           <input type="text" name="serialNum" id="serialNum" placeholder="Enter property serial number">
+                           <input type="hidden" name="locationType">
                        </div>
                    </div>
                    <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">
@@ -249,7 +256,7 @@
                   <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 30%;">
                       <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                   </div>
-                  <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 1px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
+                  <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 35px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
               </div>
               <div class="container search_components">
                   <div class="row search_bottom_row" id="bottom_row">
@@ -268,7 +275,7 @@
                               <option value="20000000">20,000,000+</option>
                          </select>
                      </div>
-                     <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4 search_cols search_cols_margin">
+                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn6'); ?>
                          </div>
@@ -282,6 +289,13 @@
                               <option value=">500"> &#62;500 m<sup>2</sup></option>
                               <option value="1000">1000+ m<sup>2</sup></option>
                          </select>
+                     </div>
+                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                         <div class="search_box_col_title title_margin">
+                             <?php echo $this->lang->line('search_drpdwn7'); ?>
+                         </div>
+                         <input type="text" name="serialNum" id="serialNum" placeholder="Enter property serial number">
+                         <input type="hidden" name="locationType">
                      </div>
                  </div>
                  <div class="visible-xs visible-sm row" style="width: 150px;margin: auto;">

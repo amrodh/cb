@@ -9,7 +9,7 @@
                         </div>
                         <input type="hidden" id="url" value="<?= base_url();?>">
                         <div class="row search_top_row">
-                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols">
                                <select class="selectpicker" name="lob" id="searchHome_lob" data-style="btn" data-title="Select Category" data-size="5">
                                     <option value="0">Select Category</option> 
                                     <option value="1">Residential</option>
@@ -24,22 +24,14 @@
                             <div style="width:100%;position: absolute;margin-top: 3%;" class="hide" id="homeType_loader">
                               <img style="width:2%;margin-left:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
                             </div>
-                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_property">
+                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols disabled_row" id="disabled_property">
                                 <select class="selectpicker" name="type" id="searchHome_disabled_type" data-style="btn" data-title="Select Type" data-size="5" disabled>
                                     <option value="0">Select Type</option> 
                                 </select>
                             </div>
-                           <!-- <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
-                               <select class="selectpicker" name="type" id="searchHome_type" data-style="btn" data-title="Select Type" data-size="5">
-                                    <option value="0">Select Type</option> 
-                                    <?php foreach ($propertyType as $index => $type): ?>
-                                        <option value="<?= $index; ?>"><?= $type ?></option>
-                                    <?php endforeach ?>
-                               </select>
-                           </div> -->
                         </div>
                         <div class="row search_top_row">
-                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols">
                                 
                                 <select class="selectpicker" name="city" id="searchHome_city" data-style="btn" data-title="Select City" data-size="5">
                                     <option value="0">Select City</option>
@@ -59,7 +51,7 @@
                            <div style="width:100%;position: absolute;margin-top: 3%;" class="hide" id="homeDistrict_loader">
                               <img style="width:5%;margin-left:40%;" src="<?= base_url();?>application/static/images/bx_loader.gif" alt="">
                            </div>
-                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols" id="disabled_district">
+                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols disabled_row" id="disabled_district">
                                <select class="selectpicker" name="district" id="searchhome_disabled_district" data-style="btn" data-title="Select District" data-size="5" disabled>
                                   <option value="0">Select District</option> 
                                </select>
@@ -67,7 +59,7 @@
                            <input type="hidden" name="project" value="">
                        </div>
                         <div class="row search_top_row">
-                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols" style="margin-bottom: 10px;">
                                <select class="selectpicker" name="contractType" id="searchHome_contractType" data-style="btn" data-title="Select Type" data-size="5">
                                     <option value="0">Select Contract Type</option> 
                                     <option value="Sale">Sale</option>
@@ -81,7 +73,7 @@
                     </div>
                     <div class="container search_components">
                         <div class="row search_bottom_row" id="bottom_row">
-                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols">
+                            <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols visible_search_cols">
                                <select class="selectpicker" name="price" id="searchHome_price" data-style="btn" data-title="Select Price" data-size="5">
                                     <option value="0">Select Price</option>
                                     <option value="100000 - 250000">100,000 - 250,000</option>
@@ -95,7 +87,7 @@
                            </div>
                         </div>
                         <div class="row search_bottom_row">
-                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin">
+                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin visible_search_cols" >
                                <select class="selectpicker" name="area" id="searchHome_area" data-style="btn" data-title="Select Price" data-size="5">
                                     <option value="0">Select Area</option>
                                     <option value="<50"> &#60;50 m<sup>2</sup></option>
@@ -105,6 +97,12 @@
                                     <option value="400 - 500">400 - 500 m<sup>2</sup></option>
                                     <option value=">500"> &#62;500 m<sup>2</sup></option>
                                </select>
+                           </div>
+                       </div>
+                       <div class="row search_bottom_row">
+                           <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 search_cols search_cols_margin visible_search_cols" >
+                               <input type="text" name="serialNum" id="serialNum" placeholder="Enter property serial number">
+                               <input type="hidden" name="locationType">
                            </div>
                        </div>
                        <!-- <input type="hidden" name="districtName" value=""> -->
