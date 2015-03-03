@@ -1434,14 +1434,14 @@ tbody > tr > td {
 }
 
 #property_form_btn, #contact_form_btn{
-    width: 100px;
+    width: 172px;
     margin-top: -10%;
-    margin-right: 76%;
+    /*margin-right: 76%;*/
     margin-bottom: 0;
 }
 
 #contact_form_btn{
-    margin-right: 216%;
+    /*margin-right: 216%;*/
     margin-top: 0;
 }
 

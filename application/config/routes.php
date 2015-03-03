@@ -138,6 +138,9 @@ $route["$appended_lang/franchise"] = "home/franchise";
 $route['insertContact'] = 'home/insertContact';
 $route["$appended_lang/insertContact"] = "home/insertContact";
 
+$route['insertContactTraining'] = 'home/insertContactTraining';
+$route["$appended_lang/insertContactTraining"] = "home/insertContactTraining";
+
 $route['insertFavorite'] = 'home/insertFavorite';
 $route["$appended_lang/insertFavorite"] = "home/insertFavorite";
 

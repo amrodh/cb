@@ -1436,6 +1436,7 @@ function trainingCenter()
 {
 	$this->load->model('course');
 	$data = $this->init();
+	printme($data);exit();
 	$data['courses'] = $this->course->getCourses();
 	$data['districts'] = $this->database->getAllDistricts();
 	$data['title'] = 'ColdWell Banker | Training Academy';
@@ -1702,6 +1703,34 @@ function resetpassword()
 					PropertyID: '.$_POST['propertyID'].'<br>
 					Comments: '.$_POST['comments'];
 			$this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
+		}else{
+			echo 0;
+		}
+	}
+
+	function insertContactTraining()
+	{
+		$this->load->model('user');
+		$data = $this->init();
+		$params = array(
+			'first_name' => $_POST['firstname'],
+			'last_name' => $_POST['lastname'],
+			'email' => $_POST['email'],
+			'phone' => $_POST['phone'],
+			'comments' => $_POST['comments'], 
+			'trainingId' => $_POST['courseID']
+			);
+		// printme($params);
+		if($this->user->insertContactTrainingInformation($params))
+		{
+			$body = 'Name: '.$_POST['firstname'].' '.$_POST['lastname'].'<br>
+					E-mail: '.$_POST['email'].'<br>
+					Phone: '.$_POST['phone'].'<br>
+					CourseID: '.$_POST['courseID'].'<br>
+					Comments: '.$_POST['comments'];
+			// $this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
+			$this->smtpmailer('Property Inquiries',$body,'s.nahal@enlightworld.com', '');
+			echo 1;
 		}else{
 			echo 0;
 		}

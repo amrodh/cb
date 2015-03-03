@@ -517,7 +517,45 @@
         <script>
         $(document).ready(function (){
 
-
+            $('#contact_form_btn').click(function(event) {
+              // alert('hi');
+              // alert($('#propertyID').val());
+              var firstname = $('#property_first_name').val();
+              var lastname = $('#property_last_name').val();
+              var email = $('#property_email').val();
+              var phone = $('#property_phone').val();
+              var comments = $('#property_form_textarea').val();
+              var propertyID = $('#propertyID').val();
+              var interests = new Array();
+              $.each($("input[name='interest[]']:checked"), function() {
+                interests.push($(this).val());
+              });
+              // alert(interests.val());return;
+                var url = $("#url").val();
+                // alert(url);
+                url = url+"insertContact";
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID, interests : interests }
+                  })
+                    .success(function( response ) {
+                        if (response == 1){
+                            $('#success_message').removeClass('hide');
+                            jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+                                $('#success_message').addClass('hide');
+                                $('#property_form')[0].reset();
+                            });
+                        }else{
+                            $('#failure_message').removeClass('hide');
+                            jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+                                $('#failure_message').addClass('hide');
+                            });
+                        }
+                            
+                        // alert(response);
+                    });
+            });
 
             $('#properties').dataTable({
                 order: [[ 1, "asc" ]],

@@ -381,6 +381,23 @@ class User extends CI_Model {
             
    }
 
+   function insertContactTrainingInformation($params)
+   {
+        // $interestArray = array();
+
+        $query = $this->db->insert_string('contact_training', $params);
+        $query = $this->db->query($query);
+
+        // $id = $this->db->insert_id();
+
+        if($this->db->affected_rows() != 1){
+            return false;
+        }else{
+            return true;
+        }
+            
+   }
+
 
    function populateDB()
    {

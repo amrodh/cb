@@ -582,30 +582,28 @@ $(document).ready(function ()
             });
 
             
+            $('.contact_button').click(function(event) {
+                $('#courseID').val($(this).attr('id'));
+            });
 
             $('#contact_form_btn').click(function(event) {
-              // alert($('#propertyID').val());
-              var firstname = $('#property_first_name').val();
-              var lastname = $('#property_last_name').val();
-              var email = $('#property_email').val();
-              var phone = $('#property_phone').val();
-              var comments = $('#property_form_textarea').val();
-              var propertyID = $('#propertyID').val();
-              var interests = new Array();
-              $.each($("input[name='interest[]']:checked"), function() {
-                interests.push($(this).val());
-                // or you can do something to the actual checked checkboxes by working directly with  'this'
-                // something like $(this).hide() (only something useful, probably) :P
-              });
-              // alert(interests.val());return;
+              
+                var firstname = $('#property_first_name').val();
+                var lastname = $('#property_last_name').val();
+                var email = $('#property_email').val();
+                var phone = $('#property_phone').val();
+                var comments = $('#property_form_textarea').val();
+                var courseID = $('#courseID').val();
                 var url = $("#url").val();
-                url = url+"insertContact";
+              
+                url = url+"insertContactTraining";
                  $.ajax({
                     type: "POST",
                     url: url,
-                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID, interests : interests }
+                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, courseID: courseID}
                   })
                     .success(function( response ) {
+                      // alert(response);
                         if (response == 1){
                             $('#success_message').removeClass('hide');
                             jQuery("#success_message").delay(2000).fadeOut("slow",function(){
