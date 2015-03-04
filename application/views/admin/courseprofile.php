@@ -111,17 +111,4 @@
     </div>
 
 
-CREATE TABLE contact_training
-(
-id int NOT NULL PRIMARY KEY,
-first_name varchar(100),
-last_name varchar(100),
-email varchar(255),
-phone varchar(100),
-comments varchar(255),
-trainingId int(11)
-);
-
-
-
 <?php include('footer.php') ?>
