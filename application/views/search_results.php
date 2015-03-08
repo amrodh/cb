@@ -194,7 +194,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="properties_contact">
-                                                                <a href="#contactModal" class="contact_button" id="<?php echo $result->PropertyId; ?>" style="text-decoration: none;color: white;" data-toggle="modal"> 
+                                                                <a href="#contactModal" class="contact_button" id="<?php echo $result->PropertyId; ?>_<?php echo $result->PrpertyTypeStr;?>" style="text-decoration: none;color: white;" data-toggle="modal"> 
                                                                     <?php echo $this->lang->line('viewallproperties_contact'); ?>
                                                                 </a>
                                                             </div>
@@ -339,7 +339,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="properties_contact">
-                                                                <a href="#contactModal" class="contact_button" id="<?php echo $result->PropertyId; ?>" style="text-decoration: none;color: white;" data-toggle="modal"> 
+                                                                <a href="#contactModal" class="contact_button" id="<?php echo $result->PropertyId; ?>_<?php echo $result->PrpertyTypeStr;?>" style="text-decoration: none;color: white;" data-toggle="modal"> 
                                                                     <?php echo $this->lang->line('viewallproperties_contact'); ?>
                                                                 </a>
                                                                 
@@ -397,18 +397,24 @@
                        Your Contact Info was not inserted successsfully. Please try again later.
                     </div>
                 </div>
+                <div class="row hide" id="missing_data_msg" style="width: 100%;text-align:center;margin-left:0%;margin-top:2%;">
+                    <div class="alert alert-danger" role="alert">
+                       Please make sure you inserted your first name, last name and phone number.
+                    </div>
+                </div>
                 <form class="form-inline" id="property_form" role="form" method="post">
+                    <!-- <input type="hidden" name="unitType" id="unitType" value="<?php echo $searchResults->PrpertyTypeStr;?>"> -->
                     <div class="form-group">
                         <div class="col-lg-4">
-                            <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label>
+                            <label for="property_first_name"><?php echo $this->lang->line('propertydetails_firstname'); ?></label> <span style="color: red;">*</span>
                         </div>
                         <div class="col-lg-8">
-                            <input type="text" class="form-control" id="property_first_name" name="property_first_name" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder1'); ?>">
+                            <input type="text" class="form-control" id="property_first_name" name="property_first_name" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder1'); ?>" >
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-4">
-                            <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label>
+                            <label for="property_last_name"><?php echo $this->lang->line('propertydetails_lastname'); ?></label> <span style="color: red;">*</span>
                         </div>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" id="property_last_name" name="property_last_name" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder2'); ?>">
@@ -419,15 +425,15 @@
                             <label for="property_email"><?php echo $this->lang->line('propertydetails_email'); ?></label>
                         </div>
                         <div class="col-lg-8">
-                            <input type="email" class="form-control" id="property_email" name="property_email" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder3'); ?>">
+                            <input type="email" class="form-control" id="property_email" name="property_email" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder3'); ?>" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-4">
-                            <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label>
+                            <label for="property_phone"><?php echo $this->lang->line('propertydetails_phone'); ?></label> <span style="color: red;">*</span>
                         </div>
                         <div class="col-lg-8">
-                            <input type="text" class="form-control" id="property_phone" name="property_phone" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder4'); ?>">
+                            <input type="text" class="form-control" id="property_phone" name="property_phone" placeholder="<?php echo $this->lang->line('viewallproperties_placeholder4'); ?>" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -505,41 +511,56 @@ $(document).ready(function (){
     $('#contact_form_btn').click(function(event) {
       // alert('hi');
       // alert($('#propertyID').val());
-      var firstname = $('#property_first_name').val();
-      var lastname = $('#property_last_name').val();
-      var email = $('#property_email').val();
-      var phone = $('#property_phone').val();
-      var comments = $('#property_form_textarea').val();
-      var propertyID = $('#propertyID').val();
-      var interests = new Array();
-      $.each($("input[name='interest[]']:checked"), function() {
-        interests.push($(this).val());
-      });
-      // alert(interests.val());return;
-        var url = $("#url").val();
-        // alert(url);
-        url = url+"insertContact";
-         $.ajax({
-            type: "POST",
-            url: url,
-            data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID, interests : interests }
-          })
-            .success(function( response ) {
-                if (response == 1){
-                    $('#success_message').removeClass('hide');
-                    jQuery("#success_message").delay(2000).fadeOut("slow",function(){
-                        $('#success_message').addClass('hide');
-                        $('#property_form')[0].reset();
-                    });
-                }else{
-                    $('#failure_message').removeClass('hide');
-                    jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
-                        $('#failure_message').addClass('hide');
-                    });
-                }
-                    
-                // alert(response);
+        var firstname = $('#property_first_name').val();
+        var lastname = $('#property_last_name').val();
+        var email = $('#property_email').val();
+        var phone = $('#property_phone').val();
+        var comments = $('#property_form_textarea').val();
+        var propertyID = $('#propertyID').val();
+        var interests = new Array();
+        $.each($("input[name='interest[]']:checked"), function() {
+            interests.push($(this).val());
+        });
+        if (firstname == '' || lastname == '' || phone == '')
+        {
+            $("#missing_data_msg").removeClass('hide');
+            jQuery("#missing_data_msg").delay(2000).fadeOut("slow",function(){
+                $('#missing_data_msg').addClass('hide');
             });
+        }else{
+            if (!$("#missing_data_msg").hasClass('hide'))
+            {
+                $("#missing_data_msg").addClass('hide');
+            }
+            
+          // alert(interests.val());return;
+            var url = $("#url").val();
+            // alert(url);
+            url = url+"insertContact";
+             $.ajax({
+                type: "POST",
+                url: url,
+                data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, propertyID: propertyID, interests : interests }
+              })
+                .success(function( response ) {
+                    if (response == 1){
+                        $('#success_message').removeClass('hide');
+                        jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+                            $('#success_message').addClass('hide');
+                            $('#property_form')[0].reset();
+                        });
+                    }else{
+                        $('#failure_message').removeClass('hide');
+                        jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+                            $('#failure_message').addClass('hide');
+                        });
+                    }
+                        
+                    // alert(response);
+                });
+        }
+
+        
     });
 
     $('#properties').dataTable({
@@ -670,13 +691,16 @@ $(document).ready(function (){
 
 
    $('.contact_button').click(function(event) {
-        $('#propertyID').val($(this).attr('id'));
+        var id = $(this).attr("id").split("_");
+        var type = id[1];
+        id = id[0];
+        $('#propertyID').val(id);
         var msg_length = $("#property_form_textarea").val().length;
         var email = $("#property_email").val();
         var phone = $("#property_phone").val();
         var language = $("#language").val();
         var serial = $("#propertyID").val();
-        ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|DOWN_PAYMENT', ' ContactUs');
+        ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type, ' ContactUs');
    });
 
    $("[name='properties_length']").change(function() {

@@ -17,6 +17,7 @@
                 <?php echo $searchResults->PrpertyTypeStr;?> for <?php echo $searchResults->SalesTypeStr;?> <?php echo $searchResults->LocationDistrict; ?>, <?php echo $searchResults->LocationCity; ?>
             <?php endif ?>
             </b></h1>
+            <input type="hidden" name="unitType" id="unitType" value="<?php echo $searchResults->PrpertyTypeStr;?>">
         </div>
         <div class="container" id="property_details_container">
             <div id="property_tabs_header">
@@ -343,7 +344,8 @@
                 var phone = $("#property_phone").val();
                 var language = $("#language").val();
                 var serial = $("#propertyID").val();
-                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|DOWN_PAYMENT', ' ContactUs');
+                var unitType = $("#unitType").val();
+                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+unitType, ' ContactUs');
                 // alert($('#propertyID').val());return;
             });
 

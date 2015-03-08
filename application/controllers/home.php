@@ -1703,6 +1703,7 @@ function resetpassword()
 					PropertyID: '.$_POST['propertyID'].'<br>
 					Comments: '.$_POST['comments'];
 			$this->smtpmailer('Property Inquiries',$body,'customerservice@cb-egypt.com', '');
+			// $this->smtpmailer('Property Inquiries',$body,'saranahal@aucegypt.edu', '');
 		}else{
 			echo 0;
 		}

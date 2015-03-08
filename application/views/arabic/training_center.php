@@ -173,3 +173,17 @@
     	</div>
     </div>
 <?php include('footer.php'); ?>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('.contact_button').click(function(event) {
+            var courseID = $(this).attr("id");
+            var msg_length = $("#property_form_textarea").val().length;
+            var email = $("#property_email").val();
+            var phone = $("#property_phone").val();
+            var language = $("#language").val();
+            ga('send', 'event', 'ContactUs', 'Submit|Courses|Serial|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+courseID, ' ContactUs');
+            // alert($('#propertyID').val());return;
+        });
+    });
+</script>
