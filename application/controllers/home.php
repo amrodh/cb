@@ -1398,7 +1398,7 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  'smtp_user' => 'inquiries@cb-egypt.com', // change it to yours
 		  'smtp_pass' => 'Iq3214560', // change it to yours
 		  'mailtype' => 'html',
-		  'charset' => 'iso-8859-1',
+		  'charset' => 'UTF-8',
 		  'wordwrap' => TRUE
 			);
 
@@ -1406,6 +1406,7 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  $this->email->set_newline("\r\n");
 		  $this->email->from('inquiries@cb-egypt.com'); // change it to yours
 		  $this->email->to($to); // change it to yours
+		  // $this->email->to("s.nahal@enlightworld.com");
 		  $this->email->subject($subject);
 		  $this->email->message($body);
 		  $this->email->bcc('coldwellbankeregypt@turndigital.net');
