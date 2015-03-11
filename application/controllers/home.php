@@ -1405,8 +1405,8 @@ function smtpmailer($subject,$body,$to, $attachment) {
 		  $this->load->library('email', $config);
 		  $this->email->set_newline("\r\n");
 		  $this->email->from('inquiries@cb-egypt.com'); // change it to yours
-		  $this->email->to($to); // change it to yours
-		  // $this->email->to("s.nahal@enlightworld.com");
+		  // $this->email->to($to); // change it to yours
+		  $this->email->to("s.nahal@enlightworld.com");
 		  $this->email->subject($subject);
 		  $this->email->message($body);
 		  $this->email->bcc('coldwellbankeregypt@turndigital.net');
