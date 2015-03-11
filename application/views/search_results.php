@@ -78,16 +78,16 @@
                                                         <div class="properties_img">
                                                             <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                 <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
                                                             <?php else: ?>
                                                                 <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
                                                             <?php endif ?>
@@ -158,7 +158,7 @@
                                                         <div class="properties_details_div">
                                                             <div class="btn-group properties_details_btns_div">
                                                                 <button type="button" class="btn btn-default properties_btns">
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>">
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>">
                                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                                         <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                                     </a>
@@ -234,16 +234,16 @@
 
                                                             <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                 <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
                                                             <?php else: ?>
                                                                 <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
                                                             <?php endif ?>
@@ -303,7 +303,7 @@
                                                         <div class="properties_details_div">
                                                             <div class="btn-group properties_details_btns_div">
                                                                 <button type="button" class="btn btn-default properties_btns">
-                                                                    <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>">
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>">
                                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
                                                                         <?php echo $this->lang->line('viewallproperties_details'); ?>
                                                                     </a>
@@ -319,10 +319,10 @@
                                                             </div>
                                                             <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                 <div class="row" style="margin: auto;width:46%;">
-                                                                    <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
+                                                                    <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                 </div>
                                                                 <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
                                                                     <script>
                                                                     !function(d,s,id)
                                                                     {
@@ -451,6 +451,7 @@
                         <textarea class="form-control" id="property_form_textarea" name="property_comments" rows="3"></textarea>
                     </div>
                     <input type="hidden" id="propertyID" name="propertyID" value="">
+                    <input type="hidden" id="propertyType" name="propertyType" value="">
                     <div class="form-group">
                         <input type="button" class="btn btn-default property_btn" name="contact_submit" id="contact_form_btn" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                     </div>
@@ -508,9 +509,33 @@
 <script>
 $(document).ready(function (){
 
+    $('.contact_button').click(function(event) {
+        var id = $(this).attr("id").split("_");
+        $('#propertyType').val(id[1]);
+        var type = id[1];
+        id = id[0];
+        $('#propertyID').val(id);
+    });
+
+// $('#contact_form_btn').click(function(event) {
+//     var id = $(this).attr("id").split("_");
+//                 var type = id[1];
+//                 id = id[0];
+//                 $('#propertyID').val(id);
+//         var msg_length = $("#property_form_textarea").val().length;
+//         var email = $("#property_email").val();
+//         var phone = $("#property_phone").val();
+//         var language = $("#currentLanguage").val();
+//         var serial = $("#propertyID").val();
+//         var string = 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
+//         // alert(string);return;
+//         ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
+//    });
+
     $('#contact_form_btn').click(function(event) {
-      // alert('hi');
-      // alert($('#propertyID').val());
+        var msg_length = $("#property_form_textarea").val().length;
+        var language = $("#currentLanguage").val();
+        var type = $('#propertyType').val();
         var firstname = $('#property_first_name').val();
         var lastname = $('#property_last_name').val();
         var email = $('#property_email').val();
@@ -518,6 +543,9 @@ $(document).ready(function (){
         var comments = $('#property_form_textarea').val();
         var propertyID = $('#propertyID').val();
         var interests = new Array();
+        var string = 'Submit|Unit|'+propertyID+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
+        alert(string);
+        ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
         $.each($("input[name='interest[]']:checked"), function() {
             interests.push($(this).val());
         });
@@ -690,18 +718,7 @@ $(document).ready(function (){
    
 
 
-   $('.contact_button').click(function(event) {
-        var id = $(this).attr("id").split("_");
-        var type = id[1];
-        id = id[0];
-        $('#propertyID').val(id);
-        var msg_length = $("#property_form_textarea").val().length;
-        var email = $("#property_email").val();
-        var phone = $("#property_phone").val();
-        var language = $("#language").val();
-        var serial = $("#propertyID").val();
-        ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type, ' ContactUs');
-   });
+   
 
    $("[name='properties_length']").change(function() {
        $.getScript($('#url').val()+"application/static/js/getImages.js");

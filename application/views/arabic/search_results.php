@@ -465,6 +465,7 @@
                             <textarea class="form-control" id="property_form_textarea" name="property_comments" rows="3"></textarea>
                         </div>
                         <input type="hidden" id="propertyID" name="propertyID" value="">
+                        <input type="hidden" id="propertyType" name="propertyType" value="">
                         <div class="form-group">
                             <input type="button" class="btn btn-default property_btn" name="contact_submit" id="contact_form_btn" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                         </div>
@@ -522,16 +523,30 @@
         <script>
         $(document).ready(function (){
 
+            $('.contact_button').click(function(event) {
+                var id = $(this).attr("id").split("_");
+                $('#propertyType').val(id[1]);
+                var type = id[1];
+                id = id[0];
+                $('#propertyID').val(id);
+            });
+
             $('#contact_form_btn').click(function(event) {
               // alert('hi');
               // alert($('#propertyID').val());
-              var firstname = $('#property_first_name').val();
-              var lastname = $('#property_last_name').val();
-              var email = $('#property_email').val();
-              var phone = $('#property_phone').val();
-              var comments = $('#property_form_textarea').val();
-              var propertyID = $('#propertyID').val();
-              var interests = new Array();
+                var msg_length = $("#property_form_textarea").val().length;
+                var language = $("#currentLanguage").val();
+                var type = $('#propertyType').val();
+                var firstname = $('#property_first_name').val();
+                var lastname = $('#property_last_name').val();
+                var email = $('#property_email').val();
+                var phone = $('#property_phone').val();
+                var comments = $('#property_form_textarea').val();
+                var propertyID = $('#propertyID').val();
+                var interests = new Array();
+                var string = 'Submit|Unit|'+propertyID+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
+                alert(string);
+                ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
               $.each($("input[name='interest[]']:checked"), function() {
                 interests.push($(this).val());
               });
@@ -677,7 +692,7 @@
 
             
 
-            $('.contact_button').click(function(event) {
+            $('#contact_form_btn').click(function(event) {
                 var id = $(this).attr("id").split("_");
                 var type = id[1];
                 id = id[0];
@@ -685,9 +700,11 @@
                 var msg_length = $("#property_form_textarea").val().length;
                 var email = $("#property_email").val();
                 var phone = $("#property_phone").val();
-                var language = $("#language").val();
+                var language = $("#currentLanguage").val();
                 var serial = $("#propertyID").val();
-                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type, ' ContactUs');
+                var string = 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
+                // alert(string);return;
+                ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
                 // alert($('#propertyID').val());return;
             });
 

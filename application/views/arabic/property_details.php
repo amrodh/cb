@@ -342,10 +342,12 @@
                 var msg_length = $("#property_form_textarea").val().length;
                 var email = $("#property_email").val();
                 var phone = $("#property_phone").val();
-                var language = $("#language").val();
+                var language = $("#currentLanguage").val();
                 var serial = $("#propertyID").val();
                 var unitType = $("#unitType").val();
-                ga('send', 'event', 'ContactUs', 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+unitType, ' ContactUs');
+                var string = 'Submit|Project|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+unitType;
+                // alert(string);
+                ga('send', 'event', 'ContactUs', string, ' SubmitUnit');
                 // alert($('#propertyID').val());return;
             });
 

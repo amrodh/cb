@@ -209,8 +209,9 @@
 			var msg_length = $("#contact_subject").val().length;
 			var email = $("#contact_email").val();
 			var phone = $("#contact_phone").val();
-			var language = $("#language").val();
-			ga('send', 'event', 'ContactUs', 'Submit|Contact|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE', ' ContactUs');
+			var language = $("#currentLanguage").val();
+			var string = 'Submit|Project|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE';
+			ga('send', 'event', 'ContactUs', string, 'ContactUs');
 		});
 		var map;
 		var elevator;

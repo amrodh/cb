@@ -187,12 +187,18 @@
 <script type="text/javascript">
     $(document).ready(function (){
         $('.contact_button').click(function(event) {
-            var courseID = $(this).attr("id");
+            $("#courseID").val($(this).attr("id"));
+        });
+
+        $('#contact_form_btn').click(function(event) {
+            var courseID = $("#courseID").val();
             var msg_length = $("#property_form_textarea").val().length;
             var email = $("#property_email").val();
             var phone = $("#property_phone").val();
-            var language = $("#language").val();
-            ga('send', 'event', 'ContactUs', 'Submit|Courses|Serial|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+courseID, ' ContactUs');
+            var language = $("#currentLanguage").val();
+            var string = 'Submit|Course|0|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+courseID;
+            // alert(string);
+            ga('send', 'event', 'Courses', string, 'CoursesInquiry');
             // alert($('#propertyID').val());return;
         });
     });
