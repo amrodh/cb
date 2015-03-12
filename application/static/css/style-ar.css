@@ -350,7 +350,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     height: 35px;
     /*padding-left: 1%;*/
     padding-right: 7px;
-    padding-top: 7px;
+    /*padding-top: 7px;*/
     font-size: 12px;
     margin-top: 5px;
 }
@@ -405,9 +405,9 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 #btn_subscribe{
-    position: absolute;
+    /*position: absolute;*/
     margin-top: 9px;
-    margin-right: -16%;
+    /*margin-right: -16%;*/
     border-radius: 8px;
     background-color: white;
     border-color: transparent;
