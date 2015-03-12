@@ -13,7 +13,7 @@
                 <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu1'); ?><br></a>
                <!--  <a href="<?= base_url().'en/';?>viewAllProperties"><?php echo $this->lang->line('home_footer_submenu2'); ?><br></a> -->
                 <a href="<?= base_url().'en/';?>viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu3'); ?><br></a>
-                <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu12'); ?><br></a>
+                <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_footer_submenu12'); ?><br></a>
             </div>
         </div>
         <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
@@ -23,7 +23,7 @@
             <div class="footer_col_content">
                 <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu4'); ?><br></a>
                 <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=Rent&amp;price=0&amp;area=0&amp;project="><?php echo $this->lang->line('home_footer_submenu5'); ?><br></a>
-                <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu14'); ?><br></a>
+                <a href="<?=base_url();?>en/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_footer_submenu13'); ?><br></a>
             </div>
         </div>
         <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">

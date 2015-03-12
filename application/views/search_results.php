@@ -174,7 +174,15 @@
                                                             </div>
                                                             <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                 <div class="row" style="margin: auto;width:46%;">
-                                                                    <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
+                                                                    <div id="fb-root"></div>
+                                                                        <script>(function(d, s, id) {
+                                                                          var js, fjs = d.getElementsByTagName(s)[0];
+                                                                          if (d.getElementById(id)) return;
+                                                                          js = d.createElement(s); js.id = id;
+                                                                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=409474675892587&version=v2.0";
+                                                                          fjs.parentNode.insertBefore(js, fjs);
+                                                                        }(document, 'script', 'facebook-jssdk'));</script>
+                                                                    <!-- <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div> -->
                                                                 </div>
                                                                 <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
                                                                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
@@ -319,7 +327,16 @@
                                                             </div>
                                                             <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                 <div class="row" style="margin: auto;width:46%;">
-                                                                    <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"></div>
+                                                                    <div id="fb-root"></div>
+                                                                        <script>(function(d, s, id) {
+                                                                          var js, fjs = d.getElementsByTagName(s)[0];
+                                                                          // alert(id);
+                                                                          if (d.getElementById(id)) return;
+                                                                          js = d.createElement(s); js.id = id;
+                                                                          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=409474675892587&version=v2.0";
+                                                                          fjs.parentNode.insertBefore(js, fjs);
+                                                                        }(document, 'script', 'facebook-jssdk'));</script>
+                                                                    <div class="fb-share-button" data-layout="button" data-href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                 </div>
                                                                 <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
                                                                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
@@ -508,6 +525,16 @@
 <!-- <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script> -->
 <script>
 $(document).ready(function (){
+
+    $('.properties_share_btn').click(function(event) {
+        // alert($(this).val());
+        if ($('#properties_share_div'+ $(this).val()).css('display') == 'none'){
+          $("#properties_share_div" + $(this).val()).slideDown("slow");
+        }
+        else{
+          $("#properties_share_div" + $(this).val()).slideUp("slow");
+        }
+    });
 
     $('.contact_button').click(function(event) {
         var id = $(this).attr("id").split("_");

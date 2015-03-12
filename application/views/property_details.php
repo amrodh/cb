@@ -264,14 +264,14 @@
                                             <input type="text" class="form-control calculator_form_input" name="downPayment" id="downPayment" placeholder="0" onChange="calculatePayment(this.form);">
                                         </div>
                                     </div>
-                                    <div class="row calculator_rows">
+                                    <!-- <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
                                             <?php echo $this->lang->line('propertydetails_calculator_title6'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="interestRate" id="interestRate" placeholder="0"><div style="margin-top: -28px;margin-left: 178px;"> %</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -312,7 +312,7 @@
                             </div>
                             <div class="calculator_inputs col-lg-7">
                                 <input type="text" class="form-control" name="loanTerm" id="loanTerm" placeholder="5"> 
-                                <div style="margin-top: -25px;margin-left: 70px;font-weight: lighter;font-size: 12px;"> Yrs. (Maximum loan terms is 5 yrs.)</div>
+                                <div style="margin-top: -25px;margin-left: 20%;font-weight: lighter;font-size: 12px;"> Yrs. (Maximum loan terms is 5 yrs.)</div>
                             </div>
                         </div>
                     </div>

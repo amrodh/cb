@@ -22,7 +22,23 @@
         <link href="<?= base_url();?>/application/static/css/jquery-ui.css" rel="stylesheet" />
         <link href="<?= base_url();?>/application/static/css/jquery-ui.min.css" rel="stylesheet" />
     </head>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '409474675892587',
+              xfbml      : true,
+              version    : 'v2.2'
+            });
+          };
 
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     <body> 
         <div id="top_div">
             <div id="icons_div" class="hidden-xs hidden-sm">

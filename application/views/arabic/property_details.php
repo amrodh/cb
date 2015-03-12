@@ -266,14 +266,14 @@
                                             <input type="text" class="form-control calculator_form_input" name="downPayment" id="downPayment" placeholder="0" onChange="calculatePayment(this.form);">
                                         </div>
                                     </div>
-                                    <div class="row calculator_rows">
+                                    <!-- <div class="row calculator_rows">
                                         <div class="calculator_labels col-lg-5">
                                             <?php echo $this->lang->line('propertydetails_calculator_title6'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
                                             <input type="text" class="form-control calculator_form_input" name="interestRate" id="interestRate" placeholder="0"><div style="margin-top: -25px;margin-right: 165px;"> %</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-lg-6">

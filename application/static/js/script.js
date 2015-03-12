@@ -776,15 +776,15 @@ function redirect_profile(language)
     
 }
 
-$('.properties_share_btn').click(function(event) {
-    // alert($(this).val());
-    if ($('#properties_share_div'+ $(this).val()).css('display') == 'none'){
-      $("#properties_share_div" + $(this).val()).slideDown("slow");
-    }
-    else{
-      $("#properties_share_div" + $(this).val()).slideUp("slow");
-    }
-});
+// $('.properties_share_btn').click(function(event) {
+//     // alert($(this).val());
+//     if ($('#properties_share_div'+ $(this).val()).css('display') == 'none'){
+//       $("#properties_share_div" + $(this).val()).slideDown("slow");
+//     }
+//     else{
+//       $("#properties_share_div" + $(this).val()).slideUp("slow");
+//     }
+// });
 
 function toggleVisibility2 (){
     var margintop = $('#footer_div').css('margin-top');
@@ -887,7 +887,7 @@ $(".modal-wide").on("show.bs.modal", function() {
 function cmdCalc_Click(form)
 {
 //    alert('clicked');
-    var rate = $('#interestRate').val();
+    // var rate = $('#interestRate').val();
     
 //    var interestRate = rate.options[rate.selectedIndex].value;
     if (form.purchasePrice.value == 0 || form.purchasePrice.value.length == 0) 
@@ -896,12 +896,12 @@ function cmdCalc_Click(form)
         $('#purchasePrice').focus();
         //form.purchasePrice.focus(); 
     }
-    else 
-        if (rate == 0 || rate.length == 0) 
-        {
-            alert ("The Interest Rate field can't be 0!");
-            document.getElementById("interestRate").focus();
-	}
+    // else 
+ //        if (rate == 0 || rate.length == 0) 
+ //        {
+ //            alert ("The Interest Rate field can't be 0!");
+ //            document.getElementById("interestRate").focus();
+	// }
         else 
             if (form.loanTerm.value == 0 || form.loanTerm.value.length == 0) 
             {
@@ -915,11 +915,10 @@ function cmdCalc_Click(form)
 
 function calculatePayment(form)
 {
-    var rate = $("#interestRate").val();
+    // var rate = $("#interestRate").val();
     princ = $('#purchasePrice').val() - $('#downPayment').val();
-    intRate = (rate/100);
     months = $('#loanTerm').val() * 12;
-    $('#monthlyPayment').val(princ  + (princ * intRate * form.loanTerm.value) / months);
+    $('#monthlyPayment').val(princ  / months);
     $('#balance').val(princ);
     $('#totalPayment').val(months);
 }

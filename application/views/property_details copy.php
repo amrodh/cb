@@ -246,7 +246,7 @@
                                             <?php echo $this->lang->line('propertydetails_calculator_title6'); ?>
                                         </div>
                                         <div class="calculator_inputs col-lg-7">
-                                            <input type="text" class="form-control calculator_form_input" name="interestRate" id="interestRate" placeholder="0"><div style="margin-top: -28px;margin-left: 178px;"> %</div>
+                                            <!-- <input type="text" class="form-control calculator_form_input" name="interestRate" id="interestRate" placeholder="0"><div style="margin-top: -28px;margin-left: 178px;"> %</div> -->
                                         </div>
                                     </div>
                                 </div>

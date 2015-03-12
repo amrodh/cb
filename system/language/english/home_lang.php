@@ -43,6 +43,9 @@ $lang['home_footer_submenu8'] = "Offices";
 $lang['home_footer_submenu9'] = "Careers";
 $lang['home_footer_submenu10'] = "History";
 $lang['home_footer_submenu11'] = "Call Center";
+$lang['home_footer_submenu12'] = "Residential Projects";
+$lang['home_footer_submenu13'] = "Commercial Projects";
+
 // $lang['home_footer_drpdwn1'] = "Villas";
 // $lang['home_footer_drpdwn2'] = "Apartment";
 // $lang['home_footer_drpdwn3'] = "Building";
