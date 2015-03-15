@@ -37,36 +37,45 @@
 							<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle2'); ?></p>
 							<form role="form" action="" method="post">
 								<div class="form-group" style="width:100%;">
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-12">
-				                            <label for="contact_firstName"><?php echo $this->lang->line('offices_input1'); ?></label>
-				                            <input type="text" class="form-control" name="contact_firstName" id="contact_firstName" placeholder="أدخل الإسم الأول">
+									<?php if (!isset($loggedIn)): ?>
+				                        <div class="row contact_form_row">
+				                        	<div class="col-lg-12">
+					                            <label for="contact_firstName"><?php echo $this->lang->line('offices_input1'); ?></label>
+					                            <input type="text" class="form-control" name="contact_firstName" id="contact_firstName" placeholder="أدخل الإسم الأول">
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-12">
-				                            <label for="contact_lastName"><?php echo $this->lang->line('offices_input2'); ?></label>
-				                            <input type="text" class="form-control" name="contact_lastName" id="contact_lastName" placeholder="أدخل إسم العائلة">
+				                        <div class="row contact_form_row">
+				                        	<div class="col-lg-12">
+					                            <label for="contact_lastName"><?php echo $this->lang->line('offices_input2'); ?></label>
+					                            <input type="text" class="form-control" name="contact_lastName" id="contact_lastName" placeholder="أدخل إسم العائلة">
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row"> 
-			                        	<div class="col-lg-12">
-				                        	<label for="contact_email"><?php echo $this->lang->line('offices_input3'); ?></label>
-				                        	<input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="أدخل البريد الالكتروني">
+				                        <div class="row contact_form_row"> 
+				                        	<div class="col-lg-12">
+					                        	<label for="contact_email"><?php echo $this->lang->line('offices_input3'); ?></label>
+					                        	<input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="أدخل البريد الالكتروني">
+					                        </div>
 				                        </div>
-			                        </div>
-			                        <div class="row contact_form_row">
-			                        	<div class="col-lg-12">
-				                        	<label for="contact_phone"><?php echo $this->lang->line('offices_input4'); ?></label>
-				                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="أدخل رقم الهاتف">
+				                        <div class="row contact_form_row">
+				                        	<div class="col-lg-12">
+					                        	<label for="contact_phone"><?php echo $this->lang->line('offices_input4'); ?></label>
+					                        	<input type="text" class="form-control" name="contact_phone" id="contact_phone" placeholder="أدخل رقم الهاتف">
+					                        </div>
 				                        </div>
-			                        </div>
+
+			                        <?php else: ?>
+				                    	<input type="hidden" name="contact_email" id="contact_email" value="<?= $user->email;?>">
+				                    	<input type="hidden" name="contact_phone" id="contact_phone" value="<?= $user->phone;?>">
+
+									<?php endif ?>
+
 			                        <div class="row contact_form_row">
 				                        <div class="col-lg-12">
 				                        	<label for="contact_subject"><?php echo $this->lang->line('offices_input5');?></label>
 				                        	<textarea class="form-control" name="contact_subject" id="contact_subject" rows="3"></textarea>
 				                        </div>
 			                        </div>
+			                        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022648884862&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
 			                        <div class="row" style="width: 38%;margin: auto;">
 			                        	<div class="form-group col-lg-12">
                                             <input type="submit" name="submit" class="btn btn-default property_btn" id="offices_contact_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
@@ -212,6 +221,8 @@
 			var language = $("#currentLanguage").val();
 			var string = 'Submit|Project|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE';
 			ga('send', 'event', 'ContactUs', string, 'ContactUs');
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', '6022648884862', {'value':'0.00','currency':'USD'}]);
 		});
 		var map;
 		var elevator;

@@ -72,6 +72,7 @@
 				                        	<textarea class="form-control" name="contact_subject" id="contact_subject" rows="3" required></textarea>
 				                        </div>
 			                        </div>
+			                        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022648884862&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
 			                        <div class="row" style="width: 38%;margin: auto;">
 			                        	<div class="form-group col-lg-12">
                                             <input type="submit" style="" name="submit" class="btn btn-default property_btn" id="offices_contact_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
@@ -222,6 +223,8 @@
 			var string = 'Submit|Project|SERIAL|'+email+'|'+phone+'|'+msg_length+'|'+language+'| UNIT_TYPE';
 			// alert(string);return;
 			ga('send', 'event', 'ContactUs', string, 'ContactUs');
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', '6022648884862', {'value':'0.00','currency':'USD'}]);
 		});
 		var map;
 		var elevator;
