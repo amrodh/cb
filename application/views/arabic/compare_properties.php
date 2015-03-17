@@ -27,8 +27,11 @@
                                 <?= $images[$property->PropertyId]; ?>
                             </div>
                             <div class="compare_img">
-                                <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/>
-                                <!-- <img class="compare_images" src="<?= base_url();?>/application/static/images/sample_property_image.png"/> -->
+                                <?php if ($images[$property->PropertyId]['src'] != 'No_image.svg'): ?>
+                                    <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/upload/property_images/<?= $images[$property->PropertyId]['src'][0]; ?>"/>
+                                <?php else: ?>
+                                    <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$property->PropertyId]['src']; ?>"/>
+                                <?php endif ?>
                             </div>
                             <div class="compare_description">
                                 <div class="compare_description_title" style="margin-bottom: 3%;">

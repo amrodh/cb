@@ -1507,6 +1507,7 @@ label{
     padding: 20px 20px;
     background-color: #f6f6f6;
     border: 1px solid #d4d4d4;
+    min-height: 765px;
 }
 
 .compare_img, .featuredProperty_img{

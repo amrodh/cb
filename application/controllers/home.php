@@ -860,6 +860,10 @@ class Home extends CI_Controller {
 				$data['properties'][$propertyID] = $this->database->getPropertyByID($propertyID);
 				$data['properties'][$propertyID] = (object)$data['properties'][$propertyID][0];
 				$data['images'][$propertyID] = $this->database->getPropertyImages($propertyID);
+				if ((!is_array($data['images'][$propertyID]) || count($data['images'][$propertyID]) < 1)) {
+					$data['images'][$propertyID]['src'] = 'No_image.svg';
+					$data['images'][$propertyID]['count'] = 1;
+				}
 				$count++;
 			}
 			$data['propertyCount'] = $count;
