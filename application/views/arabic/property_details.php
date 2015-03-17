@@ -180,7 +180,7 @@
                                             <p><?php echo $this->lang->line('propertydetails_text'); ?></p>
                                             <textarea class="form-control" name="comments" id="property_form_textarea" rows="3"></textarea>
                                         </div>
-                                        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022648884862&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
+                                        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022342869903&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
                                         <div class="form-group">
                                             <input type="submit" name="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
@@ -350,7 +350,7 @@
                 // alert(string);
                 ga('send', 'event', 'ContactUs', string, ' SubmitUnit');
                 window._fbq = window._fbq || [];
-                window._fbq.push(['track', '6022648884862', {'value':'0.00','currency':'USD'}]);
+                window._fbq.push(['track', '6022342869903', {'value':'0.00','currency':'USD'}]);
                 // alert($('#propertyID').val());return;
             });
 
