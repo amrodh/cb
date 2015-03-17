@@ -251,8 +251,12 @@ class database extends CI_Model {
                         {
                             $this->db->where('LocationDistrict', $inputs['District']);
                         }
-                        if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] != 0)
+
+                        if($inputs['PropertyFor'] == '' || $inputs['PropertyFor'] == 0)
                         {
+                          $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+                          $this->db->where('((SalePrice < '. $inputs['PriceUpperLimit']. ' AND SalePrice > '.  $inputs['PriceLowerLimit']. ') OR (RentPrice < '.$inputs['PriceUpperLimit'].' AND RentPrice > '.$inputs['PriceLowerLimit'].'))');
+                        }else{
                             $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
                             if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
                                 $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
@@ -261,9 +265,20 @@ class database extends CI_Model {
                                 $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
                                 $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
                             }
-                        }else{
-                            $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
                         }
+                        // if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] !== 0)
+                        // {
+                        //     $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
+                        //     if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
+                        //         $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
+                        //         $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
+                        //     }elseif($inputs['PropertyFor'] == 'Rent'){
+                        //         $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
+                        //         $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
+                        //     }
+                        // }else{
+                        //     $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
+                        // }
                         if ($inputs['locationType'] != '' || $inputs['locationType'] != 0){
                             $this->db->where('LocationType', $inputs['locationType']);
                         }
