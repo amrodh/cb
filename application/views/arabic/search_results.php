@@ -546,11 +546,8 @@
                 var propertyID = $('#propertyID').val();
                 var interests = new Array();
                 var string = 'Submit|Unit|'+propertyID+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
-                alert(string);
-                ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
-
-                window._fbq = window._fbq || [];
-                window._fbq.push(['track', '6022342869903', {'value':'0.00','currency':'USD'}]);
+                // alert(string);
+                
               $.each($("input[name='interest[]']:checked"), function() {
                 interests.push($(this).val());
               });
@@ -577,6 +574,10 @@
                       })
                         .success(function( response ) {
                             if (response == 1){
+                                ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
+
+                window._fbq = window._fbq || [];
+                window._fbq.push(['track', '6022342869903', {'value':'0.00','currency':'USD'}]);
                                 $('#success_message').removeClass('hide');
                                 jQuery("#success_message").delay(2000).fadeOut("slow",function(){
                                     $('#success_message').addClass('hide');
@@ -694,23 +695,6 @@
                     $(window).bind("orientationchange", ScaleSlider);
             });
 
-            
-
-            $('#contact_form_btn').click(function(event) {
-                var id = $(this).attr("id").split("_");
-                var type = id[1];
-                id = id[0];
-                $('#propertyID').val(id);
-                var msg_length = $("#property_form_textarea").val().length;
-                var email = $("#property_email").val();
-                var phone = $("#property_phone").val();
-                var language = $("#currentLanguage").val();
-                var serial = $("#propertyID").val();
-                var string = 'Submit|Unit|'+serial+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
-                // alert(string);return;
-                ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
-                // alert($('#propertyID').val());return;
-            });
 
            $("[name='properties_length']").change(function() {
                $.getScript($('#url').val()+"application/static/js/getImages.js");

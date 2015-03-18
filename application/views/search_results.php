@@ -573,9 +573,7 @@ $(document).ready(function (){
         var interests = new Array();
         var string = 'Submit|Unit|'+propertyID+'|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+type;
         // alert(string);
-        ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
-        window._fbq = window._fbq || [];
-        window._fbq.push(['track', '6022342869903', {'value':'0.00','currency':'USD'}]);
+        
 
         $.each($("input[name='interest[]']:checked"), function() {
             interests.push($(this).val());
@@ -603,6 +601,9 @@ $(document).ready(function (){
               })
                 .success(function( response ) {
                     if (response == 1){
+                        ga('send', 'event', 'ContactUs', string, 'SubmitUnit');
+                        window._fbq = window._fbq || [];
+                        window._fbq.push(['track', '6022342869903', {'value':'0.00','currency':'USD'}]);
                         $('#success_message').removeClass('hide');
                         jQuery("#success_message").delay(2000).fadeOut("slow",function(){
                             $('#success_message').addClass('hide');

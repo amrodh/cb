@@ -193,15 +193,47 @@
 
         $('#contact_form_btn').click(function(event) {
             var courseID = $("#courseID").val();
+            var first_name = $("#property_first_name").val();
+            var last_name = $("#property_last_name").val();
             var msg_length = $("#property_form_textarea").val().length;
             var email = $("#property_email").val();
             var phone = $("#property_phone").val();
             var language = $("#currentLanguage").val();
             var string = 'Submit|Course|0|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+courseID;
             // alert(string);
-            ga('send', 'event', 'Courses', string, 'CoursesInquiry');
-            window._fbq = window._fbq || [];
-            window._fbq.push(['track', '6022342884903', {'value':'0.00','currency':'USD'}]);
+
+
+            var url = $("#url").val();
+            // alert(url);
+            url = url+"insertContactTraining";
+             $.ajax({
+                type: "POST",
+                url: url,
+                data: { first_name: firstname, last_name: lastname, email:email, phone:phone, comments:comments, trainingId: courseID }
+              })
+            .success(function( response ) {
+                if (response == 1){
+                    ga('send', 'event', 'Courses', string, 'CoursesInquiry');
+                    window._fbq = window._fbq || [];
+                    window._fbq.push(['track', '6022342884903', {'value':'0.00','currency':'USD'}]);
+                    $('#success_message').removeClass('hide');
+                    jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+                        $('#success_message').addClass('hide');
+                        $('#property_form')[0].reset();
+                    });
+                }else{
+                    $('#failure_message').removeClass('hide');
+                    jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+                        $('#failure_message').addClass('hide');
+                    });
+                }
+                    
+                // alert(response);
+            });
+
+            // ga('send', 'event', 'Courses', string, 'CoursesInquiry');
+            // window._fbq = window._fbq || [];
+            // window._fbq.push(['track', '6022342884903', {'value':'0.00','currency':'USD'}]);
             // alert($('#propertyID').val());return;
         });
     });
