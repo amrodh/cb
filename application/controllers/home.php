@@ -300,11 +300,15 @@ class Home extends CI_Controller {
 		$data['favorites'] = $this->user->getUserFavorites($data['user']->id);
 		$data['favoritesArray'] = array();
 		$data['favoritesImages'] = array();
-		foreach ($data['favorites'] as $key => $property) {
-			$data['favoritesArray'][$key] = $this->database->getPropertyByID($property->property_id);
-			$data['favoritesArray'][$key] = (object)$data['favoritesArray'][$key][0];
-			$data['favoritesImages'][$property->property_id] = $this->database->getPropertyImages($property->property_id);		
+		if (is_array($data['favorites']))
+		{
+			foreach ($data['favorites'] as $key => $property) {
+				$data['favoritesArray'][$key] = $this->database->getPropertyByID($property->property_id);
+				$data['favoritesArray'][$key] = (object)$data['favoritesArray'][$key][0];
+				$data['favoritesImages'][$property->property_id] = $this->database->getPropertyImages($property->property_id);		
+			}
 		}
+		
 
 		if(isset($_POST['submit'])){
 			$username = $_POST['username'];

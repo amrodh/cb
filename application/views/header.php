@@ -154,7 +154,7 @@
                         <div class="row">
                             <div class="form-group login_form">
                                 <label style="width:100%" for="password" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input2'); ?></label>
-                                <input style="float:left;width:100%;margin-left: 3px;" type="password" name="password" class="form-control" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
+                                <input style="float:left;width:100%;" type="password" name="password" class="form-control" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
                             </div>
                         </div>
                         <div class="row">

@@ -122,6 +122,7 @@
                         <?php echo $this->lang->line('profile_title2'); ?>
                     </div>
                     <div id="profile_favs">
+                    <?php if (count($favoritesArray) > 0): ?>
                         <table id="properties" style="border:none; background-color:white;" class="table table-striped table-bordered" border="0" cellspacing="0" width="100%">
                             <thead id="thead">
                                 <tr>
@@ -248,7 +249,15 @@
                                         } ?>
                                 <?php endif ?>
                             </tbody>
-                        </table>    
+                        </table>  
+                    <?php else: ?>
+                        <div class="row" style="width: 100%;text-align: center;margin-top: 1%;">
+                            <div class="alert alert-info" role="alert">
+                                You don't have any favorite properties yet.
+                            </div>
+                        </div>
+                    <?php endif ?>
+                          
                     </div>
                 </div>
             </div>
