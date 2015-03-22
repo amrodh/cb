@@ -464,9 +464,9 @@ padding-top: 2px;
 #search_home_container{
     width: 326px; 
     position: absolute;
-    top:40.2%;
+    /*top:40.2%;*/
     left: 6%;
-    /*margin-top:-515px;*/
+    margin-top:-515px;
     /*margin-left: 65%;*/
 }
 
