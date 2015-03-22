@@ -159,6 +159,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-left: 7%;
     color: white;
     text-decoration: none;
+    margin-top:4px;
 }
 
 #language > label > a{
@@ -2262,11 +2263,14 @@ li.active>.training_anchor{
     #contact_dropdown{
         margin-right: -43px!important;
     }
-}
-
-@media only screen and (max-width: 1200px){
     .properties_contact{
         margin-left: 490px; 
+    }
+}
+
+@media only screen and (max-width: 340px){
+    #language, #login_div{
+        font-size: 80%;
     }
 }
 

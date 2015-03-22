@@ -161,6 +161,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-right: 5%;
     color: white;
     text-decoration: none;
+    margin-top:4px;
 }
 
 #language > label > a{
@@ -2177,21 +2178,15 @@ _divs{
     #middle_div > nav > div > ul > li > a{
         font-size: 12px;
     } 
-    #home_dropdown{
-        /*margin-right: -70px!important;*/
-    }
-    #services_dropdown{
-        /*margin-right: -86px!important;*/
-    }
-    #commercial_dropdown{
-        /*margin-right: -36px!important;*/
-    }
-    #contact_dropdown{
-        /*margin-right: -43px!important;*/
-    }
     
     .header_navbar{
         font-size: 12px!important;
+    }
+}
+
+@media only screen and (max-width: 340px){
+    #language, #login_div{
+        font-size: 80%;
     }
 }
 
