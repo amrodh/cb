@@ -511,6 +511,10 @@ color: white;
     font-weight: bold;
 }
 
+.search_box_col_title{
+    font-size: 100%;
+}
+
 .search_keyword_input{
     float: left;
     margin-left: -15px;
