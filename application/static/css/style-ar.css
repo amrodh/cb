@@ -445,7 +445,7 @@ width: 326px;
 background-color: rgba(30, 66, 112, 0.8);
 padding: 30px 20px;
 padding-top: 2px;
-margin-right: 285%;
+/*margin-right: 285%;*/
 }
 .tab-content>.active{
     height:auto;
@@ -464,8 +464,10 @@ margin-right: 285%;
 #search_home_container{
     width: 326px; 
     position: absolute;
-    margin-top:-515px;
-    margin-left: 65%;
+    top:40.2%;
+    left: 6%;
+    /*margin-top:-515px;*/
+    /*margin-left: 65%;*/
 }
 
 #search_title_district{
@@ -705,7 +707,7 @@ li.active>a{
 }
 
 .property_alert_body{
-    /*margin-bottom: 3%;*/
+    margin-bottom: 3%;
 }
 
 

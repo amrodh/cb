@@ -687,6 +687,9 @@ li.active>a{
     padding: 30px 80px;
 }
 
+.property_alert_body{
+    margin-bottom: 3%;
+}
 
 #alert_email{
     width: 100%;

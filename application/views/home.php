@@ -14,7 +14,7 @@
     
 
 	<!-- Featured Properties	 -->
-<div style="width: 100%; margin-top: 16%;">
+<div style="width: 100%;">
     <div id="featuredProperty_header">
         <ul class="nav nav-tabs nav-justified property_alert_box" id="featuredProperty_tabs">
            <li class="active">
