@@ -284,6 +284,8 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 .bxslider > li>a >img{
     height: 455px;
     width: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .slider_imgs{

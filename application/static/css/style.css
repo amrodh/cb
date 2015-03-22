@@ -283,6 +283,8 @@ color: white;
 .bxslider > li>a >img{
     height: 455px;
     width: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .slider_imgs{
