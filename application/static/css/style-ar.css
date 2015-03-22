@@ -6,6 +6,7 @@
         Purpose of the stylesheet follows.
 */
 
+
 .logoutSubmit{
     background-color: #2f5081;
     border:none;
@@ -260,7 +261,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     margin-left: -5px;
     position: absolute;
     margin-top: -30px;
-    width: 15%;
+    width: 170px;
     /*margin-left: 100px;*/
 }
 
@@ -575,11 +576,39 @@ padding-top: 2px;
     display: none;
 }
 
-/*.nav-tabs>li.active>a{*/
-li.active>a{
+
+
+/*li.active>a{
     background-color: #1e4270!important;
     color: orange!important;
     border: none;
+}*/
+
+#search_tabs>li{
+    padding: 4%;
+}
+
+#search_tabs li.active{
+    background-color: #1e4270!important;
+}
+
+#search_tabs li.active>a{
+    /*background-color: #1e4270!important;*/
+    color: orange!important;
+    border: none;
+}
+
+#search_tabs.nav-justified>li{
+    width: auto!important;
+    background-color: #305381;
+}
+
+.nav-tabs.nav-justified>li>a{
+    margin-bottom: 0!important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    background-color: transparent;
 }
 
 #search_tabs > li > a:hover{
@@ -589,7 +618,7 @@ li.active>a{
 }
 #search_tabs > li > a{
     color: white;
-    background: rgba(35, 57, 91, 0.5);
+    /*background: rgba(35, 57, 91, 0.5);*/
     -o-transition:color .5s ease-out;
     -ms-transition:color .5s ease-out;
     -moz-transition:color .5s ease-out;
@@ -696,6 +725,16 @@ li.active>a{
 .property_alert_box{
     margin-top: 30px;
 }
+
+#property_alert_tabs li.active, #featuredProperty_tabs li.active{
+    padding: 4%;
+    background-color: #d7d7d7!important;
+} 
+
+#property_alert_tabs li a, #featuredProperty_tabs li a, #search_tabs li a{
+    padding: 0;
+}
+
 
 .property_alert_body, .featuredProperty_body{
     /*border: 1px solid red;*/
@@ -2119,6 +2158,12 @@ _divs{
     }
 }
 
+/*@media only screen and (min-width: 768px){
+    .visible-sm, tr.visible-sm, th.visible-sm, td.visible-sm{
+        display: block!important;
+    }
+}*/
+
 @media only screen and (max-width: 1200px){
     
     .properties_contact{
@@ -2185,15 +2230,21 @@ _divs{
 
 @media only screen and (max-width: 768px){
     #btn_subscribe{
-        /*margin-top: -12.5%;*/
-        /*margin-left: 67%;*/
         font-size: 10px;
     }
     
-    #footer_div{
-        /*height: 290px;*/
+    .visible-sm, tr.visible-sm, th.visible-sm, td.visible-sm{
+        display: block!important;
     }
-    
+
+    .property_alert_body, .featuredProperty_body{
+        padding: 30px 30px!important;
+    }
+
+    #property_alert_header, #featuredProperty_header{
+        margin-left: 10%;
+    }
+
     #footer_subscribe_email{
         /*padding-right: 35%;*/
     }
