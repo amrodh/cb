@@ -35,7 +35,7 @@
                                 $propertyName = $property->PrpertyTypeStr.' for '.$property->SalesTypeStr.' '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity;
                                 //$propertyName .= $propertyName;
                                 if(strlen($propertyName) > 52){
-                                    $propertyName = substr($propertyName,0,48).'..';
+                                    $propertyName = substr($propertyName,0,42).'..';
                                 }
                                 echo $propertyName;
                              ?> 

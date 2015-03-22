@@ -1543,6 +1543,7 @@ label{
 }
 
 .compare_description_title{
+    direction: ltr;
     color: #f26522;
     text-align: center;
     font-size: 120%;
