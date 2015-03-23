@@ -190,6 +190,10 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
     text-align: center;
 }
 
+.header_navbar > li{
+    border-bottom: none;
+}
+
 .header_items_rtl{
     border-left: 1px solid #2f5081;
     border-right: none!important;
