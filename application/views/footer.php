@@ -178,9 +178,9 @@
                 {
                     navHeight = $(this).height();
                 }
-                $('#middle_div').animate({
-                    'margin-bottom': '50%'
-                   }, 300);
+                // $('#middle_div').animate({
+                //     'margin-bottom': '50%'
+                //    }, 300);
             });
             
             $('.navbar-collapse').on('hide.bs.collapse', function(){

@@ -172,9 +172,9 @@
                 {
                     navHeight = $(this).height();
                 }
-                $('#middle_div').animate({
-                    'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
-                   }, 300);
+                // $('#middle_div').animate({
+                //     'margin-bottom': parseInt($("#middle_div").css("margin-bottom")) + navHeight
+                //    }, 300);
             });
             
             $('.navbar-collapse').on('hide.bs.collapse', function(){
