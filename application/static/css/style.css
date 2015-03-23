@@ -2471,7 +2471,7 @@ li.active>.training_anchor{
         float: none; 
     }
 
-    .properties_number{
+    .properties_common_bottom_div .properties_number{
         margin-top: -27%;
     }
 

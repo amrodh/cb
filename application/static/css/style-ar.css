@@ -2368,7 +2368,7 @@ _divs{
         float: none; 
     }
 
-    .properties_number{
+    .properties_common_bottom_div .properties_number{       
         margin-top: -27%;
     }
 
