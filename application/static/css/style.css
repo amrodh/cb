@@ -191,7 +191,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 .header_navbar > li{
-    z-index: 10000;
+    z-index: 1;
     border-bottom: none;
 }
 
