@@ -83,12 +83,14 @@
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-lg-6">
-                <a style="display:block;text-align: center;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=1">
+                <a style="display:block;text-align: center;  width: 75%;margin: auto;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=1">
                     See More Residential Featured Properties
                 </a>
             </div>
+            <div class="col-xs-9 hidden-lg hidden-md hidden-sm visible-xs" id="separator">
+            </div>
             <div class="col-lg-6">
-                <a style="display:block;text-align: center;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=2">
+                <a style="display:block;text-align: center;  width: 75%;margin: auto;" href="<?= base_url()?>en/viewAllProperties?featured=true&amp;lob=2">
                     See More Commercial Featured Properties
                 </a>
             </div>

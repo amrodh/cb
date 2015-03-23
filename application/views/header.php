@@ -200,7 +200,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu1'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -18.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="home_dropdown" style="margin-right: -19%;">
                                 <li>
                                     <a href="<?= base_url();?>en/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=Sale&amp;price=0&amp;area=0&amp;project=&amp;locationType=&amp;serialNum="><?php echo $this->lang->line('home_submenu1'); ?></a>
                                 </li>
@@ -249,7 +249,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu6'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown"  style="margin-right: -40%;">
+                            <ul class="dropdown-menu header_dropdown" id="about_dropdown" style="margin-right: -40%;">
                                 <li>
                                     <a href="<?= base_url();?>en/about"><?php echo $this->lang->line('home_submenu10'); ?></a>
                                 </li>
@@ -262,7 +262,7 @@
                             <a href="" class="dropdown-toggle a-dropdown" data-toggle="dropdown"><?php echo $this->lang->line('home_menu7'); ?>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu header_dropdown" style="margin-right: -18.5%;">
+                            <ul class="dropdown-menu header_dropdown" id="contact_dropdown" style="margin-right: -18.5%;">
                                 <li>
                                     <a href="<?= base_url();?>en/offices"><?php echo $this->lang->line('home_submenu8'); ?></a>
                                 </li>

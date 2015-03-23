@@ -56,7 +56,7 @@
                         <?php endif ?>
                    </div>
                     <!-- <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit" style="position: absolute; margin-right: 71.5%;">إرسال</button> -->
-                    <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 23%; float: right;margin-right: 0px;">
+                    <div class="row property_alert_advanced" onclick="toggleVisibility2();" style="position: relative; width: 100%; float: right;margin-right: 0px;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span id="caret" class="caret"></span>
                     </div>
                     <button type="submit" class="visible-lg visible-md btn btn-default property_alert_btn_submit propertyAlertButton" style="position: absolute;margin-left: 71.5%;margin-top: 17px;">إرسال</button>

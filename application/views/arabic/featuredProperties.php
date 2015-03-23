@@ -83,12 +83,14 @@
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-lg-6">
-                <a style="display:block;text-align: center;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=1">
+                <a style="display:block;text-align: center;  width: 75%;margin: auto;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=1">
                     عرض المزيد من العقارات السكنية المتميزة
                 </a>
             </div>
+            <div class="col-xs-9 hidden-lg hidden-md hidden-sm visible-xs" id="separator">
+            </div>
             <div class="col-lg-6">
-                <a style="display:block;text-align: center;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=2">
+                <a style="display:block;text-align: center;  width: 75%;margin: auto;" href="<?= base_url()?>ar/viewAllProperties?featured=true&amp;lob=2">
                     عرض المزيد من العقارات التجارية المتميزة
                 </a>
             </div>

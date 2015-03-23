@@ -698,7 +698,7 @@ color: white;
 }
 
 #property_alert_header, #featuredProperty_header{
-    width: 32%;
+    width: 60%;
     margin-left: 80px;
 }
 
@@ -714,6 +714,8 @@ color: white;
 
 #property_alert_tabs li a, #featuredProperty_tabs li a, #search_tabs li a{
     padding: 0;
+    display: inline-block;
+    width: 100%;
 }
 
 .property_alert_body, .featuredProperty_body{
@@ -2079,10 +2081,6 @@ li.active>.training_anchor{
     margin-bottom: 1%;
 }
 
-#featuredProperty_header{
-    width: 32%;
-}
-
 .newsletter_container{
     border: 10px solid #233f71;
     padding: 1%;
@@ -2243,6 +2241,12 @@ li.active>.training_anchor{
     border: none!important;
 }
 
+#separator{
+    border: 1px solid orange;
+    margin: 5px auto;
+    float: none;
+}
+
 @media only screen and (min-width: 1200px){
     .newsletter_cols{
         width: 24%;
@@ -2255,16 +2259,19 @@ li.active>.training_anchor{
         font-size: 12px;
     } 
     #home_dropdown{
-        margin-right: -70px!important;
+        margin-right: -32%!important;
     }
     #services_dropdown{
-        margin-right: -86px!important;
+        margin-right: -69.5%!important;
     }
     #commercial_dropdown{
-        margin-right: -36px!important;
+        margin-right: -35%!important;
     }
     #contact_dropdown{
-        margin-right: -43px!important;
+        margin-right: -31.5%!important;
+    }
+    #about_dropdown{
+        margin-right: -55%;
     }
     .properties_contact{
         margin-left: 490px; 
@@ -2409,6 +2416,10 @@ li.active>.training_anchor{
 
     .newsletter_cols{
         min-height: 400px;
+    }
+
+    .header_navbar > li >a:hover{
+        border: none;
     }
 }
 
