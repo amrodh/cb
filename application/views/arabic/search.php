@@ -104,7 +104,7 @@
                            </div>
                        </div>
                         
-                        <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
+                        <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 100%;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?>  <span class="caret"  id="caret"></span>
                         </div>
                         <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 68%;margin-top: -20px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
@@ -249,7 +249,7 @@
                            </div>
                        </div>
                         
-                        <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 132px;">
+                        <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 100%;">
                             <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                         </div>
                         <input type="submit" class="hidden-sm hidden-xs btn btn-default search_btn_submit searchButton" style="position: absolute;margin-right: 68%;margin-top: -20px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">

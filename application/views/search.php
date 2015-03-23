@@ -17,7 +17,7 @@
                 <input type="hidden" name="lob" id="lob" value="1">
                 <div class="container search_components">
                    <div class="row search_top_row">
-                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin" id="search_title_district">
                                <?php echo $this->lang->line('search_drpdwn1'); ?>
                            </div>
@@ -41,7 +41,7 @@
                        <div id="districtContainer_2">
                          
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols" id="disabled_district_2">
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols" id="disabled_district_2">
                            <div class="search_box_col_title title_margin" id="disabled_district_title_2">
                                <?php echo $this->lang->line('search_drpdwn2'); ?>
                            </div>
@@ -74,7 +74,7 @@
                            </select> -->
                        </div>
                        <input type="hidden" name="project" value="">
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn4'); ?>
                            </div>
@@ -93,7 +93,7 @@
                                 <?php endforeach ?>
                            </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn3'); ?>
                            </div>
@@ -108,14 +108,14 @@
                        </div>
                    </div>
                     
-                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 21%;">
+                    <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative; width: 100%;">
                         <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                     </div>
                     <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit  searchButton" style="position: absolute;margin-left: 68%;margin-top: 35px;" name="searchSubmit3" value="<?php echo $this->lang->line('search_button'); ?>">
                 </div>
                 <div class="container search_components">
                     <div class="row search_bottom_row" id="bottom_row">
-                        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
+                        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn5'); ?>
                            </div>
@@ -130,7 +130,7 @@
                                 <option value="20000000">20,000,000+</option>
                            </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn6'); ?>
                            </div>
@@ -144,7 +144,7 @@
                                 <option value=">500"> &#62;500 m<sup>2</sup></option>
                            </select>
                        </div>
-                       <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                       <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols search_cols_margin">
                            <div class="search_box_col_title title_margin">
                                <?php echo $this->lang->line('search_drpdwn7'); ?>
                            </div>
@@ -166,7 +166,7 @@
               <input type="hidden" name="lob" id="lob" value="2">
               <div class="container search_components">
                  <div class="row search_top_row">
-                      <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                      <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                          <div class="search_box_col_title title_margin" id="search_title_district">
                              <?php echo $this->lang->line('search_drpdwn1'); ?>
                          </div>
@@ -191,7 +191,7 @@
                      <div id="districtContainer_3">
                        
                      </div>
-                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols" id="disabled_district_3">
+                     <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols" id="disabled_district_3">
                          <div class="search_box_col_title title_margin" id="disabled_district_title_3">
                              <?php echo $this->lang->line('search_drpdwn2'); ?>
                          </div>
@@ -223,7 +223,7 @@
                          </select> -->
                      </div>
                      <input type="hidden" name="project" value="">
-                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                     <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn4'); ?>
                          </div>
@@ -241,7 +241,7 @@
                               <?php endforeach ?>
                          </select>
                      </div>
-                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 search_cols">
+                     <div class="col-xs-12 col-lg-3 col-md-3 col-sm-6 search_cols">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn3'); ?>
                          </div>
@@ -253,14 +253,14 @@
                      </div>
                  </div>
                   
-                  <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 30%;">
+                  <div class="row search_advanced" onclick="toggleVisibility();" style="position: relative;width: 100%;">
                       <?php echo $this->lang->line('searchhome_advanced'); ?><span class="caret" id="caret"></span>
                   </div>
                   <input type="submit" class="visible-lg visible-md btn btn-default search_btn_submit searchButton" style="position: absolute;margin-left: 68%;margin-top: 35px;" name="searchSubmit4" value="<?php echo $this->lang->line('search_button'); ?>">
               </div>
               <div class="container search_components">
                   <div class="row search_bottom_row" id="bottom_row">
-                      <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols">
+                      <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn5'); ?>
                          </div>
@@ -275,7 +275,7 @@
                               <option value="20000000">20,000,000+</option>
                          </select>
                      </div>
-                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                     <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols search_cols_margin">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn6'); ?>
                          </div>
@@ -290,7 +290,7 @@
                               <option value="1000">1000+ m<sup>2</sup></option>
                          </select>
                      </div>
-                     <div class="col-xs-12 col-lg-3 col-md-4 col-sm-4 search_cols search_cols_margin">
+                     <div class="col-xs-12 col-lg-3 col-md-3 col-sm-4 search_cols search_cols_margin">
                          <div class="search_box_col_title title_margin">
                              <?php echo $this->lang->line('search_drpdwn7'); ?>
                          </div>
