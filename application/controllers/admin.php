@@ -1081,6 +1081,7 @@ class Admin extends CI_Controller {
 	{	
 		$data = $this->init();
 		$data['slides'] = $this->content->getSliderContent();
+		// printme($data['slides']);exit();
 		$this->load->view('admin/content',$data);
 	}
 

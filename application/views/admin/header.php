@@ -41,7 +41,7 @@
     <link href="<?php echo base_url(); ?>application/static/css/bootstrap-select.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet">
+    <!-- <link href="<?php echo base_url(); ?>application/static/css/plugins/morris.css" rel="stylesheet"> -->
 
     <!-- Custom Fonts -->
     <link href="<?php echo base_url(); ?>application/static/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">

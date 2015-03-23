@@ -32,7 +32,7 @@
 
             <div class="container" style="width:100%;">
                 <div class="row" style="width:100%;">
-                    <div class="col-lg-9 col-sm-11 col-md-9 col-xs-12 properties_header_cols" id="properties_bottom_left_div">
+                    <div class="col-lg-9 col-sm-12 col-md-9 col-xs-12 properties_header_cols" id="properties_bottom_left_div">
                         <table id="properties" style="border:none;" class="table table-striped table-bordered" border="0" cellspacing="0" width="100%">
                             <thead id="thead">
                                 <tr>
@@ -78,16 +78,16 @@
                                                         <div class="properties_img">
                                                             <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                 <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
                                                             <?php else: ?>
                                                                 <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
                                                             <?php endif ?>
@@ -242,16 +242,16 @@
 
                                                             <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                 <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
                                                             <?php else: ?>
                                                                 <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php else: ?>
-                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
+                                                                    <a href="<?= base_url();?>en/propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                 <?php endif ?>
                                                                 <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
                                                             <?php endif ?>
@@ -377,7 +377,7 @@
                         </table>
                     </div>
                     <div class="col-lg-3 col-sm-12 col-md-3 col-xs-3 properties_header_cols hidden-sm hidden-xs" id="properties_bottom_right_div" style="padding-top: 19%;text-align: center;color: red;font-size: 200%;">
-                        <div style="position: relative;width: 112%;height: 500px;margin-top:-86%;margin-left: -6%;border-radius: 10px;text-align: center;padding-top: 65%;font-size: 210%;background: rgba(0, 0, 0, 0.3);color: white;">
+                        <div style="position: relative;width: 114%;height: 500px;margin-top:-87%;margin-left: -7%;border-radius: 10px;text-align: center;padding-top: 80%;font-size: 180%;background: rgba(0, 0, 0, 0.3);color: white;">
                             Coming Soon
                         </div>
                     </div>

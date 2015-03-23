@@ -586,40 +586,40 @@ $(document).ready(function ()
                 $('#courseID').val($(this).attr('id'));
             });
 
-            $('#contact_form_btn').click(function(event) {
+            // $('#contact_form_btn').click(function(event) {
               
-                var firstname = $('#property_first_name').val();
-                var lastname = $('#property_last_name').val();
-                var email = $('#property_email').val();
-                var phone = $('#property_phone').val();
-                var comments = $('#property_form_textarea').val();
-                var courseID = $('#courseID').val();
-                var url = $("#url").val();
+            //     var firstname = $('#property_first_name').val();
+            //     var lastname = $('#property_last_name').val();
+            //     var email = $('#property_email').val();
+            //     var phone = $('#property_phone').val();
+            //     var comments = $('#property_form_textarea').val();
+            //     var courseID = $('#courseID').val();
+            //     var url = $("#url").val();
               
-                url = url+"insertContactTraining";
-                 $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, courseID: courseID}
-                  })
-                    .success(function( response ) {
-                      // alert(response);
-                        if (response == 1){
-                            $('#success_message').removeClass('hide');
-                            jQuery("#success_message").delay(2000).fadeOut("slow",function(){
-                                $('#success_message').addClass('hide');
-                                $('#property_form')[0].reset();
-                            });
-                        }else{
-                            $('#failure_message').removeClass('hide');
-                            jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
-                                $('#failure_message').addClass('hide');
-                            });
-                        }
+            //     url = url+"insertContactTraining";
+            //      $.ajax({
+            //         type: "POST",
+            //         url: url,
+            //         data: { firstname: firstname, lastname: lastname, email:email, phone:phone, comments:comments, courseID: courseID}
+            //       })
+            //         .success(function( response ) {
+            //           // alert(response);
+            //             if (response == 1){
+            //                 $('#success_message').removeClass('hide');
+            //                 jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+            //                     $('#success_message').addClass('hide');
+            //                     $('#property_form')[0].reset();
+            //                 });
+            //             }else{
+            //                 $('#failure_message').removeClass('hide');
+            //                 jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+            //                     $('#failure_message').addClass('hide');
+            //                 });
+            //             }
                             
-                        // alert(response);
-                    });
-            });
+            //             // alert(response);
+            //         });
+            // });
             
 
         });

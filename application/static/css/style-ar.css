@@ -41,7 +41,7 @@
 
 .navbar{
     border: none;
-    z-index: 1000000;
+    /*z-index: 1000000;*/
 }
 
 
@@ -182,6 +182,11 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 .header_navbar > li > a{
     border-right: 1px solid #2f5081;
     text-align: center;
+}
+
+.header_navbar > li{
+    z-index: 10000;
+    border-bottom: none;
 }
 
 .header_items_rtl{
@@ -766,6 +771,7 @@ padding-top: 2px;
 }
 
 #property_notifier{
+    height: 35%;
     /*margin-bottom: 235px;*/
 }
 
@@ -1105,7 +1111,18 @@ padding-top: 2px;
 }
 
 .properties_img{
-    /*float: left;*/
+    width: 25%;
+    float: right;
+    display: inline-block;
+}
+
+.properties_img > a{
+    display: inline-block;
+    width: 100%;
+}
+
+.properties_img > a > img{
+    width: 100%;
 }
 
 .properties_top_div{
@@ -1120,18 +1137,19 @@ padding-top: 2px;
     color: orange;
     position: absolute;
     font-size: 17px;
-    margin-top: -124px;
+    margin-top: 5px;
     text-align: center;
     margin-right: 26px;
     /*border-radius: 5px;*/
 }
 
 .properties_info{
-    /*border: 1px solid red;*/
     float: right;
-    margin-top: -130px;
-    margin-right: 30%;
-    width: 60%;
+    display: inline-block;
+    width: 50%;
+    margin-right: 3%;
+    /*margin-top: -130px;*/
+    /*width: 60%;*/
 }
 
 .properties_title{
@@ -1171,7 +1189,7 @@ padding-top: 2px;
     width: 100px;
     height: 33px;
     font-size: 17px;
-    margin-top: 1.5%;
+    margin-top: 12px;
     /*margin-right: 520px;*/
     background: -webkit-linear-gradient(#fec552, #eb7f04); 
     background: -o-linear-gradient(#fec552, #eb7f04); 
@@ -2178,7 +2196,7 @@ _divs{
 @media only screen and (max-width: 1200px){
     
     .properties_contact{
-        margin-left: 490px; 
+        /*margin-left: 490px; */
     }
     
     #middle_div > nav > div > ul > li > a{
@@ -2198,7 +2216,7 @@ _divs{
 
 @media only screen and (max-width: 992px){
     .properties_contact{
-        margin-left: 520px;
+        /*margin-left: 520px;*/
     }
     
     .property_thumbnail{
@@ -2306,17 +2324,13 @@ _divs{
     }
     
     .properties_top_div{
-        height: 110px;
+        /*height: 110px;*/
     }
     
     .properties_details_btns_div{
-        width: 100%;
+        width: 75%;
     }
     
-    .properties_contact{
-        margin-top:0;
-        margin: auto;
-    }
     .search_cols{
         margin-bottom: 5px;
     }
@@ -2348,6 +2362,28 @@ _divs{
     .properties_star_icon{
         margin-left: 28%;
     }
+
+    .properties_contact{
+        margin: auto; 
+        float: none; 
+    }
+
+    .properties_number{
+        margin-top: -27%;
+    }
+
+    .properties_img{
+        float: none;
+        display: inline;
+    }
+
+    .properties_info{
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        text-align: center;
+    }
+
 }
 
 @media only screen and (max-width: 768px) and (min-width: 455px){

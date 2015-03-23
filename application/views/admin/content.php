@@ -66,7 +66,6 @@
                             </thead>
                             <?php if (is_array($slides)): ?>
                                 <?php foreach ($slides as $slide): ?>
-                                    
                                
                                 <tr>
                                     <td><?= $slide->order  ?></td>

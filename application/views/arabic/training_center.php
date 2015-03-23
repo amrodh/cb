@@ -192,33 +192,34 @@
             var string = 'Submit|Course|0|'+email+'|'+phone+'|'+msg_length+'|'+language+'|'+courseID;
             // alert(string);
 
-
-            var url = $("#url").val();
-            // alert(url);
-            url = url+"insertContactTraining";
-             $.ajax({
-                type: "POST",
-                url: url,
-                data: { first_name: firstname, last_name: lastname, email:email, phone:phone, comments:comments, trainingId: courseID }
-              })
-            .success(function( response ) {
-                if (response == 1){
-                    ga('send', 'event', 'Courses', string, 'CoursesInquiry');
-                    window._fbq = window._fbq || [];
-                    window._fbq.push(['track', '6022342884903', {'value':'0.00','currency':'USD'}]);
-                    $('#success_message').removeClass('hide');
-                    jQuery("#success_message").delay(2000).fadeOut("slow",function(){
-                        $('#success_message').addClass('hide');
-                        $('#property_form')[0].reset();
-                    });
-                }else{
-                    $('#failure_message').removeClass('hide');
-                    jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
-                        $('#failure_message').addClass('hide');
-                    });
-                }
-                    
-                // alert(response);
-            });
+            if (email.length > 0 && phone.length > 0){
+                var url = $("#url").val();
+                // alert(url);
+                url = url+"insertContactTraining";
+                 $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { first_name: firstname, last_name: lastname, email:email, phone:phone, comments:comments, trainingId: courseID }
+                  })
+                .success(function( response ) {
+                    if (response == 1){
+                        ga('send', 'event', 'Courses', string, 'CoursesInquiry');
+                        window._fbq = window._fbq || [];
+                        window._fbq.push(['track', '6022342884903', {'value':'0.00','currency':'USD'}]);
+                        $('#success_message').removeClass('hide');
+                        jQuery("#success_message").delay(2000).fadeOut("slow",function(){
+                            $('#success_message').addClass('hide');
+                            $('#property_form')[0].reset();
+                        });
+                    }else{
+                        $('#failure_message').removeClass('hide');
+                        jQuery("#failure_message").delay(2000).fadeOut("slow",function(){
+                            $('#failure_message').addClass('hide');
+                        });
+                    }
+                        
+                    // alert(response);
+                });
+            }
     });
 </script>
