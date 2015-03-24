@@ -154,13 +154,13 @@
                         <div class="row" style="margin: 0;">
                              <div class="form-group login_form">
                                 <label style="width:100%" for="username" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input1'); ?></label>
-                                <input style="" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="<?php echo $this->lang->line('home_login_placeholder1'); ?>" autofocus required>
+                                <input style="width:100%;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="<?php echo $this->lang->line('home_login_placeholder1'); ?>" autofocus required>
                              </div>
                         </div>
                         <div class="row" style="margin: 0;">
                             <div class="form-group login_form">
                                 <label style="width:100%" for="password" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input2'); ?></label>
-                                <input style="" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
+                                <input style="width:100%;" type="password" name="password" class="form-control" style="margin-left: 3px;" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
                             </div>
                         </div>
                         <div class="row">

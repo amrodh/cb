@@ -185,7 +185,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 .header_navbar > li{
-    z-index: 10000;
+    z-index: 1;
     border-bottom: none;
 }
 
@@ -1791,9 +1791,6 @@ margin-top: 5%
     width: 90%;
 }
 
-.close{
-    margin-right: 25px;
-}
 
 #loanTerm{
     width: 9%;
