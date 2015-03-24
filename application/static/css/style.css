@@ -1063,6 +1063,22 @@ color: white;
     height: auto!important;
 }
 
+#properties_wrapper > div.row > div.col-sm-6{
+    /*width: 50%;*/
+}
+
+div.dataTables_length, div.dataTables_filter, div.dataTables_info, div.dataTables_paginate{
+    width: 100%;
+}
+
+div.dataTables_length label, div.dataTables_filter label{
+    width: 100%;
+}
+
+div.dataTables_filter input{
+    width: 75%;
+}
+
 .properties_common_bottom_div, .offices_divs{
     /*height: 20px;*/
     border-radius: 10px;
@@ -2487,6 +2503,11 @@ li.active>.training_anchor{
 
     .properties_title{
         font-size: 95%;
+    }
+
+    .properties_title div.col-lg-11{
+        float: none!important;
+        text-align: center;
     }
 
     .properties_content{

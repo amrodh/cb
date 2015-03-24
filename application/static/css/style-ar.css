@@ -1062,6 +1062,7 @@ padding-top: 2px;
 }
 
 #properties_bottom_left_div{
+    padding-left: 0;
     /*float: left;*/
     /*width: 49%;*/
 }
@@ -1158,7 +1159,7 @@ padding-top: 2px;
     font-size: 17px;
     font-weight: bold;
     width: 100%;
-    margin-bottom: 3%;
+    /*margin-bottom: 3%;*/
 }
 
 .properties_content{
@@ -2366,7 +2367,7 @@ _divs{
     .properties_info {
         width: 50%;
         margin: auto;
-        margin-right: 2%;
+        /*margin-right: 2%;*/
     }
 }
 
@@ -2393,6 +2394,11 @@ _divs{
 
     .properties_title{
         font-size: 95%;
+    }
+
+    .properties_title div.col-lg-11{
+        float: none!important;
+        text-align: center;
     }
 
     .properties_content{
@@ -2506,11 +2512,16 @@ _divs{
     }
 }
 
-@media only screen and (max-width: 1040px) and (min-width: 840px)
-{
+@media only screen and (max-width: 1040px) and (min-width: 840px){
     .navbar-toggle {
         float: left!important;
 /*        margin-right: 800%;*/
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .properties_img{
+        width: 75%;
     }
 }
 
