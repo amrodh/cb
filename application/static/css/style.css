@@ -1101,7 +1101,8 @@ color: white;
     color: orange;
     position: absolute;
     font-size: 17px;
-    margin-top: 5px;
+    top: 5%;
+    /*margin-top: 5px;*/
     text-align: center;
     margin-left: 23px;
     /*border-radius: 5px;*/
@@ -2476,9 +2477,9 @@ li.active>.training_anchor{
         font-size: 14px;
     }
 
-    .properties_common_bottom_div .properties_number{
+    /*.properties_common_bottom_div .properties_number{
         margin-top: -27%;
-    }
+    }*/
 
     .properties_details_btns_div{
         display: none;
@@ -2559,6 +2560,12 @@ li.active>.training_anchor{
         text-align: left;
         padding-left: 0px;
         font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .properties_img{
+        width: 75%;
     }
 }
 

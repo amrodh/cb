@@ -1137,7 +1137,8 @@ padding-top: 2px;
     color: orange;
     position: absolute;
     font-size: 17px;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
+    top: 5%;
     text-align: center;
     margin-right: 26px;
     /*border-radius: 5px;*/
@@ -2382,9 +2383,9 @@ _divs{
 
     }
 
-    .properties_common_bottom_div .properties_number{       
+    /*.properties_common_bottom_div .properties_number{       
         margin-top: -27%;
-    }
+    }*/
 
     .properties_details_btns_div{
         display: none;
