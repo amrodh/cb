@@ -1044,6 +1044,7 @@ color: white;
 
 #properties_bottom_left_div{
     float: left;
+    padding-right: 0;
     /*width: 49%;*/
 }
 #properties_bottom_right_div{
@@ -1081,7 +1082,7 @@ color: white;
 .properties_img{
     width: 25%;
     float: left;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 .properties_img > a{
@@ -2447,8 +2448,6 @@ li.active>.training_anchor{
 
     .properties_img {
         width: 38%;
-        /* float: left; */
-        /* display: inline-block; */
         margin: auto;
     }
 
@@ -2473,15 +2472,29 @@ li.active>.training_anchor{
     .properties_contact{
         margin: auto; 
         float: none; 
+        width: 80px;
+        font-size: 14px;
     }
 
     .properties_common_bottom_div .properties_number{
         margin-top: -27%;
     }
 
+    .properties_details_btns_div{
+        display: none;
+    }
+
+    .properties_title{
+        font-size: 95%;
+    }
+
+    .properties_content{
+        font-size: 75%;
+    }
+
     .properties_img{
         float: none;
-        display: inline;
+        /*display: inline;*/
     }
 
     .properties_info{
@@ -2536,7 +2549,7 @@ li.active>.training_anchor{
 @media only screen and (max-width: 564px){
     .properties_info{
         margin-top: 10px;
-        margin-left: 20px;
+        /*margin-left: 20px;*/
     }
     .properties_details_icons{
         visibility: hidden;
