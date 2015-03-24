@@ -6,6 +6,9 @@
         Purpose of the stylesheet follows.
 */
 
+.accordionToggle{
+    font-size: 16px!important;
+}
 
 .logoutSubmit{
     background-color: #2f5081;
@@ -1147,7 +1150,7 @@ padding-top: 2px;
 .properties_info{
     float: right;
     display: inline-block;
-    width: 50%;
+    width: 68%;
     margin-right: 3%;
     /*margin-top: -130px;*/
     /*width: 60%;*/
@@ -2383,7 +2386,11 @@ _divs{
     }
 
     .footer_contact > img{
-        margin-left: -105px;
+        margin-right: -105px;
+    }
+
+    #footer_div{
+        padding: 2% 5% 2% 5%;
     }
 }
 

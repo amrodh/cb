@@ -6,6 +6,9 @@
         Purpose of the stylesheet follows.
 */
 
+.accordionToggle{
+    font-size: 16px!important;
+}
 
 .logoutSubmit{
     background-color: #2f5081;
@@ -1125,7 +1128,7 @@ div.dataTables_filter input{
 .properties_info{
     float: left;
     display: inline-block;
-    width: 50%;
+    width: 68%;
     margin-left: 3%;
     /*margin-top: -130px;
     width: 60%;*/
@@ -2487,6 +2490,10 @@ li.active>.training_anchor{
 
     .footer_contact > img{
         margin-left: -105px;
+    }
+
+    #footer_div{
+        padding: 2% 7% 2% 7%;
     }
 
 }

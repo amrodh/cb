@@ -75,10 +75,13 @@
                                                                 </ul>
                                                                 <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                             </div>
-                                                            <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
-                                                                    <?php echo $result->LocationProject; ?>,
-                                                                    <?php endif ?>
-                                                                    <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
+                                                            <div class="hidden-lg hidden-md hidden-sm" style="/* float:right; */position: absolute;top: 10px;right: 10px;">
+                                                                <?php if ($result->is_favorite == 1): ?>
+                                                                    <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
+                                                                <?php else: ?>
+                                                                    <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
+                                                                <?php endif ?>
+                                                            </div>
                                                             <div class="properties_img">
                                                                 <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                     <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
@@ -113,12 +116,8 @@
                                                             <?php endif ?>
                                                             <div class="properties_info">
                                                                 <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
-                                                                    <div class="col-lg-11" style="float: right; padding:0;">
-                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> 
-                                                                       <!--  <?php if ($result->LocationProject != ''): ?>
-                                                                        <?php echo $result->LocationProject; ?>,
-                                                                        <?php endif ?>
-                                                                        <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
+                                                                    <div class="" style="float: right; padding:0;width:90%;">
+                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"> 
                                                                         <?php if ($result->LocationProject != ''): ?>
                                                                             <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
                                                                         <?php else: ?>
@@ -126,7 +125,7 @@
                                                                         <?php endif ?>
                                                                         </b></a>
                                                                     </div>
-                                                                    <div class="col-lg-1" style="">
+                                                                    <div class="hidden-xs" style="float:right;">
                                                                         <?php if ($result->is_favorite == 1): ?>
                                                                             <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
                                                                         <?php else: ?>
@@ -275,7 +274,7 @@
                                                                     <div class="properties_info">
                                                                         <div class="properties_title row" style="margin-left: 0; margin-right: 0;">
                                                                             <div class="col-lg-11" style="float: right; padding:0;">
-                                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"><b> 
+                                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
                                                                                 <?php if ($result->LocationProject != ''): ?>
                                                                                     <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationProject; ?>, <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
                                                                                 <?php else: ?>
