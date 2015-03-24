@@ -4,7 +4,7 @@
                 <!-- <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
                     <a href="http://newhomes.com.eg/"><img style="width:112px;" src="<?= base_url();?>/application/static/images/logo_newhomes.jpg"/></a>
                 </div> -->
-                <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
+                <div class="col-xs-12 col-lg-2 col-md-2 col-sm-2 footer_cols">
                     <div class="footer_col_title">
                         <?php echo $this->lang->line('home_menu1'); ?>
                     </div>
@@ -15,7 +15,7 @@
                         <a href="<?= base_url();?>ar/viewAllProperties?lob=1&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu12'); ?><br></a>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
+                <div class="col-xs-12 col-lg-2 col-md-2 col-sm-2 footer_cols">
                     <div class="footer_col_title">
                         <?php echo $this->lang->line('home_menu2'); ?>
                     </div>
@@ -25,7 +25,7 @@
                         <a href="<?=base_url();?>ar/viewAllProperties?lob=2&amp;type=&amp;city=&amp;district=&amp;contractType=&amp;price=0&amp;area=0&amp;project=&amp;locationType=project"><?php echo $this->lang->line('home_submenu14'); ?><br></a>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 hidden-xs footer_cols">
+                <div class="col-xs-12 col-lg-2 col-md-2 col-sm-2 footer_cols">
                     <div class="footer_col_title">
                         <?php echo $this->lang->line('home_menu6'); ?>
                     </div>
@@ -35,7 +35,7 @@
                         <!-- Franchise<br> -->
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols" id="footer_last_col">
+                <div class="col-xs-12 col-lg-2 col-md-2 col-sm-2 footer_cols" id="footer_last_col">
                     <div class="footer_col_title">
                         <?php echo $this->lang->line('home_menu7'); ?>
                     </div>
@@ -54,7 +54,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-2 col-md-4 col-sm-4 footer_cols footer_contact">
+                <div class="col-xs-12 col-lg-2 col-md-2 col-sm-2 footer_cols footer_contact">
                     <img style="margin-top: -8px;" src="<?= base_url();?>/application/static/images/icon_phone_ar.png"/>
                     <div class="footer_col_title" style="margin-top: -29px;margin-right: 35px;font-size: 18px;">
                         <?php echo $this->lang->line('home_footer_submenu11'); ?><br>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-lg-8 col-md-4 col-sm-4">
+                <div class="col-xs-12 col-lg-8 col-md-8 col-sm-12 hidden-sm hidden-xs">
                     <div class="dropdown footer_dropdown_div" id="footer_dropdown_1">
                         <button type="button" class="btn dropdown-toggle footer_dropdowns" data-toggle="dropdown" id="footer_dropdown1">
                             فيلا
@@ -86,7 +86,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-4 col-md-4 col-sm-4" id="footer_bottom_div">
+                <div class="col-xs-12 col-lg-4 col-md-4 col-sm-6" id="footer_bottom_div">
                     <input type="hidden" id="url" value="<?= base_url(); ?>">
                     <input type="hidden" id="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">
                     <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">

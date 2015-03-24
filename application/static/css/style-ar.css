@@ -342,8 +342,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 
 .footer_social_icons{
     margin: 0 2px;
-    width: 25px;
-    /*height: 15px;*/
+    width: 20%;
 }
 
 #footer_top_div{
@@ -1735,6 +1734,12 @@ margin-top: 5%
 .modal-wide .modal-body {
   overflow-y: auto;
 }
+
+.modal-body{
+    width: 60%;
+    margin: auto;
+}
+
 .modal-header{
     color: #5a7baa;
     text-align: center;
@@ -2367,6 +2372,18 @@ _divs{
         width: 50%;
         margin: auto;
         /*margin-right: 2%;*/
+    }
+
+    .footer_cols{
+        text-align: center;
+    }
+
+    .footer_social_icons{
+        width: 5%;
+    }
+
+    .footer_contact > img{
+        margin-right: -20%;
     }
 }
 

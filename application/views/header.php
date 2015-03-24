@@ -144,7 +144,7 @@
                           <?php echo $this->lang->line('home_login_text'); ?>
                       </div>
                     </div>
-                    <div class="modal-body" style="width: 60%;margin: auto;">
+                    <div class="modal-body">
                         <div class="row" style="margin: 0;">
                              <div class="form-group login_form">
                                 <label style="width:100%" for="username" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input1'); ?></label>

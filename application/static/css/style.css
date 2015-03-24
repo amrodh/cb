@@ -345,9 +345,7 @@ color: white;
 }
 
 .footer_social_icons{
-    /*margin: 0 2px;*/
-    width: 30px;
-    /*height: 15px;*/
+    width: 20%;
 }
 
 #footer_top_div{
@@ -1728,6 +1726,12 @@ tbody > tr > td {
 .modal-wide .modal-body {
   overflow-y: auto;
 }
+
+.modal-body{
+    width: 60%;
+    margin: auto;
+}
+
 .modal-header{
     color: #5a7baa;
     text-align: center;
@@ -2473,6 +2477,17 @@ li.active>.training_anchor{
         margin-left: 2%;
     }
 
+    .footer_cols{
+        text-align: center;
+    }
+
+    .footer_social_icons{
+        width: 5%;
+    }
+
+    .footer_contact > img{
+        margin-left: -20%;
+    }
 
 }
 
@@ -2586,6 +2601,10 @@ li.active>.training_anchor{
 @media only screen and (max-width: 400px){
     .properties_img{
         width: 75%;
+    }
+
+    .modal-body{
+        width: 100%!important;
     }
 }
 
