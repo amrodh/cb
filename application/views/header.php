@@ -144,14 +144,14 @@
                           <?php echo $this->lang->line('home_login_text'); ?>
                       </div>
                     </div>
-                    <div class="modal-body" style="width: 35%;margin: auto;">
-                        <div class="row">
+                    <div class="modal-body" style="width: 60%;margin: auto;">
+                        <div class="row" style="margin: 0;">
                              <div class="form-group login_form">
                                 <label style="width:100%" for="username" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input1'); ?></label>
                                 <input style="float:left;width:100%;" type="text" name="username" value="<?php if(isset($login_username)) echo $login_username; ?>" class="form-control" id="username" placeholder="<?php echo $this->lang->line('home_login_placeholder1'); ?>" autofocus required>
                              </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin: 0;">
                             <div class="form-group login_form">
                                 <label style="width:100%" for="password" class="shareproperty_titles"><?php echo $this->lang->line('home_login_input2'); ?></label>
                                 <input style="float:left;width:100%;" type="password" name="password" class="form-control" id="password" placeholder="<?php echo $this->lang->line('home_login_placeholder2'); ?>" required>
@@ -166,11 +166,13 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-lg-9">
-                            <input type="submit" style="float: right;margin-right: 20%;" class="btn btn-default search_btn_submit2" value="Go" name="submit">
-                        </div>
-                        <div class="col-lg-3" style="padding-top: 4%;">
-                            <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
+                        <div id="login_modal_footer">
+                            <div class="row" style="width: 130px;margin: auto;">
+                                <input type="submit" style="" class="btn btn-default search_btn_submit2" value="Go" name="submit">
+                            </div>
+                            <div class="row" style="padding-top: 4%;padding-right: 6%;">
+                                <a href="<?= base_url();?>forgotPassword"><?php echo $this->lang->line('home_login_forgotpassword'); ?></a>
+                            </div>
                         </div>
                         <input type="hidden" name="currentUrl" id="currentUrl" value="<?= $this->uri->uri_string; ?>">
                         <input type="hidden" id="query_string" name="query_string" value="<?= $_SERVER['QUERY_STRING'] ?>">

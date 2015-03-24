@@ -1729,7 +1729,7 @@ margin-top: 5%
 }
 
 .modal.modal-wide .modal-dialog {
-  width: 60%;
+  /*width: 60%;*/
   margin-top: 100px;
 }
 .modal-wide .modal-body {
@@ -1751,6 +1751,8 @@ margin-top: 5%
 .modal-footer{
     border-top: transparent;
     padding-top: 0;
+    margin-top: 0;
+    text-align: left;
 }
 
 .calculator_modal_header, .calculator_col_title{

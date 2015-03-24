@@ -1721,9 +1721,10 @@ tbody > tr > td {
     width: 100%!important;
 }*/
 .modal.modal-wide .modal-dialog {
-  width: 60%;
+  /*width: 60%;*/
   margin-top: 100px;
 }
+
 .modal-wide .modal-body {
   overflow-y: auto;
 }
@@ -1743,6 +1744,7 @@ tbody > tr > td {
 .modal-footer{
     border-top: transparent;
     padding-top: 0;
+    text-align: right;
 }
 
 .calculator_modal_header, .calculator_col_title{
