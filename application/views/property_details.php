@@ -30,7 +30,7 @@
                 <div class="tab-pane active" id="details">
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
-                        <div id="property_details_images" class="property_borders" style="height:480px!important; width:535px!important">
+                        <div id="property_details_images" class="property_borders" style="width:100%;">
                             <?php if (is_array($images['src'])): ?>
                                 <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
                                     <?php foreach ($images['src'] as $key => $image): ?>
@@ -58,7 +58,7 @@
                                 <img src="<?= base_url();?>/application/static/images/No_image.svg" class="img-responsive" style="width: 90%;margin: auto;">
                             <?php endif ?>
                         </div>
-                        <div id="property_features_div" class="property_borders" style="margin-top: 9%;margin-left: -3%;width: 106%;">
+                        <div id="property_features_div" class="property_borders" style="">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-right:0;">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
@@ -179,7 +179,7 @@
                                             <textarea class="form-control" name="comments" id="property_form_textarea" rows="3"></textarea>
                                         </div>
                                         <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022342869903&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative;"> 
                                             <input type="submit" name="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
                                         <input type="hidden" id="propertyID" value="<?php echo $searchResults->PropertyId?>">

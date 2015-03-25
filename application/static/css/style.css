@@ -1109,7 +1109,7 @@ div.dataTables_filter input{
 }
 
 .properties_img{
-    width: 25%;
+    width: 20%;
     float: left;
     /*display: inline-block;*/
 }
@@ -1140,7 +1140,7 @@ div.dataTables_filter input{
 .properties_info{
     float: left;
     display: inline-block;
-    width: 68%;
+    width: 73%;
     margin-left: 3%;
     /*margin-top: -130px;
     width: 60%;*/
@@ -1500,16 +1500,11 @@ tbody > tr > td {
 }
 
 #property_form_btn{
-    width: 100px;
-    margin-top: -10%;
-    margin-left: 76%;
-    margin-bottom: 0;
+    position: absolute;
+    top: -60px;
+    width: 20%;
+    right: 4.5%;
 }
-
-/*#contact_form_btn{
-    margin-left: 220%;
-    margin-top: 0;
-}*/
 
 .property_contact_btn{
     width: 100px;
@@ -1742,7 +1737,7 @@ tbody > tr > td {
   overflow-y: auto;
 }
 
-.modal-body{
+#tallModal .modal-body{
     width: 60%;
     margin: auto;
 }
