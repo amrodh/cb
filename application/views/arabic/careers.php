@@ -6,9 +6,9 @@
                     <div class="careers_overlay_div_title">
                         <?php echo $this->lang->line('careers_title1'); ?>
                     </div>
-                    <div class="careers_overlay_div_content">
+                    <!-- <div class="careers_overlay_div_content">
                         <?php echo $this->lang->line('careers_description1'); ?>
-                    </div>
+                    </div> -->
                     <div class="careers_overlay_div_btn">
                         <a href="<?= base_url().'ar/';?>uploadCV">
                             <?php echo $this->lang->line('careers_button1'); ?>
@@ -19,9 +19,9 @@
                     <div class="careers_overlay_div_title">
                         <?php echo $this->lang->line('careers_title2'); ?>
                     </div>
-                    <div class="careers_overlay_div_content">
+                    <!-- <div class="careers_overlay_div_content">
                         <?php echo $this->lang->line('careers_description2'); ?>
-                    </div>
+                    </div> -->
                     <div class="careers_overlay_div_btn">
                         <a href="<?= base_url().'ar/';?>joinUs">
                             <?php echo $this->lang->line('careers_button2'); ?>

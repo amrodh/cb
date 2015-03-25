@@ -820,8 +820,8 @@ padding-top: 2px;
     /*margin-bottom: 50px;*/
     position: relative;
     /*padding: 10px;*/
-    background: url('../images/bkgnd_careers.png');
-    background-size: 100% 100%;
+    background: url('../images/bkgnd_careers.png')center center;
+    /*background-size: 100% 100%;*/
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -830,7 +830,7 @@ padding-top: 2px;
 #careers_overlay_div, #market_index_overlay_div{
     background: rgba(35, 57, 91, 0.75);
     width: 90%;
-    height: 50%;
+    height: 33%;
     margin: auto;
     position: relative;
     top: 48%;
@@ -1007,11 +1007,23 @@ padding-top: 2px;
 }
 
 .joinus_btn{
-    width: 130px;
-    text-align: center;
-    /*margin-top: -75px;*/
-    margin-bottom: 25px;
-    margin-right: 870px;
+    text-align: left;
+}
+
+.joinus_btn > a{
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px;
+    padding:5px;
+    background: -webkit-linear-gradient(#fec552, #eb7f04);
+    background: -o-linear-gradient(#fec552, #eb7f04);
+    background: -moz-linear-gradient(#fec552, #eb7f04);
+    background: linear-gradient(#fec552, #eb7f04);
+    border: 1px solid #f26522;
+    color: white!important;
+    text-decoration: none!important;
+    margin: 10px auto;
 }
 
 .properties_main_div, .compare_main_div, .shareproperty_main_div, .auctions_main_div, .training_main_div, .about_main_div{
@@ -2311,7 +2323,7 @@ _divs{
         padding-top: 10px;
         margin: auto auto 10px auto;
         width: 100%;
-        height: 50%;
+        height: 40%;
         font-size: 13px;
     }
     .careers_overlay_div_content{
@@ -2325,9 +2337,10 @@ _divs{
         
     }
     #careers_overlay_div{
-        top: 20%;
-        height: 60%;
+        /*top: 20%;*/
+        height: 35%;
         width: 90%;
+        padding-top: 4%;
     }
     #careers_overlay_left_div{
         border-left: none;
