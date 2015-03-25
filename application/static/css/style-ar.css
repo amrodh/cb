@@ -93,6 +93,7 @@ body{
     margin-bottom: 4%;
     padding-left: 4%;
     padding-right: 5%;
+    z-index: 1;
 }
 
 .header_social_icons{
@@ -130,6 +131,7 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 }
 
 .header_navbar{
+    z-index: auto;
     margin-right: 180px;
 }
 

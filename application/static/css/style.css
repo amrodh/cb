@@ -196,7 +196,6 @@ nav .open>a, .nav >a:hover, .nav .open>a:focus, .nav .open>a:hover {
 
 .header_navbar{
     z-index: auto;
-    /*transform: translateZ(1px);*/
 }
 
 .header_navbar > li{
