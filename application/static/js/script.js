@@ -631,7 +631,7 @@ function favorites(propertyID, color)
     var propertyID = propertyID;
     var url = $('#url').val();
     var userID = $('#userID').val();
-    if ($('#icon_'+propertyID).attr('class') == 'properties_star_icon_orange')
+    if ($('#icon1_'+propertyID).attr('class') == 'properties_star_icon_orange')
     {
         $.ajax({
           url: url+'deleteFavorite',
@@ -639,13 +639,13 @@ function favorites(propertyID, color)
           data: {userID: userID, propertyID: propertyID}
         })
         .success(function(response) {
-            $('#icon_'+propertyID).attr('src', url+'application/static/images/icon_gray_star.png');
-            $('#icon_'+propertyID).removeClass('properties_star_icon_orange');
-            $('#icon_'+propertyID).addClass('properties_star_icon_gray');
+            $('#icon1_'+propertyID).attr('src', url+'application/static/images/icon_gray_star.png');
+            $('#icon1_'+propertyID).removeClass('properties_star_icon_orange');
+            $('#icon1_'+propertyID).addClass('properties_star_icon_gray');
         });
 
     }else
-        if($('#icon_'+propertyID).attr('class') == 'properties_star_icon_gray')
+        if($('#icon1_'+propertyID).attr('class') == 'properties_star_icon_gray')
         {
             $.ajax({
               url: url+'insertFavorite',
@@ -654,9 +654,37 @@ function favorites(propertyID, color)
             })
             .success(function(response) {
               // alert(response);
-              $('#icon_'+propertyID).attr('src', url+'application/static/images/icon_orange_star.png');
-              $('#icon_'+propertyID).removeClass('properties_star_icon_gray');
-              $('#icon_'+propertyID).addClass('properties_star_icon_orange');
+              $('#icon1_'+propertyID).attr('src', url+'application/static/images/icon_orange_star.png');
+              $('#icon1_'+propertyID).removeClass('properties_star_icon_gray');
+              $('#icon1_'+propertyID).addClass('properties_star_icon_orange');
+            });
+        }
+    if ($('#icon2_'+propertyID).attr('class') == 'properties_star_icon_orange')
+    {
+        $.ajax({
+          url: url+'deleteFavorite',
+          type: "POST",
+          data: {userID: userID, propertyID: propertyID}
+        })
+        .success(function(response) {
+            $('#icon2_'+propertyID).attr('src', url+'application/static/images/icon_gray_star.png');
+            $('#icon2_'+propertyID).removeClass('properties_star_icon_orange');
+            $('#icon2_'+propertyID).addClass('properties_star_icon_gray');
+        });
+
+    }else
+        if($('#icon2_'+propertyID).attr('class') == 'properties_star_icon_gray')
+        {
+            $.ajax({
+              url: url+'insertFavorite',
+              type: "POST",
+              data: {userID: userID, propertyID: propertyID}
+            })
+            .success(function(response) {
+              // alert(response);
+              $('#icon2_'+propertyID).attr('src', url+'application/static/images/icon_orange_star.png');
+              $('#icon2_'+propertyID).removeClass('properties_star_icon_gray');
+              $('#icon2_'+propertyID).addClass('properties_star_icon_orange');
             });
         }
 }

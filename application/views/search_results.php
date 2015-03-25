@@ -71,9 +71,9 @@
                                                         </div>
                                                         <div class="hidden-lg hidden-md hidden-sm" style="/* float:right; */position: absolute;top: 10px;right: 10px;">
                                                             <?php if ($result->is_favorite == 1): ?>
-                                                                <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
+                                                                <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon1_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
                                                             <?php else: ?>
-                                                                <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
+                                                                <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon1_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
                                                             <?php endif ?>
                                                         </div>
                                                         <div class="properties_img">
@@ -121,9 +121,9 @@
                                                                 </div>
                                                                 <div class="hidden-xs" style="float:right;">
                                                                     <?php if ($result->is_favorite == 1): ?>
-                                                                        <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
+                                                                        <img class="properties_star_icon_orange" onclick="favorites(<?= $result->PropertyId;?>, 'orange');" id="icon2_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/>
                                                                     <?php else: ?>
-                                                                        <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
+                                                                        <img class="properties_star_icon_gray" onclick="favorites(<?= $result->PropertyId;?>, 'gray');" id="icon2_<?= $result->PropertyId;?>" src="<?= base_url();?>/application/static/images/icon_gray_star.png"/>
                                                                     <?php endif ?>
                                                                     
                                                                 </div>
