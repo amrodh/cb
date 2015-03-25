@@ -112,7 +112,7 @@
                                 <div class="hidden_values">
                                   
                                 </div>
-                                <button type="button" onclick="formValidate();" class="btn btn-default search_btn_submit2" style="" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
+                                <button type="button" id="submit_btn_home" class="btn btn-default search_btn_submit2" style="" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
                            </div>
                        </div>
                     </div>
@@ -128,22 +128,55 @@
           $('#search_tabs a:first').tab('show');
 //          $('.selectpicker').selectpicker();
         });
+      $(document).ready(function($) {
+          $("#submit_btn_home").click(function(event) {
+            var html_output = '';
+              if( $('[name="type"]').val() == 0 ){
+                html_output = '<input type="hidden" name="type" value="">';
+              }
 
-        function formValidate()
-        { 
+              if( $('[name="district"]').val() == 0 ){
+                html_output += '<input type="hidden" name="district" value="">';
+              }
 
-          var html_output = '';
+              $(".hidden_values").html(html_output);
+              $("#search_form").submit();
+          });
+      });
 
-          if( $('[name="type"]').val() == 0 ){
-            html_output = '<input type="hidden" name="type" value="">';
+      $("#serialNum").keypress(function(ev) {
+          var key = ev.which;
+          if(key == 13)
+          {
+              var html_output = '';
+              if( $('[name="type"]').val() == 0 ){
+                html_output = '<input type="hidden" name="type" value="">';
+              }
+
+              if( $('[name="district"]').val() == 0 ){
+                html_output += '<input type="hidden" name="district" value="">';
+              }
+
+              $(".hidden_values").html(html_output);
+              $("#search_form").submit();
           }
+      });
 
-          if( $('[name="district"]').val() == 0 ){
-            html_output += '<input type="hidden" name="district" value="">';
-          }
+//         function formValidate()
+//         { 
 
-          $(".hidden_values").html(html_output);
-          $("#search_form").submit();
-        }
+//           var html_output = '';
+// // alert("hi");
+//           if( $('[name="type"]').val() == 0 ){
+//             html_output = '<input type="hidden" name="type" value="">';
+//           }
+
+//           if( $('[name="district"]').val() == 0 ){
+//             html_output += '<input type="hidden" name="district" value="">';
+//           }
+
+//           $(".hidden_values").html(html_output);
+//           $("#search_form").submit();
+//         }
 
     </script>

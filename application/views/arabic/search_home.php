@@ -110,7 +110,7 @@
                        <div class="col-lg-12">
                               <div class="hidden_values">
                               </div>
-                            <button type="button" onclick="formValidate();" class="btn btn-default search_btn_submit2" style="" onclick="redirect();" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
+                            <button type="button" class="btn btn-default search_btn_submit2" id="submit_btn_home" name="searchSubmit1" value="searchSubmit1"><?php echo $this->lang->line('searchhome_button'); ?></button>
                        </div>
                    </div>
                 </div>
@@ -126,21 +126,37 @@
 //          $('.selectpicker').selectpicker();
         });
 
-        function formValidate()
-        { 
+        $(document).ready(function($) {
+          $("#submit_btn_home").click(function(event) {
+            var html_output = '';
+              if( $('[name="type"]').val() == 0 ){
+                html_output = '<input type="hidden" name="type" value="">';
+              }
 
-          var html_output = '';
-         
+              if( $('[name="district"]').val() == 0 ){
+                html_output += '<input type="hidden" name="district" value="">';
+              }
 
-          if( $('[name="type"]').val() == 0 ){
-            html_output = '<input type="hidden" name="type" value="">';
+              $(".hidden_values").html(html_output);
+              $("#search_form").submit();
+          });
+      });
+
+      $("#serialNum").keypress(function(ev) {
+          var key = ev.which;
+          if(key == 13)
+          {
+              var html_output = '';
+              if( $('[name="type"]').val() == 0 ){
+                html_output = '<input type="hidden" name="type" value="">';
+              }
+
+              if( $('[name="district"]').val() == 0 ){
+                html_output += '<input type="hidden" name="district" value="">';
+              }
+
+              $(".hidden_values").html(html_output);
+              $("#search_form").submit();
           }
-
-          if( $('[name="district"]').val() == 0 ){
-            html_output += '<input type="hidden" name="district" value="">';
-          }
-
-          $(".hidden_values").html(html_output);
-          $("#search_form").submit();
-        }
+      });
     </script>

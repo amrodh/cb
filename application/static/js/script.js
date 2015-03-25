@@ -730,8 +730,22 @@ function formValidation()
         $("#passwordAlert").hide();
     }
 }
+// function formValidate()
+//         { 
+// alert("hi");
+//           var html_output = '';
 
+//           if( $('[name="type"]').val() == 0 ){
+//             html_output = '<input type="hidden" name="type" value="">';
+//           }
 
+//           if( $('[name="district"]').val() == 0 ){
+//             html_output += '<input type="hidden" name="district" value="">';
+//           }
+
+//           $(".hidden_values").html(html_output);
+//           $("#search_form").submit();
+//         }
 function toggleVisibility()
 {
     if ($('.search_bottom_row').css('display') == 'none')
