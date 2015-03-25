@@ -1704,7 +1704,7 @@ label{
     color: #23395b;
     text-align: center;
     font-size: 18px;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     margin-top: 20px;
 }
 
@@ -1873,6 +1873,7 @@ margin-top: 5%
 }
 
 #auctions_bottom_div{
+    width: 100%;
     background-color: #f0f0f0;
     /*padding-top: 0px;*/
 }
@@ -1924,6 +1925,10 @@ li.active>.training_anchor{
 .training_body{
     background-color: #f0f0f0;
     padding: 30px 20px;
+}
+
+.panel-title>a, .panel-title>a:focus{
+    text-decoration: none;
 }
 
 .auction_body_top_div, .training_body_top_div{

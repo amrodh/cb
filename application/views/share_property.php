@@ -37,8 +37,7 @@
                             <form role="form" name="shareForm"  method="post" action="" enctype="multipart/form-data">
                             <div class="shareproperty_content">
                                 <div class="row">
-                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
-                                        <?php //if (isset($params)) {printme ($params);} ?>
+                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input1'); ?>
                                         </div>
@@ -54,7 +53,7 @@
                                              <option <?php if (isset($params)){ if($params['area'] == '350'){ ?>selected="true" <?php };} ?> value="350">350 m<sup>2</sup></option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input9'); ?>
                                         </div>
@@ -67,7 +66,7 @@
                                     <div id="shareProperty_propertyContainer">
                                         
                                     </div>
-                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" id="shareProperty_disabled_property">
+                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" id="shareProperty_disabled_property"  style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input2'); ?>
                                         </div>
@@ -75,7 +74,7 @@
                                              <option>Select Type</option> 
                                         </select>
                                     </div>
-                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                    <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin" style="margin-top: 20px;"> 
                                         <div class="shareproperty_titles title_margin">
                                             <?php echo $this->lang->line('shareproperty_input3'); ?>
                                         </div>
@@ -91,21 +90,9 @@
                                              <option <?php if (isset($params)){ if($params['price'] == '20,000,000+'){ ?>selected="true" <?php }} ?> value="20,000,000+">20,000,000+</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="col-xs-12 col-lg-3 col-md-6 col-sm-6 search_cols search_cols_margin">
-                                        <div class="shareproperty_titles title_margin" id="search_title_district">
-                                            <?php echo $this->lang->line('shareproperty_input4'); ?>
-                                        </div>
-                                        <select class="selectpicker" data-style="btn" data-title="Select City" id="shareProperty_city" name="city" data-size="5">
-                                             <option value="0">Select City</option>
-                                            <?php foreach ($cities as $city): ?>
-                                                <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
-                                            <?php endforeach ?>
-                                        </select>
-
-                                    </div> -->
                                 </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                <div class="row">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             <?php echo $this->lang->line('shareproperty_input4'); ?>
                                         </div>
@@ -122,7 +109,7 @@
                                     <div id="shareProperty_districtContainer">
                                      
                                     </div>
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" id="disabled_district_5">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" id="disabled_district_5" style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             District
                                         </div>
@@ -134,21 +121,24 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top: 20px;">
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin">
+                                <div class="row">
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols search_cols_margin" style="margin-top: 20px;">
                                         <div class="shareproperty_titles title_margin" id="search_title_district">
                                             <?php echo $this->lang->line('shareproperty_input6'); ?>
                                         </div>
                                         <textarea class="form-control" rows="3" name="address" id="address" value="<?php if(isset($params)) echo $params['address']; ?>"><?php if(isset($params)) echo $params['address']; ?></textarea>
                                     </div>
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
-                                        <label for="features" style="margin-bottom: 0;" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input7'); ?></label>
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols" style="margin-top: 20px;">
+                                        <div class="shareproperty_titles title_margin" id="search_title_district">
+                                            <?php echo $this->lang->line('shareproperty_input7'); ?>
+                                        </div>
+                                        <!-- <label for="features" style="margin-bottom: 0;" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input7'); ?></label> -->
                                         <textarea class="form-control" rows="3" name="features" id="features" value="<?php if(isset($params)) echo $params['features']; ?>"><?php if(isset($params)) echo $params['features']; ?></textarea>
                                     </div>
                                     
                                 </div>
-                                <div class="row" style="margin-top: 20px;"> 
-                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols">
+                                <div class="row"> 
+                                    <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6 search_cols" style="margin-top: 20px;">
                                         <div class="form-group">
                                             <label for="uploadimage" class="shareproperty_titles"><?php echo $this->lang->line('shareproperty_input8'); ?></label>
                                             <!-- <input type="file" name="img[]" multiple="multiple"> -->
@@ -165,7 +155,7 @@
                                     </div>
                                 </div>
                                 <?php endif ?>
-                                <div class="row" style="width: 13%; margin: auto; margin-top: 20px;">
+                                <div class="row" style="width: 137px; margin: auto; margin-top: 20px;">
                                     <!-- <button type="submit" class="btn btn-default search_btn_submit">Submit</button> -->
                                     <input type="submit" class="btn btn-default share_btn_submit" value="<?php echo $this->lang->line('shareproperty_button'); ?>" name="submit">
                                 </div>

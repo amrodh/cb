@@ -9,28 +9,10 @@
                 </ol>
             </div>
         </div>
-        <div id="auctions_bottom_div">
-	        <div class="row">
-				<div class="col-lg-12 offices_divs">
-					<!-- <div class="row" style="width: 100%;">
-						<div class="col-lg-6">
-							<div class="row" id="offices_selector">
-								<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle'); ?></p>
-								<?php $i = 0; ?>
-								<select class="selectpicker" name="offices_select" id="offices_select">
-									<option value="0">Select Office</option>
-		                            <?php foreach ($offices as $office): ?>
-		                                <option value="<?= $offices[$i]->id ?>"><?= $offices[$i]->district_en ?></option>
-		                                <?php $i++?>
-		                            <?php endforeach ?>
-								</select>
-							</div>
-							<div class="row" id="offices_info">
-
-							</div>
-						</div>
-					</div> -->
-					<div class="row">
+        <div id="auctions_bottom_div" class="container">
+	        <div class="row offices_divs">
+				<!-- <div class="col-lg-12 offices_divs"> -->
+					<!-- <div class="row"> -->
 						<div class="col-lg-6">
 							<p style="font-size: 145%;"><?php echo $this->lang->line('offices_subtitle2'); ?></p>
 							<form role="form" action="" method="post">
@@ -73,7 +55,7 @@
 				                        </div>
 			                        </div>
 			                        <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022342869903&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
-			                        <div class="row" style="width: 38%;margin: auto;">
+			                        <div class="row" style="width: 190px;margin: auto;">
 			                        	<div class="form-group col-lg-12">
                                             <input type="submit" style="" name="submit" class="btn btn-default property_btn" id="offices_contact_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
@@ -97,111 +79,114 @@
                             <?php endif ?>
 						</div>
 						<div class="col-lg-6">
-							<div class="row" style="height: 60%;width: 100%;">
-								<div class="col-lg-12" id="offices_map" style="height: 100%;">
+							<div class="container" style="padding:0; width:100%;">
+								<div class="row" style="height: 60%;width: 100%;margin: 0;">
+									<div class="col-lg-12" id="offices_map" style="height: 100%;">
 
+									</div>
 								</div>
-							</div>
-							<div class="row">
-								<?php foreach ($offices as $key => $office): ?>
-									<h4><span><?php $key2 = $key +1;echo $key2.".   "; ?></span><?php echo $office->district_en; ?></h4>
-									<div class="row">
-										<div class="col-lg-4 offices_titles">
-											</span><?php echo $this->lang->line('offices_title2'); ?>
-										</div>
-										<div class="col-lg-8">
-										<?php echo $office->address_en;?>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4 offices_titles">
-											<?php echo $this->lang->line('offices_title3'); ?>
-										</div>
-										<div class="col-lg-8" style="">
-										<?php  echo $office->start_time;?> am - <?php if ($office->end_time > 12): ?>
-											<?php $office->end_time = $office->end_time-12;?>
-										<?php endif ?><?php echo $office->end_time;?> pm
-										</div>
-									</div>
-									<?php if (isset($phonesResidential[$office->id])): ?>
+								<div class="row" style="margin: 0;">
+									<?php foreach ($offices as $key => $office): ?>
+										<h4><span><?php $key2 = $key +1;echo $key2.".   "; ?></span><?php echo $office->district_en; ?></h4>
 										<div class="row">
 											<div class="col-lg-4 offices_titles">
-												<?php echo $this->lang->line('offices_title4'); ?>  (Residential):
+												<?php echo $this->lang->line('offices_title2'); ?>
 											</div>
 											<div class="col-lg-8">
-												<?php foreach ($phonesResidential[$office->id] as $key => $phone): ?>
-													<?php if ($key == 0): ?>
-														<span style=""><?php  echo $phone;?></span>
-													<?php else: ?>
-														 / <span style=""><?php  echo $phone;?></span>
-													<?php endif ?>
-												<?php endforeach ?>
+											<?php echo $office->address_en;?>
 											</div>
 										</div>
-									<?php endif ?>
-									<?php if (isset($phonesCommercial[$office->id])): ?>
 										<div class="row">
 											<div class="col-lg-4 offices_titles">
-												<?php echo $this->lang->line('offices_title4'); ?>  (Commercial):
+												<?php echo $this->lang->line('offices_title3'); ?>
 											</div>
-											<div class="col-lg-8">
-												<?php foreach ($phonesCommercial[$office->id] as $key => $phone): ?>
-													<?php if ($key == 0): ?>
-														<span><?php  echo $phone;?></span>
-													<?php else: ?>
-														 / <span><?php  echo $phone;?></span>
-													<?php endif ?>
-												<?php endforeach ?>
+											<div class="col-lg-8" style="">
+											<?php  echo $office->start_time;?> am - <?php if ($office->end_time > 12): ?>
+												<?php $office->end_time = $office->end_time-12;?>
+											<?php endif ?><?php echo $office->end_time;?> pm
 											</div>
 										</div>
-									<?php endif ?>	
-									<?php if (isset($phonesHotline[$office->id])): ?>
-										<div class="row">
-											<div class="col-lg-4 offices_titles">
-												<?php echo $this->lang->line('offices_title4'); ?>  (Hotline):
-											</div>
-											<div class="col-lg-8">
-												<?php foreach ($phonesHotline[$office->id] as $key => $phone): ?>
-													<?php if ($key == 0): ?>
-														<span><?php  echo $phone;?></span>
-													<?php else: ?>
-														 / <span><?php  echo $phone;?></span>
-													<?php endif ?>
-												<?php endforeach ?>
-											</div>
-										</div>
-									<?php endif ?>
-									<div class="row">
-										<div class="col-lg-4 offices_titles">
-											Fax:
-										</div>
-										<div class="col-lg-8">
-											<?php echo $office->fax;?>
-										</div>
-									</div> 
-								<?php endforeach ?>
-								<div class="hide">
-									<ul class="office_addresses">
-										<?php foreach ($offices as $key => $office): ?>
-												<li>
-													<?php if ($office->address_en == '116 & 118 Egy Build Road 90, New Cairo, Egypt'): ?>
-														<span>116 S El-Teseen St</span>
-													<?php else: ?>
-														<?php if ($office->address_en == '1,2 Hamis center, El Hay El Motamayez entrance, 6 October city'): ?>
-															<span>Madkhal Al Hay Al Motamez, 6th of October City, Giza</span>
-															<?php else: ?>
-																<span><?= $office->address_en?></span>
+										<?php if (isset($phonesResidential[$office->id])): ?>
+											<div class="row">
+												<div class="col-lg-4 offices_titles">
+													<?php echo $this->lang->line('offices_title4'); ?>  (Residential):
+												</div>
+												<div class="col-lg-8">
+													<?php foreach ($phonesResidential[$office->id] as $key => $phone): ?>
+														<?php if ($key == 0): ?>
+															<span style=""><?php  echo $phone;?></span>
+														<?php else: ?>
+															 / <span style=""><?php  echo $phone;?></span>
 														<?php endif ?>
-													<?php endif ?>
-												</li>
-										<?php endforeach ?>
-									</ul>
+													<?php endforeach ?>
+												</div>
+											</div>
+										<?php endif ?>
+										<?php if (isset($phonesCommercial[$office->id])): ?>
+											<div class="row">
+												<div class="col-lg-4 offices_titles">
+													<?php echo $this->lang->line('offices_title4'); ?>  (Commercial):
+												</div>
+												<div class="col-lg-8">
+													<?php foreach ($phonesCommercial[$office->id] as $key => $phone): ?>
+														<?php if ($key == 0): ?>
+															<span><?php  echo $phone;?></span>
+														<?php else: ?>
+															 / <span><?php  echo $phone;?></span>
+														<?php endif ?>
+													<?php endforeach ?>
+												</div>
+											</div>
+										<?php endif ?>	
+										<?php if (isset($phonesHotline[$office->id])): ?>
+											<div class="row">
+												<div class="col-lg-4 offices_titles">
+													<?php echo $this->lang->line('offices_title4'); ?>  (Hotline):
+												</div>
+												<div class="col-lg-8">
+													<?php foreach ($phonesHotline[$office->id] as $key => $phone): ?>
+														<?php if ($key == 0): ?>
+															<span><?php  echo $phone;?></span>
+														<?php else: ?>
+															 / <span><?php  echo $phone;?></span>
+														<?php endif ?>
+													<?php endforeach ?>
+												</div>
+											</div>
+										<?php endif ?>
+										<div class="row">
+											<div class="col-lg-4 offices_titles">
+												Fax:
+											</div>
+											<div class="col-lg-8">
+												<?php echo $office->fax;?>
+											</div>
+										</div> 
+									<?php endforeach ?>
+									<div class="hide">
+										<ul class="office_addresses">
+											<?php foreach ($offices as $key => $office): ?>
+													<li>
+														<?php if ($office->address_en == '116 & 118 Egy Build Road 90, New Cairo, Egypt'): ?>
+															<span>116 S El-Teseen St</span>
+														<?php else: ?>
+															<?php if ($office->address_en == '1,2 Hamis center, El Hay El Motamayez entrance, 6 October city'): ?>
+																<span>Madkhal Al Hay Al Motamez, 6th of October City, Giza</span>
+																<?php else: ?>
+																	<span><?= $office->address_en?></span>
+															<?php endif ?>
+														<?php endif ?>
+													</li>
+											<?php endforeach ?>
+										</ul>
+									</div>
 								</div>
 							</div>
 							
+							
 						</div>
-					</div>
-				</div>
+					<!-- </div> -->
+				<!-- </div> -->
 
 			</div>
 			

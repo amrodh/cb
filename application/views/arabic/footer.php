@@ -185,7 +185,7 @@
               });
             
          </script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>-->
          <script type="text/javascript" src="<?= base_url(); ?>application/static/js/script.js"></script>
         
         <script>
