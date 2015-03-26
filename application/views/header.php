@@ -5,6 +5,7 @@
             <meta http-equiv="keywords" content="<?php echo $title;?>">
             <?php if (is_array($images['src'])): ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
+                <meta property="og:description" content="<?php echo $title;?>"/>
             <?php else: ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/images/No_image.svg" class="img-responsive" style="width: 90%;margin: auto;"/>
             <?php endif ?>
