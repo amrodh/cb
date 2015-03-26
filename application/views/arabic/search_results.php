@@ -160,12 +160,10 @@
                                                             </div>
                                                             <div class="properties_details_div">
                                                                 <div class="btn-group properties_details_btns_div">
-                                                                    <button type="button" class="btn btn-default properties_btns">
-                                                                        <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
-                                                                            <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
-                                                                            <?php echo $this->lang->line('viewallproperties_details'); ?>
-                                                                        </a>
-                                                                    </button>
+                                                                    <a class="btn btn-default properties_btns" href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
+                                                                        <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                                        <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                                    </a>
                                                                     <button type="button" class="btn btn-default properties_btns imgModal" id="<?= $result->PropertyId; ?>" data-toggle="modal" data-target="#imagesModal"> 
                                                                         <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_gallery.jpg"/>
                                                                         <span id="imgCount"></span> <?php echo $this->lang->line('viewallproperties_images'); ?>
@@ -234,12 +232,7 @@
                                                                                 </li>
                                                                             <?php endforeach ?>
                                                                         </ul>
-                                                                        <!--  <?= $images[$result->PropertyId]['src']; ?>  -->
                                                                     </div>
-                                                                    <!-- <input type="hidden" name="property_address" class="property_address" value="<?php if ($result->LocationProject != ''): ?>
-                                                                                <?php echo $result->LocationProject; ?>,
-                                                                                <?php endif ?>
-                                                                                <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>"> -->
                                                                     <div class="properties_img">
                                                                         <?php if (is_array($images[$result->PropertyId]['src'])): ?>
                                                                             <?php if ($images[$result->PropertyId]['src'][0] != 'No_image.svg'): ?>
@@ -247,14 +240,12 @@
                                                                             <?php else: ?>
                                                                                 <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;object-fit: cover;margin: auto;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a>
                                                                             <?php endif ?>
-                                                                            <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src'][0]; ?>"/></a> -->
                                                                         <?php else: ?>
                                                                             <?php if ($images[$result->PropertyId]['src'] != 'No_image.svg'): ?>
                                                                                 <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;object-fit: cover;margin: auto;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                             <?php else: ?>
                                                                                 <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:100%;object-fit: cover;margin: auto;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/images/<?= $images[$result->PropertyId]['src']; ?>"/></a>
                                                                             <?php endif ?>
-                                                                            <!-- <a href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"><img style="width:179px;height:127px;" id="image_<?= $result->PropertyId;  ?>" src="<?= base_url();?>application/static/upload/property_images/<?= $images[$result->PropertyId]['src']; ?>"/></a> -->
                                                                         <?php endif ?>
                                                                     </div>
                                                                     <?php if (strlen($count)>2): ?>
@@ -310,12 +301,10 @@
                                                                     </div>
                                                                     <div class="properties_details_div">
                                                                         <div class="btn-group properties_details_btns_div">
-                                                                            <button type="button" class="btn btn-default properties_btns">
-                                                                                <a href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
-                                                                                    <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
-                                                                                    <?php echo $this->lang->line('viewallproperties_details'); ?>
-                                                                                </a>
-                                                                            </button>
+                                                                            <a class="btn btn-default properties_btns" href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>">
+                                                                                <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_details.png"/>
+                                                                                <?php echo $this->lang->line('viewallproperties_details'); ?>
+                                                                            </a>
                                                                             <button type="button" class="btn btn-default properties_btns imgModal" id="<?= $result->PropertyId; ?>" data-toggle="modal" data-target="#imagesModal"> 
                                                                                 <img class="properties_details_icons" src="<?= base_url();?>/application/static/images/icon_gallery.jpg"/>
                                                                                 <span id="imgCount"></span> <?php echo $this->lang->line('viewallproperties_images'); ?>
