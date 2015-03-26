@@ -1526,6 +1526,8 @@ tbody > tr > td {
     top: -60px;
     width: 20%;
     left: 4.5%;
+    padding: 5px;
+    text-align: center;
 }
 
 #contact_form_btn{
