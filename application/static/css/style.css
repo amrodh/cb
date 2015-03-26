@@ -1748,6 +1748,10 @@ tbody > tr > td {
     color: #5a7baa;
     text-align: center;
 }
+
+.modal{
+    position: absolute;
+}
 #tallModal .modal-body p { 
     margin-bottom: 900px; 
 }
@@ -2512,7 +2516,7 @@ li.active>.training_anchor{
     }
 
     #footer_bottom_div{
-        width: 380px;
+        /*width: 380px;*/
         margin: auto;
         float: none;
         text-align: center;

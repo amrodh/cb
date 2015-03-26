@@ -2416,7 +2416,7 @@ _divs{
     }
 
     #footer_bottom_div{
-        width: 380px;
+        /*width: 380px;*/
         margin: auto;
         float: none;
         text-align: center;

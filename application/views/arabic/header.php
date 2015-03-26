@@ -82,7 +82,7 @@
                         <button type="button" style="background-color: transparent;border: none;padding: 0;margin-top: -2%;" class="btn btn-default" title="مطلوب التحقق من الشخصية"  
                               data-container="body" data-toggle="popover" data-placement="bottom" 
                               data-content="يرجى الدخول على البريد الالكتروني للتحقق من الشخصية.">
-                            <span style="margin-left:5%; color:white;" id"notifier"><b>
+                            <span style="margin-left:5%; color:white;" id"notifier">
                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                             </span>
                         </button>
@@ -99,9 +99,6 @@
                         <input type="submit" value="خروج" name="logoutSubmit" class="logoutSubmit">
                         </form>
                     </label>
-
-                    <!-- <span><b><a style="color: white; text-decoration: none;" href="<?= base_url();?>profile"><?= $user->username; ?></a></b></span>
-                    <a href="home/logout">Log Out</a> -->
                 <?php else: ?>
                     <label for="" style="margin-right:3%;">
                         <span class="glyphicon glyphicon-log-in"></span>
@@ -112,15 +109,11 @@
                          <span class="glyphicon glyphicon-plus-sign"></span>
                          <a href="<?= base_url();?>ar/register"><?php echo $this->lang->line('home_register'); ?></a>
                      </label>
-                    <!-- <a href="#tallModal" data-toggle="modal">دخول</a> / <a href="<?= base_url();?>register">تسجيل</a> -->
                 <?php endif ?>
             </div>
             <div id="language">
                 <label for="">
                     <span class="glyphicon glyphicon-globe"></span>
-                    <?php //printme($uri);?>
-                     <!-- <a href='<?= base_url().'en'.str_replace('ar', '',$uri)?>'>English</a>
-                    <span>/</span> -->
                     <?php if ($uri == 'shareProperty'): ?>
                         <a style="font-family: 'Ubuntu';" href='<?= base_url().'en/'.$uri?>'>English</a>
                         <span>/</span>
@@ -130,7 +123,6 @@
                         <span>/</span>
                         <a href='<?= base_url().'ar/'.str_replace('ar/', '',$uri)?>'>عربي</a>
                     <?php endif ?>
-                    <!-- <a href='<?= base_url().'ar'.str_replace('ar', '',$uri)?>'>عربي</a> -->
                 </label>
             </div>
         </div>

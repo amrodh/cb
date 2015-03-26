@@ -81,7 +81,7 @@
                         <button type="button" style="background-color: transparent;border: none;padding: 0;margin-top: -2%;" class="btn btn-default" title="Validation Required"  
                               data-container="body" data-toggle="popover" data-placement="bottom" 
                               data-content="Please login to your E-mail account to validate your account.">
-                            <span style="margin-left:5%; color:white;" id"notifier"><b>
+                            <span style="margin-left:5%; color:white;" id"notifier">
                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                             </span>
                         </button>
@@ -111,9 +111,7 @@
                          <span class="glyphicon glyphicon-plus-sign"></span>
                          <a href="<?=base_url();?>register"><?php echo $this->lang->line('home_register'); ?></a>
                      </label>
-                      
                 <?php endif ?>
-                
             </div>
             <div id="language">
                 <label>
