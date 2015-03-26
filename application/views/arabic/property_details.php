@@ -31,9 +31,9 @@
                 <div class="tab-pane active" id="details">
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
-                        <div id="property_details_images" class="property_borders">
-                            <?php if (is_array($images['src'])): ?>
-                                <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
+                        <?php if (is_array($images['src'])): ?>
+                            <div id="property_details_images" class="property_borders" style="height:450px; width:500px;position: relative; top: 0px; left: 0px; overflow:hidden;">
+                                <div u="slides" style="cursor: move; position: absolute; width: 450px; height: 337px; overflow: hidden;">
                                     <?php foreach ($images['src'] as $key => $image): ?>
                                         <div>
                                             <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
@@ -55,11 +55,14 @@
                                     </div>
                                     <!-- Thumbnail Item Skin End -->
                                 </div>
-                            <?php else: ?>
+                            </div>
+                        <?php else: ?>
+                            <div id="property_details_images" class="property_borders" style="width:100%;">
                                 <img src="<?= base_url();?>/application/static/images/No_image.svg" class="img-responsive" style="width: 90%;margin: auto;">
-                            <?php endif ?>
-                        </div>
-                        <div id="property_features_div" class="property_borders">
+                            </div>
+                        <?php endif ?>
+                        
+                        <div id="property_features_div" class="property_borders" style="margin-top: 9%;margin-right: -3%;width: 106%;">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
@@ -81,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-left:0;">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
@@ -443,9 +446,11 @@
                 //responsive code begin
                 //you can remove responsive code if you don't want the slider scales while window resizes
                 function ScaleSlider() {
-                    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                    var parentWidth = $('#property_details_images').parent().width();
+                    // var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
                     if (parentWidth)
-                        jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 800), 300));
+                        jssor_slider1.$ScaleWidth(parentWidth);
+                        // jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 800), 300));
                     else
                         window.setTimeout(ScaleSlider, 30);
                 }

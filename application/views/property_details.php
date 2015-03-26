@@ -30,34 +30,37 @@
                 <div class="tab-pane active" id="details">
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
-                        <div id="property_details_images" class="property_borders" style="width:100%;">
-                            <?php if (is_array($images['src'])): ?>
-                                <div u="slides" style="cursor: move; position: absolute; width: 495px; height: 356px; overflow: hidden;">
-                                    <?php foreach ($images['src'] as $key => $image): ?>
-                                        <div>
-                                            <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                            <img u="thumb" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
-                                        </div>
-                                    <?php endforeach ?>
-                                </div>
-                                <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 185px; left: 25px;">
-                                </span>
-                                <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
-                                </span>
-                                <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
-                                    <div u="slides" style="cursor: move;">
-                                        <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
-                                            <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
-                                            <div class=c>
+                        <?php if (is_array($images['src'])): ?>
+                            <div id="property_details_images" class="property_borders" style="height:450px; width:500px;position: relative; top: 0px; left: 0px; overflow:hidden;">
+                                    <div u="slides" style="cursor: move; position: absolute; width: 450px; height: 337px; overflow: hidden;">
+                                        <?php foreach ($images['src'] as $key => $image): ?>
+                                            <div>
+                                                <img u="image" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
+                                                <img u="thumb" src="<?= base_url();?>/application/static/upload/property_images/<?= $image; ?>" />
+                                            </div>
+                                        <?php endforeach ?>
+                                    </div>
+                                    <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 185px; left: 25px;">
+                                    </span>
+                                    <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
+                                    </span>
+                                    <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
+                                        <div u="slides" style="cursor: move;">
+                                            <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
+                                                <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
+                                                <div class=c>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Thumbnail Item Skin End -->
                                     </div>
-                                    <!-- Thumbnail Item Skin End -->
-                                </div>
-                            <?php else: ?>
+                            </div>
+                        <?php else: ?>
+                            <div id="property_details_images" class="property_borders" style="width: 100%;">
                                 <img src="<?= base_url();?>/application/static/images/No_image.svg" class="img-responsive" style="width: 90%;margin: auto;">
-                            <?php endif ?>
-                        </div>
+                            </div>
+                        <?php endif ?>
+                        
                         <div id="property_features_div" class="property_borders" style="">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title3'); ?>
@@ -79,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-right:0;">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
@@ -179,7 +182,7 @@
                                             <textarea class="form-control" name="comments" id="property_form_textarea" rows="3"></textarea>
                                         </div>
                                         <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6022342869903&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" />
-                                        <div class="form-group" style="position: relative;"> 
+                                        <div class="form-group" style="position:relative;">
                                             <input type="submit" name="submit" class="btn btn-default property_btn" id="property_form_btn" onClick="" value="<?php echo $this->lang->line('propertydetails_button'); ?>">
                                         </div>
                                         <input type="hidden" id="propertyID" value="<?php echo $searchResults->PropertyId?>">
@@ -440,9 +443,11 @@
                 //responsive code begin
                 //you can remove responsive code if you don't want the slider scales while window resizes
                 function ScaleSlider() {
-                    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                    var parentWidth = $('#property_details_images').parent().width();
+                    // var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
                     if (parentWidth)
-                        jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 800), 300));
+                        jssor_slider1.$ScaleWidth(parentWidth);
+                        // jssor_slider1.$ScaleWidth(Math.max(Math.min(530, 800), 300));
                     else
                         window.setTimeout(ScaleSlider, 30);
                 }
