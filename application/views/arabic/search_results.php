@@ -177,7 +177,8 @@
                                                                 </div>
                                                                 <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                     <div class="row" style="margin: auto;width:46%;">
-                                                                        <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>ar/propertyDetails/<?= $result->PropertyId;?>"></div>
+                                                                        <div id="fb-root"></div>
+                                                                        <div class="fb-share-button" data-layout="button" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                     </div>
                                                                     <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
                                                                         <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=base_url(); ?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
@@ -280,13 +281,8 @@
                                                                                 <?php else: ?>
                                                                                     <?php echo $result->PrpertyTypeStr;?> for <?php echo $result->SalesTypeStr;?> <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?>
                                                                                 <?php endif ?>
-                                                                               <!--  <?php if ($result->LocationProject != ''): ?>
-                                                                                <?php echo $result->LocationProject; ?>,
-                                                                                <?php endif ?>
-                                                                                <?php echo $result->LocationDistrict; ?>, <?php echo $result->LocationCity; ?> -->
-                                                                                </b></a>
+                                                                                </a>
                                                                             </div>
-                                                                            <!-- <div class="col-lg-1" style=""><img class="properties_star_icon" src="<?= base_url();?>/application/static/images/icon_orange_star.png"/></div> -->
                                                                         </div>
                                                                         <div class="properties_content row" style="margin-left: 0; margin-right: 0;">
                                                                             <?php if (!isset($commercial)): ?>                                               
@@ -331,23 +327,23 @@
                                                                         </div>
                                                                         <div class="properties_share_div" id="properties_share_div<?= $result->PropertyId;?>">
                                                                             <div class="row" style="margin: auto;width:46%;">
-                                                                                <!-- <div class="fb-share-button" data-layout="button" data-width="" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div> -->
+                                                                                <div id="fb-root"></div>
+                                                                                <div class="fb-share-button" data-layout="button" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                             </div>
                                                                             <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                                <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost/ColdwellBanker/propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a> -->
+                                                                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
                                                                                 <script>
-                                                                                // !function(d,s,id)
-                                                                                // {
-                                                                                //     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-                                                                                //     if(!d.getElementById(id)){
-                                                                                //         js=d.createElement(s);
-                                                                                //         js.id=id;
-                                                                                //         js.src=p+'://platform.twitter.com/widgets.js';
-                                                                                //         fjs.parentNode.insertBefore(js,fjs);
-                                                                                //     }
-                                                                                // }(document, 'script', 'twitter-wjs');
+                                                                                !function(d,s,id)
+                                                                                {
+                                                                                    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                                                                                    if(!d.getElementById(id)){
+                                                                                        js=d.createElement(s);
+                                                                                        js.id=id;
+                                                                                        js.src=p+'://platform.twitter.com/widgets.js';
+                                                                                        fjs.parentNode.insertBefore(js,fjs);
+                                                                                    }
+                                                                                }(document, 'script', 'twitter-wjs');
                                                                                 </script>
-                                                                                <!-- <a href="#"><img class="properties_details_share2" src="<?= base_url();?>/application/static/images/tw-share.png" style=""/></a> -->
                                                                             </div>
                                                                         </div>
                                                                         <div class="properties_contact">
