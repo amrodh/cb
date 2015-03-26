@@ -7,9 +7,15 @@
             <?php if (is_array($images['src'])): ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
                 <meta property="og:description" content="<?php echo $title;?>"/>
+
+                <meta name="twitter:description" content="<?php echo $title;?>"/>
+                <meta name="twitter:image:src" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
             <?php else: ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/images/No_image.svg" />
                 <meta property="og:description" content="<?php echo $title;?>"/>
+
+                <meta name="twitter:description" content="<?php echo $title;?>"/>
+                <meta name="twitter:image:src" content="<?= base_url();?>/application/static/images/No_image.svg"/>
             <?php endif ?>
 
 
