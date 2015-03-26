@@ -62,7 +62,7 @@
                             </div>
                         <?php endif ?>
                         
-                        <div id="property_features_div" class="property_borders" style="margin-top: 9%;margin-right: -3%;width: 106%;">
+                        <div id="property_features_div" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title3'); ?>
                             </div>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-left:0;">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>

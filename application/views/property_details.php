@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols" style="padding-right:0;">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 property_details_cols">
                         <div id="property_description" class="property_borders">
                             <div class="property_titles">
                                 <?php echo $this->lang->line('propertydetails_title1'); ?>
