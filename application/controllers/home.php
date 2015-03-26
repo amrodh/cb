@@ -23,59 +23,6 @@ class Home extends CI_Controller {
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['propertyType1'] = $this->database->getAllPropertyTypes();
 
-		// $inputs = array(
-  //             'searchMode' => 'Exact',
-  //             'Bedrooms' => '',
-  //             'PropertyId' => '',
-  //             'PropertyFor' => 3,
-  //             'PriceLowerLimit' => 0,
-  //             'PriceUpperLimit' => 1000000000000000000,
-  //             'PunitSale' => '',
-  //             'RentPriceLowerLimit' => 0,
-  //             'RentPriceUpperLimit' => 1000000000000000000,
-  //             'PunitRent' => '',
-  //             'AreaLowerLimit' => 0,
-  //             'AreaUpperLimit' => 1000000000000000000,
-  //             'PropertyType' => '',
-  //             'PropertyFor' => '',
-  //             'BoxLocation' => '',
-  //             'AreaUnitId' => '',
-  //             'CompanyId' => '',
-  //             'sortmode' => '',
-  //             'sortType' =>'1',
-  //             'isFeatured' => false,
-  //             'resultsCountPerPage' => '1300', 
-  //             'useFeaturedFilter' => false
-  //           );
-		// $this->load->model('service');
-		// $data['searchFunction'] = $this->service->search($inputs);
-		// printme($data['searchFunction']);
-		// printme("<br><br>======================================<br><br>");
-		// exit();
-
-		// $this->load->model('cronjobs');
-		// $this->cronjobs->importPropertiesIntoDB();
-
-
-		// $data['propertyType2'] = $this->database->Getpropertytypes(2);
-
-		// printme($data['propertyType1']);exit();
-
-
-		// $districts = $this->database->getAllDistricts();
-		// $neighborhoods = array();
-		// foreach ($districts as $key => $district) {
-			// printme($district);
-			// $neighborhoods[$key] = $this->service->GetNeighborhoodList($district['id']);
-		// }
-		// printme($neighborhoods);exit();
-		
-		// $data['featuredProperties']=$this->service->getFeaturedProperties();
-		// foreach ($data['featuredProperties'] as $property) {
-		// 	$data['featuredImages'][$property->PropertyId] = $this->service->getPropertyImages($property->PropertyId,$property->UnitId);		
-		// }
-
-
 		$this->load->view($data['languagePath'].'home',$data);
 	}
 
@@ -474,10 +421,6 @@ class Home extends CI_Controller {
 
 	public function shareProperty()
 	{
-		// $this->load->model('user');
-		// $this->load->model('property');
-		// $this->load->model('service');
-
 		$username = $this->session->userdata('username');
 		$data = $this->init();
 		$data['title'] = 'ColdWell Banker | Share your Property';
@@ -886,6 +829,7 @@ class Home extends CI_Controller {
 			redirect(base_url());
 		}
 		$data['searchResults'] = (object)  $data['searchResults'][0];
+		$data['PropertyFlag'] = true;
 		$data['title'] = 'ColdWell Banker | '.$data['searchResults']->PrpertyTypeStr.' for '.$data['searchResults']->SalesTypeStr.' in '.$data['searchResults']->LocationProject.', '.$data['searchResults']->LocationDistrict.', '.$data['searchResults']->LocationCity;
 		$data['districts'] = $this->database->getAllDistricts();
 		$data['images'] = $this->database->getPropertyImages($data['propertyId']);
