@@ -54,6 +54,7 @@
 
 *{
     font-family: 'droidarabickufi_regular';
+    outline: none;
 }
 
 html{
@@ -62,6 +63,7 @@ html{
 
 body{
     background-color: #5a7baa;
+    outline: none;
     /*height: 100%;*/
 }
 

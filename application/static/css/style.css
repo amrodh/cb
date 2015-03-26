@@ -40,10 +40,12 @@
 
 *{
     font-family: 'lucida';
+    outline: none;
 }
 
 body{
     background-color: #5a7baa;
+    outline: none;
     /*height: 100%;*/
 }
 
