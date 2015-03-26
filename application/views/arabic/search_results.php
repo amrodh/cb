@@ -181,7 +181,7 @@
                                                                         <div class="fb-share-button" data-layout="button" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                     </div>
                                                                     <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=base_url(); ?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=base_url(); ?>propertyDetails/<?= $result->PropertyId;?>" data-via="" data-count="none">Tweet</a>
                                                                         <script>
                                                                         !function(d,s,id)
                                                                         {
@@ -331,7 +331,7 @@
                                                                                 <div class="fb-share-button" data-layout="button" data-href="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>"></div>
                                                                             </div>
                                                                             <div class="row" style="margin: auto;margin-top: 8%;width:46%;">
-                                                                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>" data-via="SaraNahal" data-count="none">Tweet</a>
+                                                                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?= base_url();?>propertyDetails/<?= $result->PropertyId;?>" data-via="" data-count="none">Tweet</a>
                                                                                 <script>
                                                                                 !function(d,s,id)
                                                                                 {
