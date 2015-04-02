@@ -2260,7 +2260,7 @@ _divs{
         margin-left: 31px; 
     }
     #calculator_left_div{
-        border-right: none!important;
+        border-left: none!important;
     }
 
     #loanTerm{
