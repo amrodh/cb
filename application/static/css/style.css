@@ -1781,7 +1781,7 @@ tbody > tr > td {
 }
 
 .calculator_modal_content{
-    padding-top: 25px;
+    padding-top: 4%;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -2373,6 +2373,14 @@ li.active>.training_anchor{
 
     #calculator_left_div{
         border-right: none!important;
+    }
+
+    #loanTerm{
+        margin-left: 0!important;
+    }
+    
+    .calculator_modal_content{
+        padding-top: 8%;
     }
 }
 

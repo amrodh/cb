@@ -239,7 +239,7 @@
                   <div class="calculator_modal_content modal-content">
                     <div class="calculator_modal_header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <img style="width: 6%;" src="<?= base_url();?>/application/static/images/icon_calculator.png">
+                      <img style="width: 10%;" src="<?= base_url();?>/application/static/images/icon_calculator.png">
                       <h4 class="calculator_modal_title"><?php echo $this->lang->line('propertydetails_calculator_title2'); ?></h4>
                       <div style="font-size: 12px;margin-left: 60px;font-weight: lighter;">
                           <?php echo $this->lang->line('propertydetails_calculator_subtitle2'); ?>

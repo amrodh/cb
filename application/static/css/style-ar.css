@@ -1795,7 +1795,7 @@ margin-top: 5%
 }
 
 .calculator_modal_content{
-    padding-top: 25px;
+    padding-top: 4%;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -2261,6 +2261,13 @@ _divs{
     }
     #calculator_left_div{
         border-right: none!important;
+    }
+
+    #loanTerm{
+        margin-right: 0!important;
+    }
+    .calculator_modal_content{
+        padding-top: 8%;
     }
 }
 
