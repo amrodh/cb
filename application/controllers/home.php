@@ -565,7 +565,7 @@ class Home extends CI_Controller {
 	{
 		$data = $this->init();
 		$data['districts'] = $this->database->getAllDistricts();
-		$flag = false;					//featured flag
+		$featuredFlag = false;					//featured flag
 		$generalFlag = false;
 		$districtFlag = false;
 		if (isset($data['loggedIn'])){
@@ -590,7 +590,7 @@ class Home extends CI_Controller {
 		foreach ($getData as $value) {
 			$value = explode('=', $value);
 			if($value[0] == 'featured'){
-				$flag = true;
+				$featureFlag = true;
 				$lob = explode('=', $getData[1]);
 				$searchParams = array('featured' => true, 'lob' => $lob[1]);
 				$data['searchResults'] = $this->database->search($searchParams);
@@ -693,34 +693,65 @@ class Home extends CI_Controller {
 					$project = $value[1];
 				}
 			}elseif ($value[0] == 'locationType'){
-				// printme($value[1]);exit();
 				// if ($value[1] == 0 || $value[1] == '')
 				// {
-				// 	printme('hi');
 				// 	$locationType = '';
 				// }else{
 					$locationType = $value[1];
 				// }
-				// printme($locationType);exit();
 			}elseif ($value[0] == 'serialNum') {
 				// printme($value[1]);exit();
 				if ($value[1] == 0 || $value[1] == '')
 				{
-					// printme('hi');
 					$serialNum = '';
 				}else{
 					$serialNum = $value[1];
 				}
-				// printme($serialNum);exit();
-				// printme($value[1]);
 			}
+		}
+
+		if(!isset($lob)){
+			$lob = "";
+		}
+		if(!isset($city)){
+			$city = "";
+		}
+		if(!isset($district)){
+			$district = "";
+		}
+		if(!isset($type)){
+			$type = "";
+		}
+		if(!isset($propertyFor)){
+			$propertyFor = "";
+		}
+		if(!isset($priceLowerLimit)){
+			$priceLowerLimit = 0;
+		}
+		if(!isset($priceUpperLimit)){
+			$priceUpperLimit = 10000000000000;
+		}
+		if(!isset($areaLowerLimit)){
+			$areaLowerLimit = 0;
+		}
+		if(!isset($areaUpperLimit)){
+			$areaUpperLimit = 10000000000000;
+		}
+		if(!isset($project)){
+			$project = "";
+		}
+		if(!isset($locationType)){
+			$locationType = "";
+		}
+		if(!isset($serialNum)){
+			$serialNum = "";
 		}
 
 		if ($districtFlag == false){
 			$district = '';
 		}
 
-		if ($flag == false){
+		if ($featuredFlag == false){
 			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '' && $locationType == '')
 			{
 				$generalFlag = true;
@@ -741,6 +772,7 @@ class Home extends CI_Controller {
 				'PropertyId' => $serialNum
 			);
 
+			// printme($searchParams);exit();
 			if ($lob == 2 || $lob == 4)
 			{
 				$data['commercial'] = true;
@@ -825,6 +857,31 @@ class Home extends CI_Controller {
 		$propertyId = explode('/', $data['uri']);
 		$data['propertyId'] = $propertyId[1];
 		$data['searchResults'] = $this->database->getPropertyByID($data['propertyId']);
+		$count = 0;
+		$results = array();
+		foreach ($data['searchResults'][0] as $key => $value) {
+			if($key == "LocationCity" || $key == "LocationDistrict" || $key == "LocationProject" || $key == "PrpertyTypeStr" || $key == "SalesTypeStr"){
+				$results[$count] = $value;
+				$count++;
+			}
+		}
+		// printme($results );exit();
+		$data['keywords'] = array();
+		$count = 0;
+		foreach ($results as $key => $value) {
+			foreach ($results as $key2 => $value2) {
+				if ($value !== $value2)
+				{
+					$input = $value." ".$value2;
+					if (!in_array($input, $data['keywords'])){
+						$data['keywords'][$count] = $input;	
+						$count++;
+					}
+				}
+				
+			}
+		}
+		// printme($data['keywords']);exit();
 		if (!is_array($data['searchResults'])) {
 			redirect(base_url());
 		}

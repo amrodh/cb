@@ -7,12 +7,7 @@
         <?php if (isset($featuredProperties) && $featuredProperties != false): ?>
             <?php $count = 1; ?>
             <?php foreach ($featuredProperties as $property): ?>
-               <!--  <?php //if (count($featuredProperties) < 3): ?> -->
-                    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 newsletter_cols" style="width:48%;"> -->
-               <!--  <?php //else: ?> -->
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 newsletter_cols" style="">
-               <!--  <?php //endif ?> -->
-                
                     <div class="properties_number compare_number">
                         <?php echo $count; ?>
                     </div>
@@ -24,7 +19,6 @@
                                 </li>
                             <?php endforeach ?>
                         </ul>
-                      <!--   <?= $featuredImages[$property->PropertyId]; ?> -->
                     </div>
                     <div class="featuredProperty_img">
                         <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>"> <img class="compare_images" id="image_<?= $property->PropertyId;  ?>" src="<?= base_url();?>/application/static/images/sample_property.png"/></a>
@@ -33,7 +27,6 @@
                         <div class="compare_description_title">
                             <a href="<?= base_url();?>en/propertyDetails/<?= $property->PropertyId;?>"> <?php 
                                 $propertyName = $property->PrpertyTypeStr.' for '.$property->SalesTypeStr.' '.$property->LocationProject.', '.$property->LocationDistrict.', '.$property->LocationCity;
-                                //$propertyName .= $propertyName;
                                 if(strlen($propertyName) > 52){
                                     $propertyName = substr($propertyName,0,42).'..';
                                 }

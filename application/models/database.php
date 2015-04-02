@@ -217,7 +217,7 @@ class database extends CI_Model {
                         $results = array(
                           'results' => $query->result(),
                           'totalResults' => $query->num_rows
-                          );
+                        );
                         // printme($results);exit();
                         return $results;
                     }else{
@@ -251,8 +251,7 @@ class database extends CI_Model {
                         {
                             $this->db->where('LocationDistrict', $inputs['District']);
                         }
-
-                        if($inputs['PropertyFor'] == '' || $inputs['PropertyFor'] == 0)
+                        if(empty($inputs['PropertyFor']))
                         {
                           $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
                           $this->db->where('((SalePrice < '. $inputs['PriceUpperLimit']. ' AND SalePrice > '.  $inputs['PriceLowerLimit']. ') OR (RentPrice < '.$inputs['PriceUpperLimit'].' AND RentPrice > '.$inputs['PriceLowerLimit'].'))');
@@ -266,19 +265,6 @@ class database extends CI_Model {
                                 $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
                             }
                         }
-                        // if ($inputs['PropertyFor'] != '' || $inputs['PropertyFor'] !== 0)
-                        // {
-                        //     $this->db->where("(SalesTypeStr='".$inputs['PropertyFor']."' OR SalesTypeStr='Sale/Rent')");
-                        //     if ($inputs['PropertyFor'] == 'Sale' || $inputs['PropertyFor'] == 'Sale/Rent'){
-                        //         $this->db->where('SalePrice <', $inputs['PriceUpperLimit']);
-                        //         $this->db->where('SalePrice >', $inputs['PriceLowerLimit']);
-                        //     }elseif($inputs['PropertyFor'] == 'Rent'){
-                        //         $this->db->where('RentPrice <', $inputs['PriceUpperLimit']);
-                        //         $this->db->where('RentPrice >', $inputs['PriceLowerLimit']);
-                        //     }
-                        // }else{
-                        //     $this->db->where("(SalesTypeStr='Sale' OR SalesTypeStr='Sale/Rent' OR SalesTypeStr='Rent')");
-                        // }
                         if ($inputs['locationType'] != '' || $inputs['locationType'] != 0){
                             $this->db->where('LocationType', $inputs['locationType']);
                         }
@@ -292,8 +278,7 @@ class database extends CI_Model {
                             $results = array(
                               'results' => $query->result(),
                               'totalResults' => $query->num_rows
-                              );
-                            // printme($results);exit();
+                            );
                             return $results;
                         }else{
                             return false; 
@@ -312,7 +297,6 @@ class database extends CI_Model {
                               'results' => $query->result(),
                               'totalResults' => $query->num_rows
                               );
-                            // printme($results);exit();
                             return $results;
                         }else{
                             return false; 

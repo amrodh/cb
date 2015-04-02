@@ -17,7 +17,7 @@
                                 value="<?php if(isset($params)) echo $params['first_name']; ?>" autofocus required>
                              </div>
                         </div>
-                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group register_groups">
                                 <label for="lastname" class="shareproperty_titles"><?php echo $this->lang->line('register_input2'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="last_name" title="First name must be more than 2 characters" id="lastname" pattern="[.{3,}" placeholder="رجاءً أدخل إسم العائلة"
@@ -26,14 +26,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6">
                              <div class="form-group register_groups">
                                 <label for="username" class="shareproperty_titles"><?php echo $this->lang->line('register_input3'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="username" id="username" pattern=".{3,}" title="3 characters minimum" placeholder="رجاءً أدخل إسم المستخدم" 
                                 value="<?php if(isset($params)) echo $params['username']; ?>" required>
                              </div>
                         </div>
-                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6">
                             <div class="form-group register_groups">
                                 <label for="email" class="shareproperty_titles"><?php echo $this->lang->line('register_input4'); ?></label>
                                 <input type="email" class="form-control register_textbx" name="email" id="email" placeholder="رجاءً أدخل البريد الالكتروني" 
@@ -42,27 +42,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6">
                              <div class="form-group register_groups">
                                 <label for="location" class="shareproperty_titles"><?php echo $this->lang->line('register_input5'); ?></label>
                                 <input type="text" class="form-control register_textbx" name="location" id="location" placeholder="رجاءً أدخل البريد العنوان" 
                                 value="<?php if(isset($params)) echo $params['location']; ?>" required>
                              </div>
                         </div>
-                        <div class="col-xs-12 col-lg-6 col-md-4 col-sm-4">
-                            <div class="form-group register_groups">
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6">
+                            <div class="form-group register_groups" style="width: 75%;">
                                 <label for="phone" class="shareproperty_titles"><?php echo $this->lang->line('register_input6'); ?></label>
-                                <div class="row">
-                                    <div class="col-lg-3">
+                                <div>
+                                    <div class="" style="display: inline-block; width: 20%;">
                                         <select class="selectpicker" id="country_Code" style="width:15%;!important" name="country_Code" data-style="btn" data-title="Select Code" data-size="5">
                                             <option value="0">Code</option>
                                             <?php foreach ($countryCodes as $code): ?>
-                                                <option value="<?= $code['id'] ?>"><pre><?= $code['id'];?>   <?= $code['name'] ?></pre></option>
+                                                <option value="<?= $code['country_code'] ?>"><pre><?= $code['country_code'];?>   <?= $code['country_name'] ?></pre></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input type="text" class="form-control register_textbx" name="phone" style="width: 66%;" id="phone" placeholder="رجاءً أدخل رقم الهاتف"
+                                    <div class="" style="display: inline-block;" id="number_div">
+                                        <input type="text" class="form-control register_textbx" name="phone" style="width: 100%;" id="phone" placeholder="رجاءً أدخل رقم الهاتف"
                                         value="<?php if(isset($params)) echo $params['phone']; ?>" required>
                                     </div>
                                 </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <?php endif ?>
-                    <div class="row" style="width: 13%; float: right; margin-right: 12%;">
+                    <div class="row" style="width: 130px;margin: auto;">
                         <input type="submit" class="btn btn-default register_btn_submit"  name="submit" value="<?php echo $this->lang->line('register_button'); ?>">
                     </div>
                 </div>

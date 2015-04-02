@@ -3,26 +3,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         
         <?php if (isset($PropertyFlag)): ?>
-            <meta http-equiv="keywords" content="<?php echo $title;?>">
+            <meta http-equiv="keywords" content="<?php foreach ($keywords as $key => $value): ?>
+                <?php echo $value.', '; ?>
+            <?php endforeach ?>">
             <?php if (is_array($images['src'])): ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
                 <meta property="og:description" content="<?php echo $title;?>"/>
-
                 <meta name="twitter:description" content="<?php echo $title;?>"/>
                 <meta name="twitter:image:src" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
             <?php else: ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/images/No_image.svg" />
                 <meta property="og:description" content="<?php echo $title;?>"/>
-
                 <meta name="twitter:description" content="<?php echo $title;?>"/>
                 <meta name="twitter:image:src" content="<?= base_url();?>/application/static/images/No_image.svg"/>
             <?php endif ?>
-
-
         <?php else: ?>
             <meta http-equiv="keywords" content=" real estate Egypt, real estate in Egypt, Egypt real estate, real estate agent Egypt, real estate for sale Egypt, real estate brokers Egypt, real estate agency Egypt, real estate property Egypt, real estate market Egypt, residential real estate Egypt, luxury real estate Egypt, buy real estate Egypt ">
         <?php endif ?>
-
         
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

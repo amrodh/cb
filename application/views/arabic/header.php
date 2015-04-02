@@ -2,7 +2,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <?php if (isset($PropertyFlag)): ?>
-            <meta http-equiv="keywords" content="<?php echo $title;?>">
+            <meta http-equiv="keywords" content="<?php foreach ($keywords as $key => $value): ?>
+                <?php echo $value.', '; ?>
+            <?php endforeach ?>">
             <?php if (is_array($images['src'])): ?>
                 <meta property="og:image" content="<?= base_url();?>/application/static/upload/property_images/<?= $images['src'][0]; ?>"/>
                 <meta property="og:description" content="<?php echo $title;?>"/>

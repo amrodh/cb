@@ -729,6 +729,7 @@ color: white;
     padding: 0;
     display: inline-block;
     width: 100%;
+    vertical-align: middle;
 }
 
 .property_alert_body, .featuredProperty_body{
@@ -1717,6 +1718,11 @@ tbody > tr > td {
     margin-top: 20px;
 }
 
+#number_div{
+    width: 78%;
+}
+
+
 .carousel-inner img{
     cursor:pointer;
 }
@@ -1777,6 +1783,7 @@ tbody > tr > td {
 .calculator_modal_content{
     padding-top: 25px;
     padding-left: 20px;
+    padding-right: 20px;
 }
 .calculator_modal_title{
     margin-top: -50px;
@@ -1807,9 +1814,10 @@ tbody > tr > td {
 
 
 #loanTerm{
-    width: 9%;
+    width: 12%;
+    /*width: 9%;
     margin-left: 30px;
-    padding-left: 13px;
+    padding-left: 13px;*/
 }
 
 #market_index_top_row{

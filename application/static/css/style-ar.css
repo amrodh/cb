@@ -752,8 +752,10 @@ padding-top: 2px;
 
 #property_alert_tabs li a, #featuredProperty_tabs li a, #search_tabs li a{
     padding: 0;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
 }
-
 
 .property_alert_body, .featuredProperty_body{
     /*border: 1px solid red;*/
@@ -767,7 +769,6 @@ padding-top: 2px;
 .property_alert_body{
     margin-bottom: 3%;
 }
-
 
 #alert_email{
     width: 100%;
@@ -1737,6 +1738,13 @@ label{
     margin-top: 20px;
 }
 
+#number_div{
+    width: 78%;
+}
+#shareproperty_bottom_inner_div > div:nth-child(3) > div:nth-child(2) > div > div > div:nth-child(1) > div > button > span.caret{
+    margin-right: -50%;
+}
+
 .carousel-inner img{
     cursor:pointer;
 }
@@ -1789,6 +1797,7 @@ margin-top: 5%
 .calculator_modal_content{
     padding-top: 25px;
     padding-left: 20px;
+    padding-right: 20px;
 }
 .calculator_modal_title{
     margin-top: -50px;
