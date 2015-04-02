@@ -1815,9 +1815,8 @@ tbody > tr > td {
 
 #loanTerm{
     width: 12%;
-    /*width: 9%;
-    margin-left: 30px;
-    padding-left: 13px;*/
+    margin-left: 7%;
+    display: inline-block;
 }
 
 #market_index_top_row{
@@ -2370,6 +2369,10 @@ li.active>.training_anchor{
 
     #property_notifier {
         height: 54%;
+    }
+
+    #calculator_left_div{
+        border-right: none!important;
     }
 }
 

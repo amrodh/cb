@@ -249,7 +249,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-6" style="border-left: 2px solid #5a7baa;">
+                            <div class="col-lg-6 col-md-6" id="calculator_left_div" style="border-left: 2px solid #5a7baa;">
                                 <div class="calculator_col_title">
                                     <?php echo $this->lang->line('propertydetails_calculator_title3'); ?>
                                 </div>
@@ -280,7 +280,7 @@
                                     </div> -->
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="calculator_col_title">
                                     <?php echo $this->lang->line('propertydetails_calculator_title7'); ?>
                                 </div>
@@ -318,7 +318,7 @@
                             </div>
                             <div class="calculator_inputs col-lg-7">
                                 <input type="text" class="form-control" name="loanTerm" id="loanTerm" placeholder="5"> 
-                                <div style="margin-top: -25px;margin-right: 70px;font-weight: lighter;font-size: 12px;"> سنة. (أقصى عدد سنوات للقرض هي 5 سنوات)</div>
+                                <div style="font-size: 13px;display: inline-block;"> سنة. (أقصى عدد سنوات للقرض هي 5 سنوات)</div>
                             </div>
                         </div>
                     </div>

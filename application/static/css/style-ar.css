@@ -1828,9 +1828,9 @@ margin-top: 5%
 
 
 #loanTerm{
-    width: 9%;
-    margin-right: 28px;
-    padding-right: 13px;
+    width: 12%;
+    margin-right: 7%;
+    display: inline-block;
 }
 
 #market_index_top_row{
@@ -2256,12 +2256,11 @@ _divs{
 }
 
 @media only screen and (max-width: 992px){
-    .properties_contact{
-        /*margin-left: 520px;*/
-    }
-    
     .property_thumbnail{
         margin-left: 31px; 
+    }
+    #calculator_left_div{
+        border-right: none!important;
     }
 }
 

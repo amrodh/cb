@@ -247,7 +247,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-6" style="border-right: 2px solid #5a7baa;">
+                            <div id="calculator_left_div" class="col-lg-6 col-md-6" style="border-right: 2px solid #5a7baa;">
                                 <div class="calculator_col_title">
                                     <?php echo $this->lang->line('propertydetails_calculator_title3'); ?>
                                 </div>
@@ -278,7 +278,7 @@
                                     </div> -->
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="calculator_col_title">
                                     <?php echo $this->lang->line('propertydetails_calculator_title7'); ?>
                                 </div>
@@ -316,7 +316,7 @@
                             </div>
                             <div class="calculator_inputs col-lg-7">
                                 <input type="text" class="form-control" name="loanTerm" id="loanTerm" placeholder="5"> 
-                                <div style="margin-top: -25px;margin-left: 20%;font-weight: lighter;font-size: 12px;"> Yrs. (Maximum loan terms is 5 yrs.)</div>
+                                <div style="font-size: 13px;display: inline-block;"> Yrs. (Maximum loan terms is 5 yrs.)</div>
                             </div>
                         </div>
                     </div>
