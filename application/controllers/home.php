@@ -621,14 +621,15 @@ class Home extends CI_Controller {
 				{
 					$lob = '';
 				}else{
-					$lob = $value[1];
+					$lob = $this->security->xss_clean($value[1]);
 				}
+				// printme($this->security->xss_clean($value[1]));exit();
 			}elseif($value[0] == 'city'){
 				if ($value[1] == 0 || $value[1] == '')
 				{
 					$city = '';
 				}else{
-					$city = $this->database->getCityByID($value[1]);
+					$city = $this->database->getCityByID($this->security->xss_clean($value[1]));
 					$data['districts'] = $this->database->getDistricts($city[0]['id']);
 					$city = $city[0]['name'];
 				}
@@ -637,7 +638,7 @@ class Home extends CI_Controller {
 				{
 					$district = '';
 				}else{
-					$district = $this->database->getDistrictByID($value[1]);
+					$district = $this->database->getDistrictByID($this->security->xss_clean($value[1]));
 					$district = $district[0]['name'];
 					$districtFlag = true;
 				}
@@ -646,7 +647,7 @@ class Home extends CI_Controller {
 				{
 					$type = '';
 				}else{
-					$type = $this->database->getPropertyTypeByID($value[1]);
+					$type = $this->database->getPropertyTypeByID($this->security->xss_clean($value[1]));
 				}
 			}elseif($value[0] == 'contractType'){
 				
@@ -654,10 +655,10 @@ class Home extends CI_Controller {
 				// {
 					// $propertyFor = '';
 				// }else{
-					$propertyFor = $value[1];
+					$propertyFor = $this->security->xss_clean($value[1]);
 				// }
 			}elseif($value[0] == 'price'){
-				$price = explode('+', $value[1]);
+				$price = explode('+', $this->security->xss_clean($value[1]));
 				if (count($price) == 1)
 				{
 					$priceLowerLimit = $price[0];
@@ -667,7 +668,7 @@ class Home extends CI_Controller {
 					$priceUpperLimit = $price[2];
 				}
 			}elseif($value[0] == 'area'){
-				$area = explode('+', $value[1]);
+				$area = explode('+', $this->security->xss_clean($value[1]));
 				if (count($area) == 1)
 				{
 					if ($area[0] == '%3C50')
@@ -686,7 +687,7 @@ class Home extends CI_Controller {
 					$areaUpperLimit = $area[2];
 				}
 			}elseif($value[0] == 'project'){
-				if ($value[1] == 0 || $value[1] == '')
+				if ($this->security->xss_clean($value[1]) == 0 || $this->security->xss_clean($value[1]) == '')
 				{
 					$project = '';
 				}else{
@@ -697,15 +698,15 @@ class Home extends CI_Controller {
 				// {
 				// 	$locationType = '';
 				// }else{
-					$locationType = $value[1];
+					$locationType = $this->security->xss_clean($value[1]);
 				// }
 			}elseif ($value[0] == 'serialNum') {
 				// printme($value[1]);exit();
-				if ($value[1] == 0 || $value[1] == '')
+				if ($this->security->xss_clean($value[1]) == 0 || $this->security->xss_clean($value[1]) == '')
 				{
 					$serialNum = '';
 				}else{
-					$serialNum = $value[1];
+					$serialNum = $this->security->xss_clean($value[1]);
 				}
 			}
 		}
@@ -750,7 +751,7 @@ class Home extends CI_Controller {
 		if ($districtFlag == false){
 			$district = '';
 		}
-
+// printme()
 		if ($featuredFlag == false){
 			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '' && $locationType == '')
 			{
