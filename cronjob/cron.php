@@ -787,47 +787,76 @@
     }
     function insertPropertyImage($propertyID, $unitID, $client, $con)
     {
-      require_once('simple_html_dom.php');
-      $data['images'][$propertyID] = getPropertyImages($propertyID, $unitID, $client);
-      $html = str_get_html(($data['images'][$propertyID]));
-        if($html && is_object($html)){
-            $count = 0;
-            $image = $html->find('img');
-             
-            if(count($image) == 0){
-                $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
-                // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
-                $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'No_image.svg')";
-                $result = $con->query($sql);
-            }
-            foreach($image as $element) 
-            {   
-                $url = $element->attr['src'];
-                $test = file_get_contents(trim($url));
+
+        $imgFlag = true;
+        $count = 0;
+        while($imgFlag){
+            $path = "http://mycb.cb-ia.com/GetFile.aspx?fty=1&ftg=".$propertyID.",".$unitID."&id=".$count;
+            $data = file_get_contents($path);
+            if (strpos($data,'IHDR') == false) {
                 // $img = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
                 $img = '/var/www/html/cb/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
-                file_put_contents($img, $test);
+                file_put_contents($img, $data);
                 $img_name = 'image_'.$count.'_'.$propertyID.'.jpg';
                 $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', '$img_name')";
                 $result = $con->query($sql);
-                $count++;
+                echo 'done'.$count.'<br>';
+            }else{
+                if ($count == 0)
+                {
+                    $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'No_image.svg')";
+                    $result = $con->query($sql);
+                }
+                echo "none<br>";
+                $imgFlag = false;
             }
-              
-        }else{
-            $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
-            // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
+            $count++;
         }
+        
+        // exit();
+      // require_once('simple_html_dom.php');
+      // $data['images'][$propertyID] = getPropertyImages($propertyID, $unitID, $client);
+      // $html = str_get_html(($data['images'][$propertyID]));
+      //   if($html && is_object($html)){
+      //       $count = 0;
+      //       $image = $html->find('img');
+             
+      //       if(count($image) == 0){
+      //           $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
+      //           // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
+      //           $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', 'No_image.svg')";
+      //           $result = $con->query($sql);
+      //       }
+      //       foreach($image as $element) 
+      //       {   
+      //           $url = $element->attr['src'];
+      //           $test = file_get_contents(trim($url));
+      //           // $img = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
+      //           $img = '/var/www/html/cb/application/static/upload/property_images/image_'.$count.'_'.$propertyID.'.jpg';
+      //           file_put_contents($img, $test);
+      //           $img_name = 'image_'.$count.'_'.$propertyID.'.jpg';
+      //           $sql = "INSERT INTO unit_image (property_id, image) VALUES ('$propertyID', '$img_name')";
+      //           $result = $con->query($sql);
+      //           $count++;
+      //       }
+              
+      //   }else{
+      //       $data['image'][$propertyID] = '/var/www/html/cb/application/static/images/No_image.svg';
+      //       // $data['image'][$propertyID] = '/Applications/MAMP/htdocs/ColdwellBanker/application/static/images/No_image.svg';
+      //   }
     }
     function getPropertyImages($id, $serial, $client)
     {
-        $inputs = array(
-            'PropertyId' => $id,
-            'UnitId' => $serial,
-            'ImageType' => 'Image',
-            'URL' => 'http://64.150.184.135:81'
-            );
-        $results = $client->GetListOfImages($inputs);
-        return $results->GetListOfImagesResult;
+
+        
+        // $inputs = array(
+        //     'PropertyId' => $id,
+        //     'UnitId' => $serial,
+        //     'ImageType' => 'Image',
+        //     'URL' => 'http://64.150.184.135:81'
+        //     );
+        // $results = $client->GetListOfImages($inputs);
+        // return $results->GetListOfImagesResult;
     }
     function getUserByID($ID, $con)
     {
