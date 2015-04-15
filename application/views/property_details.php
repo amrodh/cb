@@ -44,7 +44,7 @@
                                     </span>
                                     <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 185px; right: 25px">
                                     </span>
-                                    <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 495px; height: 100px; left:20px; bottom: 0px;">
+                                    <div u="thumbnavigator" class="jssort01" style="overflow: hidden; position: absolute; width: 450px; height: 100px; left:20px; bottom: 0px;">
                                         <div u="slides" style="cursor: move;">
                                             <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
                                                 <div class=w><div u="thumbnailtemplate" style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></div></div>
