@@ -405,19 +405,26 @@ class Home extends CI_Controller {
 					$params = array('email' => $tokenInfo->email,'is_valid' => 1);
 					$emailUpdate = $this->user->updateUser($tokenInfo->user_id, $params);
 					redirect('home');
-				}else{
-					// token == 3 change password
-					// $this->session->set_flashdata('email', $tokenInfo->email);
-					// $this->session->set_flashdata('token', $token);
-					// redirect('resetpassword');
 				}
 			}
 			else
 			{
-				echo "Confirmation email expired";
+				echo "Confirmation email expired. <a href='".base_url()."resendMail/".$tokenInfo->user_id."'>Resend Mail</a>";
+
 			}
 		}
 	}	
+
+	public function resendMail(){
+		
+		$userID = $this->uri->uri_string;
+		$userID = explode('resendMail/', $userID);
+		$user = $this->user->getUserByID($userID[1]);
+		$insertToken = $this->user->insertTempEmail($user->id,$user->email,1);
+		$this->registrationValidation($this->db->insert_id());
+		$this->startSession($user);
+		redirect(base_url());
+	}
 
 	public function shareProperty()
 	{
@@ -751,7 +758,6 @@ class Home extends CI_Controller {
 		if ($districtFlag == false){
 			$district = '';
 		}
-// printme()
 		if ($featuredFlag == false){
 			if ($lob == '' && $type == '' && $city == '' && $district == '' && $project == '' && $propertyFor == '' && $locationType == '')
 			{

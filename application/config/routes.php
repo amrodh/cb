@@ -62,6 +62,7 @@ $route["$appended_lang/logout"] = "home/logout";
 
 
 $route['validate/(:any)'] = "home/validateToken";
+$route['resendMail/(:any)'] = "home/resendMail";
 $route['subscribeuser'] = 'home/subscribeuser';
 $route['insertPropertyAlert'] = "home/insertPropertyAlert";
 

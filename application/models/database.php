@@ -64,6 +64,7 @@ class database extends CI_Model {
 
      function getDistricts($cityID)
     {
+          // $cityID = $this->security->xss_clean($cityID);
          $q = $this
               ->db
               ->order_by('name', 'asc')
